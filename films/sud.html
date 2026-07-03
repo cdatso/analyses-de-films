@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sud — Chantal Akerman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dust:#efe7d6;
+    --dust-deep:#e1d5b9;
+    --clay:#a05138;
+    --clay-deep:#7a3c29;
+    --pine:#3a4638;
+    --pine-deep:#20281f;
+    --black:#17150f;
+    --ash:#8a8271;
+    --ink:#241f16;
+    --ink-soft:#544c3b;
+    --line: rgba(36,31,22,0.18);
+    --line-soft: rgba(36,31,22,0.09);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--dust);
+    color:var(--ink);
+    font-family:'Newsreader', serif;
+    font-size:1.08rem;
+    line-height:1.78;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.66rem;
+    color:var(--clay);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--dust-deep);
+    opacity:0.75;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.6rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--clay); }
+
+  /* ---------- COVER ---------- */
+  header.cover{
+    background:var(--black);
+    color:var(--dust);
+    padding:5.5rem 0 4.5rem;
+    text-align:center;
+  }
+  .cover-inner{ max-width:640px; margin:0 auto; padding:0 1.6rem; }
+  .cover-inner .eyebrow{ color:var(--ash); display:block; margin-bottom:2.2rem; }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:300;
+    font-size:clamp(3.4rem, 13vw, 6.8rem);
+    letter-spacing:0.02em;
+    margin:0 0 1.6rem;
+    color:var(--dust);
+    line-height:1;
+  }
+  .road-rule{
+    width:120px; height:1px;
+    background:var(--clay);
+    margin:0 auto 1.8rem;
+    position:relative;
+  }
+  .road-rule::before, .road-rule::after{
+    content:"";
+    position:absolute;
+    top:-3px;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--clay);
+  }
+  .road-rule::before{ left:0; }
+  .road-rule::after{ right:0; }
+  .subtitle{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--dust-deep);
+    font-size:1.15rem;
+    max-width:38ch;
+    margin:0 auto 3rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    text-align:left;
+    padding-top:2rem;
+    border-top:1px solid rgba(239,231,214,0.16);
+  }
+  .cover-media .poster{ flex:0 0 220px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid rgba(239,231,214,0.3);
+  }
+  .cover-media .poster figcaption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ash);
+    margin-top:0.5rem;
+  }
+  .cover-media .colophon-card{ flex:1; min-width:220px; border-top:none; padding-top:0; }
+
+  .colophon-card{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1.3rem 1.6rem;
+  }
+  .colophon-card dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ash);
+    margin-bottom:0.28rem;
+  }
+  .colophon-card dd{ margin:0; font-size:0.9rem; color:var(--dust); font-family:'Newsreader', serif; }
+
+  /* ---------- NAV ---------- */
+  nav.toc{ background:var(--pine-deep); border-bottom:1px solid rgba(239,231,214,0.1); }
+  nav.toc .toc-inner{
+    max-width:680px; margin:0 auto; padding:0.9rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.4rem 1.4rem;
+    justify-content:center;
+  }
+  nav.toc a{
+    color:var(--dust-deep);
+    opacity:0.75;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:opacity 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; text-decoration:underline; text-underline-offset:3px; }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:660px; margin:0 auto; padding:0 1.6rem; }
+
+  .content-note{
+    margin:2.6rem 0 0;
+    padding:1.2rem 1.4rem;
+    border:1px solid var(--clay);
+    background:rgba(160,81,56,0.06);
+    font-family:'Newsreader', serif;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .content-note .eyebrow{ display:block; margin-bottom:0.5rem; }
+
+  section.block{ padding:4rem 0; border-bottom:1px solid var(--line-soft); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .frame-head{ margin-bottom:1.7rem; }
+  .chapter-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--clay);
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:300;
+    font-size:2.1rem;
+    margin:0 0 0.2rem;
+    color:var(--ink);
+    letter-spacing:0.005em;
+  }
+  .frame-jargon{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    opacity:0.85;
+  }
+
+  h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin:2rem 0 0.7rem;
+    color:var(--clay-deep);
+  }
+  p{ margin:0 0 1.2rem; font-size:1.05rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.foot{
+    color:var(--clay);
+    text-decoration:none;
+    border-bottom:1px dotted var(--clay);
+    font-size:0.78em;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  .caution{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    border-left:2px solid var(--ash);
+    padding-left:1rem;
+    margin:1.3rem 0;
+  }
+
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.8rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+  }
+
+  /* ---------- la route (signature) ---------- */
+  .road-diagram{
+    margin:2rem 0 2.2rem;
+    padding:2rem 1rem 1.6rem;
+    background:var(--pine-deep);
+    color:var(--dust);
+  }
+  .road-diagram .eyebrow{ color:var(--ash); display:block; text-align:center; margin-bottom:1.6rem; }
+  .road-line{
+    position:relative;
+    height:2px;
+    background:rgba(239,231,214,0.25);
+    margin:0 2rem 1.5rem;
+  }
+  .road-line .marker{
+    position:absolute;
+    top:50%; transform:translate(-50%,-50%);
+    width:11px; height:11px;
+    border-radius:50%;
+    border:1.5px solid var(--clay);
+    background:var(--pine-deep);
+  }
+  .road-caption{
+    display:flex;
+    justify-content:space-between;
+    padding:0 2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--dust-deep);
+  }
+  .road-note{
+    text-align:center;
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:0.88rem;
+    color:var(--dust-deep);
+    margin-top:1.4rem;
+    padding:0 1.5rem;
+  }
+
+  /* ---------- portraits (personnages) ---------- */
+  .cast-grid{ display:grid; gap:1.5rem; margin-top:0.6rem; }
+  .cast-card{
+    padding:1.2rem 0 1.3rem;
+    border-top:1px solid var(--line);
+  }
+  .cast-card .name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    display:block;
+    margin-bottom:0.15rem;
+    color:var(--ink);
+  }
+  .cast-card .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--clay-deep);
+    display:block;
+    margin-bottom:0.6rem;
+  }
+  .cast-card p{ font-size:0.98rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- citation épinglée ---------- */
+  .pinned{
+    margin:2rem 0;
+    padding:0.3rem 0 0.3rem 1.6rem;
+    border-left:2px solid var(--clay);
+  }
+  .pinned p{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.22rem;
+    color:var(--ink);
+    margin-bottom:0.6rem;
+    line-height:1.6;
+  }
+  .pinned cite{
+    font-style:normal;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+  }
+
+  .theme-list{ display:grid; gap:1.7rem; margin-top:0.6rem; }
+  .theme-item .theme-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--clay);
+    display:inline-block;
+    margin-bottom:0.4rem;
+  }
+
+  /* ---------- repères chiffrés ---------- */
+  .bulletin{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1.2rem;
+    margin:1.8rem 0;
+    padding:1.3rem 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .bulletin .stat .num{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:1.5rem;
+    color:var(--clay-deep);
+    display:block;
+    line-height:1.15;
+  }
+  .bulletin .stat .cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+
+  section.sources{ background:var(--black); color:var(--dust); padding:3.6rem 1.6rem 4.4rem; }
+  section.sources .sources-inner{ max-width:660px; margin:0 auto; }
+  section.sources h2{ color:var(--dust); font-family:'Fraunces', serif; font-weight:300; font-size:1.7rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.8rem 0 0; padding:0;
+    display:grid; gap:0.7rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.83rem;
+    padding-left:2.2rem;
+    position:relative;
+    color:var(--dust-deep);
+    border-bottom:1px solid rgba(239,231,214,0.1);
+    padding-bottom:0.7rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  ol.source-list li::before{
+    content: counter(src);
+    position:absolute; left:0; top:0;
+    color:var(--clay);
+    font-weight:500;
+    font-size:0.76rem;
+  }
+  ol.source-list a{ color:var(--dust); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--clay); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.4rem 1.5rem 3.4rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:var(--dust);
+  }
+  footer.endnote a{ color:var(--ink-soft); }
+  footer.endnote a:hover{ color:var(--clay); }
+
+  @media (max-width:600px){
+    header.cover{ padding:4.5rem 0 3.2rem; }
+    section.block{ padding:2.8rem 0; }
+    .road-line{ margin:0 0.5rem 1.5rem; }
+    .road-caption{ padding:0 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="eyebrow">Documentaire — Belgique / France / Finlande, 1999</span>
+    <h1 class="title">Sud</h1>
+    <div class="road-rule" aria-hidden="true"></div>
+    <p class="subtitle">Un voyage dans un paysage qui se souvient de ce que personne ne veut nommer.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/sud.jpg" alt="Photogramme titre du film Sud, de Chantal Akerman" onerror="this.closest('.poster').remove()">
+        <figcaption>Photogramme titre — source : cinergie.be</figcaption>
+      </figure>
+      <dl class="colophon-card">
+        <div><dt>Réalisation</dt><dd>Chantal Akerman</dd></div>
+        <div><dt>Image</dt><dd>Raymond Fromont, Robert Fenz, Chantal Akerman</dd></div>
+        <div><dt>Montage</dt><dd>Claire Atherton</dd></div>
+        <div><dt>Son</dt><dd>Thierry De Halleux</dd></div>
+        <div><dt>Durée</dt><dd>70 minutes</dd></div>
+        <div><dt>Format</dt><dd>Vidéo DV-Cam / Betacam SP, couleur</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <p class="content-note">
+    <span class="eyebrow">Avis — contenu sensible</span>
+    Ce film et cette analyse traitent d'un crime raciste réel — le meurtre de James Byrd Jr. à Jasper, Texas, en 1998 —, de l'histoire de l'esclavage et des lynchages dans le Sud des États-Unis, et de mouvements suprémacistes blancs. Aucun détail graphique du meurtre n'est reproduit ici, à l'image de la retenue que le film lui-même s'impose.
+  </p>
+
+  <section class="block" id="fiche">
+    <div class="frame-head">
+      <span class="chapter-num">I</span>
+      <h2>Fiche technique</h2>
+      <span class="frame-jargon">générique</span>
+    </div>
+    <p>
+      <em>Sud</em> est un documentaire réalisé et écrit par Chantal Akerman, coproduction belgo-franco-finlandaise sortie en 1999<a class="foot" href="#src-1" id="ref-1">[1]</a>. L'image est signée Raymond Fromont, Robert Fenz et Chantal Akerman elle-même, le son par Thierry De Halleux, et le montage par Claire Atherton, collaboratrice de longue date de la cinéaste<a class="foot" href="#src-12" id="ref-12">[12]</a>. Le film est produit par Amip, Paradise Films, Chemah I.S., l'INA, La Sept/Arte, Carré Noir et la RTBF<a class="foot" href="#src-12" id="ref-12b">[12]</a>.
+    </p>
+    <p>
+      Tourné en vidéo DV-Cam puis reporté sur Betacam SP, le film dure 70 minutes selon la plupart des sources, certaines copies étant cataloguées à 71 minutes ou 1h15<a class="foot" href="#src-16" id="ref-16">[16]</a><a class="foot" href="#src-15" id="ref-15">[15]</a>. Il est présenté à la Quinzaine des réalisateurs du Festival de Cannes en 1999<a class="foot" href="#src-15" id="ref-15b">[15]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="frame-head">
+      <span class="chapter-num">II</span>
+      <h2>Synopsis</h2>
+      <span class="frame-jargon">un projet qui bascule</span>
+    </div>
+    <p>
+      Chantal Akerman entreprend en 1998 un film sur le Sud des États-Unis, porté par son admiration pour William Faulkner et James Baldwin<a class="foot" href="#src-6" id="ref-6">[6]</a>. Quelques jours avant son départ pour les États-Unis, James Byrd Jr., un homme noir de Jasper, au Texas, est attaché à l'arrière d'un pick-up par trois hommes blancs et traîné sur plusieurs kilomètres jusqu'à sa mort<a class="foot" href="#src-6" id="ref-6b">[6]</a>. Le projet change alors de nature : le film devient une traversée du Sud hantée par ce crime, alternant plans fixes sur les paysages et les habitants de Jasper, entretiens avec des membres de la communauté noire, le shérif local, un pasteur et un historien spécialiste des mouvements suprémacistes, et de longs travellings filmés depuis un véhicule en mouvement<a class="foot" href="#src-8" id="ref-8">[8]</a>.
+    </p>
+    <p class="caution">Le plan final du film, qui referme silencieusement le trajet emprunté par les meurtriers de Byrd, n'est volontairement pas décrit en détail ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="frame-head">
+      <span class="chapter-num">III</span>
+      <h2>Contexte de production</h2>
+      <span class="frame-jargon">un contre-geste</span>
+    </div>
+    <p>
+      Akerman a expliqué avoir entrepris ce film en réaction à <em>Gummo</em> de Harmony Korine, dont elle jugeait la vision de l'Amérique « trop désespérante et inhumaine » ; elle souhaitait montrer à l'inverse le Sud « de Faulkner et Baldwin »<a class="foot" href="#src-18" id="ref-18">[18]</a>. Dans ses notes d'intention conservées par la Fondation Chantal Akerman, elle raconte être partie sans savoir précisément ce qu'elle allait filmer, avant qu'un « nouvel incident raciste » — le meurtre de Byrd — ne vienne bouleverser son projet initial<a class="foot" href="#src-10" id="ref-10">[10]</a>.
+    </p>
+    <p>
+      Elle relie explicitement ce tournage à celui de <em>D'Est</em> (1993), réalisé en Europe de l'Est au début des années 1990 : « c'est lui aussi un voyage, mais dans un été chaud et humide qui parfois fait perdre la tête »<a class="foot" href="#src-9" id="ref-9">[9]</a>. Le tournage l'a menée à Jasper, mais aussi dans d'autres lieux du Sud comme Tuscaloosa (Alabama), Atlanta (Géorgie), Selma, Marion ou Jackson, documentés dans ses carnets de notes<a class="foot" href="#src-4" id="ref-4">[4]</a>.
+    </p>
+    <p>
+      Akerman obtient l'accès pour filmer les funérailles de James Byrd Jr. ainsi qu'un office religieux donné en sa mémoire par le pasteur Lyons<a class="foot" href="#src-6" id="ref-6c">[6]</a>. Elle rencontre également l'historien John Craig, qui avait passé deux années à infiltrer des mouvements suprémacistes blancs, dont l'organisation « Aryan Nation », afin de documenter leur résurgence depuis les années 1960, et plus particulièrement au cours des quinze années précédant le tournage<a class="foot" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="frame-head">
+      <span class="chapter-num">IV</span>
+      <h2>Structure narrative</h2>
+      <span class="frame-jargon">un voyage sans récit</span>
+    </div>
+    <p>
+      <em>Sud</em> ne suit pas une intrigue linéaire mais une logique de traversée, alternant plans fixes contemplatifs et longs travellings filmés depuis une voiture — un dispositif que la cinéaste avait déjà éprouvé sur <em>D'Est</em> et <em>Hôtel Monterey</em><a class="foot" href="#src-13" id="ref-13">[13]</a>. Un commentateur note que les premières quinze minutes du film évoquent directement ce cinéma de plans muets et de temps suspendu, avant qu'une série d'entretiens frontaux — un style inhabituel pour Akerman — ne vienne rompre cette économie de parole<a class="foot" href="#src-13" id="ref-13b">[13]</a>.
+    </p>
+    <p>
+      Le film est généralement mis en regard de <em>D'Est</em> (1993) et de <em>De l'autre côté</em> (2002), formant selon les lectures une trilogie ou, pour d'autres, le second volet d'une tétralogie confidentielle complétée par <em>Là-bas</em> (2006) — un ensemble de documentaires-voyages hantés par les frontières, les murs et l'histoire de la violence collective<a class="foot" href="#src-2" id="ref-2">[2]</a><a class="foot" href="#src-3" id="ref-3">[3]</a>. Le film culmine sur un plan-séquence final d'environ sept minutes, filmé en sens inverse le long de la route empruntée par les meurtriers de Byrd, sans commentaire ni musique — un climax silencieux qui referme le film sur l'espace lui-même plutôt que sur une explication<a class="foot" href="#src-8" id="ref-8b">[8]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="frame-head">
+      <span class="chapter-num">V</span>
+      <h2>Mise en scène et procédés techniques</h2>
+      <span class="frame-jargon">filmer sans démontrer</span>
+    </div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/sud-1.jpg" alt="Photo de scène — Sud, séquence des balançoires" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/sud-2.jpg" alt="Photo de scène — Sud, plan-séquence final" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
+    <p>
+      Le film alterne plans fixes tenus dans la durée — qu'un critique décrit comme le geste d'« une faucheuse contemplative » — et de longs travellings, signature stylistique du cinéma d'Akerman depuis ses tout premiers documentaires<a class="foot" href="#src-11" id="ref-11">[11]</a>. Une séquence emblématique montre une rangée de balançoires filmées de loin devant une église, désertées une à une par des fillettes qui laissent les sièges vides flotter dans le silence — plan cité comme représentatif de la rigueur distanciée de l'ensemble<a class="foot" href="#src-12" id="ref-12c">[12]</a>.
+    </p>
+
+    <div class="road-diagram">
+      <span class="eyebrow">Le plan final — env. 7 minutes, sans coupe ni commentaire</span>
+      <div class="road-line" aria-hidden="true">
+        <span class="marker" style="left:8%;"></span>
+        <span class="marker" style="left:32%;"></span>
+        <span class="marker" style="left:58%;"></span>
+        <span class="marker" style="left:84%;"></span>
+      </div>
+      <div class="road-caption">
+        <span>Point de départ</span>
+        <span>Marques au sol</span>
+        <span>Marques au sol</span>
+        <span>Cimetière</span>
+      </div>
+      <p class="road-note">La caméra refait, en sens inverse et en silence, le trajet emprunté par les meurtriers de James Byrd Jr., longeant les repères tracés au sol par les enquêteurs.</p>
+    </div>
+
+    <p>
+      Ce plan est resté l'une des scènes les plus commentées du cinéma documentaire de la fin des années 1990, salué pour son refus absolu de toute image de violence explicite<a class="foot" href="#src-8" id="ref-8c">[8]</a>. Deux ans plus tard, l'artiste Christian Marclay répondra à ce dispositif dans son installation vidéo <em>Guitar Drag</em> (2000), en attachant cette fois une guitare électrique à l'arrière d'un pick-up pour en capter le bruit — comme pour restituer le cri que le corps de Byrd n'avait pu pousser<a class="foot" href="#src-8" id="ref-8d">[8]</a>.
+    </p>
+
+    <div class="pinned">
+      <p>« Ce film n'est pas l'autopsie de ce meurtre, du lynchage d'un Noir par trois jeunes Blancs, mais plutôt comment celui-ci vient s'inscrire dans un paysage tant mental que physique. »</p>
+      <cite>Chantal Akerman, note d'intention<a class="foot" href="#src-9" id="ref-9b">[9]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="frame-head">
+      <span class="chapter-num">VI</span>
+      <h2>Figures rencontrées</h2>
+      <span class="frame-jargon">une communauté, des voix</span>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <span class="name">Le shérif de Jasper</span>
+        <span class="role">Figure institutionnelle blanche</span>
+        <p>Minimise la dimension raciste du crime au profit d'une explication économique, estimant que sans chômage ni pauvreté, « il n'y aurait pas eu de cas Byrd »<a class="foot" href="#src-4" id="ref-4c">[4]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Le pasteur Lyons</span>
+        <span class="role">Figure religieuse noire</span>
+        <p>Anime un office en mémoire de James Byrd Jr. et porte, avec sa congrégation, un discours de dignité chrétienne qu'Akerman perçoit comme traversé d'une ambiguïté plus profonde qu'il n'y paraît<a class="foot" href="#src-4" id="ref-4d">[4]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">John Craig</span>
+        <span class="role">Historien</span>
+        <p>Ancien infiltré des mouvements suprémacistes blancs, il documente la résurgence de groupes comme le Ku Klux Klan ou l'« Aryan Nation » dans les décennies précédant le meurtre<a class="foot" href="#src-4" id="ref-4e">[4]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Derek Mohammed</span>
+        <span class="role">Habitant de Jasper</span>
+        <p>A changé de nom pour ne plus porter, selon ses mots, « un nom d'esclave » ; il juge la mort de Byrd une tragédie inutile, en délicat désaccord avec le discours plus apaisé d'autres habitants noirs rencontrés par la cinéaste<a class="foot" href="#src-4" id="ref-4f">[4]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="frame-head">
+      <span class="chapter-num">VII</span>
+      <h2>Thèmes</h2>
+      <span class="frame-jargon">un paysage qui se souvient</span>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le racisme inscrit dans le paysage</span>
+        <p>Akerman s'interroge explicitement : comment un champ de coton vide ou une route poussiéreuse peuvent-ils soudain charrier tout le poids d'une histoire de lynchages ?<a class="foot" href="#src-9" id="ref-9c">[9]</a></p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'ambiguïté du discours communautaire</span>
+        <p>Le film capte des discours en apparence apaisés — noirs comme blancs — que la cinéaste perçoit comme traversés, en creux, d'une douleur et d'une tension bien plus profondes qu'ils ne l'admettent<a class="foot" href="#src-4" id="ref-4g">[4]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'écho entre grande et petite histoire</span>
+        <p>Comme dans <em>D'Est</em>, Akerman relie un fait divers singulier à une histoire de violence collective bien plus large — ici l'esclavage et la ségrégation du Sud américain<a class="foot" href="#src-3" id="ref-3b">[3]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Observer plutôt que démontrer</span>
+        <p>Akerman revendique une posture d'observatrice plutôt que de documentariste militante, refusant l'« autopsie » du meurtre au profit d'une évocation sensorielle du lieu et du climat<a class="foot" href="#src-9" id="ref-9d">[9]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="frame-head">
+      <span class="chapter-num">VIII</span>
+      <h2>Réception critique et postérité</h2>
+      <span class="frame-jargon">retours et résonances</span>
+    </div>
+    <p>
+      Présenté à la Quinzaine des réalisateurs du Festival de Cannes en 1999<a class="foot" href="#src-15" id="ref-15c">[15]</a>, le film reçoit un accueil critique favorable, salué par <em>Variety</em> et le <em>Village Voice</em>, ce dernier plaçant Akerman aux côtés de Godard ou Fassbinder et la qualifiant de cinéaste européenne la plus importante de sa génération<a class="foot" href="#src-6" id="ref-6d">[6]</a>. La revue en ligne <em>Mubi Notebook</em> retiendra en particulier le plan final du film, qu'elle décrit comme une reconstitution hantée du trajet fatal de Byrd<a class="foot" href="#src-6" id="ref-6e">[6]</a>.
+    </p>
+
+    <div class="bulletin">
+      <div class="stat"><span class="num">1999</span><span class="cap">Quinzaine des réalisateurs, Cannes</span></div>
+      <div class="stat"><span class="num">70 min</span><span class="cap">Durée du film</span></div>
+      <div class="stat"><span class="num">~7 min</span><span class="cap">Plan-séquence final</span></div>
+      <div class="stat"><span class="num">2024</span><span class="cap">Restauration et ressortie</span></div>
+    </div>
+
+    <p>
+      Le film est généralement regroupé avec <em>D'Est</em> (1993) et <em>De l'autre côté</em> (2002) au sein d'une trilogie ou d'une tétralogie confidentielle incluant également <em>Là-bas</em> (2006)<a class="foot" href="#src-2" id="ref-2b">[2]</a><a class="foot" href="#src-3" id="ref-3c">[3]</a>. Il est réévalué avec une acuité renouvelée après la mort de George Floyd en 2020, la Fondation Chantal Akerman soulignant sa résonance profonde avec les mobilisations internationales qui ont suivi<a class="foot" href="#src-5" id="ref-5">[5]</a>. Restauré en haute définition, il est réédité en salles en France par Capricci à partir de l'automne 2024, dans le cadre de la plus importante rétrospective jamais organisée en France autour de la cinéaste, réunissant seize de ses longs métrages<a class="foot" href="#src-17" id="ref-17">[17]</a><a class="foot" href="#src-18" id="ref-18b">[18]</a>.
+    </p>
+    <p>
+      Le dispositif du plan final a également suscité une réponse artistique directe : en 2000, Christian Marclay s'en inspire pour son installation <em>Guitar Drag</em><a class="foot" href="#src-8" id="ref-8e">[8]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="frame-head">
+      <span class="chapter-num">IX</span>
+      <h2>Conclusion</h2>
+      <span class="frame-jargon">ce que le silence donne à voir</span>
+    </div>
+    <p>
+      <em>Sud</em> tient sa force de ce qu'il refuse : l'enquête, l'explication, le récit chronologique du crime. En substituant à l'autopsie journalistique une traversée sensorielle du lieu, Chantal Akerman fait du paysage lui-même un témoin — un champ de coton, une route, un arbre en viennent à porter une mémoire que les mots des habitants, aussi sincères soient-ils, peinent parfois à formuler entièrement.
+    </p>
+    <p>
+      Ce choix, hérité d'une œuvre entière construite sur la patience du plan fixe et du travelling, trouve dans <em>Sud</em> son objet le plus douloureux : filmer un lieu où l'histoire n'est jamais vraiment passée, et où le silence, loin d'être une esquive, devient la forme la plus juste pour en approcher le poids.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="eyebrow" style="color:var(--ash)">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Sud (film, 1999) » — <a href="https://fr.wikipedia.org/wiki/Sud_(film,_1999)" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Sud_(film,_1999)</a></li>
+      <li id="src-2">Wikipédia (FR), « Chantal Akerman » — <a href="https://fr.wikipedia.org/wiki/Chantal_Akerman" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Chantal_Akerman</a></li>
+      <li id="src-3">Véronique Chemla, « Chantal Akerman (1950-2015) » — <a href="https://www.veroniquechemla.info/2020/09/sud-1492.html" target="_blank" rel="noopener">veroniquechemla.info — Chantal Akerman</a></li>
+      <li id="src-4">Fondation Chantal Akerman, « Sud – Notes of Intent » — <a href="https://chantalakerman.foundation/sud-notes-of-intent/" target="_blank" rel="noopener">chantalakerman.foundation — Sud, notes d'intention</a></li>
+      <li id="src-5">Fondation Chantal Akerman, fiche « Sud » — <a href="https://chantalakerman.foundation/works/sud/" target="_blank" rel="noopener">chantalakerman.foundation/works/sud</a></li>
+      <li id="src-6">Icarus Films, « South » — <a href="https://icarusfilms.com/if-south" target="_blank" rel="noopener">icarusfilms.com — South</a></li>
+      <li id="src-7">AlloCiné, fiche film « Sud » — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=7003.html" target="_blank" rel="noopener">allocine.fr — Sud</a></li>
+      <li id="src-8">Ciné-club de Caen, « Sud de Chantal Akerman » — <a href="https://www.cineclubdecaen.com/realisateur/akerman/sud.htm" target="_blank" rel="noopener">cineclubdecaen.com — Sud</a></li>
+      <li id="src-9">Jeu de Paume, « Sud (1999), de Chantal Akerman » — <a href="https://jeudepaume.org/evenement/projection-sud-chantal-akerman/" target="_blank" rel="noopener">jeudepaume.org — Sud</a></li>
+      <li id="src-10">Unifrance, fiche « Sud » — <a href="https://www.unifrance.org/film/21171/sud" target="_blank" rel="noopener">unifrance.org — Sud</a></li>
+      <li id="src-11">Tsounami, « Mémoire des fantômes » — <a href="https://tsounami.fr/critiques/memoire-des-fantomes/" target="_blank" rel="noopener">tsounami.fr — Sud</a></li>
+      <li id="src-12">Fema La Rochelle, fiche « Sud » — <a href="https://festival-larochelle.org/film/sud/" target="_blank" rel="noopener">festival-larochelle.org — Sud</a></li>
+      <li id="src-13">IMDb (FR), « Sud (1999) » — <a href="https://www.imdb.com/fr/title/tt0201952/" target="_blank" rel="noopener">imdb.com/fr/title/tt0201952</a></li>
+      <li id="src-14">Tënk, fiche « Sud » — <a href="https://www.on-tenk.com/fr/documentaires/fragments-dune-oeuvre/sud" target="_blank" rel="noopener">on-tenk.com — Sud</a></li>
+      <li id="src-15">Quinzaine des cinéastes, fiche « Sud » — <a href="https://www.quinzaine-cineastes.fr/fr/film/sud" target="_blank" rel="noopener">quinzaine-cineastes.fr — Sud</a></li>
+      <li id="src-16">Film-documentaire.fr, fiche « Sud » — <a href="https://www.film-documentaire.fr/4DACTION/w_fiche_film/6538_1" target="_blank" rel="noopener">film-documentaire.fr — Sud</a></li>
+      <li id="src-17">Café des images, « Rétrospective Chantal Akerman » — <a href="https://cafedesimages.fr/evenements/retrospective-chantal-akerman/" target="_blank" rel="noopener">cafedesimages.fr — rétrospective</a></li>
+      <li id="src-18">AFCAE, « Rétrospective Chantal Akerman » — <a href="https://www.art-et-essai.org/film-soutenus/1201701/retrospective-chantal-akerman" target="_blank" rel="noopener">art-et-essai.org — rétrospective</a></li>
+      <li id="src-19">Cinergie.be, « Chantal Akerman » — <a href="https://www.cinergie.be/personne/akerman-chantal" target="_blank" rel="noopener">cinergie.be — Chantal Akerman</a></li>
+      <li id="src-20">Festival de Cannes, « Chantal Akerman » — <a href="https://www.festival-cannes.com/p/chantal-akerman/" target="_blank" rel="noopener">festival-cannes.com — Chantal Akerman</a></li>
+      <li id="src-21">Cinergie.be, fiche du film « Sud » (source du photogramme titre utilisé en illustration) — <a href="https://www.cinergie.be/film/sud" target="_blank" rel="noopener">cinergie.be/film/sud</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
