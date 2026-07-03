@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyses de films</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Bibliothèque critique</div>
+  <h1>Analyses de films</h1>
+  <p class="subtitle">Des analyses cinématographiques sourcées : contexte de production, structure narrative, mise en scène, thèmes et réception critique.</p>
+</header>
+
+<main>
+
+  <section id="demande">
+    <div class="num">01</div>
+    <h2>Demander une analyse</h2>
+    <p>Titre et réalisateur·rice sont obligatoires. L'année de sortie est facultative mais recommandée si plusieurs versions ou remakes existent.</p>
+
+    <form class="request-form" id="request-form">
+      <div class="field">
+        <label for="film-title">Titre du film <span class="req">*</span></label>
+        <input type="text" id="film-title" name="film-title" required placeholder="ex. Annie Hall">
+      </div>
+      <div class="field">
+        <label for="film-director">Réalisateur·rice <span class="req">*</span></label>
+        <input type="text" id="film-director" name="film-director" required placeholder="ex. Woody Allen">
+      </div>
+      <div class="field">
+        <label for="film-year">Année de sortie (optionnel)</label>
+        <input type="text" id="film-year" name="film-year" placeholder="ex. 1977" inputmode="numeric" pattern="[0-9]{4}">
+      </div>
+      <button type="submit">Envoyer la demande</button>
+      <p class="form-note">L'envoi ouvre votre client mail habituel avec les informations pré-remplies. Aucune analyse n'est générée automatiquement : elle sera préparée puis ajoutée manuellement au site.</p>
+    </form>
+  </section>
+
+  <section id="analyses">
+    <div class="num">02</div>
+    <h2>Analyses publiées</h2>
+    <div class="film-grid" id="film-grid">
+      <!-- Les fiches films sont injectées par script.js à partir de films-data.js -->
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Analyses rédigées à titre d'exercice critique et pédagogique.
+</footer>
+
+<script src="assets/films-data.js"></script>
+<script>
+  const grid = document.getElementById('film-grid');
+
+  if (!FILMS.length) {
+    grid.innerHTML = '<div class="empty-state">Aucune analyse publiée pour le moment.</div>';
+  } else {
+    FILMS.slice().sort((a, b) => a.title.localeCompare(b.title, 'fr')).forEach(function (film) {
+      const card = document.createElement('article');
+      card.className = 'film-card';
+      const yearText = film.year ? ' · ' + film.year : '';
+      card.innerHTML =
+        '<h3>' + film.title + '</h3>' +
+        '<div class="film-meta">' + film.director + yearText + '</div>' +
+        '<p>' + film.summary + '</p>' +
+        '<a class="read-more" href="' + film.url + '">Lire l\'analyse →</a>';
+      grid.appendChild(card);
+    });
+  }
+
+  document.getElementById('request-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const title = document.getElementById('film-title').value.trim();
+    const director = document.getElementById('film-director').value.trim();
+    const year = document.getElementById('film-year').value.trim();
+
+    const subject = 'Demande d\'analyse de film : ' + title;
+    let body = 'Titre : ' + title + '\nRéalisateur·rice : ' + director;
+    if (year) body += '\nAnnée : ' + year;
+
+    const mailto = 'mailto:cdatso@yahoo.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+  });
+</script>
+
+</body>
+</html>
