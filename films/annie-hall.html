@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
 
 <header class="hero">
   <div class="eyebrow">Analyse cinématographique</div>
@@ -41,13 +48,18 @@
   <section id="fiche">
     <div class="num">01</div>
     <h2>Fiche technique</h2>
-    <div class="fact-grid">
-      <div><div class="label">Réalisation</div><div class="value">Woody Allen</div></div>
-      <div><div class="label">Scénario</div><div class="value">Woody Allen, Marshall Brickman</div></div>
-      <div><div class="label">Sortie</div><div class="value">1977</div></div>
-      <div><div class="label">Interprètes</div><div class="value">Woody Allen, Diane Keaton</div></div>
-      <div><div class="label">Directeur photo</div><div class="value">Gordon Willis</div></div>
-      <div><div class="label">Oscars</div><div class="value">4, dont meilleur film</div></div>
+    <div class="fiche-layout">
+      <figure class="poster">
+        <img src="../assets/posters/annie-hall.jpg" alt="Affiche du film Annie Hall" onerror="this.closest('.poster').remove()">
+      </figure>
+      <div class="fact-grid">
+        <div><div class="label">Réalisation</div><div class="value">Woody Allen</div></div>
+        <div><div class="label">Scénario</div><div class="value">Woody Allen, Marshall Brickman</div></div>
+        <div><div class="label">Sortie</div><div class="value">1977</div></div>
+        <div><div class="label">Interprètes</div><div class="value">Woody Allen, Diane Keaton</div></div>
+        <div><div class="label">Directeur photo</div><div class="value">Gordon Willis</div></div>
+        <div><div class="label">Oscars</div><div class="value">4, dont meilleur film</div></div>
+      </div>
     </div>
   </section>
 
@@ -75,6 +87,10 @@
     <div class="num">05</div>
     <h2>Mise en scène et procédés</h2>
     <p>Allen multiplie les ruptures avec le langage cinématographique conventionnel, faisant du film une sorte de manifeste formel sur les limites du récit romantique classique.</p>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/annie-hall-1.jpg" alt="Photo de scène — Annie Hall, scène du split screen" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/annie-hall-2.jpg" alt="Photo de scène — Annie Hall, séquence animée" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
     <h3>L'adresse directe au spectateur</h3>
     <p>Alvy s'adresse régulièrement à la caméra, commente l'action en train de se dérouler, va jusqu'à interpeller les passants dans la rue pour leur demander leur avis sur son couple. Ce dispositif, hérité de la tradition du stand-up, transforme le spectateur en confident et en témoin, tout en maintenant une distance ironique vis-à-vis du récit.</p>
     <h3>Le split screen et la simultanéité</h3>

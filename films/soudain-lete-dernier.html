@@ -143,9 +143,34 @@
     line-height:1.6;
   }
 
-  .filecard{
+  .cover-media{
+    display:flex;
+    gap:1.6rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
     border-top:1px solid var(--line);
     padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+  }
+  .cover-media .filecard{ flex:1; min-width:220px; border-top:none; padding-top:0; }
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.6rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+    filter:grayscale(1) contrast(1.05);
+  }
+  .filecard{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
     gap:1.1rem 1.5rem;
@@ -429,6 +454,13 @@
 </style>
 </head>
 <body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
 
 <div class="edge-code" aria-hidden="true">
   <span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span><span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span><span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span>
@@ -448,16 +480,21 @@
       <h1 class="title">Soudain l'été dernier</h1>
       <p class="subtitle">Ce que la pellicule garde en mémoire, même quand on refuse de le développer.</p>
 
-      <dl class="filecard">
-        <div><dt>Réalisation</dt><dd>Joseph L. Mankiewicz</dd></div>
-        <div><dt>Scénario</dt><dd>Gore Vidal &amp; Tennessee Williams</dd></div>
-        <div><dt>Année</dt><dd>1959</dd></div>
-        <div><dt>Durée</dt><dd>114 minutes</dd></div>
-        <div><dt>Production</dt><dd>Horizon Pictures / Columbia</dd></div>
-        <div><dt>Producteur</dt><dd>Sam Spiegel</dd></div>
-        <div><dt>Photographie</dt><dd>Jack Hildyard</dd></div>
-        <div><dt>Décors</dt><dd>Oliver Messel</dd></div>
-      </dl>
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/soudain-lete-dernier.jpg" alt="Affiche du film Soudain l'été dernier" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="filecard">
+          <div><dt>Réalisation</dt><dd>Joseph L. Mankiewicz</dd></div>
+          <div><dt>Scénario</dt><dd>Gore Vidal &amp; Tennessee Williams</dd></div>
+          <div><dt>Année</dt><dd>1959</dd></div>
+          <div><dt>Durée</dt><dd>114 minutes</dd></div>
+          <div><dt>Production</dt><dd>Horizon Pictures / Columbia</dd></div>
+          <div><dt>Producteur</dt><dd>Sam Spiegel</dd></div>
+          <div><dt>Photographie</dt><dd>Jack Hildyard</dd></div>
+          <div><dt>Décors</dt><dd>Oliver Messel</dd></div>
+        </dl>
+      </div>
     </div>
   </div>
 </header>
@@ -578,6 +615,10 @@
         <span class="frame-num-label">Négatif nº 05</span>
         <h2>Mise en scène et procédés techniques <span class="frame-jargon">— tirage</span></h2>
       </div>
+    </div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/soudain-lete-dernier-1.jpg" alt="Photo de scène — le jardin carnivore de la villa Venable" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/soudain-lete-dernier-2.jpg" alt="Photo de scène — Catherine Holly interrogée sous sérum de vérité" onerror="hideBrokenImg(this, 'stills-row')">
     </div>
     <p>
       La direction artistique d'Oliver Messel structure l'essentiel de la charge symbolique du film. Le jardin de la propriété Venable, que Sebastian avait conçu à l'image de <em>L'Aurore de la création</em> de Michelangelo, prend l'apparence d'une jungle envahissante peuplée de plantes à l'aspect carnivore et de statuaire menaçante, un dispositif que plusieurs analyses rapprochent du <em>Jardin des délices</em> de Jérôme Bosch et de la figure de la « mère dévorante » incarnée par Violet Venable<a class="foot" href="#src-17" id="ref-17">[17]</a>.

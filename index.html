@@ -72,11 +72,19 @@
       const card = document.createElement('article');
       card.className = 'film-card';
       const yearText = film.year ? ' · ' + film.year : '';
+      const posterHtml = film.poster
+        ? '<img class="poster-thumb" src="' + film.poster + '" alt="Affiche de ' + film.title + '" onerror="this.closest(\'.film-card\').classList.add(\'no-poster\')">'
+        : '';
+      card.classList.toggle('no-poster', !film.poster);
       card.innerHTML =
+        posterHtml +
+        '<div class="poster-placeholder" aria-hidden="true">' + film.title.charAt(0) + '</div>' +
+        '<div class="card-body">' +
         '<h3>' + film.title + '</h3>' +
         '<div class="film-meta">' + film.director + yearText + '</div>' +
         '<p>' + film.summary + '</p>' +
-        '<a class="read-more" href="' + film.url + '">Lire l\'analyse →</a>';
+        '<a class="read-more" href="' + film.url + '">Lire l\'analyse →</a>' +
+        '</div>';
       grid.appendChild(card);
     });
   }

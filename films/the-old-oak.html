@@ -115,6 +115,35 @@
     max-width:34ch;
     margin:0 0 2.6rem;
   }
+  .cover-media{
+    display:flex;
+    gap:1.6rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .cover-media .poster{
+    flex:0 0 150px;
+    margin:0;
+  }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line-dark);
+    border-radius:2px;
+  }
+  .cover-media .filecard{ flex:1; min-width:220px; }
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.6rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
   .filecard{
     border:1px solid var(--line-dark);
     border-radius:2px;
@@ -387,6 +416,13 @@
 </style>
 </head>
 <body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
 
 <header class="cover">
   <div class="cover-inner">
@@ -404,16 +440,21 @@
     <h1 class="title">The Old Oak</h1>
     <p class="subtitle">Le dernier pub debout, la dernière fable de Ken Loach.</p>
 
-    <dl class="filecard">
-      <div><dt>Réalisation</dt><dd>Ken Loach</dd></div>
-      <div><dt>Scénario</dt><dd>Paul Laverty</dd></div>
-      <div><dt>Année</dt><dd>2023</dd></div>
-      <div><dt>Durée</dt><dd>113 minutes</dd></div>
-      <div><dt>Pays</dt><dd>Royaume-Uni · France · Belgique</dd></div>
-      <div><dt>Sortie France</dt><dd>25 octobre 2023</dd></div>
-      <div><dt>Photographie</dt><dd>Robbie Ryan</dd></div>
-      <div><dt>Musique</dt><dd>George Fenton</dd></div>
-    </dl>
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/the-old-oak.jpg" alt="Affiche du film The Old Oak" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="filecard">
+        <div><dt>Réalisation</dt><dd>Ken Loach</dd></div>
+        <div><dt>Scénario</dt><dd>Paul Laverty</dd></div>
+        <div><dt>Année</dt><dd>2023</dd></div>
+        <div><dt>Durée</dt><dd>113 minutes</dd></div>
+        <div><dt>Pays</dt><dd>Royaume-Uni · France · Belgique</dd></div>
+        <div><dt>Sortie France</dt><dd>25 octobre 2023</dd></div>
+        <div><dt>Photographie</dt><dd>Robbie Ryan</dd></div>
+        <div><dt>Musique</dt><dd>George Fenton</dd></div>
+      </dl>
+    </div>
   </div>
 </header>
 
@@ -486,6 +527,10 @@
 
   <section class="block" id="miseenscene">
     <div class="block-head"><span class="block-num">05</span><h2>Mise en scène et procédés techniques</h2></div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/the-old-oak-1.jpg" alt="Photo de scène — The Old Oak, l'arrière-salle du pub" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/the-old-oak-2.jpg" alt="Photo de scène — The Old Oak, le village du comté de Durham" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
     <p>
       Fidèle à l'esthétique du réalisme social qui définit son œuvre depuis les années 1960, Loach privilégie une mise en scène sobre, au service des acteurs plus que du geste visuel<a class="foot" href="#src-6" id="ref-6">[6]</a>. La photographie de Robbie Ryan, présent lors de la présentation cannoise du film, adopte une lumière naturaliste et des cadrages qui laissent respirer les intérieurs modestes du pub et les rues de briques rouges du village<a class="foot" href="#src-19" id="ref-19b">[19]</a>.
     </p>
