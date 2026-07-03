@@ -16,5 +16,13 @@ const FILMS = [
     year: 2023,
     summary: "Le dernier pub debout, la dernière fable de Ken Loach : réfugiés syriens et mineurs abandonnés dans le nord-est de l'Angleterre.",
     url: 'films/the-old-oak.html'
+  },
+  {
+    slug: 'soudain-lete-dernier',
+    title: "Soudain l'été dernier",
+    director: 'Joseph L. Mankiewicz',
+    year: 1959,
+    summary: "Un mélodrame gothique sur l'emprise maternelle, la censure du Code Hays et une vérité qu'on tente de faire taire à coups de scalpel.",
+    url: 'films/soudain-lete-dernier.html'
   }
 ];

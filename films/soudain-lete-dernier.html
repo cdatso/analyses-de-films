@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Négatif argentique — Soudain l'été dernier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#0a0a09;
+    --dark-elev:#141311;
+    --dark-card:#1a1916;
+    --negative:#e8e2d2;
+    --negative-dim:#b8b2a2;
+    --safelight:#b23a2e;
+    --safelight-deep:#8a2c22;
+    --silver:#7a756a;
+    --line: rgba(232,226,210,0.13);
+    --line-soft: rgba(232,226,210,0.07);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--dark);
+    color:var(--negative);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.66rem;
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--negative-dim);
+    opacity:0.7;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--safelight); }
+
+  .sprockets{
+    height:14px;
+    background-image: radial-gradient(circle, var(--dark) 3px, transparent 3.4px);
+    background-size:24px 14px;
+    background-position:10px center;
+    background-repeat:repeat-x;
+    background-color: var(--negative-dim);
+    opacity:0.55;
+  }
+  .edge-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.58rem;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:var(--silver);
+    white-space:nowrap;
+    overflow:hidden;
+    padding:0.35rem 0;
+    background:var(--dark-elev);
+  }
+  .edge-code span{ padding:0 1.2rem; }
+
+  /* ---------- COVER ---------- */
+  header.cover{
+    position:relative;
+    background:var(--dark);
+    color:var(--negative);
+    padding:0 0 3.4rem;
+  }
+  .cover-inner{
+    max-width:740px;
+    margin:0 auto;
+    padding:4rem 1.5rem 0;
+    position:relative;
+    z-index:1;
+  }
+  .frame-border{
+    border:1px solid var(--line);
+    padding:2.6rem 2rem;
+    position:relative;
+  }
+  .frame-border::before, .frame-border::after{
+    content:"+";
+    position:absolute;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--silver);
+    font-size:0.9rem;
+  }
+  .frame-border::before{ top:-9px; left:-7px; }
+  .frame-border::after{ bottom:-11px; right:-7px; }
+
+  .cover-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    color:var(--safelight);
+    margin-bottom:1.9rem;
+  }
+  .cover-eyebrow .rule{ height:1px; width:32px; background:var(--safelight); }
+
+  .frame-num{
+    position:absolute;
+    top:2.6rem;
+    right:2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--silver);
+    letter-spacing:0.08em;
+  }
+
+  h1.title{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:700;
+    font-size:clamp(2.3rem, 6.6vw, 3.7rem);
+    line-height:1.04;
+    margin:0 0 0.8rem;
+    letter-spacing:-0.01em;
+    color:var(--negative);
+  }
+  .subtitle{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:400;
+    color:var(--negative-dim);
+    font-size:0.95rem;
+    max-width:42ch;
+    margin:0 0 2.2rem;
+    line-height:1.6;
+  }
+
+  .filecard{
+    border-top:1px solid var(--line);
+    padding-top:1.3rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1.1rem 1.5rem;
+  }
+  .filecard dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--safelight);
+    margin-bottom:0.3rem;
+  }
+  .filecard dd{ margin:0; font-size:0.9rem; color:var(--negative); }
+
+  /* ---------- NAV ---------- */
+  nav.toc{ background:var(--dark-elev); border-bottom:1px solid var(--line); border-top:1px solid var(--line); }
+  nav.toc .toc-inner{
+    max-width:740px; margin:0 auto; padding:0.85rem 1.5rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.05rem;
+  }
+  nav.toc a{
+    color:var(--negative-dim);
+    opacity:0.68;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:opacity 0.15s ease, color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; color:var(--safelight); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:720px; margin:0 auto; padding:0 1.5rem; }
+
+  .content-note{
+    margin:2.1rem 0 0;
+    padding:1rem 1.3rem;
+    border-left:2px solid var(--safelight);
+    background:rgba(178,58,46,0.07);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--negative-dim);
+    line-height:1.55;
+  }
+
+  section.block{ padding:3rem 0; border-bottom:1px solid var(--line-soft); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .frame-head{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:1.4rem;
+  }
+  .grease-mark{ width:38px; height:38px; flex-shrink:0; }
+  .frame-heading-text{ flex:1; }
+  .frame-num-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--safelight);
+    display:block;
+    margin-bottom:0.15rem;
+  }
+  h2{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:700;
+    font-size:1.65rem;
+    margin:0 0 0.2rem;
+    color:var(--negative);
+    letter-spacing:-0.005em;
+  }
+  .frame-jargon{
+    font-family:'IBM Plex Mono', monospace;
+    font-style:normal;
+    font-size:0.72rem;
+    color:var(--silver);
+    text-transform:lowercase;
+  }
+
+  h3{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
+    margin:1.7rem 0 0.55rem;
+    color:var(--negative);
+  }
+  p{ margin:0 0 1.05rem; font-size:1rem; color:var(--negative-dim); }
+  p:last-child{ margin-bottom:0; }
+
+  a.foot{
+    color:var(--safelight);
+    text-decoration:none;
+    border-bottom:1px dotted var(--safelight);
+    font-size:0.85em;
+  }
+
+  .caution{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--silver);
+    border-left:2px solid var(--silver);
+    padding-left:0.8rem;
+    margin:1rem 0;
+  }
+
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.5rem;
+  }
+  .cast-card{
+    position:relative;
+    background:var(--dark-card);
+    border:1px solid var(--line);
+    padding:1rem 1.1rem;
+  }
+  .cast-card::before{
+    content:"";
+    position:absolute;
+    top:6px; left:6px;
+    width:12px; height:12px;
+    border-top:1.5px solid var(--safelight);
+    border-left:1.5px solid var(--safelight);
+  }
+  .cast-card::after{
+    content:"";
+    position:absolute;
+    bottom:6px; right:6px;
+    width:12px; height:12px;
+    border-bottom:1.5px solid var(--safelight);
+    border-right:1.5px solid var(--safelight);
+  }
+  .cast-card .name{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    display:block;
+    margin-bottom:0.15rem;
+    color:var(--negative);
+  }
+  .cast-card .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--safelight);
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  .cast-card p{ font-size:0.9rem; margin:0; color:var(--negative-dim); }
+
+  .pinned{
+    position:relative;
+    background:var(--dark-card);
+    border:1px solid var(--line);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+  }
+  .pinned::before{
+    content:"";
+    position:absolute;
+    top:50%; left:-1px;
+    width:14px; height:14px;
+    border:1.5px solid var(--safelight);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:var(--dark);
+  }
+  .pinned p{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--negative);
+    margin-bottom:0.5rem;
+  }
+  .pinned cite{
+    font-style:normal;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--silver);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--safelight);
+    display:inline-block;
+    margin-bottom:0.3rem;
+  }
+
+  /* light table — la seule zone claire de la page */
+  .lighttable{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1rem;
+    margin:1.5rem 0 1.6rem;
+    padding:1.15rem 1.4rem;
+    background:var(--negative);
+    color:var(--dark);
+    border:1px solid var(--negative-dim);
+  }
+  .lighttable .stat .num{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--safelight-deep);
+    display:block;
+    line-height:1.1;
+  }
+  .lighttable .stat .cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.58rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:#3a352a;
+  }
+  .lighttable-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--silver);
+    margin-bottom:0.6rem;
+    display:block;
+  }
+
+  section.sources{ background:var(--dark-elev); padding:3.3rem 1.5rem 4.3rem; }
+  section.sources .sources-inner{ max-width:720px; margin:0 auto; }
+  section.sources h2{ color:var(--negative); font-family:'IBM Plex Sans', sans-serif; font-weight:700; font-size:1.5rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.83rem;
+    padding-left:2.1rem;
+    position:relative;
+    color:var(--negative-dim);
+    border-bottom:1px solid var(--line);
+    padding-bottom:0.6rem;
+  }
+  ol.source-list li::before{
+    content: counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--safelight);
+    font-size:0.76rem;
+  }
+  ol.source-list a{ color:var(--negative); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--safelight); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.3rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--silver);
+    background:var(--dark);
+  }
+  footer.endnote a{ color:var(--silver); }
+  footer.endnote a:hover{ color:var(--safelight); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:3rem 1.1rem 0; }
+    .frame-border{ padding:2rem 1.3rem; }
+    .frame-num{ position:static; display:block; margin-bottom:1rem; }
+    section.block{ padding:2.2rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="edge-code" aria-hidden="true">
+  <span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span><span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span><span>SAFETY FILM</span><span>N&amp;B</span><span>1959</span>
+</div>
+<div class="sprockets" aria-hidden="true"></div>
+
+<header class="cover">
+  <div class="cover-inner">
+    <div class="frame-border">
+      <span class="frame-num">Bobine 01 · 35 mm</span>
+      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <div class="cover-eyebrow">
+        <span class="rule"></span>
+        <span class="label">Planche contact — mélodrame gothique</span>
+      </div>
+
+      <h1 class="title">Soudain l'été dernier</h1>
+      <p class="subtitle">Ce que la pellicule garde en mémoire, même quand on refuse de le développer.</p>
+
+      <dl class="filecard">
+        <div><dt>Réalisation</dt><dd>Joseph L. Mankiewicz</dd></div>
+        <div><dt>Scénario</dt><dd>Gore Vidal &amp; Tennessee Williams</dd></div>
+        <div><dt>Année</dt><dd>1959</dd></div>
+        <div><dt>Durée</dt><dd>114 minutes</dd></div>
+        <div><dt>Production</dt><dd>Horizon Pictures / Columbia</dd></div>
+        <div><dt>Producteur</dt><dd>Sam Spiegel</dd></div>
+        <div><dt>Photographie</dt><dd>Jack Hildyard</dd></div>
+        <div><dt>Décors</dt><dd>Oliver Messel</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<div class="sprockets" aria-hidden="true"></div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <p class="content-note">
+    Note de contenu — ce film aborde l'internement psychiatrique non consenti, la lobotomie, une mort violente et une représentation de l'homosexualité conforme aux codes de censure de 1959, aujourd'hui largement considérée comme datée et stigmatisante. Cette analyse en traite le contenu à des fins historiques et critiques.
+  </p>
+
+  <section class="block" id="fiche">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="19" cy="19" r="15" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 01</span>
+        <h2>Fiche technique <span class="frame-jargon">— planche contact</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Soudain l'été dernier</em> est une production Horizon Pictures distribuée par Columbia Pictures, réalisée par Joseph L. Mankiewicz en 1959. Le scénario est signé Gore Vidal, d'après la pièce en un acte de Tennessee Williams créée off-Broadway en janvier 1958 ; au générique, le crédit d'écriture est finalement partagé entre les deux hommes<a class="foot" href="#src-1" id="ref-1">[1]</a><a class="foot" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      Le film réunit Elizabeth Taylor (Catherine Holly), Katharine Hepburn (Violet Venable) et Montgomery Clift (Dr John Cukrowicz), aux côtés d'Albert Dekker, Mercedes McCambridge et Gary Raymond<a class="foot" href="#src-1" id="ref-1b">[1]</a>. La photographie est signée Jack Hildyard et la direction artistique confiée à Oliver Messel, qui signe également les costumes ; la musique est composée par Buxton Orr sur des thèmes de Malcolm Arnold<a class="foot" href="#src-9" id="ref-9">[9]</a>.
+    </p>
+    <p>
+      Présenté en décembre 1959, le film obtient trois nominations aux Oscars (meilleure actrice pour Hepburn et pour Taylor, meilleurs décors en noir et blanc), sans en remporter aucune — les deux actrices s'inclinant face à Simone Signoret pour <em>Les Chemins de la haute ville</em><a class="foot" href="#src-1" id="ref-1c">[1]</a>. Taylor reçoit en revanche le Golden Globe de la meilleure actrice dans un drame ainsi qu'un Laurel Award, et le film figure au palmarès des dix meilleurs films de l'année du National Board of Review<a class="foot" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="19" cy="19" r="15" stroke="#b23a2e" stroke-width="1.4"/>
+        <line x1="19" y1="7" x2="19" y2="12" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 02</span>
+        <h2>Synopsis <span class="frame-jargon">— exposition</span></h2>
+      </div>
+    </div>
+    <p>
+      La Nouvelle-Orléans, 1937. Le docteur John Cukrowicz pratique, dans les conditions précaires de l'asile public de Lion's View, une opération encore expérimentale : la lobotomie<a class="foot" href="#src-1" id="ref-1e">[1]</a>. La richissime veuve Violet Venable lui propose un don important pour l'établissement, à une condition : qu'il pratique cette même opération sur sa nièce par alliance, Catherine Holly, internée depuis son retour bouleversé d'un voyage en Europe au cours duquel le fils tant aimé de Violet, le poète Sebastian, est mort dans des circonstances que Catherine seule a vues<a class="foot" href="#src-9" id="ref-9b">[9]</a>.
+    </p>
+    <p>
+      Le récit que fait Catherine de cette mort est jugé si délirant par son entourage qu'il a précipité son internement ; Violet y voit surtout une menace pour l'image qu'elle a construite de son fils. Partagé entre la pression financière exercée sur l'hôpital et son éthique de médecin, Cukrowicz choisit de chercher la vérité plutôt que de la faire taire par le scalpel<a class="foot" href="#src-1" id="ref-1f">[1]</a>.
+    </p>
+    <p class="caution">Le mécanisme de révélation final, construit comme une séance d'hypnose collective, n'est volontairement pas détaillé ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="8" y="8" width="22" height="22" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 03</span>
+        <h2>Contexte de production <span class="frame-jargon">— développement</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Suddenly, Last Summer</em> est l'une des trois pièces dans lesquelles Tennessee Williams aborde l'homosexualité, après <em>Un tramway nommé Désir</em> et <em>La Chatte sur un toit brûlant</em> — mais de façon plus frontale que les deux précédentes<a class="foot" href="#src-11" id="ref-11">[11]</a>. Créée off-Broadway le 7 janvier 1958 dans un programme double intitulé <em>Garden District</em>, elle est adaptée pour l'écran par Gore Vidal, ami proche de Williams alors sous contrat avec la MGM<a class="foot" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+    <p>
+      L'adaptation doit composer avec le Code Hays. Une lettre du 25 mai 1959 adressée par le responsable de la Production Code Administration, Geoffrey Shurlock, au producteur Sam Spiegel, indique que le film se verrait refuser son visa en l'état, en raison de l'homosexualité du personnage principal, de la scène de cannibalisme et de l'attitude jugée blasphématoire de certains dialogues<a class="foot" href="#src-9" id="ref-9c">[9]</a>. Le studio obtient finalement une autorisation provisoire fin novembre 1959, après avoir accentué le traitement moralisateur du sort réservé à Sebastian<a class="foot" href="#src-23" id="ref-23">[23]</a>. Cela n'empêche pas la National Legion of Decency, organisme catholique influent, de prononcer une « classification séparée » du film le 4 décembre 1959 — une forme de condamnation morale invitant les catholiques à s'en détourner<a class="foot" href="#src-16" id="ref-16">[16]</a>.
+    </p>
+    <p>
+      Le tournage s'étend de mai à septembre 1959 : les scènes d'intérieur sont tournées aux studios Shepperton, en Angleterre, tandis que la séquence de la station balnéaire fictive de « Cabeza de Lobo » est tournée en Espagne, à Majorque ainsi que dans la province de Gérone<a class="foot" href="#src-1" id="ref-1g">[1]</a>. Le casting de Montgomery Clift dans le rôle du docteur Cukrowicz s'avère délicat : deux ans après un accident de voiture qui a gravement marqué son visage sur le tournage de <em>La Fureur de vivre</em>, l'acteur est dépendant à l'alcool et aux médicaments au point qu'aucune compagnie de production ne veut plus l'assurer ; c'est le producteur Sam Spiegel qui valide personnellement son engagement<a class="foot" href="#src-1" id="ref-1h">[1]</a>.
+    </p>
+    <p>
+      Les scènes les plus longues de Clift doivent être tournées réplique par réplique tant l'acteur peine à les enchaîner, ce qui aurait conduit Mankiewicz à demander à plusieurs reprises à Spiegel de le renvoyer du projet ; certains témoignages, dont ceux du monteur William Hornbeck et du chef opérateur Jack Hildyard, contestent cependant l'idée d'un traitement hostile de la part du réalisateur, une version pourtant défendue par Katharine Hepburn, qui s'était prise de sympathie pour Clift<a class="foot" href="#src-1" id="ref-1i">[1]</a>. Le dernier jour du tournage de ses propres scènes, une fois confirmé par Mankiewicz qu'elle n'était plus requise sur le plateau, Hepburn se serait approchée de lui pour lui cracher au visage — un épisode largement documenté, bien que les témoignages divergent sur un possible second geste identique visé contre Sam Spiegel<a class="foot" href="#src-1" id="ref-1j">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 26c6-14 16-14 22 0" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 04</span>
+        <h2>Structure narrative <span class="frame-jargon">— montage</span></h2>
+      </div>
+    </div>
+    <p>
+      Issu d'une pièce en un acte conçue pour un lieu et un temps resserrés, le film conserve une structure fondamentalement théâtrale, construite sur de longues tirades et confrontations verbales entre un nombre restreint de personnages<a class="foot" href="#src-3" id="ref-3">[3]</a>. Le scénario de Vidal et Williams « ouvre » cependant le matériau d'origine par l'ajout de scènes extérieures — le jardin de la propriété Venable, la plage de Cabeza de Lobo — que la critique de l'époque, dans les colonnes de <em>Variety</em>, juge n'apporter qu'un intérêt secondaire à l'intrigue plutôt qu'un véritable geste de mise en cinéma<a class="foot" href="#src-18" id="ref-18">[18]</a>.
+    </p>
+    <p>
+      Le récit progresse par accumulation de points de vue partiels et contradictoires sur la mort de Sebastian — celui de Violet, qui la nie, celui de Catherine, jugé délirant — avant de converger vers une scène de résolution unique : une séance d'interrogatoire sous sérum de vérité, organisée par Cukrowicz devant un parterre de témoins réunis sur le patio du jardin<a class="foot" href="#src-30" id="ref-30">[30]</a>. Ce dispositif de mise en abyme du récit — la vérité reconstituée en direct devant un public de personnages — fonctionne comme un climax quasi-théâtral qui ramène le film vers l'unité de lieu de la pièce originale, après l'avoir quittée le temps d'un long flash-back sur la plage espagnole<a class="foot" href="#src-30" id="ref-30b">[30]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="19" cy="19" r="15" stroke="#b23a2e" stroke-width="1.4"/>
+        <circle cx="19" cy="19" r="6" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 05</span>
+        <h2>Mise en scène et procédés techniques <span class="frame-jargon">— tirage</span></h2>
+      </div>
+    </div>
+    <p>
+      La direction artistique d'Oliver Messel structure l'essentiel de la charge symbolique du film. Le jardin de la propriété Venable, que Sebastian avait conçu à l'image de <em>L'Aurore de la création</em> de Michelangelo, prend l'apparence d'une jungle envahissante peuplée de plantes à l'aspect carnivore et de statuaire menaçante, un dispositif que plusieurs analyses rapprochent du <em>Jardin des délices</em> de Jérôme Bosch et de la figure de la « mère dévorante » incarnée par Violet Venable<a class="foot" href="#src-17" id="ref-17">[17]</a>.
+    </p>
+    <p>
+      Cette direction artistique vaut au film une nomination aux Oscars des meilleurs décors en noir et blanc, partagée entre Messel, William Kellner et Scott Slimon<a class="foot" href="#src-1" id="ref-1k">[1]</a>. La mise en scène ménage également des effets de mise en espace signifiants, comme l'entrée en scène de Violet Venable, qui descend jusqu'au jardin dans un ascenseur en forme de cage ouvragée — image de l'enfermement volontaire du personnage dans le mythe qu'elle a construit<a class="foot" href="#src-9" id="ref-9d">[9]</a>.
+    </p>
+    <p>
+      Le travail conjoint de Mankiewicz et du chef opérateur Jack Hildyard produit par ailleurs un geste de mise en scène ouvertement anti-glamour : pour un gros plan sur les mains de Violet, le réalisateur demande à Hildyard de retirer les filtres de diffusion habituellement utilisés pour flatter les actrices, afin qu'elle paraisse soudainement âgée au moment précis où l'illusion qu'elle entretenait sur son fils s'effondre — un choix que Mankiewicz revendique explicitement comme la traduction visuelle de la destruction du mythe de Sebastian<a class="foot" href="#src-1" id="ref-1l">[1]</a>.
+    </p>
+
+    <div class="pinned">
+      <p>« Aucun film ne s'approche autant que celui-ci de la démence pure, à l'écran. »</p>
+      <cite>Variety, critique de 1959<a class="foot" href="#src-18" id="ref-18b">[18]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 30c0-8 5-13 10-13s10 5 10 13" stroke="#b23a2e" stroke-width="1.4"/>
+        <circle cx="19" cy="11" r="5" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 06</span>
+        <h2>Personnages principaux <span class="frame-jargon">— portraits</span></h2>
+      </div>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <span class="name">Violet Venable</span>
+        <span class="role">Katharine Hepburn</span>
+        <p>Veuve richissime de la Nouvelle-Orléans, elle a entretenu avec son fils Sebastian une relation fusionnelle qu'elle refuse de voir démentie ; elle est prête à faire taire chirurgicalement la seule personne capable de raconter la vérité sur sa mort<a class="foot" href="#src-9" id="ref-9e">[9]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Catherine Holly</span>
+        <span class="role">Elizabeth Taylor</span>
+        <p>Nièce par alliance de Violet, internée après avoir assisté à la mort de Sebastian ; son témoignage, jugé délirant, est en réalité le seul récit fidèle des événements — rôle considéré rétrospectivement comme l'une des prestations marquantes de l'actrice<a class="foot" href="#src-13" id="ref-13">[13]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Dr John Cukrowicz</span>
+        <span class="role">Montgomery Clift</span>
+        <p>Jeune chirurgien pratiquant la lobotomie dans un hôpital public sous-financé, tiraillé entre la pression exercée par le don de Violet Venable et son éthique médicale, qui le pousse à chercher la vérité plutôt que de l'effacer<a class="foot" href="#src-9" id="ref-9f">[9]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Sebastian Venable</span>
+        <span class="role">Jamais montré à l'écran</span>
+        <p>Poète homosexuel décédé avant le début du récit, dont l'existence n'est reconstituée que par les paroles contradictoires des autres personnages — une absence de représentation directement liée aux contraintes du Code Hays<a class="foot" href="#src-16" id="ref-16b">[16]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="15" cy="19" r="10" stroke="#b23a2e" stroke-width="1.2"/>
+        <circle cx="23" cy="19" r="10" stroke="#b23a2e" stroke-width="1.2"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 07</span>
+        <h2>Thèmes <span class="frame-jargon">— surimpression</span></h2>
+      </div>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Emprise maternelle et mémoire falsifiée</span>
+        <p>Violet Venable a construit du vivant de son fils un mythe qu'elle refuse de voir contredit après sa mort ; le film fait de cette emprise maternelle absolue la source du drame plutôt qu'un simple trait de caractère secondaire<a class="foot" href="#src-38" id="ref-38">[38]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'homosexualité sous contrainte de censure</span>
+        <p>Sebastian n'est jamais montré ni nommé explicitement comme homosexuel : son orientation est construite par accumulation d'euphémismes, un procédé caractéristique du Code Hays que la critique universitaire postérieure analyse comme un cas d'école à la fois fascinant et profondément problématique dans sa représentation prédatrice de l'homosexualité masculine<a class="foot" href="#src-15" id="ref-15">[15]</a><a class="foot" href="#src-16" id="ref-16c">[16]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Psychiatrie, argent et pouvoir</span>
+        <p>La menace de lobotomie est utilisée comme une arme sociale contre une femme dont le témoignage dérange l'ordre établi, dans un contexte où un hôpital public dépend de la générosité — intéressée — d'une donatrice fortunée<a class="foot" href="#src-9" id="ref-9g">[9]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La nature dévoratrice</span>
+        <p>Le motif du jardin carnivore de la villa Venable fonctionne comme une métaphore filée de l'appétit prédateur de Sebastian, jusqu'à l'inversion finale où celui qui « collectionnait » ses proies devient à son tour la proie d'un groupe de jeunes gens qu'il avait exploités<a class="foot" href="#src-17" id="ref-17b">[17]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M19 6v10M10 30l9-10 9 10" stroke="#b23a2e" stroke-width="1.4"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 08</span>
+        <h2>Réception critique et postérité <span class="frame-jargon">— révélateur</span></h2>
+      </div>
+    </div>
+    <p>
+      L'accueil critique à la sortie du film, en décembre 1959, est houleux. Bosley Crowther, dans le <em>New York Times</em>, juge la réalisation « tendue et poussive », estimant que Mankiewicz n'est pas parvenu à transformer en objet cinématographique ce qui restait, selon lui, une pièce de théâtre étirée au-delà de sa mesure<a class="foot" href="#src-1" id="ref-1m">[1]</a>. John McCarten, dans <em>The New Yorker</em>, se montre plus sévère encore, raillant un mélange invraisemblable de thèmes tabous entassés dans un même film<a class="foot" href="#src-1" id="ref-1n">[1]</a>. <em>Variety</em> adopte une position plus nuancée, décrivant le film comme l'un des plus étranges jamais produits par un grand studio hollywoodien tout en lui reconnaissant des moments de réelle efficacité dramatique<a class="foot" href="#src-18" id="ref-18c">[18]</a>.
+    </p>
+    <p>
+      Malgré ces réserves, le film rencontre un net succès commercial pour l'époque, porté par la curiosité du public pour son sujet scandaleux.
+    </p>
+
+    <div class="lighttable">
+      <span class="lighttable-label" style="grid-column:1/-1;">Table lumineuse — chiffres à l'appui</span>
+      <div class="stat"><span class="num">6,4 M$</span><span class="cap">Recettes US / Canada</span></div>
+      <div class="stat"><span class="num">9 M$</span><span class="cap">Recettes mondiales</span></div>
+      <div class="stat"><span class="num">3</span><span class="cap">Nominations aux Oscars</span></div>
+      <div class="stat"><span class="num">114 min</span><span class="cap">Durée</span></div>
+    </div>
+    <p class="caution">Chiffres de recettes exprimés en dollars de l'époque (non ajustés de l'inflation), selon les sources indiquées ci-dessous.</p>
+
+    <p>
+      La National Legion of Decency, en condamnant moralement le film dès décembre 1959, illustre les tensions de la fin de l'ère du Code Hays, alors que plusieurs réalisateurs — Otto Preminger avant lui, Mankiewicz ici — repoussent les limites de ce que le cinéma américain grand public peut représenter à l'écran<a class="foot" href="#src-14" id="ref-14">[14]</a>. Redécouvert par la critique universitaire et queer à partir des années 1990, notamment à travers le documentaire <em>The Celluloid Closet</em>, le film est aujourd'hui étudié comme un cas d'école ambivalent : salué pour l'audace de son sujet et la force de l'interprétation d'Elizabeth Taylor, mais aussi critiqué pour une représentation de l'homosexualité masculine construite comme intrinsèquement prédatrice et vouée au châtiment<a class="foot" href="#src-15" id="ref-15b">[15]</a><a class="foot" href="#src-28" id="ref-28">[28]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="frame-head">
+      <svg class="grease-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="7" y="7" width="24" height="24" stroke="#b23a2e" stroke-width="1.4"/>
+        <path d="M7 7l24 24M31 7L7 31" stroke="#b23a2e" stroke-width="0.9" opacity="0.5"/>
+      </svg>
+      <div class="frame-heading-text">
+        <span class="frame-num-label">Négatif nº 09</span>
+        <h2>Conclusion <span class="frame-jargon">— négatif final</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Soudain l'été dernier</em> occupe une place singulière dans l'histoire du cinéma hollywoodien de la fin des années 1950 : celle d'un film dont l'ambition esthétique — la direction artistique d'Oliver Messel, le travail de la lumière avec Jack Hildyard, la partition verbale héritée de Tennessee Williams — se heurte frontalement aux contraintes de censure de son époque, au point de produire une œuvre à la fois audacieuse et profondément marquée par ses évitements.
+    </p>
+    <p>
+      Sa postérité tient précisément à cette tension non résolue : le film ne peut être lu ni comme une simple curiosité datée, ni comme une œuvre queer affranchie des préjugés de son temps. Il documente, malgré lui autant que par choix, la manière dont un système de censure façonne — et déforme — la représentation de ce qu'il cherche à taire. Comme un négatif qu'on hésite à développer, il garde en lui plus d'informations que le tirage qu'on a fini par autoriser à sa sortie.
+    </p>
+  </section>
+
+</main>
+
+<div class="sprockets" aria-hidden="true"></div>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="label" style="color:var(--safelight)">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (EN), « Suddenly, Last Summer (film) » — <a href="https://en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)</a></li>
+      <li id="src-2">Wikipédia (EN), « Suddenly Last Summer » (pièce de théâtre) — <a href="https://en.wikipedia.org/wiki/Suddenly_Last_Summer" target="_blank" rel="noopener">en.wikipedia.org/wiki/Suddenly_Last_Summer</a></li>
+      <li id="src-3">IMDb, « Suddenly, Last Summer (1959) » — <a href="https://www.imdb.com/title/tt0053318/" target="_blank" rel="noopener">imdb.com/title/tt0053318</a></li>
+      <li id="src-4">AllMovie, « Suddenly, Last Summer (1959) » — <a href="https://www.allmovie.com/movie/suddenly-last-summer-am20047" target="_blank" rel="noopener">allmovie.com/movie/suddenly-last-summer-am20047</a></li>
+      <li id="src-5">FilmAffinity, « Suddenly, Last Summer (1959) » — <a href="https://www.filmaffinity.com/en/film153583.html" target="_blank" rel="noopener">filmaffinity.com/en/film153583</a></li>
+      <li id="src-6">Letterboxd, « Suddenly, Last Summer (1959) » — <a href="https://letterboxd.com/film/suddenly-last-summer/" target="_blank" rel="noopener">letterboxd.com/film/suddenly-last-summer</a></li>
+      <li id="src-7">Rotten Tomatoes, « Suddenly, Last Summer » — <a href="https://www.rottentomatoes.com/m/suddenly_last_summer" target="_blank" rel="noopener">rottentomatoes.com/m/suddenly_last_summer</a></li>
+      <li id="src-8">Britannica, « Suddenly, Last Summer, film by Mankiewicz » — <a href="https://www.britannica.com/topic/Suddenly-Last-Summer-film-by-Mankiewicz" target="_blank" rel="noopener">britannica.com — Suddenly, Last Summer</a></li>
+      <li id="src-9">AFI Catalog, fiche technique et correspondance PCA — <a href="https://catalog.afi.com/Catalog/moviedetails/53026" target="_blank" rel="noopener">catalog.afi.com/Catalog/moviedetails/53026</a></li>
+      <li id="src-11">Harvard Film Archive, note de programme — <a href="https://harvardfilmarchive.org/calendar/suddenly-last-summer-2025-10" target="_blank" rel="noopener">harvardfilmarchive.org — Suddenly, Last Summer</a></li>
+      <li id="src-13">TCM (Turner Classic Movies), article sur le film — <a href="https://www.tcm.com/articles/99241/suddenly-last-summer" target="_blank" rel="noopener">tcm.com/articles/99241</a></li>
+      <li id="src-14">Film Comment, « Queer &amp; Now &amp; Then: 1959 » — <a href="https://www.filmcomment.com/blog/queer-now-then-1959/" target="_blank" rel="noopener">filmcomment.com/blog/queer-now-then-1959</a></li>
+      <li id="src-15">OUT FRONT Magazine, « The Legacy Of 'Suddenly, Last Summer' Looks Queerer Than Ever » — <a href="https://www.outfrontmagazine.com/queer-legacy-of-suddenly-last-summer/" target="_blank" rel="noopener">outfrontmagazine.com — Legacy</a></li>
+      <li id="src-16">When the Woman Screams, analyse du film — <a href="https://wordpress.lehigh.edu/screams/2020/03/26/suddenly-last-summer-1959/" target="_blank" rel="noopener">wordpress.lehigh.edu/screams/2020</a></li>
+      <li id="src-17">The Last Drive In, « The Devouring Mother, the Oedipal Son &amp; the Hysterical Woman » — <a href="https://thelastdrivein.com/2013/01/13/suddenly-last-summer-1959-part-i-the-devouring-mother-the-oedipal-son-the-hysterical-woman/" target="_blank" rel="noopener">thelastdrivein.com — analyse partie I</a></li>
+      <li id="src-18">Variety, critique d'époque — <a href="https://variety.com/1958/film/people-news/suddenly-last-summer-1200419319/" target="_blank" rel="noopener">variety.com/1958 — critique</a></li>
+      <li id="src-23">IndieWire, « Hays'd: Decoding the Classics — Suddenly Last Summer » — <a href="https://www.indiewire.com/features/general/haysd-decoding-the-classics-suddenly-last-summer-214475/" target="_blank" rel="noopener">indiewire.com — Hays'd</a></li>
+      <li id="src-28">DVD Talk, critique du film — <a href="https://www.dvdtalk.com/reviews/review/72422" target="_blank" rel="noopener">dvdtalk.com/reviews/review/72422</a></li>
+      <li id="src-30">Culture Wikia / Fandom, synopsis détaillé du film — <a href="https://culture.fandom.com/wiki/Suddenly,_Last_Summer_(film)" target="_blank" rel="noopener">culture.fandom.com — Suddenly, Last Summer</a></li>
+      <li id="src-38">Filmic Mag, « From Sissies to Secrecy: The Evolution of the Hays Code Queer » — <a href="https://filmicmag.com/2015/08/01/from-sissies-to-secrecy-the-evolution-of-the-hays-code-queer/" target="_blank" rel="noopener">filmicmag.com/2015/08/01</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Planche compilée à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+</body>
+</html>
