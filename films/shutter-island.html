@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier confidentiel — Shutter Island</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --manila:#c9b384;
+    --manila-deep:#a88f61;
+    --manila-dark:#5c4d34;
+    --paper:#ece3ca;
+    --paper-deep:#e0d4b2;
+    --ink:#211d16;
+    --ink-soft:#4a4130;
+    --ink-faint:#7d7050;
+    --redact:#161310;
+    --stamp-red:#9c2b23;
+    --stamp-red-deep:#7a2019;
+    --federal:#333f40;
+    --federal-deep:#232c2d;
+    --warn-amber:#a9791f;
+    --line: rgba(33,29,22,0.22);
+    --line-soft: rgba(33,29,22,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 10% 0%, rgba(156,43,35,0.05), transparent 40%),
+      radial-gradient(ellipse at 90% 100%, rgba(51,63,64,0.06), transparent 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Courier Prime', monospace;
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .stamp-label{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:600;
+    font-size:0.7rem;
+    color:var(--stamp-red);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint);
+    font-family:'Oswald', sans-serif;
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--stamp-red); }
+
+  /* ---------- RING HOLES (marge de classeur) ---------- */
+  .ring-margin{
+    position:fixed;
+    top:0; bottom:0; left:14px;
+    width:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    z-index:5;
+    pointer-events:none;
+    opacity:0.55;
+  }
+  .ring-margin span{
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--paper);
+    box-shadow: inset 0 0 0 1.4px var(--ink-faint);
+  }
+  @media (max-width:760px){ .ring-margin{ display:none; } }
+
+  /* ---------- COVER (chemise du dossier) ---------- */
+  header.cover{
+    position:relative;
+    background:
+      linear-gradient(160deg, var(--manila) 0%, var(--manila-deep) 100%);
+    color:var(--ink);
+    padding:0 0 2.6rem;
+    border-bottom:4px solid var(--manila-dark);
+  }
+  .folder-tab{
+    max-width:300px;
+    margin:0 0 0 3rem;
+    background:var(--manila-deep);
+    border:1px solid var(--manila-dark);
+    border-bottom:none;
+    padding:0.55rem 1.3rem 0.4rem;
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--paper);
+    clip-path: polygon(6% 0, 94% 0, 100% 100%, 0% 100%);
+    position:relative;
+    top:1px;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+  }
+  .case-sheet{
+    background:var(--paper);
+    border:1px solid var(--manila-dark);
+    padding:2.4rem 2rem 2rem;
+    position:relative;
+    box-shadow: 0 10px 26px rgba(33,29,22,0.18);
+  }
+  .stamp-diag{
+    position:absolute;
+    top:1.6rem; right:1.4rem;
+    border:3px solid var(--stamp-red);
+    color:var(--stamp-red);
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.82rem;
+    padding:0.35rem 0.7rem;
+    transform:rotate(-9deg);
+    opacity:0.82;
+    mix-blend-mode:multiply;
+    text-align:center;
+    line-height:1.3;
+  }
+  .stamp-diag small{ display:block; font-size:0.58rem; letter-spacing:0.1em; }
+
+  .case-number{
+    font-family:'Oswald', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:1.6rem;
+  }
+  .case-number b{ color:var(--ink); }
+
+  h1.title{
+    font-family:'Special Elite', cursive;
+    font-weight:400;
+    font-size:clamp(2.1rem, 6.4vw, 3.4rem);
+    line-height:1.08;
+    margin:0 0 0.6rem;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-family:'Courier Prime', monospace;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    max-width:44ch;
+    margin:0 0 2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--ink-faint);
+    padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+  }
+  .cover-media .intake-form{ flex:1; min-width:220px; border-top:none; padding-top:0; }
+
+  .intake-form{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .intake-form dt{
+    font-family:'Oswald', sans-serif;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stamp-red);
+    margin-bottom:0.28rem;
+  }
+  .intake-form dd{
+    margin:0; font-size:0.88rem; color:var(--ink);
+    border-bottom:1px dotted var(--ink-faint);
+    padding-bottom:0.2rem;
+  }
+
+  /* ---------- NAV (onglets de classeur) ---------- */
+  nav.toc{
+    background:var(--federal);
+    border-bottom:3px solid var(--federal-deep);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--paper);
+    opacity:0.72;
+    text-decoration:none;
+    font-family:'Oswald', sans-serif;
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--stamp-red); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  .content-note{
+    margin:2.1rem 0 0;
+    padding:1.1rem 1.3rem;
+    border:1.5px solid var(--stamp-red);
+    background:rgba(156,43,35,0.06);
+    font-family:'Courier Prime', monospace;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .content-note .stamp-label{ display:block; margin-bottom:0.4rem; }
+
+  section.block{ padding:3rem 0; border-bottom:1px dashed var(--line); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .frame-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    margin-bottom:1.4rem;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:0.7rem;
+  }
+  .rapport-num{
+    font-family:'Oswald', sans-serif;
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stamp-red);
+    display:block;
+    margin-bottom:0.15rem;
+  }
+  h2{
+    font-family:'Special Elite', cursive;
+    font-weight:400;
+    font-size:1.55rem;
+    margin:0 0 0.15rem;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .frame-jargon{
+    font-family:'Courier Prime', monospace;
+    font-style:italic;
+    font-size:0.72rem;
+    color:var(--ink-faint);
+  }
+
+  h3{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--ink);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.foot{
+    color:var(--stamp-red);
+    text-decoration:none;
+    border-bottom:1px dotted var(--stamp-red);
+    font-size:0.85em;
+    font-family:'Courier Prime', monospace;
+  }
+
+  .caution{
+    font-family:'Courier Prime', monospace;
+    font-style:italic;
+    font-size:0.82rem;
+    color:var(--ink-faint);
+    border-left:2px solid var(--warn-amber);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  .redact{
+    background:var(--redact);
+    color:var(--redact);
+    padding:0 0.35em;
+    border-radius:1px;
+    user-select:none;
+  }
+
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.6rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+  }
+
+  /* ---------- fiches signalétiques ---------- */
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .cast-card{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .cast-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background:repeating-linear-gradient(45deg, var(--stamp-red) 0 6px, var(--manila) 6px 12px);
+    opacity:0.6;
+  }
+  .cast-card .name{
+    font-family:'Special Elite', cursive;
+    font-weight:400;
+    font-size:1.02rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+  }
+  .cast-card .role{
+    font-family:'Oswald', sans-serif;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--stamp-red);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .cast-card p{ font-size:0.87rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- citation épinglée (coupure de presse) ---------- */
+  .pinned{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.4deg);
+  }
+  .pinned::before{
+    content:"";
+    position:absolute;
+    top:-9px; left:28px;
+    width:18px; height:18px;
+    background:var(--stamp-red);
+    border-radius:50%;
+    box-shadow:0 2px 3px rgba(0,0,0,0.35);
+  }
+  .pinned p{
+    font-family:'Courier Prime', monospace;
+    font-style:italic;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .pinned cite{
+    font-style:normal;
+    font-family:'Oswald', sans-serif;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:'Oswald', sans-serif;
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--stamp-red);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--stamp-red);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- bulletin météo / box-office ---------- */
+  .telex{
+    margin:1.6rem 0 1.7rem;
+    background:var(--federal-deep);
+    color:var(--paper);
+    border:1px solid var(--ink);
+    padding:0;
+  }
+  .telex-strip{
+    height:9px;
+    background-image: repeating-linear-gradient(45deg, var(--warn-amber) 0 10px, var(--redact) 10px 20px);
+  }
+  .telex-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .telex-label{
+    font-family:'Oswald', sans-serif;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--warn-amber);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .telex-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1rem;
+  }
+  .telex .stat .num{
+    font-family:'Special Elite', cursive;
+    font-size:1.4rem;
+    color:var(--paper);
+    display:block;
+    line-height:1.15;
+  }
+  .telex .stat .cap{
+    font-family:'Courier Prime', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+    color:#b9c4c2;
+    text-transform:uppercase;
+  }
+
+  section.sources{ background:var(--manila); padding:3.2rem 1.6rem 4.2rem; border-top:4px solid var(--manila-dark); }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--ink); font-family:'Special Elite', cursive; font-weight:400; font-size:1.4rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:2.3rem;
+    position:relative;
+    color:var(--ink-soft);
+    border-bottom:1px dashed var(--manila-dark);
+    padding-bottom:0.6rem;
+    font-family:'Courier Prime', monospace;
+  }
+  ol.source-list li::before{
+    content: "PJ-" counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    color:var(--stamp-red);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--ink); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--stamp-red); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:'Oswald', sans-serif;
+    font-size:0.64rem;
+    font-weight:600;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    background:var(--paper);
+  }
+  footer.endnote a{ color:var(--ink-faint); }
+  footer.endnote a:hover{ color:var(--stamp-red); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    .case-sheet{ padding:1.9rem 1.3rem; }
+    .folder-tab{ margin-left:1.1rem; }
+    section.block{ padding:2.2rem 0; }
+    .stamp-diag{ position:static; display:inline-block; margin-bottom:1.2rem; transform:rotate(-4deg); }
+  }
+</style>
+</head>
+<body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
+
+<div class="ring-margin" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<header class="cover">
+  <div class="cover-inner">
+    <div class="folder-tab">Ashecliffe Hospital — Service des dossiers</div>
+    <div class="case-sheet">
+      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <div class="stamp-diag">Confidentiel<small>Eyes only</small></div>
+      <div class="case-number">Dossier n<sup>o</sup> <b>67</b> — Ouvert le 3 juillet 2026</div>
+      <h1 class="title">Shutter Island</h1>
+      <p class="subtitle">Un homme qui préfère l'oubli du scalpel à la mémoire de ce qu'il a fait.</p>
+
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/shutter-island.jpg" alt="Affiche du film Shutter Island" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="intake-form">
+          <div><dt>Réalisation</dt><dd>Martin Scorsese</dd></div>
+          <div><dt>Scénario</dt><dd>Laeta Kalogridis, d'après Dennis Lehane</dd></div>
+          <div><dt>Année</dt><dd>2010</dd></div>
+          <div><dt>Durée</dt><dd>138 minutes</dd></div>
+          <div><dt>Production</dt><dd>Phoenix Pictures / Paramount</dd></div>
+          <div><dt>Photographie</dt><dd>Robert Richardson</dd></div>
+          <div><dt>Montage</dt><dd>Thelma Schoonmaker</dd></div>
+          <div><dt>Décors</dt><dd>Dante Ferretti</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <p class="content-note">
+    <span class="stamp-label">Avis — contenu sensible</span>
+    Ce film et cette analyse abordent l'internement psychiatrique, la lobotomie, la noyade d'enfants, le suicide, ainsi que des scènes situées dans un camp de concentration nazi. Le mécanisme de la révélation finale du film est volontairement traité avec retenue dans les sections qui suivent.
+  </p>
+
+  <section class="block" id="fiche">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 01</span>
+        <h2>Fiche technique <span class="frame-jargon">— pièce d'ouverture</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Shutter Island</em> est un thriller psychologique américain réalisé par Martin Scorsese, adapté par Laeta Kalogridis du roman éponyme de Dennis Lehane publié en 2003<a class="foot" href="#src-1" id="ref-1">[1]</a>. Le film réunit Leonardo DiCaprio (Teddy Daniels), Mark Ruffalo (Chuck Aule), Ben Kingsley (Dr Cawley), Max von Sydow (Dr Naehring), Michelle Williams (Dolores), ainsi qu'Emily Mortimer et Patricia Clarkson dans le rôle de Rachel Solando, Jackie Earle Haley, Ted Levine et Elias Koteas<a class="foot" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      La photographie est signée Robert Richardson, le montage confié à Thelma Schoonmaker et les décors à Dante Ferretti — trois collaborateurs de longue date de Scorsese, respectivement depuis <em>Casino</em>, <em>Raging Bull</em> (1980) et <em>Le Temps de l'innocence</em> (1993)<a class="foot" href="#src-1" id="ref-1b">[1]</a>. Le film ne comporte aucune musique originale composée pour l'occasion : la supervision musicale est assurée par Robbie Robertson, assisté du compositeur John Powell, à partir d'un montage d'œuvres classiques contemporaines préexistantes<a class="foot" href="#src-1" id="ref-1c">[1]</a>.
+    </p>
+    <p>
+      Présenté en compétition à la 60<sup>e</sup> Berlinale le 13 février 2010<a class="foot" href="#src-26" id="ref-26">[26]</a>, le film est classé parmi les dix meilleurs films de l'année par le National Board of Review<a class="foot" href="#src-27" id="ref-27">[27]</a>. En 2025, il figure à la 169<sup>e</sup> place du classement « choix des lecteurs » des 100 meilleurs films du XXI<sup>e</sup> siècle établi par le <em>New York Times</em><a class="foot" href="#src-27" id="ref-27b">[27]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 02</span>
+        <h2>Synopsis <span class="frame-jargon">— déposition initiale</span></h2>
+      </div>
+    </div>
+    <p>
+      1954. Le marshal fédéral Teddy Daniels et son nouveau coéquipier Chuck Aule débarquent sur Shutter Island, une île du port de Boston abritant Ashecliffe, un hôpital psychiatrique de haute sécurité, afin d'enquêter sur la disparition de Rachel Solando, une patiente internée après avoir noyé ses trois enfants<a class="foot" href="#src-1" id="ref-1d">[1]</a>. Le personnel de l'établissement se montre peu coopératif, et le docteur Cawley, qui dirige l'hôpital, refuse aux deux hommes l'accès aux dossiers du personnel médical<a class="foot" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+    <p>
+      Tandis qu'une tempête menace d'isoler définitivement l'île, Teddy est assailli de migraines et de visions récurrentes de son épouse Dolores, morte dans l'incendie de leur appartement, ainsi que de souvenirs de son passage par le camp de concentration de Dachau lors de la Seconde Guerre mondiale<a class="foot" href="#src-1" id="ref-1f">[1]</a>. Son enquête le mène jusqu'au phare de l'île, présenté comme interdit d'accès, et jusqu'au pavillon C où sont détenus les patients jugés les plus dangereux<a class="foot" href="#src-1" id="ref-1g">[1]</a>.
+    </p>
+    <p class="caution">Le mécanisme de la révélation finale, qui reconfigure rétroactivement l'ensemble du récit, n'est volontairement pas détaillé ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 03</span>
+        <h2>Contexte de production <span class="frame-jargon">— antécédents du dossier</span></h2>
+      </div>
+    </div>
+    <p>
+      Dennis Lehane explique avoir voulu, avec son roman paru en 2003, affronter l'état du monde du début des années 2000 en situant son intrigue en 1954, à l'apogée du maccarthysme ; inspiré par des classiques tels que <em>L'Invasion des profanateurs de sépultures</em> et <em>Un crime dans la tête</em>, il s'est fixé pour ambition d'écrire un récit porté par un narrateur totalement non fiable<a class="foot" href="#src-22" id="ref-22">[22]</a>. Les droits du roman, d'abord acquis par Columbia Pictures, expirent avant d'être rachetés directement à l'auteur par Phoenix Pictures, qui engage la scénariste Laeta Kalogridis pendant un an avant que Scorsese et DiCaprio ne rejoignent le projet en 2007<a class="foot" href="#src-15" id="ref-15">[15]</a>.
+    </p>
+    <p>
+      La sortie du film, initialement prévue le 2 octobre 2009, est repoussée au 19 février 2010 aux États-Unis (24 février en France) — un report attribué par la presse au coût de campagne promotionnelle jugé trop lourd (50 à 60 millions de dollars) en pleine récession, à l'indisponibilité de DiCaprio pour la promotion internationale, ainsi qu'à l'espoir d'un rebond économique plus favorable au printemps<a class="foot" href="#src-1" id="ref-1h">[1]</a>. Ce report écarte de facto le film de la course aux récompenses de la saison 2009, ce qui aurait provoqué la colère de Scorsese et de DiCaprio<a class="foot" href="#src-1" id="ref-1i">[1]</a>.
+    </p>
+    <p>
+      Le tournage se déroule du 6 mars au 30 juin 2008, presque entièrement dans le Massachusetts<a class="foot" href="#src-3" id="ref-3">[3]</a>. L'arrivée en bateau est filmée à Peddocks Island, dans le port de Boston, où subsistent les vestiges du Fort Andrews<a class="foot" href="#src-7" id="ref-7">[7]</a> ; le bâtiment principal d'Ashecliffe est recréé au Medfield State Hospital, un ancien asile psychiatrique du Massachusetts ouvert en 1896 et fermé en 2003, dont l'architecture de brique rouge à l'allure néo-gothique — inspirée des plans de l'architecte Thomas Story Kirkbride — fournit au film l'essentiel de son décor institutionnel<a class="foot" href="#src-6" id="ref-6">[6]</a><a class="foot" href="#src-9" id="ref-9">[9]</a>. La demeure du docteur Cawley est tournée au Turner Hill Golf Club d'Ipswich, les flashbacks de guerre de Teddy sur un décor construit à Taunton, la maison familiale des Daniels au Borderland State Park de Sharon, et les scènes de tempête à la réserve de Wilson Mountain, à Dedham<a class="foot" href="#src-6" id="ref-6b">[6]</a><a class="foot" href="#src-8" id="ref-8">[8]</a>.
+    </p>
+    <p>
+      Sylvester Stallone est le premier choix envisagé pour le rôle de Chuck Aule, mais décline l'offre pour conflit d'emploi du temps ; le rôle échoit finalement à Mark Ruffalo<a class="foot" href="#src-1" id="ref-1j">[1]</a>. Il s'agit de la quatrième collaboration entre Scorsese et DiCaprio après <em>Gangs of New York</em> (2002), <em>Aviator</em> (2004) et <em>Les Infiltrés</em> (2006), avant <em>Le Loup de Wall Street</em> (2013)<a class="foot" href="#src-1" id="ref-1k">[1]</a>. Selon la note de programme de la Berlinale, Scorsese se serait montré immédiatement enthousiaste à la lecture du scénario, celui-ci lui évoquant <em>Le Cabinet du docteur Caligari</em> de Robert Wiene<a class="foot" href="#src-26" id="ref-26b">[26]</a>.
+    </p>
+    <p>
+      Plutôt que de commander une partition originale, Scorsese confie la supervision musicale à son ami et collaborateur Robbie Robertson — ancien leader du groupe The Band, dont le réalisateur avait filmé le concert d'adieu dans <em>La Dernière Valse</em> — qui assemble, avec le compositeur John Powell, un montage d'œuvres de Penderecki, Ligeti, Cage, Mahler, Scelsi, Schnittke, John Adams, Ingram Marshall et Max Richter, mêlées à des morceaux de blues et de jazz d'époque interprétés par Dinah Washington, Johnnie Ray ou Lonnie Johnson<a class="foot" href="#src-10" id="ref-10">[10]</a><a class="foot" href="#src-9" id="ref-9b">[9]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 04</span>
+        <h2>Structure narrative <span class="frame-jargon">— reconstitution des faits</span></h2>
+      </div>
+    </div>
+    <p>
+      Scorsese lui-même a décrit son adaptation comme « trois films en un », avec plusieurs scènes possédant trois ou quatre niveaux de lecture simultanés, certains détails ajoutés ne figurant pas dans le roman de Lehane<a class="foot" href="#src-21" id="ref-21">[21]</a>. Le récit repose sur un narrateur dont la fiabilité se dérobe progressivement : l'enquête de Teddy Daniels est sans cesse traversée par des flashbacks de guerre — la libération du camp de Dachau — et par des visions de son épouse défunte, qui contaminent peu à peu le présent de l'intrigue jusqu'à rendre poreuse la frontière entre passé traumatique, délire et enquête réelle<a class="foot" href="#src-20" id="ref-20">[20]</a>.
+    </p>
+    <p>
+      Plusieurs observateurs ont noté que le montage du film cultive délibérément la désorientation : les raccords sonores et visuels ne coïncident pas toujours avec ce qui est montré à l'écran, les dialogues débordent parfois d'une scène sur la suivante, produisant un effet de continuité subjective proche de la logique du rêve plutôt que de la reconstitution factuelle d'une enquête<a class="foot" href="#src-19" id="ref-19">[19]</a>. Ce dispositif culmine dans une scène de résolution construite comme une confrontation clinique entre Teddy et son psychiatre, qui rebat entièrement la distribution des rôles établie depuis le début du film.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 05</span>
+        <h2>Mise en scène et procédés techniques <span class="frame-jargon">— relevé du lieu</span></h2>
+      </div>
+    </div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/shutter-island-1.jpg" alt="Photo de scène — Shutter Island, l'arrivée en bateau" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/shutter-island-2.jpg" alt="Photo de scène — Shutter Island, l'hôpital Ashecliffe" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
+    <p>
+      La photographie de Robert Richardson assume un hommage revendiqué au cinéma d'Alfred Hitchcock : Scorsese a projeté <em>Vertigo</em> à son équipe pendant le tournage, et plusieurs séquences de falaises et de vertige en reprennent directement l'imaginaire<a class="foot" href="#src-13" id="ref-13">[13]</a>. La scène d'ouverture, filmée en partie par rétroprojection délibérément datée pour la traversée en bateau, cultive une « hyper-irréalité » assumée, écho conscient des artifices techniques du cinéma hollywoodien des années 1950<a class="foot" href="#src-14" id="ref-14">[14]</a>.
+    </p>
+    <p>
+      Les décors de Dante Ferretti exploitent l'architecture néo-gothique en brique rouge de l'ancien hôpital psychiatrique réel ayant servi de tournage, dont l'aspect à la fois carcéral et monastique a été rapproché par la critique musicale des architectures pénitentiaires de type Alcatraz<a class="foot" href="#src-9" id="ref-9c">[9]</a>. Plusieurs commentateurs relèvent également une parenté avec <em>Shining</em> de Stanley Kubrick, notamment dans les travellings dramatisés de l'arrivée sur l'île et le motif de la prison-labyrinthe coupée du monde<a class="foot" href="#src-9" id="ref-9d">[9]</a>, ainsi qu'avec <em>Shock Corridor</em> de Samuel Fuller (1963), autre récit d'un homme s'introduisant dans un hôpital psychiatrique pour y mener une enquête<a class="foot" href="#src-15" id="ref-15b">[15]</a>.
+    </p>
+    <p>
+      L'absence de partition originale, remplacée par un montage de pièces classiques contemporaines dissonantes, participe directement de la mise en scène : la juxtaposition de styles et d'époques musicales très hétérogènes crée un sentiment de déséquilibre permanent, censé refléter la fragmentation psychique du personnage principal plutôt que souligner ses émotions de façon conventionnelle<a class="foot" href="#src-11" id="ref-11">[11]</a>.
+    </p>
+
+    <div class="pinned">
+      <p>« Shutter Island commence à agir sur nous dès les premières notes de musique sous la montagne du logo Paramount, avant même que le film ne commence. »</p>
+      <cite>Roger Ebert, critique de 2010<a class="foot" href="#src-13" id="ref-13b">[13]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 06</span>
+        <h2>Personnages principaux <span class="frame-jargon">— fiches signalétiques</span></h2>
+      </div>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <span class="name">Teddy Daniels</span>
+        <span class="role">Leonardo DiCaprio</span>
+        <p>Marshal fédéral et vétéran de la Seconde Guerre mondiale, hanté par la libération du camp de Dachau et par la mort récente de son épouse ; sa quête de vérité sur l'île se referme peu à peu sur lui-même<a class="foot" href="#src-1" id="ref-1l">[1]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Chuck Aule</span>
+        <span class="role">Mark Ruffalo</span>
+        <p>Nouveau coéquipier de Teddy dans l'enquête sur la disparition de Rachel Solando, dont la présence aux côtés du marshal se révèle déterminante dans l'économie du récit<a class="foot" href="#src-2" id="ref-2b">[2]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Dr Cawley</span>
+        <span class="role">Ben Kingsley</span>
+        <p>Psychiatre en chef d'Ashecliffe, figure ambiguë tiraillée entre un nouveau courant humaniste de la psychiatrie et les pratiques institutionnelles les plus dures de son époque<a class="foot" href="#src-17" id="ref-17">[17]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Dolores Chanal</span>
+        <span class="role">Michelle Williams</span>
+        <p>Épouse défunte de Teddy, dont l'apparition récurrente sous forme de vision hallucinatoire structure l'essentiel de la vie intérieure du personnage principal<a class="foot" href="#src-1" id="ref-1m">[1]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 07</span>
+        <h2>Thèmes <span class="frame-jargon">— pièces à conviction</span></h2>
+      </div>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">La paranoïa de guerre froide comme matériau plausible</span>
+        <p>Le film construit son délire sur une trame historiquement crédible : peur du communisme, expérimentations secrètes, abus institutionnels — autant d'éléments qui, dans l'Amérique de 1954, rendent le récit paranoïaque du personnage principal plausible plutôt que simplement fantaisiste<a class="foot" href="#src-16" id="ref-16">[16]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Une psychiatrie en mutation</span>
+        <p>Ashecliffe est le théâtre d'un affrontement entre l'ancien modèle asilaire — isolement, électrochocs, lobotomie — et un courant plus humaniste cherchant à normaliser la vie des patients sans recourir à ces pratiques, incarné par l'ambiguïté même du docteur Cawley<a class="foot" href="#src-18" id="ref-18">[18]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le trauma de guerre et la culpabilité du survivant</span>
+        <p>Les flashbacks de la libération du camp de Dachau installent une culpabilité de vétéran qui infuse toute l'enquête de Teddy, dans un geste que plusieurs analyses rapprochent d'une réflexion plus large sur les psychiatries de guerre et leurs failles sociopolitiques<a class="foot" href="#src-20" id="ref-20b">[20]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Préférer l'oubli à la vérité</span>
+        <p>Le motif du psychiatre-fou, dont le film hérite d'une tradition remontant au <em>Cabinet du docteur Caligari</em> (1920), sert ici une interrogation plus intime : celle d'un homme placé devant le choix entre vivre avec une vérité insupportable ou s'en délivrer par l'effacement chirurgical de la mémoire<a class="foot" href="#src-18" id="ref-18b">[18]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 08</span>
+        <h2>Réception critique et postérité <span class="frame-jargon">— suivi du dossier</span></h2>
+      </div>
+    </div>
+    <p>
+      L'accueil critique à la sortie est contrasté mais globalement favorable : Rotten Tomatoes recense environ 68 % de critiques positives pour une note moyenne de 6,6/10, tandis que Metacritic attribue au film un score de 63/100<a class="foot" href="#src-1" id="ref-1n">[1]</a>. Dans le <em>New York Times</em>, A.O. Scott reproche au film de ne pas offrir un suspense « soutenu et prenant », quand Roger Ebert loue au contraire une œuvre qui construit la peur par l'atmosphère plutôt que par l'action, réfutant les critiques jugeant la fin déloyale envers le spectateur<a class="foot" href="#src-15" id="ref-15c">[15]</a><a class="foot" href="#src-13" id="ref-13c">[13]</a>.
+    </p>
+    <p>
+      Le public généraliste sondé par CinemaScore attribue au film la note de « C+ », signe d'un déphasage entre la reconnaissance critique et la réception immédiate d'une partie du grand public<a class="foot" href="#src-1" id="ref-1o">[1]</a>. Plusieurs critiques ont par ailleurs pris soin, à la sortie du film, de ne pas divulgâcher son dénouement dans leurs premiers articles, jugé trop central pour être révélé sans avertissement préalable<a class="foot" href="#src-14" id="ref-14b">[14]</a>.
+    </p>
+
+    <div class="telex">
+      <div class="telex-strip" aria-hidden="true"></div>
+      <div class="telex-inner">
+        <span class="telex-label">Bulletin — chiffres à l'appui</span>
+        <div class="telex-grid">
+          <div class="stat"><span class="num">294,8 M$</span><span class="cap">Recettes mondiales</span></div>
+          <div class="stat"><span class="num">128 M$</span><span class="cap">Recettes US / Canada</span></div>
+          <div class="stat"><span class="num">80 M$</span><span class="cap">Budget estimé</span></div>
+          <div class="stat"><span class="num">138 min</span><span class="cap">Durée</span></div>
+        </div>
+      </div>
+      <div class="telex-strip" aria-hidden="true"></div>
+    </div>
+    <p class="caution">Chiffres de recettes exprimés en dollars de l'époque (non ajustés de l'inflation), selon les sources indiquées ci-dessous.</p>
+
+    <p>
+      Porté par un démarrage de 41 millions de dollars dès son premier week-end américain, le film devient à l'époque le plus gros succès mondial de la carrière de Scorsese, dépassant <em>Les Infiltrés</em>, avant d'être détrôné en 2013 par <em>Le Loup de Wall Street</em><a class="foot" href="#src-22" id="ref-22b">[22]</a><a class="foot" href="#src-23" id="ref-23">[23]</a>. Il s'impose également comme le plus grand succès en France de la carrière du cinéaste, avec près de trois millions d'entrées<a class="foot" href="#src-24" id="ref-24">[24]</a>.
+    </p>
+    <p>
+      Interrogé sur le tournage, Scorsese a confié que le film l'a personnellement ramené à des périodes de sa propre vie marquées par la paranoïa, dans le New York de son enfance puis lors du tournage de <em>Raging Bull</em> à la fin des années 1970<a class="foot" href="#src-25" id="ref-25">[25]</a>. Redécouvert et réévalué avec le temps, le film figure aujourd'hui, aux côtés d'œuvres comme <em>Taxi Driver</em> ou <em>After Hours</em>, parmi les explorations récurrentes par Scorsese de l'enfermement, de la culpabilité et du basculement vers la folie<a class="foot" href="#src-25" id="ref-25b">[25]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="frame-head">
+      <div>
+        <span class="rapport-num">Rapport nº 09</span>
+        <h2>Conclusion <span class="frame-jargon">— clôture du dossier</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Shutter Island</em> occupe une place particulière dans la filmographie de Martin Scorsese : celle d'un pastiche assumé du cinéma de genre hollywoodien des années 1950 — Hitchcock, Val Lewton, Samuel Fuller — mis au service d'obsessions profondément personnelles au cinéaste, la paranoïa, l'enfermement et la culpabilité, qu'il avait déjà explorées ailleurs sous des formes plus âpres.
+    </p>
+    <p>
+      Sa postérité tient à cette tension entre deux lectures qui ne s'excluent pas : celle d'un exercice de style virtuose, construit comme un jeu de piste destiné à être revu, et celle d'une méditation plus grave sur la manière dont un individu — comme, à une tout autre échelle, une société entière en pleine guerre froide — peut préférer se raconter une histoire plausible plutôt que d'affronter une vérité qui le détruirait. Le dossier, une fois refermé, laisse persister la question posée par le film lui-même : vaut-il mieux vivre en monstre, ou mourir en homme de bien ?
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="stamp-label">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des pièces jointes</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Shutter Island (film) » — <a href="https://fr.wikipedia.org/wiki/Shutter_Island_(film)" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Shutter_Island_(film)</a></li>
+      <li id="src-2">IMDb (FR), distribution et équipe technique — <a href="https://www.imdb.com/fr/title/tt1130884/fullcredits/" target="_blank" rel="noopener">imdb.com/fr/title/tt1130884/fullcredits</a></li>
+      <li id="src-3">IMDb (FR), tournage et production — <a href="https://www.imdb.com/fr/title/tt1130884/locations/" target="_blank" rel="noopener">imdb.com/fr/title/tt1130884/locations</a></li>
+      <li id="src-6">The Cinemaholic, « Where Was Shutter Island Filmed? » — <a href="https://thecinemaholic.com/shutter-island-filming-locations/" target="_blank" rel="noopener">thecinemaholic.com — filming locations</a></li>
+      <li id="src-7">Giggster, guide des lieux de tournage — <a href="https://giggster.com/guide/movie-location/where-was-shutter-island-filmed" target="_blank" rel="noopener">giggster.com — Shutter Island</a></li>
+      <li id="src-8">LatLong.net, lieux de tournage (tempête, Wilson Mountain) — <a href="https://www.latlong.net/location/shutter-island-locations-316" target="_blank" rel="noopener">latlong.net — Shutter Island locations</a></li>
+      <li id="src-9">Inactuelles, « Martin Scorsese, Shutter Island et Ingram Marshall » — <a href="https://inactuelles.over-blog.com/article-martin-scorcese-shutter-island-ingrammar-47273161.html" target="_blank" rel="noopener">inactuelles.over-blog.com — Shutter Island</a></li>
+      <li id="src-10">Wikipédia (FR), section musique de « Shutter Island (film) » — <a href="https://fr.wikipedia.org/wiki/Shutter_Island_(film)" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Shutter_Island_(film)</a></li>
+      <li id="src-11">Curtis Music, « La musique de Shutter Island : une atmosphère captivante » — <a href="https://curtismusic.fr/blog/shutter-island-musique/" target="_blank" rel="noopener">curtismusic.fr/blog/shutter-island-musique</a></li>
+      <li id="src-13">RogerEbert.com, critique de 2010 — <a href="https://www.rogerebert.com/reviews/shutter-island-2010" target="_blank" rel="noopener">rogerebert.com/reviews/shutter-island-2010</a></li>
+      <li id="src-14">RogerEbert.com (Jim Emerson), « Shhhhhhhutter up, critics! » — <a href="https://www.rogerebert.com/scanners/shhhhhhhhutter-up-critics" target="_blank" rel="noopener">rogerebert.com/scanners — Shhhhhutter up</a></li>
+      <li id="src-15">GradeSaver, guide d'étude « Shutter Island (Film) » — <a href="https://www.gradesaver.com/shutter-island-film" target="_blank" rel="noopener">gradesaver.com/shutter-island-film</a></li>
+      <li id="src-16">French Buzz, « Explication Shutter Island » — <a href="https://frenchbuzz.fr/explication-shutter-island/" target="_blank" rel="noopener">frenchbuzz.fr/explication-shutter-island</a></li>
+      <li id="src-17">Yes, Therapy Helps!, « Shutter Island : un bref aperçu psychologique » — <a href="https://yestherapyhelps.com/shutter-island-a-brief-psychological-view-of-the-movie-11891" target="_blank" rel="noopener">yestherapyhelps.com — Shutter Island</a></li>
+      <li id="src-18">Waldau (Hypothèses.org), « Shutter Island – Cinéma et psychiatrie » — <a href="https://waldau.hypotheses.org/tag/shutter-island" target="_blank" rel="noopener">waldau.hypotheses.org — Shutter Island</a></li>
+      <li id="src-19">Elliptical Edits, critique du film — <a href="https://ellipticaledits.wordpress.com/2010/03/28/shutter-island-a-review/" target="_blank" rel="noopener">ellipticaledits.wordpress.com — Shutter Island</a></li>
+      <li id="src-20">HAL SHS, « L'île de la folie (Shutter Island, Martin Scorsese, 2010) » — <a href="https://shs.hal.science/halshs-02343582v1/document" target="_blank" rel="noopener">shs.hal.science — L'île de la folie</a></li>
+      <li id="src-21">L'Heure de la Sortie, critique Blu-ray de « Shutter Island » — <a href="http://www.lheuredelasortie.com/critique-blu-ray-shutter-island/" target="_blank" rel="noopener">lheuredelasortie.com — Shutter Island</a></li>
+      <li id="src-22">SlashFilm, « 15 Years Ago, Martin Scorsese Went Full Horror... » — <a href="https://www.slashfilm.com/1796943/martin-scorsese-horror-movie-shutter-island-box-office/" target="_blank" rel="noopener">slashfilm.com — Shutter Island box-office</a></li>
+      <li id="src-23">Box Office Mojo, « 'Shutter Island' Is Scorsese's Top Movie Worldwide » — <a href="https://www.boxofficemojo.com/article/ed947520516/" target="_blank" rel="noopener">boxofficemojo.com — Scorsese's top movie</a></li>
+      <li id="src-24">Fan2, « Shutter Island : le Scorsese le plus lucratif ! » — <a href="https://www.fan2.fr/shutter-island-le-scorsese-le-plus-lucr-actu24914.html" target="_blank" rel="noopener">fan2.fr — Shutter Island</a></li>
+      <li id="src-25">CinéSérie, « pourquoi le film a été 'une expérience traumatisante' pour Martin Scorsese » — <a href="https://www.cineserie.com/news/cinema/shutter-island-pourquoi-le-film-a-ete-une-experience-traumatisante-pour-martin-scorsese-4874349/" target="_blank" rel="noopener">cineserie.com — Shutter Island</a></li>
+      <li id="src-26">Berlinale, archives — fiche programme 2010 — <a href="https://www.berlinale.de/en/archive/jahresarchive/2010/02_programm_2010/02_filmdatenblatt_2010_20101218.html" target="_blank" rel="noopener">berlinale.de — Shutter Island 2010</a></li>
+      <li id="src-27">Wikipedia (EN), « Shutter Island (film) » — <a href="https://en.wikipedia.org/wiki/Shutter_Island_(film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Shutter_Island_(film)</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Dossier compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
