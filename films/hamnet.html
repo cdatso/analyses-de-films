@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuscrit enluminé — Hamnet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#ece0bf;
+    --parchment-deep:#ddc99a;
+    --parchment-shadow:rgba(70,54,20,0.16);
+    --ink:#241d10;
+    --ink-soft:#4d4127;
+    --ink-faint:#7a6c48;
+    --forest:#333f24;
+    --forest-deep:#232b18;
+    --rubric:#8a2f1f;
+    --rubric-deep:#6b2216;
+    --gold:#93732f;
+    --gold-bright:#b08f3f;
+    --line: rgba(36,29,16,0.22);
+    --line-soft: rgba(36,29,16,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 8%, rgba(147,115,47,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 92%, rgba(138,47,31,0.07), transparent 50%),
+      var(--parchment);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:1.08rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .rubric-label{
+    font-family:'IM Fell English SC', serif;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.78rem;
+    color:var(--rubric);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint);
+    font-family:'IM Fell English SC', serif;
+    font-size:0.72rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ color:var(--rubric); }
+
+  /* ---------- COVER ---------- */
+  header.cover{
+    position:relative;
+    padding:3.6rem 1.5rem 2.6rem;
+    border-bottom:3px double var(--gold);
+    background:
+      linear-gradient(180deg, rgba(147,115,47,0.06), transparent 60%);
+  }
+  .cover-inner{
+    max-width:700px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .initial-block{
+    width:84px; height:84px;
+    margin:0 auto 1.6rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--forest);
+    border:2px solid var(--gold);
+    box-shadow: 0 0 0 4px var(--parchment), 0 0 0 5px var(--gold-bright);
+    color:var(--parchment);
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:2.7rem;
+    font-style:italic;
+    position:relative;
+  }
+  .initial-block::before, .initial-block::after{
+    content:"";
+    position:absolute;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--rubric);
+  }
+  .initial-block::before{ top:-11px; left:-11px; }
+  .initial-block::after{ bottom:-11px; right:-11px; }
+
+  .cover-eyebrow{
+    display:block;
+    margin-bottom:1.1rem;
+  }
+
+  h1.title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:clamp(2.6rem, 7vw, 4rem);
+    line-height:1.05;
+    margin:0 0 0.7rem;
+    color:var(--forest-deep);
+  }
+  .subtitle{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1.12rem;
+    max-width:42ch;
+    margin:0 auto 2.1rem;
+  }
+
+  .cover-media{
+    display:inline-flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    text-align:left;
+    max-width:640px;
+  }
+  .cover-media .poster{ flex:0 0 150px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--gold);
+  }
+  .cover-media .colophon-card{ margin:0; }
+
+  .colophon-card{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:0.95rem 2.2rem;
+    text-align:left;
+    padding:1.5rem 2rem;
+    border:1px solid var(--line);
+    background:rgba(255,252,240,0.28);
+    max-width:640px;
+    margin:0 auto;
+  }
+  .colophon-card dt{
+    font-family:'IM Fell English SC', serif;
+    font-size:0.72rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--rubric);
+    margin-bottom:0.2rem;
+  }
+  .colophon-card dd{ margin:0; font-size:0.95rem; color:var(--ink); }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    border-bottom:1px solid var(--line);
+    background:rgba(221,201,154,0.35);
+  }
+  nav.toc .toc-inner{
+    max-width:700px; margin:0 auto; padding:0.85rem 1.5rem;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:0.3rem 1.3rem;
+  }
+  nav.toc a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:'IM Fell English SC', serif;
+    font-size:0.76rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    border-bottom:1px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ color:var(--rubric); border-color:var(--rubric); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:700px; margin:0 auto; padding:0 1.5rem; }
+
+  .content-note{
+    margin:2.1rem 0 0;
+    padding:1rem 1.3rem;
+    border:1px solid var(--line);
+    border-left:3px solid var(--rubric);
+    background:rgba(138,47,31,0.05);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+
+  section.block{ padding:3.1rem 0; border-bottom:1px solid var(--line-soft); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .quill-divider{
+    display:block;
+    margin:0 auto 1.6rem;
+    width:120px;
+    opacity:0.65;
+  }
+
+  .frame-head{ margin-bottom:1.5rem; text-align:center; }
+  .frame-num-label{
+    display:block;
+    font-family:'IM Fell English SC', serif;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rubric);
+    margin-bottom:0.35rem;
+  }
+  h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:1.85rem;
+    margin:0 0 0.2rem;
+    color:var(--forest-deep);
+  }
+  .frame-jargon{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+
+  h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:1.25rem;
+    margin:1.8rem 0 0.6rem;
+    color:var(--forest);
+  }
+  p{ margin:0 0 1.1rem; color:var(--ink); }
+  p:last-child{ margin-bottom:0; }
+
+  .dropcap p:first-of-type::first-letter{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:3.6rem;
+    line-height:0.72;
+    float:left;
+    padding:0.1rem 0.35rem 0 0;
+    color:var(--rubric);
+  }
+
+  a.foot{
+    color:var(--rubric);
+    text-decoration:none;
+    border-bottom:1px dotted var(--rubric);
+    font-size:0.82em;
+    font-family:'EB Garamond', serif;
+  }
+
+  .caution{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.88rem;
+    color:var(--ink-faint);
+    border-left:2px solid var(--gold);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.6rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+  }
+
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px,1fr));
+    gap:1.2rem;
+    margin-top:0.6rem;
+  }
+  .cast-card{
+    position:relative;
+    background:rgba(255,252,240,0.32);
+    border:1px solid var(--line);
+    padding:1.1rem 1.2rem;
+  }
+  .cast-card::before{
+    content:"❧";
+    position:absolute;
+    top:-11px; left:14px;
+    background:var(--parchment);
+    padding:0 0.4rem;
+    color:var(--gold-bright);
+    font-size:1rem;
+  }
+  .cast-card .name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:1.15rem;
+    display:block;
+    margin-bottom:0.15rem;
+    color:var(--forest-deep);
+  }
+  .cast-card .role{
+    font-family:'IM Fell English SC', serif;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rubric);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .cast-card p{ font-size:0.92rem; margin:0; color:var(--ink-soft); }
+
+  .pinned{
+    position:relative;
+    background:rgba(255,252,240,0.4);
+    border:1px solid var(--line);
+    padding:1.4rem 1.6rem 1.5rem;
+    margin:1.7rem 0;
+  }
+  .pinned::before{
+    content:"⁕";
+    position:absolute;
+    top:-13px; left:50%;
+    transform:translateX(-50%);
+    background:var(--parchment);
+    padding:0 0.5rem;
+    color:var(--rubric);
+    font-size:1.1rem;
+  }
+  .pinned p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.18rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+    text-align:center;
+  }
+  .pinned cite{
+    display:block;
+    text-align:center;
+    font-style:normal;
+    font-family:'IM Fell English SC', serif;
+    font-size:0.68rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  .theme-list{ display:grid; gap:1.5rem; margin-top:0.6rem; }
+  .theme-item .theme-tag{
+    font-family:'IM Fell English SC', serif;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rubric);
+    display:inline-block;
+    margin-bottom:0.35rem;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:0.15rem;
+  }
+
+  .almanach{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1rem;
+    margin:1.6rem 0 1.7rem;
+    padding:1.2rem 1.4rem;
+    background:var(--forest-deep);
+    color:var(--parchment);
+    border:1px solid var(--gold);
+  }
+  .almanach .stat .num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.65rem;
+    font-weight:700;
+    color:var(--parchment);
+    display:block;
+    line-height:1.15;
+  }
+  .almanach .stat .cap{
+    font-family:'IM Fell English SC', serif;
+    font-size:0.62rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:#c9b98a;
+  }
+  .almanach-label{
+    font-family:'IM Fell English SC', serif;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold-bright);
+    margin-bottom:0.6rem;
+    display:block;
+  }
+
+  section.sources{ background:rgba(221,201,154,0.4); padding:3.4rem 1.5rem 4.4rem; border-top:3px double var(--gold); }
+  section.sources .sources-inner{ max-width:700px; margin:0 auto; }
+  section.sources h2{ text-align:center; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.7rem 0 0; padding:0;
+    display:grid; gap:0.65rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.85rem;
+    padding-left:2.2rem;
+    position:relative;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line-soft);
+    padding-bottom:0.65rem;
+  }
+  ol.source-list li::before{
+    content: counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'IM Fell English SC', serif;
+    color:var(--rubric);
+    font-size:0.8rem;
+  }
+  ol.source-list a{ color:var(--ink); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--rubric); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:'IM Fell English SC', serif;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  footer.endnote a{ color:var(--ink-faint); }
+  footer.endnote a:hover{ color:var(--rubric); }
+
+  @media (max-width:600px){
+    header.cover{ padding:2.6rem 1.1rem 2rem; }
+    section.block{ padding:2.3rem 0; }
+    .colophon-card{ padding:1.2rem 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="initial-block" aria-hidden="true">H</div>
+    <span class="cover-eyebrow rubric-label">Manuscrit enluminé — chronique du deuil et de la scène</span>
+    <h1 class="title">Hamnet</h1>
+    <p class="subtitle">De l'enfant que nul ne nomme au nom que le théâtre ne cesse de répéter.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/hamnet.jpg" alt="Affiche du film Hamnet" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="colophon-card">
+        <div><dt>Réalisation</dt><dd>Chloé Zhao</dd></div>
+        <div><dt>Scénario</dt><dd>Chloé Zhao &amp; Maggie O'Farrell</dd></div>
+        <div><dt>Année</dt><dd>2025 / sortie France 2026</dd></div>
+        <div><dt>Durée</dt><dd>2h05</dd></div>
+        <div><dt>Production</dt><dd>Amblin, Hera Pictures, Neal Street, Book of Shadows</dd></div>
+        <div><dt>Distribution</dt><dd>Focus Features (US) / Universal (France)</dd></div>
+        <div><dt>Photographie</dt><dd>Łukasz Żal</dd></div>
+        <div><dt>Musique</dt><dd>Max Richter</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <p class="content-note">
+    Note de contenu — ce film et cette analyse abordent la mort d'un enfant, le deuil parental, une épidémie de peste et une évocation du monologue « être ou ne pas être ». Ces éléments sont traités ici à des fins critiques et historiques.
+  </p>
+
+  <section class="block" id="fiche">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio I</span>
+      <h2>Fiche technique <span class="frame-jargon">— colophon</span></h2>
+    </div>
+    <p>
+      <em>Hamnet</em> est une coproduction américano-britannique réalisée par Chloé Zhao, adaptée du roman éponyme de Maggie O'Farrell paru en 2020, avec laquelle la cinéaste a coécrit le scénario<a class="foot" href="#src-1" id="ref-1">[1]</a>. Le film réunit Jessie Buckley (Agnes), Paul Mescal (William Shakespeare), Emily Watson, Joe Alwyn, Jacobi Jupe, Jack Shalloo et David Wilmot ; la photographie est signée Łukasz Żal, les décors Fiona Crombie, les costumes Malgosia Turzanska, le montage Chloé Zhao elle-même aux côtés d'Affonso Gonçalves, et la musique originale Max Richter<a class="foot" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      Présenté en avant-première au festival de Telluride le 29 août 2025 puis au Festival de Toronto où il remporte le Prix du public, le film sort en exclusivité limitée aux États-Unis le 26 novembre 2025 avant une sortie nationale le 9 janvier 2026 ; la sortie française a lieu le 21 janvier 2026<a class="foot" href="#src-1" id="ref-1b">[1]</a><a class="foot" href="#src-8" id="ref-8">[8]</a>. Le film est produit par Pippa Harris, Liza Marshall, Nicolas Gonda, Steven Spielberg et Sam Mendes, pour un budget estimé à 34 millions de dollars<a class="foot" href="#src-13" id="ref-13">[13]</a>.
+    </p>
+    <p>
+      Il obtient huit nominations lors de la 98<sup>e</sup> cérémonie des Oscars — meilleur film, meilleure réalisatrice, meilleure actrice, meilleure musique originale, meilleur scénario adapté, meilleure distribution des rôles, meilleurs costumes et meilleurs décors — et remporte celui de la meilleure actrice pour Jessie Buckley<a class="foot" href="#src-4" id="ref-4">[4]</a><a class="foot" href="#src-6" id="ref-6">[6]</a>. Il avait auparavant reçu le Golden Globe du meilleur film dramatique et celui de la meilleure actrice, ainsi que deux BAFTA — meilleur film britannique et meilleure actrice — la comédienne irlandaise recevant au passage le Critics Choice Award et l'Actor Award avant de devenir la première actrice irlandaise couronnée aux Oscars<a class="foot" href="#src-5" id="ref-5">[5]</a><a class="foot" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+  </section>
+
+  <section class="block dropcap" id="synopsis">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio II</span>
+      <h2>Synopsis <span class="frame-jargon">— argument</span></h2>
+    </div>
+    <p>
+      Angleterre, 1580. William, jeune précepteur de latin criblé des dettes de son père, fait la rencontre d'Agnes, jeune femme à l'esprit libre que la rumeur villageoise associe aux pouvoirs d'une guérisseuse, voire d'une sorcière des bois<a class="foot" href="#src-8" id="ref-8b">[8]</a>. Leur liaison, puis leur mariage précipité par une grossesse, donnent naissance à trois enfants : l'aînée Susanna, puis des jumeaux, Hamnet et Judith, cette dernière ayant manqué mourir à la naissance<a class="foot" href="#src-18" id="ref-18">[18]</a>.
+    </p>
+    <p>
+      Tandis que William gagne peu à peu en reconnaissance comme dramaturge à Londres, il ne revient que par intermittence à Stratford, laissant à Agnes la charge quasi entière du foyer et des enfants<a class="foot" href="#src-1" id="ref-1c">[1]</a>. Lorsque la peste bubonique frappe la famille, c'est Hamnet, non Judith, qui succombe — un basculement que le récit construit comme un sacrifice fraternel autant que comme un hasard funeste<a class="foot" href="#src-17" id="ref-17">[17]</a>.
+    </p>
+    <p class="caution">La scène finale, construite comme une représentation de <em>Hamlet</em> au théâtre du Globe, n'est volontairement pas détaillée ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio III</span>
+      <h2>Contexte de production <span class="frame-jargon">— genèse</span></h2>
+    </div>
+    <p>
+      Les droits du roman de Maggie O'Farrell sont acquis avant même sa parution en 2020 par la productrice britannique Liza Marshall, dont la société Hera Pictures s'associe ensuite à Neal Street Productions, cofondée par Sam Mendes<a class="foot" href="#src-1" id="ref-1d">[1]</a>. Chloé Zhao est engagée en avril 2023 pour réaliser le film et en écrire le scénario aux côtés de la romancière elle-même ; Jessie Buckley et Paul Mescal entament les négociations pour les rôles principaux le mois suivant, confirmées début 2024, avant que Steven Spielberg et sa société Amblin Entertainment ne rejoignent la production à l'été 2024<a class="foot" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+    <p>
+      Zhao et O'Farrell font le choix de « déplier » la structure du roman, volontairement non linéaire et faite d'allers-retours temporels, pour l'ordonner de façon chronologique à l'écran, tout en resserrant le récit autour du couple central — certains personnages secondaires du livre, comme la mère d'Agnes, s'en trouvant réduits<a class="foot" href="#src-11" id="ref-11">[11]</a>. Selon la productrice Kiska Higgs, la réalisatrice a construit une partie du jeu de ses interprètes à partir d'ateliers oniriques, demandant aux acteurs d'analyser leurs propres rêves pour en tirer dialogues et images<a class="foot" href="#src-11" id="ref-11b">[11]</a>.
+    </p>
+    <p>
+      Chloé Zhao confie par ailleurs avoir mis à profit, pour diriger l'équipe du film, des outils de méditation et d'exercices somatiques qu'elle dit avoir mis cinq années à développer ; elle organise notamment une séance de méditation collective avant la première projection du film au festival de Toronto<a class="foot" href="#src-12" id="ref-12">[12]</a>. Le tournage s'appuie sur des décors naturels de la campagne anglaise, la direction artistique étant confiée à Fiona Crombie et les costumes à Malgosia Turzanska<a class="foot" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio IV</span>
+      <h2>Structure narrative <span class="frame-jargon">— disposition</span></h2>
+    </div>
+    <p>
+      Le choix le plus déterminant de l'adaptation touche à la temporalité : là où le roman de Maggie O'Farrell alterne librement entre les strates temporelles de l'histoire, Zhao et sa coscénariste optent pour une progression chronologique, qui installe d'abord la rencontre et la vie de famille avant de faire basculer le récit, à mi-parcours, dans le deuil<a class="foot" href="#src-11" id="ref-11c">[11]</a>.
+    </p>
+    <p>
+      Cette bipartition marque profondément la réception critique du film : plusieurs observateurs notent un net changement de registre entre une première moitié lumineuse, presque idyllique, et une seconde partie durablement installée dans la douleur, les deux temps du récit ne se rejoignant qu'au moment de la représentation finale de <em>Hamlet</em><a class="foot" href="#src-16" id="ref-16">[16]</a>. Le film choisit également de laisser hors champ l'écriture de la pièce elle-même : le processus créatif de William demeure une boîte noire, le récit préférant rester aux côtés d'Agnes pendant qu'elle traverse son deuil, jusqu'à la scène de la représentation où les deux lignes narratives convergent enfin<a class="foot" href="#src-22" id="ref-22">[22]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio V</span>
+      <h2>Mise en scène et procédés techniques <span class="frame-jargon">— facture</span></h2>
+    </div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/hamnet-1.jpg" alt="Photo de scène — Hamnet, Agnes dans la forêt" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/hamnet-2.jpg" alt="Photo de scène — Hamnet, la représentation finale de la pièce" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
+    <p>
+      La photographie de Łukasz Żal prolonge la veine naturaliste qui a fait la réputation de Chloé Zhao depuis <em>The Rider</em> et <em>Nomadland</em> : plans amples, lumière naturelle, attachement constant au corps d'Agnes dans son rapport à la forêt et aux éléments, dès la scène d'ouverture où on la découvre nichée dans le creux d'un arbre<a class="foot" href="#src-17" id="ref-17b">[17]</a>. La mise en scène ménage un contraste marqué entre les extérieurs lumineux de la campagne anglaise et des intérieurs plus sombres, aux cadrages parfois presque frontaux et suspendus, qu'un critique associe au regard d'une présence fantomatique surplombant les personnages<a class="foot" href="#src-17" id="ref-17c">[17]</a>.
+    </p>
+    <p>
+      La partition de Max Richter, de facture minimaliste et atmosphérique, s'efface pendant l'essentiel du film avant de s'imposer pleinement dans la séquence finale, où le compositeur réintègre une pièce préexistante de son répertoire, composée à l'origine pour son album <em>The Blue Notebooks</em> paru en 2004<a class="foot" href="#src-19" id="ref-19">[19]</a>. Ce choix, note un critique, confère à la scène de résolution une intensité si concertée qu'elle a pu être perçue par une partie de la critique comme un procédé un peu appuyé pour provoquer les larmes du spectateur, quand d'autres y voient au contraire l'aboutissement organique de tout le film<a class="foot" href="#src-16" id="ref-16b">[16]</a><a class="foot" href="#src-18" id="ref-18b">[18]</a>.
+    </p>
+
+    <div class="pinned">
+      <p>Un film qui semble vous récolter comme on récolte des larmes.</p>
+      <cite>IndieWire, critique de 2025<a class="foot" href="#src-17" id="ref-17d">[17]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio VI</span>
+      <h2>Personnages principaux <span class="frame-jargon">— portraits</span></h2>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <span class="name">Agnes</span>
+        <span class="role">Jessie Buckley</span>
+        <p>Jeune femme à l'esprit libre, réputée par certains villageois pour ses dons de guérisseuse voire de « sorcière des bois » ; profondément attachée à la nature, elle porte l'essentiel de la charge du deuil après la mort de son fils<a class="foot" href="#src-8" id="ref-8c">[8]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">William Shakespeare</span>
+        <span class="role">Paul Mescal</span>
+        <p>Précepteur de latin devenu dramaturge reconnu à Londres, tiraillé entre son ambition artistique et l'éloignement d'avec sa famille restée à Stratford, jusqu'à transformer son deuil en écriture<a class="foot" href="#src-1" id="ref-1f">[1]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">Hamnet</span>
+        <span class="role">Jacobi Jupe</span>
+        <p>Fils jumeau d'Agnes et William, fasciné par le théâtre, dont la mort prématurée par la peste bouleverse durablement l'équilibre du couple — une interprétation d'enfant unanimement saluée par la critique<a class="foot" href="#src-22" id="ref-22b">[22]</a>.</p>
+      </div>
+      <div class="cast-card">
+        <span class="name">La mère de William</span>
+        <span class="role">Emily Watson</span>
+        <p>Figure maternelle sévère côté Shakespeare, dont la dynamique avec Agnes reflète les tensions sociales entre les deux familles à l'origine du mariage du couple<a class="foot" href="#src-22" id="ref-22c">[22]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio VII</span>
+      <h2>Thèmes <span class="frame-jargon">— gloses</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le deuil comme expérience dissociée</span>
+        <p>Le film construit le deuil de Hamnet comme une expérience qui sépare plutôt qu'elle ne rapproche : Agnes l'affronte à Stratford tandis que William s'y dérobe en s'enfermant dans le travail à Londres, matérialisant une distance conjugale qui ne trouve d'issue que dans l'art<a class="foot" href="#src-1" id="ref-1g">[1]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La nature et la suspicion de sorcellerie</span>
+        <p>Le lien d'Agnes à la forêt, aux abeilles et à un faucon apprivoisé, ainsi que sa réputation de guérisseuse aux dons de prémonition, l'inscrivent dans une figure de femme aux marges de l'ordre social élisabéthain, crainte autant qu'admirée<a class="foot" href="#src-9" id="ref-9">[9]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'art comme transfiguration du deuil</span>
+        <p>La genèse de <em>Hamlet</em> est présentée comme l'aboutissement direct du deuil de William : la pièce devient le lieu où le fils disparu peut enfin être nommé et pleuré publiquement, offrant à Agnes une forme de catharsis que la vie quotidienne lui avait refusée<a class="foot" href="#src-9" id="ref-9b">[9]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La charge domestique inégale</span>
+        <p>Le film observe, sans grand discours, l'asymétrie entre l'ambition londonienne de William et la charge quotidienne assumée par Agnes, seule à élever les enfants pendant les longues absences de son mari<a class="foot" href="#src-1" id="ref-1h">[1]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio VIII</span>
+      <h2>Réception critique et postérité <span class="frame-jargon">— glose finale</span></h2>
+    </div>
+    <p>
+      L'accueil critique de <em>Hamnet</em> est contrasté, quoique globalement enthousiaste. Plusieurs titres saluent une œuvre bouleversante portée par une interprétation de Jessie Buckley jugée parmi les meilleures de la décennie, ainsi qu'une direction de la photographie qui évoque la peinture de la Renaissance anglaise<a class="foot" href="#src-20" id="ref-20">[20]</a><a class="foot" href="#src-21" id="ref-21">[21]</a>. À l'inverse, une partie de la presse spécialisée reproche au film un systématisme dans la recherche de l'émotion, allant jusqu'à qualifier sa dernière partie de « glum monotony » enchaînant la même note funèbre sans réelle nuance<a class="foot" href="#src-16" id="ref-16c">[16]</a>.
+    </p>
+    <p>
+      Le film obtient le Prix du public au Festival de Toronto en 2025, avant de dominer une bonne partie de la saison des récompenses<a class="foot" href="#src-1" id="ref-1i">[1]</a>.
+    </p>
+
+    <div class="almanach">
+      <span class="almanach-label" style="grid-column:1/-1;">Almanach — chiffres à l'appui</span>
+      <div class="stat"><span class="num">100,6 M$</span><span class="cap">Recettes mondiales</span></div>
+      <div class="stat"><span class="num">24,1 M$</span><span class="cap">Recettes US/Canada</span></div>
+      <div class="stat"><span class="num">8</span><span class="cap">Nominations aux Oscars</span></div>
+      <div class="stat"><span class="num">34 M$</span><span class="cap">Budget de production</span></div>
+    </div>
+    <p class="caution">Chiffres arrêtés au week-end des Oscars 2026, selon les sources indiquées ci-dessous ; recettes non ajustées de l'inflation.</p>
+
+    <p>
+      Distribué en salles selon une stratégie progressive — sortie limitée sur une centaine d'écrans avant un élargissement national après les nominations aux Oscars — le film est comparé par la presse spécialisée à des succès d'estime comparables comme <em>Conclave</em>, cette diffusion mesurée lui permettant de dépasser les 100 millions de dollars de recettes mondiales, dont près des trois quarts réalisés hors des États-Unis<a class="foot" href="#src-14" id="ref-14">[14]</a><a class="foot" href="#src-15" id="ref-15">[15]</a>. Jessie Buckley y complète un parcours de récompenses entamé aux Golden Globes et aux BAFTA en devenant, avec ce rôle, la première actrice irlandaise à remporter l'Oscar de la meilleure actrice<a class="foot" href="#src-7" id="ref-7">[7]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="frame-head">
+      <span class="frame-num-label">Folio IX</span>
+      <h2>Conclusion <span class="frame-jargon">— dernier feuillet</span></h2>
+    </div>
+    <p>
+      <em>Hamnet</em> occupe une place particulière dans la filmographie de Chloé Zhao : celle d'un retour à l'intime et à la fiction pure après le grand écart du blockbuster Marvel, porté par une ambition assumée de faire pleurer son public autant que de l'émouvoir. Le film hérite du geste de Maggie O'Farrell — redonner un nom et une existence à un enfant que l'histoire littéraire avait longtemps laissé dans l'ombre du chef-d'œuvre qu'il a, selon la fiction du roman, contribué à faire naître.
+    </p>
+    <p>
+      Sa réception partagée dit peut-être moins un échec qu'une tension assumée entre deux régimes d'émotion : celui, retenu et naturaliste, des paysages et des silences chers à Zhao, et celui, ouvertement mélodramatique, de la scène finale au théâtre du Globe. Entre ces deux registres, <em>Hamnet</em> avance l'idée qu'une œuvre d'art — la pièce, mais aussi le film lui-même — peut devenir le seul lieu où un deuil autrement muet trouve enfin le droit d'être nommé.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="rubric-label">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Colophon des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Hamnet (film) » — <a href="https://fr.wikipedia.org/wiki/Hamnet_(film)" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Hamnet_(film)</a></li>
+      <li id="src-3">Le Mag du Ciné, critique et fiche technique — <a href="https://www.lemagducine.fr/cinema/critiques-films/hamnet-chloe-zhao-critique-film-2026-mescal-buckley-10080840/" target="_blank" rel="noopener">lemagducine.fr — Hamnet</a></li>
+      <li id="src-4">IMDb, « Hamnet (2025) — Awards » — <a href="https://www.imdb.com/title/tt14905854/awards/" target="_blank" rel="noopener">imdb.com/title/tt14905854/awards</a></li>
+      <li id="src-5">Gold Derby, « Jessie Buckley wins 2026 Oscar Best Actress » — <a href="https://www.goldderby.com/film/2026/jessie-buckley-wins-2026-oscar-best-actress-hamnet/" target="_blank" rel="noopener">goldderby.com — Buckley Oscar</a></li>
+      <li id="src-6">The National, palmarès des Oscars 2026 — <a href="https://www.thenationalnews.com/arts-culture/film-tv/2026/03/16/oscars-full-winners-list-jessie-buckley-triumphs-for-hamnet-and-one-battle-after-another-wins-best-picture/" target="_blank" rel="noopener">thenationalnews.com — Oscars 2026</a></li>
+      <li id="src-7">MovieWeb, « Jessie Buckley Takes Best Actress Oscar » — <a href="https://movieweb.com/2026-oscar-best-actress-jessie-buckley/" target="_blank" rel="noopener">movieweb.com — Buckley Best Actress</a></li>
+      <li id="src-8">franceinfo, critique et fiche du film — <a href="https://www.franceinfo.fr/culture/cinema/sorties-de-films/hamnet-dans-un-film-puissant-et-feerique-chloe-zhao-decrypte-hamlet-la-perte-d-un-enfant-aux-origines-de-ce-chef-d-uvre-de-shakespeare_7751806.html" target="_blank" rel="noopener">franceinfo.fr — Hamnet</a></li>
+      <li id="src-9">RTS, « Hamnet, le film qui révèle l'inspiration secrète de Hamlet » — <a href="https://www.rts.ch/info/culture/cinema/2026/article/hamnet-le-film-qui-revele-l-inspiration-secrete-de-hamlet-de-shakespeare-29126811.html" target="_blank" rel="noopener">rts.ch — Hamnet</a></li>
+      <li id="src-11">Variety, « How the Box Office Success of Hamnet Sparked Sales of the Novel » — <a href="https://variety.com/2026/film/news/box-office-success-hamnet-sales-maggie-ofarrell-novel-1236660048/" target="_blank" rel="noopener">variety.com — Hamnet novel sales</a></li>
+      <li id="src-12">NPR, « For 'Hamnet' director Chloé Zhao, creative life was never linear » — <a href="https://www.npr.org/2026/03/03/nx-s1-5687862/chloe-zhao-hamnet-director" target="_blank" rel="noopener">npr.org — Chloé Zhao</a></li>
+      <li id="src-13">IndieWire, analyse du box-office international — <a href="https://www.indiewire.com/news/box-office/hamnet-international-box-office-analysis-focus-features-1235178921/" target="_blank" rel="noopener">indiewire.com — box-office</a></li>
+      <li id="src-14">Variety, franchissement des 100 millions de dollars — <a href="https://variety.com/2026/film/box-office/scream-7-box-office-highest-grossing-installment-hamnet-100-million-milestone-1236688515/" target="_blank" rel="noopener">variety.com — 100M$</a></li>
+      <li id="src-15">The Hollywood Reporter, box-office du week-end des Oscars — <a href="https://www.hollywoodreporter.com/movies/movie-news/hoppers-stays-number-one-box-office-reminders-of-him-1236530985/" target="_blank" rel="noopener">hollywoodreporter.com — box-office</a></li>
+      <li id="src-16">In Review Online, critique du film (LFF 2025) — <a href="https://inreviewonline.com/2025/10/20/hamnet-review" target="_blank" rel="noopener">inreviewonline.com — Hamnet</a></li>
+      <li id="src-17">IndieWire, critique du film — <a href="https://www.indiewire.com/criticism/movies/hamnet-movie-review-paul-mescal-jessie-buckley-shakespeare-1235148327/" target="_blank" rel="noopener">indiewire.com — critique</a></li>
+      <li id="src-18">Film Feeder, critique du film — <a href="https://filmfeeder.co.uk/film-reviews/hamnet-dir-chloe-zhao" target="_blank" rel="noopener">filmfeeder.co.uk — Hamnet</a></li>
+      <li id="src-19">The Hoya (Georgetown University), critique du film — <a href="https://thehoya.com/guide/hamnet-the-beauty-of-intensity/" target="_blank" rel="noopener">thehoya.com — Hamnet</a></li>
+      <li id="src-20">SNACK Magazine, critique du film — <a href="https://snackmag.co.uk/hamnet-visceral-and-moving-adaptation-by-chloe-zhao-film-review" target="_blank" rel="noopener">snackmag.co.uk — Hamnet</a></li>
+      <li id="src-21">Next Best Picture, critique du film — <a href="https://nextbestpicture.com/hamnet/" target="_blank" rel="noopener">nextbestpicture.com — Hamnet</a></li>
+      <li id="src-22">Deccan Chronicle, critique du film — <a href="https://www.deccanchronicle.com/entertainment/hamnet-movie-review-1937833" target="_blank" rel="noopener">deccanchronicle.com — Hamnet</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Manuscrit compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
