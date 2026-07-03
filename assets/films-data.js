@@ -30,5 +30,41 @@ const FILMS = [
     summary: "Un mélodrame gothique sur l'emprise maternelle, la censure du Code Hays et une vérité qu'on tente de faire taire à coups de scalpel.",
     url: 'films/soudain-lete-dernier.html',
     poster: 'assets/posters/soudain-lete-dernier.jpg'
+  },
+  {
+    slug: 'soy-cuba',
+    title: 'Soy Cuba',
+    director: 'Mikhaïl Kalatozov',
+    year: 1964,
+    summary: "Un manifeste de propagande cubano-soviétique dont la virtuosité visuelle a fini par échapper à ses propres commanditaires.",
+    url: 'films/soy-cuba.html',
+    poster: 'assets/posters/soy-cuba.jpg'
+  },
+  {
+    slug: 'sud',
+    title: 'Sud',
+    director: 'Chantal Akerman',
+    year: 1999,
+    summary: "Une traversée silencieuse du Sud des États-Unis, hantée par le meurtre raciste de James Byrd Jr.",
+    url: 'films/sud.html',
+    poster: 'assets/posters/sud.jpg'
+  },
+  {
+    slug: 'shutter-island',
+    title: 'Shutter Island',
+    director: 'Martin Scorsese',
+    year: 2010,
+    summary: "Un marshal fédéral enquête sur une île-asile où la vérité qu'il cherche finit par se retourner contre lui.",
+    url: 'films/shutter-island.html',
+    poster: 'assets/posters/shutter-island.jpg'
+  },
+  {
+    slug: 'hamnet',
+    title: 'Hamnet',
+    director: 'Chloé Zhao',
+    year: 2025,
+    summary: "Comment le deuil d'un fils disparu a pu donner naissance à l'un des chefs-d'œuvre de Shakespeare.",
+    url: 'films/hamnet.html',
+    poster: 'assets/posters/hamnet.jpg'
   }
 ];

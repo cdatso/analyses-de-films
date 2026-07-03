@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifeste — Soy Cuba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f1e8d4;
+    --cream-deep:#e3d6b4;
+    --black:#171410;
+    --ink:#221f1a;
+    --ink-soft:#4a4436;
+    --red:#c3281c;
+    --red-deep:#8f1d14;
+    --gold:#d29a3c;
+    --teal:#1d4741;
+    --teal-deep:#122e2a;
+    --line: rgba(23,20,16,0.2);
+    --line-soft: rgba(23,20,16,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:1.03rem;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.68rem;
+    color:var(--red);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--cream-deep);
+    opacity:0.75;
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--gold); }
+
+  /* ---------- COVER (affiche) ---------- */
+  header.cover{
+    position:relative;
+    background:var(--black);
+    color:var(--cream);
+    overflow:hidden;
+    padding:3.4rem 0 0;
+  }
+  header.cover::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(115deg, transparent 0%, transparent 54%, var(--red) 54%, var(--red) 58%, transparent 58%),
+      linear-gradient(115deg, transparent 0%, transparent 61%, var(--teal) 61%, var(--teal) 63%, transparent 63%);
+    opacity:0.9;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem 3.2rem;
+    position:relative;
+    z-index:1;
+  }
+  .cover-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:0.8rem;
+    color:var(--gold);
+    margin-bottom:1.6rem;
+  }
+  .cover-eyebrow .rule{ height:2px; width:40px; background:var(--gold); }
+  .cover-eyebrow span.eyebrow{ color:var(--gold); }
+
+  h1.title{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(3.1rem, 11vw, 6.2rem);
+    line-height:0.92;
+    margin:0 0 1rem;
+    letter-spacing:0.01em;
+    color:var(--cream);
+  }
+  .subtitle{
+    font-family:'Work Sans', sans-serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--cream-deep);
+    font-size:1.08rem;
+    max-width:40ch;
+    margin:0 0 2.2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    padding-top:1.4rem;
+    border-top:2px solid rgba(241,232,212,0.24);
+  }
+  .cover-media .poster{ flex:0 0 150px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--gold);
+  }
+  .cover-media .colophon-card{ flex:1; min-width:220px; border-top:none; padding-top:0; }
+
+  .colophon-card{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem 1.8rem;
+  }
+  .colophon-card dt{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    margin-bottom:0.28rem;
+  }
+  .colophon-card dd{ margin:0; font-size:0.9rem; color:var(--cream); }
+
+  /* ---------- NAV ---------- */
+  nav.toc{ background:var(--red-deep); border-bottom:3px solid var(--black); }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.1rem;
+  }
+  nav.toc a{
+    color:var(--cream);
+    opacity:0.78;
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:opacity 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; text-decoration:underline; }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  .content-note{
+    margin:2.2rem 0 0;
+    padding:1.1rem 1.3rem;
+    border:2px solid var(--red);
+    background:rgba(195,40,28,0.06);
+    font-family:'Work Sans', sans-serif;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+  .content-note .eyebrow{ display:block; margin-bottom:0.4rem; }
+
+  section.block{ padding:3.1rem 0; border-bottom:1px solid var(--line-soft); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .frame-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    margin-bottom:1.5rem;
+  }
+  .segment-num{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--red);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  h2{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:1.9rem;
+    margin:0 0 0.15rem;
+    color:var(--ink);
+    letter-spacing:0.005em;
+  }
+  .frame-jargon{
+    font-family:'Work Sans', sans-serif;
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    opacity:0.8;
+  }
+
+  h3{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:0.86rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin:1.8rem 0 0.6rem;
+    color:var(--red-deep);
+  }
+  p{ margin:0 0 1.1rem; font-size:1rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.foot{
+    color:var(--red);
+    text-decoration:none;
+    border-bottom:1px dotted var(--red);
+    font-size:0.82em;
+    font-family:'Space Mono', monospace;
+  }
+
+  .caution{
+    font-family:'Work Sans', sans-serif;
+    font-style:italic;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    border-left:3px solid var(--gold);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  .stills-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+    margin:1.6rem 0;
+  }
+  .stills-row img{
+    width:100%;
+    display:block;
+    border:1px solid var(--line);
+  }
+
+  /* ---------- trajectoire de caméra (signature) ---------- */
+  .camera-path{
+    margin:1.8rem 0 2rem;
+    padding:1.4rem 1.5rem 1.6rem;
+    background:var(--teal-deep);
+    color:var(--cream);
+    border:1px solid var(--black);
+  }
+  .camera-path-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    display:block;
+    margin-bottom:1.1rem;
+  }
+  .camera-path ol{
+    list-style:none;
+    margin:0; padding:0;
+    position:relative;
+  }
+  .camera-path ol::before{
+    content:"";
+    position:absolute;
+    left:9px; top:8px; bottom:8px;
+    width:2px;
+    background:var(--red);
+  }
+  .camera-path li{
+    position:relative;
+    padding:0 0 1.2rem 2.1rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.92rem;
+    color:var(--cream-deep);
+  }
+  .camera-path li:last-child{ padding-bottom:0; }
+  .camera-path li::before{
+    content:"";
+    position:absolute;
+    left:2px; top:4px;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:var(--red);
+    border:2px solid var(--cream);
+  }
+  .camera-path li b{ color:var(--cream); font-weight:600; }
+
+  /* ---------- 4 histoires / personnages ---------- */
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .cast-card{
+    position:relative;
+    background:var(--cream-deep);
+    border:1px solid var(--line);
+    padding:1.1rem 1.2rem 1.15rem;
+  }
+  .cast-card::before{
+    content:attr(data-seg);
+    position:absolute;
+    top:-13px; left:14px;
+    background:var(--red);
+    color:var(--cream);
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    padding:0.15rem 0.5rem;
+  }
+  .cast-card .name{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:1.15rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+  }
+  .cast-card .role{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--red-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .cast-card p{ font-size:0.9rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- citation épinglée ---------- */
+  .pinned{
+    position:relative;
+    background:var(--black);
+    color:var(--cream);
+    border-left:5px solid var(--red);
+    padding:1.4rem 1.6rem 1.5rem;
+    margin:1.7rem 0;
+  }
+  .pinned p{
+    font-family:'Work Sans', sans-serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.1rem;
+    color:var(--cream);
+    margin-bottom:0.6rem;
+  }
+  .pinned cite{
+    font-style:normal;
+    font-family:'Space Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--gold);
+  }
+
+  .theme-list{ display:grid; gap:1.5rem; margin-top:0.6rem; }
+  .theme-item .theme-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--red);
+    display:inline-block;
+    margin-bottom:0.35rem;
+    border-bottom:2px solid var(--gold);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- bulletin / repères chiffrés ---------- */
+  .bulletin{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+    margin:1.7rem 0 1.8rem;
+    padding:1.2rem 1.4rem;
+    background:var(--black);
+    color:var(--cream);
+    border:1px solid var(--red);
+  }
+  .bulletin .stat .num{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    font-size:1.5rem;
+    color:var(--gold);
+    display:block;
+    line-height:1.1;
+  }
+  .bulletin .stat .cap{
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--cream-deep);
+  }
+  .bulletin-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    margin-bottom:0.6rem;
+    display:block;
+  }
+
+  section.sources{ background:var(--teal-deep); color:var(--cream); padding:3.3rem 1.6rem 4.3rem; }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--cream); font-family:'Anton', sans-serif; text-transform:uppercase; font-weight:400; font-size:1.6rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.7rem 0 0; padding:0;
+    display:grid; gap:0.65rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.82rem;
+    padding-left:2.2rem;
+    position:relative;
+    color:var(--cream-deep);
+    border-bottom:1px solid rgba(241,232,212,0.15);
+    padding-bottom:0.65rem;
+    font-family:'Space Mono', monospace;
+  }
+  ol.source-list li::before{
+    content: counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    color:var(--gold);
+    font-size:0.76rem;
+  }
+  ol.source-list a{ color:var(--cream); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--gold); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:var(--cream);
+  }
+  footer.endnote a{ color:var(--ink-soft); }
+  footer.endnote a:hover{ color:var(--red); }
+
+  @media (max-width:600px){
+    header.cover{ padding:2.6rem 0 0; }
+    .cover-inner{ padding:0 1.1rem 2.4rem; }
+    section.block{ padding:2.3rem 0; }
+  }
+</style>
+</head>
+<body>
+<script>
+  function hideBrokenImg(img, groupId) {
+    img.remove();
+    const group = document.getElementById(groupId);
+    if (group && group.children.length === 0) group.hidden = true;
+  }
+</script>
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="cover-eyebrow">
+      <span class="rule"></span>
+      <span class="eyebrow">Manifeste visuel — coproduction Mosfilm / ICAIC</span>
+    </div>
+    <h1 class="title">Soy Cuba</h1>
+    <p class="subtitle">Un poème de propagande que sa propre caméra a fini par trahir.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/soy-cuba.jpg" alt="Affiche du film Soy Cuba" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="colophon-card">
+        <div><dt>Réalisation</dt><dd>Mikhaïl Kalatozov</dd></div>
+        <div><dt>Scénario</dt><dd>Ievgueni Ievtouchenko &amp; Enrique Pineda Barnet</dd></div>
+        <div><dt>Année</dt><dd>1964</dd></div>
+        <div><dt>Durée</dt><dd>141 minutes</dd></div>
+        <div><dt>Production</dt><dd>Mosfilm (URSS) / ICAIC (Cuba)</dd></div>
+        <div><dt>Photographie</dt><dd>Sergueï Ouroussevski</dd></div>
+        <div><dt>Montage</dt><dd>Nina Glagoleva</dd></div>
+        <div><dt>Musique</dt><dd>Carlos Fariñas</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <p class="content-note">
+    <span class="eyebrow">Avis — contenu sensible</span>
+    Ce film et cette analyse abordent la prostitution, la dépossession agricole, la violence policière, un bombardement aérien meurtrier et la mort d'un enfant. L'issue politique du récit, largement connue, est ici traitée sans détailler la scène finale de deuil.
+  </p>
+
+  <section class="block" id="fiche">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 01</span>
+        <h2>Fiche technique <span class="frame-jargon">— générique</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Soy Cuba</em> (russe : Я — Куба ; « Je suis Cuba ») est un film dramatique à sketches soviéto-cubain réalisé par Mikhaïl Kalatozov et sorti en 1964, première coproduction cinématographique entre l'URSS et Cuba, née de l'alliance entre les studios Mosfilm et le tout jeune Institut cubain de l'art et de l'industrie cinématographiques (ICAIC)<a class="foot" href="#src-1" id="ref-1">[1]</a>. Le scénario est écrit par le poète soviétique Ievgueni Ievtouchenko et l'écrivain cubain Enrique Pineda Barnet, d'après un poème en prose intitulé <em>Soy Cuba</em> qu'Ievtouchenko achève en 1963<a class="foot" href="#src-1" id="ref-1b">[1]</a>.
+    </p>
+    <p>
+      Le film réunit une distribution presque entièrement composée d'amateurs : Luz María Collazo (Maria), José Gallardo (Pedro), Raúl García (Enrique), Salvador Wood (Mariano), aux côtés de Sergio Corrieri et Jean Bouise, avec la voix off de la comédienne Raquel Revuelta<a class="foot" href="#src-8" id="ref-8">[8]</a><a class="foot" href="#src-2" id="ref-2">[2]</a>. La photographie est signée Sergueï Ouroussevski, le montage confié à Nina Glagoleva et la musique à Carlos Fariñas<a class="foot" href="#src-4" id="ref-4">[4]</a>. Il s'agit de la quatrième et dernière collaboration entre Kalatozov et Ouroussevski, tous deux auréolés de la Palme d'or obtenue à Cannes en 1958 pour <em>Quand passent les cigognes</em><a class="foot" href="#src-8" id="ref-8b">[8]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 02</span>
+        <h2>Synopsis <span class="frame-jargon">— quatre histoires, une voix</span></h2>
+      </div>
+    </div>
+    <p>
+      Le film se compose d'un prologue et de quatre histoires distinctes, reliées entre elles par le commentaire d'une voix off s'exprimant au nom de « Cuba » elle-même<a class="foot" href="#src-1" id="ref-1c">[1]</a>. Dans le Cuba du dictateur Fulgencio Batista, Maria se prostitue dans des clubs fréquentés par de riches touristes américains, en le cachant à son fiancé, un jeune vendeur de fruits ; Pedro, vieux paysan, apprend que sa plantation de cannes à sucre a été vendue à une compagnie américaine et se retrouve chassé de ses terres<a class="foot" href="#src-6" id="ref-6">[6]</a>. Enrique, étudiant à l'université de La Havane engagé contre le régime, hésite à abattre un chef de la police en le voyant avec sa famille ; il meurt peu après lors d'une manifestation réprimée<a class="foot" href="#src-1" id="ref-1d">[1]</a>. Mariano, paysan de la Sierra Maestra d'abord réticent à prendre les armes, rejoint la guérilla castriste après qu'un raid aérien a tué son fils<a class="foot" href="#src-6" id="ref-6b">[6]</a>.
+    </p>
+    <p class="caution">La séquence funéraire qui clôt le troisième segment, considérée comme l'un des sommets techniques du film, n'est volontairement pas détaillée plan par plan ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 03</span>
+        <h2>Contexte de production <span class="frame-jargon">— genèse d'une commande</span></h2>
+      </div>
+    </div>
+    <p>
+      L'ICAIC, fondé en 1959 au lendemain de la révolution, cherche à nouer des coproductions pour relancer le cinéma cubain naissant ; Mikhaïl Kalatozov, déjà auréolé de la Palme d'or, nourrit dès 1961 l'idée d'un film sur Cuba après une rencontre avec la direction de l'institut<a class="foot" href="#src-3" id="ref-3">[3]</a>. Il confie l'écriture à deux jeunes auteurs, le poète soviétique Ievgueni Ievtouchenko et l'écrivain cubain Enrique Pineda Barnet — d'abord simple consultant — avec l'ambition déclarée de livrer « une fresque exhaustive, quelque chose, si ce n'est pas trop ambitieux, comme les Rougon-Macquart d'Émile Zola »<a class="foot" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+    <p>
+      Le tournage démarre le 26 février 1963 et s'étend sur quatorze mois, débutant quelques semaines après la crise des missiles de Cuba d'octobre 1962, qui dégrade en plein chantier les relations entre les deux pays commanditaires<a class="foot" href="#src-5" id="ref-5">[5]</a><a class="foot" href="#src-12" id="ref-12">[12]</a>. L'un des scénaristes se souvient de files de Cubaines faisant la queue pour des boîtes de raisin bulgare, qui les toisaient en criant « Russes, rentrez chez vous ! »<a class="foot" href="#src-3" id="ref-3c">[3]</a>.
+    </p>
+    <p>
+      Constatant l'absence de comédiens professionnels sur l'île, Kalatozov écrit à son fils qu'il n'y avait en réalité « aucun acteur à Cuba », et recrute pêcheurs, paysans, étudiants et avocats, convaincu que cette matière humaine non professionnelle apporterait plus d'authenticité au film ; l'ingénieur du son cubain Raúl García interprète ainsi le rôle d'Enrique, et José Gallardo, sans aucune expérience de jeu, celui de Pedro<a class="foot" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+    <p>
+      Pour donner au ciel cubain « l'éclat d'un cristal de sucre », Ouroussevski recourt à une pellicule infrarouge normalement réservée à l'armée soviétique, qui blanchit les palmiers et assombrit le ciel et la mer jusqu'à l'abstraction, quitte à patienter des jours entiers pour obtenir la nébulosité recherchée<a class="foot" href="#src-5" id="ref-5b">[5]</a>. Une large partie du film est tournée en 16 mm avec une caméra Caméflex Éclair — la même maniabilité qui servira, à la même époque, l'esthétique de la Nouvelle Vague — permettant à Ouroussevski, ancien cadreur de la marine soviétique pendant la Seconde Guerre mondiale, de s'immerger physiquement dans les foules qu'il filme<a class="foot" href="#src-9" id="ref-9">[9]</a>. Cette étape du tournage est également documentée par les lettres qu'Ouroussevski adresse depuis Cuba à son épouse restée en URSS, Bella Friedman<a class="foot" href="#src-17" id="ref-17">[17]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 04</span>
+        <h2>Structure narrative <span class="frame-jargon">— la gradation révolutionnaire</span></h2>
+      </div>
+    </div>
+    <p>
+      Le film adopte une structure en quatre segments distincts, chacun encadré par les vers de la voix off incarnant Cuba, qui ouvre et referme le récit sur une adresse directe au spectateur<a class="foot" href="#src-1" id="ref-1e">[1]</a>. Cette construction obéit à un agenda idéologique limpide : des figures les moins politisées, résignées à leur exploitation économique (Maria, Pedro), jusqu'à la prise de conscience étudiante (Enrique) puis à l'engagement armé paysan (Mariano), le film trace une trajectoire de gradation continue vers la conscience révolutionnaire<a class="foot" href="#src-6" id="ref-6c">[6]</a>.
+    </p>
+    <p>
+      Le titre lui-même, et une réplique prononcée par des paysans en danger de mort — « Je suis Fidel » —, font écho de façon assumée au « Je suis Spartacus » du film de Stanley Kubrick <em>Spartacus</em> (1960), dont le scénario était signé du scénariste communiste Dalton Trumbo<a class="foot" href="#src-1" id="ref-1f">[1]</a>. Selon la société Milestone Films, qui restaurera le film trente ans plus tard, le projet fut conçu comme la réponse cubaine à la fois au <em>Cuirassé Potemkine</em> d'Eisenstein et à <em>À bout de souffle</em> de Godard, avant de se révéler une œuvre bien plus singulière que ce double modèle<a class="foot" href="#src-12" id="ref-12b">[12]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 05</span>
+        <h2>Mise en scène et procédés techniques <span class="frame-jargon">— la caméra démiurge</span></h2>
+      </div>
+    </div>
+    <div class="stills-row" id="stills-row">
+      <img src="../assets/stills/soy-cuba-1.jpg" alt="Photo de scène — Soy Cuba, plan-séquence de l'hôtel Capri" onerror="hideBrokenImg(this, 'stills-row')">
+      <img src="../assets/stills/soy-cuba-2.jpg" alt="Photo de scène — Soy Cuba, séquence funéraire" onerror="hideBrokenImg(this, 'stills-row')">
+    </div>
+    <p>
+      La réputation de <em>Soy Cuba</em> tient avant tout aux plans-séquences d'Ouroussevski, qui inventa pour l'occasion les premiers rails circulaires pour caméra travelling et sut faire de son objectif un corps acrobatique, capable de traverser murs et éléments sans qu'aucune coupe ne vienne rompre l'illusion<a class="foot" href="#src-1" id="ref-1g">[1]</a>. Le plan le plus commenté descend du toit de l'hôtel Capri jusqu'au fond d'une piscine, en plus de trois minutes sans montage — une prouesse dont s'inspireront plus tard Paul Thomas Anderson pour <em>Boogie Nights</em> et Alfonso Cuarón pour <em>Les Fils de l'homme</em> et <em>Gravity</em><a class="foot" href="#src-6" id="ref-6d">[6]</a>.
+    </p>
+    <div class="camera-path">
+      <span class="camera-path-label">Trajectoire du plan-séquence de l'hôtel Capri — env. 3 min, sans coupe</span>
+      <ol>
+        <li><b>Toit de l'hôtel</b> — la caméra observe la fête et les danseuses en surplomb.</li>
+        <li><b>Descente vers la piscine</b> — objectif grand angle, plongée par l'extérieur du bâtiment.</li>
+        <li><b>Façade et gratte-ciel</b> — glissement le long de la structure moderniste, vue sur la mer.</li>
+        <li><b>Surface de l'eau</b> — la caméra atteint le bord du bassin sans interruption.</li>
+        <li><b>Sous l'eau</b> — immersion finale parmi les nageuses, plan toujours ininterrompu.</li>
+      </ol>
+    </div>
+    <p>
+      Le film décline le noir et blanc à des fins expressionnistes plutôt que réalistes : objectifs grand angle à très courte focale et pellicule infrarouge transforment les palmiers en « plumes blanches géantes » sur un ciel et une mer assombris jusqu'à l'abstraction<a class="foot" href="#src-1" id="ref-1h">[1]</a>. Le cabaret Tropicana, avec ses « arcs de cristal » en béton conçus par l'architecte moderniste Max Borges Recio, offre à Ouroussevski un décor déjà scénographique en lui-même<a class="foot" href="#src-7" id="ref-7">[7]</a>. La séquence funéraire d'Enrique, où la caméra semble littéralement s'envoler en adoptant des plongées et des positions aériennes dont la mise en place demeure difficile à reconstituer, reste l'une des scènes les plus étudiées de l'histoire du cinéma<a class="foot" href="#src-6" id="ref-6e">[6]</a>. Plusieurs commentateurs ultérieurs rapprocheront la voix off omnisciente et panthéiste du film de celle que Terrence Malick développera dans <em>La Ligne rouge</em> et <em>Le Nouveau Monde</em><a class="foot" href="#src-8" id="ref-8c">[8]</a>.
+    </p>
+
+    <div class="pinned">
+      <p>« Si les gens avaient vu Soy Cuba à sa sortie, le cinéma n'aurait sans doute pas été le même. »</p>
+      <cite>Martin Scorsese, entretien de 2003<a class="foot" href="#src-5" id="ref-5c">[5]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 06</span>
+        <h2>Personnages principaux <span class="frame-jargon">— les quatre histoires</span></h2>
+      </div>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card" data-seg="Histoire I">
+        <span class="name">Maria</span>
+        <span class="role">Luz María Collazo</span>
+        <p>Jeune femme contrainte de se prostituer dans les clubs havanais fréquentés par des touristes américains, dissimulant cette réalité à son fiancé, un jeune vendeur de fruits<a class="foot" href="#src-6" id="ref-6f">[6]</a>.</p>
+      </div>
+      <div class="cast-card" data-seg="Histoire II">
+        <span class="name">Pedro</span>
+        <span class="role">José Gallardo</span>
+        <p>Vieux paysan dépossédé de sa plantation de cannes à sucre après sa vente à une compagnie américaine ; sa colère le pousse à détruire son champ puis à incendier sa maison<a class="foot" href="#src-6" id="ref-6g">[6]</a>.</p>
+      </div>
+      <div class="cast-card" data-seg="Histoire III">
+        <span class="name">Enrique</span>
+        <span class="role">Raúl García</span>
+        <p>Étudiant havanais engagé contre le régime de Batista, qui renonce à assassiner un chef de la police en le voyant avec sa famille avant de mourir lors d'une manifestation réprimée<a class="foot" href="#src-1" id="ref-1i">[1]</a>.</p>
+      </div>
+      <div class="cast-card" data-seg="Histoire IV">
+        <span class="name">Mariano</span>
+        <span class="role">Salvador Wood</span>
+        <p>Paysan de la Sierra Maestra d'abord réticent à l'engagement armé, qui rejoint la guérilla castriste après un raid aérien meurtrier contre sa famille<a class="foot" href="#src-6" id="ref-6h">[6]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 07</span>
+        <h2>Thèmes <span class="frame-jargon">— l'île comme allégorie</span></h2>
+      </div>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Cuba personnifiée</span>
+        <p>La voix off, portée par la comédienne Raquel Revuelta, incarne l'île elle-même s'adressant directement au spectateur, façon de transformer le tract de commande en confession lyrique à la première personne<a class="foot" href="#src-1" id="ref-1j">[1]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'exploitation néocoloniale</span>
+        <p>Prostitution et dépossession agricole fonctionnent comme les deux figures centrales de la mainmise économique américaine sur le Cuba pré-révolutionnaire, incarnées respectivement par Maria et par Pedro<a class="foot" href="#src-6" id="ref-6i">[6]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La gradation vers la révolte</span>
+        <p>Du fatalisme individuel des deux premiers segments à l'engagement collectif et armé des deux derniers, le film construit une trajectoire pédagogique explicite vers la conscience révolutionnaire<a class="foot" href="#src-6" id="ref-6j">[6]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La forme qui déborde le fond</span>
+        <p>La virtuosité visuelle d'Ouroussevski en vient à célébrer, malgré elle, l'esthétique pré-révolutionnaire d'influence américaine — piscines, gratte-ciel, cabarets — plutôt que sa seule décadence annoncée par le scénario<a class="foot" href="#src-9" id="ref-9b">[9]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 08</span>
+        <h2>Réception critique et postérité <span class="frame-jargon">— trente ans de silence</span></h2>
+      </div>
+    </div>
+    <p>
+      À sa sortie en 1964, le film reçoit un accueil glacial tant en Union soviétique qu'à Cuba : on lui reproche sa faiblesse scénaristique, ses personnages stéréotypés, un pathos jugé excessif et une expérimentation formelle perçue comme nuisible au message qu'il était censé porter<a class="foot" href="#src-1" id="ref-1k">[1]</a>. Le film ne reste à l'affiche qu'une semaine dans les deux pays commanditaires, et les cinéphiles cubains ne s'y reconnaissent guère, jugeant la représentation de leur pays et de leur culture caricaturale<a class="foot" href="#src-10" id="ref-10">[10]</a>.
+    </p>
+    <p>
+      Le film sombre alors dans un oubli quasi total pendant près de trente ans, jusqu'à sa redécouverte en 1992 au Festival de Telluride, rendu possible par les recherches de la conservatrice Edith Kramer du Pacific Film Archive ; projeté sans sous-titres, il provoque déjà l'effet d'une bombe<a class="foot" href="#src-9" id="ref-9c">[9]</a>. L'année suivante, une projection au Festival international du film de San Francisco déclenche des standing ovations en pleine séance<a class="foot" href="#src-11" id="ref-11">[11]</a>.
+    </p>
+
+    <div class="bulletin">
+      <span class="bulletin-label" style="grid-column:1/-1;">Repères — chiffres à l'appui</span>
+      <div class="stat"><span class="num">14 mois</span><span class="cap">Durée du tournage</span></div>
+      <div class="stat"><span class="num">1 semaine</span><span class="cap">Exploitation en salles (1964)</span></div>
+      <div class="stat"><span class="num">~30 ans</span><span class="cap">Avant la redécouverte</span></div>
+      <div class="stat"><span class="num">141 min</span><span class="cap">Durée (version restaurée)</span></div>
+    </div>
+    <p class="caution">Le film n'a jamais connu d'exploitation commerciale mesurable au sens occidental du terme lors de sa sortie initiale ; les chiffres ci-dessus documentent son parcours plutôt que sa performance en salles.</p>
+
+    <p>
+      Enthousiasmés par leur découverte, Martin Scorsese et Francis Ford Coppola « présentent » le film et soutiennent sa restauration par la jeune société Milestone Film & Video, qui en obtient le négatif original directement auprès de Mosfilm avant une ressortie en salles aux États-Unis en 1995, saluée par une critique dithyrambique<a class="foot" href="#src-9" id="ref-9d">[9]</a><a class="foot" href="#src-11" id="ref-11b">[11]</a>. Le documentaire brésilien <em>Soy Cuba, le mammouth sibérien</em> (Vicente Ferraz, 2004-2005) revient sur cette genèse mouvementée, recueillant notamment l'étonnement d'anciens membres de l'équipe cubaine face à la réputation acquise par le film en Occident<a class="foot" href="#src-15" id="ref-15">[15]</a>. Une restauration 4K réalisée par Mosfilm en 2020 permet une nouvelle édition du film en haute définition<a class="foot" href="#src-13" id="ref-13">[13]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="frame-head">
+      <div>
+        <span class="segment-num">Repère 09</span>
+        <h2>Conclusion <span class="frame-jargon">— dernier plan</span></h2>
+      </div>
+    </div>
+    <p>
+      <em>Soy Cuba</em> occupe une place à part dans l'histoire du cinéma de propagande : celle d'une commande politique si excessivement maîtrisée sur le plan formel qu'elle en devient suspecte aux yeux mêmes de ses commanditaires. Ni l'URSS ni Cuba n'y reconnaissent le tract qu'ils avaient espéré ; ce que la caméra d'Ouroussevski leur rend est un poème visuel trop beau, trop ambigu, trop fasciné par ce qu'il était censé condamner pour fonctionner comme simple outil idéologique.
+    </p>
+    <p>
+      Sa redécouverte tardive, portée par deux cinéastes américains plutôt que par ses propres commanditaires, dit assez la nature de ce paradoxe : un film peut échouer à son mandat politique et devenir, une génération plus tard, une référence technique majeure — cité pour ses plans-séquences plus souvent que pour son message. <em>Soy Cuba</em> reste ainsi un cas d'école rare, où la forme a fini par prendre en otage le fond qui l'avait commandée.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="eyebrow" style="color:var(--gold)">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Soy Cuba » — <a href="https://fr.wikipedia.org/wiki/Soy_Cuba" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Soy_Cuba</a></li>
+      <li id="src-2">Wikiwand (FR), « Soy Cuba » — <a href="https://www.wikiwand.com/fr/articles/Soy_Cuba" target="_blank" rel="noopener">wikiwand.com/fr/articles/Soy_Cuba</a></li>
+      <li id="src-3">AlloCiné, fiche film — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=45957.html" target="_blank" rel="noopener">allocine.fr — Soy Cuba</a></li>
+      <li id="src-4">Analyse de film, fiche technique — <a href="https://www.courte-focale.fr/cinema/analyses/soy-cuba-mikhail-kalatozov-1964/" target="_blank" rel="noopener">courte-focale.fr — Soy Cuba</a></li>
+      <li id="src-5">Revus et Corrigés, « Soy Cuba (1964), grâce et fureur » — <a href="https://revusetcorriges.com/2021/10/20/soy-cuba-1964-grace-et-fureur/" target="_blank" rel="noopener">revusetcorriges.com — Soy Cuba</a></li>
+      <li id="src-6">Courte-Focale, « Analyse : Soy Cuba » — <a href="https://www.courte-focale.fr/cinema/analyses/soy-cuba-mikhail-kalatozov-1964/" target="_blank" rel="noopener">courte-focale.fr — analyse</a></li>
+      <li id="src-7">Espazium, « Soy Cuba, Mikhail Kalatozov, 1964 » — <a href="https://www.espazium.ch/fr/actualites/soy-cuba" target="_blank" rel="noopener">espazium.ch — Soy Cuba</a></li>
+      <li id="src-8">Critikat, critique de « Soy Cuba » — <a href="https://www.critikat.com/actualite-cine/critique/soy-cuba-2/" target="_blank" rel="noopener">critikat.com — Soy Cuba</a></li>
+      <li id="src-9">Le Temps, « Soy Cuba réhabilité après quarante ans de disgrâce » — <a href="https://www.letemps.ch/culture/soy-cuba-rehabilite-apres-quarante-ans-disgrace" target="_blank" rel="noopener">letemps.ch — Soy Cuba</a></li>
+      <li id="src-10">Ecran Large, « Soy Cuba : le film soviétique qui a mis une fessée à Scorsese, Coppola et tout Hollywood » — <a href="https://www.ecranlarge.com/films/dossier/1431039-soy-cuba-le-film-sovietique-qui-a-mis-une-fessee-a-scorsese-coppola-et-tout-hollywood" target="_blank" rel="noopener">ecranlarge.com — Soy Cuba</a></li>
+      <li id="src-11">Cuba Journal, « Lost Film Soy Cuba Revived by Scorsese and Coppola After 30 Years » — <a href="http://cubajournal.co/lost-film-soy-cuba-revived-by-scorsese-and-coppola-after-30-years/" target="_blank" rel="noopener">cubajournal.co — Soy Cuba</a></li>
+      <li id="src-12">Milestone Films, « I Am Cuba » — <a href="https://milestonefilms.com/products/i-am-cuba-the-deluxe-edition" target="_blank" rel="noopener">milestonefilms.com — I Am Cuba</a></li>
+      <li id="src-13">DVDFr, test du Blu-ray « Soy Cuba » — <a href="https://www.dvdfr.com/dvd/c167703-soy-cuba.html" target="_blank" rel="noopener">dvdfr.com — Soy Cuba</a></li>
+      <li id="src-14">Toutelaculture, « Soy Cuba » — <a href="https://toutelaculture.com/cinema/dvds/soy-cuba/" target="_blank" rel="noopener">toutelaculture.com — Soy Cuba</a></li>
+      <li id="src-15">Blast, « Soy Cuba, le film cubano-soviétique qui a failli changer le visage du cinéma mondial » — <a href="https://www.blast-info.fr/articles/2021/soy-cuba-le-film-cubano-sovietique-qui-a-failli-changer-le-visage-du-cinema-mondial--5BBPb9lT7qUyr72nsyshw" target="_blank" rel="noopener">blast-info.fr — Soy Cuba</a></li>
+      <li id="src-16">Tortillapolis, critique de « Soy Cuba » — <a href="https://tortillapolis.com/critique-film-soy-cuba-mikhail-kalatozov-1964/" target="_blank" rel="noopener">tortillapolis.com — Soy Cuba</a></li>
+      <li id="src-17">Revue 1895 (OpenEdition), « Sur le tournage de Soy Cuba. Lettres de Sergueï Ouroussevski à son épouse » — <a href="https://journals.openedition.org/1895/5074" target="_blank" rel="noopener">journals.openedition.org — lettres d'Ouroussevski</a></li>
+      <li id="src-18">Avoir-Alire, critique de « Soy Cuba » — <a href="https://avoir-alire.com/soy-cuba" target="_blank" rel="noopener">avoir-alire.com — Soy Cuba</a></li>
+      <li id="src-19">Presses universitaires de Lyon, « Soy Cuba de Mikhaïl Kalatozov » — <a href="https://presses.univ-lyon2.fr/product/show/9782729714635/soy-cuba-de-mikhail-kalatozov" target="_blank" rel="noopener">presses.univ-lyon2.fr — Soy Cuba</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Manifeste compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
