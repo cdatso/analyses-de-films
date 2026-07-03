@@ -35,8 +35,16 @@
         <input type="text" id="film-year" name="film-year" placeholder="ex. 1977" inputmode="numeric" pattern="[0-9]{4}">
       </div>
       <button type="submit">Envoyer la demande</button>
-      <p class="form-note">L'envoi ouvre votre client mail habituel avec les informations pré-remplies. Aucune analyse n'est générée automatiquement : elle sera préparée puis ajoutée manuellement au site.</p>
+      <p class="form-note">L'envoi tente d'ouvrir votre client mail habituel avec les informations pré-remplies. Aucune analyse n'est générée automatiquement : elle sera préparée puis ajoutée manuellement au site.</p>
     </form>
+
+    <div class="fallback-panel" id="fallback-panel" hidden>
+      <p class="fallback-title">Votre client mail ne s'est pas ouvert ?</p>
+      <p>Copiez ce message et collez-le manuellement dans un nouvel email à <strong>cdatso@yahoo.com</strong> :</p>
+      <pre id="fallback-text"></pre>
+      <button type="button" id="copy-button">Copier le message</button>
+      <p class="copy-feedback" id="copy-feedback" hidden>Copié !</p>
+    </div>
   </section>
 
   <section id="analyses">
@@ -88,6 +96,18 @@
       + '&body=' + encodeURIComponent(body);
 
     window.location.href = mailto;
+
+    document.getElementById('fallback-text').textContent =
+      'À : cdatso@yahoo.com\nObjet : ' + subject + '\n\n' + body;
+    document.getElementById('fallback-panel').hidden = false;
+    document.getElementById('copy-feedback').hidden = true;
+  });
+
+  document.getElementById('copy-button').addEventListener('click', function () {
+    const text = document.getElementById('fallback-text').textContent;
+    navigator.clipboard.writeText(text).then(function () {
+      document.getElementById('copy-feedback').hidden = false;
+    });
   });
 </script>
 
