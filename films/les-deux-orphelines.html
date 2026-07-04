@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Deux Orphelines — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15110d;
+    --ink-deep:#0a0806;
+    --ink-elev:#1e1812;
+    --paper:#e9dcc0;
+    --paper-dim:#d8c9a4;
+    --paper-bright:#f2e8d0;
+    --sepia:#a9752f;
+    --sepia-deep:#7c541f;
+    --tint-red:#7c2320;
+    --tint-red-deep:#571816;
+    --tint-blue:#233a5c;
+    --tint-blue-deep:#182740;
+    --gold:#c9a227;
+    --gold-dim:#8f731c;
+    --line:rgba(233,220,192,0.16);
+    --line-soft:rgba(233,220,192,0.08);
+    --line-dark:rgba(21,17,13,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Libre Caslon Text', serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Bodoni Moda', serif;
+    font-weight:700;
+    margin:0;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.68rem;
+    color:var(--gold);
+  }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 1.6rem; }
+
+  /* ---------- sprocket strip ---------- */
+  .sprockets{
+    height:12px;
+    background-image: radial-gradient(circle, var(--ink) 2.6px, transparent 3px);
+    background-size:20px 12px;
+    background-position:10px center;
+    background-repeat:repeat-x;
+    background-color: var(--paper-dim);
+  }
+
+  /* ---------- COVER : carton d'ouverture ---------- */
+  header.cover{
+    position:relative;
+    background:
+      radial-gradient(ellipse at center, rgba(169,117,47,0.22), transparent 62%),
+      var(--ink-deep);
+    color:var(--paper-bright);
+    padding:0 0 3rem;
+    overflow:hidden;
+    border-bottom:1px solid var(--gold-dim);
+  }
+  header.cover .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:4.4rem 1.6rem 1rem;
+    text-align:center;
+  }
+  .iris{
+    width:220px; height:220px;
+    margin:0 auto 2.2rem;
+    border-radius:50%;
+    border:1px solid var(--gold-dim);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    animation: iris-in 1.4s ease-out both;
+  }
+  @keyframes iris-in{
+    from{ clip-path: circle(0% at 50% 50%); opacity:0.4; }
+    to{ clip-path: circle(75% at 50% 50%); opacity:1; }
+  }
+  .iris::before{
+    content:"";
+    position:absolute; inset:14px;
+    border-radius:50%;
+    border:1px solid rgba(201,162,39,0.35);
+  }
+  .iris svg{ width:110px; height:110px; opacity:0.85; }
+
+  header.cover .eyebrow{
+    display:block;
+    margin-bottom:0.9rem;
+  }
+  header.cover h1{
+    font-size:clamp(2.3rem, 6vw, 3.6rem);
+    line-height:1.05;
+    letter-spacing:0.01em;
+  }
+  header.cover .orig-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    color:var(--paper-dim);
+    margin-top:0.9rem;
+  }
+  header.cover .meta-line{
+    margin-top:1.6rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    color:var(--gold);
+  }
+  header.cover .rule{
+    width:64px; height:1px; background:var(--gold-dim);
+    margin:1.8rem auto 0;
+  }
+
+  /* ---------- programme / TOC ---------- */
+  nav.programme{
+    background:var(--ink-elev);
+    border-bottom:1px solid var(--line);
+    padding:2.2rem 0 2.4rem;
+  }
+  nav.programme .label{ display:block; text-align:center; margin-bottom:1.2rem; }
+  nav.programme ol{
+    list-style:none;
+    margin:0 auto; padding:0;
+    max-width:640px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.5rem 2.2rem;
+  }
+  nav.programme li{
+    border-bottom:1px dotted var(--line);
+    padding:0.5rem 0;
+  }
+  nav.programme a{
+    text-decoration:none;
+    font-family:'Libre Caslon Text', serif;
+    font-size:0.94rem;
+    display:flex; gap:0.6rem; align-items:baseline;
+  }
+  nav.programme a:hover{ color:var(--gold); }
+  nav.programme .num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--sepia);
+    font-size:0.78rem;
+  }
+  @media (max-width:600px){
+    nav.programme ol{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- content note ---------- */
+  .content-note{
+    max-width:760px; margin:2.6rem auto 0;
+    padding:1.2rem 1.4rem;
+    border:1px solid var(--tint-red);
+    background:rgba(124,35,32,0.14);
+    font-size:0.92rem;
+  }
+  .content-note .label{ color:#d68a86; margin-bottom:0.5rem; }
+
+  /* ---------- main sections ---------- */
+  main{ background:var(--paper); color:var(--ink); }
+
+  section{
+    padding:3.6rem 0;
+    border-bottom:1px solid var(--line-dark);
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .carton{
+    background:var(--ink-deep);
+    color:var(--paper-bright);
+    padding:1.5rem 1.8rem;
+    margin-bottom:2.2rem;
+    text-align:center;
+    position:relative;
+  }
+  .carton::before, .carton::after{
+    content:"";
+    position:absolute; top:8px; bottom:8px; width:1px;
+    background:var(--gold-dim);
+  }
+  .carton::before{ left:8px; }
+  .carton::after{ right:8px; }
+  .carton .num-acte{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--gold);
+    display:block;
+    margin-bottom:0.6rem;
+  }
+  .carton h2{
+    font-size:1.7rem;
+    letter-spacing:0.01em;
+  }
+
+  section > .wrap > p, section > .wrap > .lead{
+    max-width:66ch;
+  }
+  .lead{
+    font-size:1.12rem;
+    font-style:italic;
+    color:var(--sepia-deep);
+    border-left:3px solid var(--sepia);
+    padding-left:1rem;
+    margin-bottom:1.6rem;
+  }
+
+  sup.fn a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    color:var(--tint-blue);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ text-decoration:underline; }
+
+  /* fiche technique */
+  .fiche{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0;
+    border:1px solid var(--line-dark);
+    max-width:760px;
+  }
+  .fiche dt, .fiche dd{
+    margin:0; padding:0.7rem 1rem;
+    border-bottom:1px solid var(--line-dark);
+    font-size:0.92rem;
+  }
+  .fiche dt{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--sepia-deep);
+    background:var(--paper-dim);
+    display:flex; align-items:center;
+  }
+  @media (max-width:600px){
+    .fiche{ grid-template-columns:1fr; }
+    .fiche dt{ border-bottom:none; padding-bottom:0.2rem; }
+  }
+
+  /* cast cards */
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:1.1rem;
+    margin-top:1.8rem;
+  }
+  .cast-card{
+    background:var(--paper-bright);
+    border:1px solid var(--line-dark);
+    border-top:3px solid var(--sepia);
+    padding:1.1rem 1.2rem;
+  }
+  .cast-card h3{
+    font-size:1.02rem;
+    font-family:'Libre Caslon Text', serif;
+    font-weight:700;
+    margin-bottom:0.15rem;
+  }
+  .cast-card .role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sepia-deep);
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  .cast-card p{ font-size:0.88rem; margin:0; }
+
+  /* ---------- signature: montage alterné ---------- */
+  .crosscut{
+    margin-top:2rem;
+    border:1px solid var(--line-dark);
+    background:var(--ink-deep);
+    padding:2rem 1.4rem 1.6rem;
+  }
+  .crosscut .cc-title{
+    text-align:center;
+    color:var(--paper-bright);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:1.6rem;
+  }
+  .cc-grid{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:0.5rem;
+    align-items:stretch;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .cc-col{ display:flex; flex-direction:column; gap:0.5rem; }
+  .cc-frame{
+    padding:0.6rem 0.7rem;
+    font-size:0.78rem;
+    color:var(--paper-bright);
+    border:1px solid rgba(233,220,192,0.22);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .cc-col.red .cc-frame{ background:linear-gradient(180deg, var(--tint-red), var(--tint-red-deep)); }
+  .cc-col.blue .cc-frame{ background:linear-gradient(180deg, var(--tint-blue), var(--tint-blue-deep)); }
+  .cc-links{
+    display:flex; flex-direction:column; justify-content:space-around;
+    align-items:center;
+  }
+  .cc-links span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--gold);
+  }
+  .cc-caption{
+    max-width:640px; margin:1.4rem auto 0;
+    color:var(--paper-dim);
+    font-size:0.84rem;
+    text-align:center;
+    font-family:'Libre Caslon Text', serif;
+    font-style:italic;
+  }
+  @media (max-width:560px){
+    .cc-grid{ grid-template-columns:1fr; }
+    .cc-links{ flex-direction:row; padding:0.3rem 0; }
+  }
+
+  /* quote block */
+  blockquote{
+    margin:1.8rem 0; padding:1.1rem 1.4rem;
+    border-left:3px solid var(--gold);
+    background:var(--paper-dim);
+    font-style:italic;
+    max-width:64ch;
+  }
+  blockquote cite{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'JetBrains Mono', monospace;
+    font-style:normal;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sepia-deep);
+  }
+
+  ul.theme-list{ padding-left:1.2rem; max-width:66ch; }
+  ul.theme-list li{ margin-bottom:0.9rem; }
+  ul.theme-list strong{ color:var(--sepia-deep); }
+
+  /* sources */
+  #sources{ background:var(--ink-deep); color:var(--paper-bright); }
+  #sources .carton{ background:transparent; padding:0; }
+  #sources ol{
+    max-width:760px;
+    padding-left:1.4rem;
+    font-size:0.86rem;
+    color:var(--paper-dim);
+  }
+  #sources li{ margin-bottom:0.6rem; }
+  #sources a{ color:var(--gold); text-decoration:none; word-break:break-word; }
+  #sources a:hover{ text-decoration:underline; }
+
+  footer{
+    background:var(--ink-deep);
+    color:var(--paper-dim);
+    text-align:center;
+    padding:2.2rem 1.6rem 2.6rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--paper-dim);
+    opacity:0.75;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.6rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--gold); }
+
+  .fiche-wrap{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    max-width:760px;
+  }
+  .fiche-wrap .poster{ flex:0 0 180px; margin:0; }
+  .fiche-wrap .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--gold-dim);
+  }
+  .fiche-wrap dl.fiche{ flex:1; min-width:280px; max-width:none; }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="sprockets"></div>
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="label eyebrow">Analyse cinématographique — mélodrame · 1921</span>
+    <div class="iris">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 C 60 30, 80 35, 90 50 C 80 65, 60 70, 50 90 C 40 70, 20 65, 10 50 C 20 35, 40 30, 50 10 Z" stroke="#c9a227" stroke-width="1.2"/>
+        <circle cx="50" cy="50" r="6" fill="#c9a227"/>
+      </svg>
+    </div>
+    <h1>Les Deux Orphelines</h1>
+    <div class="orig-title">ORPHANS OF THE STORM</div>
+    <div class="meta-line">D. W. GRIFFITH — 1921 — ÉTATS-UNIS — MUET</div>
+    <div class="rule"></div>
+  </div>
+</header>
+
+<nav class="programme">
+  <span class="label">Au programme</span>
+  <ol>
+    <li><a href="#fiche"><span class="num">01</span> Fiche technique</a></li>
+    <li><a href="#synopsis"><span class="num">02</span> Synopsis</a></li>
+    <li><a href="#production"><span class="num">03</span> Contexte de production</a></li>
+    <li><a href="#structure"><span class="num">04</span> Structure narrative</a></li>
+    <li><a href="#mise-en-scene"><span class="num">05</span> Mise en scène</a></li>
+    <li><a href="#personnages"><span class="num">06</span> Personnages</a></li>
+    <li><a href="#themes"><span class="num">07</span> Thèmes</a></li>
+    <li><a href="#reception"><span class="num">08</span> Réception et postérité</a></li>
+    <li><a href="#conclusion"><span class="num">09</span> Conclusion</a></li>
+    <li><a href="#sources"><span class="num">10</span> Sources</a></li>
+  </ol>
+
+  <div class="content-note">
+    <span class="label">Avertissement</span>
+    Ce film centenaire contient des scènes de violence (exécutions, guillotine), une tentative
+    d'agression sexuelle sur un personnage séquestré, ainsi qu'un prologue et un sous-texte
+    politiques ouvertement datés : une lecture anti-bolchevique et anticommuniste de la Révolution
+    française, présentée sans distance critique par le réalisateur. L'analyse qui suit les
+    situe historiquement sans les cautionner.
+  </div>
+</nav>
+
+<main>
+
+  <section id="fiche">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">01</span><h2>Fiche technique</h2></div>
+      <div class="fiche-wrap">
+      <figure class="poster">
+        <img src="../assets/posters/les-deux-orphelines.jpg" alt="Affiche du film Les Deux Orphelines (Orphans of the Storm)" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="fiche">
+        <dt>Titre français</dt><dd>Les Deux Orphelines</dd>
+        <dt>Titre original</dt><dd>Orphans of the Storm</dd>
+        <dt>Réalisation, scénario</dt><dd>D. W. Griffith (scénario signé « Marquis de Trolignac »)<sup class="fn"><a href="#src-11">[11]</a></sup></dd>
+        <dt>D'après</dt><dd>la pièce <em>Les Deux Orphelines</em> d'Adolphe d'Ennery et Eugène Cormon (1874)<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Photographie</dt><dd>G. W. Bitzer, Hendrik Sartov, Paul H. Allen<sup class="fn"><a href="#src-3">[3]</a></sup></dd>
+        <dt>Montage</dt><dd>James Smith, Rose Smith<sup class="fn"><a href="#src-3">[3]</a></sup></dd>
+        <dt>Décors</dt><dd>Charles M. Kirk, Edward Scholl<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Musique (ciné-concert)</dt><dd>Louis F. Gottschalk, William F. Peters<sup class="fn"><a href="#src-3">[3]</a></sup></dd>
+        <dt>Production</dt><dd>D. W. Griffith, Inc.</dd>
+        <dt>Distribution</dt><dd>United Artists</dd>
+        <dt>Interprètes principaux</dt><dd>Lillian Gish, Dorothy Gish, Joseph Schildkraut, Monte Blue, Morgan Wallace, Lucille La Verne<sup class="fn"><a href="#src-3">[3]</a></sup></dd>
+        <dt>Tournage</dt><dd>Juin – octobre 1921, studio D. W. Griffith de Mamaroneck (New York), avec des extérieurs à Orient Point (Long Island)<sup class="fn"><a href="#src-7">[7]</a></sup></dd>
+        <dt>Sortie</dt><dd>28 décembre 1921 (É.-U.) · 30 janvier 1922 (R.-U.)<sup class="fn"><a href="#src-10">[10]</a></sup></dd>
+        <dt>Durée</dt><dd>~150 min en version de sortie initiale (roadshow) ; une version plus courte a circulé par la suite<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Genre</dt><dd>Mélodrame historique, muet, noir et blanc teinté</dd>
+      </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="synopsis">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">02</span><h2>Synopsis</h2></div>
+      <p>
+        À Paris, à la veille de la Révolution française. Louise, enfant naturelle d'une famille
+        aristocratique, est abandonnée sur le parvis de Notre-Dame et recueillie par les parents
+        d'Henriette : les deux fillettes grandissent comme deux sœurs, sans lien de sang<sup class="fn"><a href="#src-9">[9]</a></sup>.
+        Une épidémie emporte leurs parents et laisse Louise aveugle<sup class="fn"><a href="#src-9">[9]</a></sup>. Les deux
+        jeunes femmes partent pour Paris dans l'espoir qu'un médecin rende la vue à Louise, mais
+        un aristocrate débauché, le marquis de Praille, fait enlever Henriette pour la mener à
+        ses plaisirs<sup class="fn"><a href="#src-6">[6]</a></sup>. Livrée à elle-même, Louise tombe aux mains de la mère
+        Frochard, une mendiante qui l'exploite dans les rues<sup class="fn"><a href="#src-9">[9]</a></sup>.
+      </p>
+      <p>
+        Sauvée par le chevalier de Vaudrey, aristocrate loyal envers le peuple, dont elle
+        s'éprend, Henriette voit son destin rattrapé par la tourmente révolutionnaire : de Vaudrey
+        est arrêté comme aristocrate, et Henriette avec lui pour l'avoir caché<sup class="fn"><a href="#src-1">[1]</a></sup>.
+        Seule l'intervention de Danton, figure tutélaire et rédemptrice de la Révolution dans le
+        récit de Griffith, permet d'arracher les deux amants à la guillotine in extremis<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="production">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">03</span><h2>Contexte de production</h2></div>
+      <p>
+        Le film adapte <em>Les Deux Orphelines</em>, mélodrame créé à Paris en 1874 par Adolphe
+        d'Ennery et Eugène Cormon, plus tard décliné en roman<sup class="fn"><a href="#src-2">[2]</a></sup>. La pièce, adaptée
+        pour la scène américaine dès 1874 sous le titre <em>The Two Orphans</em>, avait déjà été
+        portée à l'écran treize fois depuis 1906, dont deux versions américaines antérieures
+        (1911, par Otis Turner ; 1915, par Herbert Brenon, film aujourd'hui perdu avec Theda
+        Bara)<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>. L'actrice Kate Claxton, qui avait créé le rôle sur scène et en détenait
+        les droits, se montra réticente à une nouvelle adaptation ; Griffith dut également racheter
+        les droits de distribution américains d'une version allemande concurrente, tournée au même
+        moment, pour protéger l'exploitation de son propre film<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <p>
+        C'est Lillian Gish qui aurait suggéré le projet à Griffith, pensant confier le second rôle
+        à sa sœur Dorothy ; contre toute attente, Griffith attribua à Dorothy — habituellement
+        cantonnée aux rôles de comédienne — le rôle passif de l'aveugle Louise, quand Lillian
+        était plutôt connue pour incarner les héroïnes en détresse<sup class="fn"><a href="#src-3">[3]</a></sup>. Griffith signa lui-même
+        le scénario sous le pseudonyme « Marquis de Trolignac »<sup class="fn"><a href="#src-11">[11]</a></sup>.
+      </p>
+      <p>
+        Le tournage se déroula de juin à octobre 1921 au studio que Griffith avait installé à
+        Mamaroneck, dans l'État de New York, après le succès de <em>Way Down East</em> (1920)<sup class="fn"><a href="#src-7">[7]</a></sup><sup class="fn"><a href="#src-20">[20]</a></sup>.
+        D'importants décors y furent construits pour recréer le Paris révolutionnaire, avec prise
+        de la Bastille et dispositif de guillotine<sup class="fn"><a href="#src-1">[1]</a></sup>. Le film sortit le 28 décembre 1921
+        distribué par United Artists, la société de production indépendante que Griffith avait
+        cofondée deux ans plus tôt avec Mary Pickford, Douglas Fairbanks et Charlie Chaplin<sup class="fn"><a href="#src-20">[20]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">04</span><h2>Structure narrative</h2></div>
+      <p>
+        Le récit se construit en deux mouvements distincts. Le premier reprend l'intrigue de la
+        pièce originale : mélodrame de la séparation, de l'exploitation et de l'enlèvement, dans
+        la veine du théâtre populaire du XIXe siècle. Le second, ancré explicitement dans la
+        Révolution française et nourri, selon plusieurs analystes, de motifs empruntés à <em>A
+        Tale of Two Cities</em> de Dickens, convoque des figures historiques — Louis XVI,
+        Robespierre, Danton, une apparition de Lafayette — pour hisser le mélodrame intime au rang
+        de fresque politique<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-6">[6]</a></sup>.
+      </p>
+      <p>
+        Un critique anglophone a compté jusqu'à cinq sous-intrigues distinctes, entremêlées dès
+        l'ouverture puis progressivement resserrées vers un unique dénouement<sup class="fn"><a href="#src-6">[6]</a></sup>. Cette
+        complexité, caractéristique de la manière dickensienne revendiquée par le film, culmine
+        dans le procédé le plus identifiable de Griffith : le montage alterné, déployé ici dans sa
+        forme la plus aboutie pour la course-poursuite finale vers la guillotine.
+      </p>
+    </div>
+  </section>
+
+  <section id="mise-en-scene">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">05</span><h2>Mise en scène et procédés techniques</h2></div>
+      <p>
+        Comme la plupart des grands films muets de cette période, la copie d'exploitation
+        n'était pas uniformément noir et blanc : le film recourt à des teintes monochromes —
+        rouge, bleu, vert, jaune, sépia — appliquées bobine par bobine pour orienter
+        l'émotion du spectateur en l'absence de dialogue parlé, une pratique que l'historien du
+        cinéma Paul O'Dell a documentée dès 1970<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <p>
+        Griffith orchestre par ailleurs de vastes scènes de foule pour donner corps aux émeutes
+        révolutionnaires et aux excès aristocratiques, avec une reconstitution soignée du Paris du
+        XVIIIe siècle saluée pour son ampleur<sup class="fn"><a href="#src-6">[6]</a></sup>. Le jeu d'acteur, souvent jugé plus
+        subtil que dans les précédents films de Griffith, est porté par trois chefs opérateurs aux
+        sensibilités complémentaires : Billy Bitzer, vétéran des années Biograph, Hendrik Sartov,
+        connu pour son travail en flou artistique sur le visage de Lillian Gish, et Paul H.
+        Allen<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-6">[6]</a></sup>.
+      </p>
+      <div class="crosscut">
+        <div class="cc-title">Signature : le montage alterné du sauvetage final</div>
+        <div class="cc-grid">
+          <div class="cc-col red">
+            <div class="cc-frame">Paris — le tribunal révolutionnaire</div>
+            <div class="cc-frame">La charrette vers l'échafaud</div>
+            <div class="cc-frame">Henriette face à la guillotine</div>
+          </div>
+          <div class="cc-links">
+            <span>↔</span><span>↔</span><span>↔</span>
+          </div>
+          <div class="cc-col blue">
+            <div class="cc-frame">Danton obtient la grâce</div>
+            <div class="cc-frame">La course à cheval dans Paris</div>
+            <div class="cc-frame">L'arrivée in extremis</div>
+          </div>
+        </div>
+        <p class="cc-caption">
+          En intercoupant les deux lignes d'action, Griffith « étire » le temps de l'action :
+          les quelques pas qu'Henriette met à parcourir vers l'échafaud, une fois fragmentés par
+          le montage, occupent à l'écran deux à trois fois leur durée réelle<sup class="fn"><a href="#src-1">[1]</a></sup>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="personnages">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">06</span><h2>Personnages principaux</h2></div>
+      <div class="cast-grid">
+        <div class="cast-card">
+          <h3>Henriette Girard</h3>
+          <span class="role">Lillian Gish</span>
+          <p>Sœur adoptive dévouée, figure d'endurance confrontée successivement à la violence
+          aristocratique puis à la machine judiciaire révolutionnaire.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Louise Girard</h3>
+          <span class="role">Dorothy Gish</span>
+          <p>Sœur aveugle et passive — un contre-emploi pour Dorothy, habituellement cantonnée
+          aux rôles de comédienne<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Chevalier de Vaudrey</h3>
+          <span class="role">Joseph Schildkraut</span>
+          <p>L'« aristocrate ami du peuple », incarnation de la thèse d'« entente inter-classes »
+          défendue par le film<sup class="fn"><a href="#src-19">[19]</a></sup>.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Danton</h3>
+          <span class="role">Monte Blue</span>
+          <p>Figure idéalisée d'une Révolution raisonnable, opposée au fanatisme prêté à
+          Robespierre.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Mère Frochard</h3>
+          <span class="role">Lucille La Verne</span>
+          <p>Mendiante exploiteuse ; l'actrice servira, quinze ans plus tard, de modèle de
+          référence aux animateurs de Disney pour la vieille sorcière de <em>Blanche-Neige</em><sup class="fn"><a href="#src-6">[6]</a></sup>.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Marquis de Praille</h3>
+          <span class="role">Morgan Wallace</span>
+          <p>Aristocrate débauché, incarnation de la corruption de l'Ancien Régime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">07</span><h2>Thèmes</h2></div>
+      <ul class="theme-list">
+        <li><strong>Conflit de classes et « entente inter-classes ».</strong> Le film présente
+        explicitement la Révolution comme un plaidoyer contre la haine destructrice, mettant dos à
+        dos une aristocratie décadente et un peuple emporté par la fureur, au profit d'une voie
+        médiane incarnée par Danton et le chevalier de Vaudrey<sup class="fn"><a href="#src-19">[19]</a></sup>.</li>
+        <li><strong>Allégorie politique et propagande.</strong> Griffith fait explicitement de la
+        Révolution française une mise en garde contre la « anarchie et le bolchevisme », en écho à
+        la Révolution russe de 1917 et à la Peur rouge américaine de 1919-1920<sup class="fn"><a href="#src-4">[4]</a></sup>. Les
+        critiques françaises contemporaines pointent une relecture historique très malmenée,
+        allant jusqu'à assimiler Robespierre au bolchevisme et Danton à Abraham Lincoln<sup class="fn"><a href="#src-13">[13]</a></sup>.</li>
+        <li><strong>Sororité et famille choisie.</strong> Le lien entre Henriette et Louise, sans
+        base biologique, structure tout le récit comme un idéal de loyauté qui résiste à la
+        séparation physique.</li>
+        <li><strong>Vulnérabilité et cécité.</strong> La cécité de Louise en fait une victime
+        doublement exposée, économiquement et physiquement ; la restauration finale de sa vue
+        referme le récit sur une résolution aussi symbolique que mélodramatique.</li>
+        <li><strong>Architecture morale du mélodrame.</strong> Vice et vertu s'opposent point par
+        point — aristocrate noble contre aristocrate débauché, révolutionnaire humain contre
+        révolutionnaire fanatique — jusqu'au sauvetage final qui solde d'un coup toutes les
+        souffrances accumulées.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reception">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">08</span><h2>Réception critique et postérité</h2></div>
+      <p>
+        À sa sortie, la presse professionnelle se montre enthousiaste : le magazine <em>Moving
+        Picture World</em> salue un spectacle jugé sans équivalent à l'écran.
+      </p>
+      <blockquote>
+        « No more gorgeous thing has ever been offered on the screen. »
+        <cite>Moving Picture World, cité par TCM</cite>
+      </blockquote>
+      <p>
+        Le succès commercial, lui, fait débat selon les sources : plusieurs historiens du cinéma
+        le comptent, avec <em>Way Down East</em>, parmi les derniers grands triomphes de
+        Griffith<sup class="fn"><a href="#src-21">[21]</a></sup>, tandis que d'autres le qualifient d'échec commercial relatif aux
+        productions antérieures du cinéaste<sup class="fn"><a href="#src-1">[1]</a></sup>. Un fait fait consensus : sa sortie fut en
+        partie éclipsée, une semaine plus tard, par la première de <em>Foolish Wives</em> d'Erich
+        von Stroheim<sup class="fn"><a href="#src-4">[4]</a></sup>.
+      </p>
+      <p>
+        Rétrospectivement, le film recueille 88 % d'avis favorables sur l'agrégateur Rotten
+        Tomatoes (17 critiques)<sup class="fn"><a href="#src-1">[1]</a></sup>. La critique Pauline Kael, tout en jugeant le film
+        éloigné des sommets de Griffith, y reconnaît des moments de « sublimité théâtrale ».
+      </p>
+      <p>
+        Le film marque la dernière collaboration de Lillian et Dorothy Gish avec Griffith, et
+        annonce, avec le recul, le déclin commercial du cinéaste — jusqu'à son départ forcé
+        d'United Artists après l'échec d'<em>Isn't Life Wonderful</em> en 1924<sup class="fn"><a href="#src-21">[21]</a></sup>. Ironie de
+        l'histoire souvent relevée : ce film ouvertement anti-bolchevique a nourri, par la
+        sophistication de son montage alterné, l'œuvre théorique des cinéastes soviétiques Sergueï
+        Eisenstein et Vsevolod Poudovkine<sup class="fn"><a href="#src-4">[4]</a></sup>.
+      </p>
+      <p>
+        Tombé dans le domaine public aux États-Unis, le film a été restauré et préservé par le
+        Museum of Modern Art avec le soutien du Lillian Gish Trust for Film Preservation, et
+        continue d'être projeté en ciné-concert<sup class="fn"><a href="#src-19">[19]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">09</span><h2>Conclusion</h2></div>
+      <p>
+        <em>Les Deux Orphelines</em> se tient à un point de bascule : sommet technique du
+        montage alterné et de la mise en scène de foule chez Griffith, il paraît au moment précis
+        où son cinéma commence à être supplanté par une nouvelle génération — celle-là même que sa
+        grammaire narrative, paradoxalement, contribuera à former. Le film ne peut cependant pas
+        être dissocié du projet idéologique qui l'anime : sous couvert de fresque historique, il
+        instrumentalise la Révolution française pour servir un discours anti-bolchevique daté et
+        une falsification assumée de l'histoire. Sa valeur aujourd'hui est donc double et
+        difficile à réconcilier — une leçon de technique narrative dont l'efficacité émotionnelle
+        reste intacte un siècle plus tard, indissociable d'une allégorie politique réactionnaire
+        qu'il convient de nommer plutôt que d'esthétiser.
+      </p>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap">
+      <div class="carton"><span class="num-acte">10</span><h2>Sources</h2></div>
+      <ol>
+        <li id="src-1">Wikipedia (EN), « Orphans of the Storm » — <a href="https://en.wikipedia.org/wiki/Orphans_of_the_Storm">en.wikipedia.org/wiki/Orphans_of_the_Storm</a></li>
+        <li id="src-2">Wikipédia (FR), « Les Deux Orphelines (film, 1921) » — <a href="https://fr.wikipedia.org/wiki/Les_Deux_Orphelines_(film,_1921)">fr.wikipedia.org</a></li>
+        <li id="src-3">Turner Classic Movies, fiche film — <a href="https://www.tcm.com/tcmdb/title/326474/orphans-of-the-storm">tcm.com/tcmdb/title/326474</a></li>
+        <li id="src-4">Turner Classic Movies, article rétrospectif — <a href="https://www.tcm.com/articles/74681/orphans-of-the-storm">tcm.com/articles/74681</a></li>
+        <li id="src-5">Encyclopædia Britannica — <a href="https://www.britannica.com/topic/Orphans-of-the-Storm">britannica.com/topic/Orphans-of-the-Storm</a></li>
+        <li id="src-6">IMDb, fiche et critiques — <a href="https://www.imdb.com/title/tt0012532/">imdb.com/title/tt0012532</a></li>
+        <li id="src-7">IMDb, Filming &amp; Production — <a href="https://www.imdb.com/title/tt0012532/locations">imdb.com/title/tt0012532/locations</a></li>
+        <li id="src-8">Letterboxd — <a href="https://letterboxd.com/film/orphans-of-the-storm/">letterboxd.com/film/orphans-of-the-storm</a></li>
+        <li id="src-9">FilmAffinity — <a href="https://www.filmaffinity.com/en/film367560.html">filmaffinity.com/en/film367560</a></li>
+        <li id="src-10">Internet Archive — <a href="https://archive.org/details/OrphansOfTheStorm_201312">archive.org/details/OrphansOfTheStorm_201312</a></li>
+        <li id="src-11">Critikat, critique — <a href="https://www.critikat.com/actualite-cine/critique/les-deux-orphelines/">critikat.com</a></li>
+        <li id="src-12">AlloCiné — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=1626.html">allocine.fr</a></li>
+        <li id="src-13">SensCritique, critiques — <a href="https://www.senscritique.com/film/Les_Deux_Orphelines/384472/critiques">senscritique.com</a></li>
+        <li id="src-14">La Cinémathèque française — <a href="https://www.cinematheque.fr/film/32512.html">cinematheque.fr/film/32512</a></li>
+        <li id="src-15">Le Monde de Djayesse (blog cinéma muet) — <a href="https://djayesse.over-blog.com/orphans-of-the-storm-david-wark-griffith-1921.html">djayesse.over-blog.com</a></li>
+        <li id="src-16">Silent-ology — <a href="https://silentology.wordpress.com/2021/02/27/thoughts-on-orphans-of-the-storm-1921/">silentology.wordpress.com</a></li>
+        <li id="src-17">The Guys From... — <a href="https://www.theguysfrom.com/film/2017/5/2/better-late-than-never-orphans-of-the-storm-1921">theguysfrom.com</a></li>
+        <li id="src-18">EBSCO Research Starters — <a href="https://www.ebsco.com/research-starters/film/orphans-storm-silent-film">ebsco.com</a></li>
+        <li id="src-19">Film at Lincoln Center — <a href="https://www.filmlinc.org/films/orphans-of-the-storm/">filmlinc.org</a></li>
+        <li id="src-20">Patch (Larchmont, NY), histoire du studio de Mamaroneck — <a href="https://patch.com/new-york/larchmont/the-birth-of-an-industry-in-the-friendly-village">patch.com</a></li>
+        <li id="src-21">The Early Cinema, filmographie D. W. Griffith — <a href="http://theearlycinema.weebly.com/dw-griffith.html">theearlycinema.weebly.com</a></li>
+        <li id="src-22">Wikimedia Commons, Category:Orphans of the Storm (iconographie) — <a href="https://commons.wikimedia.org/wiki/Category:Orphans_of_the_Storm">commons.wikimedia.org</a></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<div class="sprockets"></div>
+<footer>
+  ANALYSE RÉDIGÉE À PARTIR DES SOURCES CI-DESSUS — 4 JUILLET 2026
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

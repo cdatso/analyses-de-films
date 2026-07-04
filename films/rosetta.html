@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosetta — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1a17;
+    --ink-deep:#100f0d;
+    --asphalt:#26251f;
+    --concrete:#d8d5c9;
+    --concrete-dim:#c2bfb0;
+    --concrete-dark:#8f8c7e;
+    --paper:#eeece3;
+    --vest:#d9560f;
+    --vest-deep:#a3410b;
+    --vest-pale:#f2c9a8;
+    --line:rgba(238,236,227,0.14);
+    --line-dark:rgba(27,26,23,0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Barlow Condensed', sans-serif;
+    text-transform:uppercase;
+    margin:0;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--vest);
+    outline-offset:3px;
+  }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.66rem;
+    color:var(--vest);
+  }
+
+  .wrap{ max-width:900px; margin:0 auto; padding:0 1.6rem; }
+
+  /* ---------- COVER : carte de pointage ---------- */
+  header.cover{
+    background:var(--asphalt);
+    border-bottom:1px solid rgba(217,86,15,0.4);
+    padding:4rem 1.6rem 3rem;
+  }
+  .id-card{
+    max-width:360px;
+    margin:0 auto 2rem;
+    background:var(--concrete);
+    color:var(--ink);
+    border-radius:2px;
+    box-shadow:0 14px 30px rgba(0,0,0,0.4);
+    position:relative;
+    overflow:hidden;
+    padding:1.1rem 1.2rem 1.3rem;
+  }
+  .id-card .id-top{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.1em;
+    color:var(--concrete-dark);
+    border-bottom:1px solid var(--line-dark);
+    padding-bottom:0.5rem;
+    margin-bottom:0.7rem;
+  }
+  .id-card .id-body{ display:flex; gap:0.9rem; }
+  .id-card .silhouette{
+    width:56px; height:68px;
+    background:var(--concrete-dim);
+    border:1px solid var(--concrete-dark);
+    flex-shrink:0;
+    display:flex; align-items:flex-end; justify-content:center;
+    overflow:hidden;
+  }
+  .id-card .silhouette svg{ width:44px; height:60px; }
+  .id-card .id-fields{ font-family:'JetBrains Mono', monospace; font-size:0.62rem; line-height:1.9; color:var(--ink); }
+  .id-card .id-fields b{ color:var(--concrete-dark); font-weight:600; display:inline-block; width:78px; }
+  .id-card .barcode{
+    margin-top:0.8rem;
+    height:20px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 9px, var(--ink) 9px 12px, transparent 12px 14px);
+    opacity:0.85;
+  }
+  .id-card .stamp{
+    position:absolute;
+    right:-18px; top:38%;
+    transform:rotate(-11deg);
+    border:3px solid var(--vest);
+    color:var(--vest);
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    letter-spacing:0.06em;
+    padding:0.2rem 0.9rem;
+    opacity:0.82;
+    mix-blend-mode:multiply;
+  }
+
+  header.cover .cover-title{ text-align:center; }
+  header.cover h1{
+    font-size:clamp(2.6rem, 8vw, 4.2rem);
+    letter-spacing:0.02em;
+    color:var(--paper);
+    font-weight:800;
+  }
+  header.cover .meta-line{
+    margin-top:0.7rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.08em;
+    color:var(--vest);
+  }
+  header.cover .eyebrow{ display:block; text-align:center; margin-bottom:1.6rem; }
+
+  /* ---------- programme ---------- */
+  nav.programme{
+    background:var(--ink-deep);
+    border-bottom:1px solid var(--line);
+    padding:2rem 0 2.2rem;
+  }
+  nav.programme .label{ display:block; text-align:center; margin-bottom:1.1rem; }
+  nav.programme ol{
+    list-style:none; margin:0 auto; padding:0;
+    max-width:640px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.4rem 2rem;
+  }
+  nav.programme li{ border-bottom:1px dotted var(--line); padding:0.45rem 0; }
+  nav.programme a{
+    text-decoration:none;
+    font-size:0.92rem;
+    display:flex; gap:0.55rem; align-items:baseline;
+  }
+  nav.programme a:hover{ color:var(--vest); }
+  nav.programme .num{ font-family:'JetBrains Mono', monospace; color:var(--vest); font-size:0.74rem; }
+  @media (max-width:600px){ nav.programme ol{ grid-template-columns:1fr; } }
+
+  .content-note{
+    max-width:760px; margin:2.2rem auto 0;
+    padding:1.1rem 1.3rem;
+    border:1px solid var(--vest-deep);
+    background:rgba(217,86,15,0.08);
+    font-size:0.9rem;
+  }
+  .content-note .label{ color:var(--vest); margin-bottom:0.45rem; }
+
+  /* ---------- main ---------- */
+  main{ background:var(--paper); color:var(--ink); }
+  section{ padding:3.4rem 0; border-bottom:1px solid var(--line-dark); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:flex; align-items:baseline; gap:0.8rem;
+    margin-bottom:1.8rem;
+    padding-bottom:0.7rem;
+    border-bottom:3px solid var(--ink);
+  }
+  .section-head .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--vest);
+    background:var(--concrete);
+    padding:0.15rem 0.5rem;
+  }
+  .section-head h2{ font-size:1.9rem; }
+
+  section > .wrap > p{ max-width:66ch; }
+  .lead{
+    font-size:1.08rem; font-style:italic;
+    color:var(--concrete-dark);
+    border-left:3px solid var(--vest);
+    padding-left:1rem;
+    margin-bottom:1.5rem;
+    max-width:64ch;
+  }
+
+  sup.fn a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    color:var(--vest-deep);
+    text-decoration:none;
+  }
+  sup.fn a:hover{ text-decoration:underline; }
+
+  /* fiche technique */
+  .fiche{
+    display:grid; grid-template-columns:repeat(2,1fr);
+    border:1px solid var(--line-dark);
+    max-width:780px;
+  }
+  .fiche dt, .fiche dd{ margin:0; padding:0.65rem 1rem; border-bottom:1px solid var(--line-dark); font-size:0.9rem; }
+  .fiche dt{
+    font-family:'JetBrains Mono', monospace; font-size:0.64rem;
+    text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--vest-deep); background:var(--concrete);
+    display:flex; align-items:center;
+  }
+  @media (max-width:600px){ .fiche{ grid-template-columns:1fr; } .fiche dt{ border-bottom:none; padding-bottom:0.2rem; } }
+
+  .back-link{
+    display:inline-block;
+    color:var(--concrete-dim);
+    opacity:0.75;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--vest); }
+
+  .fiche-wrap{ display:flex; gap:1.8rem; flex-wrap:wrap; align-items:flex-start; max-width:780px; }
+  .fiche-wrap .poster{ flex:0 0 180px; margin:0; }
+  .fiche-wrap .poster img{ width:100%; display:block; border:1px solid var(--line-dark); }
+  .fiche-wrap dl.fiche{ flex:1; min-width:280px; max-width:none; }
+
+  /* personnages */
+  .cast-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:1rem; margin-top:1.6rem; }
+  .cast-card{ background:#fff; border:1px solid var(--line-dark); border-top:3px solid var(--vest); padding:1rem 1.1rem; }
+  .cast-card h3{ font-size:1.15rem; margin-bottom:0.15rem; }
+  .cast-card .role{ font-family:'JetBrains Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep); display:block; margin-bottom:0.5rem; }
+  .cast-card p{ font-size:0.86rem; margin:0; font-family:'Work Sans', sans-serif; }
+
+  /* ---------- signature : le circuit de rosetta ---------- */
+  .circuit{
+    margin-top:2rem;
+    border:1px solid var(--line-dark);
+    background:var(--ink-deep);
+    padding:2rem 1.4rem 1.6rem;
+  }
+  .circuit-title{
+    text-align:center; color:var(--paper);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+    margin-bottom:1.6rem;
+  }
+  .circuit-ring{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0.6rem;
+    max-width:680px;
+    margin:0 auto;
+  }
+  .circuit-stop{
+    background:var(--asphalt);
+    border:1px solid rgba(238,236,227,0.14);
+    padding:0.7rem 0.6rem;
+    text-align:center;
+  }
+  .circuit-stop .time{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.62rem; color:var(--vest);
+    display:block; margin-bottom:0.3rem;
+  }
+  .circuit-stop .place{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600; font-size:0.92rem;
+    color:var(--paper); text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .circuit-arrow{
+    text-align:center; color:var(--vest);
+    font-family:'JetBrains Mono', monospace;
+    display:flex; align-items:center; justify-content:center;
+  }
+  @media (max-width:640px){
+    .circuit-ring{ grid-template-columns:1fr; }
+    .circuit-arrow{ transform:rotate(90deg); padding:0.1rem 0; }
+  }
+  .circuit-caption{
+    max-width:640px; margin:1.4rem auto 0;
+    color:var(--concrete-dim); font-size:0.84rem; text-align:center; font-style:italic;
+  }
+
+  blockquote{
+    margin:1.7rem 0; padding:1rem 1.3rem;
+    border-left:3px solid var(--vest);
+    background:var(--concrete);
+    font-style:italic; max-width:62ch;
+  }
+  blockquote cite{
+    display:block; margin-top:0.5rem;
+    font-family:'JetBrains Mono', monospace; font-style:normal;
+    font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--vest-deep);
+  }
+
+  ul.theme-list{ padding-left:1.2rem; max-width:66ch; }
+  ul.theme-list li{ margin-bottom:0.9rem; }
+  ul.theme-list strong{ color:var(--vest-deep); }
+
+  #sources{ background:var(--ink-deep); color:var(--paper); }
+  #sources .section-head{ border-bottom-color:var(--vest); }
+  #sources .section-head h2{ color:var(--paper); }
+  #sources ol{ max-width:780px; padding-left:1.4rem; font-size:0.85rem; color:var(--concrete-dim); }
+  #sources li{ margin-bottom:0.55rem; }
+  #sources a{ color:var(--vest); text-decoration:none; word-break:break-word; }
+  #sources a:hover{ text-decoration:underline; }
+
+  footer{
+    background:var(--ink-deep); color:var(--concrete-dark);
+    text-align:center; padding:2rem 1.6rem 2.4rem;
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <a class="back-link" href="../index.html">← Retour aux analyses</a>
+  <span class="label eyebrow">Analyse cinématographique — drame social · 1999</span>
+  <div class="id-card">
+    <div class="id-top"><span>DOSSIER N° 94/1999</span><span>SERAING · BE</span></div>
+    <div class="id-body">
+      <div class="silhouette">
+        <svg viewBox="0 0 44 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="16" r="11" fill="#8f8c7e"/>
+          <path d="M4 58 C4 40, 12 32, 22 32 C32 32, 40 40, 40 58 Z" fill="#8f8c7e"/>
+        </svg>
+      </div>
+      <div class="id-fields">
+        <div><b>NOM</b> ROSETTA</div>
+        <div><b>ÂGE</b> 17 ANS</div>
+        <div><b>DOMICILE</b> CAMPING, CARAVANE</div>
+        <div><b>STATUT</b> SANS EMPLOI STABLE</div>
+        <div><b>OBJECTIF</b> « UNE VIE NORMALE »</div>
+      </div>
+    </div>
+    <div class="barcode"></div>
+    <div class="stamp">PRÉCARITÉ</div>
+  </div>
+  <div class="cover-title">
+    <h1>Rosetta</h1>
+    <div class="meta-line">JEAN-PIERRE &amp; LUC DARDENNE — 1999 — BELGIQUE / FRANCE</div>
+  </div>
+</header>
+
+<nav class="programme">
+  <span class="label">Au dossier</span>
+  <ol>
+    <li><a href="#fiche"><span class="num">01</span> Fiche technique</a></li>
+    <li><a href="#synopsis"><span class="num">02</span> Synopsis</a></li>
+    <li><a href="#production"><span class="num">03</span> Contexte de production</a></li>
+    <li><a href="#structure"><span class="num">04</span> Structure narrative</a></li>
+    <li><a href="#mise-en-scene"><span class="num">05</span> Mise en scène</a></li>
+    <li><a href="#personnages"><span class="num">06</span> Personnages</a></li>
+    <li><a href="#themes"><span class="num">07</span> Thèmes</a></li>
+    <li><a href="#reception"><span class="num">08</span> Réception et postérité</a></li>
+    <li><a href="#conclusion"><span class="num">09</span> Conclusion</a></li>
+    <li><a href="#sources"><span class="num">10</span> Sources</a></li>
+  </ol>
+  <div class="content-note">
+    <span class="label">Avertissement</span>
+    Ce film montre une situation de grande précarité économique, l'alcoolisme d'un parent, de la
+    violence physique et verbale, ainsi qu'une scène de tentative de mise fin à ses jours par
+    asphyxie. L'analyse qui suit en discute dans un cadre strictement critique et historique.
+    Si ce sujet vous concerne personnellement, sachez que des ressources d'écoute existent — je
+    peux vous orienter vers elles si besoin.
+  </div>
+</nav>
+
+<main>
+
+  <section id="fiche">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">01</span><h2>Fiche technique</h2></div>
+      <div class="fiche-wrap">
+      <figure class="poster">
+        <img src="../assets/posters/rosetta.jpg" alt="Affiche du film Rosetta" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="fiche">
+        <dt>Titre</dt><dd>Rosetta</dd>
+        <dt>Réalisation, scénario</dt><dd>Jean-Pierre Dardenne, Luc Dardenne<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Photographie</dt><dd>Alain Marcoen<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Montage</dt><dd>Marie-Hélène Dozo<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Décors</dt><dd>Igor Gabriel<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Production</dt><dd>Jean-Pierre &amp; Luc Dardenne, Michèle et Laurent Pétin ; productrice associée Arlette Zylberberg<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Interprètes principaux</dt><dd>Émilie Dequenne, Fabrizio Rongione, Olivier Gourmet, Anne Yernaux<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Tournage</dt><dd>Seraing et Jemeppe-sur-Meuse (région liégeoise, Belgique)<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Présentation</dt><dd>Festival de Cannes, compétition officielle, mai 1999<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Durée</dt><dd>91 minutes<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Pays</dt><dd>Belgique, France</dd>
+        <dt>Genre</dt><dd>Drame social, réalisme</dd>
+        <dt>Récompenses principales</dt><dd>Palme d'or (unanimité), Prix d'interprétation féminine — Cannes 1999 ; César du meilleur espoir féminin 2000<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+      </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="synopsis">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">02</span><h2>Synopsis</h2></div>
+      <p>
+        Rosetta, dix-sept ans, vient d'être licenciée d'un emploi en usine à l'issue de sa
+        période d'essai. Elle vit avec sa mère alcoolique dans une caravane, sur un terrain de
+        camping en bordure d'une zone industrielle<sup class="fn"><a href="#src-9">[9]</a></sup>. Chaque jour, elle repart en
+        quête d'un travail, d'une place qu'elle trouve, qu'elle perd, qu'on lui reprend<sup class="fn"><a href="#src-3">[3]</a></sup> :
+        un poste à la baraque à gaufres tenue par un patron peu scrupuleux, où elle se lie, sans
+        vraiment savoir comment être son amie, à un jeune collègue, Riquet.
+      </p>
+      <p>
+        Refusant toute forme de charité ou d'assistance, dissimulant sa pauvreté et l'état de sa
+        mère, Rosetta n'a qu'un seul horizon : obtenir un emploi stable qui lui donnerait accès à
+        une vie « normale », comme les autres, parmi les autres<sup class="fn"><a href="#src-4">[4]</a></sup>. Cette obsession la
+        conduira à un choix moral qui la définira autant qu'il la détruit.
+      </p>
+    </div>
+  </section>
+
+  <section id="production">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">03</span><h2>Contexte de production</h2></div>
+      <p>
+        Après <em>La Promesse</em> (1996), remarqué à la Quinzaine des réalisateurs, les frères
+        Dardenne construisent <em>Rosetta</em> non pas à partir d'une intrigue, mais d'un
+        personnage : Luc Dardenne indique s'être inspiré de la situation du protagoniste K du
+        <em>Château</em> de Kafka, sans cesse refusé à l'entrée d'un monde auquel il aspire, pour
+        façonner une jeune femme constamment repoussée hors d'une société qu'elle cherche à
+        intégrer<sup class="fn"><a href="#src-14">[14]</a></sup>. Le scénario original comportait un personnage d'assistante
+        sociale et une mère plus développée ; ces éléments furent retirés en cours de tournage
+        pour resserrer la caméra sur l'obsession de Rosetta<sup class="fn"><a href="#src-6">[6]</a></sup>.
+      </p>
+      <p>
+        Le tournage a eu lieu à Seraing et Jemeppe-sur-Meuse, dans la région industrielle liégeoise
+        où les frères Dardenne ont grandi et situent l'essentiel de leur filmographie<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-13">[13]</a></sup>.
+        Le prénom « Rosetta » apparaît pour la première fois dans le journal de bord de Luc
+        Dardenne dès septembre 1994, en hommage à l'écrivaine italienne Rosetta Loy<sup class="fn"><a href="#src-1">[1]</a></sup>.
+        Fidèles à leur méthode, les réalisateurs ont fait précéder le tournage de longues
+        répétitions physiques avec les acteurs, puis tourné dans l'ordre chronologique du
+        scénario, en plans-séquences, sans jamais répéter deux fois la même prise à l'identique<sup class="fn"><a href="#src-11">[11]</a></sup>.
+        Émilie Dequenne, alors âgée de dix-sept ans, y fait ses tout premiers pas à l'écran<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">04</span><h2>Structure narrative</h2></div>
+      <p>
+        Le récit renonce à toute mécanique d'intrigue classique pour épouser le rythme du
+        quotidien de Rosetta : une succession de démarches, de trajets, de gestes répétés,
+        organisée non par des rebondissements mais par l'urgence physique de la survie<sup class="fn"><a href="#src-14">[14]</a></sup>.
+        Certaines actions reviennent plusieurs fois à l'identique — la descente dans les bois pour
+        échanger ses bottes contre des chaussures de ville, le déplacement d'un casier à poissons
+        servant de piège improvisé — creusant, par la répétition, le portrait d'un être organisé
+        autour de rituels de contrôle dans une existence qui lui échappe par ailleurs<sup class="fn"><a href="#src-15">[15]</a></sup>.
+      </p>
+      <p>
+        Le film ne recourt jamais au champ-contrechamp classique : la caméra reste presque
+        toujours derrière ou au plus près de Rosetta, refusant au spectateur la position de
+        surplomb qui autoriserait la distance ou l'analyse psychologique<sup class="fn"><a href="#src-16">[16]</a></sup>. Cette structure
+        culmine dans une dernière ligne droite resserrée sur un dilemme moral — dénoncer Riquet
+        pour prendre sa place — dont les conséquences ferment le récit sur un plan fixe, silencieux,
+        sur le seul visage de Rosetta<sup class="fn"><a href="#src-16">[16]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="mise-en-scene">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">05</span><h2>Mise en scène et procédés techniques</h2></div>
+      <p>
+        La « patte Dardenne » se cristallise avec <em>Rosetta</em> : caméra à l'épaule collée au
+        corps de l'actrice, lumière naturelle, absence totale de musique ajoutée<sup class="fn"><a href="#src-10">[10]</a></sup><sup class="fn"><a href="#src-13">[13]</a></sup>.
+        Jean-Pierre Dardenne explique avoir cherché à placer la caméra « à la mauvaise place, en
+        retard, derrière l'épaule », pour que les personnages existent dans leur épaisseur plutôt
+        que dans la démonstration d'une mise en scène<sup class="fn"><a href="#src-11">[11]</a></sup>. Aucune marque au sol, aucune
+        répétition de prise identique : le cadreur connaît sa place mais chaque plan-séquence
+        conserve une tension de premier tournage<sup class="fn"><a href="#src-11">[11]</a></sup>.
+      </p>
+      <p>
+        Cette économie de moyens — sans maquillage appuyé, sans partition, sans ralenti ni
+        emphase — construit un régime de vérité physique où l'émotion naît du geste plutôt que de
+        l'expression<sup class="fn"><a href="#src-13">[13]</a></sup>. La critique Carole Desbarats note que cette fiction « toute
+        mâtinée de documentaire » n'en reste pas moins bâtie sur les rouages du mélodrame ; Luc
+        Dardenne, conscient de ce risque, écrit dans son journal de bord vouloir empêcher le
+        spectateur de céder aux larmes faciles sur son propre sort plutôt que sur celui de
+        Rosetta<sup class="fn"><a href="#src-6">[6]</a></sup>.
+      </p>
+      <div class="circuit">
+        <div class="circuit-title">Signature : le circuit quotidien de Rosetta</div>
+        <div class="circuit-ring">
+          <div class="circuit-stop"><span class="time">06:40</span><span class="place">Caravane</span></div>
+          <div class="circuit-arrow">→</div>
+          <div class="circuit-stop"><span class="time">07:15</span><span class="place">Bois — bottes</span></div>
+          <div class="circuit-arrow">→</div>
+        </div>
+        <div class="circuit-ring" style="margin-top:0.6rem;">
+          <div class="circuit-stop"><span class="time">08:00</span><span class="place">Baraque à gaufres</span></div>
+          <div class="circuit-arrow">→</div>
+          <div class="circuit-stop"><span class="time">18:30</span><span class="place">Casier à poissons</span></div>
+        </div>
+        <p class="circuit-caption">
+          Un même trajet, refait presque à l'identique de jour en jour — la caméra, en le
+          filmant chaque fois avec la même intensité, en fait moins un décor qu'un rituel de
+          survie répété comme une prière.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="personnages">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">06</span><h2>Personnages principaux</h2></div>
+      <div class="cast-grid">
+        <div class="cast-card">
+          <h3>Rosetta</h3>
+          <span class="role">Émilie Dequenne</span>
+          <p>Dix-sept ans, obsédée par l'idée d'un emploi stable et d'une vie « normale » ; un
+          « petit soldat » affrontant seul la forteresse sociale<sup class="fn"><a href="#src-13">[13]</a></sup>.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Riquet</h3>
+          <span class="role">Fabrizio Rongione</span>
+          <p>Collègue de la baraque à gaufres, seul lien social que Rosetta approche, sans savoir
+          nommer ni tenir une amitié.</p>
+        </div>
+        <div class="cast-card">
+          <h3>Le patron</h3>
+          <span class="role">Olivier Gourmet</span>
+          <p>Employeur de la baraque à gaufres, figure d'un pouvoir patronal ordinaire sur des
+          emplois précaires et interchangeables.</p>
+        </div>
+        <div class="cast-card">
+          <h3>La mère</h3>
+          <span class="role">Anne Yernaux</span>
+          <p>Mère alcoolique de Rosetta, source de honte autant que de responsabilité endossée
+          malgré elle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">07</span><h2>Thèmes</h2></div>
+      <ul class="theme-list">
+        <li><strong>Le travail comme seul horizon de dignité.</strong> Pour Rosetta, un emploi
+        n'est pas un moyen de subsistance parmi d'autres mais la condition unique d'existence
+        sociale légitime — la « vie normale » qu'elle récite comme une litanie<sup class="fn"><a href="#src-4">[4]</a></sup>.</li>
+        <li><strong>Solitude et incapacité au lien.</strong> Rosetta ne sait ni nommer ni habiter
+        l'amitié que lui offre Riquet ; la scène où elle se répète seule « j'ai un ami, tu as un
+        ami » dit l'apprentissage à vif d'un lien qu'elle n'a jamais connu<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-9">[9]</a></sup>.</li>
+        <li><strong>La trahison comme survie.</strong> Le dilemme moral final — dénoncer Riquet
+        pour prendre son poste — refuse toute résolution édifiante : le film ne fait de Rosetta ni
+        une héroïne de la lutte des classes, ni un symbole acceptable de sa condition<sup class="fn"><a href="#src-13">[13]</a></sup>.</li>
+        <li><strong>Le corps comme récit.</strong> Marches, courses, chutes, portage d'une
+        bonbonne de gaz trop lourde : le film raconte par l'épuisement physique plutôt que par le
+        dialogue ou l'explication<sup class="fn"><a href="#src-15">[15]</a></sup>.</li>
+        <li><strong>Refus du pathos.</strong> Absence de musique, de psychologisation, de
+        contrechamp classique : une esthétique documentaire mise, selon la critique, au service
+        d'un mélodrame qui refuse de s'assumer comme tel<sup class="fn"><a href="#src-6">[6]</a></sup>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reception">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">08</span><h2>Réception et postérité</h2></div>
+      <p>
+        Présenté en compétition à Cannes en mai 1999, <em>Rosetta</em> reçoit la Palme d'or à
+        l'unanimité du jury présidé par David Cronenberg — une surprise, alors que beaucoup
+        attendaient le sacre du <em>Tout sur ma mère</em> de Pedro Almodóvar<sup class="fn"><a href="#src-1">[1]</a></sup>. Émilie
+        Dequenne reçoit, pour son tout premier rôle, le Prix d'interprétation féminine ex æquo<sup class="fn"><a href="#src-1">[1]</a></sup>.
+        Le film est néanmoins accueilli avec des réserves par une partie de la critique de
+        l'époque, taxé de « misérabilisme » dans son portrait d'une jeune chômeuse<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <p>
+        L'impact du film dépasse le champ critique : la Convention de premier emploi votée par le
+        gouvernement belge est familièrement rebaptisée « plan Rosetta » par les médias, bien que
+        les Dardenne assurent que la coïncidence de calendrier avec la sortie du film soit
+        fortuite<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <blockquote>
+        « La vérité est toujours moins intéressante que la fiction. »
+        <cite>Jean-Pierre Dardenne, The Guardian, cité par Wikipédia</cite>
+      </blockquote>
+      <p>
+        <em>Rosetta</em> installe durablement le style Dardenne — caméra à l'épaule, unité de lieu
+        dans la région de Seraing, refus de la musique ajoutée — comme un jalon du cinéma social
+        européen, souvent rapproché de celui de Ken Loach, et largement cité comme référence par
+        des cinéastes ultérieurs<sup class="fn"><a href="#src-2">[2]</a></sup>. Le film a fait l'objet d'une restauration
+        numérique présentée en rétrospective dans le cadre d'un programme consacré aux cinquante
+        ans du cinéma belge<sup class="fn"><a href="#src-11">[11]</a></sup>.
+      </p>
+      <p>
+        Émilie Dequenne est morte d'un cancer en mars 2025 ; les frères Dardenne, qui envisageaient
+        de retravailler avec elle, ont rendu hommage à l'actrice qui, selon leurs mots, était
+        restée « un peu Rosetta » pour eux<sup class="fn"><a href="#src-12">[12]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">09</span><h2>Conclusion</h2></div>
+      <p>
+        <em>Rosetta</em> impose une méthode plus qu'un style : une caméra qui refuse la distance,
+        un montage qui refuse l'explication, un récit qui refuse l'absolution. En resserrant tout
+        sur le corps et l'obsession d'une jeune femme pour qui un emploi équivaut à une existence
+        reconnue, les frères Dardenne produisent un film aussi difficile à regarder qu'impossible
+        à oublier — un film qui, selon leurs propres mots, ne cherche jamais à faire pleurer le
+        spectateur sur lui-même. Trois décennies plus tard, son empreinte se lit autant dans le
+        vocabulaire du cinéma social contemporain que dans le nom, resté dans l'usage courant en
+        Belgique, d'une mesure de politique publique qu'il n'a pourtant fait que croiser par
+        hasard.
+      </p>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">10</span><h2>Sources</h2></div>
+      <ol>
+        <li id="src-1">Wikipédia (FR), « Rosetta (film) » — <a href="https://fr.wikipedia.org/wiki/Rosetta_(film)">fr.wikipedia.org</a></li>
+        <li id="src-2">Festival de Cannes, fiche film — <a href="https://www.festival-cannes.com/f/rosetta/">festival-cannes.com/f/rosetta</a></li>
+        <li id="src-3">AlloCiné — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=20089.html">allocine.fr</a></li>
+        <li id="src-4">Festival de Cannes, synopsis officiel — <a href="https://www.festival-cannes.com/f/rosetta/">festival-cannes.com</a></li>
+        <li id="src-6">Wikipédia (FR), notes de production et citations critiques — <a href="https://fr.wikipedia.org/wiki/Rosetta_(film)">fr.wikipedia.org</a></li>
+        <li id="src-9">IMDb — <a href="https://www.imdb.com/title/tt0200071/">imdb.com/title/tt0200071</a></li>
+        <li id="src-10">Criterion Collection — <a href="https://www.criterion.com/films/28056-rosetta">criterion.com/films/28056-rosetta</a></li>
+        <li id="src-11">Cineuropa, entretien avec Jean-Pierre et Luc Dardenne — <a href="https://cineuropa.org/fr/interview/342906/">cineuropa.org</a></li>
+        <li id="src-12">SensCritique, extraits d'entretien (Numéro, mai 2025) — <a href="https://www.senscritique.com/film/jeunes_meres/critique/323715319">senscritique.com</a></li>
+        <li id="src-13">TroisCouleurs, « Scène culte : Rosetta des frères Dardenne » — <a href="https://www.troiscouleurs.fr/cinema/scene-culte-rosetta-des-freres-dardenne/">troiscouleurs.fr</a></li>
+        <li id="src-14">RTBF Actus, « Rosetta : 5 choses à savoir sur ce classique belge » — <a href="https://www.rtbf.be/article/rosetta-5-choses-a-savoir-sur-ce-classique-belge-11680247">rtbf.be</a></li>
+        <li id="src-15">Ciné-club de Caen, dossier Rosetta — <a href="https://www.cineclubdecaen.com/realisateur/dardenne/rosetta.htm">cineclubdecaen.com</a></li>
+        <li id="src-16">Les Grignoux, dossier pédagogique Rosetta — <a href="https://www.grignoux.be/dossiers/094/documents">grignoux.be</a></li>
+        <li id="src-17">Cairn.info, Cédric Lomba, « Représentations du social... le cinéma des frères Dardenne » — <a href="https://shs.cairn.info/revue-savoir-agir-2015-4-page-123?lang=fr">cairn.info</a></li>
+        <li id="src-18">Letterboxd — <a href="https://letterboxd.com/film/rosetta/">letterboxd.com/film/rosetta</a></li>
+        <li id="src-19">MUBI — <a href="https://mubi.com/en/us/films/rosetta">mubi.com/films/rosetta</a></li>
+        <li id="src-20">IMP Awards, affiche officielle — <a href="http://www.impawards.com/1999/rosetta.html">impawards.com/1999/rosetta</a></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  ANALYSE RÉDIGÉE À PARTIR DES SOURCES CI-DESSUS — 4 JUILLET 2026
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

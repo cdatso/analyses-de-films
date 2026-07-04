@@ -47,8 +47,21 @@
     </div>
   </section>
 
-  <section id="analyses">
+  <section id="index-films">
     <div class="num">02</div>
+    <h2>Index des films</h2>
+    <table id="film-index">
+      <thead>
+        <tr><th>Titre</th><th>Réalisateur·rice</th><th>Année</th><th>Genre</th></tr>
+      </thead>
+      <tbody id="film-index-body">
+        <!-- Lignes injectées ci-dessous à partir de films-data.js -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="analyses">
+    <div class="num">03</div>
     <h2>Analyses publiées</h2>
     <div class="film-grid" id="film-grid">
       <!-- Les fiches films sont injectées par script.js à partir de films-data.js -->
@@ -64,11 +77,13 @@
 <script src="assets/films-data.js"></script>
 <script>
   const grid = document.getElementById('film-grid');
+  const indexBody = document.getElementById('film-index-body');
+  const sortedFilms = FILMS.slice().sort((a, b) => a.title.localeCompare(b.title, 'fr'));
 
   if (!FILMS.length) {
     grid.innerHTML = '<div class="empty-state">Aucune analyse publiée pour le moment.</div>';
   } else {
-    FILMS.slice().sort((a, b) => a.title.localeCompare(b.title, 'fr')).forEach(function (film) {
+    sortedFilms.forEach(function (film) {
       const card = document.createElement('article');
       card.className = 'film-card';
       const yearText = film.year ? ' · ' + film.year : '';
@@ -86,6 +101,16 @@
         '<a class="read-more" href="' + film.url + '">Lire l\'analyse →</a>' +
         '</div>';
       grid.appendChild(card);
+    });
+
+    sortedFilms.forEach(function (film) {
+      const row = document.createElement('tr');
+      row.innerHTML =
+        '<td><a href="' + film.url + '">' + film.title + '</a></td>' +
+        '<td>' + film.director + '</td>' +
+        '<td>' + (film.year || '') + '</td>' +
+        '<td>' + (film.genre || '') + '</td>';
+      indexBody.appendChild(row);
     });
   }
 

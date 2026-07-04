@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rouges et Blancs — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0c0c0b;
+    --black-deep:#050504;
+    --steppe:#c9c4b4;
+    --steppe-dim:#aba690;
+    --paper:#efece3;
+    --red:#9a2020;
+    --red-deep:#6e1616;
+    --white-fac:#7f95a8;
+    --white-fac-deep:#5c7086;
+    --line:rgba(239,236,227,0.14);
+    --line-dark:rgba(12,12,11,0.15);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--black);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.66;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.66rem;
+    color:var(--steppe-dim);
+  }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 1.6rem; }
+
+  /* ---------- COVER : scope 2.35:1 ---------- */
+  header.cover{
+    background:var(--black-deep);
+    position:relative;
+  }
+  .letterbox-bar{ height:20px; background:#000; }
+  .cover-frame{
+    padding:3.4rem 1.6rem;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.75)),
+      repeating-linear-gradient(180deg, #26251f 0 2px, #201f1a 2px 4px);
+  }
+  header.cover .eyebrow{ margin-bottom:1.6rem; }
+  header.cover h1{
+    font-size:clamp(2.4rem, 8vw, 4.4rem);
+    line-height:1;
+  }
+  header.cover h1 .r{ color:var(--red); }
+  header.cover h1 .b{ color:var(--white-fac); }
+  header.cover .orig-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    color:var(--steppe-dim);
+    margin-top:1rem;
+  }
+  header.cover .meta-line{
+    margin-top:1.4rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.07em;
+    color:var(--steppe);
+  }
+
+  /* ---------- programme ---------- */
+  nav.programme{
+    background:var(--black-deep);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:2.1rem 0 2.3rem;
+  }
+  nav.programme .label{ display:block; text-align:center; margin-bottom:1.1rem; }
+  nav.programme ol{
+    list-style:none; margin:0 auto; padding:0;
+    max-width:640px;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:0.4rem 2rem;
+  }
+  nav.programme li{ border-bottom:1px dotted var(--line); padding:0.45rem 0; }
+  nav.programme a{ text-decoration:none; font-size:0.92rem; display:flex; gap:0.55rem; align-items:baseline; }
+  nav.programme a:hover{ color:var(--red); }
+  nav.programme .num{ font-family:'JetBrains Mono', monospace; color:var(--red); font-size:0.74rem; }
+  @media (max-width:600px){ nav.programme ol{ grid-template-columns:1fr; } }
+
+  .content-note{
+    max-width:760px; margin:2.1rem auto 0;
+    padding:1.1rem 1.3rem;
+    border:1px solid var(--red-deep);
+    background:rgba(154,32,32,0.1);
+    font-size:0.9rem;
+  }
+  .content-note .label{ color:#d98686; margin-bottom:0.45rem; }
+
+  /* ---------- main ---------- */
+  main{ background:var(--paper); color:var(--black); }
+  section{ padding:3.4rem 0; border-bottom:1px solid var(--line-dark); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:flex; align-items:baseline; gap:0.8rem;
+    margin-bottom:1.8rem; padding-bottom:0.6rem;
+    border-bottom:3px solid var(--black);
+  }
+  .section-head .tag{
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem;
+    color:var(--paper); background:var(--black);
+    padding:0.15rem 0.5rem;
+  }
+  .section-head h2{ font-size:1.85rem; }
+
+  section > .wrap > p{ max-width:66ch; }
+
+  sup.fn a{ font-family:'JetBrains Mono', monospace; font-size:0.66rem; color:var(--red-deep); text-decoration:none; }
+  sup.fn a:hover{ text-decoration:underline; }
+
+  /* fiche technique */
+  .fiche{ display:grid; grid-template-columns:repeat(2,1fr); border:1px solid var(--line-dark); max-width:800px; }
+  .fiche dt, .fiche dd{ margin:0; padding:0.65rem 1rem; border-bottom:1px solid var(--line-dark); font-size:0.9rem; }
+  .fiche dt{
+    font-family:'JetBrains Mono', monospace; font-size:0.62rem;
+    text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--red-deep); background:var(--steppe);
+    display:flex; align-items:center;
+  }
+  @media (max-width:600px){ .fiche{ grid-template-columns:1fr; } .fiche dt{ border-bottom:none; padding-bottom:0.2rem; } }
+
+  .back-link{
+    display:inline-block;
+    color:var(--steppe-dim);
+    opacity:0.75;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--red); }
+
+  .fiche-wrap{ display:flex; gap:1.8rem; flex-wrap:wrap; align-items:flex-start; max-width:800px; }
+  .fiche-wrap .poster{ flex:0 0 180px; margin:0; }
+  .fiche-wrap .poster img{ width:100%; display:block; border:1px solid var(--line-dark); }
+  .fiche-wrap dl.fiche{ flex:1; min-width:280px; max-width:none; }
+
+  /* personnages */
+  .cast-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:1rem; margin-top:1.6rem; }
+  .cast-card{ background:#fff; border:1px solid var(--line-dark); padding:1rem 1.1rem; }
+  .cast-card.red-side{ border-top:3px solid var(--red); }
+  .cast-card.white-side{ border-top:3px solid var(--white-fac); }
+  .cast-card.neutral{ border-top:3px solid var(--steppe-dim); }
+  .cast-card h3{ font-size:1.1rem; margin-bottom:0.15rem; text-transform:none; font-family:'Inter',sans-serif; font-weight:700; }
+  .cast-card .role{ font-family:'JetBrains Mono', monospace; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--red-deep); display:block; margin-bottom:0.5rem; }
+  .cast-card p{ font-size:0.86rem; margin:0; }
+
+  /* ---------- signature : géométrie de la terreur ---------- */
+  .geometry{
+    margin-top:2rem;
+    border:1px solid var(--line-dark);
+    background:var(--black-deep);
+    padding:2rem 1.4rem 1.7rem;
+  }
+  .geo-title{
+    text-align:center; color:var(--paper);
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem;
+    letter-spacing:0.12em; text-transform:uppercase;
+    margin-bottom:1.8rem;
+  }
+  .geo-field{
+    position:relative;
+    max-width:680px; margin:0 auto;
+    height:180px;
+    background: linear-gradient(180deg, #1a1914, #201f19);
+    border:1px solid rgba(239,236,227,0.1);
+    overflow:hidden;
+  }
+  .geo-field svg{ width:100%; height:100%; display:block; }
+  .geo-legend{
+    display:flex; justify-content:center; gap:1.6rem;
+    margin-top:1rem;
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem;
+  }
+  .geo-legend span{ display:flex; align-items:center; gap:0.4rem; color:var(--steppe); }
+  .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .dot.r{ background:var(--red); }
+  .dot.w{ background:var(--white-fac); }
+  .geo-caption{
+    max-width:640px; margin:1.3rem auto 0;
+    color:var(--steppe-dim); font-size:0.84rem; text-align:center; font-style:italic;
+  }
+
+  blockquote{
+    margin:1.7rem 0; padding:1rem 1.3rem;
+    border-left:3px solid var(--red);
+    background:var(--steppe);
+    font-style:italic; max-width:62ch;
+  }
+  blockquote cite{
+    display:block; margin-top:0.5rem;
+    font-family:'JetBrains Mono', monospace; font-style:normal;
+    font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--red-deep);
+  }
+
+  ul.theme-list{ padding-left:1.2rem; max-width:66ch; }
+  ul.theme-list li{ margin-bottom:0.9rem; }
+  ul.theme-list strong{ color:var(--red-deep); }
+
+  #sources{ background:var(--black-deep); color:var(--paper); }
+  #sources .section-head{ border-bottom-color:var(--red); }
+  #sources .section-head .tag{ background:var(--red); }
+  #sources .section-head h2{ color:var(--paper); }
+  #sources ol{ max-width:800px; padding-left:1.4rem; font-size:0.85rem; color:var(--steppe-dim); }
+  #sources li{ margin-bottom:0.55rem; }
+  #sources a{ color:var(--white-fac); text-decoration:none; word-break:break-word; }
+  #sources a:hover{ text-decoration:underline; }
+
+  footer{
+    background:var(--black-deep); color:var(--steppe-dim);
+    text-align:center; padding:2rem 1.6rem 2.4rem;
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="letterbox-bar"></div>
+  <div class="cover-frame">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="label eyebrow">Analyse cinématographique — drame de guerre · 1967</span>
+    <h1><span class="r">Rouges</span> <span style="color:var(--steppe)">et</span> <span class="b">Blancs</span></h1>
+    <div class="orig-title">CSILLAGOSOK, KATONÁK</div>
+    <div class="meta-line">MIKLÓS JANCSÓ — 1967 — HONGRIE / URSS — N&amp;B, SCOPE 2.35:1</div>
+  </div>
+  <div class="letterbox-bar"></div>
+</header>
+
+<nav class="programme">
+  <span class="label">Au programme</span>
+  <ol>
+    <li><a href="#fiche"><span class="num">01</span> Fiche technique</a></li>
+    <li><a href="#synopsis"><span class="num">02</span> Synopsis</a></li>
+    <li><a href="#production"><span class="num">03</span> Contexte de production</a></li>
+    <li><a href="#structure"><span class="num">04</span> Structure narrative</a></li>
+    <li><a href="#mise-en-scene"><span class="num">05</span> Mise en scène</a></li>
+    <li><a href="#personnages"><span class="num">06</span> Personnages</a></li>
+    <li><a href="#themes"><span class="num">07</span> Thèmes</a></li>
+    <li><a href="#reception"><span class="num">08</span> Réception et postérité</a></li>
+    <li><a href="#conclusion"><span class="num">09</span> Conclusion</a></li>
+    <li><a href="#sources"><span class="num">10</span> Sources</a></li>
+  </ol>
+  <div class="content-note">
+    <span class="label">Avertissement</span>
+    Ce film de guerre montre des exécutions sommaires, des mises à nu forcées à valeur
+    d'humiliation (imposées à des hommes comme à des femmes) et une menace de violence
+    sexuelle implicite, filmées sans complaisance mais aussi sans distance protectrice.
+    L'analyse qui suit en discute dans un cadre strictement critique et historique.
+  </div>
+</nav>
+
+<main>
+
+  <section id="fiche">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">01</span><h2>Fiche technique</h2></div>
+      <div class="fiche-wrap">
+      <figure class="poster">
+        <img src="../assets/posters/rouges-et-blancs.jpg" alt="Affiche du film Rouges et Blancs (Csillagosok, katonák)" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="fiche">
+        <dt>Titre original</dt><dd>Csillagosok, katonák (« Étoiles, soldats »)<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Titre français</dt><dd>Rouges et Blancs</dd>
+        <dt>Réalisation</dt><dd>Miklós Jancsó</dd>
+        <dt>Scénario</dt><dd>Miklós Jancsó, Gyula Hernádi, Giorgi Mdivani<sup class="fn"><a href="#src-21">[21]</a></sup></dd>
+        <dt>Photographie</dt><dd>Tamás Somló<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Décors</dt><dd>Tamás Banovich, Éva Martin<sup class="fn"><a href="#src-8">[8]</a></sup></dd>
+        <dt>Production</dt><dd>Mafilm Studio n°4 (Hongrie), Mosfilm (URSS)<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Interprètes principaux</dt><dd>András Kozák, Krystyna Mikołajewska, József Madaras, Mikhaïl Kozakov, Tatiana Koniukhova, Nikita Mikhalkov<sup class="fn"><a href="#src-21">[21]</a></sup></dd>
+        <dt>Tournage</dt><dd>Bords de la Volga, URSS</dd>
+        <dt>Sortie</dt><dd>7 novembre 1967 (URSS, version remontée) ; 20 septembre 1968 (É.-U.)<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+        <dt>Sélection</dt><dd>Festival de Cannes 1968 (festival interrompu par mai 68, aucun prix décerné)<sup class="fn"><a href="#src-1">[1]</a></sup></dd>
+        <dt>Durée</dt><dd>87 à 90 min selon les versions et restaurations<sup class="fn"><a href="#src-8">[8]</a></sup></dd>
+        <dt>Pays</dt><dd>Hongrie, URSS</dd>
+        <dt>Genre / format</dt><dd>Drame de guerre, noir et blanc, scope anamorphique 2.35:1</dd>
+        <dt>Distinction</dt><dd>Meilleur film étranger 1969, Syndicat français de la critique de cinéma<sup class="fn"><a href="#src-2">[2]</a></sup></dd>
+      </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="synopsis">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">02</span><h2>Synopsis</h2></div>
+      <p>
+        Russie, 1919. Au cœur de la guerre civile qui suit la révolution bolchévique, László, un
+        internationaliste hongrois, est venu prêter main-forte à ses camarades russes de l'Armée
+        rouge, engagés dans des combats sans merci contre les armées blanches tsaristes sur les
+        rives de la Volga<sup class="fn"><a href="#src-1">[1]</a></sup>. Un monastère et un hôpital de campagne tenu par des
+        infirmières changent plusieurs fois de mains au fil du récit<sup class="fn"><a href="#src-4">[4]</a></sup>.
+      </p>
+      <p>
+        Aux massacres commis par les uns répondent ceux commis par les autres<sup class="fn"><a href="#src-1">[1]</a></sup> : les
+        prisonniers sont dénudés, relâchés, traqués, exécutés ou graciés selon des logiques qui
+        échappent à toute cohérence idéologique claire. Seule Olga, infirmière en chef de
+        l'hôpital, tente de faire tenir un principe de neutralité — soigner les blessés des deux
+        camps — de plus en plus intenable à mesure que le récit avance<sup class="fn"><a href="#src-9">[9]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="production">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">03</span><h2>Contexte de production</h2></div>
+      <p>
+        <em>Rouges et Blancs</em> est une commande officielle : une coproduction soviéto-hongroise
+        destinée à célébrer le cinquantenaire de la révolution d'Octobre 1917<sup class="fn"><a href="#src-2">[2]</a></sup>. Plutôt
+        que de filmer un hommage hagiographique à la naissance du communisme soviétique, Jancsó
+        déplace l'action à 1919, en pleine phase de « communisme de guerre », et choisit de
+        montrer des volontaires hongrois irréguliers soutenant les Rouges dans une guerre civile
+        dépeinte sans emphase héroïque<sup class="fn"><a href="#src-2">[2]</a></sup>.
+      </p>
+      <p>
+        Le résultat déplut fortement à ses commanditaires : la version présentée pour la première
+        officielle du 7 novembre 1967 en URSS fut remontée afin de lui donner un tour plus
+        héroïque<sup class="fn"><a href="#src-2">[2]</a></sup>. Selon les critiques Mira et Antonin Liehm, le montage original de
+        Jancsó — où les Rouges parlent hongrois et les Blancs russe — ne fut, en tant que tel,
+        jamais distribué en Union soviétique, alors même qu'il s'agissait d'une coproduction
+        soviétique<sup class="fn"><a href="#src-1">[1]</a></sup>. Un documentaire de 2011 (Iván Forgách et Sebestyén Kodolányi,
+        52 minutes) reviendra sur cet épisode de censure lors d'une restauration ultérieure du
+        film<sup class="fn"><a href="#src-8">[8]</a></sup><sup class="fn"><a href="#src-21">[21]</a></sup>.
+      </p>
+      <p>
+        Le critique hongrois Robert Bán rapporte que Jancsó s'était fait projeter les grands
+        westerns de John Ford avant le tournage — une influence sensible dans le traitement du
+        paysage et de l'espace du film<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">04</span><h2>Structure narrative</h2></div>
+      <p>
+        Le film renonce délibérément à toute intrigue centrale et à tout protagoniste au sens
+        classique. Jancsó le formule lui-même : « Dans mon film, il n'y a pas deux côtés, deux
+        ennemis, il y a un changement permanent entre les deux groupes »<sup class="fn"><a href="#src-1">[1]</a></sup>. László
+        apparaît à la première comme à la dernière scène sans jamais devenir un centre de
+        gravité narratif<sup class="fn"><a href="#src-9">[9]</a></sup>.
+      </p>
+      <p>
+        Les critiques Liehm rapprochent cette construction de la description stendhalienne de la
+        bataille de Waterloo dans <em>La Chartreuse de Parme</em> : le récit refuse la vision
+        cohérente et synthétique des combats pour adopter la perception fragmentée et
+        désordonnée du combattant lui-même<sup class="fn"><a href="#src-1">[1]</a></sup>. Le pouvoir change de main à un
+        rythme presque comique, chaque prise de contrôle portant avec elle des conséquences
+        mortelles immédiates<sup class="fn"><a href="#src-15">[15]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="mise-en-scene">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">05</span><h2>Mise en scène et procédés techniques</h2></div>
+      <p>
+        La mise en scène de Jancsó repose sur de très longs plans-séquences, chorégraphiés au
+        mouvement près, où figurants et caméra se déplacent selon des trajectoires qui se
+        répondent sans jamais se calquer l'une sur l'autre<sup class="fn"><a href="#src-10">[10]</a></sup>. Le noir et blanc
+        anamorphique en 2.35:1 signé Tamás Somló déploie les combattants dans l'immensité des
+        paysages dépouillés de la Volga — grands angles, profondeur de champ, prises de vue
+        aériennes — au point de les réduire à des figures géométriques absorbées par l'espace<sup class="fn"><a href="#src-1">[1]</a></sup>.
+        Mira et Antonin Liehm appellent cet effet une « géométrie de la terreur »<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <p>
+        Le motif le plus insistant du film reste le rituel de la mise à nu forcée, infligé aux
+        prisonniers des deux camps comme marqueur immédiat de défaite et de vulnérabilité — motif
+        que Jancsó reprendra dans plusieurs films ultérieurs comme signe visuel de toute relation
+        de domination<sup class="fn"><a href="#src-13">[13]</a></sup>. Le son, quant à lui, reste dépouillé de toute musique
+        d'accompagnement non diégétique : bruits de pas isolés, chants d'oiseaux soudain
+        recouverts par des coups de feu<sup class="fn"><a href="#src-10">[10]</a></sup>.
+      </p>
+      <div class="geometry">
+        <div class="geo-title">Signature : la géométrie de la terreur</div>
+        <div class="geo-field">
+          <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 140 C 150 40, 280 160, 400 60" stroke="#9a2020" stroke-width="1.4" fill="none" stroke-dasharray="4 5"/>
+            <path d="M640 40 C 520 140, 380 30, 260 130" stroke="#7f95a8" stroke-width="1.4" fill="none" stroke-dasharray="4 5"/>
+            <circle cx="40" cy="140" r="5" fill="#9a2020"/>
+            <circle cx="220" cy="72" r="5" fill="#9a2020"/>
+            <circle cx="400" cy="60" r="5" fill="#7f95a8"/>
+            <circle cx="640" cy="40" r="5" fill="#7f95a8"/>
+            <circle cx="450" cy="95" r="5" fill="#9a2020"/>
+            <circle cx="260" cy="130" r="5" fill="#7f95a8"/>
+            <text x="30" y="160" fill="#c9c4b4" font-family="JetBrains Mono, monospace" font-size="9">MONASTÈRE</text>
+            <text x="580" y="30" fill="#c9c4b4" font-family="JetBrains Mono, monospace" font-size="9">HÔPITAL</text>
+          </svg>
+        </div>
+        <div class="geo-legend">
+          <span><span class="dot r"></span> position tenue par les Rouges</span>
+          <span><span class="dot w"></span> position tenue par les Blancs</span>
+        </div>
+        <p class="geo-caption">
+          Le pouvoir circule sur le terrain sans jamais s'y fixer : un même lieu change
+          plusieurs fois de couleur, un même corps passe de chasseur à gibier, sans que la
+          caméra ne prenne jamais parti dans son cadrage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="personnages">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">06</span><h2>Personnages principaux</h2></div>
+      <div class="cast-grid">
+        <div class="cast-card red-side">
+          <h3>László</h3>
+          <span class="role">András Kozák</span>
+          <p>Internationaliste hongrois venu combattre aux côtés des Rouges ; présent au début et
+          à la fin du film sans jamais en devenir le centre.</p>
+        </div>
+        <div class="cast-card neutral">
+          <h3>Olga</h3>
+          <span class="role">Krystyna Mikołajewska</span>
+          <p>Infirmière en chef de l'hôpital de campagne, incarnation d'une neutralité et d'une
+          éthique de soin de plus en plus intenables face à la logique de guerre.</p>
+        </div>
+        <div class="cast-card red-side">
+          <h3>Le commandant hongrois</h3>
+          <span class="role">József Madaras</span>
+          <p>Chef des volontaires hongrois engagés aux côtés de l'Armée rouge.</p>
+        </div>
+        <div class="cast-card white-side">
+          <h3>Un officier blanc</h3>
+          <span class="role">Nikita Mikhalkov</span>
+          <p>Rôle tenu par le futur cinéaste russe, alors jeune acteur, figure de l'arbitraire
+          cruel de l'autorité blanche.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">07</span><h2>Thèmes</h2></div>
+      <ul class="theme-list">
+        <li><strong>Cycle de la violence et interchangeabilité des rôles.</strong> Le pouvoir
+        change constamment de main sans que la nature de la domination change — bourreau et
+        victime peuvent échanger leur place d'une séquence à l'autre<sup class="fn"><a href="#src-1">[1]</a></sup>.</li>
+        <li><strong>La dénudation comme rituel de pouvoir.</strong> Déshabiller de force,
+        hommes comme femmes, est le geste par lequel chaque camp affirme sa domination sur
+        l'autre — un motif que Jancsó érige en grammaire visuelle de l'oppression<sup class="fn"><a href="#src-13">[13]</a></sup>.</li>
+        <li><strong>L'espace comme force d'anéantissement.</strong> L'immensité de la steppe et
+        les plans d'ensemble dissolvent l'individu dans la géométrie du terrain, jusqu'à faire de
+        chaque combattant une variable interchangeable du dispositif guerrier<sup class="fn"><a href="#src-1">[1]</a></sup>.</li>
+        <li><strong>Refus de l'héroïsme de commande.</strong> Là où la commande soviétique
+        attendait un récit édifiant de la naissance du communisme, Jancsó livre un film
+        profondément anti-héroïque, sans clarté idéologique ni figure exemplaire<sup class="fn"><a href="#src-2">[2]</a></sup>.</li>
+        <li><strong>Le corps féminin, dernier réduit de neutralité.</strong> Les infirmières,
+        et la tentative d'Olga de soigner sans distinction de camp, représentent un principe
+        que la logique guerrière finit par menacer directement<sup class="fn"><a href="#src-9">[9]</a></sup>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reception">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">08</span><h2>Réception et postérité</h2></div>
+      <p>
+        Conçu comme un hommage officiel, <em>Rouges et Blancs</em> devient, à sa sortie, un
+        embarras pour ses commanditaires soviétiques : remonté pour sa présentation officielle du
+        7 novembre 1967, le film touche malgré tout 2,6 millions de spectateurs en URSS<sup class="fn"><a href="#src-2">[2]</a></sup>,
+        tandis que la version originale de Jancsó n'y sera, elle, jamais distribuée<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      </p>
+      <p>
+        Sélectionné pour la compétition du Festival de Cannes 1968, le film ne concourt
+        finalement pas : le festival est interrompu avant son terme en raison des événements de
+        mai 68 en France, et aucun prix n'est décerné cette année-là<sup class="fn"><a href="#src-1">[1]</a></sup>. Il est
+        néanmoins élu meilleur film étranger de l'année 1969 par le Syndicat français de la
+        critique de cinéma, et sort aux États-Unis le 20 septembre 1968<sup class="fn"><a href="#src-2">[2]</a></sup>.
+      </p>
+      <blockquote>
+        « Jancsó est un génie. Avant lui, le cinéma hongrois n'était qu'une industrie petite-bourgeoise, kitsch et sotte. »
+        <cite>Béla Tarr, cité par Senses of Cinema</cite>
+      </blockquote>
+      <p>
+        Le film s'impose rétrospectivement comme un jalon du plan-séquence politique, annonçant
+        des œuvres ultérieures de Jancsó comme <em>Psaume rouge</em> (1972), et comme une
+        référence majeure pour des cinéastes tels que Béla Tarr<sup class="fn"><a href="#src-11">[11]</a></sup>. Sa parenté avec
+        <em>Je suis Cuba</em> de Mikhaïl Kalatozov — grand-angle noir et blanc, plans-séquences
+        virtuoses au service d'un cinéma de commande politique détourné — est régulièrement
+        relevée par la critique<sup class="fn"><a href="#src-14">[14]</a></sup>. Le film a fait l'objet d'une restauration 4K
+        récente à partir des négatifs originaux, incluant en supplément le documentaire sur la
+        censure soviétique subie lors de sa production<sup class="fn"><a href="#src-8">[8]</a></sup><sup class="fn"><a href="#src-22">[22]</a></sup>.
+      </p>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">09</span><h2>Conclusion</h2></div>
+      <p>
+        <em>Rouges et Blancs</em> retourne contre ses commanditaires l'instrument même de la
+        commande : là où l'on attendait la geste glorieuse d'Octobre, Jancsó livre une mécanique
+        froide où bourreaux et victimes échangent sans cesse leurs rôles, filmée dans une
+        immensité qui réduit chaque combattant à une variable interchangeable. Cette « géométrie
+        de la terreur » ne prend le parti d'aucun camp — pas même, en définitive, celui qui l'a
+        financée — et c'est précisément ce refus qui en a fait, contre toute attente initiale, un
+        des sommets du cinéma politique moderne plutôt qu'un film de commande oublié.
+      </p>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">10</span><h2>Sources</h2></div>
+      <ol>
+        <li id="src-1">Wikipédia (FR), « Rouges et Blancs » — <a href="https://fr.wikipedia.org/wiki/Rouges_et_Blancs">fr.wikipedia.org</a></li>
+        <li id="src-2">Wikipedia (EN), « The Red and the White » — <a href="https://en.wikipedia.org/wiki/The_Red_and_the_White">en.wikipedia.org</a></li>
+        <li id="src-4">Festival de Cannes / La Cinémathèque française, fiche film — <a href="https://www.cinematheque.fr/film/40953.html">cinematheque.fr</a></li>
+        <li id="src-8">Clavis Films, fiche DVD/Blu-ray et bonus — <a href="https://www.clavisfilms.com/miklos-jancso-rouges-et-blancs.php">clavisfilms.com</a></li>
+        <li id="src-9">notcoming.com, critique détaillée — <a href="http://notcoming.com/reviews/theredandthewhite/">notcoming.com</a></li>
+        <li id="src-10">Senses of Cinema, « The Political and Metaphysical Sequence Shot » — <a href="https://www.sensesofcinema.com/2015/cteq/the-red-and-the-white-1967-the-political-and-metaphysical-sequence-shot/">sensesofcinema.com</a></li>
+        <li id="src-11">Senses of Cinema, « In Memoriam: Miklós Jancsó » — <a href="http://sensesofcinema.com/2014/feature-articles/in-memoriam-miklos-jancso-1921-2014/">sensesofcinema.com</a></li>
+        <li id="src-12">Senses of Cinema, « The Round-Up » (contexte stylistique) — <a href="https://www.sensesofcinema.com/2015/cteq/the-round-up/">sensesofcinema.com</a></li>
+        <li id="src-13">photogénie.be, « Remembering Miklós Jancsó: A Long Take on His Early Oeuvre » — <a href="https://photogenie.be/remembering-miklos-jancso-a-long-take-his-early-oeuvre/">photogenie.be</a></li>
+        <li id="src-14">Daily Film Dose, critique — <a href="http://www.dailyfilmdose.com/2007/08/red-and-white.html">dailyfilmdose.com</a></li>
+        <li id="src-15">Rotten Tomatoes, critiques agrégées — <a href="https://www.rottentomatoes.com/m/red_and_the_white">rottentomatoes.com</a></li>
+        <li id="src-16">Shangols (canalblog), critique — <a href="https://shangols.canalblog.com/archives/2007/01/28/3827309.html">shangols.canalblog.com</a></li>
+        <li id="src-17">MUBI, fiche film — <a href="https://mubi.com/en/us/films/the-red-and-the-white">mubi.com</a></li>
+        <li id="src-18">MUBI Notebook, « Relay: A Take in Miklós Jancsó's The Red and the White » — <a href="https://mubi.com/en/notebook/posts/video-essay-relay-a-take-in-miklos-jancso-s-the-red-and-the-white">mubi.com/notebook</a></li>
+        <li id="src-19">MUBI Notebook, « Movie Poster of the Week: Peter Strausfeld's posters » — <a href="https://mubi.com/en/notebook/posts/movie-poster-of-the-week-peter-strausfelds-posters-for-the-early-films-of-miklos-jancso">mubi.com/notebook</a></li>
+        <li id="src-20">Budapest Poster Gallery, affiche originale — <a href="https://budapestposter.com/posters/red-and-the-white-the">budapestposter.com</a></li>
+        <li id="src-21">Magyar Nemzeti Digitális Archívum, fiche technique — <a href="http://mandarchiv.hu/cikk/2346/Csillagosok_katonak">mandarchiv.hu</a></li>
+        <li id="src-22">Amazon, coffret Blu-ray « Miklós Jancsó Collection » (Kino Lorber) — <a href="https://www.amazon.com/Mikl%C3%B3s-Jancs%C3%B3-Collection-Round-Up-Confrontation/dp/B09S258QLP">amazon.com</a></li>
+        <li id="src-23">IMDb — <a href="https://www.imdb.com/title/tt0061537/">imdb.com/title/tt0061537</a></li>
+        <li id="src-24">AlloCiné — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=74439.html">allocine.fr</a></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  ANALYSE RÉDIGÉE À PARTIR DES SOURCES CI-DESSUS — 4 JUILLET 2026
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
