@@ -103,5 +103,15 @@ const FILMS = [
     summary: "Une chorégraphie glaciale de la guerre civile russe, où Miklós Jancsó filme la violence comme une géométrie sans héros.",
     url: 'films/rouges-et-blancs.html',
     poster: 'assets/posters/rouges-et-blancs.jpg'
+  },
+  {
+    slug: 'persona',
+    title: 'Persona',
+    director: 'Ingmar Bergman',
+    year: 1966,
+    genre: 'Drame psychologique',
+    summary: "Écrit en quatorze jours sur un lit d'hôpital, un huis clos entre une infirmière et une actrice devenue muette qui a fini par redéfinir le cinéma moderne.",
+    url: 'films/persona.html',
+    poster: 'assets/posters/persona.jpg'
   }
 ];

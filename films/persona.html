@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0d0c;
+    --ink-soft:#2a2a28;
+    --paper:#e9e9e6;
+    --paper-dim:#d3d3ce;
+    --grey:#8c8c86;
+    --grey-line:rgba(13,13,12,0.14);
+    --line-on-dark:rgba(233,233,230,0.16);
+    --flare:#f5efd8;
+    --blood:#8a1414;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink-soft);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{ color:var(--blood); }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--blood);
+    outline-offset:3px;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.68rem;
+    color:var(--grey);
+  }
+
+  .wrap{ max-width:900px; margin:0 auto; padding:0 1.6rem; }
+
+  /* ---------- COVER : lampe à arc / leader ---------- */
+  header.cover{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    padding:0 0 3rem;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  header.cover .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:4rem 1.6rem 1.2rem;
+    text-align:center;
+    position:relative;
+  }
+  .arc{
+    width:120px; height:120px;
+    margin:0 auto 2rem;
+    position:relative;
+  }
+  .arc::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:50%;
+    border:1px solid var(--line-on-dark);
+  }
+  .arc::after{
+    content:"";
+    position:absolute; inset:38%;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--flare) 0%, rgba(245,239,216,0.25) 55%, transparent 78%);
+    animation:flare 2.6s ease-in-out infinite;
+  }
+  @keyframes flare{
+    0%,100%{ opacity:0.55; transform:scale(0.94); }
+    50%{ opacity:1; transform:scale(1.08); }
+  }
+  .arc .tick{
+    position:absolute; left:50%; top:50%;
+    width:1px; height:60px;
+    background:var(--line-on-dark);
+    transform-origin:top center;
+  }
+
+  header.cover .eyebrow{ display:block; margin-bottom:1.1rem; }
+
+  /* ---------- titre à double exposition ---------- */
+  .duo-title{
+    position:relative;
+    display:inline-block;
+    line-height:0.92;
+  }
+  .duo-title .layer{
+    display:block;
+    font-size:clamp(3rem, 11vw, 5.6rem);
+    letter-spacing:0.02em;
+  }
+  .duo-title .layer.a{
+    color:var(--paper);
+    position:relative;
+    clip-path:polygon(0 0, 51% 0, 51% 100%, 0 100%);
+  }
+  .duo-title .layer.b{
+    color:var(--grey);
+    position:absolute; left:0; top:0;
+    clip-path:polygon(51% 0, 100% 0, 100% 100%, 51% 100%);
+    transform:translateX(3px);
+  }
+  header.cover .orig-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.08em;
+    color:var(--grey);
+    margin-top:1.3rem;
+  }
+  header.cover .meta-line{
+    margin-top:1.5rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--paper-dim);
+  }
+  header.cover .rule{
+    width:52px; height:1px; background:var(--line-on-dark);
+    margin:1.8rem auto 0;
+  }
+
+  /* ---------- avertissement ---------- */
+  .content-warning{
+    max-width:640px;
+    margin:1.6rem auto 0;
+    padding:0.9rem 1.2rem;
+    border:1px solid var(--line-on-dark);
+    background:rgba(233,233,230,0.05);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--paper-dim);
+    text-align:left;
+    line-height:1.6;
+  }
+  .content-warning strong{ color:var(--paper); }
+
+  /* ---------- programme / TOC ---------- */
+  nav.programme{
+    background:var(--ink);
+    border-bottom:1px solid var(--line-on-dark);
+    padding:2rem 0 2.2rem;
+  }
+  nav.programme .label{ display:block; text-align:center; margin-bottom:1.1rem; color:var(--grey); }
+  nav.programme ol{
+    list-style:none;
+    margin:0 auto; padding:0;
+    max-width:660px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.5rem 2.2rem;
+  }
+  nav.programme li{
+    border-bottom:1px dotted var(--line-on-dark);
+    padding:0.5rem 0;
+  }
+  nav.programme a{
+    text-decoration:none;
+    color:var(--paper);
+    font-size:0.92rem;
+    display:flex; gap:0.6rem; align-items:baseline;
+  }
+  nav.programme a:hover{ color:var(--flare); }
+  nav.programme .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--grey);
+    font-size:0.76rem;
+  }
+
+  main{ max-width:760px; margin:0 auto; padding:3rem 1.6rem 6rem; }
+
+  section{ margin-bottom:3.4rem; scroll-margin-top:2rem; }
+
+  .carton{
+    display:flex; align-items:center; gap:0.9rem;
+    margin-bottom:1.3rem;
+  }
+  .num-leader{
+    flex:0 0 auto;
+    width:40px; height:40px;
+    border-radius:50%;
+    border:1px solid var(--grey-line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--grey);
+    position:relative;
+  }
+  .num-leader::after{
+    content:"";
+    position:absolute; left:50%; top:-11px;
+    width:1px; height:9px;
+    background:var(--grey-line);
+  }
+  .carton h2{ font-size:1.5rem; font-weight:500; }
+
+  h3{ font-size:1.05rem; font-weight:600; margin:1.6rem 0 0.5rem; }
+  p{ margin:0 0 1.05rem; }
+  ul, ol.content-list{ margin:0 0 1.05rem; padding-left:1.25rem; }
+  li{ margin-bottom:0.45rem; }
+
+  blockquote{
+    margin:1.5rem 0;
+    padding:0.2rem 0 0.2rem 1.2rem;
+    border-left:2px solid var(--blood);
+    font-style:italic;
+    color:var(--ink);
+  }
+  blockquote cite{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-style:normal;
+    font-size:0.76rem;
+    color:var(--grey);
+    margin-top:0.4rem;
+  }
+
+  .fiche-wrap{ display:flex; gap:1.6rem; flex-wrap:wrap; align-items:flex-start; }
+  .fiche-wrap .poster{ flex:0 0 170px; margin:0; }
+  .fiche-wrap .poster img{
+    width:100%; display:block;
+    border:1px solid var(--grey-line);
+    filter:grayscale(100%) contrast(1.05);
+  }
+  .fiche-wrap .fact-grid{ flex:1; min-width:220px; margin:0; }
+
+  .fact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:1px;
+    background:var(--grey-line);
+    border:1px solid var(--grey-line);
+  }
+  .fact-grid div{ background:var(--paper); padding:0.8rem 0.9rem; }
+  .fact-grid .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--grey); margin-bottom:0.3rem;
+  }
+  .fact-grid .v{ font-size:0.92rem; color:var(--ink); }
+
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+    gap:1.1rem;
+    margin:1.4rem 0;
+  }
+  .cast-card{
+    border:1px solid var(--grey-line);
+    padding:1rem 1.1rem;
+    background:rgba(13,13,12,0.02);
+  }
+  .cast-card h3{ margin:0 0 0.15rem; font-size:1rem; }
+  .cast-card .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; color:var(--grey);
+    display:block; margin-bottom:0.5rem;
+  }
+  .cast-card p{ font-size:0.92rem; margin:0; }
+
+  table{ width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.92rem; }
+  th, td{ text-align:left; padding:0.55rem 0.75rem; border-bottom:1px solid var(--grey-line); vertical-align:top; }
+  th{ font-weight:600; color:var(--ink); border-bottom:1px solid var(--ink); font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; }
+
+  sup.fn a{ text-decoration:none; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; }
+
+  ul.sources{ font-family:'IBM Plex Mono', monospace; font-size:0.86rem; }
+  ul.sources li{ margin-bottom:0.65rem; }
+  ul.sources a{ word-break:break-word; }
+
+  footer{
+    border-top:1px solid var(--grey-line);
+    padding:2rem 1.5rem;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--grey);
+    background:var(--ink);
+  }
+  footer .label{ color:var(--grey); }
+
+  @media (max-width:600px){
+    nav.programme ol{ columns:1; grid-template-columns:1fr; }
+    header.cover{ padding:0 0 2.4rem; }
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--grey);
+    opacity:0.75;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ opacity:1; color:var(--flare); }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="eyebrow label">Suède — 1966 — Noir et blanc</span>
+    <div class="duo-title">
+      <span class="layer a">PERSONA</span>
+      <span class="layer b" aria-hidden="true">PERSONA</span>
+    </div>
+    <div class="arc"><span class="tick"></span></div>
+    <div class="orig-title">TITRE DE TRAVAIL : « KINEMATOGRAF »</div>
+    <div class="meta-line">INGMAR BERGMAN · SVENSK FILMINDUSTRI</div>
+    <div class="rule"></div>
+    <div class="content-warning">
+      <strong>Avertissement.</strong> Le prologue du film comporte des images susceptibles de heurter la sensibilité (mise à mort d'un animal filmée de façon explicite, imagerie corporelle et une insertion sexuelle très brève et quasi subliminale) ainsi que des thèmes de rejet maternel et d'effondrement psychique.
+    </div>
+  </div>
+</header>
+
+<nav class="programme">
+  <span class="label">Sommaire</span>
+  <ol>
+    <li class="mono"><a href="#fiche"><span class="num">01</span> Fiche technique</a></li>
+    <li class="mono"><a href="#synopsis"><span class="num">02</span> Synopsis</a></li>
+    <li class="mono"><a href="#production"><span class="num">03</span> Contexte de production</a></li>
+    <li class="mono"><a href="#structure"><span class="num">04</span> Structure narrative</a></li>
+    <li class="mono"><a href="#mise-en-scene"><span class="num">05</span> Mise en scène</a></li>
+    <li class="mono"><a href="#personnages"><span class="num">06</span> Personnages</a></li>
+    <li class="mono"><a href="#themes"><span class="num">07</span> Thèmes</a></li>
+    <li class="mono"><a href="#reception"><span class="num">08</span> Réception</a></li>
+    <li class="mono"><a href="#conclusion"><span class="num">09</span> Conclusion</a></li>
+    <li class="mono"><a href="#sources"><span class="num">10</span> Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+  <section id="fiche">
+    <div class="carton"><span class="num-leader mono">01</span><h2>Fiche technique</h2></div>
+    <div class="fiche-wrap">
+      <figure class="poster">
+        <img src="../assets/posters/persona.jpg" alt="Affiche du film Persona" onerror="this.closest('.poster').remove()">
+      </figure>
+      <div class="fact-grid">
+        <div><div class="k">Réalisation, scénario</div><div class="v">Ingmar Bergman</div></div>
+        <div><div class="k">Photographie</div><div class="v">Sven Nykvist</div></div>
+        <div><div class="k">Montage</div><div class="v">Ulla Ryghe</div></div>
+        <div><div class="k">Musique</div><div class="v">Lars Johan Werle</div></div>
+        <div><div class="k">Décors</div><div class="v">Bibi Lindström</div></div>
+        <div><div class="k">Production</div><div class="v">Svensk Filmindustri</div></div>
+        <div><div class="k">Distribution</div><div class="v">Bibi Andersson, Liv Ullmann, Margaretha Krook, Gunnar Björnstrand</div></div>
+        <div><div class="k">Sortie</div><div class="v">18 octobre 1966 (Suède)</div></div>
+        <div><div class="k">Durée</div><div class="v">env. 83 minutes</div></div>
+        <div><div class="k">Récompenses</div><div class="v">Guldbagge du meilleur film 1967</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="synopsis">
+    <div class="carton"><span class="num-leader mono">02</span><h2>Synopsis</h2></div>
+    <p>
+      En pleine représentation d'<em>Électre</em>, la comédienne Elisabet Vogler est saisie d'un
+      mutisme soudain et total. Après un séjour à l'hôpital, sa doctoresse la confie à une jeune
+      infirmière, Alma, et les envoie toutes deux se reposer dans une maison isolée au bord de la
+      mer<sup class="fn"><a href="#src-2">[2]</a></sup>. Face au silence obstiné d'Elisabet, Alma
+      comble peu à peu le vide en se confiant sans retenue — jusqu'à raconter un épisode intime
+      de sa vie qu'elle regrettera d'avoir partagé. La découverte d'une lettre où Elisabet livre
+      un jugement cruel sur sa patiente fait basculer la relation : la confiance se change en
+      rivalité, puis en une confusion croissante entre les deux femmes, dont les visages, les
+      voix et les souvenirs finissent par se superposer sans que le film tranche jamais entre
+      hypothèse clinique, vision et réalité.
+    </p>
+  </section>
+
+  <section id="production">
+    <div class="carton"><span class="num-leader mono">03</span><h2>Contexte de production</h2></div>
+    <p>
+      Au printemps 1965, Bergman est hospitalisé au Sofiahemmet de Stockholm pour une double
+      pneumonie compliquée d'une infection de l'oreille interne<sup class="fn"><a href="#src-10">[10]</a></sup>. Il doit abandonner un
+      projet de grande envergure pour la Svensk Filmindustri, <em>Les Mangeurs d'hommes</em>, déjà
+      en préparation avec Bibi Andersson et un petit rôle prévu pour la jeune Liv Ullmann<sup class="fn"><a href="#src-10">[10]</a></sup>.
+      Alité, feuilletant la presse, il tombe sur deux photographies des actrices et reste frappé
+      par la ressemblance de leurs visages sous un éclairage particulier<sup class="fn"><a href="#src-3">[3]</a></sup>. De cette
+      obsession naît, en quatorze jours d'écriture à raison d'une heure par jour, le scénario d'un
+      film à équipe réduite qu'il baptise d'abord <em>Kinematograf</em><sup class="fn"><a href="#src-10">[10]</a></sup>. Bergman
+      dira plus tard : <q>Persona m'a sauvé la vie</q><sup class="fn"><a href="#src-13">[13]</a></sup>.
+    </p>
+    <p>
+      Le tournage commence en studio à Stockholm le 19 juillet 1965 avant de se poursuivre sur
+      l'île de Fårö, où Bergman s'installera ensuite définitivement, et s'achève le 15 septembre
+      de la même année<sup class="fn"><a href="#src-4">[4]</a></sup>. Le patron de la Svensk Filmindustri, Kenne Fant, ayant jugé
+      « triste » le titre <em>Kinematograf</em>, Bergman lui substitue <em>Persona</em>, du latin
+      désignant le masque de théâtre antique<sup class="fn"><a href="#src-4">[4]</a></sup>. Bergman présentera le film à la presse
+      comme une <q>sonate pour deux instruments</q><sup class="fn"><a href="#src-19">[19]</a></sup>, construite autour d'Alma et
+      d'Elisabet.
+    </p>
+  </section>
+
+  <section id="structure">
+    <div class="carton"><span class="num-leader mono">04</span><h2>Structure narrative</h2></div>
+    <p>
+      Le film s'ouvre et se referme sur l'image d'un projecteur qui s'allume puis s'éteint,
+      encadrant tout le récit comme la projection d'une pellicule et non comme une histoire
+      racontée de l'extérieur<sup class="fn"><a href="#src-7">[7]</a></sup>. Entre ces deux bornes, un prologue de sept minutes
+      juxtapose sans dialogue une série d'images disjointes — dessin animé, mise à mort d'un
+      agneau, clou enfoncé dans une paume, corps à la morgue — avant qu'un jeune garçon ne se
+      réveille et caresse un écran où se dessine un visage de femme flou<sup class="fn"><a href="#src-16">[16]</a></sup>.
+    </p>
+    <p>
+      Passé ce prologue, le récit progresse par doublements plutôt que par enchaînement causal :
+      le long monologue où Alma imagine la vie sexuelle et familiale d'Elisabet est filmé et rejoué
+      deux fois à l'identique, une première fois cadré sur le visage d'Elisabet, une seconde sur
+      celui d'Alma<sup class="fn"><a href="#src-19">[19]</a></sup>. Au point de bascule du film, vers la quarante-quatrième minute,
+      la pellicule elle-même semble se déchirer et brûler, comme si le support ne supportait plus
+      la tension entre les deux personnages<sup class="fn"><a href="#src-11">[11]</a></sup> — avant qu'un ultime segment ne montre
+      l'équipe de tournage filmant la scène, brouillant définitivement la frontière entre le
+      dispositif et la fiction<sup class="fn"><a href="#src-18">[18]</a></sup>.
+    </p>
+  </section>
+
+  <section id="mise-en-scene">
+    <div class="carton"><span class="num-leader mono">05</span><h2>Mise en scène et procédés techniques</h2></div>
+    <p>
+      Sven Nykvist tourne en noir et blanc au format standard, privilégiant un éclairage
+      indirect et diffus, dit « en rebond », qui module la lumière selon chaque visage plutôt que
+      selon une formule fixe<sup class="fn"><a href="#src-21">[21]</a></sup>. Cette approche, déjà éprouvée sur les films en noir et
+      blanc du début des années 1960, culmine ici dans des gros plans extrêmes destinés, selon les
+      mots mêmes du directeur de la photographie, à laisser voir <q>ce qui se passe derrière les
+      yeux</q> de chaque actrice<sup class="fn"><a href="#src-22">[22]</a></sup>.
+    </p>
+    <p>
+      Plusieurs effets sont obtenus directement en tournage ou au montage : une scène utilise de
+      la fumée et un miroir pour brouiller le cadre, tandis que l'image la plus célèbre du film —
+      un visage composite, moitié Bibi Andersson, moitié Liv Ullmann — naît d'une idée de Bergman
+      en salle de montage ; aucune des deux actrices, à la première projection, ne s'y
+      reconnaîtra<sup class="fn"><a href="#src-5">[5]</a></sup>. La scène où le film semble prendre feu inquiète à ce point les
+      projectionnistes lors des premières séances que les bobines doivent être marquées d'une
+      étiquette rouge garantissant que la pellicule ne brûle pas réellement<sup class="fn"><a href="#src-4">[4]</a></sup>.
+    </p>
+    <p>
+      Le prologue contient également un photogramme quasi subliminal — trois images sur les
+      quelque cent vingt mille que compte le film, soit environ un huitième de seconde — montrant
+      un sexe masculin en érection, découvert par la critique bien après la sortie du
+      film<sup class="fn"><a href="#src-17">[17]</a></sup>. Associé à des images d'archives — un bonze s'immolant au Sud-Vietnam,
+      une photographie de la rafle du ghetto de Varsovie — ce montage introduit d'emblée une
+      violence historique et politique dans un film par ailleurs resserré sur deux femmes et une
+      maison isolée<sup class="fn"><a href="#src-2">[2]</a></sup>.
+    </p>
+  </section>
+
+  <section id="personnages">
+    <div class="carton"><span class="num-leader mono">06</span><h2>Personnages</h2></div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <h3>Alma</h3>
+        <span class="role">Bibi Andersson</span>
+        <p>Jeune infirmière loquace, chargée de veiller sur Elisabet ; le silence de sa patiente
+        la pousse à une confession de plus en plus intime, jusqu'à un geste d'automutilation qui
+        signe la perte de ses propres repères.</p>
+      </div>
+      <div class="cast-card">
+        <h3>Elisabet Vogler</h3>
+        <span class="role">Liv Ullmann</span>
+        <p>Actrice de théâtre célèbre, mutique depuis une représentation d'<em>Électre</em> ;
+        son silence, jamais expliqué cliniquement, devient un miroir qui absorbe la parole
+        d'autrui.</p>
+      </div>
+      <div class="cast-card">
+        <h3>La doctoresse</h3>
+        <span class="role">Margaretha Krook</span>
+        <p>Seule instance extérieure à formuler une hypothèse sur l'état d'Elisabet, avant de
+        disparaître du récit et de laisser les deux femmes seules face à elles-mêmes.</p>
+      </div>
+      <div class="cast-card">
+        <h3>M. Vogler</h3>
+        <span class="role">Gunnar Björnstrand</span>
+        <p>Mari d'Elisabet, dont l'apparition brève entretient l'ambiguïté sur l'identité de la
+        femme à qui il s'adresse — Elisabet, ou déjà Alma dans son rôle.</p>
+      </div>
+      <div class="cast-card">
+        <h3>Le garçon</h3>
+        <span class="role">Jörgen Lindström</span>
+        <p>Figure muette du prologue et de l'épilogue, dont le geste — caresser un écran où
+        flotte un visage de femme indistinct — encadre tout le film comme une question sans
+        réponse.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="carton"><span class="num-leader mono">07</span><h2>Thèmes</h2></div>
+    <ul>
+      <li><strong>Le masque et l'identité.</strong> <em>Persona</em>, masque de théâtre en latin,
+      renvoie à la notion jungienne de persona comme façade sociale opposée au moi
+      intérieur<sup class="fn"><a href="#src-19">[19]</a></sup> — une ambivalence que le français redouble, où « personne »
+      désigne à la fois quelqu'un et l'absence de quiconque.</li>
+      <li><strong>La fusion et la vampirisation.</strong> Le rapport entre les deux femmes est
+      décrit par la critique comme une contamination réciproque, presque vampirique, où chacune
+      finit par parler d'elle-même en croyant parler de l'autre<sup class="fn"><a href="#src-1">[1]</a></sup>.</li>
+      <li><strong>La maternité refusée.</strong> Alma reproche à Elisabet d'avoir désiré la mort
+      de son enfant ; Elisabet, en retour, ravive chez Alma la culpabilité liée à son propre
+      avortement — deux versions d'une même peur de la maternité<sup class="fn"><a href="#src-11">[11]</a></sup>.</li>
+      <li><strong>Le cinéma comme sujet du film.</strong> Premier et dernier titre du projet,
+      <em>Kinematograf</em> encadre littéralement <em>Persona</em> ; l'appareil de projection,
+      la pellicule qui brûle et l'équipe de tournage filmée à la fin rappellent sans cesse que
+      l'on regarde une construction, non une confession directe<sup class="fn"><a href="#src-7">[7]</a></sup>.</li>
+      <li><strong>L'intrusion de l'Histoire.</strong> Les images du bonze immolé et du ghetto de
+      Varsovie, insérées dans un huis clos intime, posent la question de la responsabilité de
+      l'artiste face aux catastrophes collectives dont il se tient, par son art, à distance<sup class="fn"><a href="#src-2">[2]</a></sup>.</li>
+    </ul>
+  </section>
+
+  <section id="reception">
+    <div class="carton"><span class="num-leader mono">08</span><h2>Réception critique et postérité</h2></div>
+    <p>
+      Accueilli favorablement dès sa sortie suédoise, le film inspire à la presse locale le
+      néologisme <em>Person(a)kult</em> pour désigner ses admirateurs les plus enthousiastes<sup class="fn"><a href="#src-1">[1]</a></sup>.
+      Il remporte le prix du meilleur film à la 4<sup>e</sup> cérémonie des Guldbagge et devient le
+      film proposé par la Suède à l'Oscar du meilleur film en langue étrangère<sup class="fn"><a href="#src-1">[1]</a></sup>. En
+      France, les <em>Cahiers du cinéma</em> le classent en tête de leur liste des dix meilleurs
+      films de l'année 1967 et le qualifient du plus beau film de Bergman<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-14">[14]</a></sup>,
+      tandis que Susan Sontag lui consacre, dans <em>Sight and Sound</em>, un essai qui restera
+      l'une des lectures critiques les plus citées du film<sup class="fn"><a href="#src-6">[6]</a></sup>.
+    </p>
+    <p>
+      L'accueil américain est plus disparate : certains organes qualifient le film, dans un
+      registre hostile, de simple film sur le lesbianisme<sup class="fn"><a href="#src-14">[14]</a></sup>, tandis que la
+      censure exige la suppression du photogramme incriminé aux États-Unis et au Royaume-Uni, ainsi
+      que des coupes dans le sous-titrage du monologue d'Alma — éléments rétablis lors des
+      restaurations en langue anglaise de 2001<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-18">[18]</a></sup>. Sur le plan commercial,
+      <em>Persona</em> reste un échec relatif tant en Suède qu'aux États-Unis, où sa diffusion se
+      limite à quelques salles<sup class="fn"><a href="#src-18">[18]</a></sup>.
+    </p>
+    <p>
+      La réputation du film n'a cessé de croître depuis : cinquième film de tous les temps au
+      sondage de la critique <em>Sight and Sound</em> de 1972 — la meilleure place jamais obtenue
+      par un film suédois — puis dix-septième en 2012 et dix-huitième en 2022<sup class="fn"><a href="#src-15">[15]</a></sup>. Il
+      recueille aujourd'hui 91 % d'avis favorables sur Rotten Tomatoes et un score de 86 sur 100
+      sur Metacritic<sup class="fn"><a href="#src-1">[1]</a></sup>, et figure en sixième position du classement des cent plus
+      grands films en langue étrangère établi par la BBC en 2018<sup class="fn"><a href="#src-1">[1]</a></sup>.
+    </p>
+    <p>
+      Son influence traverse plusieurs générations de cinéastes : Robert Altman s'en inspire pour
+      <em>Images</em> (1972) puis <em>3 Women</em> (1977)<sup class="fn"><a href="#src-1">[1]</a></sup>, Jean-Luc Godard en détourne le
+      monologue d'Alma dans <em>Week-end</em> (1967)<sup class="fn"><a href="#src-1">[1]</a></sup>, Woody Allen y fait référence dans
+      <em>Guerre et Amour</em> (1975) et <em>Stardust Memories</em> (1980)<sup class="fn"><a href="#src-19">[19]</a></sup>, et David Fincher
+      reprend la pellicule qui brûle ainsi que le photogramme subliminal dans <em>Fight
+      Club</em> (1999)<sup class="fn"><a href="#src-14">[14]</a></sup>. La parenté avec <em>Mulholland Drive</em> (2001) de David Lynch,
+      construit lui aussi sur la fusion de deux identités féminines, est largement commentée par la
+      critique universitaire<sup class="fn"><a href="#src-24">[24]</a></sup>.
+    </p>
+  </section>
+
+  <section id="conclusion">
+    <div class="carton"><span class="num-leader mono">09</span><h2>Conclusion</h2></div>
+    <p>
+      Né d'un effondrement physique et d'une obsession pour deux visages photographiés côte à
+      côte, <em>Persona</em> transforme sa propre genèse en méthode : un film sur la difficulté de
+      distinguer un être d'un autre, qui refuse lui-même de distinguer clairement projection et
+      confession, dispositif et vérité. Sa radicalité formelle — prologue sans récit, monologue
+      dédoublé, pellicule qui se déchire, tournage exhibé — ne se referme jamais sur une explication
+      unique, ce qui explique à la fois la richesse ininterrompue de ses lectures critiques et
+      l'exigence qu'il impose à qui le regarde. Bergman affirmait avoir touché, avec ce film,
+      des secrets sans mots que seul le cinéma peut découvrir : plus d'un demi-siècle et plusieurs
+      générations de cinéastes plus tard, <em>Persona</em> continue moins à se laisser comprendre
+      qu'à se laisser habiter.
+    </p>
+  </section>
+
+  <section id="sources">
+    <div class="carton"><span class="num-leader mono">10</span><h2>Sources</h2></div>
+    <ol class="sources">
+      <li id="src-1">Wikipedia (EN), « Persona (1966 film) » — <a href="https://en.wikipedia.org/wiki/Persona_(1966_film)">en.wikipedia.org/wiki/Persona_(1966_film)</a></li>
+      <li id="src-2">Wikipédia (FR), « Persona (film) » — <a href="https://fr.wikipedia.org/wiki/Persona_(film)">fr.wikipedia.org/wiki/Persona_(film)</a></li>
+      <li id="src-3">AlloCiné, fiche film et genèse — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=4397.html">allocine.fr/film/fichefilm_gen_cfilm=4397</a></li>
+      <li id="src-4">Ingmar Bergman Foundation, « Persona » (production notes) — <a href="https://www.ingmarbergman.se/en/production/persona">ingmarbergman.se/en/production/persona</a></li>
+      <li id="src-5">The Criterion Collection, « 10 Things I Learned: Persona » — <a href="https://www.criterion.com/current/posts/5596-10-things-i-learned-persona">criterion.com/current/posts/5596</a></li>
+      <li id="src-6">Cinephilia & Beyond, « Persona: Ingmar Bergman's Psychological Masterpiece » (essai de Susan Sontag) — <a href="https://cinephiliabeyond.org/persona-ingmar-bergmans-psychological-masterpiece-white-whale-critical-analysis/">cinephiliabeyond.org</a></li>
+      <li id="src-7">Cinemontage, « Persona (1966) » — <a href="https://cinemontage.org/persona-1966/">cinemontage.org/persona-1966</a></li>
+      <li id="src-10">KinoScript, « Persona – Ingmar Bergman » — <a href="http://www.kinoscript.com/persona-ingmar-bergman/">kinoscript.com/persona-ingmar-bergman</a></li>
+      <li id="src-11">Cinéma en déconstruction, « Persona (Ingmar Bergman, 1966) » — <a href="https://cinemadecons.fr/index.php/2023/12/20/persona-ingmar-bergman-1966/">cinemadecons.fr</a></li>
+      <li id="src-13">TroisCouleurs, « Persona : le film de Bergman réinterprété par l'IA » — <a href="https://www.troiscouleurs.fr/cinema/cinema-news/persona-le-film-de-bergman-reinterprete-par-lintelligence-artificielle/">troiscouleurs.fr</a></li>
+      <li id="src-14">TroisCouleurs, « Autour de Persona, un film inspiré et inspirant » — <a href="https://www.troiscouleurs.fr/cinema/video-autour-de-persona-de-bergman-un-film-inspire-et-inspirant/">troiscouleurs.fr/video-autour-de-persona</a></li>
+      <li id="src-15">Ciné-club de Caen, « Sight and Sound : meilleurs films de tous les temps » — <a href="https://www.cineclubdecaen.com/analyse/sightandsoundmeilleursfilmsdetouslestemps.htm">cineclubdecaen.com</a></li>
+      <li id="src-16">366 Weird Movies, « 139. Persona (1966) » — <a href="https://366weirdmovies.com/139-persona-1966/">366weirdmovies.com</a></li>
+      <li id="src-17">Manchester Hive, « Persona's penis », in <em>Ingmar Bergman</em> — <a href="https://www.manchesterhive.com/display/9789198557718/9789198557718.00018.xml">manchesterhive.com</a></li>
+      <li id="src-18">Reelviews, critique de Persona — <a href="https://www.reelviews.net/reelviews/persona">reelviews.net/reelviews/persona</a></li>
+      <li id="src-19">BFI, « Persona: 5 films inspired by Ingmar Bergman's masterpiece » — <a href="https://www.bfi.org.uk/lists/persona-films-inspired-ingmar-bergman-60th-anniversary">bfi.org.uk</a></li>
+      <li id="src-21">American Society of Cinematographers, « ASC Salutes Sven Nykvist » — <a href="https://theasc.com/articles/asc-salutes-sven-nykvist">theasc.com/articles/asc-salutes-sven-nykvist</a></li>
+      <li id="src-22">Wolfcrow, « Understanding the Cinematography of Sven Nykvist » — <a href="https://wolfcrow.com/understanding-cinematography-sven-nykvist/">wolfcrow.com</a></li>
+      <li id="src-24">Université de Leiden, « Us, We, Me, I: The Artifice of Identity and Film in Persona, 3 Women, and Mulholland Drive » (mémoire) — <a href="https://studenttheses.universiteitleiden.nl/access/item:3149532/view">studenttheses.universiteitleiden.nl</a></li>
+      <li id="src-poster">IMP Awards, affiche du film — <a href="http://www.impawards.com/1967/persona.html">impawards.com/1967/persona.html</a></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <span class="label">ANALYSE RÉDIGÉE À PARTIR DES SOURCES CI-DESSUS — 5 JUILLET 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
