@@ -32,6 +32,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Au fil de l'eau | Fritz Lang | 1950 | Film noir gothique | ✅ Publié | 5 juillet 2026 | films/au-fil-de-leau.html | https://cdatso.github.io/analyses-de-films/films/au-fil-de-leau.html |
 | Raging Bull | Martin Scorsese | 1980 | Drame biographique | ✅ Publié | 5 juillet 2026 | films/raging-bull.html | https://cdatso.github.io/analyses-de-films/films/raging-bull.html |
 | Le Cheval de Turin | Béla Tarr | 2011 | Drame contemplatif | ✅ Publié | 5 juillet 2026 | films/le-cheval-de-turin.html | https://cdatso.github.io/analyses-de-films/films/le-cheval-de-turin.html |
+| La mariée était en noir | François Truffaut | 1968 | Thriller | 🟡 Staging | 6 juillet 2026 | films/la-mariee-etait-en-noir.html | https://cdatso.github.io/analyses-de-films/films/la-mariee-etait-en-noir.html |
 
 ---
 

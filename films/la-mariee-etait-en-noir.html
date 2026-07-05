@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La mariée était en noir (1968) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE FAIRE-PART =====
+     Deuil chic 1968 : blanc cassé, noir profond, voile gris —
+     et la liste des cinq noms que l'on barre, un à un. */
+  :root{
+    --ivoire:#f1efe9;
+    --ivoire-sombre:#e6e3da;
+    --noir:#0e0d0c;
+    --noir-doux:#2e2c29;
+    --voile:#a5a19a;
+    --lys:#ffffff;
+    --sang-seche:#6e2f2a;
+    --ligne:rgba(14,13,12,0.16);
+    --ligne-claire:rgba(241,239,233,0.2);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivoire);
+    color:var(--noir-doux);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    font-size:1.01rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Overpass Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- LE FAIRE-PART (EN-TÊTE) ---------- */
+  header.fairepart{
+    background:var(--noir);
+    color:var(--ivoire);
+    padding:4.8rem 1.5rem 4rem;
+    text-align:center;
+    position:relative;
+  }
+  header.fairepart::after{
+    content:"";
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:120px; height:1px; background:var(--voile);
+  }
+  .fairepart-inner{ max-width:720px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:var(--voile);
+    font-family:'Overpass Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.6rem;
+  }
+  .back-link:hover{ color:var(--lys); }
+  .fairepart .liseret{
+    width:64px; height:1px; background:var(--voile);
+    margin:0 auto 2.2rem;
+  }
+  .fairepart .mono{ color:var(--voile); }
+  h1.title{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    font-size:clamp(2.5rem, 6.5vw, 4rem);
+    line-height:1.08;
+    margin:1.2rem 0 0.6rem;
+    color:var(--lys);
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:54ch;
+    margin:0 auto 2.4rem;
+    color:rgba(241,239,233,0.82);
+  }
+  .les-cinq{
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:0.4rem 1.6rem;
+    font-family:'Overpass Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--voile);
+    border-top:1px solid var(--ligne-claire);
+    padding-top:1.3rem;
+  }
+  .les-cinq .raye{ text-decoration:line-through; text-decoration-color:var(--sang-seche); text-decoration-thickness:2px; }
+  .meta-line{
+    margin-top:1.4rem;
+    font-family:'Overpass Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--voile);
+  }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.registre{
+    max-width:700px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.7rem;
+    border:1px solid var(--ligne);
+    background:var(--ivoire-sombre);
+  }
+  nav.registre .mono{ color:var(--noir); display:block; margin-bottom:0.8rem; }
+  nav.registre ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.registre ol{ columns:1; } }
+  nav.registre li{ margin-bottom:0.35rem; }
+  nav.registre a{ color:var(--noir); text-decoration:none; border-bottom:1px solid var(--voile); }
+  nav.registre a:hover{ border-color:var(--noir); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:700px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .tete{ text-align:left; margin-bottom:1.4rem; }
+  .tete .num{
+    font-family:'Overpass Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.2em;
+    color:var(--sang-seche);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .tete h2{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    font-size:1.7rem;
+    color:var(--noir);
+    margin:0 0 0.55rem;
+  }
+  .tete .barre{
+    width:100%; height:1px; background:var(--ligne);
+    position:relative;
+  }
+  .tete .barre::before{
+    content:""; position:absolute; left:0; top:0;
+    width:64px; height:1px; background:var(--noir);
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--noir); font-weight:500; }
+  em{ font-style:italic; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:0 1.5rem;
+    text-align:center;
+    font-family:'DM Serif Display', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--noir);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.6rem;
+    font-family:'Overpass Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--voile);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Overpass Mono', monospace;
+    font-size:0.6rem;
+    color:var(--sang-seche);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--noir); }
+
+  /* ---------- FICHE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:var(--lys);
+    box-shadow:0 2px 0 var(--ligne);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .etat-civil{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .etat-civil{ grid-template-columns:1fr; } }
+  .etat-civil .label{
+    font-family:'Overpass Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--voile);
+    margin-bottom:0.15rem;
+  }
+  .etat-civil .value{ font-size:0.93rem; color:var(--noir); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--sang-seche); word-break:break-all; }
+  section.sources a:hover{ color:var(--noir); }
+
+  footer.condoleances{
+    border-top:1px solid var(--ligne);
+    margin-top:3.5rem;
+    padding:1.5rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Overpass Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--voile);
+  }
+</style>
+</head>
+<body>
+
+<header class="fairepart">
+  <div class="fairepart-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="liseret"></div>
+    <span class="mono">Analyse cinématographique</span>
+    <h1 class="title">La mariée était en noir</h1>
+    <p class="subtitle">François Truffaut, 1968 — cinq noms sur une liste, une robe qui
+    alterne le blanc et le noir, et le plus hitchcockien des films de la Nouvelle Vague.</p>
+    <div class="les-cinq">
+      <span class="raye">Bliss</span>
+      <span class="raye">Coral</span>
+      <span class="raye">Morane</span>
+      <span>Delvaux</span>
+      <span class="raye">Fergus</span>
+    </div>
+    <div class="meta-line">France / Italie · 107 minutes · Eastmancolor · Thriller</div>
+  </div>
+</header>
+
+<nav class="registre" aria-label="Sommaire">
+  <span class="mono">Registre</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="tete"><span class="num">I</span><h2>Fiche technique</h2><div class="barre"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/la-mariee-etait-en-noir.jpg"
+           alt="Affiche du film La mariée était en noir"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="etat-civil">
+      <div><div class="label">Réalisation</div><div class="value">François Truffaut</div></div>
+      <div><div class="label">Scénario</div><div class="value">François Truffaut et Jean-Louis Richard, d'après <em>The Bride Wore Black</em> de William Irish (1940)</div></div>
+      <div><div class="label">Photographie</div><div class="value">Raoul Coutard (Eastmancolor)</div></div>
+      <div><div class="label">Musique</div><div class="value">Bernard Herrmann</div></div>
+      <div><div class="label">Production</div><div class="value">Les Films du Carrosse, Les Productions Artistes Associés, Dino De Laurentiis Cinematografica</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Jeanne Moreau ; Claude Rich, Michel Bouquet, Michael Lonsdale, Charles Denner, Daniel Boulanger</div></div>
+      <div><div class="label">Tournage</div><div class="value">16 mai – 10 novembre 1967 (Paris, Côte d'Azur, Grésivaudan)</div></div>
+      <div><div class="label">Sortie</div><div class="value">17 avril 1968 (France) · 1 274 411 entrées</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="tete"><span class="num">II</span><h2>Synopsis</h2><div class="barre"></div></div>
+  <p>Sur le parvis de l'église, au sortir de la cérémonie, David s'effondre : une balle,
+  tirée d'une fenêtre voisine, vient de faire de Julie Kohler une veuve en robe de mariée.
+  Après une tentative de suicide, Julie disparaît — et réapparaît, méthodique, sur la route
+  de cinq hommes qui ne la connaissent pas : Bliss, Coral, Morane, Delvaux, Fergus<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Un à un, sous des identités d'emprunt, elle les approche, les séduit ou les endort de
+  confiance, puis les raye de sa liste. Le film ne cache ni son plan ni son mobile très
+  longtemps : la question n'est pas de savoir qui elle est, mais si quelque chose — la
+  police, un peintre qui la regarde vraiment, ou ce qui lui reste de vie — pourra
+  interrompre la cérémonie funèbre qu'elle s'est prescrite<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="tete"><span class="num">III</span><h2>Contexte de production</h2><div class="barre"></div></div>
+  <p>Le projet vient de loin : Truffaut a découvert très jeune <em>The Bride Wore Black</em>
+  (1940) de William Irish — pseudonyme du New-Yorkais Cornell Woolrich, qu'il décrivait
+  comme « le grand écrivain de la série blême », artiste « de la peur, de l'horreur et des
+  nuits sans sommeil »<sup class="fn"><a href="#src-2">[2]</a></sup>. L'adaptation, coécrite
+  avec Jean-Louis Richard, est tournée du 16 mai au 10 novembre 1967 entre Paris, la Côte
+  d'Azur et la vallée du Grésivaudan, en coproduction franco-italienne avec Dino De
+  Laurentiis<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Pour la Mariée, Truffaut n'envisage que Jeanne Moreau — mais à une condition : que ce
+  film « n'ait aucune image en commun avec <em>Jules et Jim</em> ». Il lui demande une
+  vengeresse froide, la moins expressive possible — « comme Bogart », aimait-il à
+  dire<sup class="fn"><a href="#src-2">[2]</a></sup>. Et pour parachever l'hommage au maître
+  qu'il venait d'interviewer cinquante heures durant (le livre d'entretiens paraît en 1966),
+  il engage Bernard Herrmann, le compositeur d'Hitchcock, pour leur seconde et dernière
+  collaboration après <em>Fahrenheit 451</em><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="tete"><span class="num">IV</span><h2>Structure narrative</h2><div class="barre"></div></div>
+  <p>La construction est celle d'une litanie : cinq mouvements, un par nom, chacun avec son
+  décor, son registre (comédie mondaine, huis clos pathétique, farce conjugale, atelier
+  d'artiste) et son mode opératoire — l'écharpe, le poison, l'enfermement, la flèche. Entre
+  les exécutions, des flashbacks reconstituent par fragments le mariage et la balle perdue,
+  si bien que la cause n'est révélée en entier qu'une fois la mécanique déjà bien
+  entamée<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Truffaut applique ici la leçon de suspense hitchcockienne qu'il connaissait par cœur :
+  le spectateur en sait toujours plus que les victimes, et l'attente remplace la surprise.
+  Mais il déplace l'enjeu — pas de whodunit, pas d'enquêteur héroïque : la seule question
+  dramatique est la complétude de la liste. D'où cette fin logique jusqu'au vertige, où
+  l'arrestation même de Julie devient un moyen d'atteindre le dernier nom, derrière les
+  murs d'une prison<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="tete"><span class="num">V</span><h2>Mise en scène et procédés techniques</h2><div class="barre"></div></div>
+  <p>Raoul Coutard photographie en Eastmancolor une héroïne qui ne porte que du blanc et du
+  noir — robe de deuil ou robe de lys, jamais de demi-teinte : la palette morale du film est
+  cousue dans sa garde-robe. Truffaut regrettera pourtant la couleur, estimant que le noir
+  et blanc aurait « épaissi le mystère »<sup class="fn"><a href="#src-2">[2]</a></sup> —
+  l'un des griefs qu'il nourrissait contre son propre film.</p>
+  <p>La partition de Herrmann, elle, travaille l'ambiguïté cérémonielle : la marche nuptiale
+  de Mendelssohn y côtoie des cordes funèbres, mariage et enterrement fondus en un seul
+  rituel sonore. Et la mise en scène cultive un lyrisme trouble que la critique a bien
+  identifié : « jamais thriller n'aura été aussi sensuel, emballé comme un film d'amour
+  romantique » — une « danse macabre » filmée avec la douceur d'une
+  romance<sup class="fn"><a href="#src-3">[3]</a></sup>. Les meurtres eux-mêmes sont presque
+  pudiques ; la violence du film est toute entière dans la patience de Julie, filmée comme
+  on filme une apparition — la femme voyage de ville en ville, tel Cary Grant dans
+  <em>La Mort aux trousses</em>, silhouette irréelle posée dans des décors
+  quotidiens<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="tete"><span class="num">VI</span><h2>Personnages principaux</h2><div class="barre"></div></div>
+  <p><strong>Julie Kohler</strong> (Jeanne Moreau) est l'inversion terme à terme de la femme
+  fatale : elle en a tous les attributs — la séduction, le mystère, la mort au bout — mais
+  Truffaut lui donne ce que le film noir refuse d'ordinaire à cette figure : une raison.
+  La critique l'a noté dès l'époque : le cinéaste « bouleverse l'image traditionnelle de la
+  femme fatale en lui donnant une raison valable de se venger », en faisant une victime
+  peut-être détraquée plutôt qu'une prédatrice<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Moreau la joue en somnambule exacte, ange et démon à la fois — un être que le film
+  n'absout ni ne condamne<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Face à elle, les cinq hommes composent une typologie douce-amère de la vanité
+  masculine : le séducteur mondain (Claude Rich), le solitaire pathétique qui vit d'un
+  souvenir de femme (Michel Bouquet), le notable politicien pontifiant (Michael Lonsdale),
+  le receleur minable (Daniel Boulanger) et le peintre (Charles Denner) — le seul qui
+  regarde Julie au lieu de se regarder en elle, et qui fait d'elle son modèle en Diane
+  chasseresse, arc à la main : l'art seul, dans ce film, voit la vérité en face, et c'est
+  lui qu'elle frappe avec la flèche<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="tete"><span class="num">VII</span><h2>Thèmes</h2><div class="barre"></div></div>
+  <p>Le deuil, d'abord — non comme tristesse mais comme programme. Julie ne pleure pas :
+  elle exécute, et le film suggère que cette liturgie de la vengeance est la seule forme de
+  fidélité qui lui reste. La robe alternativement blanche et noire dit l'essentiel : la noce
+  et le deuil sont devenus, pour elle, un seul et même état civil.</p>
+  <p>Le hasard, ensuite — matière première de tout Woolrich : une balle partie par
+  accident, un jeu d'hommes désœuvrés, et cinq vies ordinaires deviennent coupables. La
+  disproportion entre la légèreté de la faute et l'implacabilité du châtiment est le vrai
+  sujet moral du film, qui refuse soigneusement d'arbitrer — ni réquisitoire contre Julie,
+  ni absolution des cinq<sup class="fn"><a href="#src-3">[3]</a></sup>. Enfin, le film
+  retourne le regard masculin comme un gant : chacun des cinq projette sur cette inconnue
+  son propre fantasme — la conquête, la muse, l'épouse idéale — et c'est précisément ce
+  fantasme qui les tue. La femme imaginée par les hommes se révèle être leur exécutrice :
+  en 1968, sous ses dehors de série noire élégante, c'est une idée d'une modernité
+  considérable.</p>
+</section>
+
+<section id="reception">
+  <div class="tete"><span class="num">VIII</span><h2>Réception critique et postérité</h2><div class="barre"></div></div>
+  <p>À sa sortie en avril 1968, le film réunit 1 274 411 spectateurs en France et la
+  critique salue l'exercice d'admiration :</p>
+  <blockquote>« L'élève a regardé les leçons du maître, les a assimilées. Le voici maître
+  à son tour. »
+  <span class="attrib">Jean-Louis Bory, 1968, cité par Wikipédia<sup class="fn"><a href="#src-1">[1]</a></sup></span></blockquote>
+  <p>Le spectateur le plus sévère du film restera Truffaut lui-même : il regrettait la
+  couleur, et pensait avoir confié à Moreau un rôle de vengeresse stoïque qui ne lui
+  convenait pas<sup class="fn"><a href="#src-2">[2]</a></sup>. Longtemps rangé parmi les
+  Truffaut « mineurs », le film n'a cessé de gagner en stature : célébration du film noir
+  et du suspense hitchcockien<sup class="fn"><a href="#src-2">[2]</a></sup>, il est aussi
+  devenu une référence de la culture populaire — la parenté avec <em>Kill Bill</em> est
+  régulièrement soulignée (Tarantino s'en est toujours défendu), et Kate Bush en a tiré une
+  chanson, « The Wedding List »<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="tete"><span class="num">IX</span><h2>Conclusion</h2><div class="barre"></div></div>
+  <p><em>La mariée était en noir</em> est un paradoxe réjouissant : le film le plus
+  « appliqué » de Truffaut — un exercice d'hitchcockisme assumé, jusqu'au compositeur
+  emprunté au maître — et en même temps l'un de ses plus personnels, tant la Mariée
+  prolonge sa galerie d'obsédés magnifiques, ces êtres pour qui aimer et détruire procèdent
+  du même absolu. Que l'auteur l'ait mal aimé ne change rien à l'affaire : les cinéastes se
+  trompent souvent sur leurs films comme les pères sur leurs enfants.</p>
+  <p>Reste une figure inoubliable, mi-lys mi-corbeau, qui traverse la France comme une
+  allégorie : la femme rêvée par les hommes, revenue leur présenter la facture. Si le film
+  a tant essaimé — jusqu'au sabre de Beatrix Kiddo —, c'est qu'il a inventé quelque chose
+  qui n'appartient ni à Hitchcock ni à Woolrich : la vengeance filmée comme un chagrin
+  d'amour, cérémonieuse, sensuelle et sans pardon.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="tete"><span class="num">✦</span><h2>Sources</h2><div class="barre"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (fr) — « La mariée était en noir (film) » : fiche technique, distribution, dates de tournage et de sortie, box-office, citation de Jean-Louis Bory, postérité (Kill Bill, Kate Bush). <a href="https://fr.wikipedia.org/wiki/La_mari%C3%A9e_%C3%A9tait_en_noir_(film)">fr.wikipedia.org</a></li>
+    <li id="src-2">Libre Critique — « La Mariée était en noir (1968) » et pages associées consultées via recherche web : rapport de Truffaut à William Irish/Cornell Woolrich (« série blême »), consignes à Jeanne Moreau (« comme Bogart », rien de commun avec Jules et Jim), collaboration Herrmann, regrets de Truffaut. <a href="https://librecritique.fr/la-mariee-etait-en-noir-1968-6-5-10-truffaut-avis-resule-apercu/">librecritique.fr</a></li>
+    <li id="src-3">CinéDweller — « La mariée était en noir : la critique du film » : renversement de la femme fatale, lyrisme (« jamais thriller n'aura été aussi sensuel »), danse macabre, référence à La Mort aux trousses, position morale du film. <a href="https://cinedweller.com/movie/la-mariee-etait-en-noir-la-critique-du-film/">cinedweller.com</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/4191-la-mariee-etait-en-noir">themoviedb.org/movie/4191</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="condoleances">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

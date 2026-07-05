@@ -143,5 +143,15 @@ const FILMS = [
     summary: "Six jours de vent, un cheval qui refuse, la lumière qui s'éteint : le dernier film de Béla Tarr regarde la fin du monde à hauteur de pommes de terre.",
     url: 'films/le-cheval-de-turin.html',
     poster: 'assets/posters/le-cheval-de-turin.jpg'
+  },
+  {
+    slug: 'la-mariee-etait-en-noir',
+    title: 'La mariée était en noir',
+    director: 'François Truffaut',
+    year: 1968,
+    genre: 'Thriller',
+    summary: "Cinq noms sur une liste, une robe mi-lys mi-corbeau : Truffaut filme la vengeance comme un chagrin d'amour, sous le regard d'Hitchcock.",
+    url: 'films/la-mariee-etait-en-noir.html',
+    poster: 'assets/posters/la-mariee-etait-en-noir.jpg'
   }
 ];
