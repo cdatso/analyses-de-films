@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manhattan (1979) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Public+Sans:ital,wght@0,300;0,400;0,600;1,300&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== RHAPSODY IN BLUE =====
+     Noir et blanc de nuit new-yorkaise, skyline en à-plats,
+     partition Gershwin : les neuf sections comme des mouvements. */
+  :root{
+    --nuit:#0c0e12;
+    --nuit-douce:#171a21;
+    --brume:#c9cdd4;
+    --blanc:#f2f3f5;
+    --gris:#7c828c;
+    --neon:#aab8d0;
+    --ligne:rgba(12,14,18,0.16);
+    --ligne-nuit:rgba(242,243,245,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--blanc);
+    color:#2a2d33;
+    font-family:'Public Sans', sans-serif;
+    font-weight:400;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Red Hat Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- OUVERTURE : SKYLINE ---------- */
+  header.skyline{
+    background:var(--nuit);
+    color:var(--blanc);
+    padding:4.8rem 1.5rem 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .skyline-inner{ max-width:760px; margin:0 auto; position:relative; z-index:2; padding-bottom:3rem; }
+  .back-link{
+    display:inline-block;
+    color:var(--gris);
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--neon); }
+  .skyline .mono{ color:var(--neon); }
+  h1.title{
+    font-family:'Prata', serif;
+    font-weight:400;
+    font-size:clamp(2.8rem, 8vw, 5rem);
+    line-height:1.02;
+    margin:0.9rem 0 0.8rem;
+    color:var(--blanc);
+    letter-spacing:0.01em;
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:58ch;
+    color:var(--brume);
+    margin:0 0 1.9rem;
+  }
+  .meta-line{
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gris);
+    border-top:1px solid var(--ligne-nuit);
+    padding-top:1.1rem;
+  }
+  /* skyline en à-plats */
+  .buildings{
+    position:relative;
+    height:88px;
+    max-width:760px;
+    margin:0 auto;
+    z-index:1;
+  }
+  .buildings::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 2% 100%/7% 78px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 12% 100%/5% 56px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 20% 100%/8% 88px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 31% 100%/6% 48px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 40% 100%/9% 70px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 52% 100%/5% 84px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 61% 100%/8% 60px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 72% 100%/6% 78px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 81% 100%/7% 52px,
+      linear-gradient(var(--nuit-douce), var(--nuit-douce)) 92% 100%/6% 68px;
+    background-repeat:no-repeat;
+  }
+  .buildings::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(1.5px 1.5px at 5% 45%, var(--neon) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 22% 25%, var(--neon) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 23.5% 55%, var(--brume) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 43% 50%, var(--neon) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 54% 20%, var(--brume) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 63% 60%, var(--neon) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 74% 35%, var(--brume) 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 93% 42%, var(--neon) 50%, transparent 52%);
+    opacity:0.9;
+  }
+
+  /* ---------- SOMMAIRE : PROGRAMME DU CONCERT ---------- */
+  nav.programme{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.7rem;
+    border:1px solid var(--ligne);
+    border-top:4px solid var(--nuit);
+    background:#fff;
+  }
+  nav.programme .mono{ color:var(--nuit); display:block; margin-bottom:0.8rem; }
+  nav.programme ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.programme ol{ columns:1; } }
+  nav.programme li{ margin-bottom:0.35rem; }
+  nav.programme a{ color:#2a2d33; text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.programme a:hover{ color:var(--nuit); border-color:var(--nuit); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .mouvement{ margin-bottom:1.4rem; }
+  .mouvement .num{
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gris);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .mouvement h2{
+    font-family:'Prata', serif;
+    font-weight:400;
+    font-size:1.65rem;
+    color:var(--nuit);
+    margin:0 0 0.55rem;
+  }
+  .mouvement .portee{
+    height:7px;
+    background:
+      linear-gradient(var(--ligne), var(--ligne)) 0 0/100% 1px,
+      linear-gradient(var(--ligne), var(--ligne)) 0 3px/100% 1px,
+      linear-gradient(var(--ligne), var(--ligne)) 0 6px/100% 1px;
+    background-repeat:no-repeat;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--nuit); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.4rem;
+    background:var(--nuit);
+    color:var(--brume);
+    font-style:italic;
+    font-size:1.03rem;
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Red Hat Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--gris);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.6rem;
+    color:var(--gris);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--nuit); }
+
+  /* ---------- FICHE : PARTITION ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:#fff;
+    box-shadow:0 3px 0 var(--ligne);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:grayscale(1) contrast(1.05); }
+  .partition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .partition{ grid-template-columns:1fr; } }
+  .partition .label{
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--gris);
+    margin-bottom:0.15rem;
+  }
+  .partition .value{ font-size:0.93rem; color:var(--nuit); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:#3d4c66; word-break:break-all; }
+  section.sources a:hover{ color:var(--nuit); }
+
+  footer.coda{
+    background:var(--nuit);
+    margin-top:3.5rem;
+    padding:1.6rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Red Hat Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+</style>
+</head>
+<body>
+
+<header class="skyline">
+  <div class="skyline-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="mono">Analyse cinématographique · Mouvement pour orchestre et ville</span>
+    <h1 class="title">Manhattan</h1>
+    <p class="subtitle">Woody Allen, 1979 — une déclaration d'amour en Cinémascope noir et
+    blanc à une ville rêvée sur du Gershwin, devenue l'un des films les plus admirés et les
+    plus réexaminés du cinéma américain.</p>
+    <div class="meta-line">États-Unis · United Artists · 96 minutes · N&amp;B Panavision 2.35:1 · Comédie dramatique</div>
+  </div>
+  <div class="buildings" aria-hidden="true"></div>
+</header>
+
+<nav class="programme" aria-label="Sommaire">
+  <span class="mono">Programme</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="mouvement"><span class="num">1er mouvement · Partition</span><h2>Fiche technique</h2><div class="portee"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/manhattan.jpg"
+           alt="Affiche du film Manhattan"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="partition">
+      <div><div class="label">Réalisation</div><div class="value">Woody Allen</div></div>
+      <div><div class="label">Scénario</div><div class="value">Woody Allen et Marshall Brickman</div></div>
+      <div><div class="label">Photographie</div><div class="value">Gordon Willis (N&amp;B, Panavision 2.35:1)</div></div>
+      <div><div class="label">Musique</div><div class="value">George Gershwin — New York Philharmonic (Zubin Mehta), Buffalo Philharmonic (M. T. Thomas)</div></div>
+      <div><div class="label">Montage</div><div class="value">Susan E. Morse</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Woody Allen, Diane Keaton, Michael Murphy, Mariel Hemingway, Meryl Streep</div></div>
+      <div><div class="label">Sortie</div><div class="value">Avril 1979 (États-Unis)</div></div>
+      <div><div class="label">Budget / recettes</div><div class="value">9 M$ / 39,9 M$ (États-Unis)</div></div>
+      <div><div class="label">Distinctions</div><div class="value">2 nominations aux Oscars ; BAFTA du meilleur film ; César du meilleur film étranger</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="mouvement"><span class="num">2e mouvement</span><h2>Synopsis</h2><div class="portee"></div></div>
+  <p>Isaac Davis, 42 ans, auteur télé démissionnaire qui rêve d'écrire un livre sur New
+  York, navigue entre les décombres élégants de sa vie sentimentale : une ex-femme (Meryl
+  Streep) qui publie un livre au vitriol sur leur mariage, une liaison avec Tracy, lycéenne
+  de 17 ans qu'il s'efforce de ne pas prendre au sérieux, et une attirance croissante pour
+  Mary (Diane Keaton), l'intellectuelle brillante et insécure qui est aussi la maîtresse de
+  son meilleur ami Yale<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le chassé-croisé amoureux — Isaac quitte Tracy pour Mary, Mary retourne à Yale, chacun
+  rationalise ses lâchetés dans des dialogues étincelants — s'achève sur la course d'Isaac
+  à travers la ville pour rattraper Tracy, la seule du quatuor à n'avoir jamais menti, au
+  moment où elle part pour Londres. « Il faut avoir un peu foi dans les gens » : le mot de
+  la fin appartient à la plus jeune<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="mouvement"><span class="num">3e mouvement</span><h2>Contexte de production</h2><div class="portee"></div></div>
+  <p>Après le triomphe d'<em>Annie Hall</em> (quatre Oscars) et la parenthèse bergmanienne
+  d'<em>Interiors</em>, Allen retrouve son coscénariste Marshall Brickman pour un projet
+  conçu, dès l'origine, comme un objet visuel et musical : filmer New York en noir et blanc
+  et en Panavision anamorphique — une première pour lui — parce que, disait-il, la ville
+  est « en quelque sorte l'un des personnages du film », et la rêver sur les compositions
+  de George Gershwin, <em>Rhapsody in Blue</em> en tête, enregistrées avec le New York
+  Philharmonic dirigé par Zubin Mehta<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>L'anecdote de production la plus célèbre est un jugement d'auteur : à la vision du
+  montage final, Allen fut si mécontent qu'il demanda à United Artists de ne pas sortir le
+  film, offrant d'en tourner un autre gratuitement à la place<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Le studio refusa — et encaissa le deuxième plus gros succès commercial de la carrière du
+  cinéaste : 39,9 millions de dollars pour 9 de budget<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Autre légende exacte : pour le plan du banc face au pont de Queensboro à l'aube, l'équipe
+  s'installa à 5 heures du matin, la ville ayant accepté de laisser les guirlandes du pont
+  allumées<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="mouvement"><span class="num">4e mouvement</span><h2>Structure narrative</h2><div class="portee"></div></div>
+  <p>Le film s'ouvre en voix off sur les brouillons successifs du livre d'Isaac —
+  « Chapitre premier. Il adorait New York... » — réécrits en direct jusqu'à trouver le ton,
+  pendant que défilent les images de la ville et que monte <em>Rhapsody in Blue</em>
+  jusqu'au feu d'artifice sur Central Park. Toute la construction est annoncée là : le
+  récit sera celui d'un homme qui n'arrête pas de réécrire sa propre vie sentimentale comme
+  un manuscrit, en cherchant la version qui le rendrait admirable<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>La dramaturgie procède par permutations de couples au fil des saisons et des lieux —
+  galeries, librairies, planétarium, appartements en déménagement perpétuel — jusqu'au
+  renversement final : le monologue au magnétophone (« pourquoi la vie vaut-elle d'être
+  vécue ? »), où l'inventaire des raisons de vivre (Groucho Marx, Willie Mays, Flaubert,
+  les pommes et poires de Cézanne...) bute sur « le visage de Tracy », et déclenche la
+  course à travers la ville — citation inversée du finale de <em>City Lights</em>, l'aveu
+  romantique après le cynisme.</p>
+</section>
+
+<section id="technique">
+  <div class="mouvement"><span class="num">5e mouvement</span><h2>Mise en scène et procédés techniques</h2><div class="portee"></div></div>
+  <p>Le geste esthétique fondateur — noir et blanc + Scope — produit l'un des films les plus
+  somptueusement photographiés du cinéma américain. Gordon Willis, le « prince des ténèbres »
+  du <em>Parrain</em>, y invente un romantisme documentaire : la silhouette des amants
+  minuscules sous le pont de Queensboro à l'aube, les corps réduits à des ombres dans le
+  planétarium — scènes entières jouées dans le noir presque total, où seules les voix
+  continuent la comédie — ou l'orage sur Central Park en négatif de carte postale<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le format large, d'ordinaire réservé aux westerns, recadre la comédie de mœurs à
+  l'échelle du paysage urbain : les personnages parlent de leurs névroses au premier plan
+  pendant que la ville, autour, les écrase doucement de sa beauté. Et Gershwin fait le
+  reste — la partition n'accompagne pas le film, elle le contredit : là où les dialogues
+  ironisent, rationalisent, esquivent, l'orchestre affirme un lyrisme sans guillemets.
+  Tout <em>Manhattan</em> tient dans cette tension entre la petitesse des conduites et la
+  grandeur du décor sonore et visuel<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="mouvement"><span class="num">6e mouvement</span><h2>Personnages principaux</h2><div class="portee"></div></div>
+  <p><strong>Isaac Davis</strong> (Allen) se présente en moraliste — il démissionne par
+  intégrité, sermonne Yale sur sa lâcheté — mais le film, plus lucide que son héros,
+  documente l'écart entre ses principes déclamés et ses conduites : il traite Tracy en
+  parenthèse charmante, précisément parce que son sérieux à elle le mettrait en cause.
+  <strong>Mary</strong> (Diane Keaton, éblouissante) est son double inversé : intelligence
+  suréquipée, jugement esthétique en bandoulière (« l'Académie des Surfaits »), et une
+  panique sentimentale qu'aucun vocabulaire ne protège.</p>
+  <p><strong>Tracy</strong> (Mariel Hemingway, nommée à l'Oscar à 18 ans) est le centre
+  moral du film — la seule qui dise ce qu'elle ressent et fasse ce qu'elle dit. C'est aussi,
+  vue d'aujourd'hui, sa figure la plus troublante : une lycéenne de 17 ans aimée par un
+  homme de 42, que le film de 1979 traitait avec un naturel que plus personne ne lui
+  accorde — la section suivante y revient, car on ne peut plus écrire sur <em>Manhattan</em>
+  sans écrire aussi sur cela<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.
+  <strong>Yale</strong> (Michael Murphy) complète le quatuor en lâche ordinaire — le
+  meilleur ami dont la scène de confrontation dans la salle de squelettes dit tout :
+  « Tu te prends pour Dieu ! — Il faut bien que je me modèle sur quelqu'un. »</p>
+</section>
+
+<section id="themes">
+  <div class="mouvement"><span class="num">7e mouvement</span><h2>Thèmes</h2><div class="portee"></div></div>
+  <p>Le thème officiel est New York — ou plutôt l'écart entre la ville réelle et la ville
+  rêvée. Isaac le dit dès l'ouverture : il « romantise tout démesurément ». Le noir et
+  blanc n'est pas une coquetterie mais une thèse : ce Manhattan-là n'a jamais existé, c'est
+  la ville des films et des disques de l'enfance, un idéal esthétique auquel les personnages
+  mesurent — et donc condamnent — leur vie réelle.</p>
+  <p>D'où le second thème, l'intégrité impossible : tous les personnages parlent de morale
+  avec brio et agissent par convenance — la culture comme alibi, l'ironie comme anesthésie.
+  Le film est une comédie sur la mauvaise foi des gens cultivés, où le langage sert moins à
+  se comprendre qu'à se donner le beau rôle. Et c'est la sincérité sans culture de Tracy —
+  troisième thème, le plus disputé — qui sert d'étalon : la « foi dans les gens » que
+  l'adolescente oppose au scepticisme des adultes est à la fois la leçon morale du film et,
+  pour ses relecteurs contemporains, le nœud du problème — l'innocence érigée en idéal
+  amoureux par un récit écrit du point de vue de l'homme qui en bénéficie<sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="mouvement"><span class="num">8e mouvement</span><h2>Réception critique et postérité</h2><div class="portee"></div></div>
+  <p>Triomphe critique immédiat : « la comédie la plus noire depuis les grands jours de
+  Preston Sturges », écrit Arthur Knight dès avril 1979, saluant « l'un des artistes les
+  plus audacieux et novateurs du cinéma américain »<sup class="fn"><a href="#src-5">[5]</a></sup>.
+  Nominations aux Oscars (scénario ; Hemingway en second rôle), BAFTA du meilleur film,
+  César du meilleur film étranger ; en 2013 encore, les lecteurs du <em>Guardian</em> le
+  votaient meilleur film de son auteur<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Une voix discordante mérite pourtant d'être citée, car elle avait vu tôt ce que la
+  postérité allait agrandir :</p>
+  <blockquote>« Quel homme de quarante ans, sinon Woody Allen, pourrait faire passer un
+  penchant pour les adolescentes pour une quête de valeurs authentiques ? »
+  <span class="attrib">Pauline Kael, citée dans les relectures contemporaines du film<sup class="fn"><a href="#src-4">[4]</a></sup></span></blockquote>
+  <p>Car la postérité de <em>Manhattan</em> est double. Le film reste un sommet formel
+  incontesté — et, depuis les années 2010, l'exemple canonique de l'œuvre réexaminée à la
+  lumière de son auteur : les allégations portées contre Allen (qu'il a toujours niées),
+  le documentaire <em>Allen v. Farrow</em>, et la déclaration de Mariel Hemingway
+  elle-même — le film « ne pourrait pas sortir aujourd'hui, à 100 % », tout en précisant
+  qu'Allen fut « merveilleux » avec elle sur le tournage — ont durablement changé les
+  conditions de son visionnage<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Fait remarquable : Allen lui-même n'a jamais aimé le film, au point d'avoir voulu
+  l'empêcher de sortir<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="mouvement"><span class="num">9e mouvement · Coda</span><h2>Conclusion</h2><div class="portee"></div></div>
+  <p><em>Manhattan</em> est probablement le plus beau film de son auteur et le plus
+  difficile à regarder simplement — et il faut tenir les deux bouts. Formellement, rien n'a
+  vieilli : le mariage du Scope, du noir et blanc de Willis et de Gershwin reste un des
+  sommets du romantisme urbain au cinéma, imité partout, égalé nulle part. Moralement, le
+  film a changé de nature avec le temps : ce qui se présentait comme une comédie sur la
+  mauvaise foi des adultes cultivés se relit aussi, désormais, comme un document sur les
+  angles morts de son époque — et de son auteur.</p>
+  <p>Le plus troublant est que le film contient sa propre critique : personne n'y est plus
+  sévère avec Isaac Davis que le scénario lui-même, et la dernière image — ce sourire de
+  Tracy qui répond « il faut avoir un peu foi dans les gens » — laisse le quadragénaire
+  sans réplique, pour une fois. Chef-d'œuvre et pièce à conviction, carte postale et
+  aveu : <em>Manhattan</em> demeure ce que New York est pour Isaac — une chose qu'on
+  romantise démesurément, en sachant très bien ce qu'on choisit de ne pas voir.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="mouvement"><span class="num">Notes de programme</span><h2>Sources</h2><div class="portee"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Manhattan (1979 film) » : production (N&amp;B Scope avec Willis, Gershwin/Mehta, demande d'Allen de ne pas sortir le film, scène du pont de Queensboro), distribution, box-office, récompenses, postérité (sondage du Guardian 2013). <a href="https://en.wikipedia.org/wiki/Manhattan_(1979_film)">en.wikipedia.org</a></li>
+    <li id="src-2">American Society of Cinematographers — « Manhattan: Black-and-White Romantic Realism » (article référencé via recherche web ; accès direct refusé lors de la consultation). <a href="https://theasc.com/articles/manhattan-black-and-white-romantic-realism">theasc.com</a></li>
+    <li id="src-3">Variety — « 'Manhattan' Star Mariel Hemingway Says the Woody Allen Film '100% Couldn't Come Out' Today » (2021). <a href="https://variety.com/2021/film/news/mariel-hemingway-woody-allen-manhattan-1234952300/">variety.com</a></li>
+    <li id="src-4">The Irish Times — « In 1979 nobody bat an eyelid about Woody Allen's character (42) dating a 17-year-old » et relectures contemporaines associées (citation de Pauline Kael, contexte Allen v. Farrow), consultées via recherche web. <a href="https://www.irishtimes.com/culture/film/in-1979-nobody-bat-an-eyelid-about-woody-allen-s-character-42-dating-a-17-year-old-1.3077136">irishtimes.com</a></li>
+    <li id="src-5">AFI Catalog — « Manhattan (1979) » : critique d'Arthur Knight (Hollywood Reporter, 23 avril 1979), données de production. <a href="https://catalog.afi.com/Catalog/moviedetails/67202">catalog.afi.com</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="coda">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

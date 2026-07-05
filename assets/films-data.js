@@ -163,5 +163,15 @@ const FILMS = [
     summary: "Un scénario noir des Coen greffé sur un fait divers de la ségrégation : pendant que la banlieue assiège sa seule famille innocente, le crime blanc prospère pavillon contre pavillon.",
     url: 'films/bienvenue-a-suburbicon.html',
     poster: 'assets/posters/bienvenue-a-suburbicon.jpg'
+  },
+  {
+    slug: 'manhattan',
+    title: 'Manhattan',
+    director: 'Woody Allen',
+    year: 1979,
+    genre: 'Comédie dramatique',
+    summary: "Une déclaration d'amour en Scope noir et blanc à une ville rêvée sur du Gershwin — chef-d'œuvre formel devenu pièce à conviction de son propre auteur.",
+    url: 'films/manhattan.html',
+    poster: 'assets/posters/manhattan.jpg'
   }
 ];
