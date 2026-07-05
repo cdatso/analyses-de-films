@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenue à Suburbicon (2017) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== LA BROCHURE DU LOTISSEMENT =====
+     Prospectus immobilier 1959 : pastels publicitaires, crème et turquoise,
+     lots numérotés — et le rouge qui affleure sous le vernis. */
+  :root{
+    --creme:#f4efe3;
+    --creme-sombre:#eae3d2;
+    --turquoise:#3e8f8a;
+    --turquoise-deep:#2a6360;
+    --saumon:#e0876b;
+    --encre:#232019;
+    --encre-douce:#3d382e;
+    --pastel-line:rgba(35,32,25,0.16);
+    --sang:#8e2f23;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--creme);
+    color:var(--encre-douce);
+    font-family:'Karla', sans-serif;
+    font-size:1.01rem;
+    line-height:1.7;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.65rem;
+  }
+
+  /* ---------- COUVERTURE DE LA BROCHURE ---------- */
+  header.brochure{
+    background:
+      linear-gradient(180deg, var(--turquoise) 0%, var(--turquoise-deep) 100%);
+    color:var(--creme);
+    padding:4.6rem 1.5rem 3.8rem;
+    position:relative;
+    overflow:hidden;
+  }
+  header.brochure::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(140px 90px at 88% 18%, rgba(224,135,107,0.35), transparent 70%),
+      repeating-linear-gradient(90deg, transparent 0 110px, rgba(244,239,227,0.05) 110px 112px);
+    pointer-events:none;
+  }
+  .brochure-inner{ max-width:760px; margin:0 auto; position:relative; z-index:1; }
+  .back-link{
+    display:inline-block;
+    color:rgba(244,239,227,0.65);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.2rem;
+  }
+  .back-link:hover{ color:var(--saumon); }
+  .slogan{
+    display:inline-block;
+    background:var(--creme);
+    color:var(--turquoise-deep);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    padding:0.35rem 0.8rem;
+    margin-bottom:1.8rem;
+  }
+  h1.title{
+    font-family:'Abril Fatface', serif;
+    font-weight:400;
+    font-size:clamp(2.5rem, 7vw, 4.3rem);
+    line-height:1.04;
+    margin:0 0 0.9rem;
+    color:var(--creme);
+    text-shadow:3px 3px 0 rgba(42,99,96,0.6);
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.06rem;
+    max-width:57ch;
+    color:rgba(244,239,227,0.9);
+    margin:0 0 1.9rem;
+  }
+  .brochure-meta{
+    display:flex; flex-wrap:wrap; gap:0.5rem 1.6rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(244,239,227,0.7);
+    border-top:1px dashed rgba(244,239,227,0.35);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- AVERTISSEMENT ---------- */
+  .avert{
+    max-width:720px;
+    margin:2.2rem auto 0;
+    padding:0.85rem 1.2rem;
+    border:1px solid var(--pastel-line);
+    border-left:4px solid var(--sang);
+    background:var(--creme-sombre);
+    font-size:0.86rem;
+  }
+  .avert .mono{ color:var(--sang); }
+
+  /* ---------- SOMMAIRE : PLAN DU LOTISSEMENT ---------- */
+  nav.plan{
+    max-width:720px;
+    margin:2.4rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:2px solid var(--turquoise);
+    background:var(--creme);
+  }
+  nav.plan .mono{ color:var(--turquoise-deep); display:block; margin-bottom:0.8rem; }
+  nav.plan ol{
+    margin:0; padding:0; list-style:none;
+    columns:2; column-gap:2.5rem;
+    font-size:0.92rem;
+    counter-reset:lot;
+  }
+  @media (max-width:600px){ nav.plan ol{ columns:1; } }
+  nav.plan li{ margin-bottom:0.35rem; }
+  nav.plan li::before{
+    content:"Lot " counter(lot) " · ";
+    counter-increment:lot;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    color:var(--saumon);
+  }
+  nav.plan a{ color:var(--encre); text-decoration:none; border-bottom:1px solid var(--pastel-line); }
+  nav.plan a:hover{ color:var(--turquoise-deep); border-color:var(--turquoise-deep); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .panneau{ margin-bottom:1.4rem; }
+  .panneau .lot{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--saumon);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .panneau h2{
+    font-family:'Abril Fatface', serif;
+    font-weight:400;
+    font-size:1.75rem;
+    color:var(--turquoise-deep);
+    margin:0 0 0.55rem;
+  }
+  .panneau .cloture{
+    height:5px;
+    background:repeating-linear-gradient(90deg, var(--turquoise) 0 14px, transparent 14px 22px);
+    opacity:0.5;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--encre); font-weight:600; }
+
+  blockquote{
+    margin:1.6rem 0;
+    padding:1rem 1.3rem;
+    background:var(--creme-sombre);
+    border-left:5px solid var(--saumon);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--encre);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-style:normal;
+    font-size:0.63rem;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--turquoise-deep);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    color:var(--turquoise-deep);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--sang); }
+
+  /* ---------- FICHE : ACTE DE VENTE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--pastel-line);
+    padding:8px;
+    background:#fff;
+    box-shadow:4px 4px 0 rgba(62,143,138,0.25);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .acte{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .acte{ grid-template-columns:1fr; } }
+  .acte .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--turquoise-deep);
+    margin-bottom:0.15rem;
+  }
+  .acte .value{ font-size:0.93rem; color:var(--encre); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--turquoise-deep); word-break:break-all; }
+  section.sources a:hover{ color:var(--sang); }
+
+  footer.panneau-sortie{
+    border-top:2px solid var(--turquoise);
+    margin-top:3.5rem;
+    padding:1.4rem 1.5rem 2.5rem;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--turquoise-deep);
+  }
+</style>
+</head>
+<body>
+
+<header class="brochure">
+  <div class="brochure-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="slogan">Des maisons pour des familles heureuses — depuis 1947</span></div>
+    <h1 class="title">Bienvenue à Suburbicon</h1>
+    <p class="subtitle">George Clooney, 2017 — un scénario noir des frères Coen greffé sur un
+    fait divers de la ségrégation : la banlieue-modèle américaine photographiée au moment
+    exact où le vernis craque.</p>
+    <div class="brochure-meta">
+      <span>États-Unis · Paramount</span>
+      <span>105 minutes · Couleur</span>
+      <span>Comédie noire / satire</span>
+    </div>
+  </div>
+</header>
+
+<div class="avert">
+  <span class="mono">Avertissement</span> — Le film contient des violences criminelles et
+  le harcèlement raciste organisé d'une famille noire ; l'analyse aborde ces deux fils sans
+  détour.
+</div>
+
+<nav class="plan" aria-label="Sommaire">
+  <span class="mono">Plan du lotissement</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="panneau"><span class="lot">Lot 1 · Acte de vente</span><h2>Fiche technique</h2><div class="cloture"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/bienvenue-a-suburbicon.jpg"
+           alt="Affiche du film Bienvenue à Suburbicon"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="acte">
+      <div><div class="label">Réalisation</div><div class="value">George Clooney</div></div>
+      <div><div class="label">Scénario</div><div class="value">Joel &amp; Ethan Coen, George Clooney, Grant Heslov</div></div>
+      <div><div class="label">Photographie</div><div class="value">Robert Elswit</div></div>
+      <div><div class="label">Musique</div><div class="value">Alexandre Desplat</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Matt Damon, Julianne Moore, Noah Jupe, Oscar Isaac</div></div>
+      <div><div class="label">Tournage</div><div class="value">Fullerton, Californie (octobre 2016)</div></div>
+      <div><div class="label">Sortie</div><div class="value">Mostra de Venise 2017 ; sortie américaine octobre 2017</div></div>
+      <div><div class="label">Budget / recettes</div><div class="value">25 M$ / 12,8 M$ monde</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="panneau"><span class="lot">Lot 2</span><h2>Synopsis</h2><div class="cloture"></div></div>
+  <p>Suburbicon, 1959 : un lotissement-vitrine vendu sur brochure — pelouses, facteurs
+  souriants, voisins choisis. Deux événements simultanés fissurent le décor. D'un côté,
+  la famille Mayers, première famille noire du quartier, emménage — et voit aussitôt la
+  banlieue « idéale » s'organiser contre elle, du murmure des comités de quartier à
+  l'émeute nocturne<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>De l'autre, chez les Lodge, un cambriolage nocturne tourne au drame : Rose, l'épouse
+  en fauteuil roulant, meurt sous le chloroforme. Très vite, son fils Nicky comprend que
+  le père, Gardner, et la sœur jumelle de la morte, Margaret, sont moins victimes
+  qu'organisateurs — l'assurance-vie, un amant de bureau et deux tueurs à gages composant
+  le vrai plan de cette famille modèle. Pendant que Suburbicon hurle contre ses nouveaux
+  voisins noirs, le crime blanc prospère, pavillon contre pavillon<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="panneau"><span class="lot">Lot 3</span><h2>Contexte de production</h2><div class="cloture"></div></div>
+  <p>Le film est la soudure de deux scénarios sans rapport. Le premier est un script de
+  série noire écrit par Joel et Ethan Coen dès 1986, juste après <em>Blood Simple</em>,
+  resté trente ans dans un tiroir ; Clooney annonçait déjà vouloir le tourner en 2005.
+  Le second est un projet historique de Clooney et Grant Heslov sur la famille Myers —
+  premiers habitants noirs de Levittown (Pennsylvanie) en 1957, accueillis par des semaines
+  de harcèlement organisé<sup class="fn"><a href="#src-1">[1]</a></sup>. Clooney et Heslov
+  ont greffé ce fait divers réel sur l'intrigue criminelle des Coen pour donner au film son
+  « aspect plus engagé et politique »<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Tourné à Fullerton, en Californie, à l'automne 2016 — en pleine élection américaine,
+  ce qui n'est pas un détail pour un film sur la rage blanche périurbaine — avec une équipe
+  de luxe : Robert Elswit à l'image, Alexandre Desplat à la partition, Matt Damon et
+  Julianne Moore en tête d'affiche. Josh Brolin, un temps au générique, disparaît au
+  montage<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="panneau"><span class="lot">Lot 4</span><h2>Structure narrative</h2><div class="cloture"></div></div>
+  <p>Le film entrelace ses deux intrigues en un montage-parallèle moral : chaque progrès du
+  complot des Lodge répond à une escalade du siège des Mayers. La mise en parallèle est le
+  argument même du film — pendant que le quartier entier surveille, insulte et assiège la
+  seule famille innocente du lotissement, personne ne regarde la maison d'en face où l'on
+  assassine réellement<sup class="fn"><a href="#src-2">[2]</a></sup>. L'ouverture donne le
+  ton : un faux film publicitaire des années 1950 vante « Suburbicon » sur papier glacé,
+  avant que le récit ne retourne la brochure<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le point de vue bascule progressivement vers Nicky, l'enfant : c'est par ses yeux que
+  les mensonges des adultes se découvrent, et par sa fenêtre que se noue l'amitié muette
+  avec le fils Mayers, seul contrechamp humain du film — deux garçons qui se lancent une
+  balle par-dessus la clôture pendant que leurs mondes respectifs brûlent<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="panneau"><span class="lot">Lot 5</span><h2>Mise en scène et procédés techniques</h2><div class="cloture"></div></div>
+  <p>Clooney construit son langage autour du regard : regards voyeuristes et collectifs des
+  voisins qui s'agglutinent, regard de l'enfant qui perce les mensonges, jusqu'à la séquence
+  d'identification au commissariat que Le Rayon Vert décompose en « six niveaux » de regards
+  entrecroisés — la mise en scène y remplace intégralement le dialogue<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  La photographie de Robert Elswit pousse les pastels publicitaires jusqu'à l'écœurement,
+  et Desplat signe une partition faussement hitchcockienne qui prend la banlieue au sérieux
+  comme décor de film noir.</p>
+  <p>L'ADN coenien reste lisible — tueurs à gages pieds nickelés, assureur soupçonneux
+  (Oscar Isaac, deux scènes et le meilleur du film), engrenage criminel qui broie ses
+  auteurs — mais filmé avec une frontalité satirique qui est celle de Clooney plutôt que
+  l'ironie entomologiste des frères<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.
+  C'est précisément cette coexistence de deux régimes — farce noire et chronique du
+  lynchage social — que la critique lui reprochera<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="panneau"><span class="lot">Lot 6</span><h2>Personnages principaux</h2><div class="cloture"></div></div>
+  <p><strong>Gardner Lodge</strong> (Matt Damon) est l'homme moyen coenien porté à
+  l'incandescence : cadre gris, nuque raide, capable de pédaler en costume sur un vélo
+  d'enfant après un double meurtre — l'Amérique respectable comme imposture criminelle.
+  <strong>Margaret</strong> (Julianne Moore, en double rôle spectral : la femme morte et sa
+  jumelle teinte en blond) incarne le rêve de conformité poussé jusqu'au meurtre — devenir
+  « la femme d'intérieur » de la brochure, quel qu'en soit le prix.</p>
+  <p><strong>Nicky</strong> (Noah Jupe) est la conscience du film, enfant à hauteur duquel
+  la banlieue révèle sa vraie nature. Quant aux <strong>Mayers</strong>, leur dignité
+  silencieuse — la mère qui fait ses courses sous les insultes au supermarché, le père qui
+  tond sa pelouse pendant l'émeute — constitue le contrepoint moral du récit ; la critique,
+  française comme américaine, a toutefois régulièrement pointé que le film les maintient en
+  périphérie de leur propre histoire, sous-exploitant le fil Levittown qu'il avait
+  lui-même convoqué<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="panneau"><span class="lot">Lot 7</span><h2>Thèmes</h2><div class="cloture"></div></div>
+  <p>Le thème matriciel est l'hypocrisie de la banlieue blanche des années Eisenhower : un
+  paradis contractuel dont la promesse — sécurité, homogénéité, bonheur sur brochure —
+  repose sur l'exclusion. Le film démonte le mythe en le prenant au mot : « cette belle
+  façade vole en éclats » à l'arrivée des premiers habitants noirs, révélant que le racisme
+  ordinaire n'est pas un accident du décor mais son principe de construction<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le second thème est le bouc émissaire : Suburbicon a besoin des Mayers pour ne pas se
+  voir. Toute la violence sociale converge vers la seule maison innocente, pendant que la
+  criminalité réelle — blanche, assurée, en col propre — passe inaperçue ; les voisins
+  transformés en « sauvages hystériques » croient que le mal est arrivé avec le déménagement,
+  quand il habitait le lotissement depuis l'origine<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Enfin, le film oppose aux adultes le regard des enfants : la balle échangée par-dessus la
+  clôture est sa seule utopie — modeste, presque muette, mais c'est la question que pose
+  in fine son analyse la plus généreuse : « si un regard peut entraîner la haine, peut-il
+  aussi faire naître l'amour ? »<sup class="fn"><a href="#src-2">[2]</a></sup></p>
+</section>
+
+<section id="reception">
+  <div class="panneau"><span class="lot">Lot 8</span><h2>Réception critique et postérité</h2><div class="cloture"></div></div>
+  <p>L'accueil fut rude — le plus mauvais de la carrière de réalisateur de Clooney.
+  Présenté à Venise en 2017, le film sort en octobre aux États-Unis : 2,8 millions de
+  dollars au premier week-end, 12,8 millions dans le monde pour 25 de budget, un
+  « D− » CinemaScore décerné par le public, 27 % sur Rotten Tomatoes<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Le consensus critique résume le procès :</p>
+  <blockquote>« Un raté décevant pour George Clooney : Suburbicon tente de jongler entre
+  satire sociale, commentaire racial et intrigue criminelle — et finit par gâcher les
+  trois. »
+  <span class="attrib">Consensus Rotten Tomatoes, cité par Wikipédia<sup class="fn"><a href="#src-1">[1]</a></sup></span></blockquote>
+  <p>La critique française fut plus partagée : sévère sur l'hésitation du film entre ses
+  deux sujets (« choisissant le moins intéressant des deux »<sup class="fn"><a href="#src-3">[3]</a></sup>),
+  mais sensible, chez certains, à la « fable amère et macabre, totalement folle et
+  déglinguée » et à l'intelligence du pamphlet<sup class="fn"><a href="#src-4">[4]</a></sup> —
+  Le Rayon Vert allant jusqu'à défendre la cohérence de sa mise en scène du regard<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Avec le recul, le film gagne à être revu pour ce qu'il est : un document sur l'Amérique
+  de 2016 déguisé en carte postale de 1959.</p>
+</section>
+
+<section id="conclusion">
+  <div class="panneau"><span class="lot">Lot 9 · Sortie du lotissement</span><h2>Conclusion</h2><div class="cloture"></div></div>
+  <p><em>Bienvenue à Suburbicon</em> est un film-cicatrice : la soudure entre le scénario
+  coenien de 1986 et le dossier Levittown reste visible à l'œil nu, et c'est cette couture
+  que la critique a — non sans raison — désignée comme sa faiblesse. Mais la couture est
+  aussi son idée la plus forte : en refusant de fondre ses deux récits, le film montre
+  littéralement que l'Amérique blanche et l'Amérique noire vivent deux histoires
+  parallèles dans le même décor, séparées par une clôture de jardin.</p>
+  <p>Ni le meilleur Coen (ils ne l'ont pas tourné) ni le meilleur Clooney (il l'a trop
+  chargé), Suburbicon reste un objet plus intéressant que sa réputation : une satire qui
+  rate sa cible principale mais en touche une autre, plus durable — le mécanisme par lequel
+  une communauté choisit son monstre pour s'épargner son miroir. La brochure promettait
+  « des maisons pour des familles heureuses » ; le film livre l'inventaire après sinistre,
+  et c'est un document qui vieillit mieux que son accueil.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="panneau"><span class="lot">Annexes</span><h2>Sources</h2><div class="cloture"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Suburbicon » : historique des deux scénarios (Coen 1986, Myers/Levittown 1957), équipe, tournage, budget et box-office, réception chiffrée (Rotten Tomatoes, Metacritic, CinemaScore). <a href="https://en.wikipedia.org/wiki/Suburbicon">en.wikipedia.org/wiki/Suburbicon</a></li>
+    <li id="src-2">Le Rayon Vert — « Bienvenue à Suburbicon de George Clooney : Analyse » : structure duelle Lodge/Mayers, mise en scène du regard (séquence du commissariat), ouverture publicitaire, lecture politique et humaniste. <a href="https://www.rayonvertcinema.org/bienvenue-a-suburbicon-analyse/">rayonvertcinema.org</a></li>
+    <li id="src-3">LeMagduCine — « Bienvenue à Suburbicon, malaise de banlieue » (et critiques françaises associées consultées via recherche web) : hésitation entre les deux sujets, sous-exploitation du fil Mayers. <a href="https://www.lemagducine.fr/cinema/critiques-films/bienvenue-a-suburbicon-critique-cinema-115433/">lemagducine.fr</a></li>
+    <li id="src-4">Mondociné — « Bienvenue à Suburbicon : la critique du film » (consultée via recherche web) : « fable amère et macabre », satire des préjugés, voisins en « sauvages hystériques ». <a href="https://mondocine.net/bienvenue-a-suburbicon-critique-film/">mondocine.net</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="panneau-sortie">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

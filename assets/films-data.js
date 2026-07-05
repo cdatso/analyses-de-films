@@ -153,5 +153,15 @@ const FILMS = [
     summary: "Cinq noms sur une liste, une robe mi-lys mi-corbeau : Truffaut filme la vengeance comme un chagrin d'amour, sous le regard d'Hitchcock.",
     url: 'films/la-mariee-etait-en-noir.html',
     poster: 'assets/posters/la-mariee-etait-en-noir.jpg'
+  },
+  {
+    slug: 'bienvenue-a-suburbicon',
+    title: 'Bienvenue à Suburbicon',
+    director: 'George Clooney',
+    year: 2017,
+    genre: 'Comédie noire',
+    summary: "Un scénario noir des Coen greffé sur un fait divers de la ségrégation : pendant que la banlieue assiège sa seule famille innocente, le crime blanc prospère pavillon contre pavillon.",
+    url: 'films/bienvenue-a-suburbicon.html',
+    poster: 'assets/posters/bienvenue-a-suburbicon.jpg'
   }
 ];
