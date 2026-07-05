@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Cheval de Turin (2011) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== L'ALMANACH DES SIX JOURS =====
+     Gris de tempête, brun de terre, rayures de vent en diagonale :
+     l'éphéméride d'une fin du monde à hauteur de pommes de terre. */
+  :root{
+    --storm:#d9d6cf;
+    --storm-dark:#cbc7be;
+    --ink:#191816;
+    --ink-soft:#33312d;
+    --earth:#5c4a38;
+    --dust:#8d867b;
+    --lamp:#9c7b45;
+    --wind:rgba(25,24,22,0.05);
+    --line:rgba(25,24,22,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(115deg, transparent 0 26px, var(--wind) 26px 27px),
+      var(--storm);
+    color:var(--ink-soft);
+    font-family:'Spectral', serif;
+    font-weight:400;
+    font-size:1.02rem;
+    line-height:1.75;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Inconsolata', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.66rem;
+  }
+
+  /* ---------- OUVERTURE : LA TEMPÊTE ---------- */
+  header.storm{
+    background:
+      repeating-linear-gradient(115deg, transparent 0 18px, rgba(217,214,207,0.045) 18px 19px),
+      linear-gradient(180deg, #211f1c 0%, #2e2b26 70%, #3a352e 100%);
+    color:var(--storm);
+    padding:5rem 1.5rem 4rem;
+    position:relative;
+  }
+  .storm-inner{ max-width:740px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:var(--dust);
+    font-family:'Inconsolata', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--lamp); }
+  .storm-eyebrow{
+    color:var(--lamp);
+    margin-bottom:2.4rem;
+    display:flex; align-items:center; gap:0.9rem;
+  }
+  .storm-eyebrow .gust{ flex:0 0 44px; height:1px; background:var(--lamp); opacity:0.7; }
+  h1.title{
+    font-family:'Spectral', serif;
+    font-weight:300;
+    font-size:clamp(2.5rem, 6.5vw, 4rem);
+    line-height:1.05;
+    letter-spacing:0.01em;
+    margin:0 0 0.5rem;
+    color:var(--storm);
+  }
+  .title-orig{
+    font-style:italic;
+    font-weight:300;
+    font-size:1.1rem;
+    color:var(--dust);
+    margin:0 0 1.7rem;
+  }
+  .subtitle{
+    font-size:1.05rem;
+    font-weight:300;
+    max-width:58ch;
+    color:rgba(217,214,207,0.85);
+    margin:0 0 2rem;
+  }
+  .ephemeride{
+    display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem;
+    border-top:1px solid rgba(217,214,207,0.2);
+    padding-top:1.1rem;
+    font-family:'Inconsolata', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--dust);
+  }
+  .ephemeride .jour-vi{ color:var(--lamp); }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.almanach{
+    max-width:700px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--line);
+    border-top:3px solid var(--earth);
+    background:var(--storm-dark);
+  }
+  nav.almanach .mono{ color:var(--earth); display:block; margin-bottom:0.8rem; }
+  nav.almanach ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.5rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.almanach ol{ columns:1; } }
+  nav.almanach li{ margin-bottom:0.35rem; }
+  nav.almanach a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  nav.almanach a:hover{ color:var(--earth); border-color:var(--earth); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:700px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.6rem; }
+  .entete{ margin-bottom:1.5rem; }
+  .entete .jour{
+    font-family:'Inconsolata', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--earth);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  .entete h2{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    color:var(--ink);
+    margin:0 0 0.6rem;
+  }
+  .entete .bourrasque{
+    height:1px;
+    background:linear-gradient(90deg, var(--earth) 0%, var(--line) 45%, transparent 100%);
+  }
+  p{ margin:0 0 1.15rem; }
+  strong{ color:var(--ink); }
+  em{ font-style:italic; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:0 0 0 1.3rem;
+    border-left:2px solid var(--earth);
+    font-style:italic;
+    font-weight:300;
+    font-size:1.1rem;
+    color:var(--ink);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Inconsolata', monospace;
+    font-style:normal;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--dust);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Inconsolata', monospace;
+    font-size:0.62rem;
+    color:var(--earth);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--lamp); }
+
+  /* ---------- FICHE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--line);
+    padding:7px;
+    background:var(--storm-dark);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:grayscale(0.15) contrast(1.02); }
+  .registre{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .registre{ grid-template-columns:1fr; } }
+  .registre .label{
+    font-family:'Inconsolata', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--earth);
+    margin-bottom:0.15rem;
+  }
+  .registre .value{ font-size:0.93rem; color:var(--ink); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--earth); word-break:break-all; }
+  section.sources a:hover{ color:var(--lamp); }
+
+  footer.extinction{
+    margin-top:3.5rem;
+    padding:1.6rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Inconsolata', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--storm);
+    background:linear-gradient(180deg, var(--storm) 0%, #55504a 45%, #191816 100%);
+  }
+</style>
+</head>
+<body>
+
+<header class="storm">
+  <div class="storm-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="storm-eyebrow">
+      <span class="gust"></span>
+      <span class="mono">Analyse cinématographique</span>
+    </div>
+    <h1 class="title">Le Cheval de Turin</h1>
+    <p class="title-orig">A torinói ló</p>
+    <p class="subtitle">Béla Tarr, 2011 — six jours de vent, un puits qui se tarit, une lumière
+    qui s'éteint : le dernier film de Béla Tarr regarde le monde finir à hauteur de pommes de terre.</p>
+    <div class="ephemeride">
+      <span>Jour I</span><span>Jour II</span><span>Jour III</span><span>Jour IV</span>
+      <span>Jour V</span><span class="jour-vi">Jour VI — obscurité</span>
+    </div>
+  </div>
+</header>
+
+<nav class="almanach" aria-label="Sommaire">
+  <span class="mono">Éphéméride</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="entete">
+    <span class="jour">Registre</span>
+    <h2>Fiche technique</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/le-cheval-de-turin.jpg"
+           alt="Affiche du film Le Cheval de Turin"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="registre">
+      <div><div class="label">Réalisation</div><div class="value">Béla Tarr, avec Ágnes Hranitzky</div></div>
+      <div><div class="label">Scénario</div><div class="value">László Krasznahorkai et Béla Tarr</div></div>
+      <div><div class="label">Photographie</div><div class="value">Fred Kelemen (noir et blanc, 30 plans)</div></div>
+      <div><div class="label">Musique</div><div class="value">Mihály Víg</div></div>
+      <div><div class="label">Interprètes</div><div class="value">János Derzsi, Erika Bók, Mihály Kormos</div></div>
+      <div><div class="label">Production</div><div class="value">T. T. Filmműhely (Hongrie), coprod. Suisse/Allemagne/France/É.-U.</div></div>
+      <div><div class="label">Première</div><div class="value">Berlinale, 15 février 2011 · France : 30 novembre 2011</div></div>
+      <div><div class="label">Durée</div><div class="value">146 minutes</div></div>
+      <div><div class="label">Récompenses</div><div class="value">Ours d'argent (grand prix du jury) et prix FIPRESCI, Berlin 2011</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="entete">
+    <span class="jour">Prologue</span>
+    <h2>Synopsis</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Turin, 3 janvier 1889 : Friedrich Nietzsche se jette en larmes au cou d'un cheval de
+  fiacre battu par son cocher, avant de sombrer dans dix années de mutisme et de folie.
+  Une voix off rappelle l'anecdote, puis conclut : du cheval, on ne sait pas ce qu'il est
+  advenu. Le film sera cette réponse imaginaire<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Quelque part dans une plaine balayée par une tempête qui ne faiblit jamais, un paysan
+  au bras mort, sa fille et leur cheval habitent une ferme isolée. Six jours durant, le film
+  suit leurs gestes : s'habiller, puiser l'eau, faire bouillir deux pommes de terre, regarder
+  par la fenêtre. Et six jours durant, le monde se retire par soustractions : le cheval
+  refuse d'avancer, puis de manger ; le puits se tarit ; la tentative de départ échoue ;
+  les lampes s'éteignent — jusqu'à ce que l'obscurité prenne tout<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="entete">
+    <span class="jour">Jour I</span>
+    <h2>Contexte de production</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Le projet naît d'une conversation ancienne entre Tarr et l'écrivain László Krasznahorkai,
+  son scénariste de toujours (<em>Sátántangó</em>, <em>Les Harmonies Werckmeister</em>), qui
+  lui avait raconté l'anecdote de Turin<sup class="fn"><a href="#src-3">[3]</a></sup>. Le
+  tournage, prévu sur 35 jours fin 2008 dans une vallée hongroise, s'étire jusqu'en 2010 au
+  gré d'une météo contraire ; la ferme, le puits et l'écurie sont construits en dur, pierre
+  et bois, pour tenir face au vent des machines<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Production tout aussi âpre : T. T. Filmműhely, la société de Tarr, assemble une
+  coproduction hungaro-suisse-allemande-franco-américaine complétée par 240 000 euros
+  d'Eurimages<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Surtout, Tarr annonce avant même la première berlinoise que ce film — son neuvième long
+  métrage — sera le dernier : à 55 ans, il estime avoir dit ce qu'il avait à dire, et
+  consacrera la suite à son école de cinéma de Sarajevo, la Film.Factory<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Il tiendra parole.</p>
+</section>
+
+<section id="structure">
+  <div class="entete">
+    <span class="jour">Jour II</span>
+    <h2>Structure narrative</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Six jours, trente plans : la structure du film est son sujet. Chaque journée reprend la
+  même liturgie de gestes — l'habillage, le puits, les pommes de terre, la fenêtre — et le
+  récit n'avance que par ce que la répétition perd en route. C'est une Genèse inversée,
+  l'anti-création en six jours : au lieu que le monde s'ajoute, il se soustrait — la force
+  du cheval, l'eau, le feu, la lumière<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+  <p>Dans cette mécanique quasi muette, deux irruptions font événement : le voisin Bernhard,
+  venu chercher de l'eau-de-vie, déverse un monologue crépusculaire sur un monde « avili »
+  par ceux qui s'en emparent ; puis une carriole de tsiganes passe en trombe et boit au
+  puits. Ni intrigue ni résolution — seulement des visites, comme les mouches avant
+  l'orage. Le plan-séquence, chez Tarr, n'étire pas le temps : il le rend
+  comptable, jour après jour, de ce qui ne reviendra plus<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="entete">
+    <span class="jour">Jour III</span>
+    <h2>Mise en scène et procédés techniques</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Fred Kelemen, chef opérateur des derniers Tarr, filme en noir et blanc trente
+  plans-séquences à la steadicam, souvent de plusieurs minutes, sans aucune ellipse à
+  l'intérieur des actions<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.
+  L'ouverture donne le programme : la caméra tourne autour du cheval lancé dans la tempête,
+  crinière et harnais fouettés par le vent, pendant que montent les cordes graves et
+  obsédantes de Mihály Víg — une « symphonie funeste et lancinante » qui revient en boucle,
+  comme les jours<sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+  <p>Le vent est le vrai décor du film — un « vent hivernal [qui] semble balayer la vie vers
+  un gouffre sans fond », écrit la critique française, avec pour seul horizon un arbre
+  pétrifié sur la colline<sup class="fn"><a href="#src-5">[5]</a></sup>. À l'intérieur, la
+  lumière des lampes à pétrole sculpte les visages comme chez Rembrandt et La Tour ; les
+  fenêtres découpent le dehors en écrans de cinéma primitifs devant lesquels le père et la
+  fille s'assoient, spectateurs de leur propre fin. Quand, au sixième jour, les lampes
+  refusent de brûler alors qu'il reste du pétrole, le film touche à quelque chose que le
+  fantastique n'oserait pas : une extinction sans cause, filmée comme un simple fait<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="entete">
+    <span class="jour">Jour IV</span>
+    <h2>Personnages principaux</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p><strong>Ohlsdorfer</strong> (János Derzsi), le père au bras droit inerte, est un bloc
+  de survie têtue : il ne commente rien, n'espère rien, continue — et c'est cette
+  continuation nue, boutonner une chemise d'une seule main, manger sa pomme de terre
+  brûlante à pleins doigts, qui tient lieu de tragédie. <strong>La fille</strong> (Erika
+  Bók, découverte enfant dans <em>Sátántangó</em>) est le centre moral silencieux du film :
+  c'est elle qui puise, habille, cuit, et c'est sur son visage immobile à la fenêtre que
+  Tarr filme la conscience de la fin<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Et il y a <strong>le cheval</strong> — celui de Nietzsche, peut-être. Sa grève est le
+  seul acte libre du récit : refuser d'avancer, refuser de manger, se retirer du monde avant
+  le monde lui-même. Les critiques y ont lu un « refus existentiel face à l'absurde »<sup class="fn"><a href="#src-5">[5]</a></sup> —
+  l'animal accomplissant ce que le philosophe avait entrevu en l'embrassant : qu'il n'y a
+  parfois plus rien à tirer, au sens propre, de l'existence.</p>
+</section>
+
+<section id="themes">
+  <div class="entete">
+    <span class="jour">Jour V</span>
+    <h2>Thèmes</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Une apocalypse sans apocalypse, d'abord : pas de comète ni de jugement, seulement un
+  monde qui cesse peu à peu de répondre. Là où la fiction catastrophiste spectacularise la
+  fin, Tarr la domestique — elle a le rythme des corvées et l'odeur des pommes de terre.
+  Le monologue du voisin en donne la clé morale : « l'Homme est incapable de préserver ce
+  dont il s'empare : il souille, tout »<sup class="fn"><a href="#src-5">[5]</a></sup> —
+  version paysanne de la mort de Dieu nietzschéenne, prononcée entre deux verres
+  d'eau-de-vie.</p>
+  <p>Vient ensuite la dignité de la répétition : en refaisant chaque jour les mêmes gestes
+  amputés d'un élément, le film demande ce qui reste de l'humain quand tout usage du monde
+  se retire. La réponse tient dans le dernier plan : assis dans le noir devant des pommes
+  de terre crues, le père dit à sa fille « il faut manger ». Ni consolation ni révolte —
+  la persistance comme ultime forme de la vie. C'est aussi, du propre aveu de Tarr, un
+  discours sur la finitude de son cinéma : le réalisateur éteint ses lampes en même temps
+  que celles de ses personnages<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="entete">
+    <span class="jour">Jour VI</span>
+    <h2>Réception critique et postérité</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p>Présenté en compétition à la Berlinale 2011, le film repart avec l'Ours d'argent —
+  grand prix du jury — et le prix FIPRESCI de la critique internationale ; la Hongrie le
+  soumet à l'Oscar du film étranger<sup class="fn"><a href="#src-2">[2]</a></sup>. La
+  critique mondiale le reçoit comme un chef-d'œuvre terminal, exigeant jusqu'à la limite —
+  « terrassant, âpre, prégnant et redoutable », résume une critique française<sup class="fn"><a href="#src-5">[5]</a></sup>,
+  quand d'autres avouent une expérience « presque intolérable » mais capitale<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  A. O. Scott, dans le <em>New York Times</em>, formule le paradoxe du film :</p>
+  <blockquote>« Une œuvre qui semble bâtie sur le refus du plaisir peut produire une
+  expérience d'exaltation. »
+  <span class="attrib">A. O. Scott, New York Times, cité par Wikipédia<sup class="fn"><a href="#src-2">[2]</a></sup></span></blockquote>
+  <p>Tarr n'a jamais retourné de long métrage, consacrant ses dernières années à la
+  transmission. Sa mort, en janvier 2025, a scellé le statut du <em>Cheval de Turin</em> :
+  la nécrologie du British Film Institute salue en lui le visionnaire du « slow cinema »
+  et voit dans ce chant du cygne « une descente des ténèbres véritablement beckettienne »<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Rarement un cinéaste aura à ce point choisi — et réussi — sa dernière image.</p>
+</section>
+
+<section id="conclusion">
+  <div class="entete">
+    <span class="jour">Extinction</span>
+    <h2>Conclusion</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <p><em>Le Cheval de Turin</em> est un film-limite : limite du récit (six jours de gestes),
+  limite du visible (un noir et blanc qui finit par s'éteindre littéralement), limite du
+  cinéma de son auteur, qui y solde trente-quatre ans d'œuvre en trente plans. Ce
+  minimalisme n'a pourtant rien d'un appauvrissement — chaque plan-séquence est d'une
+  ampleur d'opéra, et la ferme battue par les vents rejoint les grands huis clos
+  métaphysiques, de Beckett à Dreyer.</p>
+  <p>Répondre à la question « qu'est devenu le cheval de Nietzsche ? » par deux heures
+  vingt-six de corvées, c'était affirmer une dernière fois que le cinéma peut regarder ce
+  que la philosophie ne fait que penser : l'usure du monde, la compassion muette, la
+  persistance. Le film s'achève dans le noir, mais c'est un noir habité — quelque part,
+  un père y répète encore à sa fille qu'il faut manger. On ne finit pas mieux une œuvre ;
+  on ne la finit peut-être pas autrement.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="entete">
+    <span class="jour">Archives</span>
+    <h2>Sources</h2>
+    <div class="bourrasque"></div>
+  </div>
+  <ol>
+    <li id="src-1">Wikipédia (fr) — « Le Cheval de Turin » : prologue nietzschéen, structure des six jours, dates de sortie (Berlinale 15 février 2011, France 30 novembre 2011), réception. <a href="https://fr.wikipedia.org/wiki/Le_Cheval_de_Turin">fr.wikipedia.org/wiki/Le_Cheval_de_Turin</a></li>
+    <li id="src-2">Wikipédia (en) — « The Turin Horse » : production (tournage 2008-2010, décors en dur, coproduction, Eurimages), 30 plans de Fred Kelemen, musique de Mihály Víg, distribution, Ours d'argent et prix FIPRESCI, citation d'A. O. Scott, annonce du dernier film. <a href="https://en.wikipedia.org/wiki/The_Turin_Horse">en.wikipedia.org/wiki/The_Turin_Horse</a></li>
+    <li id="src-3">The Movie Database (TMDB) — fiche « The Turin Horse » : genèse du projet (le récit de Krasznahorkai à Tarr), synopsis, affiche. <a href="https://www.themoviedb.org/movie/81401-a-torinoi-lo">themoviedb.org/movie/81401</a></li>
+    <li id="src-4">British Film Institute — « Béla Tarr obituary: Hungary's slow-cinema visionary » (janvier 2025) : mort du cinéaste, carrière, Film.Factory de Sarajevo, Le Cheval de Turin comme chant du cygne « beckettien ». <a href="https://www.bfi.org.uk/features/bela-tarr-obituary-hungary-slow-cinema-visionary">bfi.org.uk/features/bela-tarr-obituary</a></li>
+    <li id="src-5">Silence… Action ! — « [Critique] Le Cheval de Turin (Béla Tarr) », octobre 2011 : analyse française (plans-séquences steadicam, vent, arbre pétrifié, musique, monologue du voisin, « refus existentiel » du cheval, jugement « terrassant, âpre, prégnant et redoutable »). <a href="https://www.silence-action.com/2011/10/critique-cheval-turin-bela-tarr/">silence-action.com</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="extinction">
+  Analyse sourcée · rédigée le 5 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

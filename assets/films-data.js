@@ -133,5 +133,15 @@ const FILMS = [
     summary: "Scorsese pensait signer son dernier film ; il a filmé la jalousie d'un champion comme un opéra en noir et blanc, à hauteur de coups.",
     url: 'films/raging-bull.html',
     poster: 'assets/posters/raging-bull.jpg'
+  },
+  {
+    slug: 'le-cheval-de-turin',
+    title: 'Le Cheval de Turin',
+    director: 'Béla Tarr',
+    year: 2011,
+    genre: 'Drame contemplatif',
+    summary: "Six jours de vent, un cheval qui refuse, la lumière qui s'éteint : le dernier film de Béla Tarr regarde la fin du monde à hauteur de pommes de terre.",
+    url: 'films/le-cheval-de-turin.html',
+    poster: 'assets/posters/le-cheval-de-turin.jpg'
   }
 ];
