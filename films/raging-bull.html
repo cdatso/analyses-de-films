@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raging Bull (1980) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Noticia+Text:ital,wght@0,400;0,700;1,400&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE PROGRAMME DE COMBAT =====
+     Affiche de match des années 1940 : papier journal jauni, encre grasse,
+     typo bois condensée, cordes du ring, trame de rotative. */
+  :root{
+    --newsprint:#e8e1cf;
+    --newsprint-dark:#ddd4bd;
+    --ink:#131211;
+    --ink-grey:#3d3a35;
+    --halftone:#7b756a;
+    --belt:#a8842c;
+    --rope:rgba(19,18,17,0.22);
+    --line:rgba(19,18,17,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(19,18,17,0.014) 3px, rgba(19,18,17,0.014) 4px),
+      var(--newsprint);
+    color:var(--ink-grey);
+    font-family:'Noticia Text', serif;
+    font-size:1.0rem;
+    line-height:1.7;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Fira Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.66rem;
+  }
+
+  /* ---------- L'AFFICHE DU COMBAT ---------- */
+  header.bill{
+    background:var(--ink);
+    color:var(--newsprint);
+    padding:4.5rem 1.5rem 3.5rem;
+    position:relative;
+    overflow:hidden;
+    border-bottom:6px double var(--belt);
+  }
+  header.bill::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 84px, rgba(232,225,207,0.10) 84px 87px);
+    pointer-events:none;
+  }
+  .bill-inner{ max-width:760px; margin:0 auto; position:relative; z-index:1; }
+  .back-link{
+    display:inline-block;
+    color:rgba(232,225,207,0.55);
+    font-family:'Fira Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2rem;
+  }
+  .back-link:hover{ color:var(--belt); }
+  .bill-top{
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-bottom:1px solid rgba(232,225,207,0.25);
+    padding-bottom:0.5rem;
+    margin-bottom:1.8rem;
+    color:var(--belt);
+  }
+  h1.title{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    font-size:clamp(3.2rem, 11vw, 6.2rem);
+    line-height:0.92;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+    margin:0 0 0.8rem;
+    color:var(--newsprint);
+  }
+  .subtitle{
+    font-size:1.04rem;
+    max-width:58ch;
+    color:rgba(232,225,207,0.85);
+    margin:0 0 1.6rem;
+  }
+  .bill-meta{
+    display:flex; flex-wrap:wrap; gap:0.5rem 1.6rem;
+    font-family:'Fira Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(232,225,207,0.6);
+  }
+
+  /* ---------- AVERTISSEMENT ---------- */
+  .avert{
+    max-width:720px;
+    margin:2.2rem auto 0;
+    padding:0.85rem 1.2rem;
+    border:1px solid var(--line);
+    border-left:4px solid var(--ink);
+    background:var(--newsprint-dark);
+    font-size:0.86rem;
+  }
+  .avert .mono{ color:var(--ink); }
+
+  /* ---------- SOMMAIRE : CARTE DES ROUNDS ---------- */
+  nav.card{
+    max-width:720px;
+    margin:2.4rem auto 0;
+    border:2px solid var(--ink);
+    background:var(--newsprint);
+    padding:1.3rem 1.6rem;
+    box-shadow:5px 5px 0 var(--rope);
+  }
+  nav.card .mono{ color:var(--ink); display:block; margin-bottom:0.8rem; border-bottom:1px solid var(--line); padding-bottom:0.5rem; }
+  nav.card ol{
+    margin:0; padding:0; list-style:none;
+    columns:2; column-gap:2.5rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.card ol{ columns:1; } }
+  nav.card li{ margin-bottom:0.35rem; }
+  nav.card li::before{
+    content:"R" counter(round) " ";
+    counter-increment:round;
+    font-family:'Fira Mono', monospace;
+    font-size:0.66rem;
+    color:var(--belt);
+  }
+  nav.card ol{ counter-reset:round; }
+  nav.card a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rope); }
+  nav.card a:hover{ color:var(--belt); border-color:var(--belt); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.6rem; }
+  .round-head{ margin-bottom:1.5rem; }
+  .round-head .bell{
+    font-family:'Fira Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--belt);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  .round-head h2{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    font-size:2.1rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    color:var(--ink);
+    margin:0 0 0.5rem;
+  }
+  .round-head .ropes{
+    height:9px;
+    background:
+      linear-gradient(var(--rope), var(--rope)) 0 1px/100% 1px no-repeat,
+      linear-gradient(var(--rope), var(--rope)) 0 4px/100% 1px no-repeat,
+      linear-gradient(var(--rope), var(--rope)) 0 7px/100% 1px no-repeat;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--ink); }
+
+  blockquote{
+    margin:1.6rem 0;
+    padding:1rem 1.3rem;
+    border:1px solid var(--line);
+    border-left:5px solid var(--ink);
+    background:var(--newsprint-dark);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Fira Mono', monospace;
+    font-style:normal;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--halftone);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Fira Mono', monospace;
+    font-size:0.62rem;
+    color:var(--belt);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--ink); }
+
+  /* ---------- PESÉE OFFICIELLE (FICHE) ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:2px solid var(--ink);
+    padding:6px;
+    background:#fff;
+    box-shadow:5px 5px 0 var(--rope);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .weigh-in{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .weigh-in{ grid-template-columns:1fr; } }
+  .weigh-in .label{
+    font-family:'Fira Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--halftone);
+    margin-bottom:0.15rem;
+  }
+  .weigh-in .value{ font-size:0.92rem; color:var(--ink); font-weight:700; }
+  .weigh-in .value small{ font-weight:400; }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.87rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--belt); word-break:break-all; }
+  section.sources a:hover{ color:var(--ink); }
+
+  footer.final{
+    border-top:2px solid var(--ink);
+    margin-top:3.5rem;
+    padding:1.4rem 1.5rem 2.5rem;
+    text-align:center;
+    font-family:'Fira Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--halftone);
+  }
+</style>
+</head>
+<body>
+
+<header class="bill">
+  <div class="bill-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="bill-top">
+      <span class="mono">Analyse cinématographique</span>
+      <span class="mono">New York · 1941–1964</span>
+    </div>
+    <h1 class="title">Raging Bull</h1>
+    <p class="subtitle">Martin Scorsese, 1980 — la montée et la chute de Jake LaMotta,
+    champion du monde des poids moyens, filmées comme un opéra de jalousie en noir et blanc.</p>
+    <div class="bill-meta">
+      <span>États-Unis · United Artists</span>
+      <span>129 minutes · Noir et blanc</span>
+      <span>Drame biographique</span>
+    </div>
+  </div>
+</header>
+
+<div class="avert">
+  <span class="mono">Avertissement</span> — Violences conjugales et familiales au cœur du
+  récit, en plus de la violence des combats ; l'analyse les aborde directement.
+</div>
+
+<nav class="card" aria-label="Sommaire">
+  <span class="mono">Carte des rounds</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="round-head">
+    <span class="bell">Round 1 · Pesée officielle</span>
+    <h2>Fiche technique</h2>
+    <div class="ropes"></div>
+  </div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/raging-bull.jpg"
+           alt="Affiche du film Raging Bull"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="weigh-in">
+      <div><div class="label">Réalisation</div><div class="value">Martin Scorsese</div></div>
+      <div><div class="label">Scénario</div><div class="value">Paul Schrader, Mardik Martin <small>d'après les mémoires de Jake LaMotta</small></div></div>
+      <div><div class="label">Photographie</div><div class="value">Michael Chapman</div></div>
+      <div><div class="label">Montage</div><div class="value">Thelma Schoonmaker</div></div>
+      <div><div class="label">Musique</div><div class="value">Intermezzo de <em>Cavalleria rusticana</em> (Mascagni), musiques d'époque</div></div>
+      <div><div class="label">Production</div><div class="value">Irwin Winkler, Robert Chartoff <small>· United Artists</small></div></div>
+      <div><div class="label">Interprètes</div><div class="value">Robert De Niro, Joe Pesci, Cathy Moriarty</div></div>
+      <div><div class="label">Sortie</div><div class="value">14 nov. 1980 (New York) · 25 fév. 1981 (France)</div></div>
+      <div><div class="label">Récompenses</div><div class="value">2 Oscars <small>(acteur, montage)</small> sur 8 nominations</div></div>
+      <div><div class="label">Budget</div><div class="value">18 M$</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="round-head">
+    <span class="bell">Round 2</span>
+    <h2>Synopsis</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>Bronx, années 1940. Jake LaMotta, boxeur poids moyen d'origine italienne, cogne — sur le
+  ring, où sa résistance à la douleur devient légendaire, et en dehors, où sa jalousie
+  maladive détruit méthodiquement tout ce qu'il aime. Managé par son frère Joey, marié à la
+  très jeune Vickie qu'il soupçonne sans relâche, LaMotta accepte de se coucher pour la mafia
+  afin d'obtenir sa chance mondiale, devient champion du monde en 1949 — puis perd tout :
+  le titre, sa femme, son frère, sa liberté<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le film le retrouve en 1964, bouffi et vieilli, récitant des monologues dans un
+  cabaret new-yorkais — dont, face au miroir de sa loge, la tirade du taxi d'<em>On the
+  Waterfront</em> : « I coulda been a contender. »<sup class="fn"><a href="#src-4">[4]</a></sup></p>
+</section>
+
+<section id="contexte">
+  <div class="round-head">
+    <span class="bell">Round 3</span>
+    <h2>Contexte de production</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>C'est Robert De Niro qui porte le projet à bout de bras : il découvre les mémoires de
+  LaMotta (<em>Raging Bull: My Story</em>, 1970) et harcèle littéralement Scorsese, que la
+  boxe n'intéresse pas. Le tournant est dramatique : en 1978, après l'échec de <em>New York,
+  New York</em>, Scorsese s'effondre — quatre jours d'hôpital entre la vie et la mort. De Niro
+  lui rend visite et lui repose la question ; Scorsese dit oui, et fera du film le récit de
+  sa propre remontée<sup class="fn"><a href="#src-4">[4]</a></sup>. Il aborde le tournage
+  comme si c'était son dernier :</p>
+  <blockquote>« Plutôt que de compromettre cette histoire pour pouvoir faire dix autres
+  films ensuite, je préférais la finir et ne plus jamais tourner après ça. »
+  <span class="attrib">Martin Scorsese, cité par Cinephilia &amp; Beyond<sup class="fn"><a href="#src-4">[4]</a></sup></span></blockquote>
+  <p>Le scénario de Mardik Martin est réécrit par Paul Schrader à l'été 1978, puis retravaillé
+  sans crédit par Scorsese et De Niro pendant deux semaines et demie à Saint-Martin<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Le choix du noir et blanc naît notamment d'une remarque de Michael Powell — les gants
+  rouges de De Niro juraient avec la mémoire des actualités filmées des années 1940 — et de
+  l'inquiétude des cinéastes sur la dégradation des pellicules couleur<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Reste la transformation la plus célèbre de l'histoire de l'acting : De Niro prend une
+  trentaine de kilos (de 66 à 98 kg environ), le tournage s'interrompant près de quatre mois
+  pour lui laisser le temps de manger sa route à travers l'Italie du Nord et la
+  France<sup class="fn"><a href="#src-1">[1]</a></sup>. Budget final : 18 millions de dollars,
+  qu'United Artists faillit refuser de distribuer tant le film lui semblait
+  brutal<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="round-head">
+    <span class="bell">Round 4</span>
+    <h2>Structure narrative</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>Le film est enchâssé dans son propre épilogue : il s'ouvre en 1964 sur le LaMotta
+  épaissi du cabaret, avant de remonter à 1941 — si bien que toute l'ascension est déjà
+  lestée de sa chute. À l'intérieur de ce cadre, la construction alterne blocs domestiques
+  (cuisines, chambres, télévision) et combats datés comme des chapitres, chronique sèche
+  d'une carrière qui est aussi le calendrier d'une autodestruction<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Scorsese refuse la dramaturgie sportive classique : pas de montée vers LA victoire, pas
+  de revanche finale. Le titre mondial arrive aux deux tiers du film, presque sans joie, et
+  la défaite décisive contre Robinson est acceptée avec une fierté perverse — « tu ne m'as
+  jamais mis au tapis, Ray ». Le vrai combat, celui que le montage de Thelma Schoonmaker ne
+  cesse de relancer, se joue dans les appartements : c'est là que les rounds font le plus
+  mal<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="round-head">
+    <span class="bell">Round 5</span>
+    <h2>Mise en scène et procédés techniques</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>Les scènes de ring — neuf combats, une dizaine de minutes au total — ont redéfini la
+  représentation de la boxe au cinéma. Scorsese place la caméra <em>dans</em> le ring, à
+  hauteur de coups, et storyboarde chaque impact « comme on règle une danse sur une
+  musique » ; chaque combat reçoit un traitement visuel distinct, jusqu'à l'abstraction
+  expressionniste du dernier face-à-face avec Sugar Ray Robinson — fumées, flashes, ralentis,
+  géométrie déformée du ring<sup class="fn"><a href="#src-4">[4]</a></sup>. Le monteur son
+  Frank Warner fabrique un son unique pour chaque coup de poing — puis détruira sa
+  sonothèque après le film<sup class="fn"><a href="#src-4">[4]</a></sup>. La critique
+  française a immédiatement identifié le programme : noir et blanc très contrasté, focales
+  courtes légèrement déformantes, ralentis, sons exacerbés — une subjectivité maximale qui
+  fait éprouver les combats depuis l'intérieur du crâne de LaMotta<sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+  <p>Face à cette fureur, l'intermezzo de <em>Cavalleria rusticana</em> de Mascagni, choisi
+  par Scorsese dans sa propre discothèque, drape le générique et les ralentis d'une
+  mélancolie liturgique — l'opéra sicilien répondant à la tragédie italo-américaine<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Et le noir et blanc de Michael Chapman fait le reste : il stylise le sang (une éponge
+  essorée au-dessus des cordes), transforme les corps en statuaire et inscrit le film dans
+  la mémoire documentaire des années 1940<sup class="fn"><a href="#src-4">[4]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="round-head">
+    <span class="bell">Round 6</span>
+    <h2>Personnages principaux</h2>
+    <div class="ropes"></div>
+  </div>
+  <p><strong>Jake LaMotta</strong> (Robert De Niro, Oscar du meilleur acteur) est un
+  protagoniste sans excuse psychologisante : le film ne l'explique pas, il l'expose. Sa
+  jalousie n'est pas un défaut de caractère mais un régime de perception — chaque regard de
+  Vickie, chaque politesse de Joey devient pièce à conviction. De Niro joue les deux corps
+  de LaMotta, l'athlète et l'épave, et c'est la continuité entre les deux qui glace : le
+  second était déjà contenu dans le premier<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p><strong>Joey</strong> (Joe Pesci, première collaboration avec Scorsese et De Niro) est
+  le frère-manager, seul lien de Jake avec le monde rationnel — jusqu'à la scène atroce où
+  la question « tu as couché avec ma femme ? » pulvérise la fratrie. <strong>Vickie</strong>
+  (Cathy Moriarty, 19 ans à la sortie) est filmée comme Jake la voit : icône platine
+  inaccessible au bord des piscines, puis prisonnière d'un mariage de coups et de
+  soupçons — le film épouse ce regard pour mieux le dénoncer<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="round-head">
+    <span class="bell">Round 7</span>
+    <h2>Thèmes</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>La jalousie, d'abord — non comme ressort d'intrigue mais comme pathologie filmée de
+  l'intérieur, cousine paranoïaque de celle d'Othello. Elle est indissociable du deuxième
+  thème : une masculinité qui ne connaît que deux idiomes, cogner et posséder. Le film
+  radiographie un imaginaire viril où puissance physique et identité se confondent, et où
+  toute tendresse est vécue comme une menace<sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+  <p>Vient ensuite le corps comme monnaie : LaMotta encaisse sur le ring les punitions qu'il
+  s'estime dues — la critique a souvent lu ses combats comme des autoflagellations, la scène
+  de la cellule de Miami (« I'm not an animal ») en étant l'aveu nu. La grille catholique de
+  Scorsese affleure partout : faute, châtiment, et cette rédemption minimale du miroir final
+  — certains critiques français s'agacèrent d'ailleurs de cette lecture religieuse, tel
+  Bernard Nave dans <em>Jeune Cinéma</em>, « permis de rester sceptique devant cette
+  vision »<sup class="fn"><a href="#src-3">[3]</a></sup>. Le carton final — la citation de
+  l'Évangile selon saint Jean sur l'aveugle guéri (« j'étais aveugle, maintenant je
+  vois ») — assume explicitement cette dimension<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="round-head">
+    <span class="bell">Round 8</span>
+    <h2>Réception critique et postérité</h2>
+    <div class="ropes"></div>
+  </div>
+  <p>À sa sortie américaine (première le 14 novembre 1980), l'accueil est polarisé — la
+  violence du film divise, le box-office est tiède (23,4 M$ pour 18 M$ de budget). Les Los
+  Angeles Film Critics le sacrent pourtant meilleur film de l'année, et l'Académie lui
+  accorde huit nominations pour deux statuettes : De Niro, et le montage de Thelma
+  Schoonmaker — mais <em>Des gens comme les autres</em> de Robert Redford rafle le meilleur
+  film<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>La presse française, à la sortie du 25 février 1981, est nettement plus unanime :
+  <em>L'Humanité</em> salue « une sorte d'autopsie, par la fiction et la mise en scène »,
+  <em>Les Échos</em> « un film curieusement très réaliste et qui pourtant prend des allures
+  de fable », et Robert Benayoun célèbre dans <em>Le Point</em> un De Niro « acteur absolu,
+  prêt à toutes les métamorphoses »<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  La postérité a tranché au-delà de toute espérance : premier film inscrit au National Film
+  Registry dès sa première année d'éligibilité (1990), 4e meilleur film américain de tous
+  les temps au classement AFI de 2007, et une place à peu près permanente dans les listes
+  des plus grands films jamais tournés<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="round-head">
+    <span class="bell">Round 9 · Dernier round</span>
+    <h2>Conclusion</h2>
+    <div class="ropes"></div>
+  </div>
+  <p><em>Raging Bull</em> est peut-être le plus grand contre-emploi de l'histoire du film de
+  sport : un film de boxe qui méprise la victoire, un biopic qui refuse d'aimer son sujet,
+  une performance physique record mise au service d'un personnage indéfendable. Sa puissance
+  vient exactement de là — de ce que Scorsese, se croyant fini, n'avait plus rien à négocier :
+  ni la complaisance du genre, ni la sympathie du public, ni la couleur.</p>
+  <p>Reste l'image finale : un homme seul face à son miroir, répétant les répliques d'un
+  autre film sur un autre raté magnifique. LaMotta n'y comprend probablement rien ; le film,
+  lui, a tout compris — que la boxe n'était qu'un prétexte, et que le véritable adversaire,
+  round après round, cuisine après cuisine, n'a jamais cessé d'être le reflet. Le cinéma
+  américain des années 1980 s'ouvre sur ce constat sans appel, en noir, blanc et culpabilité.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="round-head">
+    <span class="bell">Coin du soigneur</span>
+    <h2>Sources</h2>
+    <div class="ropes"></div>
+  </div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Raging Bull » : production (réécriture Schrader, prise de poids de De Niro, interruption de tournage, budget, United Artists), musique (Mascagni), sorties, Oscars, réception initiale et postérité (National Film Registry 1990, AFI 2007). <a href="https://en.wikipedia.org/wiki/Raging_Bull">en.wikipedia.org/wiki/Raging_Bull</a></li>
+    <li id="src-2">IMDb — « Raging Bull (1980) » : distribution, récompenses (consulté via recherche web). <a href="https://www.imdb.com/title/tt0081398/">imdb.com/title/tt0081398</a></li>
+    <li id="src-3">La Cinémathèque française — « Revue de presse de Raging Bull » : sortie française du 25 février 1981, citations de L'Humanité, Les Échos, Le Point (Robert Benayoun), Jeune Cinéma (Bernard Nave), etc. <a href="https://www.cinematheque.fr/article/720.html">cinematheque.fr/article/720.html</a></li>
+    <li id="src-4">Cinephilia &amp; Beyond — « Scorsese On the Ropes: The "Kamikaze" Film-Making of Raging Bull » : effondrement de 1978 et rôle de De Niro, citation « kamikaze », conception des combats (caméra dans le ring, storyboards), son de Frank Warner, remarque de Michael Powell sur le noir et blanc, scène finale d'<em>On the Waterfront</em>. <a href="https://cinephiliabeyond.org/raging-bull/">cinephiliabeyond.org/raging-bull</a></li>
+    <li id="src-5">LeMagduCine — « Rétrospective Martin Scorsese : Raging Bull » et critiques françaises associées (noir et blanc contrasté, focales courtes, subjectivité, lecture de la masculinité), consultées via recherche web. <a href="https://www.lemagducine.fr/cinema/critiques-films/retrospective-martin-scorsese-raging-bull-critique-du-film-43894/">lemagducine.fr</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="final">
+  Analyse sourcée · rédigée le 5 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

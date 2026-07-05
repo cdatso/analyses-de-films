@@ -123,5 +123,15 @@ const FILMS = [
     summary: "Un romancier raté transforme son crime en roman à succès — mais la rivière de Fritz Lang rend toujours ce qu'on lui confie.",
     url: 'films/au-fil-de-leau.html',
     poster: 'assets/posters/au-fil-de-leau.jpg'
+  },
+  {
+    slug: 'raging-bull',
+    title: 'Raging Bull',
+    director: 'Martin Scorsese',
+    year: 1980,
+    genre: 'Drame biographique',
+    summary: "Scorsese pensait signer son dernier film ; il a filmé la jalousie d'un champion comme un opéra en noir et blanc, à hauteur de coups.",
+    url: 'films/raging-bull.html',
+    poster: 'assets/posters/raging-bull.jpg'
   }
 ];

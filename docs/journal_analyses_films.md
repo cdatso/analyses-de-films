@@ -30,6 +30,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Rouges et Blancs | Miklós Jancsó | 1967 | Drame de guerre | ✅ Publié | 4 juillet 2026 | films/rouges-et-blancs.html | https://cdatso.github.io/analyses-de-films/films/rouges-et-blancs.html |
 | Persona | Ingmar Bergman | 1966 | Drame psychologique | ✅ Publié | 5 juillet 2026 | films/persona.html | https://cdatso.github.io/analyses-de-films/films/persona.html |
 | Au fil de l'eau | Fritz Lang | 1950 | Film noir gothique | ✅ Publié | 5 juillet 2026 | films/au-fil-de-leau.html | https://cdatso.github.io/analyses-de-films/films/au-fil-de-leau.html |
+| Raging Bull | Martin Scorsese | 1980 | Drame biographique | ✅ Publié | 5 juillet 2026 | films/raging-bull.html | https://cdatso.github.io/analyses-de-films/films/raging-bull.html |
 
 ---
 
