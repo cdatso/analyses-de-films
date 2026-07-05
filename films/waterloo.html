@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterloo (1970) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@300;400;600&family=Oxygen+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ===== LA CARTE D'ÉTAT-MAJOR =====
+     Papier bistre de 1815, hachures cartographiques, flèches de troupes :
+     bleu français contre rouge anglais sur le plateau de Mont-Saint-Jean. */
+  :root{
+    --bistre:#e9dfc6;
+    --bistre-fonce:#ddd1b2;
+    --sepia:#2e2517;
+    --sepia-doux:#4a3d2a;
+    --bleu:#1f3a68;
+    --rouge:#992d20;
+    --laiton:#a07d33;
+    --hachure:rgba(46,37,23,0.12);
+    --ligne:rgba(46,37,23,0.2);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 34px, var(--hachure) 34px 35px),
+      repeating-linear-gradient(90deg, transparent 0 34px, var(--hachure) 34px 35px),
+      var(--bistre);
+    color:var(--sepia-doux);
+    font-family:'Archivo', sans-serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Oxygen Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- CARTOUCHE DE LA CARTE (EN-TÊTE) ---------- */
+  header.cartouche{
+    background:
+      radial-gradient(120% 100% at 50% -20%, rgba(160,125,51,0.15), transparent 60%),
+      var(--sepia);
+    color:var(--bistre);
+    padding:4.6rem 1.5rem 3.8rem;
+    position:relative;
+  }
+  header.cartouche::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:4px;
+    background:linear-gradient(90deg, var(--bleu) 0 50%, var(--rouge) 50% 100%);
+  }
+  .cartouche-inner{ max-width:760px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:rgba(233,223,198,0.55);
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.2rem;
+  }
+  .back-link:hover{ color:var(--laiton); }
+  .date-bataille{
+    display:inline-block;
+    border:1px solid rgba(160,125,51,0.6);
+    color:var(--laiton);
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    padding:0.35rem 0.9rem;
+    margin-bottom:1.7rem;
+  }
+  h1.title{
+    font-family:'Vollkorn', serif;
+    font-weight:800;
+    font-size:clamp(2.8rem, 8vw, 4.8rem);
+    line-height:1.02;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    margin:0 0 0.8rem;
+    color:var(--bistre);
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:58ch;
+    color:rgba(233,223,198,0.85);
+    margin:0 0 1.9rem;
+  }
+  .forces{
+    display:flex; flex-wrap:wrap; gap:0.5rem 2rem;
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    border-top:1px solid rgba(233,223,198,0.2);
+    padding-top:1.1rem;
+  }
+  .forces .fr{ color:#8fa8d4; }
+  .forces .uk{ color:#d49088; }
+  .forces .neutre{ color:rgba(233,223,198,0.55); }
+
+  /* ---------- SOMMAIRE : LÉGENDE ---------- */
+  nav.legende{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:2px solid var(--sepia);
+    background:var(--bistre-fonce);
+    box-shadow:6px 6px 0 rgba(46,37,23,0.18);
+  }
+  nav.legende .mono{ color:var(--sepia); display:block; margin-bottom:0.8rem; }
+  nav.legende ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.legende ol{ columns:1; } }
+  nav.legende li{ margin-bottom:0.35rem; }
+  nav.legende a{ color:var(--sepia); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.legende a:hover{ color:var(--rouge); border-color:var(--rouge); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .ordre{ margin-bottom:1.4rem; }
+  .ordre .ref{
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--laiton);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .ordre h2{
+    font-family:'Vollkorn', serif;
+    font-weight:600;
+    font-size:1.7rem;
+    color:var(--sepia);
+    margin:0 0 0.55rem;
+  }
+  .ordre .fleche{
+    height:9px;
+    position:relative;
+    background:linear-gradient(var(--ligne), var(--ligne)) 0 4px/100% 1px no-repeat;
+  }
+  .ordre .fleche::after{
+    content:"";
+    position:absolute; right:0; top:1px;
+    border-left:9px solid var(--sepia-doux);
+    border-top:4px solid transparent;
+    border-bottom:4px solid transparent;
+    opacity:0.6;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--sepia); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.4rem;
+    border:1px solid var(--ligne);
+    border-left:5px solid var(--rouge);
+    background:var(--bistre-fonce);
+    font-family:'Vollkorn', serif;
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--sepia);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Oxygen Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--sepia-doux);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.6rem;
+    color:var(--bleu);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--rouge); }
+
+  /* ---------- FICHE : ÉTAT DES FORCES ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:var(--bistre-fonce);
+    box-shadow:4px 4px 0 rgba(46,37,23,0.18);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:sepia(0.1); }
+  .etat-forces{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .etat-forces{ grid-template-columns:1fr; } }
+  .etat-forces .label{
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--laiton);
+    margin-bottom:0.15rem;
+  }
+  .etat-forces .value{ font-size:0.93rem; color:var(--sepia); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--bleu); word-break:break-all; }
+  section.sources a:hover{ color:var(--rouge); }
+
+  footer.bivouac{
+    border-top:2px solid var(--sepia);
+    margin-top:3.5rem;
+    padding:1.5rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Oxygen Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--sepia-doux);
+  }
+</style>
+</head>
+<body>
+
+<header class="cartouche">
+  <div class="cartouche-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="date-bataille">Plateau de Mont-Saint-Jean · 18 juin 1815</span></div>
+    <h1 class="title">Waterloo</h1>
+    <p class="subtitle">Sergueï Bondartchouk, 1970 — vingt mille soldats soviétiques, un
+    producteur italien et deux empires du cinéma pour rejouer, plan par plan, la journée qui
+    a défait Napoléon. La dernière bataille filmée sans trucage à cette échelle.</p>
+    <div class="forces">
+      <span class="fr">◼ Armée française — Rod Steiger</span>
+      <span class="uk">◼ Armées alliées — Christopher Plummer</span>
+      <span class="neutre">Italie / URSS · 134 min · Couleur</span>
+    </div>
+  </div>
+</header>
+
+<nav class="legende" aria-label="Sommaire">
+  <span class="mono">Légende de la carte</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="ordre"><span class="ref">Ordre n°1 · État des forces</span><h2>Fiche technique</h2><div class="fleche"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/waterloo.jpg"
+           alt="Affiche du film Waterloo"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="etat-forces">
+      <div><div class="label">Réalisation</div><div class="value">Sergueï Bondartchouk</div></div>
+      <div><div class="label">Production</div><div class="value">Dino De Laurentiis / Mosfilm (coproduction italo-soviétique)</div></div>
+      <div><div class="label">Photographie</div><div class="value">Armando Nannuzzi (Panavision, caméras multiples)</div></div>
+      <div><div class="label">Musique</div><div class="value">Nino Rota</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Rod Steiger, Christopher Plummer, Orson Welles, Dan O'Herlihy</div></div>
+      <div><div class="label">Tournage</div><div class="value">1969 — région d'Oujhorod (Ukraine soviétique) et Rome ; ~17 000 figurants de l'Armée rouge</div></div>
+      <div><div class="label">Budget</div><div class="value">~12 M£ (parmi les films les plus chers de son temps)</div></div>
+      <div><div class="label">Sortie</div><div class="value">1970 · échec commercial retentissant</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="ordre"><span class="ref">Ordre n°2</span><h2>Synopsis</h2><div class="fleche"></div></div>
+  <p>1814 : dans un Fontainebleau aux allures de tombeau, Napoléon abdique devant ses
+  maréchaux et part pour l'île d'Elbe. Un an plus tard, il en revient — les Cent-Jours
+  s'ouvrent sur la défection du régiment envoyé l'arrêter, ralliement filmé comme une
+  scène d'amour entre un homme et son armée. L'Europe coalisée répond par les armes<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le 18 juin 1815, sous une pluie battante qui retarde tout, deux armées s'observent
+  depuis leurs crêtes près de la ferme de Mont-Saint-Jean. La bataille occupe presque toute
+  la seconde moitié du film : assauts d'Hougoumont, charges de la cavalerie française sur
+  les carrés britanniques, arrivée des Prussiens, garde impériale brisée — jusqu'au champ
+  jonché de morts que Wellington, vainqueur sans joie, traverse seul au
+  crépuscule<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="ordre"><span class="ref">Ordre n°3</span><h2>Contexte de production</h2><div class="fleche"></div></div>
+  <p>Après son <em>Guerre et Paix</em> aux dimensions inédites (Oscar du film étranger
+  1969), Bondartchouk est l'homme que Dino De Laurentiis vient chercher pour un projet
+  qu'aucun studio occidental ne peut assumer seul : la coproduction italo-soviétique fournit
+  ce que Hollywood n'a plus — une armée. Mosfilm engage plus de 4 millions de livres,
+  près de 17 000 hommes dont une brigade de cavalerie complète, pour 48 jours de tournage
+  en Ukraine<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le champ de bataille est littéralement reconstruit : deux collines rasées au bulldozer,
+  une vallée creusée, huit kilomètres de routes, 5 000 arbres transplantés, des champs de
+  seigle semés et un réseau d'irrigation souterrain pour fabriquer la boue historique du
+  18 juin<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Côté casting, De Laurentiis rêvait de Burton et d'O'Toole — ce dernier refusa, persuadé
+  que le film serait un four<sup class="fn"><a href="#src-2">[2]</a></sup> ; ce seront Rod
+  Steiger, Actors Studio au galop, et Christopher Plummer, flegme wellingtonien — le
+  tournage consignant au passage le choc des tempéraments entre la star américaine à vif et
+  le cinéaste soviétique<sup class="fn"><a href="#src-3">[3]</a></sup>. Budget final :
+  environ 12 millions de livres — l'un des films les plus chers jamais tournés alors<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="ordre"><span class="ref">Ordre n°4</span><h2>Structure narrative</h2><div class="fleche"></div></div>
+  <p>La construction est en deux temps nettement inégaux : une première heure de marche à la
+  guerre — abdication, Elbe, Cent-Jours, bals bruxellois interrompus par les tambours — puis
+  la bataille elle-même, bloc de près de cinquante minutes qui reste l'une des plus longues
+  reconstitutions militaires continues du cinéma<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Le récit alterne strictement les deux quartiers généraux : Napoléon malade, engourdi,
+  guettant Grouchy qui ne viendra pas ; Wellington comptant les heures qui le séparent de
+  Blücher — la bataille comme duel d'attentes plus que de mouvements.</p>
+  <p>Bondartchouk ponctue cette mécanique de percées subjectives — monologues intérieurs
+  murmurés, visions, le jeune officier qui crie « pourquoi ? » au milieu du carnage —
+  greffant sur la fresque documentaire des éclats de roman tolstoïen. C'est le film entier
+  en tension : la chronique d'état-major et le cri du soldat, sans qu'aucun des deux ne
+  l'emporte<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="ordre"><span class="ref">Ordre n°5</span><h2>Mise en scène et procédés techniques</h2><div class="fleche"></div></div>
+  <p>Tout ce que l'on voit existe : pas de miniatures, pas de surimpressions — 15 000
+  fantassins et 2 000 cavaliers réels, drillés des mois durant aux manœuvres de 1815,
+  filmés par les caméras Panavision multiples de Nannuzzi et, moment de bravoure,
+  par hélicoptère : les plans aériens sur les carrés britanniques encerclés par les vagues
+  de cavalerie — géométrie humaine vue du ciel — n'ont tout simplement pas d'équivalent
+  dans l'histoire du cinéma<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>La critique française a reconnu la culture picturale de l'ensemble : Bondartchouk
+  « retrouve la grandeur, la fougue, la lumière incandescente des grands peintres du
+  Premier Empire » — Gros, Géricault, David convoqués plan par plan<sup class="fn"><a href="#src-4">[4]</a></sup> —
+  tandis que les ralentis de la charge de cavalerie installent une « beauté paradoxale face
+  à la destruction »<sup class="fn"><a href="#src-3">[3]</a></sup>. Nino Rota, entre
+  fanfares et marche funèbre, orchestre l'ambivalence. Revers de la médaille, souvent
+  pointé : à cette altitude, la bataille est « montrée de haut, par un œil neutre » —
+  le spectacle absolu au prix du point de vue<sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="ordre"><span class="ref">Ordre n°6</span><h2>Personnages principaux</h2><div class="fleche"></div></div>
+  <p><strong>Napoléon</strong> (Rod Steiger) est joué contre la légende : non le stratège
+  olympien mais un corps malade et une volonté qui s'effrite — sueurs, coliques, absences,
+  colères de vieux lion. Ce parti pris expressionniste a coupé la critique en deux :
+  surjeu « jusqu'à l'absurde » pour les uns<sup class="fn"><a href="#src-2">[2]</a></sup>,
+  incarnation majeure pour les autres — <em>Le Figaro</em> saluant un Steiger qui « traduit
+  parfaitement le Napoléon de la tourmente », celle de la bataille qui lui échappe comme
+  celle du dedans<sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+  <p><strong>Wellington</strong> (Christopher Plummer) lui répond en exact contrepoint :
+  ironie glacée, épigrammes de salon jusque sous la mitraille — et c'est à lui que le film
+  confie sa phrase-testament au soir de la victoire. Autour d'eux, <strong>Ney</strong>
+  (Dan O'Herlihy), brave jusqu'à la faute, précipitant la cavalerie sans soutien ; et
+  l'apparition d'<strong>Orson Welles</strong> en Louis XVIII podagre — trois minutes, une
+  silhouette, tout un régime<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="ordre"><span class="ref">Ordre n°7</span><h2>Thèmes</h2><div class="fleche"></div></div>
+  <p>Le thème central est la guerre comme machine qui échappe à ses opérateurs. Tout le
+  film oppose la carte au terrain : deux état-majors déplacent des rectangles colorés, et
+  la caméra redescend chaque fois montrer ce que les rectangles contiennent — de la chair,
+  de la boue, de la peur. Les plans d'hélicoptère eux-mêmes servent ce propos : vus du ciel,
+  les hommes redeviennent la carte, et c'est précisément ce vertige d'abstraction que le
+  film dénonce en le produisant<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Vient ensuite une méditation très soviétique — tolstoïenne — sur la vanité des grands
+  hommes : Napoléon et Wellington, également impuissants, gagnent ou perdent sur des
+  accidents (une pluie, un ordre mal transmis, Grouchy sourd au canon). L'antimilitarisme
+  final est explicite, confié à Wellington lui-même : « après une bataille perdue, ce qu'il
+  y a de plus triste, c'est une bataille gagnée » — le vainqueur chevauchant seul parmi les
+  cadavres, vision « étrangère au romantisme français » qui annonce Kubrick et Ridley
+  Scott<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="ordre"><span class="ref">Ordre n°8</span><h2>Réception critique et postérité</h2><div class="fleche"></div></div>
+  <p>Le film est, commercialement, sa propre bataille de Waterloo : les recettes ne couvrent
+  jamais l'investissement, la faute — selon les analyses de l'époque — à un casting sans
+  box-office, au Napoléon clivant de Steiger et à un montage international raccourci qui
+  sacrifiait les personnages au spectacle<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Sa conséquence la plus fameuse est un film qui n'existe pas :</p>
+  <blockquote>« Les maigres résultats de Waterloo au box-office conduisirent à l'annulation
+  du projet de biographie de Napoléon de Stanley Kubrick. »
+  <span class="attrib">Wikipédia, d'après l'historiographie du projet Kubrick<sup class="fn"><a href="#src-1">[1]</a></sup></span></blockquote>
+  <p>La postérité a inversé le verdict : culte grandissant pour l'ampleur sans équivalent
+  des scènes de bataille — que l'ère numérique a rendues littéralement irremplaçables —,
+  admiration des historiens (Jean Tulard y voit « le meilleur film sur Napoléon »<sup class="fn"><a href="#src-4">[4]</a></sup>),
+  et réhabilitation progressive du Steiger « de la tourmente ». Le film est devenu ce que
+  sont les monuments : discuté dans le détail, indiscutable dans la masse.</p>
+</section>
+
+<section id="conclusion">
+  <div class="ordre"><span class="ref">Ordre n°9 · Le soir de la bataille</span><h2>Conclusion</h2><div class="fleche"></div></div>
+  <p><em>Waterloo</em> est un paradoxe monumental : un film sur la défaite qui fut lui-même
+  une défaite, et dont la valeur n'a cessé de monter depuis — comme ces obligations d'empire
+  qu'on rachète après la chute. Ses défauts sont réels : un récit écartelé entre fresque et
+  psychologie, un point de vue qui se dissout parfois dans sa propre altitude. Mais ce que
+  le film a d'unique est devenu, avec le temps, exactement introuvable : vingt mille hommes
+  réels dans un plan réel, la guerre napoléonienne à l'échelle 1:1, sans pixel.</p>
+  <p>Reste sa leçon, énoncée par le vainqueur au milieu des morts : il n'y a pas de belle
+  victoire. Que cette leçon ait été produite par la rencontre improbable d'un producteur
+  italien, d'une armée soviétique et d'acteurs anglo-saxons, en pleine guerre froide, ajoute
+  au film une ironie que son sujet aurait goûtée : Waterloo, décidément, est le lieu où les
+  empires viennent apprendre la modestie.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="ordre"><span class="ref">Dépêches</span><h2>Sources</h2><div class="fleche"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Waterloo (1970 film) » : production (De Laurentiis/Mosfilm, budget, terrassements, 17 000 figurants, tournage 1969 à Oujhorod), équipe (Nannuzzi, Rota), distribution, échec commercial et annulation du Napoléon de Kubrick, statut culte. <a href="https://en.wikipedia.org/wiki/Waterloo_(1970_film)">en.wikipedia.org</a></li>
+    <li id="src-2">The Magnificent 60s — « Behind the Scenes: Waterloo (1970) » (recension du livre de production, consultée via recherche web) : casting initial Burton/O'Toole, refus d'O'Toole, chiffres de tournage, analyse de l'échec. <a href="https://themagnificent60s.com/2022/03/12/book-review-waterloo-the-making-of-an-epic/">themagnificent60s.com</a></li>
+    <li id="src-3">Perestroikino — « Waterloo (1970) » : contexte post-Guerre et Paix, plans d'hélicoptère sur les carrés, ralentis de la charge, tensions Steiger/Plummer/Bondartchouk, antimilitarisme final et filiation Kubrick/Scott. <a href="https://perestroikino.fr/2020/11/05/waterloo-1970/">perestroikino.fr</a></li>
+    <li id="src-4">Critiques françaises consultées via recherche web (L'Œil sur l'écran, citations du Figaro et de Jean Tulard) : iconographie du Premier Empire, jugement sur Steiger, limite du « point de vue neutre », éloge de Tulard. <a href="https://films.oeil-ecran.com/2006/04/06/2006_04_waterloo/">films.oeil-ecran.com</a></li>
+    <li id="src-5">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/33157-waterloo">themoviedb.org/movie/33157</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="bivouac">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

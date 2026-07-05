@@ -193,5 +193,15 @@ const FILMS = [
     summary: "Une adoptée française rentre « chez elle » dans un pays dont elle ne parle pas la langue — et refuse huit ans durant toutes les identités qu'on lui tend.",
     url: 'films/retour-a-seoul.html',
     poster: 'assets/posters/retour-a-seoul.jpg'
+  },
+  {
+    slug: 'waterloo',
+    title: 'Waterloo',
+    director: 'Sergueï Bondartchouk',
+    year: 1970,
+    genre: 'Fresque historique',
+    summary: "Vingt mille soldats soviétiques, un producteur italien et deux empires du cinéma pour rejouer la journée qui a défait Napoléon — la dernière bataille filmée sans trucage à cette échelle.",
+    url: 'films/waterloo.html',
+    poster: 'assets/posters/waterloo.jpg'
   }
 ];
