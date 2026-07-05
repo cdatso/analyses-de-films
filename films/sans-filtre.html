@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sans Filtre (Triangle of Sadness, 2022) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== LA CARTE DU DÎNER DE GALA =====
+     Menu de croisière de luxe : blanc nappe, bleu marine, or champagne —
+     et un vert nausée qui monte avec la houle. */
+  :root{
+    --nappe:#f6f4ee;
+    --nappe-ombre:#ebe8de;
+    --marine:#122a41;
+    --marine-doux:#1d3d5c;
+    --or:#b2903f;
+    --nausee:#7a8c4f;
+    --encre:#20242a;
+    --ligne:rgba(18,42,65,0.16);
+    --ligne-or:rgba(178,144,63,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--nappe);
+    color:var(--encre);
+    font-family:'Figtree', sans-serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'DM Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- COUVERTURE DU MENU ---------- */
+  header.menu{
+    background:
+      radial-gradient(120% 80% at 50% -30%, var(--marine-doux), var(--marine) 70%);
+    color:var(--nappe);
+    padding:4.8rem 1.5rem 3.6rem;
+    text-align:center;
+    position:relative;
+  }
+  header.menu::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:10px;
+    background:
+      radial-gradient(14px 10px at 12% 0, var(--nausee) 45%, transparent 50%),
+      radial-gradient(10px 8px at 34% 0, var(--nausee) 45%, transparent 50%),
+      radial-gradient(16px 11px at 58% 0, var(--nausee) 45%, transparent 50%),
+      radial-gradient(11px 8px at 79% 0, var(--nausee) 45%, transparent 50%),
+      radial-gradient(13px 9px at 94% 0, var(--nausee) 45%, transparent 50%);
+    opacity:0.55;
+  }
+  .menu-inner{ max-width:740px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:rgba(246,244,238,0.55);
+    font-family:'DM Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--or); }
+  .filet-or{
+    width:130px; height:1px; background:var(--or);
+    margin:0 auto 1.2rem;
+    position:relative;
+  }
+  .filet-or::after{
+    content:"◆"; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+    color:var(--or); font-size:0.6rem;
+  }
+  .menu .mono{ color:var(--or); }
+  h1.title{
+    font-family:'Marcellus', serif;
+    font-weight:400;
+    font-size:clamp(2.6rem, 7vw, 4.2rem);
+    line-height:1.05;
+    margin:1rem 0 0.4rem;
+    color:var(--nappe);
+  }
+  .title-orig{
+    font-family:'Marcellus', serif;
+    font-size:1.1rem;
+    letter-spacing:0.12em;
+    color:rgba(246,244,238,0.6);
+    margin:0 0 1.6rem;
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:56ch;
+    margin:0 auto 2rem;
+    color:rgba(246,244,238,0.88);
+  }
+  .trois-services{
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:0.4rem 2rem;
+    font-family:'DM Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(246,244,238,0.65);
+    border-top:1px solid rgba(178,144,63,0.35);
+    padding-top:1.2rem;
+  }
+  .meta-line{
+    margin-top:1.2rem;
+    font-family:'DM Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(246,244,238,0.5);
+  }
+
+  /* ---------- SOMMAIRE : LA CARTE ---------- */
+  nav.carte{
+    max-width:700px;
+    margin:2.6rem auto 0;
+    padding:1.5rem 1.8rem;
+    border:1px solid var(--ligne-or);
+    outline:4px solid var(--nappe);
+    outline-offset:-8px;
+    background:#fff;
+  }
+  nav.carte .mono{ color:var(--marine); display:block; text-align:center; margin-bottom:0.9rem; }
+  nav.carte ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.carte ol{ columns:1; } }
+  nav.carte li{ margin-bottom:0.35rem; }
+  nav.carte a{ color:var(--encre); text-decoration:none; border-bottom:1px dotted var(--or); }
+  nav.carte a:hover{ color:var(--marine); border-bottom-style:solid; }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:700px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .service{ text-align:center; margin-bottom:1.5rem; }
+  .service .num{
+    font-family:'DM Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--or);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  .service h2{
+    font-family:'Marcellus', serif;
+    font-weight:400;
+    font-size:1.7rem;
+    color:var(--marine);
+    margin:0 0 0.6rem;
+  }
+  .service .filet{
+    width:90px; height:1px; background:var(--ligne-or);
+    margin:0 auto;
+    position:relative;
+  }
+  .service .filet::after{
+    content:"◆"; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+    color:var(--or); font-size:0.5rem;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--marine); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.4rem;
+    border:1px solid var(--ligne-or);
+    background:#fff;
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--encre);
+    text-align:center;
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'DM Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--or);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'DM Mono', monospace;
+    font-size:0.6rem;
+    color:var(--marine-doux);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--or); }
+
+  /* ---------- FICHE : CARTE D'EMBARQUEMENT ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+    text-align:left;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne-or);
+    padding:8px;
+    background:#fff;
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .embarquement{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .embarquement{ grid-template-columns:1fr; } }
+  .embarquement .label{
+    font-family:'DM Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--or);
+    margin-bottom:0.15rem;
+  }
+  .embarquement .value{ font-size:0.93rem; color:var(--encre); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ text-align:left; }
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--marine-doux); word-break:break-all; }
+  section.sources a:hover{ color:var(--or); }
+
+  footer.addition{
+    border-top:1px solid var(--ligne-or);
+    margin-top:3.5rem;
+    padding:1.5rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'DM Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--or);
+  }
+</style>
+</head>
+<body>
+
+<header class="menu">
+  <div class="menu-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="filet-or"></div>
+    <span class="mono">Analyse cinématographique · M/Y Christina O</span>
+    <h1 class="title">Sans Filtre</h1>
+    <p class="title-orig">TRIANGLE OF SADNESS</p>
+    <p class="subtitle">Ruben Östlund, 2022 — un couple d'influenceurs, un yacht d'oligarques,
+    une tempête gastrique : la Palme d'or la plus clivante de la décennie renverse la table
+    du dîner de gala, puis les classes sociales avec.</p>
+    <div class="trois-services">
+      <span>I. Carl &amp; Yaya</span>
+      <span>II. Le Yacht</span>
+      <span>III. L'Île</span>
+    </div>
+    <div class="meta-line">Suède / int. · 147 minutes · Couleur · Comédie satirique · Palme d'or 2022</div>
+  </div>
+</header>
+
+<nav class="carte" aria-label="Sommaire">
+  <span class="mono">— La carte —</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="service"><span class="num">Premier service</span><h2>Fiche technique</h2><div class="filet"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/sans-filtre.jpg"
+           alt="Affiche du film Sans Filtre (Triangle of Sadness)"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="embarquement">
+      <div><div class="label">Réalisation &amp; scénario</div><div class="value">Ruben Östlund</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Harris Dickinson, Charlbi Dean, Dolly de Leon, Zlatko Burić, Woody Harrelson</div></div>
+      <div><div class="label">Tournage</div><div class="value">2020 (interrompu par la pandémie) — îles grecques, Film i Väst (Trollhättan), yacht Christina O</div></div>
+      <div><div class="label">Post-production</div><div class="value">22 mois</div></div>
+      <div><div class="label">Première</div><div class="value">Cannes, 21 mai 2022 — Palme d'or le 28 mai</div></div>
+      <div><div class="label">Budget / recettes</div><div class="value">15,6 M$ / 32,9 M$ monde</div></div>
+      <div><div class="label">Distinctions</div><div class="value">Palme d'or ; 3 nominations aux Oscars (film, réalisation, scénario) ; 4 European Film Awards</div></div>
+      <div><div class="label">Durée</div><div class="value">147 minutes</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="service"><span class="num">Deuxième service</span><h2>Synopsis</h2><div class="filet"></div></div>
+  <p>Carl et Yaya, couple de mannequins-influenceurs dont l'économie conjugale se négocie
+  addition par addition, sont invités (contre contenu sponsorisé) sur une croisière de très
+  grand luxe : oligarque russe du commerce d'engrais, fabricants d'armes courtois,
+  milliardaire de la tech — et un capitaine marxiste alcoolisé qui refuse de sortir de sa
+  cabine<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le dîner de gala, programmé un soir de forte houle, tourne au naufrage gastrique
+  généralisé — puis au naufrage tout court, pirates compris. Sur l'île où s'échouent les
+  survivants, la hiérarchie s'inverse d'un coup : seule Abigail, « dame pipi » du yacht,
+  sait pêcher et faire du feu. Celle qui nettoyait les toilettes devient « capitaine », et
+  découvre à son tour ce que le pouvoir fait à qui le détient<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="service"><span class="num">Troisième service</span><h2>Contexte de production</h2><div class="filet"></div></div>
+  <p>Premier film en anglais du Suédois Ruben Östlund — déjà Palme d'or pour <em>The
+  Square</em> (2017) —, <em>Sans Filtre</em> prolonge sa méthode d'entomologiste des
+  humiliations sociales, nourrie ici de deux mondes qu'il connaît par sa femme, photographe
+  de mode : le mannequinat (le titre original désigne la ride du souci entre les sourcils,
+  celle que « le Botox efface ») et l'économie de l'apparence — « la beauté comme
+  monnaie »<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le tournage, lancé début 2020, est percuté de plein fouet par la pandémie — interrompu
+  en mars à 37 % du plan de travail, repris puis re-suspendu à l'été, achevé fin 2020 entre
+  les îles grecques, les studios de Film i Väst et le <em>Christina O</em>, l'ancien yacht
+  d'Aristote Onassis, décor réel de la croisière<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Méthode Östlund oblige : jusqu'à 23 prises par scène, et 22 mois de post-production pour
+  régler la mécanique de précision du chaos<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Ombre portée sur le film : Charlbi Dean, inoubliable Yaya, meurt brutalement en août 2022,
+  trois mois après la Palme — ce fut son dernier rôle<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="service"><span class="num">Quatrième service</span><h2>Structure narrative</h2><div class="filet"></div></div>
+  <p>Trois actes titrés, comme une pièce classique : « Carl &amp; Yaya » (le couple et
+  l'économie du désir), « Le Yacht » (la société flottante et son effondrement), « L'Île »
+  (l'expérience de laboratoire : que reste-t-il des hiérarchies quand la monnaie ne vaut
+  plus rien ?). La critique française y a vu tantôt une architecture de fable, tantôt
+  « un gimmick un peu gratuit »<sup class="fn"><a href="#src-2">[2]</a></sup> — mais la
+  logique est implacable : chaque acte reprend la question du précédent (qui paie ? qui
+  sert qui ?) à une échelle plus nue.</p>
+  <p>Le pivot est le dîner du capitaine : quinze minutes d'anthologie où la houle, les
+  huîtres et le champagne démantèlent physiquement la classe dominante, pendant que le
+  capitaine marxiste américain (Woody Harrelson) et l'oligarque capitaliste russe se
+  récitent Marx et Reagan au mégaphone dans le navire qui sombre — le débat d'idées du
+  XXe siècle comme karaoké de fin du monde<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Le film s'achève sur un hors-champ : une pierre levée, un cri suspendu — Östlund laisse
+  le spectateur décider si le nouveau pouvoir vaut l'ancien.</p>
+</section>
+
+<section id="technique">
+  <div class="service"><span class="num">Cinquième service</span><h2>Mise en scène et procédés techniques</h2><div class="filet"></div></div>
+  <p>Östlund filme comme il éprouve ses spectateurs : plans fixes qui durent au-delà du
+  confortable, cadres cliniques où le malaise a le temps de monter, répétition jusqu'à
+  l'usure (les 23 prises se voient à l'écran — dans la précision millimétrée des
+  gags)<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  La séquence de la tempête pousse cette rigueur dans le registre inverse : « une explosion
+  de vomissements et de diarrhées » orchestrée comme un ballet — plateau monté sur vérins,
+  moquette souillée « à l'excès », gags liquides synchronisés sur les roulis<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Le Polyester résume bien le régime du film : c'est quand Östlund « s'autorise à piocher
+  avec une cruauté jubilatoire dans le registre du cartoon et du film catastrophe » qu'il
+  fait mouche — l'équilibre tenant entre « le rire gras et un sens du danger »<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Ce sadisme burlesque n'est pas gratuit : la caméra traite les corps des puissants
+  exactement comme le récit traite leur pouvoir — en les soumettant à la gravité. Et le
+  cinéaste s'inclut dans le procès : « c'est là qu'en tant que cinéaste, il a les mains
+  aussi sales qu'eux », note justement la critique<sup class="fn"><a href="#src-2">[2]</a></sup> —
+  le plaisir du spectateur devant l'humiliation des riches étant, lui aussi, une matière
+  que le film manipule sciemment.</p>
+</section>
+
+<section id="personnages">
+  <div class="service"><span class="num">Sixième service</span><h2>Personnages principaux</h2><div class="filet"></div></div>
+  <p><strong>Carl</strong> (Harris Dickinson), mannequin en fin de cote — dans la mode,
+  c'est la femme qui gagne plus — ouvre le film sur la scène de ménage la plus précise du
+  cinéma récent : une addition de restaurant disséquée jusqu'à l'os des rapports
+  hommes-femmes-argent. <strong>Yaya</strong> (Charlbi Dean) assume, elle, le cynisme
+  lucide de l'influenceuse : elle photographie des assiettes qu'elle ne mange pas et
+  prévoit de devenir « femme de trophée » — la beauté est son capital, elle en connaît
+  l'échéancier<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>La révélation du film est <strong>Abigail</strong> (Dolly de Leon, performance saluée
+  mondialement) : invisible pendant tout l'acte II — elle est la seule que la caméra ne
+  regardait pas —, elle devient sur l'île le centre exact du récit et sa démonstration :
+  la compétence renverse la table, puis le pouvoir refait la table à l'identique, matriarcat
+  compris<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Autour d'eux, une galerie d'une drôlerie noire : l'oligarque « roi de la merde »
+  (Zlatko Burić, European Film Award de l'acteur), le couple d'adorables fabricants de
+  grenades, et le capitaine marxiste de Woody Harrelson, ivre de citations et d'impuissance<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="service"><span class="num">Septième service</span><h2>Thèmes</h2><div class="filet"></div></div>
+  <p>Le thème cardinal est la beauté et l'apparence comme capital : le film ouvre sur un
+  casting de mannequins sommés d'alterner sourire H&amp;M et moue Balenciaga — la grimace de
+  classe apprise en une seconde. Tout le récit décline cette économie : corps cotés,
+  sourires facturés, générosité sponsorisée<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Vient ensuite la hiérarchie comme fiction liquide : il suffit d'une tempête pour que la
+  pyramide du yacht — passagers, équipage blanc, personnel de nettoyage philippin — se
+  retourne exactement, l'île rejouant la structure du navire à l'envers. Östlund ne croit
+  pas à l'inversion vertueuse : Abigail au pouvoir reproduit les privilèges (la cabane du
+  « capitaine », les bretzels contre les faveurs), et c'est là le troisième thème, le plus
+  pessimiste — le pouvoir comme fonction, indifférente à qui l'occupe. Reste la question
+  que la satire pose au spectateur lui-même : notre jubilation devant la punition des
+  riches est-elle une conscience politique ou un divertissement de plus ? Le film,
+  « pas vraiment subtil » mais parfaitement conscient de l'être<sup class="fn"><a href="#src-2">[2]</a></sup>,
+  encaisse la critique d'avance — c'est sa force et sa limite.</p>
+</section>
+
+<section id="reception">
+  <div class="service"><span class="num">Huitième service</span><h2>Réception critique et postérité</h2><div class="filet"></div></div>
+  <p>À Cannes, huit minutes d'ovation, des rires de stade — et une presse aussitôt coupée
+  en deux : « exécration totale ou engouement rieur »<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Le jury de Vincent Lindon tranche : Palme d'or, la deuxième d'Östlund à 48 ans<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  La suite confirme le clivage : 71 % sur Rotten Tomatoes, 63 sur Metacritic, Richard
+  Brody dénonçant une « démagogie ciblée » quand d'autres célèbrent la satire<sup class="fn"><a href="#src-1">[1]</a></sup> ;
+  32,9 millions de dollars de recettes, trois nominations aux Oscars (film, réalisation,
+  scénario) et quatre European Film Awards<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <blockquote>« Vomissements jouissifs »
+  <span class="attrib">Titre de la critique cannoise de Bulles de Culture — tout le débat critique en deux mots<sup class="fn"><a href="#src-3">[3]</a></sup></span></blockquote>
+  <p>La postérité immédiate a fait du film un marqueur générationnel du « eat the rich »
+  cinématographique (aux côtés de <em>Parasite</em>, <em>The Menu</em> ou <em>Glass
+  Onion</em>) — et de Dolly de Leon une star tardive et mondiale. La mort de Charlbi Dean,
+  trois mois après la Palme, a ajouté au film une mélancolie que rien dans sa cruauté
+  comique ne laissait prévoir<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="service"><span class="num">Neuvième service · L'addition</span><h2>Conclusion</h2><div class="filet"></div></div>
+  <p><em>Sans Filtre</em> est exactement ce que son titre français annonce : une satire qui
+  a renoncé au tamis. Là où <em>Snow Therapy</em> et <em>The Square</em> opéraient au
+  scalpel, Östlund sort ici le canon à eau — et assume de perdre en finesse ce qu'il gagne
+  en énergie comique. On peut légitimement préférer l'entomologiste au forain ; on ne peut
+  pas nier que le forain connaît sa machine : chaque gag est construit, chaque humiliation
+  chorégraphiée, chaque rire calibré pour se retourner contre celui qui rit.</p>
+  <p>Si le film reste, ce sera pour son geste central : avoir filmé la lutte des classes
+  comme une affaire de péristaltisme — les hiérarchies sociales tenant exactement le temps
+  que les estomacs tiennent. La pierre levée du dernier plan ne retombe jamais : à chacun
+  de décider si Abigail frappe, et donc si le pouvoir change de mains ou seulement de
+  visage. Une Palme d'or qui se termine sur un spectateur sommé de voter — c'est, quoi
+  qu'on pense du film, du cinéma politique au sens propre.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="service"><span class="num">L'office</span><h2>Sources</h2><div class="filet"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Triangle of Sadness » : production (tournage pandémique, Christina O, 23 prises, 22 mois de post-production, budget), structure, distribution, mort de Charlbi Dean, Palme d'or, nominations aux Oscars, European Film Awards, réception chiffrée et citations critiques. <a href="https://en.wikipedia.org/wiki/Triangle_of_Sadness">en.wikipedia.org/wiki/Triangle_of_Sadness</a></li>
+    <li id="src-2">Le Polyester — « Critique : Sans filtre » (Gregory Coutaut) : structure en trois actes, registre cartoon/film catastrophe, équilibre rire/danger, réserves sur la subtilité, « les mains aussi sales qu'eux ». <a href="https://lepolyester.com/critique-sans-filtre/">lepolyester.com</a></li>
+    <li id="src-3">Bulles de Culture — « Sans filtre (2022) de Ruben Östlund : vomissements jouissifs » (Cannes 2022), consultée via recherche web. <a href="https://bullesdeculture.com/critique-cannes-2022-sans-filtre-cinema-avis/">bullesdeculture.com</a></li>
+    <li id="src-4">Mondociné et presse cannoise associée (consultées via recherche web) : séquence de la tempête, polarisation de la réception (« exécration totale ou engouement rieur »), affrontement Marx/Reagan au mégaphone. <a href="https://mondocine.net/cinema-sans-filtre-ostlund-critique-du-film-cannes-2022/">mondocine.net</a></li>
+    <li id="src-5">Festival de Cannes — fiche officielle « Triangle of Sadness ». <a href="https://www.festival-cannes.com/en/f/triangle-of-sadness/">festival-cannes.com</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="addition">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

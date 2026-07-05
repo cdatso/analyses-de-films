@@ -35,6 +35,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | La mariée était en noir | François Truffaut | 1968 | Thriller | 🟡 Staging | 6 juillet 2026 | films/la-mariee-etait-en-noir.html | https://cdatso.github.io/analyses-de-films/films/la-mariee-etait-en-noir.html |
 | Bienvenue à Suburbicon | George Clooney | 2017 | Comédie noire | 🟡 Staging | 6 juillet 2026 | films/bienvenue-a-suburbicon.html | https://cdatso.github.io/analyses-de-films/films/bienvenue-a-suburbicon.html |
 | Manhattan | Woody Allen | 1979 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/manhattan.html | https://cdatso.github.io/analyses-de-films/films/manhattan.html |
+| Sans Filtre | Ruben Östlund | 2022 | Comédie satirique | 🟡 Staging | 6 juillet 2026 | films/sans-filtre.html | https://cdatso.github.io/analyses-de-films/films/sans-filtre.html |
 
 ---
 

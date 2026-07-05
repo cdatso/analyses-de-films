@@ -173,5 +173,15 @@ const FILMS = [
     summary: "Une déclaration d'amour en Scope noir et blanc à une ville rêvée sur du Gershwin — chef-d'œuvre formel devenu pièce à conviction de son propre auteur.",
     url: 'films/manhattan.html',
     poster: 'assets/posters/manhattan.jpg'
+  },
+  {
+    slug: 'sans-filtre',
+    title: 'Sans Filtre',
+    director: 'Ruben Östlund',
+    year: 2022,
+    genre: 'Comédie satirique',
+    summary: "Un yacht d'oligarques, une tempête gastrique, une dame pipi promue capitaine : la Palme d'or la plus clivante de la décennie filme la lutte des classes à hauteur d'estomac.",
+    url: 'films/sans-filtre.html',
+    poster: 'assets/posters/sans-filtre.jpg'
   }
 ];
