@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nouvelle Vague (2025) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ===== LA FEUILLE DE SERVICE =====
+     Tournage parisien, été 1959 : ronéo noir et blanc, perforations 35 mm,
+     accent jaune pellicule — le document de travail d'À bout de souffle. */
+  :root{
+    --papier:#f0eee8;
+    --papier-gris:#e4e1d8;
+    --carbone:#1d1c1a;
+    --carbone-doux:#37352f;
+    --gris-labo:#8e8b82;
+    --kodak:#d3a92c;
+    --ligne:rgba(29,28,26,0.18);
+    --ligne-claire:rgba(240,238,232,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--papier);
+    color:var(--carbone-doux);
+    font-family:'PT Serif', serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Cutive Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.68rem;
+  }
+
+  /* ---------- AMORCE DE PELLICULE (EN-TÊTE) ---------- */
+  header.amorce{
+    background:var(--carbone);
+    color:var(--papier);
+    padding:0;
+    position:relative;
+  }
+  .perfos{
+    height:26px;
+    background:
+      radial-gradient(6px 8px at 50% 50%, var(--papier) 55%, transparent 60%) repeat-x;
+    background-size:34px 26px;
+    opacity:0.9;
+  }
+  .perfos.bas{ transform:rotate(180deg); }
+  .amorce-inner{ max-width:760px; margin:0 auto; padding:3rem 1.5rem 2.6rem; }
+  .back-link{
+    display:inline-block;
+    color:var(--gris-labo);
+    font-family:'Cutive Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2rem;
+  }
+  .back-link:hover{ color:var(--kodak); }
+  .prod-line{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.4rem 1.5rem;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--kodak);
+    border:1px dashed rgba(211,169,44,0.5);
+    padding:0.5rem 0.9rem;
+    margin-bottom:1.9rem;
+  }
+  h1.title{
+    font-family:'Bebas Neue', sans-serif;
+    font-weight:400;
+    font-size:clamp(3.4rem, 11vw, 6.4rem);
+    line-height:0.94;
+    letter-spacing:0.02em;
+    margin:0 0 0.8rem;
+    color:var(--papier);
+  }
+  .subtitle{
+    font-size:1.04rem;
+    max-width:58ch;
+    color:rgba(240,238,232,0.85);
+    margin:0 0 1.7rem;
+  }
+  .meta-line{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gris-labo);
+    border-top:1px solid var(--ligne-claire);
+    padding-top:1rem;
+  }
+
+  /* ---------- SOMMAIRE : PLAN DE TRAVAIL ---------- */
+  nav.plandetravail{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--ligne);
+    background:var(--papier-gris);
+    position:relative;
+  }
+  nav.plandetravail::before{
+    content:"RONÉO — NE PAS DIFFUSER";
+    position:absolute; right:1rem; top:-0.65rem;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.14em;
+    background:var(--kodak);
+    color:var(--carbone);
+    padding:0.15rem 0.6rem;
+  }
+  nav.plandetravail .mono{ color:var(--carbone); display:block; margin-bottom:0.8rem; }
+  nav.plandetravail ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.plandetravail ol{ columns:1; } }
+  nav.plandetravail li{ margin-bottom:0.35rem; }
+  nav.plandetravail a{ color:var(--carbone); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.plandetravail a:hover{ color:var(--kodak); border-color:var(--kodak); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .jour{ margin-bottom:1.4rem; }
+  .jour .ref{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--kodak);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .jour h2{
+    font-family:'Bebas Neue', sans-serif;
+    font-weight:400;
+    font-size:2rem;
+    letter-spacing:0.03em;
+    color:var(--carbone);
+    margin:0 0 0.5rem;
+  }
+  .jour .pellicule{
+    height:10px;
+    background:
+      linear-gradient(var(--ligne), var(--ligne)) 0 0/100% 1px no-repeat,
+      linear-gradient(var(--ligne), var(--ligne)) 0 9px/100% 1px no-repeat,
+      radial-gradient(2.5px 3px at 8px 5px, var(--ligne) 60%, transparent 65%) repeat-x;
+    background-size:100% 1px, 100% 1px, 18px 10px;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--carbone); }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:0.9rem 1.3rem;
+    background:var(--carbone);
+    color:var(--papier);
+    font-style:italic;
+    font-size:1.03rem;
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Cutive Mono', monospace;
+    font-style:normal;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--kodak);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.62rem;
+    color:var(--kodak);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--carbone); }
+
+  /* ---------- FICHE : GÉNÉRIQUE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:#fff;
+    box-shadow:4px 4px 0 var(--ligne);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:grayscale(0.2) contrast(1.02); }
+  .generique{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .generique{ grid-template-columns:1fr; } }
+  .generique .label{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--gris-labo);
+    margin-bottom:0.15rem;
+  }
+  .generique .value{ font-size:0.93rem; color:var(--carbone); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:#7a6210; word-break:break-all; }
+  section.sources a:hover{ color:var(--carbone); }
+
+  footer.fin{
+    background:var(--carbone);
+    margin-top:3.5rem;
+    padding:0;
+    text-align:center;
+  }
+  footer.fin .fin-inner{
+    padding:1.4rem 1.5rem;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gris-labo);
+  }
+</style>
+</head>
+<body>
+
+<header class="amorce">
+  <div class="perfos"></div>
+  <div class="amorce-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="prod-line">
+      <span>Prod. G. de Beauregard</span>
+      <span>Paris · été 1959</span>
+      <span>Pellicule Kodak · 1.37:1</span>
+    </div>
+    <h1 class="title">Nouvelle Vague</h1>
+    <p class="subtitle">Richard Linklater, 2025 — le tournage d'À bout de souffle rejoué
+    plan par plan, en français, en noir et blanc et en 1.37 : la déclaration d'amour d'un
+    cinéphile texan au geste le plus libre de l'histoire du cinéma.</p>
+    <div class="meta-line">France / États-Unis · 106 minutes · N&amp;B 35 mm · Comédie dramatique · Compétition Cannes 2025</div>
+  </div>
+  <div class="perfos bas"></div>
+</header>
+
+<nav class="plandetravail" aria-label="Sommaire">
+  <span class="mono">Plan de travail</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="jour"><span class="ref">Jour 1 · Générique</span><h2>Fiche technique</h2><div class="pellicule"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/nouvelle-vague.jpg"
+           alt="Affiche du film Nouvelle Vague"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="generique">
+      <div><div class="label">Réalisation</div><div class="value">Richard Linklater</div></div>
+      <div><div class="label">Scénario</div><div class="value">Holly Gent et Vincent Palmo Jr., adaptation française de Michèle Halberstadt et Laetitia Masson</div></div>
+      <div><div class="label">Photographie</div><div class="value">David Chambille (N&amp;B 35 mm, format 1.37:1)</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Guillaume Marbeck (Godard), Zoey Deutch (Seberg), Aubry Dullin (Belmondo)</div></div>
+      <div><div class="label">Tournage</div><div class="value">Paris, mars-avril 2024 · budget 9,9 M$</div></div>
+      <div><div class="label">Première</div><div class="value">Cannes, 17 mai 2025 (compétition)</div></div>
+      <div><div class="label">Sorties</div><div class="value">8 octobre 2025 (France) · Netflix (États-Unis, novembre 2025)</div></div>
+      <div><div class="label">Distinction</div><div class="value">César 2026 de la meilleure réalisation</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="jour"><span class="ref">Jour 2</span><h2>Synopsis</h2><div class="pellicule"></div></div>
+  <p>Paris, 1959. Jean-Luc Godard, critique aux <em>Cahiers du cinéma</em>, 28 ans, lunettes
+  noires et aphorismes en bandoulière, enrage : tous ses amis — Truffaut, Chabrol, Rivette —
+  sont passés à la réalisation, et lui pas. Avec un synopsis de quatre pages arraché à
+  Truffaut, la promesse d'une star américaine (Jean Seberg, échaudée par ses débuts chez
+  Preminger) et l'argent du producteur Georges de Beauregard, il se lance : vingt jours de
+  tournage sans autorisation, sans son direct, presque sans scénario<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le film suit ce tournage jour après jour — Coutard caché dans une charrette des postiers,
+  Belmondo qui doute, Seberg qui menace de partir, Godard qui annule des journées entières
+  parce qu'il n'a « rien à tourner » — jusqu'à la naissance, dans le chaos, du film qui va
+  rendre toutes les règles négociables : <em>À bout de souffle</em><sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="jour"><span class="ref">Jour 3</span><h2>Contexte de production</h2><div class="pellicule"></div></div>
+  <p>Projet de cœur d'un cinéphile absolu — Linklater a fondé l'Austin Film Society et cite
+  la Nouvelle Vague comme son acte de naissance artistique —, le film est son premier
+  entièrement tourné en français, à Paris, au printemps 2024. Le pari formel est radical :
+  reconstituer 1959 dans les textures mêmes de 1959 — noir et blanc 35 mm signé David
+  Chambille, format académique 1.37:1, et jusqu'au grain, aux rayures et aux instabilités
+  de fenêtre ajoutés en postproduction pour donner à l'image une qualité
+  d'archive<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le casting refuse les vedettes pour les rôles français : Guillaume Marbeck (Godard) et
+  Aubry Dullin (Belmondo) sont des quasi-inconnus choisis pour leur ressemblance et leur
+  justesse, entourés de toute la galaxie d'époque — Truffaut, Chabrol, Melville, Rossellini,
+  Varda, Demy, la scripte Suzanne Schiffman, le chef opérateur Raoul Coutard — présentés par
+  sous-titres comme dans un album de famille<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Seule star : Zoey Deutch en Jean Seberg, américaine chez les Français comme son modèle.
+  Linklater s'est appuyé sur les photos de plateau et le journal de production du film
+  original pour rejouer le tournage à la lettre<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="jour"><span class="ref">Jour 4</span><h2>Structure narrative</h2><div class="pellicule"></div></div>
+  <p>La construction épouse le plan de travail : une mise en place (le Paris des Cahiers,
+  les frustrations de Godard, la négociation avec Beauregard) puis le tournage comme
+  feuilleton — chaque journée devenant une saynète avec son obstacle, son trait d'esprit et
+  sa trouvaille. Pas de dramaturgie du chef-d'œuvre annoncé : le film cultive au contraire
+  l'incertitude joyeuse d'une équipe qui ne sait pas qu'elle fait l'Histoire, et dont la
+  moitié pense que « ce truc » sera invisible<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Linklater — cinéaste du temps s'il en est, de <em>Boyhood</em> à la trilogie
+  <em>Before</em> — filme moins un biopic qu'une durée : trois semaines d'été 1959,
+  closes sur la vision du film fini et le vertige de Seberg découvrant qu'elle est,
+  pour toujours, la fille du boulevard qui crie le <em>New York Herald Tribune</em>.
+  La boucle est cinéphile jusqu'au bout : le récit s'achève où commence le mythe.</p>
+</section>
+
+<section id="technique">
+  <div class="jour"><span class="ref">Jour 5</span><h2>Mise en scène et procédés techniques</h2><div class="pellicule"></div></div>
+  <p>Le geste le plus commenté du film est son mimétisme : Linklater tourne « à la manière
+  de » — caméra légère, lumière naturelle, raccords vifs — sans jamais singer les jump cuts
+  d'<em>À bout de souffle</em> lui-même : son film à lui est classiquement découpé, comme
+  pour rappeler que la liberté de Godard fut un événement, pas un style à recopier.
+  La critique française a noté la « reconstitution documentée et didactique », ses
+  protagonistes présentés par intertitres, et ce « ton léger qui donne de faux airs de
+  Woody Allen movie », sans parodie ni hagiographie<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Le travail de texture est d'une minutie d'orfèvre — grain argentique, poussières,
+  respiration de la fenêtre de projection ajoutés numériquement<sup class="fn"><a href="#src-1">[1]</a></sup> —
+  et la direction d'acteurs vise l'incarnation plutôt que l'imitation : Marbeck ne cite pas
+  Godard, il en restitue le débit, les silences buttés, la cruauté timide. Quant aux
+  reconstitutions de plans célèbres (la charrette des postiers en travelling clandestin,
+  les Champs-Élysées au petit matin), elles fonctionnent comme des vignettes de
+  vérification : on voit littéralement d'où venaient les images qu'on connaît par
+  cœur<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="jour"><span class="ref">Jour 6</span><h2>Personnages principaux</h2><div class="pellicule"></div></div>
+  <p><strong>Godard</strong> (Guillaume Marbeck, révélation) est filmé sans dévotion : génial
+  et insupportable, bluffeur, emprunteur, capable de renvoyer son équipe faute d'inspiration
+  puis de trouver en dix minutes ce que personne n'avait osé. Le film tient la ligne de
+  crête : ni le monstre sacré rétrospectif, ni le saint patron des cinéphiles — un jeune
+  homme pressé qui invente sa liberté en marchant<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p><strong>Jean Seberg</strong> (Zoey Deutch) est le contrepoint émouvant : star déjà
+  brûlée par Hollywood à 20 ans, elle débarque en terrain inconnu, entre agacement
+  professionnel (ce tournage sans script ni son la déroute) et intuition que quelque chose
+  se joue. <strong>Belmondo</strong> (Aubry Dullin) apporte la grâce physique et l'humilité
+  du débutant — « ça ne sortira jamais » — tandis que la constellation d'époque
+  (<strong>Truffaut</strong> en aîné bienveillant, <strong>Melville</strong> en oracle,
+  <strong>Coutard</strong> en complice technique, <strong>Suzanne Schiffman</strong> en
+  cheville ouvrière) compose autour d'eux le portrait de groupe d'une génération<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="jour"><span class="ref">Jour 7</span><h2>Thèmes</h2><div class="pellicule"></div></div>
+  <p>Le thème central est la naissance de la liberté artistique — non comme illumination
+  mais comme bricolage : pas d'autorisations, pas de son direct, pas d'argent, et chaque
+  manque converti en style. Le film est une leçon de cinéma déguisée en chronique :
+  ce que le monde a pris pour une révolution esthétique fut d'abord une suite de solutions
+  à des problèmes de production.</p>
+  <p>Vient ensuite la cinéphilie comme religion joyeuse — les Cahiers, les citations, les
+  duels de références — que Linklater filme avec la tendresse de l'ancien converti, tout en
+  en montrant la part de pose et de rivalité. Enfin, le film médite sur la transmission :
+  tourné par un Américain de 64 ans sur des Français de 25, il raconte comment un geste
+  local devient patrimoine mondial — au risque, que la critique n'a pas manqué de pointer,
+  de « muséifier » ce qui fut sauvage<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Le film assume : c'est un reliquaire, mais un reliquaire qui donne envie de sortir
+  filmer — ce qui est, après tout, l'exact effet que produisait l'original.</p>
+</section>
+
+<section id="reception">
+  <div class="jour"><span class="ref">Jour 8</span><h2>Réception critique et postérité</h2><div class="pellicule"></div></div>
+  <p>Onze minutes d'ovation à Cannes le 17 mai 2025, en compétition ; puis une bataille
+  d'enchères remportée par Netflix pour les droits américains (4 millions de dollars — le
+  deuxième montant jamais payé pour un film en langue étrangère)<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  L'accueil critique est chaleureux — 92 % sur Rotten Tomatoes, 76 sur Metacritic, « un
+  hommage nostalgique à un moment de ferment créatif extraordinaire »<sup class="fn"><a href="#src-1">[1]</a></sup> —
+  avec une réserve récurrente côté français, résumée par avoir-alire : « plaisant,
+  nostalgique et soigné » mais « mineur », d'une approche « fétichiste »<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>La consécration vient de France, et elle est historique : aux César 2026, Richard
+  Linklater remporte la meilleure réalisation — deuxième cinéaste américain seulement à
+  recevoir ce prix<sup class="fn"><a href="#src-1">[1]</a></sup>. L'ironie n'a échappé à
+  personne : le pays qui avait inventé la politique des auteurs décore un Texan pour avoir
+  filmé la naissance de son propre mythe. Godard, mort en 2022, n'aura pas vu le film —
+  les exégètes se disputent encore sur ce qu'il en aurait dit, ce qui est sans doute
+  l'hommage le plus godardien possible.</p>
+</section>
+
+<section id="conclusion">
+  <div class="jour"><span class="ref">Dernier jour · Coupez</span><h2>Conclusion</h2><div class="pellicule"></div></div>
+  <p><em>Nouvelle Vague</em> est un objet impossible réussi : un film académique — au sens
+  propre, jusqu'au format 1.37 — sur le geste le plus anti-académique du cinéma. Ce paradoxe,
+  que ses détracteurs appellent muséification et ses admirateurs tendresse, est en réalité
+  son sujet : Linklater ne prétend pas refaire <em>À bout de souffle</em>, il filme la
+  distance qui nous en sépare — soixante-cinq ans de cinéphilie, de commentaires et
+  d'amour, à travers lesquels le tournage de 1959 nous parvient comme une lumière d'étoile.</p>
+  <p>Reste le plus précieux : la contagion. On sort du film avec l'envie de voir ou revoir
+  l'original, de lire les Cahiers, de tourner quelque chose avec rien — et c'est exactement
+  ce qui distingue l'embaumement de la transmission. Le César de Linklater dit peut-être
+  cela : la Nouvelle Vague appartient désormais à quiconque en fait quelque chose. Même un
+  Texan. Surtout un Texan.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="jour"><span class="ref">Rushes</span><h2>Sources</h2><div class="pellicule"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Nouvelle Vague (2025 film) » : production (scénario Gent/Palmo, adaptation Halberstadt/Masson, tournage Paris 2024, budget, textures d'archive ajoutées), Cannes (ovation de 11 minutes), accord Netflix, sorties, réception chiffrée, César 2026 de la meilleure réalisation. <a href="https://en.wikipedia.org/wiki/Nouvelle_Vague_(2025_film)">en.wikipedia.org</a></li>
+    <li id="src-2">Festival de Cannes — « Nouvelle Vague, a cinephile's declaration of love by Richard Linklater » et presse de festival associée (consultées via recherche web) : reconstitution d'après photos de plateau et journal de production, dispositif du tournage de 1959. <a href="https://www.festival-cannes.com/en/2025/nouvelle-vague-new-wave-a-cinephiles-declaration-of-love-by-richard-linklater/">festival-cannes.com</a></li>
+    <li id="src-3">avoir-alire (Gérard Crespo) — « Nouvelle vague - Richard Linklater - critique » : dispositif didactique, intertitres, galaxie Nouvelle Vague (Beauregard, Coutard, Gréco, Demy, Varda...), ton « Woody Allen movie », jugement « plaisant... mais mineur », réserve sur la muséification. <a href="https://www.avoir-alire.com/nouvelle-vague-richard-linklater-critique">avoir-alire.com</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/1254808-nouvelle-vague">themoviedb.org/movie/1254808</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="fin">
+  <div class="perfos"></div>
+  <div class="fin-inner">Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

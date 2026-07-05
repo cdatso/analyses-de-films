@@ -203,5 +203,15 @@ const FILMS = [
     summary: "Vingt mille soldats soviétiques, un producteur italien et deux empires du cinéma pour rejouer la journée qui a défait Napoléon — la dernière bataille filmée sans trucage à cette échelle.",
     url: 'films/waterloo.html',
     poster: 'assets/posters/waterloo.jpg'
+  },
+  {
+    slug: 'nouvelle-vague',
+    title: 'Nouvelle Vague',
+    director: 'Richard Linklater',
+    year: 2025,
+    genre: 'Comédie dramatique',
+    summary: "Le tournage d'À bout de souffle rejoué plan par plan, en français et en 1.37 : la déclaration d'amour d'un cinéphile texan au geste le plus libre du cinéma.",
+    url: 'films/nouvelle-vague.html',
+    poster: 'assets/posters/nouvelle-vague.jpg'
   }
 ];
