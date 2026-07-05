@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Au fil de l'eau (House by the River, 1950) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE MANUSCRIT REPÊCHÉ =====
+     Épreuves d'un roman victorien gagnées par l'eau : papier ivoire,
+     encre noire, vert de rivière nocturne, filets ondulés. */
+  :root{
+    --paper:#ece7da;
+    --paper-deep:#e2dcc9;
+    --ink:#14161a;
+    --ink-soft:#2b2e33;
+    --river:#2e4a44;
+    --river-night:#16241f;
+    --mist:#8fa39b;
+    --gaslight:#b98d3f;
+    --stain:rgba(46,74,68,0.08);
+    --line:rgba(20,22,26,0.16);
+    --line-light:rgba(236,231,218,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink-soft);
+    font-family:'Lora', serif;
+    font-size:1.02rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Cousine', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.68rem;
+  }
+
+  /* ---------- COUVERTURE : LA RIVIÈRE DE NUIT ---------- */
+  header.river{
+    background:
+      radial-gradient(ellipse 120% 60% at 50% 115%, rgba(185,141,63,0.14), transparent 55%),
+      repeating-linear-gradient(178deg, transparent 0px, transparent 9px, rgba(143,163,155,0.05) 10px, transparent 11px),
+      linear-gradient(180deg, var(--river-night) 0%, #1d332c 62%, var(--river) 100%);
+    color:var(--paper);
+    padding:5rem 1.5rem 4.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  header.river::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:56px;
+    background:
+      radial-gradient(60% 18px at 25% 100%, rgba(236,231,218,0.10), transparent 70%),
+      radial-gradient(50% 14px at 70% 100%, rgba(236,231,218,0.07), transparent 70%);
+    pointer-events:none;
+  }
+  .river-inner{ max-width:760px; margin:0 auto; position:relative; z-index:1; }
+  .back-link{
+    display:inline-block;
+    color:var(--mist);
+    font-family:'Cousine', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.2rem;
+  }
+  .back-link:hover{ color:var(--gaslight); }
+  .river-eyebrow{
+    display:flex; align-items:center; gap:0.8rem;
+    color:var(--gaslight);
+    margin-bottom:2rem;
+  }
+  .river-eyebrow .wave{ letter-spacing:0.3em; opacity:0.8; font-size:0.75rem; }
+  h1.title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 3.7rem);
+    line-height:1.06;
+    margin:0 0 0.4rem;
+    color:var(--paper);
+  }
+  .title-orig{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.05rem, 2.4vw, 1.35rem);
+    color:var(--mist);
+    margin:0 0 1.6rem;
+  }
+  .subtitle{
+    font-size:1.06rem;
+    max-width:56ch;
+    color:rgba(236,231,218,0.86);
+    margin:0 0 1.8rem;
+  }
+  .meta-line{
+    font-family:'Cousine', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--mist);
+    border-top:1px solid var(--line-light);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- AVERTISSEMENT ---------- */
+  .avert{
+    max-width:720px;
+    margin:2.2rem auto 0;
+    padding:0.85rem 1.2rem;
+    border:1px solid var(--line);
+    border-left:3px solid var(--river);
+    background:var(--paper-deep);
+    font-size:0.86rem;
+    color:var(--ink-soft);
+  }
+  .avert .mono{ color:var(--river); }
+
+  /* ---------- SOMMAIRE : TABLE DES CHAPITRES ---------- */
+  nav.chapitres{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--line);
+    background:
+      radial-gradient(80% 120% at 85% 10%, var(--stain), transparent 60%),
+      var(--paper);
+  }
+  nav.chapitres .mono{ color:var(--river); display:block; margin-bottom:0.8rem; }
+  nav.chapitres ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.5rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.chapitres ol{ columns:1; } }
+  nav.chapitres li{ margin-bottom:0.35rem; }
+  nav.chapitres a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--river); }
+  nav.chapitres a:hover{ color:var(--river); }
+
+  /* ---------- CORPS : LES ÉPREUVES ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.4rem; }
+  .folio{
+    display:flex; align-items:baseline; gap:0.9rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:0.5rem;
+    margin-bottom:1.4rem;
+  }
+  .folio .num{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--gaslight);
+  }
+  .folio h2{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:1.55rem;
+    color:var(--ink);
+    margin:0;
+  }
+  .folio .filet{
+    flex:1; height:6px; align-self:center;
+    background:radial-gradient(4px 3px at 6px 3px, var(--mist) 30%, transparent 32%) repeat-x;
+    background-size:12px 6px;
+    opacity:0.55;
+  }
+  p{ margin:0 0 1.1rem; }
+  em{ font-style:italic; }
+  strong{ color:var(--ink); }
+
+  blockquote{
+    margin:1.6rem 0;
+    padding:0.2rem 0 0.2rem 1.3rem;
+    border-left:3px solid var(--river);
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--ink);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Cousine', monospace;
+    font-style:normal;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--river);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Cousine', monospace;
+    font-size:0.62rem;
+    color:var(--river);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--gaslight); }
+
+  /* ---------- FICHE TECHNIQUE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--line);
+    padding:8px;
+    background:var(--paper-deep);
+    box-shadow:3px 4px 0 var(--stain);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:sepia(0.08); }
+  .colophon{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .colophon{ grid-template-columns:1fr; } }
+  .colophon .label{
+    font-family:'Cousine', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--river);
+    margin-bottom:0.15rem;
+  }
+  .colophon .value{ font-size:0.93rem; color:var(--ink); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--river); word-break:break-all; }
+  section.sources a:hover{ color:var(--gaslight); }
+
+  footer.colophon-final{
+    border-top:1px solid var(--line);
+    margin-top:3.5rem;
+    padding:1.4rem 1.5rem 2.5rem;
+    text-align:center;
+    font-family:'Cousine', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--mist);
+  }
+</style>
+</head>
+<body>
+
+<header class="river">
+  <div class="river-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="river-eyebrow">
+      <span class="mono">Analyse cinématographique</span>
+      <span class="wave">≈≈≈</span>
+    </div>
+    <h1 class="title">Au fil de l'eau</h1>
+    <p class="title-orig">House by the River</p>
+    <p class="subtitle">Fritz Lang, 1950 — un romancier raté tue sa domestique, en fait un
+    roman, et regarde la rivière lui rapporter inlassablement son crime.</p>
+    <div class="meta-line">États-Unis · Republic Pictures · 88 minutes · Noir et blanc · Film noir gothique</div>
+  </div>
+</header>
+
+<div class="avert">
+  <span class="mono">Avertissement</span> — Le récit repose sur une agression sexuelle
+  (suggérée) suivie du meurtre d'une femme ; l'analyse ci-dessous en parle sans détour.
+</div>
+
+<nav class="chapitres" aria-label="Sommaire">
+  <span class="mono">Table des chapitres</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="folio"><span class="num">Ch. I</span><h2>Fiche technique</h2><span class="filet"></span></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/au-fil-de-leau.jpg"
+           alt="Affiche du film Au fil de l'eau (House by the River)"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="colophon">
+      <div><div class="label">Réalisation</div><div class="value">Fritz Lang</div></div>
+      <div><div class="label">Scénario</div><div class="value">Mel Dinelli, d'après le roman d'A. P. Herbert (1920)</div></div>
+      <div><div class="label">Photographie</div><div class="value">Edward J. Cronjager</div></div>
+      <div><div class="label">Musique</div><div class="value">George Antheil</div></div>
+      <div><div class="label">Production</div><div class="value">Howard Welsch, pour Republic Pictures</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Louis Hayward, Lee Bowman, Jane Wyatt</div></div>
+      <div><div class="label">Sortie</div><div class="value">1950 (États-Unis) ; ressortie française en salles : avril 2019</div></div>
+      <div><div class="label">Durée</div><div class="value">88 minutes</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="folio"><span class="num">Ch. II</span><h2>Synopsis</h2><span class="filet"></span></div>
+  <p>À la fin de l'ère victorienne, Stephen Byrne, romancier sans succès, vit avec son épouse
+  Marjorie dans une maison cossue au bord d'une rivière charriant les détritus de la ville.
+  Un soir, alors que sa femme est absente, il s'en prend à leur domestique Emily au sortir
+  du bain ; elle se débat, il la fait taire — et l'étouffe<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Paniqué, il appelle à l'aide son frère John, infirme et foncièrement honnête, et le
+  contraint à l'aider à jeter le corps, cousu dans un sac, au fil de l'eau.</p>
+  <p>Mais la rivière rend ce qu'on lui confie. Quand le sac remonte à la surface, les
+  soupçons se portent sur John — le sac lui appartenait. Loin de se dénoncer, Stephen
+  laisse l'étau se resserrer sur son frère et découvre que le fait divers nourrit sa
+  notoriété : il en tire la matière de son nouveau roman. C'est Marjorie qui, en lisant
+  le manuscrit, comprendra ce que son mari y a réellement consigné<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="folio"><span class="num">Ch. III</span><h2>Contexte de production</h2><span class="filet"></span></div>
+  <p>En 1950, Fritz Lang — exilé d'Allemagne depuis 1933, naturalisé américain en 1935 —
+  traverse un creux de sa carrière hollywoodienne. <em>House by the River</em> est son unique
+  film pour Republic Pictures, studio de séries B plus réputé pour ses westerns à petit
+  budget que pour ses ambitions artistiques<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Le scénario de Mel Dinelli adapte un roman de l'écrivain britannique A. P. Herbert publié
+  en 1920, déjà porté à la radio par l'émission <em>Suspense</em> en 1948<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Un épisode de production en dit long sur le Hollywood de l'époque : Lang voulait confier
+  le rôle d'Emily à une actrice noire, ce que le bureau Hays lui refusa — la représentation
+  d'une attirance entre personnes de couleurs de peau différentes était alors proscrite par
+  la censure<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Le film, dont les droits restèrent longtemps flous, ne fut jamais distribué en France à sa
+  sortie : le public français ne le découvrit qu'à la fin des années 1970, à la télévision,
+  grâce au travail du cinéphile Patrick Brion<sup class="fn"><a href="#src-4">[4]</a></sup>.
+  Il fallut attendre la restauration de Lobster Films — scan 4K et restauration 2K d'après
+  un élément nitrate conservé au British Film Institute, son restauré par Le Diapason —
+  présentée au festival Lumière 2018, pour que le film connaisse enfin une vraie sortie en
+  salles françaises, au printemps 2019<sup class="fn"><a href="#src-4">[4]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="folio"><span class="num">Ch. IV</span><h2>Structure narrative</h2><span class="filet"></span></div>
+  <p>Le récit est linéaire, mais Lang l'organise comme une série de retours : tout ce que
+  Stephen enfouit refait surface. Le film s'ouvre sur des charognes dérivant au fil de
+  l'eau devant la maison — et sur cette réplique programmatique de Stephen : « la saleté
+  vient des gens, pas du fleuve »<sup class="fn"><a href="#src-3">[3]</a></sup>. La suite du
+  film ne fera que vérifier la phrase contre celui qui la prononce : le sac lesté remonte,
+  le procès rouvre ce que le crime avait clos, et le manuscrit ramène l'aveu au grand jour.</p>
+  <p>Car la vraie audace de construction est là : Stephen écrit, sous couvert de fiction,
+  le roman de son propre meurtre. Cette mise en abyme fait du récit une confession déguisée
+  en intrigue policière — le suspense ne porte pas sur l'identité du coupable, connue dès la
+  première bobine, mais sur le moment où l'écriture le trahira. C'est Marjorie, lectrice
+  attentive, qui referme la boucle : la vérité n'est pas arrachée par la police, elle se lit
+  entre les lignes<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="folio"><span class="num">Ch. V</span><h2>Mise en scène et procédés techniques</h2><span class="filet"></span></div>
+  <p>Tourné vite et avec peu, le film tire de ses décors de studio une puissance d'envoûtement
+  que la critique française n'a cessé de souligner depuis sa redécouverte : une « atmosphère
+  très forte, sombre et noire », qui glisse du film noir vers le fantastique<sup class="fn"><a href="#src-6">[6]</a></sup>.
+  La photographie très contrastée d'Edward J. Cronjager sculpte la maison en zones de lumière
+  de gaz et de ténèbres, et la partition de George Antheil — lancinante, obsessionnelle — a
+  été rapprochée par plusieurs critiques des climats hitchcockiens<sup class="fn"><a href="#src-6">[6]</a></sup>.</p>
+  <p>Le vocabulaire de Lang est ici d'une précision géométrique : plongées et contre-plongées
+  redistribuent sans cesse le pouvoir entre les personnages — Emily descendant l'escalier
+  sous le regard de Stephen qui attend en bas, avant que le cadre ne s'inverse quand il prend
+  l'ascendant<sup class="fn"><a href="#src-3">[3]</a></sup>. Les couloirs enferment (« on est
+  prisonnier des couloirs chez Lang », écrit Revus &amp; Corrigés<sup class="fn"><a href="#src-3">[3]</a></sup>),
+  les miroirs accusent : après avoir immergé le corps, Stephen surprend son propre reflet
+  associé à l'image d'un poisson entrevu dans la rivière — rappel obsédant de ce qu'il est
+  devenu<sup class="fn"><a href="#src-3">[3]</a></sup>. Bertrand Tavernier résumait ce
+  régime d'images d'une formule : ce qui distingue le film, c'est « l'onirisme de
+  l'atmosphère », où « l'angoisse naît plus de la tendresse que de la
+  cruauté »<sup class="fn"><a href="#src-4">[4]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="folio"><span class="num">Ch. VI</span><h2>Personnages principaux</h2><span class="filet"></span></div>
+  <p><strong>Stephen Byrne</strong> (Louis Hayward) est la trouvaille du film : ni monstre ni
+  cerveau criminel, mais un homme ordinaire dont la médiocrité — littéraire, conjugale,
+  morale — se mue en opportunisme dès que le crime lui offre enfin un sujet. Un « assassin
+  bien ordinaire », selon le titre juste de Revus &amp; Corrigés<sup class="fn"><a href="#src-3">[3]</a></sup> :
+  son charme de surface est la forme la plus aboutie de son imposture.</p>
+  <p><strong>John Byrne</strong> (Lee Bowman), le frère infirme, est son exact contrepoids :
+  honnête jusqu'à l'autodestruction, il paie pour un crime qu'il n'a fait que subir — le
+  sac qui remonte porte son nom, et la lâcheté de Stephen fait le reste. <strong>Marjorie</strong>
+  (Jane Wyatt), enfin, incarne la conscience lectrice du film : c'est elle qui découvre la
+  vérité non par preuve matérielle, mais par lecture — reconnaissant dans le roman de son
+  mari ce que la fiction prétendait maquiller<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  <strong>Emily</strong>, la victime, n'apparaît que quelques minutes ; c'est pourtant autour
+  du désir qu'elle suscite — le bain, le bruit de l'eau qui s'écoule — que Lang noue tout le
+  mécanisme du passage à l'acte<sup class="fn"><a href="#src-6">[6]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="folio"><span class="num">Ch. VII</span><h2>Thèmes</h2><span class="filet"></span></div>
+  <p>La culpabilité, d'abord — l'obsession cardinale de la période américaine de Lang.
+  Le cinéaste en avait fait presque un programme :</p>
+  <blockquote>« Je suis arrivé à la conclusion que l'esprit de chaque homme cache une
+  impulsion latente pour le crime. »
+  <span class="attrib">Fritz Lang, cité par le festival Lumière<sup class="fn"><a href="#src-4">[4]</a></sup></span></blockquote>
+  <p><em>House by the River</em> pousse cette intuition jusqu'au malaise : le spectateur est
+  logé dans le point de vue du meurtrier, non pour l'absoudre mais pour éprouver combien le
+  mal ordinaire s'accommode bien de la respectabilité victorienne. D'où le second thème,
+  l'hypocrisie sociale : la maison cossue, la domesticité, la bienséance des voisins — tout
+  ce vernis que la rivière, découverte après découverte, écaille.</p>
+  <p>Le thème le plus singulier reste celui de l'écriture. Stephen transforme son crime en
+  matière romanesque, sa notoriété croît avec l'enquête, et le film devient une fable acide
+  sur l'exploitation littéraire du réel : l'art comme blanchiment du sang. Mais l'écriture
+  est réversible — ce qui sert d'alibi devient aveu dès qu'une lectrice attentive s'en
+  empare<sup class="fn"><a href="#src-3">[3]</a></sup>. Enfin, la rivière elle-même :
+  conscience liquide du récit, elle rend systématiquement ce qu'on lui confie, jusqu'à
+  faire de la nature le seul juge que la société victorienne du film ne parvient pas à
+  corrompre<sup class="fn"><a href="#src-3">[3]</a></sup><sup class="fn"><a href="#src-6">[6]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="folio"><span class="num">Ch. VIII</span><h2>Réception critique et postérité</h2><span class="filet"></span></div>
+  <p>À sa sortie américaine, l'accueil est tiède, voire dédaigneux. Bosley Crowther, dans le
+  <em>New York Times</em>, expédie le film :</p>
+  <blockquote>« Plein d'ornements victoriens, d'éclairages ténébreux et d'humeurs morbides,
+  c'est une tentative désespérée de donner la chair de poule avec une intrigue
+  psychologico-horrifique des plus banales. »
+  <span class="attrib">Bosley Crowther, New York Times, 1950, cité par Wikipédia<sup class="fn"><a href="#src-1">[1]</a></sup></span></blockquote>
+  <p>Longtemps invisible en Europe — jamais distribué en France, absent de bien des
+  filmographies — le film fut d'abord une affaire de cinéphiles avant de connaître une
+  réévaluation spectaculaire : la critique moderne y voit l'un des Lang américains les plus
+  singuliers, un pont entre le noir des années 1940 et le mélodrame gothique<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.
+  La restauration de 2018 et la ressortie française de 2019 — soit près de soixante-dix ans
+  après sa production — ont achevé de faire passer ce « petit » film de studio pauvre au
+  rang de joyau redécouvert du film noir<sup class="fn"><a href="#src-4">[4]</a></sup><sup class="fn"><a href="#src-5">[5]</a></sup><sup class="fn"><a href="#src-7">[7]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="folio"><span class="num">Ch. IX</span><h2>Conclusion</h2><span class="filet"></span></div>
+  <p><em>Au fil de l'eau</em> est le paradoxe langien par excellence : un film tourné dans la
+  gêne — studio pauvre, vedettes de second rang, censure tatillonne — qui transforme chacune
+  de ses contraintes en principe de style. Faute de moyens, Lang resserre ; faute de stars,
+  il durcit ses personnages ; faute de pouvoir montrer, il suggère — et c'est précisément ce
+  régime de la suggestion, cette maison-aquarium où la lumière de gaz tremble comme un reflet
+  sur l'eau, qui fait aujourd'hui la modernité du film.</p>
+  <p>Surtout, le film condense en 88 minutes ce que le cinéma de Lang a de plus profond :
+  l'idée que le crime n'est pas une exception monstrueuse mais une virtualité ordinaire, et
+  que la justice, quand les institutions défaillent, revient à des instances plus patientes —
+  une rivière, un manuscrit, une lectrice. On comprend que la postérité ait inversé le
+  jugement de 1950 : ce que Crowther prenait pour des « ornements victoriens » était en
+  réalité une méditation gothique sur la vase des consciences, dont la redécouverte tardive
+  aura été, très littéralement, une remontée à la surface.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="folio"><span class="num">✦</span><h2>Sources</h2><span class="filet"></span></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « House by the River » : production, distribution, censure Hays, adaptation radio, citation de Bosley Crowther. <a href="https://en.wikipedia.org/wiki/House_by_the_River">en.wikipedia.org/wiki/House_by_the_River</a></li>
+    <li id="src-2">Slant Magazine — critique de <em>House by the River</em> (contexte Republic Pictures, réévaluation critique), référencée via recherche web. <a href="https://www.slantmagazine.com/film/house-by-the-river/">slantmagazine.com/film/house-by-the-river</a></li>
+    <li id="src-3">Revus &amp; Corrigés — « Un assassin bien ordinaire dans House by the River de Fritz Lang (1950) », 25 janvier 2019 : analyse des scènes clés, motifs (escalier, couloirs, miroirs, rivière), place dans l'œuvre. <a href="https://revusetcorriges.com/2019/01/25/un-assassin-bien-ordinaire-dans-house-by-the-river-fritz-lang-1950/">revusetcorriges.com</a></li>
+    <li id="src-4">Festival Lumière 2018 — page du film : citations de Fritz Lang et Bertrand Tavernier, détail de la restauration (Lobster Films, scan 4K/restauration 2K, élément nitrate du BFI, son Le Diapason), redécouverte française via Patrick Brion. <a href="https://2018.festival-lumiere.org/manifestations/house-by-the-river.html">2018.festival-lumiere.org</a></li>
+    <li id="src-5">Lobster Films — édition restaurée de <em>House by the River</em> (référencée via recherche web). <a href="https://shop.lobsterfilms.com/fr/products/house-by-the-river">shop.lobsterfilms.com</a></li>
+    <li id="src-6">L'Œil sur l'écran — « Au fil de l'eau (1950) de Fritz Lang » : critique française (atmosphère, photographie, partition d'Antheil, mécanique du désir et de la culpabilité). <a href="https://films.oeil-ecran.com/2009/01/16/house-by-river/">films.oeil-ecran.com</a></li>
+    <li id="src-7">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/30014-house-by-the-river">themoviedb.org/movie/30014</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="colophon-final">
+  Analyse sourcée · rédigée le 5 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

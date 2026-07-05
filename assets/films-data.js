@@ -113,5 +113,15 @@ const FILMS = [
     summary: "Écrit en quatorze jours sur un lit d'hôpital, un huis clos entre une infirmière et une actrice devenue muette qui a fini par redéfinir le cinéma moderne.",
     url: 'films/persona.html',
     poster: 'assets/posters/persona.jpg'
+  },
+  {
+    slug: 'au-fil-de-leau',
+    title: "Au fil de l'eau",
+    director: 'Fritz Lang',
+    year: 1950,
+    genre: 'Film noir gothique',
+    summary: "Un romancier raté transforme son crime en roman à succès — mais la rivière de Fritz Lang rend toujours ce qu'on lui confie.",
+    url: 'films/au-fil-de-leau.html',
+    poster: 'assets/posters/au-fil-de-leau.jpg'
   }
 ];
