@@ -1,0 +1,68 @@
+# Journal des analyses cinématographiques
+
+Fichier de suivi interne recensant l'ensemble des films traités dans le cadre du projet
+d'analyses sourcées. Versionné dans le dépôt sous `docs/` (non lié depuis le site publié).
+
+Conventions de ce journal (réconciliées le 5 juillet 2026) :
+- **Fichier (site)** : le fichier réellement publié, `films/<slug>.html` — les noms
+  d'artefacts Chat historiques sont conservés dans la table de correspondance en bas de page.
+- **Genre** : aligné sur `assets/films-data.js`, désigné source de vérité.
+- **Lien publié** : dérivé mécaniquement du slug —
+  `https://cdatso.github.io/analyses-de-films/films/<slug>.html`.
+
+*Dernière mise à jour : 5 juillet 2026*
+
+---
+
+## Index complet
+
+| Titre | Réalisateur·rice | Année | Genre | Statut | Date d'analyse | Fichier (site) | Lien publié |
+|---|---|---|---|---|---|---|---|
+| Annie Hall | Woody Allen | 1977 | Comédie dramatique romantique | ✅ Publié | 2 juillet 2026 | films/annie-hall.html | https://cdatso.github.io/analyses-de-films/films/annie-hall.html |
+| The Old Oak | Ken Loach | 2023 | Drame social | ✅ Publié | 2–3 juillet 2026 | films/the-old-oak.html | https://cdatso.github.io/analyses-de-films/films/the-old-oak.html |
+| Soudain l'été dernier | Joseph L. Mankiewicz | 1959 | Mélodrame gothique | ✅ Publié | 3 juillet 2026 | films/soudain-lete-dernier.html | https://cdatso.github.io/analyses-de-films/films/soudain-lete-dernier.html |
+| Soy Cuba | Mikhaïl Kalatozov | 1964 | Drame de propagande | ✅ Publié | 3 juillet 2026 | films/soy-cuba.html | https://cdatso.github.io/analyses-de-films/films/soy-cuba.html |
+| Sud | Chantal Akerman | 1999 | Documentaire | ✅ Publié | 3 juillet 2026 | films/sud.html | https://cdatso.github.io/analyses-de-films/films/sud.html |
+| Shutter Island | Martin Scorsese | 2010 | Thriller psychologique | ✅ Publié | 3 juillet 2026 | films/shutter-island.html | https://cdatso.github.io/analyses-de-films/films/shutter-island.html |
+| Hamnet | Chloé Zhao | 2025 | Drame historique | ✅ Publié | 3 juillet 2026 | films/hamnet.html | https://cdatso.github.io/analyses-de-films/films/hamnet.html |
+| Les Deux Orphelines | D. W. Griffith | 1921 | Mélodrame historique (muet) | ✅ Publié | 4 juillet 2026 | films/les-deux-orphelines.html | https://cdatso.github.io/analyses-de-films/films/les-deux-orphelines.html |
+| Rosetta | Jean-Pierre & Luc Dardenne | 1999 | Drame social | ✅ Publié | 4 juillet 2026 | films/rosetta.html | https://cdatso.github.io/analyses-de-films/films/rosetta.html |
+| Rouges et Blancs | Miklós Jancsó | 1967 | Drame de guerre | ✅ Publié | 4 juillet 2026 | films/rouges-et-blancs.html | https://cdatso.github.io/analyses-de-films/films/rouges-et-blancs.html |
+| Persona | Ingmar Bergman | 1966 | Drame psychologique | ✅ Publié | 5 juillet 2026 | films/persona.html | https://cdatso.github.io/analyses-de-films/films/persona.html |
+
+---
+
+## Correspondance avec les artefacts Chat historiques
+
+Les fiches produites dans Claude Chat portaient des noms d'artefacts différents des fichiers
+publiés. Table de correspondance conservée pour retrouver les conversations d'origine :
+
+| Fichier (site) | Artefact Chat d'origine |
+|---|---|
+| soudain-lete-dernier.html | soudain_ete_dernier_negatif_argentique.html |
+| hamnet.html | hamnet_manuscrit_enlumine.html |
+| shutter-island.html | shutter_island_dossier_patient_67.html |
+| soy-cuba.html | soy_cuba_manifeste_revolutionnaire.html |
+| sud.html | sud_akerman_route_silencieuse.html |
+| les-deux-orphelines.html | deux_orphelines_cartons_teintes.html |
+| rosetta.html | rosetta_carte_de_pointage.html |
+| rouges-et-blancs.html | rouges_et_blancs_geometrie_de_la_terreur.html |
+| persona.html | persona-analyse.html |
+
+(Annie Hall et The Old Oak datent d'avant cette convention d'artefacts.)
+
+## Notes historiques
+
+- Les dates d'analyse proviennent de l'historique des conversations correspondantes
+  (et non d'une métadonnée de fichier).
+- *The Old Oak* a été initié le 2 juillet puis retravaillé (changement de style vers
+  « Négatif argentique », partagé ensuite avec *Soudain l'été dernier*) le 3 juillet.
+- Avant le 5 juillet 2026, ce journal utilisait les noms d'artefacts Chat et mélangeait
+  liens claude.ai et liens GitHub Pages ; réconcilié lors de l'exécution des actions P1
+  de l'audit (voir `Projects/analyses-de-films-audit/`).
+
+## À faire
+
+- [ ] Décider si l'index lui-même doit être publié sous forme de page HTML (sommaire du
+      site) ou rester un fichier de travail interne. (Note : la section 02 « Index des
+      films » de la page d'accueil couvre déjà l'essentiel de ce besoin.)
