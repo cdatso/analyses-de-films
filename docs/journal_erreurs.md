@@ -25,6 +25,9 @@ Conventions :
 | 5 juil. 2026 | Au fil de l'eau (1950) | Slant Magazine — review | https://www.slantmagazine.com/film/house-by-the-river/ | HTTP 403 (blocage robot) | Moyen | 🟡 citée via extraits de recherche uniquement |
 | 5 juil. 2026 | Raging Bull (1980) | RogerEbert.com — Great Movies | https://www.rogerebert.com/reviews/great-movie-raging-bull-1980 | HTTP 403 (blocage robot) | Fort — texte canonique d'Ebert | 🔴 non récupérée (analyse rédigée sans) |
 | 5 juil. 2026 | Le Cheval de Turin (2011) | Critikat — critique | https://www.critikat.com/actualite-cine/critique/le-cheval-de-turin/ | Erreur certificat SSL (« unable to get local issuer certificate ») | Fort — critique française de fond | 🟡 couverte par Silence…Action ! et Persée (non consulté) |
+| 6 juil. 2026 | La mariée était en noir (1968) | DVDClassik — analyse et critique | https://www.dvdclassik.com/critique/la-mariee-etait-en-noir-truffaut | HTTP 403 (blocage robot, récurrent sur ce domaine) | Fort — analyse française de référence | 🟡 couverte par Wikipédia fr + CinéDweller + Libre Critique |
+| 6 juil. 2026 | Manhattan (1979) | American Society of Cinematographers — « Black-and-White Romantic Realism » | https://theasc.com/articles/manhattan-black-and-white-romantic-realism | HTTP 403 (blocage robot) | Fort — analyse technique de la photo de Gordon Willis | 🔴 non récupérée (citée en référence, non consultée) |
+| 6 juil. 2026 | Retour à Séoul (2022) | Festival de Cannes — « Retour à Séoul, le regard de Davy Chou » | https://www.festival-cannes.com/fr/75-editions/retrospective/2022/actualites/articles/retour-a-seoul-le-regard-de-davy-chou | HTTP 404 (page retirée) | Moyen — propos du réalisateur | 🟡 couverte par la presse française |
 
 ## Incidents techniques du pipeline
 

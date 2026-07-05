@@ -36,6 +36,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Bienvenue à Suburbicon | George Clooney | 2017 | Comédie noire | 🟡 Staging | 6 juillet 2026 | films/bienvenue-a-suburbicon.html | https://cdatso.github.io/analyses-de-films/films/bienvenue-a-suburbicon.html |
 | Manhattan | Woody Allen | 1979 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/manhattan.html | https://cdatso.github.io/analyses-de-films/films/manhattan.html |
 | Sans Filtre | Ruben Östlund | 2022 | Comédie satirique | 🟡 Staging | 6 juillet 2026 | films/sans-filtre.html | https://cdatso.github.io/analyses-de-films/films/sans-filtre.html |
+| Retour à Séoul | Davy Chou | 2022 | Drame | 🟡 Staging | 6 juillet 2026 | films/retour-a-seoul.html | https://cdatso.github.io/analyses-de-films/films/retour-a-seoul.html |
 
 ---
 

@@ -183,5 +183,15 @@ const FILMS = [
     summary: "Un yacht d'oligarques, une tempête gastrique, une dame pipi promue capitaine : la Palme d'or la plus clivante de la décennie filme la lutte des classes à hauteur d'estomac.",
     url: 'films/sans-filtre.html',
     poster: 'assets/posters/sans-filtre.jpg'
+  },
+  {
+    slug: 'retour-a-seoul',
+    title: 'Retour à Séoul',
+    director: 'Davy Chou',
+    year: 2022,
+    genre: 'Drame',
+    summary: "Une adoptée française rentre « chez elle » dans un pays dont elle ne parle pas la langue — et refuse huit ans durant toutes les identités qu'on lui tend.",
+    url: 'films/retour-a-seoul.html',
+    poster: 'assets/posters/retour-a-seoul.jpg'
   }
 ];

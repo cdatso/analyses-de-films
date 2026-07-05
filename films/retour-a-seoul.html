@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retour à Séoul (2022) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Noto+Sans+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE DOSSIER HAMMOND =====
+     Formulaire d'adoption : papier administratif froid, encre bleue,
+     tampon rouge — traversé par le néon rose des nuits de Séoul. */
+  :root{
+    --papier:#eef0ef;
+    --papier-froid:#e2e6e4;
+    --encre:#1b1f24;
+    --encre-douce:#333941;
+    --admin:#33506e;
+    --neon:#d63a63;
+    --tampon:#b3261e;
+    --gris:#8a9199;
+    --ligne:rgba(27,31,36,0.16);
+    --ligne-nuit:rgba(238,240,239,0.15);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--papier);
+    color:var(--encre-douce);
+    font-family:'Manrope', sans-serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.64rem;
+  }
+  .kr{ font-family:'Noto Sans KR', sans-serif; }
+
+  /* ---------- NUIT DE SÉOUL (EN-TÊTE) ---------- */
+  header.nuit{
+    background:
+      radial-gradient(90% 70% at 80% 15%, rgba(214,58,99,0.22), transparent 60%),
+      linear-gradient(180deg, #14171c 0%, #1c2027 100%);
+    color:var(--papier);
+    padding:4.8rem 1.5rem 4rem;
+    position:relative;
+    overflow:hidden;
+  }
+  header.nuit::before{
+    content:"서울";
+    position:absolute;
+    right:-0.1em; top:0.35em;
+    font-family:'Noto Sans KR', sans-serif;
+    font-weight:700;
+    font-size:clamp(6rem, 22vw, 13rem);
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(214,58,99,0.35);
+    pointer-events:none;
+  }
+  .nuit-inner{ max-width:740px; margin:0 auto; position:relative; z-index:1; }
+  .back-link{
+    display:inline-block;
+    color:var(--gris);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--neon); }
+  .dossier-ref{
+    display:inline-block;
+    border:1px solid rgba(214,58,99,0.5);
+    color:var(--neon);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    padding:0.35rem 0.8rem;
+    margin-bottom:1.7rem;
+  }
+  h1.title{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:clamp(2.5rem, 7vw, 4.1rem);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    margin:0 0 0.9rem;
+    color:var(--papier);
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:57ch;
+    color:rgba(238,240,239,0.85);
+    margin:0 0 1.9rem;
+  }
+  .meta-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gris);
+    border-top:1px solid var(--ligne-nuit);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- SOMMAIRE : BORDEREAU ---------- */
+  nav.bordereau{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--ligne);
+    border-left:5px solid var(--admin);
+    background:#fff;
+    position:relative;
+  }
+  nav.bordereau::after{
+    content:"확인";
+    position:absolute; right:1rem; top:0.8rem;
+    font-family:'Noto Sans KR', sans-serif;
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--tampon);
+    border:2px solid var(--tampon);
+    border-radius:4px;
+    padding:0.15rem 0.4rem;
+    transform:rotate(-8deg);
+    opacity:0.55;
+  }
+  nav.bordereau .mono{ color:var(--admin); display:block; margin-bottom:0.8rem; }
+  nav.bordereau ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.bordereau ol{ columns:1; } }
+  nav.bordereau li{ margin-bottom:0.35rem; }
+  nav.bordereau a{ color:var(--encre); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.bordereau a:hover{ color:var(--neon); border-color:var(--neon); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .piece{ margin-bottom:1.4rem; }
+  .piece .ref{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--admin);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .piece h2{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:1.6rem;
+    letter-spacing:-0.01em;
+    color:var(--encre);
+    margin:0 0 0.55rem;
+  }
+  .piece .perfo{
+    height:8px;
+    background:radial-gradient(3px 3px at 4px 4px, var(--gris) 40%, transparent 45%) repeat-x;
+    background-size:22px 8px;
+    opacity:0.5;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--encre); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.3rem;
+    border-left:4px solid var(--neon);
+    background:var(--papier-froid);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--encre);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'JetBrains Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--admin);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.6rem;
+    color:var(--admin);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--neon); }
+
+  /* ---------- FICHE : FORMULAIRE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:7px;
+    background:#fff;
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .formulaire{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .formulaire{ grid-template-columns:1fr; } }
+  .formulaire .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--admin);
+    margin-bottom:0.15rem;
+  }
+  .formulaire .value{ font-size:0.93rem; color:var(--encre); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--admin); word-break:break-all; }
+  section.sources a:hover{ color:var(--neon); }
+
+  footer.classement{
+    border-top:1px solid var(--ligne);
+    margin-top:3.5rem;
+    padding:1.5rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+</style>
+</head>
+<body>
+
+<header class="nuit">
+  <div class="nuit-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="dossier-ref">Dossier d'adoption · Hammond · réf. K-85</span></div>
+    <h1 class="title">Retour à Séoul</h1>
+    <p class="subtitle">Davy Chou, 2022 — une adoptée française rentre « chez elle » dans un
+    pays dont elle ne parle pas la langue, et passe huit ans à refuser toutes les identités
+    qu'on lui tend.</p>
+    <div class="meta-line">France / Allemagne / Belgique / Qatar / Cambodge · 119 minutes · Couleur · Drame</div>
+  </div>
+</header>
+
+<nav class="bordereau" aria-label="Sommaire">
+  <span class="mono">Bordereau des pièces</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="piece"><span class="ref">Pièce n°1 · État civil</span><h2>Fiche technique</h2><div class="perfo"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/retour-a-seoul.jpg"
+           alt="Affiche du film Retour à Séoul"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="formulaire">
+      <div><div class="label">Réalisation &amp; scénario</div><div class="value">Davy Chou</div></div>
+      <div><div class="label">Photographie</div><div class="value">Thomas Favel</div></div>
+      <div><div class="label">Montage</div><div class="value">Dounia Sichov</div></div>
+      <div><div class="label">Musique</div><div class="value">Jérémie Arcache et Christophe Musset (du groupe Revolver)</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Park Ji-min, Oh Kwang-rok, Guka Han, Louis-Do de Lencquesaing</div></div>
+      <div><div class="label">Production</div><div class="value">Coproduction France (70 %) / Allemagne / Belgique / Qatar / Cambodge</div></div>
+      <div><div class="label">Première</div><div class="value">Cannes, Un Certain Regard, 22 mai 2022 · sortie France : janvier 2023</div></div>
+      <div><div class="label">Distinction notable</div><div class="value">Film cambodgien candidat à l'Oscar international 2023 (présélectionné)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="piece"><span class="ref">Pièce n°2</span><h2>Synopsis</h2><div class="perfo"></div></div>
+  <p>Freddie, 25 ans, née en Corée et adoptée bébé par un couple français, atterrit à Séoul
+  sur un coup de tête — un vol pour Tokyo annulé, dira-t-elle. Elle ne parle pas un mot de
+  coréen, ne connaît rien du pays, et jure qu'elle n'est pas venue chercher ses parents
+  biologiques. Deux semaines plus tard, elle pousse pourtant la porte du centre Hammond,
+  l'organisme d'adoption qui détient son dossier<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le père biologique répond aux télégrammes — pêcheur repenti, encombrant de culpabilité
+  et de soju ; la mère, elle, ne répond pas. Sur huit ans et plusieurs vies successives —
+  fêtarde à Séoul, vendeuse d'armes en tailleur, silhouette égarée en province — le film
+  suit Freddie qui revient, repart, se réinvente, et refuse obstinément que quiconque
+  (père, amants, pays, spectateur) décide à sa place de qui elle est<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="piece"><span class="ref">Pièce n°3</span><h2>Contexte de production</h2><div class="perfo"></div></div>
+  <p>Troisième long métrage de Davy Chou, cinéaste français né de parents cambodgiens, qui
+  connaît intimement le vertige du « retour » au pays d'origine : il a découvert le Cambodge
+  à l'âge adulte, expérience qui nourrissait déjà <em>Diamond Island</em>. Le point de
+  départ est ici l'histoire vraie de son amie Laure Badufle, adoptée d'origine coréenne,
+  dont il avait accompagné l'une des retrouvailles<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Pour Freddie, Chou choisit une non-professionnelle : Park Ji-min, plasticienne née à
+  Séoul et arrivée en France enfant, recommandée par une amie — elle a contribué à façonner
+  le personnage, jusqu'à en discuter pied à pied certaines scènes<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Coproduction à cinq pays menée par la France, le film est présenté à Un Certain Regard le
+  22 mai 2022, sort en France en janvier 2023 — et, ironie géopolitique savoureuse pour un
+  film sur l'identité introuvable : c'est le <strong>Cambodge</strong> qui le présente à
+  l'Oscar du film international 2023, où il atteint la présélection<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="piece"><span class="ref">Pièce n°4</span><h2>Structure narrative</h2><div class="perfo"></div></div>
+  <p>Le film couvre huit ans en quatre blocs séparés par des ellipses franches — deux
+  semaines, puis deux ans, puis cinq, puis un épilogue — et chaque retour à Séoul retrouve
+  une Freddie méconnaissable : coiffure, vêtements, entourage, métier, jusqu'à la bande-son
+  de sa vie. La critique a souligné ce refus du « scénario attendu du film de recherche des
+  origines » : le récit « suit sa propre trajectoire, s'autorise des ellipses, fait
+  apparaître et disparaître des personnages » — comme la vie, pas comme un
+  dossier<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Ce montage par mues successives est la thèse du film : là où le mélodrame d'adoption
+  promet la scène des retrouvailles comme résolution, Chou la place au premier tiers — et
+  elle ne résout rien. Les vraies scansions sont ailleurs : un télégramme sans réponse, une
+  danse seule au milieu d'un bar, un morceau de piano au casque dans le dernier plan.
+  Le film progresse non vers une origine retrouvée mais vers un apaisement sans
+  certificat<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="piece"><span class="ref">Pièce n°5</span><h2>Mise en scène et procédés techniques</h2><div class="perfo"></div></div>
+  <p>La caméra de Thomas Favel filme Séoul en ville-écran — néons, bars enfumés, autoroutes
+  nocturnes — mais toujours à hauteur de Freddie : c'est un Séoul d'étrangère, sans
+  pittoresque touristique, où la langue elle-même est un mur que la mise en scène
+  matérialise par le jeu constant de la traduction (l'amie Tena traduit, édulcore, tamponne
+  les brutalités des uns et des autres — la traduction comme personnage)<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Chou dilate les durées — « des plans souvent étirés à l'extrême » — et ménage
+  « quelques parenthèses presque oniriques, où l'on s'exprime avec le corps plus qu'avec la
+  voix »<sup class="fn"><a href="#src-3">[3]</a></sup> : les scènes de danse, d'abord, où
+  Freddie, seule contre la piste, transforme le malaise en défi — chorégraphies de
+  l'insoumission qui disent son personnage mieux qu'aucun dialogue. La musique fait le
+  reste : compositions de Jérémie Arcache et Christophe Musset, rock coréen des années 60
+  (Shin Jung-hyeon), et ce piano final que Freddie déchiffre seule — l'identité non comme
+  héritage reçu mais comme partition qu'on apprend<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="piece"><span class="ref">Pièce n°6</span><h2>Personnages principaux</h2><div class="perfo"></div></div>
+  <p><strong>Freddie</strong> (Park Ji-min, débuts sidérants unanimement salués<sup class="fn"><a href="#src-2">[2]</a></sup>)
+  est l'anti-héroïne que le sujet interdisait presque : « antipathique et souvent
+  insolente »<sup class="fn"><a href="#src-3">[3]</a></sup>, imprévisible, cruelle parfois
+  avec ceux qui l'aiment — et c'est précisément ce refus d'être aimable qui fait d'elle un
+  grand personnage. Elle oppose à toutes les assignations (fille perdue de la Corée, enfant
+  reconnaissante de la France, fiancée possible, victime à consoler) une seule réponse :
+  « je peux te rayer de ma vie d'un claquement de doigts ». Sa dureté est une politique
+  d'indépendance<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Le <strong>père biologique</strong> (Oh Kwang-rok) est son contrepoids déchirant :
+  noyé de remords et de soju, il réclame trop, trop tard, une paternité qu'il n'a pas
+  exercée — leurs scènes, où la culpabilité s'exprime en messages nocturnes et silences
+  traduits, sont parmi les plus justes jamais filmées sur les retrouvailles d'adoption.
+  <strong>Tena</strong> (Guka Han), l'amie-interprète, incarne la douceur coréenne que
+  Freddie tient à distance, et <strong>la mère biologique</strong>, présence en creux,
+  gouverne le film entier depuis son silence<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="piece"><span class="ref">Pièce n°7</span><h2>Thèmes</h2><div class="perfo"></div></div>
+  <p>L'identité comme construction, non comme héritage : c'est le renversement central.
+  Le film démonte le mythe du « retour aux sources » — Freddie ne retrouve pas une identité
+  coréenne enfouie, elle constate qu'il n'y en a pas, et qu'il va falloir s'inventer avec ce
+  manque. D'où le titre international, <em>All the People I'll Never Be</em> : tous ces
+  « moi » possibles — la Coréenne qu'elle aurait été, la Française apaisée qu'on attend
+  d'elle — que le film égrène pour mieux les congédier<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>L'abandon ensuite, « dans tous les sens du terme »<sup class="fn"><a href="#src-2">[2]</a></sup> :
+  celui, originel, de l'adoption, mais aussi ceux que Freddie inflige à son tour — amants
+  congédiés, amies rayées, pères éconduits — comme si la blessure ne savait se dire qu'en
+  se reproduisant. Et puis la langue : le coréen qu'elle refuse d'apprendre, le français
+  qui la désigne comme étrangère à Séoul, l'anglais des demi-vérités — le film pense la
+  langue maternelle comme la seule patrie qu'on ne peut pas rapatrier. Chou évite partout
+  « le style démonstratif inhérent aux films à thèse »<sup class="fn"><a href="#src-2">[2]</a></sup> :
+  pas de leçon sur l'adoption internationale, mais son sismographe le plus fin.</p>
+</section>
+
+<section id="reception">
+  <div class="piece"><span class="ref">Pièce n°8</span><h2>Réception critique et postérité</h2><div class="perfo"></div></div>
+  <p>Révélation d'Un Certain Regard 2022, le film récolte des critiques remarquables —
+  88 sur Metacritic, 3,7/5 de moyenne presse sur AlloCiné<sup class="fn"><a href="#src-1">[1]</a></sup> —
+  et la presse française salue unanimement l'interprétation de Park Ji-min, « éblouissante
+  performance » d'une non-professionnelle<sup class="fn"><a href="#src-2">[2]</a></sup>,
+  ainsi que la dureté assumée du geste :</p>
+  <blockquote>« Le film ne cherche surtout pas à faire preuve de complaisance — Davy Chou
+  fait le choix délibéré de ne pas nous prendre par la main. »
+  <span class="attrib">À la rencontre du septième art<sup class="fn"><a href="#src-3">[3]</a></sup></span></blockquote>
+  <p>Succès d'estime plus que de foule (environ 112 000 entrées françaises, 2,1 M$ dans le
+  monde<sup class="fn"><a href="#src-1">[1]</a></sup>), le film s'est imposé comme une
+  référence immédiate du récit d'adoption au cinéma — cité depuis dans toute discussion du
+  sujet aux côtés d'un documentaire comme <em>Une histoire à soi</em>, et comme la preuve
+  qu'un premier rôle peut naître à l'écran tout armé : la carrière de Park Ji-min était
+  lancée d'un seul film.</p>
+</section>
+
+<section id="conclusion">
+  <div class="piece"><span class="ref">Pièce n°9 · Classement du dossier</span><h2>Conclusion</h2><div class="perfo"></div></div>
+  <p><em>Retour à Séoul</em> réussit ce que presque tous les films d'adoption manquent :
+  ne pas confondre l'origine et l'identité. En plaçant les retrouvailles au premier tiers
+  et en refusant à son héroïne toute épiphanie, Davy Chou déplace la question — non pas
+  « d'où viens-je ? » mais « que faire de ce qui ne répond pas ? ». Le dossier Hammond
+  reste ouvert à la dernière image ; c'est Freddie qui, elle, cesse d'en être une pièce.</p>
+  <p>Il fallait pour cela un personnage assez libre pour être ingrat, une actrice assez
+  neuve pour être imprévisible, et un cinéaste assez proche du sujet pour n'en rien
+  simplifier. Le dernier plan — Freddie seule au piano, déchiffrant une partition qu'on
+  lui a donnée mais qu'elle joue à sa manière — est la plus belle définition récente de
+  l'identité au cinéma : ni retrouvée, ni reçue. Apprise.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="piece"><span class="ref">Annexes au dossier</span><h2>Sources</h2><div class="perfo"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (fr) — « Retour à Séoul » : fiche technique (Favel, Sichov, musique Arcache/Musset), coproduction, inspiration Laure Badufle, dates (Cannes 22 mai 2022, sortie janvier 2023), sélection cambodgienne aux Oscars 2023, réception chiffrée. <a href="https://fr.wikipedia.org/wiki/Retour_%C3%A0_S%C3%A9oul">fr.wikipedia.org/wiki/Retour_à_Séoul</a></li>
+    <li id="src-2">Presse française consultée via recherche web (avoir-alire, Mondociné, Bande à part, C'est quoi le cinéma) : genèse (amie du cinéaste, parcours personnel de Davy Chou), Park Ji-min et sa contribution au rôle, structure par ellipses, thème de l'abandon, refus du film à thèse. <a href="https://www.avoir-alire.com/retour-a-seoul-davy-chou-critique">avoir-alire.com</a></li>
+    <li id="src-3">À la rencontre du septième art — « Retour à Séoul (Davy Chou, 2023) - Critique et Analyse » : durées étirées, parenthèses oniriques et corporelles, dureté du personnage, absence de complaisance. <a href="https://alarencontreduseptiemeart.com/retour-a-seoul/">alarencontreduseptiemeart.com</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/952701-retour-a-seoul">themoviedb.org/movie/952701</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="classement">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
