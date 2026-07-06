@@ -223,5 +223,15 @@ const FILMS = [
     summary: "Quatre ans de la vie d'une femme qui essaie toutes les vies possibles, racontés comme un roman — et le prix d'interprétation de Cannes pour Renate Reinsve.",
     url: 'films/julie-en-12-chapitres.html',
     poster: 'assets/posters/julie-en-12-chapitres.jpg'
+  },
+  {
+    slug: 'le-golem',
+    title: 'Le Golem',
+    director: 'Julien Duvivier',
+    year: 1936,
+    genre: 'Fantastique',
+    summary: "Un cinéaste français filme à Prague, trois ans après l'arrivée de Hitler au pouvoir, la légende du géant d'argile qui venge le ghetto : le fantastique comme éditorial.",
+    url: 'films/le-golem.html',
+    poster: 'assets/posters/le-golem.jpg'
   }
 ];

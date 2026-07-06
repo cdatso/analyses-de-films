@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Golem (1936) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Gelasio:ital,wght@0,400;0,600;1,400&family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== L'ARGILE ET LA LETTRE =====
+     Prague expressionniste, 1936 : terre cuite du ghetto, ombres portées,
+     or de la Kabbale — et sur le front de la créature, le mot Vérité. */
+  :root{
+    --parchemin:#e9dfc8;
+    --parchemin-ombre:#ddd1b4;
+    --argile:#a35c35;
+    --argile-sombre:#7c4326;
+    --ombre:#171310;
+    --ombre-douce:#332a22;
+    --kabbale:#b78c2e;
+    --ligne:rgba(23,19,16,0.18);
+    --ligne-claire:rgba(233,223,200,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchemin);
+    color:var(--ombre-douce);
+    font-family:'Gelasio', serif;
+    font-size:1.0rem;
+    line-height:1.73;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Anonymous Pro', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.66rem;
+  }
+
+  /* ---------- LE GRENIER (EN-TÊTE) ---------- */
+  header.grenier{
+    background:
+      radial-gradient(80% 90% at 20% 0%, rgba(163,92,53,0.3), transparent 55%),
+      linear-gradient(160deg, var(--ombre) 0%, #241d16 70%, var(--ombre-douce) 100%);
+    color:var(--parchemin);
+    padding:4.8rem 1.5rem 4rem;
+    position:relative;
+    overflow:hidden;
+  }
+  header.grenier::before{
+    content:"אמת";
+    position:absolute;
+    right:0.1em; bottom:-0.18em;
+    font-size:clamp(7rem, 24vw, 15rem);
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(183,140,46,0.3);
+    pointer-events:none;
+  }
+  header.grenier::after{
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(105deg, transparent 0 60px, rgba(233,223,200,0.025) 60px 62px);
+    pointer-events:none;
+  }
+  .grenier-inner{ max-width:740px; margin:0 auto; position:relative; z-index:1; }
+  .back-link{
+    display:inline-block;
+    color:rgba(233,223,200,0.5);
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--kabbale); }
+  .sceau{
+    display:inline-block;
+    border:1px solid rgba(183,140,46,0.55);
+    color:var(--kabbale);
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    padding:0.35rem 0.9rem;
+    margin-bottom:1.8rem;
+  }
+  h1.title{
+    font-family:'Yeseva One', serif;
+    font-weight:400;
+    font-size:clamp(2.8rem, 8.5vw, 5rem);
+    line-height:1.02;
+    margin:0 0 0.9rem;
+    color:var(--parchemin);
+    text-shadow:4px 5px 0 rgba(163,92,53,0.35);
+  }
+  .subtitle{
+    font-size:1.05rem;
+    max-width:57ch;
+    color:rgba(233,223,200,0.85);
+    margin:0 0 1.9rem;
+  }
+  .meta-line{
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(233,223,200,0.55);
+    border-top:1px solid var(--ligne-claire);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.grimoire{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--ligne);
+    border-top:4px solid var(--argile);
+    background:var(--parchemin-ombre);
+  }
+  nav.grimoire .mono{ color:var(--argile-sombre); display:block; margin-bottom:0.8rem; }
+  nav.grimoire ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.grimoire ol{ columns:1; } }
+  nav.grimoire li{ margin-bottom:0.35rem; }
+  nav.grimoire a{ color:var(--ombre); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.grimoire a:hover{ color:var(--argile-sombre); border-color:var(--argile-sombre); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .signe{ margin-bottom:1.4rem; }
+  .signe .ref{
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--kabbale);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .signe h2{
+    font-family:'Yeseva One', serif;
+    font-weight:400;
+    font-size:1.65rem;
+    color:var(--ombre);
+    margin:0 0 0.55rem;
+  }
+  .signe .empreinte{
+    height:5px;
+    background:linear-gradient(90deg, var(--argile) 0 38%, var(--kabbale) 38% 46%, transparent 46%);
+    opacity:0.75;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--ombre); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.4rem;
+    background:var(--ombre);
+    color:var(--parchemin);
+    font-style:italic;
+    font-size:1.04rem;
+    border-left:5px solid var(--kabbale);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Anonymous Pro', monospace;
+    font-style:normal;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--kabbale);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.62rem;
+    color:var(--argile-sombre);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--kabbale); }
+
+  /* ---------- FICHE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:var(--parchemin-ombre);
+    box-shadow:5px 5px 0 rgba(163,92,53,0.3);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:sepia(0.12); }
+  .tablette{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .tablette{ grid-template-columns:1fr; } }
+  .tablette .label{
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--argile-sombre);
+    margin-bottom:0.15rem;
+  }
+  .tablette .value{ font-size:0.93rem; color:var(--ombre); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--argile-sombre); word-break:break-all; }
+  section.sources a:hover{ color:var(--kabbale); }
+
+  footer.poussiere{
+    background:var(--ombre);
+    margin-top:3.5rem;
+    padding:1.6rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Anonymous Pro', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:rgba(233,223,200,0.5);
+  }
+</style>
+</head>
+<body>
+
+<header class="grenier">
+  <div class="grenier-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="sceau">Prague · règne de Rodolphe II · d'après la légende du Maharal</span></div>
+    <h1 class="title">Le Golem</h1>
+    <p class="subtitle">Julien Duvivier, 1936 — dans le ghetto de Prague écrasé par un
+    empereur dément, une créature d'argile dort au grenier. Tourné à Prague par un Français
+    trois ans après l'arrivée de Hitler au pouvoir : la légende juive redevenue
+    l'actualité la plus urgente.</p>
+    <div class="meta-line">France / Tchécoslovaquie · Studios Barrandov · 100 minutes · N&amp;B · Fantastique</div>
+  </div>
+</header>
+
+<nav class="grimoire" aria-label="Sommaire">
+  <span class="mono">Grimoire</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="signe"><span class="ref">Signe I</span><h2>Fiche technique</h2><div class="empreinte"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/le-golem.jpg"
+           alt="Affiche du film Le Golem (1936)"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="tablette">
+      <div><div class="label">Réalisation</div><div class="value">Julien Duvivier</div></div>
+      <div><div class="label">Scénario</div><div class="value">Julien Duvivier et André-Paul Antoine, d'après la pièce de Jiří Voskovec et Jan Werich (1931)</div></div>
+      <div><div class="label">Photographie</div><div class="value">Jan Stallich et Václav Vích</div></div>
+      <div><div class="label">Décors</div><div class="value">André Andrejew</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Harry Baur (Rodolphe II), Roger Karl (Lang), Charles Dorat (rabbin Jacob), Jany Holt, Germaine Aussey, Ferdinand Hart (le Golem)</div></div>
+      <div><div class="label">Production</div><div class="value">AB Film — Studios Barrandov, Prague (coproduction franco-tchécoslovaque)</div></div>
+      <div><div class="label">Sortie</div><div class="value">6 février 1936 (France)</div></div>
+      <div><div class="label">Distribution</div><div class="value">Les Artistes Associés · 100 minutes</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="signe"><span class="ref">Signe II</span><h2>Synopsis</h2><div class="empreinte"></div></div>
+  <p>Prague, sous le règne de Rodolphe II. Le rabbin Loew est mort, et avec lui le secret
+  qui animait le Golem — la créature d'argile qu'il avait façonnée pour protéger les siens
+  dort désormais dans un grenier, colosse inerte que l'empereur, superstitieux et terrifié,
+  a fait transporter dans son palais. Dans le ghetto, l'oppression s'aggrave : le
+  chancelier Lang, juif renégat rallié au pouvoir, orchestre rafles et brimades pendant que
+  Rodolphe s'enfonce dans la débauche et la folie<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le jeune rabbin Jacob, dépositaire supposé du secret, est arrêté et torturé ; sa femme
+  Rachel prendra le relais. Quand la révolte du ghetto gronde et que les cachots se
+  remplissent, la formule retrouvée réveille enfin la créature — et le film bascule dans le
+  cataclysme : le Golem brise ses chaînes, les murs du palais, et le règne de la terreur
+  avec eux<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="signe"><span class="ref">Signe III</span><h2>Contexte de production</h2><div class="empreinte"></div></div>
+  <p>L'histoire de production est aussi singulière que le film : Duvivier — alors au sommet
+  de sa première gloire française — part tourner aux studios Barrandov de Prague une
+  coproduction franco-tchécoslovaque en langue française, adaptée non du roman de Meyrink
+  mais d'une pièce de 1931 des Tchèques Jiří Voskovec et Jan Werich<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  L'équipe mêle les écoles : photographie des Tchèques Jan Stallich et Václav Vích, décors
+  d'André Andrejew — le grand décorateur venu de l'expressionnisme allemand — et vedettes
+  françaises, Harry Baur en tête<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le film se conçoit ouvertement comme une suite au <em>Golem</em> de Paul Wegener
+  (1920) : il se situe après les événements du classique expressionniste, Loew mort, la
+  créature remisée<sup class="fn"><a href="#src-2">[2]</a></sup>. Mais le vrai contexte est
+  ailleurs, et personne en 1936 ne pouvait le manquer : trois ans après l'arrivée de Hitler
+  au pouvoir, un cinéaste français filme à Prague l'histoire d'un pouvoir qui persécute les
+  Juifs — « le mythe universel du Golem redevient d'une triste actualité au milieu des
+  années trente, alors que le nazisme fomente l'éradication du peuple juif »<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Le fantastique comme éditorial : peu de films d'époque furent aussi frontalement
+  contemporains.</p>
+</section>
+
+<section id="structure">
+  <div class="signe"><span class="ref">Signe IV</span><h2>Structure narrative</h2><div class="empreinte"></div></div>
+  <p>La construction est celle d'une attente organisée : le Golem, présent dès le titre et
+  dans toutes les conversations, reste invisible ou inerte pendant l'essentiel du récit —
+  statue voilée dans le palais, rumeur dans le ghetto, cauchemar dans les nuits de
+  l'empereur. Duvivier construit son film comme une cocotte-minute : intrigues de cour,
+  martyre du ghetto, torture de Jacob, révolte qui monte — et ne libère sa créature que
+  dans le dernier mouvement, pour un finale de destruction pure<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Cette rétention a un coût que la critique n'a jamais cessé de discuter — une longue
+  première heure « bavarde » d'intrigues palatiales avant l'embrasement<sup class="fn"><a href="#src-3">[3]</a></sup> —
+  mais elle a un sens : dans cette version, le monstre n'est pas le sujet, il est le
+  verdict. Le film raconte moins le réveil d'une créature que la lente fabrication des
+  conditions qui le rendent inévitable — l'oppression comme compte à rebours.</p>
+</section>
+
+<section id="technique">
+  <div class="signe"><span class="ref">Signe V</span><h2>Mise en scène et procédés techniques</h2><div class="empreinte"></div></div>
+  <p>Visuellement, le film est un carrefour d'Europe : Duvivier y rend « hommage au cinéma
+  expressionniste allemand et aux films de monstres des studios Universal »<sup class="fn"><a href="#src-2">[2]</a></sup> —
+  escaliers démesurés d'Andrejew, ombres portées, géométries écrasantes du palais contre le
+  lacis organique du ghetto. La créature elle-même est traitée en apparition : « filmée en
+  contre-plongée, mise en lumière par un éclairage extrêmement dramatique »<sup class="fn"><a href="#src-2">[2]</a></sup>,
+  elle bénéficie d'une des révélations les plus patiemment préparées du fantastique
+  d'avant-guerre.</p>
+  <p>La caméra de Stallich et Vích — mobile, fluide, très en avance sur le tout-venant
+  français de 1936 — travaille les foules du ghetto en frises quasi documentaires, et le
+  finale déchaîne des moyens rares : murs qui s'effondrent, lion lâché, palais en
+  déroute — la « chronique historique » virant au « cinéma catastrophe »<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Graham Greene, en 1937, avait trouvé la formule de cette étrangeté : un film « qui vaut
+  tout à fait le détour, comme une survivance — une survivance sémitique — du vieux cinéma
+  romantique de Caligari »<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="signe"><span class="ref">Signe VI</span><h2>Personnages principaux</h2><div class="empreinte"></div></div>
+  <p>Le film appartient à <strong>Harry Baur</strong>, Rodolphe II « débauché et
+  psychopathe », « flamboyant, crevant l'écran avec emphase »<sup class="fn"><a href="#src-2">[2]</a></sup> :
+  empereur alchimiste terrifié par la créature qu'il séquestre, tyran infantile qui
+  consulte les astres et fait torturer les innocents — Baur en fait un monstre plus
+  inquiétant que le monstre, et Greene salua là « l'une de ses interprétations les plus
+  brillantes »<sup class="fn"><a href="#src-3">[3]</a></sup>. Tragique ironie d'acteur :
+  Harry Baur mourra en 1943, peu après avoir été arrêté et torturé par la Gestapo —
+  l'Histoire rattrapant atrocement la fable qu'il avait servie.</p>
+  <p>Face à lui, <strong>Lang</strong> (Roger Karl), le chancelier juif converti devenu
+  persécuteur des siens — figure du collaborateur d'une actualité glaçante ; le jeune
+  rabbin <strong>Jacob</strong> (Charles Dorat) et sa femme <strong>Rachel</strong>, qui
+  accomplit le geste final — détail remarquable : c'est une femme qui réveille le
+  sauveur ; et <strong>le Golem</strong> (Ferdinand Hart), présence minérale dont
+  l'inexpressivité même est le rôle : il n'est pas un personnage, il est une réponse<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="signe"><span class="ref">Signe VII</span><h2>Thèmes</h2><div class="empreinte"></div></div>
+  <p>Le thème central est l'oppression et le droit à la résistance : le film pose, en
+  termes à peine voilés, la question de 1936 — que peut un peuple persécuté quand la
+  légalité elle-même persécute ? Sa réponse est la légende : la force surgit de la
+  mémoire (le secret transmis), de la foi, et du refus. La critique moderne y lit
+  explicitement « un appel à la résistance contre l'oppression subie par les Juifs
+  d'Europe »<sup class="fn"><a href="#src-2">[2]</a></sup> — ce qui fait du film l'un des
+  très rares gestes antinazis du cinéma français d'avant-guerre.</p>
+  <p>S'y ajoutent la figure du renégat — Lang, plus zélé que ses maîtres, anatomie du
+  collaborateur avant la lettre — et le thème du pouvoir dévoré par sa propre peur :
+  Rodolphe garde le Golem enchaîné dans son palais comme on garde sa mauvaise conscience,
+  et c'est littéralement sa terreur qui finit par tout détruire. Enfin, la matière même de
+  la légende : l'argile animée par la lettre — אמת, « vérité », inscrite au front de la
+  créature — dit que la force des opprimés naît du verbe et du livre ; dans l'Europe des
+  autodafés, l'image n'avait rien d'innocent.</p>
+</section>
+
+<section id="reception">
+  <div class="signe"><span class="ref">Signe VIII</span><h2>Réception critique et postérité</h2><div class="empreinte"></div></div>
+  <p>À sa sortie en février 1936, le film déconcerte : trop fantastique pour les habitués
+  du Duvivier réaliste — l'homme de <em>La Bandera</em> et bientôt de <em>Pépé le Moko</em> —,
+  trop politique pour le simple divertissement. La réception est restée durablement
+  partagée : d'un côté l'admiration pour l'ampleur plastique et pour Baur, de l'autre le
+  reproche récurrent d'une intrigue « bavarde » qui fait attendre son monstre<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Greene, lui, avait choisi son camp :</p>
+  <blockquote>« Tout à fait digne d'être vu, comme une survivance — une survivance
+  sémitique — du vieux cinéma romantique de Caligari. »
+  <span class="attrib">Graham Greene, 1937, cité via la recherche documentaire<sup class="fn"><a href="#src-3">[3]</a></sup></span></blockquote>
+  <p>La postérité l'a réévalué en pièce unique : unique dans l'œuvre de Duvivier — son seul
+  vrai film fantastique<sup class="fn"><a href="#src-3">[3]</a></sup> —, unique dans le
+  cinéma français des années trente par son sujet, et unique comme document : un film
+  antinazi tourné à Barrandov, studios que la Wehrmacht occuperait trois ans plus tard.
+  Sa redécouverte moderne (restaurations, programmations au Musée d'art et d'histoire du
+  judaïsme notamment) l'a réinstallé à sa place : entre Wegener et les golems à venir, le
+  chaînon français de la légende<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="signe"><span class="ref">Signe IX · Le mot effacé</span><h2>Conclusion</h2><div class="empreinte"></div></div>
+  <p><em>Le Golem</em> de Duvivier est un film-frontière : entre la France et la
+  Mitteleuropa, entre l'expressionnisme finissant et le cinéma de studio des années trente,
+  entre la légende et l'éditorial. Ses défauts de rythme sont réels et personne n'a jamais
+  prétendu le contraire ; mais on ne lit pas ce film comme un simple film de monstre —
+  on le lit comme une lettre envoyée de 1936, dont chaque image sait ce qui vient et
+  l'affronte avec les seuls moyens du mythe.</p>
+  <p>Selon la légende, il suffit d'effacer une lettre du mot אמת (« vérité ») sur le front
+  du Golem pour qu'il ne reste que מת — « mort » — et que la créature retombe en poussière.
+  Le film de Duvivier est construit sur cette équation : quand un pouvoir efface la vérité,
+  il ne reste que la mort, et l'argile se lève. Que cette leçon ait été tournée à Prague,
+  en français, par le futur réalisateur de <em>Pépé le Moko</em>, trois ans avant la
+  catastrophe, en fait bien plus qu'une curiosité : un des rares moments où le cinéma
+  européen a regardé son époque dans les yeux — à travers ceux, immenses et vides, d'un
+  géant d'argile.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="signe"><span class="ref">Colophon</span><h2>Sources</h2><div class="empreinte"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (fr) — « Le Golem (film, 1936) » : fiche technique (Duvivier/Antoine, Stallich/Vích, Andrejew, AB Film/Barrandov), distribution, sortie du 6 février 1936, synopsis. <a href="https://fr.wikipedia.org/wiki/Le_Golem_(film,_1936)">fr.wikipedia.org</a></li>
+    <li id="src-2">Films Fantastiques — « Le Golem (1936) » : rapport au film de Wegener (suite), hommage à l'expressionnisme et à Universal, révélation de la créature, Harry Baur « flamboyant », lecture politique (actualité du mythe face au nazisme, appel à la résistance), chronique historique virant au cinéma catastrophe. <a href="https://www.filmsfantastiques.com/2020/12/le-golem-1936/">filmsfantastiques.com</a></li>
+    <li id="src-3">Critiques anglophones consultées via recherche web (frenchfilms.org, Mark David Welsh, citations de Graham Greene 1937) : place unique dans l'œuvre de Duvivier, réserves sur le rythme, éloge de Baur, formule « survivance sémitique du cinéma de Caligari ». <a href="http://www.frenchfilms.org/review/le-golem-1936.html">frenchfilms.org</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/169479-le-golem">themoviedb.org/movie/169479</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="poussiere">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

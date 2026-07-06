@@ -40,6 +40,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Waterloo | Sergueï Bondartchouk | 1970 | Fresque historique | 🟡 Staging | 6 juillet 2026 | films/waterloo.html | https://cdatso.github.io/analyses-de-films/films/waterloo.html |
 | Nouvelle Vague | Richard Linklater | 2025 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/nouvelle-vague.html | https://cdatso.github.io/analyses-de-films/films/nouvelle-vague.html |
 | Julie (en 12 chapitres) | Joachim Trier | 2021 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/julie-en-12-chapitres.html | https://cdatso.github.io/analyses-de-films/films/julie-en-12-chapitres.html |
+| Le Golem | Julien Duvivier | 1936 | Fantastique | 🟡 Staging | 6 juillet 2026 | films/le-golem.html | https://cdatso.github.io/analyses-de-films/films/le-golem.html |
 
 ---
 
