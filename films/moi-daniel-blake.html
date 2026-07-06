@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moi, Daniel Blake (2016) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Permanent+Marker&family=B612+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE FORMULAIRE BARRÉ =====
+     Dossier gris du jobcentre : cases à cocher, tampons, files d'attente —
+     et en travers du mur, un nom écrit à la bombe. */
+  :root{
+    --formulaire:#ebebe8;
+    --formulaire-ombre:#dfdfda;
+    --encre-admin:#22262a;
+    --encre-douce:#3a4046;
+    --jobcentre:#37536b;
+    --spray:#c8471f;
+    --tampon:#8e1f1f;
+    --gris:#9aa0a4;
+    --ligne:rgba(34,38,42,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--formulaire);
+    color:var(--encre-douce);
+    font-family:'Libre Franklin', sans-serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'B612 Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-size:0.63rem;
+  }
+  .graffiti{ font-family:'Permanent Marker', cursive; }
+
+  /* ---------- LE MUR DU JOBCENTRE (EN-TÊTE) ---------- */
+  header.mur{
+    background:
+      repeating-linear-gradient(0deg, transparent 0 88px, rgba(235,235,232,0.06) 88px 90px),
+      repeating-linear-gradient(90deg, transparent 0 200px, rgba(235,235,232,0.05) 200px 202px),
+      linear-gradient(180deg, #2b333a 0%, var(--encre-admin) 100%);
+    color:var(--formulaire);
+    padding:4.8rem 1.5rem 4rem;
+    position:relative;
+  }
+  .mur-inner{ max-width:740px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:var(--gris);
+    font-family:'B612 Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.4rem;
+  }
+  .back-link:hover{ color:var(--spray); }
+  .dossier-ref{
+    display:inline-block;
+    background:var(--formulaire);
+    color:var(--jobcentre);
+    font-family:'B612 Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    padding:0.35rem 0.9rem;
+    margin-bottom:2rem;
+  }
+  h1.title{
+    font-family:'Permanent Marker', cursive;
+    font-weight:400;
+    font-size:clamp(2.6rem, 8vw, 4.6rem);
+    line-height:1.05;
+    margin:0 0 1rem;
+    color:var(--formulaire);
+    transform:rotate(-1.2deg);
+    text-shadow:3px 3px 0 rgba(200,71,31,0.4);
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:58ch;
+    color:rgba(235,235,232,0.85);
+    margin:0 0 1.9rem;
+  }
+  .meta-line{
+    font-family:'B612 Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    color:var(--gris);
+    border-top:1px solid rgba(235,235,232,0.18);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- SOMMAIRE : LE FORMULAIRE ---------- */
+  nav.formulaire{
+    max-width:720px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.6rem;
+    border:1px solid var(--ligne);
+    background:#fff;
+    position:relative;
+  }
+  nav.formulaire::after{
+    content:"REÇU — EN ATTENTE DE DÉCISION";
+    position:absolute; right:1rem; top:-0.7rem;
+    font-family:'B612 Mono', monospace;
+    font-size:0.58rem;
+    letter-spacing:0.12em;
+    color:var(--tampon);
+    border:2px solid var(--tampon);
+    padding:0.15rem 0.5rem;
+    transform:rotate(-3deg);
+    background:#fff;
+    opacity:0.75;
+  }
+  nav.formulaire .mono{ color:var(--jobcentre); display:block; margin-bottom:0.8rem; }
+  nav.formulaire ol{
+    margin:0; padding:0; list-style:none;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.formulaire ol{ columns:1; } }
+  nav.formulaire li{ margin-bottom:0.4rem; }
+  nav.formulaire li::before{
+    content:"☐ ";
+    color:var(--jobcentre);
+  }
+  nav.formulaire a{ color:var(--encre-admin); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.formulaire a:hover{ color:var(--spray); border-color:var(--spray); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.5rem; }
+  .case{ margin-bottom:1.4rem; }
+  .case .ref{
+    font-family:'B612 Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--jobcentre);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .case h2{
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:800;
+    font-size:1.6rem;
+    letter-spacing:-0.01em;
+    color:var(--encre-admin);
+    margin:0 0 0.55rem;
+  }
+  .case .regle{
+    height:6px;
+    background:
+      linear-gradient(var(--ligne), var(--ligne)) 0 0/100% 1px no-repeat,
+      linear-gradient(90deg, var(--spray) 0 54px, transparent 54px) 0 2px/100% 3px no-repeat;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--encre-admin); font-weight:600; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1.1rem 1.4rem;
+    background:var(--encre-admin);
+    color:var(--formulaire);
+    font-family:'Permanent Marker', cursive;
+    font-size:1.15rem;
+    line-height:1.5;
+    transform:rotate(-0.6deg);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.6rem;
+    font-family:'B612 Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--gris);
+    transform:none;
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'B612 Mono', monospace;
+    font-size:0.6rem;
+    color:var(--jobcentre);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--spray); }
+
+  /* ---------- FICHE : PIÈCE D'IDENTITÉ ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:7px;
+    background:#fff;
+    box-shadow:0 3px 0 var(--ligne);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .identite{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .identite{ grid-template-columns:1fr; } }
+  .identite .label{
+    font-family:'B612 Mono', monospace;
+    font-size:0.59rem;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--jobcentre);
+    margin-bottom:0.15rem;
+  }
+  .identite .value{ font-size:0.93rem; color:var(--encre-admin); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--jobcentre); word-break:break-all; }
+  section.sources a:hover{ color:var(--spray); }
+
+  footer.file-attente{
+    border-top:1px solid var(--ligne);
+    margin-top:3.5rem;
+    padding:1.5rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'B612 Mono', monospace;
+    font-size:0.61rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+</style>
+</head>
+<body>
+
+<header class="mur">
+  <div class="mur-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="dossier-ref">Jobcentre de Newcastle · Employment &amp; Support Allowance · dossier refusé</span></div>
+    <h1 class="title">Moi, Daniel Blake</h1>
+    <p class="subtitle">Ken Loach, 2016 — un menuisier au cœur malade, déclaré inapte au
+    travail par la médecine et apte par l'algorithme. La Palme d'or la plus politique de la
+    décennie, écrite au feutre sur le mur d'une administration.</p>
+    <div class="meta-line">Royaume-Uni / France · 100 minutes · Couleur · Drame social · Palme d'or 2016</div>
+  </div>
+</header>
+
+<nav class="formulaire" aria-label="Sommaire">
+  <span class="mono">Formulaire — cocher les cases dans l'ordre</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="case"><span class="ref">Case 1 · Identité du demandeur</span><h2>Fiche technique</h2><div class="regle"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/moi-daniel-blake.jpg"
+           alt="Affiche du film Moi, Daniel Blake"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="identite">
+      <div><div class="label">Réalisation</div><div class="value">Ken Loach</div></div>
+      <div><div class="label">Scénario</div><div class="value">Paul Laverty</div></div>
+      <div><div class="label">Photographie</div><div class="value">Robbie Ryan</div></div>
+      <div><div class="label">Musique</div><div class="value">George Fenton</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Dave Johns, Hayley Squires</div></div>
+      <div><div class="label">Production</div><div class="value">Sixteen Films, Why Not Productions, Wild Bunch, BFI, BBC Films</div></div>
+      <div><div class="label">Tournage</div><div class="value">Newcastle upon Tyne, octobre 2015</div></div>
+      <div><div class="label">Distinctions</div><div class="value">Palme d'or 2016 · BAFTA du film britannique · César du film étranger</div></div>
+      <div><div class="label">Box-office</div><div class="value">15,8 M$ — plus gros succès de Loach au Royaume-Uni</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="case"><span class="ref">Case 2</span><h2>Synopsis</h2><div class="regle"></div></div>
+  <p>Daniel Blake, 59 ans, menuisier veuf de Newcastle, sort d'un infarctus. Son
+  cardiologue lui interdit de travailler ; l'« évaluatrice » mandatée par l'administration,
+  déroulant son questionnaire à points, le déclare apte. Le voilà pris dans le paradoxe
+  fondateur du film : trop malade pour travailler, pas assez pour être indemnisé — sommé,
+  pour toucher l'allocation chômage, de chercher activement un emploi qu'il lui est
+  interdit d'accepter<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Dans la file du jobcentre, il prend la défense de Katie, mère célibataire relogée à
+  450 kilomètres de son Londres natal avec ses deux enfants. Entre le vieil artisan qui ne
+  sait pas se servir d'une souris et la jeune femme qui saute des repas, se noue une
+  solidarité de naufragés — jusqu'aux deux scènes qui ont fait le tour du monde : Katie
+  craquant devant une boîte de conserve à la banque alimentaire, et Daniel écrivant son nom
+  à la bombe sur le mur de l'administration qui l'efface<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="case"><span class="ref">Case 3</span><h2>Contexte de production</h2><div class="regle"></div></div>
+  <p>Ken Loach avait annoncé sa retraite après <em>Jimmy's Hall</em> (2014) ; c'est la
+  colère qui l'en a fait sortir. Son scénariste de toujours, Paul Laverty, enquête pendant
+  des mois sur le système de protection sociale britannique remodelé par l'austérité —
+  entretiens avec des allocataires, des agents des jobcentres, des bénévoles de banques
+  alimentaires — et le film revendique cette exactitude documentaire : chaque aberration
+  du récit a son équivalent consigné dans le réel<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Tournage à Newcastle à l'automne 2015, dans l'ordre chronologique du script selon la
+  méthode Loach, avec la photographie de Robbie Ryan et un pari de casting typique : le
+  rôle-titre confié à Dave Johns, humoriste de stand-up de Newcastle qui n'avait jamais
+  fait de cinéma, face à Hayley Squires, quasi débutante<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Production Sixteen Films avec les Français de Why Not et Wild Bunch — le vieux compagnonnage
+  franco-britannique de Loach, qui explique aussi la ferveur cannoise de sa réception<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="case"><span class="ref">Case 4</span><h2>Structure narrative</h2><div class="regle"></div></div>
+  <p>Le film s'ouvre sur un écran noir et un dialogue de sourds : l'évaluation téléphonique
+  de Daniel, questionnaire absurde égrené hors champ — pouvez-vous lever un bras ? porter
+  un chapeau ? — pendant que la question du cœur, la seule qui compte, est expédiée. Toute
+  la dramaturgie est là : un homme qualitatif face à un système quantitatif, et le récit
+  progresse en stations — rendez-vous, files d'attente, formulaires en ligne, sanctions —
+  comme un chemin de croix administratif dont chaque étape retire quelque chose<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le contrepoint est la ligne de la solidarité : Daniel répare, bricole, fabrique des
+  mobiles en bois pour les enfants de Katie — l'artisan continuant d'exister par les mains
+  dans un monde qui ne reconnaît que les écrans. La critique française a résumé la
+  mécanique d'une image : « nouvelle version de Don Quichotte », le chevalier des temps
+  modernes « en lutte avec les moulins à vent de l'administration »<sup class="fn"><a href="#src-3">[3]</a></sup> —
+  à ceci près que Loach refuse le pittoresque : son Quichotte meurt dans les toilettes
+  d'un tribunal des recours, cinq minutes avant d'être entendu.</p>
+</section>
+
+<section id="technique">
+  <div class="case"><span class="ref">Case 5</span><h2>Mise en scène et procédés techniques</h2><div class="regle"></div></div>
+  <p>L'art de Loach est un art de l'effacement : caméra posée à distance de documentaire,
+  lumière naturelle de Robbie Ryan, montage sans effets, et une bande musicale réduite à
+  presque rien — « sans accompagnements musicaux qui pourraient trop appuyer une
+  émotion »<sup class="fn"><a href="#src-2">[2]</a></sup>, George Fenton n'intervenant
+  qu'aux lisières. Les acteurs découvrent le scénario au jour le jour, les partenaires de
+  scène sont souvent de vrais agents, de vrais bénévoles — d'où ces textures de réel qu'aucune
+  direction d'acteurs ne fabrique<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>C'est cette sobriété qui arme la scène de la banque alimentaire — Katie, affamée,
+  ouvrant une conserve froide au milieu des rayonnages, et l'humiliation qui déborde —
+  « une détresse rarement montrée à l'écran de manière aussi directe », filmée « avec
+  pudeur »<sup class="fn"><a href="#src-3">[3]</a></sup> : pas de musique, pas de gros
+  plan insistant, juste la durée exacte de la honte et la main de la bénévole. Le graffiti
+  final obéit à la même économie : un homme écrit son nom — « Moi, Daniel Blake, j'exige... » —
+  et cette signature au feutre gras sur le mur gris est le seul plan « lyrique » que le
+  film s'autorise. Il suffit<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="case"><span class="ref">Case 6</span><h2>Personnages principaux</h2><div class="regle"></div></div>
+  <p><strong>Daniel Blake</strong> (Dave Johns) est l'anti-victime : digne, drôle —
+  l'humour de stand-up de Johns irrigue le rôle sans jamais le trahir —, compétent dans
+  tout ce que le système ne mesure pas. Son analphabétisme numérique (« je suis un crayon,
+  pas un clavier ») n'est pas un gag mais une thèse : la dématérialisation comme machine à
+  fabriquer des inexistants. <strong>Katie</strong> (Hayley Squires, révélation) porte la
+  part la plus dure du film — la faim, la prostitution comme dernier recours, la honte
+  devant ses enfants — avec une rage rentrée qui évite tout misérabilisme<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Autour d'eux, Loach distribue sa vision du monde en visages secondaires : China, le
+  jeune voisin débrouillard qui importe des baskets de Chine — le capitalisme informel
+  comme seule échelle sociale restante ; les agents du jobcentre, ni monstres ni alliés,
+  partagés entre la fonctionnaire compatissante rappelée à l'ordre et les applicateurs
+  zélés du règlement — la banalité administrative du mal, version guichet<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="themes">
+  <div class="case"><span class="ref">Case 7</span><h2>Thèmes</h2><div class="regle"></div></div>
+  <p>Le thème central tient dans le titre : le « Moi » — la première personne comme acte de
+  résistance. Face à un système qui ne connaît que des « demandeurs », des « dossiers » et
+  des « sanctions », Daniel oppose l'entêtement d'être quelqu'un : « Je ne suis pas un
+  client, ni un usager. Je suis un citoyen, rien de plus, rien de moins » — le texte que le
+  film lit sur sa tombe est devenu, littéralement, un manifeste. La dignité n'y est pas un
+  sentiment mais un droit, et le film documente pas à pas son démantèlement
+  bureaucratique<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p>Deuxième thème : la déshumanisation par la procédure — une société devenue
+  « mécanique, technologique et déshumanisée »<sup class="fn"><a href="#src-2">[2]</a></sup>,
+  où la cruauté n'a plus besoin de cruels : des « lois immuables », des scripts
+  téléphoniques et des délais suffisent. Et troisième, l'antidote loachien de toujours :
+  la solidarité horizontale — Daniel et Katie, le voisin, la bénévole — « dernières
+  barrières à l'indifférence »<sup class="fn"><a href="#src-3">[3]</a></sup>, l'entraide
+  des pauvres filmée comme la seule institution qui fonctionne encore.</p>
+</section>
+
+<section id="reception">
+  <div class="case"><span class="ref">Case 8</span><h2>Réception critique et postérité</h2><div class="regle"></div></div>
+  <p>Palme d'or à Cannes 2016 — la seconde de Loach, dix ans après <em>Le vent se lève</em>,
+  faisant de lui l'un des rares doubles palmés de l'histoire — puis BAFTA du meilleur film
+  britannique, César du meilleur film étranger, et le plus gros succès de Loach au
+  box-office britannique (15,8 M$ au total)<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  La presse est largement conquise (92 % sur Rotten Tomatoes), la France saluant la
+  « précision à la limite du documentaire »<sup class="fn"><a href="#src-3">[3]</a></sup> —
+  avec sa minorité récurrente dénonçant le « manichéisme » et les « grosses ficelles » du
+  pathos loachien<sup class="fn"><a href="#src-3">[3]</a></sup> : le débat rituel autour de
+  chaque film du cinéaste.</p>
+  <p>Mais la vraie réception fut politique : le gouvernement britannique balaya le film
+  comme « fiction », des ministres furent sommés de dire s'ils l'avaient vu, l'opposition
+  le brandit aux Communes, et les associations de terrain confirmèrent une à une les
+  situations décrites<sup class="fn"><a href="#src-1">[1]</a></sup>. Rarement un film
+  aura à ce point court-circuité le commentaire culturel pour entrer directement dans le
+  débat public — des projections militantes aux murs de Newcastle, où le graffiti du titre
+  fut reproduit en vrai. « I, Daniel Blake » est passé du scénario au langage courant :
+  c'est la définition même d'une œuvre devenue référence.</p>
+</section>
+
+<section id="conclusion">
+  <div class="case"><span class="ref">Case 9 · Décision</span><h2>Conclusion</h2><div class="regle"></div></div>
+  <p><em>Moi, Daniel Blake</em> est du cinéma pauvre en apparence — deux acteurs peu connus,
+  des bureaux, des files d'attente, pas un plan qui se signale — et c'est exactement sa
+  force : la mise en scène épouse la matière qu'elle dénonce, grise, procédurale,
+  inexorable, pour mieux faire éclater ce qui lui résiste : deux ou trois visages, une
+  conserve ouverte, un nom sur un mur. On peut discuter la thèse, comme la critique n'a
+  pas manqué de le faire ; on ne peut pas discuter la scène de la banque alimentaire —
+  il n'existe pas d'équivalent de sa justesse dans le cinéma européen récent.</p>
+  <p>À 80 ans, avec sa deuxième Palme, Loach n'a pas signé son film le plus subtil mais
+  peut-être son plus nécessaire : un film-outil, conçu pour servir — et qui a servi.
+  L'épitaphe de Daniel, « je suis un citoyen, rien de plus, rien de moins », restera comme
+  l'une des grandes déclarations du cinéma politique : la revendication la plus modeste qui
+  soit, devenue, dans l'Angleterre de l'austérité comme partout où le guichet remplace le
+  regard, la plus difficile à faire entendre.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="case"><span class="ref">Pièces jointes</span><h2>Sources</h2><div class="regle"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « I, Daniel Blake » : production (enquête de Paul Laverty, Newcastle octobre 2015, Robbie Ryan, Sixteen Films/Why Not/Wild Bunch/BFI/BBC), casting (Dave Johns, Hayley Squires), palmarès (Palme d'or, BAFTA, César du film étranger), box-office record pour Loach, réactions politiques (gouvernement qualifiant le film de « fiction »). <a href="https://en.wikipedia.org/wiki/I,_Daniel_Blake">en.wikipedia.org/wiki/I,_Daniel_Blake</a></li>
+    <li id="src-2">À la rencontre du septième art — « Moi, Daniel Blake (Ken Loach, 2016) - Critique &amp; Analyse » : sobriété de la mise en scène (absence d'accompagnement musical), paradoxe administratif fondateur, situation de Katie, société « mécanique, technologique et déshumanisée ». <a href="https://alarencontreduseptiemeart.com/moi-daniel-blake/">alarencontreduseptiemeart.com</a></li>
+    <li id="src-3">Presse française consultée via recherche web (LeMagduCine, Bande à part, avoir-alire, Abus de Ciné, Le Blog du Cinéma) : « précision à la limite du documentaire », scène de la banque alimentaire, figure de Don Quichotte, solidarité comme dernière barrière, et contrepoint critique (« manichéisme », pathos). <a href="https://www.lemagducine.fr/cinema/critiques-films/moi-daniel-blake-un-film-de-ken-loach-critique-79424/">lemagducine.fr</a></li>
+    <li id="src-4">Festival de Cannes — fiche officielle « I, Daniel Blake » (Palme d'or 2016). <a href="https://www.festival-cannes.com/en/f/i-daniel-blake/">festival-cannes.com</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="file-attente">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

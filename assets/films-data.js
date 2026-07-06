@@ -233,5 +233,15 @@ const FILMS = [
     summary: "Un cinéaste français filme à Prague, trois ans après l'arrivée de Hitler au pouvoir, la légende du géant d'argile qui venge le ghetto : le fantastique comme éditorial.",
     url: 'films/le-golem.html',
     poster: 'assets/posters/le-golem.jpg'
+  },
+  {
+    slug: 'moi-daniel-blake',
+    title: 'Moi, Daniel Blake',
+    director: 'Ken Loach',
+    year: 2016,
+    genre: 'Drame social',
+    summary: "Trop malade pour travailler, pas assez pour être indemnisé : la Palme d'or la plus politique de la décennie, écrite à la bombe sur le mur d'une administration.",
+    url: 'films/moi-daniel-blake.html',
+    poster: 'assets/posters/moi-daniel-blake.jpg'
   }
 ];
