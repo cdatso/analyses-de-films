@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Chevauchée fantastique (Stagecoach, 1939) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bitter:ital,wght@0,400;0,600;1,400&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE BILLET DE DILIGENCE =====
+     Overland Stage Line, Tonto -> Lordsburg : parchemin du désert,
+     bois brûlé, rouge mesa — un passage payé pour neuf voyageurs. */
+  :root{
+    --sable:#e9dbbd;
+    --sable-ombre:#ddcda9;
+    --brule:#241a12;
+    --brule-doux:#43352a;
+    --selle:#6b4226;
+    --mesa:#a63d2f;
+    --ciel:#4a6d8c;
+    --ligne:rgba(36,26,18,0.2);
+    --pointille:rgba(36,26,18,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sable);
+    color:var(--brule-doux);
+    font-family:'Bitter', serif;
+    font-size:1.0rem;
+    line-height:1.72;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'PT Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- L'AFFICHE DE LA LIGNE (EN-TÊTE) ---------- */
+  header.ligne{
+    background:
+      radial-gradient(120% 90% at 50% -25%, rgba(74,109,140,0.35), transparent 55%),
+      linear-gradient(180deg, #2b2018 0%, var(--brule) 100%);
+    color:var(--sable);
+    padding:4.6rem 1.5rem 3.8rem;
+    text-align:center;
+    position:relative;
+  }
+  header.ligne::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:12px;
+    background:
+      radial-gradient(16px 12px at 10% 100%, var(--sable) 48%, transparent 52%),
+      radial-gradient(16px 12px at 30% 100%, var(--sable) 48%, transparent 52%),
+      radial-gradient(16px 12px at 50% 100%, var(--sable) 48%, transparent 52%),
+      radial-gradient(16px 12px at 70% 100%, var(--sable) 48%, transparent 52%),
+      radial-gradient(16px 12px at 90% 100%, var(--sable) 48%, transparent 52%);
+  }
+  .ligne-inner{ max-width:740px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:rgba(233,219,189,0.55);
+    font-family:'PT Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.2rem;
+  }
+  .back-link:hover{ color:var(--mesa); }
+  .compagnie{
+    font-family:'PT Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--mesa);
+    border-top:2px solid var(--mesa);
+    border-bottom:2px solid var(--mesa);
+    display:inline-block;
+    padding:0.4rem 1.2rem;
+    margin-bottom:1.8rem;
+  }
+  h1.title{
+    font-family:'Alfa Slab One', serif;
+    font-weight:400;
+    font-size:clamp(2.2rem, 6.5vw, 3.9rem);
+    line-height:1.1;
+    margin:0 0 0.4rem;
+    color:var(--sable);
+    text-shadow:3px 3px 0 rgba(166,61,47,0.45);
+  }
+  .title-orig{
+    font-family:'PT Mono', monospace;
+    font-size:0.9rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:rgba(233,219,189,0.6);
+    margin:0 0 1.6rem;
+  }
+  .subtitle{
+    font-size:1.04rem;
+    max-width:56ch;
+    margin:0 auto 2rem;
+    color:rgba(233,219,189,0.87);
+  }
+  .itineraire{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:0.3rem 0.7rem;
+    font-family:'PT Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(233,219,189,0.7);
+  }
+  .itineraire .fleche{ color:var(--mesa); }
+  .meta-line{
+    margin-top:1.3rem;
+    font-family:'PT Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(233,219,189,0.5);
+  }
+
+  /* ---------- SOMMAIRE : LE BILLET ---------- */
+  nav.billet{
+    max-width:700px;
+    margin:2.8rem auto 0;
+    padding:1.5rem 1.7rem;
+    border:2px dashed var(--pointille);
+    background:var(--sable-ombre);
+    position:relative;
+  }
+  nav.billet::before{
+    content:"BON POUR UN PASSAGE";
+    position:absolute; left:50%; top:-0.7rem; transform:translateX(-50%);
+    font-family:'PT Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.2em;
+    background:var(--mesa);
+    color:var(--sable);
+    padding:0.15rem 0.8rem;
+  }
+  nav.billet .mono{ color:var(--selle); display:block; text-align:center; margin-bottom:0.9rem; }
+  nav.billet ol{
+    margin:0; padding:0 0 0 1.4rem;
+    columns:2; column-gap:2.6rem;
+    font-size:0.92rem;
+  }
+  @media (max-width:600px){ nav.billet ol{ columns:1; } }
+  nav.billet li{ margin-bottom:0.35rem; }
+  nav.billet a{ color:var(--brule); text-decoration:none; border-bottom:1px solid var(--ligne); }
+  nav.billet a:hover{ color:var(--mesa); border-color:var(--mesa); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:700px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.6rem; }
+  .relais{ margin-bottom:1.4rem; }
+  .relais .halte{
+    font-family:'PT Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--mesa);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .relais h2{
+    font-family:'Alfa Slab One', serif;
+    font-weight:400;
+    font-size:1.55rem;
+    color:var(--brule);
+    margin:0 0 0.6rem;
+  }
+  .relais .piste{
+    height:7px;
+    background:
+      linear-gradient(90deg, var(--pointille) 0 10px, transparent 10px 16px) 0 3px/16px 1px repeat-x;
+    position:relative;
+  }
+  .relais .piste::after{
+    content:"◆";
+    position:absolute; right:0; top:-5px;
+    color:var(--selle); font-size:0.55rem;
+  }
+  p{ margin:0 0 1.1rem; }
+  strong{ color:var(--brule); font-weight:600; }
+  em{ font-style:italic; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:1rem 1.4rem;
+    border:1px solid var(--ligne);
+    border-left:6px solid var(--mesa);
+    background:var(--sable-ombre);
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--brule);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'PT Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--selle);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'PT Mono', monospace;
+    font-size:0.6rem;
+    color:var(--ciel);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--mesa); }
+
+  /* ---------- FICHE : REGISTRE DE LA COMPAGNIE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+    text-align:left;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:#f4ecd9;
+    box-shadow:5px 5px 0 rgba(107,66,38,0.3);
+    transform:rotate(-0.5deg);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; filter:sepia(0.12); }
+  .registre-cie{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .registre-cie{ grid-template-columns:1fr; } }
+  .registre-cie .label{
+    font-family:'PT Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--selle);
+    margin-bottom:0.15rem;
+  }
+  .registre-cie .value{ font-size:0.93rem; color:var(--brule); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--ciel); word-break:break-all; }
+  section.sources a:hover{ color:var(--mesa); }
+
+  footer.terminus{
+    background:var(--brule);
+    margin-top:3.5rem;
+    padding:1.6rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'PT Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:rgba(233,219,189,0.55);
+  }
+</style>
+</head>
+<body>
+
+<header class="ligne">
+  <div class="ligne-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div><span class="compagnie">Overland Stage Line · Territoire de l'Arizona</span></div>
+    <h1 class="title">La Chevauchée fantastique</h1>
+    <p class="title-orig">Stagecoach</p>
+    <p class="subtitle">John Ford, 1939 — neuf voyageurs que la bonne société ne mettrait
+    jamais dans la même pièce, enfermés dans la même diligence à travers le territoire
+    apache. Le film qui a rendu au western ses lettres de noblesse — et donné John Wayne
+    au cinéma.</p>
+    <div class="itineraire">
+      <span>Tonto</span><span class="fleche">→</span>
+      <span>Dry Fork</span><span class="fleche">→</span>
+      <span>Apache Wells</span><span class="fleche">→</span>
+      <span>Lee's Ferry</span><span class="fleche">→</span>
+      <span><strong>Lordsburg</strong></span>
+    </div>
+    <div class="meta-line">États-Unis · United Artists · 96 minutes · N&amp;B · Western</div>
+  </div>
+</header>
+
+<nav class="billet" aria-label="Sommaire">
+  <span class="mono">Feuille de route</span>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#technique">Mise en scène et procédés</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#reception">Réception et postérité</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="relais"><span class="halte">Départ · Tonto</span><h2>Fiche technique</h2><div class="piste"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/la-chevauchee-fantastique.jpg"
+           alt="Affiche du film La Chevauchée fantastique (Stagecoach)"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="registre-cie">
+      <div><div class="label">Réalisation</div><div class="value">John Ford</div></div>
+      <div><div class="label">Scénario</div><div class="value">Dudley Nichols, d'après « The Stage to Lordsburg » d'Ernest Haycox (1937)</div></div>
+      <div><div class="label">Photographie</div><div class="value">Bert Glennon</div></div>
+      <div><div class="label">Musique</div><div class="value">Adaptation d'airs folkloriques américains (Oscar de la partition)</div></div>
+      <div><div class="label">Production</div><div class="value">Walter Wanger · United Artists</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Claire Trevor, John Wayne, Thomas Mitchell, John Carradine, Andy Devine, Donald Meek</div></div>
+      <div><div class="label">Cascades</div><div class="value">Yakima Canutt</div></div>
+      <div><div class="label">Sortie</div><div class="value">2 mars 1939 (États-Unis)</div></div>
+      <div><div class="label">Récompenses</div><div class="value">2 Oscars (second rôle : Thomas Mitchell ; musique) sur 7 nominations · National Film Registry 1995</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="relais"><span class="halte">Relais n°1</span><h2>Synopsis</h2><div class="piste"></div></div>
+  <p>Tonto, territoire de l'Arizona. La diligence pour Lordsburg embarque une cargaison
+  d'humanité que la ville est trop heureuse de voir partir : Dallas, prostituée chassée par
+  la ligue de vertu locale ; Doc Boone, médecin noyé dans le whisky ; Peacock, timide
+  représentant en alcools que le Doc adopte aussitôt ; Hatfield, joueur sudiste aux manières
+  d'aristocrate ; Mme Mallory, enceinte, qui rejoint son officier de mari ; et Gatewood, le
+  banquier respectable — qui s'enfuit, sa sacoche pleine de la caisse de sa banque. Le
+  shérif Curly monte à côté du cocher Buck : Geronimo a quitté la réserve, la cavalerie
+  n'escortera pas tout le trajet<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>En route, la diligence cueille le Ringo Kid, évadé de prison pour venger son père et
+  son frère assassinés par les Plummer, qui l'attendent à Lordsburg. D'étape en étape —
+  un accouchement à Apache Wells, un ferry brûlé, l'attaque apache dans les salines — le
+  petit monde se recompose : les parias se révèlent, les notables se défont, et à
+  l'arrivée, Ringo obtient ses trois balles et Dallas son avenir<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="relais"><span class="halte">Relais n°2 · Dry Fork</span><h2>Contexte de production</h2><div class="piste"></div></div>
+  <p>En 1938, le western est un genre déchu — matière à séries B fauchées depuis l'arrivée
+  du parlant — et le projet de Ford essuie les refus de tous les studios, d'autant qu'il
+  s'obstine sur un point : le rôle principal ira à John Wayne, acteur de sous-westerns à
+  poverty row que personne ne prend au sérieux. David O. Selznick s'y intéresse puis se
+  retire, lassé ; le producteur indépendant Walter Wanger exige Gary Cooper et Marlene
+  Dietrich. Ford tient bon. Compromis final : Wanger ne met que 250 000 dollars — la
+  moitié du budget espéré — et Claire Trevor, plus connue que Wayne, prend la tête
+  d'affiche<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le tournage invente au passage un paysage mythologique : c'est le premier film que
+  Ford tourne à Monument Valley — sept jours seulement sur place, le reste en studio et
+  dans les ranchs californiens, mais ces mesas deviendront la scène primitive de tout son
+  cinéma<sup class="fn"><a href="#src-2">[2]</a></sup>. Et un homme y risque sa vie pour
+  l'anthologie : le cascadeur Yakima Canutt, qui saute d'un cheval lancé sur l'attelage à
+  pleine vitesse, puis passe sous la diligence entre les sabots et les roues — cascade
+  jamais rééditée telle quelle, matrice de toutes les poursuites du cinéma d'action à
+  venir<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="relais"><span class="halte">Relais n°3 · Apache Wells</span><h2>Structure narrative</h2><div class="piste"></div></div>
+  <p>La construction est d'une pureté d'épure : un trajet, des relais, un terminus — et à
+  chaque halte (Dry Fork, Apache Wells, Lee's Ferry), un vote, un repas, une naissance ou
+  une défection qui redistribue les places<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Le huis clos roulant fonctionne en microcosme social : neuf voyageurs, toutes les strates
+  de l'Amérique — et Ford fait de chaque scène de table un tribunal silencieux des
+  préjugés, où l'on voit qui s'assoit près de qui, qui sert qui, qui baisse les
+  yeux<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Le suspense est un modèle de rétention : Geronimo n'est qu'un nom pendant une heure —
+  un fil de télégraphe coupé, un mot murmuré — et l'attaque tant redoutée ne survient qu'au
+  dernier quart, brève, foudroyante, résolue par la charge de cavalerie la plus imitée de
+  l'histoire. Reste alors le vrai dénouement, que le film a soigneusement gardé pour la
+  nuit de Lordsburg : le duel avec les Plummer — hors champ, trois coups de feu dans le
+  noir — et la question de savoir si Dallas dira la vérité. Ford sait exactement lequel
+  des deux règlements de comptes compte.</p>
+</section>
+
+<section id="technique">
+  <div class="relais"><span class="halte">Relais n°4</span><h2>Mise en scène et procédés techniques</h2><div class="piste"></div></div>
+  <p>Deux régimes d'espace s'affrontent : l'immensité de Monument Valley — que la caméra de
+  Bert Glennon cadre comme une instance morale, « l'existence d'un système de valeurs plus
+  vaste » surplombant les mesquineries humaines<sup class="fn"><a href="#src-2">[2]</a></sup> —
+  et l'intérieur de la diligence, filmé serré, visage contre visage. Ford y ajoute une
+  audace technique que le Hollywood de 1939 ignore : des intérieurs à plafonds apparents,
+  écrasant les personnages dans les relais. Un jeune homme prendra bonne note — Orson
+  Welles, qui déclara avoir regardé le film une quarantaine de fois en préparant
+  <em>Citizen Kane</em> : « c'était comme aller à l'école »<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Et il y a l'entrée de Ringo : la diligence s'arrête au bruit d'une carabine, et la
+  caméra fonce en travelling avant sur John Wayne faisant tournoyer son Winchester, jusqu'au
+  gros plan qui perd un instant la netteté tant il arrive vite — la plus célèbre
+  présentation de star de l'histoire du cinéma, un acteur de série B intronisé mythe en
+  quatre secondes. L'attaque finale, réglée avec Canutt dans les salines, tient du
+  manuel : axes multiples, caméra au ras des sabots, géographie limpide — sept minutes que
+  tout le cinéma d'action recopie encore<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="relais"><span class="halte">Relais n°5 · Lee's Ferry</span><h2>Personnages principaux</h2><div class="piste"></div></div>
+  <p>Le génie du scénario de Dudley Nichols est d'inverser la hiérarchie sociale par la
+  hiérarchie morale. <strong>Dallas</strong> (Claire Trevor, bouleversante) et le
+  <strong>Ringo Kid</strong> (John Wayne, dont la candeur physique n'a jamais été aussi
+  bien employée) sont les parias — prostituée et évadé — et les seuls êtres intégralement
+  bons du voyage : lui ne sait même pas « voir » ce qu'elle est, et cette cécité-là est la
+  plus belle déclaration d'amour du western<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p><strong>Doc Boone</strong> (Thomas Mitchell, Oscar du second rôle) est l'ivrogne
+  philosophe que la naissance d'Apache Wells dégrise et rachète — la dignité médicale
+  retrouvée dans la vapeur du café noir<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.
+  En face, la respectabilité fait naufrage : <strong>Gatewood</strong>, le banquier qui
+  sermonne tout le monde — « ce qui est bon pour les banques est bon pour le pays » — la
+  sacoche volée sur les genoux, seul personnage que le voyage n'améliore pas d'un
+  pouce<sup class="fn"><a href="#src-2">[2]</a></sup> ; et <strong>Hatfield</strong>
+  (John Carradine), joueur sudiste dont la galanterie surannée cache le dernier réflexe
+  d'une caste morte. Autour d'eux, la ronde des seconds rôles fordiens — Buck le cocher
+  pleurnicheur, Peacock le doux VRP que tout le monde appelle « révérend » — compose la
+  première grande famille de voix du réalisateur.</p>
+</section>
+
+<section id="themes">
+  <div class="relais"><span class="halte">Relais n°6</span><h2>Thèmes</h2><div class="piste"></div></div>
+  <p>Le thème central est l'hypocrisie de la civilisation : le film s'ouvre sur une ligue
+  de vertu expulsant Dallas et Doc Boone de Tonto, et se referme sur le mot du Doc
+  regardant Ringo et Dallas partir vers le ranch : les voilà « sauvés des bienfaits de la
+  civilisation ». Entre les deux, le désert aura servi de révélateur — les valeurs
+  s'inversent à mesure que la société s'éloigne, et c'est chez les exclus que logent le
+  courage, la pitié et l'honneur<sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+  <p>Ford et Nichols revendiquaient la charge : leur film, disaient-ils, était
+  « littéralement un acte politique » — satire du banquier voleur en pleine Amérique
+  post-Dépression, réhabilitation d'une prostituée en héroïne romantique au nez du code
+  Hays<sup class="fn"><a href="#src-2">[2]</a></sup>. S'y ajoute le thème fordien par
+  excellence : la communauté provisoire — neuf étrangers qu'un danger commun transforme en
+  société miniature, meilleure que la vraie, le temps d'un voyage. La naissance au milieu
+  du désert en est le sacrement : autour d'un nourrisson, une prostituée devient madone et
+  un ivrogne redevient médecin. Quant aux Apaches, force létale et sans visage, ils
+  appartiennent à l'imaginaire de 1939 — Ford lui-même passera sa carrière à complexifier
+  ce regard, jusqu'au crépusculaire <em>Les Cheyennes</em>.</p>
+</section>
+
+<section id="reception">
+  <div class="relais"><span class="halte">Relais n°7</span><h2>Réception critique et postérité</h2><div class="piste"></div></div>
+  <p>Sorti le 2 mars 1939 — l'année-miracle d'Hollywood —, le film est aussitôt salué par
+  la critique et la presse professionnelle, engrange un profit honnête (près de 300 000
+  dollars) et décroche sept nominations aux Oscars, pour deux statuettes : Thomas Mitchell
+  et la partition d'airs folkloriques<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Le public américain, lui, se montre d'abord plus tiède — « trop de psychologie, pas assez
+  d'action », dit-on — et c'est l'Europe, cinéphile, qui installera le film à son rang<sup class="fn"><a href="#src-3">[3]</a></sup>.
+  André Bazin, en 1955, en donne la formule définitive :</p>
+  <blockquote>« L'exemple idéal de la maturité d'un style atteignant le classicisme —
+  l'équilibre parfait entre les mythes sociaux, l'évocation historique, la vérité
+  psychologique et la thématique traditionnelle de la mise en scène du western. »
+  <span class="attrib">André Bazin, « Évolution du western », 1955, cité via la recherche documentaire<sup class="fn"><a href="#src-3">[3]</a></sup></span></blockquote>
+  <p>La postérité est celle d'une matrice : le western redevient un genre majeur pour
+  trente ans, Ford trouve son paysage et son acteur — huit décennies plus tard, « un
+  western de John Ford avec John Wayne à Monument Valley » reste le pléonasme fondateur du
+  genre —, Welles en fait son école, et la Bibliothèque du Congrès l'inscrit au National
+  Film Registry dès 1995<sup class="fn"><a href="#src-1">[1]</a></sup>. Il n'y a
+  guère de film de 1939 dont descendent plus directement autant d'images
+  d'aujourd'hui.</p>
+</section>
+
+<section id="conclusion">
+  <div class="relais"><span class="halte">Terminus · Lordsburg</span><h2>Conclusion</h2><div class="piste"></div></div>
+  <p><em>La Chevauchée fantastique</em> est de ces films fondateurs qu'on croit connaître
+  avant de les avoir vus, tant tout le cinéma en a hérité — et qui surprennent pourtant à
+  chaque vision par leur finesse : sous le récit d'aventures parfait, une comédie de mœurs
+  au scalpel ; sous le western, un pamphlet social ; sous l'action, une méditation sur qui
+  mérite quoi. Bazin avait raison : c'est le classicisme même — non pas l'académisme, mais
+  ce moment rare où un genre trouve d'un coup sa forme juste, son paysage, son visage.</p>
+  <p>Le dernier plan dit tout : la carriole de Ringo et Dallas passe la frontière, et Doc
+  Boone lève son verre aux amants « sauvés des bienfaits de la civilisation ». Toute
+  l'ambiguïté américaine de Ford tient dans ce toast — la civilisation est ce qu'on bâtit
+  et ce qu'on fuit, et le bonheur n'existe qu'à la lisière. Quatre-vingt-sept ans plus
+  tard, la diligence roule encore : il suffit d'un plan de Monument Valley, n'importe où,
+  pour que le cinéma entier se souvienne d'où il vient.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="relais"><span class="halte">Registre de la compagnie</span><h2>Sources</h2><div class="piste"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « Stagecoach (1939 film) » : production (refus des studios, retrait de Selznick, exigences de Wanger, 250 000 $, top billing de Claire Trevor), Monument Valley, cascades de Yakima Canutt, sortie du 2 mars 1939, Oscars (Mitchell, musique) sur 7 nominations, citation d'Orson Welles (« comme aller à l'école »), National Film Registry 1995. <a href="https://en.wikipedia.org/wiki/Stagecoach_(1939_film)">en.wikipedia.org</a></li>
+    <li id="src-2">Ciné-club de Caen — « La Chevauchée fantastique (Stagecoach) de John Ford » : microcosme social, étapes du voyage, Monument Valley comme instance morale (7 jours de tournage sur place), personnages (Dallas/Ringo, Doc Boone, Gatewood), « littéralement un acte politique » (Ford/Nichols), hypocrisie bourgeoise. <a href="https://www.cineclubdecaen.com/realisateur/ford/chevaucheefantastique.htm">cineclubdecaen.com</a></li>
+    <li id="src-3">Critiques françaises consultées via recherche web (DigitalCiné, AlloCiné, À la rencontre du septième art) : citation d'André Bazin (« Évolution du western », 1955), accueil américain initial tiède et consécration européenne, statut de mètre-étalon du genre. <a href="https://digitalcine.fr/cinema/critiques-cinema/12687-la-chevauchee-fantastique-un-ford-matriciel-a-plus-dun-titre/">digitalcine.fr</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/995-stagecoach">themoviedb.org/movie/995</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="terminus">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films · demande reçue par dictée vocale
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

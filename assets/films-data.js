@@ -243,5 +243,15 @@ const FILMS = [
     summary: "Trop malade pour travailler, pas assez pour être indemnisé : la Palme d'or la plus politique de la décennie, écrite à la bombe sur le mur d'une administration.",
     url: 'films/moi-daniel-blake.html',
     poster: 'assets/posters/moi-daniel-blake.jpg'
+  },
+  {
+    slug: 'la-chevauchee-fantastique',
+    title: 'La Chevauchée fantastique',
+    director: 'John Ford',
+    year: 1939,
+    genre: 'Western',
+    summary: "Neuf voyageurs que la bonne société ne mettrait jamais dans la même pièce, une diligence, le territoire apache : le film qui a rendu au western ses lettres de noblesse.",
+    url: 'films/la-chevauchee-fantastique.html',
+    poster: 'assets/posters/la-chevauchee-fantastique.jpg'
   }
 ];
