@@ -39,6 +39,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Retour à Séoul | Davy Chou | 2022 | Drame | 🟡 Staging | 6 juillet 2026 | films/retour-a-seoul.html | https://cdatso.github.io/analyses-de-films/films/retour-a-seoul.html |
 | Waterloo | Sergueï Bondartchouk | 1970 | Fresque historique | 🟡 Staging | 6 juillet 2026 | films/waterloo.html | https://cdatso.github.io/analyses-de-films/films/waterloo.html |
 | Nouvelle Vague | Richard Linklater | 2025 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/nouvelle-vague.html | https://cdatso.github.io/analyses-de-films/films/nouvelle-vague.html |
+| Julie (en 12 chapitres) | Joachim Trier | 2021 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/julie-en-12-chapitres.html | https://cdatso.github.io/analyses-de-films/films/julie-en-12-chapitres.html |
 
 ---
 

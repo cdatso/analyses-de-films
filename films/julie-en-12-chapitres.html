@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie (en 12 chapitres) (2021) — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Mulish:ital,wght@0,300;0,400;0,600;1,300&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== LE ROMAN NORVÉGIEN =====
+     Couverture scandinave épurée : blanc chaud, rose d'aube sur Oslo,
+     bleu nuit nordique — un récit en prologue, chapitres et épilogue. */
+  :root{
+    --page:#f5f2ec;
+    --page-ombre:#eae6dd;
+    --nuit:#26344d;
+    --nuit-douce:#3a4a66;
+    --aube:#c98a77;
+    --ete:#d9b23f;
+    --encre:#26282c;
+    --gris-fjord:#8d939e;
+    --ligne:rgba(38,52,77,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--encre);
+    font-family:'Mulish', sans-serif;
+    font-size:1.0rem;
+    line-height:1.73;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .mono{
+    font-family:'Roboto Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.64rem;
+  }
+
+  /* ---------- COUVERTURE ---------- */
+  header.couverture{
+    background:
+      radial-gradient(75% 55% at 50% 108%, rgba(201,138,119,0.5), transparent 65%),
+      linear-gradient(180deg, var(--nuit) 0%, var(--nuit-douce) 100%);
+    color:var(--page);
+    padding:4.8rem 1.5rem 4.2rem;
+    text-align:center;
+    position:relative;
+  }
+  .couverture-inner{ max-width:720px; margin:0 auto; }
+  .back-link{
+    display:inline-block;
+    color:var(--gris-fjord);
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    margin-bottom:2.6rem;
+  }
+  .back-link:hover{ color:var(--aube); }
+  .auteur{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--aube);
+    margin-bottom:1.6rem;
+  }
+  h1.title{
+    font-family:'Literata', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 6.5vw, 3.8rem);
+    line-height:1.1;
+    margin:0 0 0.4rem;
+    color:var(--page);
+  }
+  h1.title .chapitres{
+    display:block;
+    font-style:italic;
+    font-weight:400;
+    font-size:0.5em;
+    color:rgba(245,242,236,0.75);
+    margin-top:0.4rem;
+  }
+  .subtitle{
+    font-weight:300;
+    font-size:1.05rem;
+    max-width:54ch;
+    margin:1.6rem auto 2.2rem;
+    color:rgba(245,242,236,0.86);
+  }
+  .bandeau{
+    display:inline-block;
+    background:var(--aube);
+    color:var(--nuit);
+    font-family:'Roboto Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    padding:0.4rem 1rem;
+    margin-bottom:1.6rem;
+  }
+  .meta-line{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gris-fjord);
+    border-top:1px solid rgba(245,242,236,0.2);
+    padding-top:1.1rem;
+  }
+
+  /* ---------- SOMMAIRE : TABLE DES MATIÈRES ---------- */
+  nav.matiere{
+    max-width:680px;
+    margin:2.6rem auto 0;
+    padding:1.5rem 1.8rem;
+    border:1px solid var(--ligne);
+    background:#fff;
+  }
+  nav.matiere .mono{ color:var(--nuit); display:block; text-align:center; margin-bottom:1rem; }
+  nav.matiere ol{
+    margin:0; padding:0; list-style:none;
+    font-size:0.93rem;
+  }
+  nav.matiere li{
+    display:flex; align-items:baseline; gap:0.6rem;
+    margin-bottom:0.4rem;
+  }
+  nav.matiere li .tiret{
+    flex:1;
+    border-bottom:1px dotted var(--ligne);
+    transform:translateY(-3px);
+  }
+  nav.matiere li .no{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    color:var(--aube);
+  }
+  nav.matiere a{ color:var(--encre); text-decoration:none; }
+  nav.matiere a:hover{ color:var(--nuit); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:680px; margin:0 auto; padding:1rem 1.5rem 4rem; }
+  section{ margin-top:3.6rem; }
+  .chapitre-tete{ margin-bottom:1.4rem; }
+  .chapitre-tete .no{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--aube);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  .chapitre-tete h2{
+    font-family:'Literata', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    color:var(--nuit);
+    margin:0 0 0.6rem;
+  }
+  .chapitre-tete .lettrine-ligne{
+    width:56px; height:3px;
+    background:linear-gradient(90deg, var(--aube), var(--ete));
+  }
+  p{ margin:0 0 1.15rem; }
+  strong{ color:var(--nuit); font-weight:600; }
+  em{ font-style:italic; }
+
+  blockquote{
+    margin:1.7rem 0;
+    padding:0.3rem 0 0.3rem 1.4rem;
+    border-left:3px solid var(--aube);
+    font-family:'Literata', serif;
+    font-style:italic;
+    font-size:1.06rem;
+    color:var(--nuit);
+  }
+  blockquote .attrib{
+    display:block;
+    margin-top:0.5rem;
+    font-family:'Roboto Mono', monospace;
+    font-style:normal;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--gris-fjord);
+  }
+
+  sup.fn{ line-height:0; }
+  sup.fn a{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.6rem;
+    color:var(--nuit-douce);
+    text-decoration:none;
+    padding:0 0.1rem;
+  }
+  sup.fn a:hover{ color:var(--aube); }
+
+  /* ---------- FICHE : PAGE DE GARDE ---------- */
+  .fiche-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:1.8rem;
+    align-items:start;
+  }
+  @media (max-width:620px){ .fiche-layout{ grid-template-columns:1fr; } }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--ligne);
+    padding:8px;
+    background:#fff;
+    box-shadow:0 3px 0 var(--ligne);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  .pagedegarde{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.9rem 1.4rem;
+  }
+  @media (max-width:480px){ .pagedegarde{ grid-template-columns:1fr; } }
+  .pagedegarde .label{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--gris-fjord);
+    margin-bottom:0.15rem;
+  }
+  .pagedegarde .value{ font-size:0.93rem; color:var(--encre); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
+  section.sources li{ margin-bottom:0.55rem; }
+  section.sources a{ color:var(--nuit-douce); word-break:break-all; }
+  section.sources a:hover{ color:var(--aube); }
+
+  footer.acheve{
+    border-top:1px solid var(--ligne);
+    margin-top:3.5rem;
+    padding:1.6rem 1.5rem 2.6rem;
+    text-align:center;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gris-fjord);
+  }
+</style>
+</head>
+<body>
+
+<header class="couverture">
+  <div class="couverture-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <div class="auteur">Joachim Trier</div>
+    <h1 class="title">Julie
+      <span class="chapitres">(en 12 chapitres)</span>
+    </h1>
+    <p class="subtitle">2021 — quatre ans de la vie d'une femme qui essaie toutes les vies
+    possibles, racontés comme un roman : prologue, douze chapitres, épilogue. Le dernier
+    volet de la trilogie d'Oslo, et le prix d'interprétation de Cannes pour Renate Reinsve.</p>
+    <div><span class="bandeau">Verdens verste menneske · « La pire personne du monde »</span></div>
+    <div class="meta-line">Norvège / France / Suède / Danemark · 128 minutes · Couleur · Comédie dramatique</div>
+  </div>
+</header>
+
+<nav class="matiere" aria-label="Sommaire">
+  <span class="mono">Table des matières</span>
+  <ol>
+    <li><span class="no">Prologue</span><a href="#fiche">Fiche technique</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 1</span><a href="#synopsis">Synopsis</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 2</span><a href="#contexte">Contexte de production</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 3</span><a href="#structure">Structure narrative</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 4</span><a href="#technique">Mise en scène et procédés</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 5</span><a href="#personnages">Personnages principaux</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 6</span><a href="#themes">Thèmes</a><span class="tiret"></span></li>
+    <li><span class="no">Ch. 7</span><a href="#reception">Réception et postérité</a><span class="tiret"></span></li>
+    <li><span class="no">Épilogue</span><a href="#conclusion">Conclusion</a><span class="tiret"></span></li>
+    <li><span class="no">Notes</span><a href="#sources">Sources</a><span class="tiret"></span></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="chapitre-tete"><span class="no">Prologue</span><h2>Fiche technique</h2><div class="lettrine-ligne"></div></div>
+  <div class="fiche-layout">
+    <figure class="poster">
+      <img src="../assets/posters/julie-en-12-chapitres.jpg"
+           alt="Affiche du film Julie (en 12 chapitres)"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+    <div class="pagedegarde">
+      <div><div class="label">Réalisation</div><div class="value">Joachim Trier</div></div>
+      <div><div class="label">Scénario</div><div class="value">Joachim Trier et Eskil Vogt</div></div>
+      <div><div class="label">Photographie</div><div class="value">Kasper Tuxen</div></div>
+      <div><div class="label">Interprètes</div><div class="value">Renate Reinsve, Anders Danielsen Lie, Herbert Nordrum</div></div>
+      <div><div class="label">Production</div><div class="value">Coproduction Norvège / France / Suède / Danemark · budget ~5 M€</div></div>
+      <div><div class="label">Tournage</div><div class="value">Oslo, 2020</div></div>
+      <div><div class="label">Première</div><div class="value">Cannes 2021 (compétition) — prix d'interprétation féminine pour Renate Reinsve · sortie France : 13 octobre 2021</div></div>
+      <div><div class="label">Distinctions</div><div class="value">2 nominations aux Oscars 2022 (film international, scénario original)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="chapitre-tete"><span class="no">Chapitre 1</span><h2>Synopsis</h2><div class="lettrine-ligne"></div></div>
+  <p>Julie a commencé médecine — brillamment — avant de comprendre que c'était l'âme qui
+  l'intéressait : psychologie, donc. Puis la photographie. Puis un travail alimentaire en
+  librairie et des velléités d'écriture. À trente ans, elle vit avec Aksel, auteur de bande
+  dessinée underground de quinze ans son aîné, qui voudrait des enfants ; elle, elle ne
+  sait pas — c'est sa réponse à presque tout, et le film en fait une odyssée<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Un soir, Julie s'incruste dans un mariage inconnu et y rencontre Eivind, serveur de
+  café, aussi doux qu'Aksel est cérébral. En douze chapitres, un prologue et un épilogue,
+  le film suit quatre années de bifurcations — quitter, aimer, tromper, avorter de tous
+  les futurs proposés — jusqu'à la maladie d'Aksel, qui donne soudain au temps de Julie
+  un prix qu'aucun de ses choix ne lui avait donné<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="contexte">
+  <div class="chapitre-tete"><span class="no">Chapitre 2</span><h2>Contexte de production</h2><div class="lettrine-ligne"></div></div>
+  <p>Le film clôt la « trilogie d'Oslo » que Joachim Trier a ouverte avec <em>Nouvelle
+  donne</em> (<em>Reprise</em>, 2006) et poursuivie avec <em>Oslo, 31 août</em> (2011) —
+  trois portraits de trentenaires dans la même ville, écrits avec le même complice, Eskil
+  Vogt<sup class="fn"><a href="#src-1">[1]</a></sup>. Après un détour par le fantastique
+  (<em>Thelma</em>), Trier revient à sa matière première : le temps qui passe sur une
+  génération surdiplômée et sous-décidée.</p>
+  <p>Le pari du casting est décisif : Renate Reinsve, actrice de théâtre cantonnée aux
+  seconds rôles (une réplique dans <em>Oslo, 31 août</em>), reçoit ici son premier grand
+  rôle — écrit à sa mesure — et repart de Cannes avec le prix d'interprétation
+  féminine<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup>.
+  Face à elle, Anders Danielsen Lie — l'acteur-fétiche des trois volets, médecin dans le
+  civil — et Herbert Nordrum. Tourné à Oslo en 2020 pour environ 5 millions d'euros, le
+  film est présenté en compétition à Cannes en juillet 2021, où il devient l'un des
+  événements du festival<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="chapitre-tete"><span class="no">Chapitre 3</span><h2>Structure narrative</h2><div class="lettrine-ligne"></div></div>
+  <p>Le dispositif du titre est un manifeste : un prologue, douze chapitres titrés, un
+  épilogue — la vie d'une indécise mise en pages comme un roman qu'elle n'arrive pas à
+  écrire. La voix off romanesque et les intertitres donnent au film sa « noblesse
+  romanesque », selon Le Rayon Vert — qui y voit aussi, en procès instruit à charge, une
+  forme cherchant à « légitimer l'ambition artistique » du cinéaste<sup class="fn"><a href="#src-2">[2]</a></sup>.
+  Défense recevable : le chapitrage épouse exactement le rapport de Julie au temps — une
+  vie vécue comme une table des matières dont on saute les chapitres ennuyeux.</p>
+  <p>Les chapitres jouent chacun leur registre — comédie de mœurs, essai (le chapitre-tract
+  sur « le sexe oral à l'ère de #MeToo » que Julie publie), trip sous champignons,
+  mélodrame terminal — et deux séquences font charnière : la course de Julie à travers un
+  Oslo figé, parenthèse fantastique où elle quitte Aksel pour Eivind entre deux
+  battements du monde ; et son inversion exacte à l'épilogue, Julie immobile derrière sa
+  fenêtre, photographiant à distance la vie ordinaire qu'elle n'a pas choisie<sup class="fn"><a href="#src-1">[1]</a></sup><sup class="fn"><a href="#src-2">[2]</a></sup>.</p>
+</section>
+
+<section id="technique">
+  <div class="chapitre-tete"><span class="no">Chapitre 4</span><h2>Mise en scène et procédés techniques</h2><div class="lettrine-ligne"></div></div>
+  <p>La photographie de Kasper Tuxen filme Oslo comme une saison mentale — étés blonds,
+  aubes roses sur le fjord, appartements en demi-jour — et la caméra de Trier garde sa
+  signature : fluidité classique soudain interrompue par des échappées formelles. La
+  séquence de la ville figée est déjà une anthologie : des dizaines de figurants
+  immobilisés en pleine rue (effet obtenu pour l'essentiel en plateau, pas en
+  numérique), et Julie qui court, souriante, à travers l'arrêt du monde — l'euphorie
+  amoureuse comme suspension du temps des autres<sup class="fn"><a href="#src-1">[1]</a></sup>.</p>
+  <p>Le trip aux champignons hallucinogènes offre le contre-champ grotesque — corps
+  déformés, père absent, tampon jeté à la figure du patriarcat — où le film ose une
+  laideur cartoonesque assumée. Et la voix off, jamais explicative, travaille en léger
+  décalage ironique avec l'image, à la manière des romanciers que le dispositif convoque.
+  La critique française a salué cette « fausse comédie romantique et vrai film
+  psychologique » qui « joue sur les sentiments » avec une précision d'orfèvre<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="chapitre-tete"><span class="no">Chapitre 5</span><h2>Personnages principaux</h2><div class="lettrine-ligne"></div></div>
+  <p><strong>Julie</strong> (Renate Reinsve) est le grand portrait féminin du cinéma
+  européen récent : ni héroïne ni « pire personne du monde » — le titre norvégien est une
+  expression d'autodépréciation —, mais une femme dont l'indécision est à double fond.
+  Le Rayon Vert la résume d'une formule : « elle veut être artiste, elle ne sait juste pas
+  dans quel art exactement »<sup class="fn"><a href="#src-2">[2]</a></sup> — et Reinsve
+  joue chaque hésitation comme un choix plein, avec une présence qui a immédiatement fait
+  d'elle une star européenne<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+  <p><strong>Aksel</strong> (Anders Danielsen Lie, bouleversant) est l'artiste installé —
+  auteur d'une BD culte et politiquement indéfendable — à qui le film confie ses plus
+  belles scènes : le monologue du mourant sur la culture qu'il a aimée « quand les objets
+  existaient encore » est devenu instantanément classique. <strong>Eivind</strong>
+  (Herbert Nordrum) incarne la tendresse sans projet — l'homme ordinaire que la critique
+  la plus sévère du film estime « condamné à se faire maltraiter » pour « crime de
+  lèse-artiste »<sup class="fn"><a href="#src-2">[2]</a></sup> : lecture discutable, mais
+  qui dit bien la hiérarchie sentimentale que le film met en scène — et interroge.</p>
+</section>
+
+<section id="themes">
+  <div class="chapitre-tete"><span class="no">Chapitre 6</span><h2>Thèmes</h2><div class="lettrine-ligne"></div></div>
+  <p>Le thème-titre est l'indécision comme condition générationnelle : Julie appartient à
+  la première génération pour qui tout est théoriquement possible — études, métiers,
+  amours, genres de vie — et le film demande ce que devient une existence quand choisir,
+  c'est mourir à toutes les autres versions de soi. Les douze chapitres sont autant de
+  vies essayées puis rendues, et l'ironie du dispositif romanesque est là : la seule
+  chose que Julie n'écrit jamais, c'est son propre récit.</p>
+  <p>Vient ensuite le temps — obsession de toute la trilogie d'Oslo : temps biologique
+  (l'horloge des enfants, explicitée dès le prologue), temps culturel (Aksel, homme des
+  objets — vinyles, papier — face au flux), temps de la mort enfin, qui requalifie tout.
+  Et, en basse continue, une méditation sur l'art et la vie ordinaire : le film privilégie-t-il
+  ses artistes contre ses gens simples, comme le soutient Le Rayon Vert<sup class="fn"><a href="#src-2">[2]</a></sup> ?
+  Ou montre-t-il, à travers l'épilogue — Julie seule, photographe enfin, cadrant la vie
+  des autres —, le coût exact de la position d'observatrice ? La force du film est de
+  laisser la question ouverte : c'est un portrait, pas un verdict<sup class="fn"><a href="#src-3">[3]</a></sup>.</p>
+</section>
+
+<section id="reception">
+  <div class="chapitre-tete"><span class="no">Chapitre 7</span><h2>Réception critique et postérité</h2><div class="lettrine-ligne"></div></div>
+  <p>Sensation de Cannes 2021 : prix d'interprétation pour Reinsve, et une presse mondiale
+  conquise — « un classique instantané » (Peter Bradshaw, <em>The Guardian</em>), meilleur
+  film de l'année pour <em>Vanity Fair</em>, 91 sur Metacritic<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  Le consensus critique le dit bien :</p>
+  <blockquote>« Une comédie romantique qui subvertit délicieusement les conventions les
+  plus usées du genre. »
+  <span class="attrib">Consensus Rotten Tomatoes, cité par Wikipédia<sup class="fn"><a href="#src-1">[1]</a></sup></span></blockquote>
+  <p>Deux nominations aux Oscars (film international et — plus rare pour un film nordique —
+  scénario original) couronnent la carrière du film, devenu pour 12,7 millions de dollars
+  de recettes un vrai succès d'art et essai international<sup class="fn"><a href="#src-1">[1]</a></sup>.
+  La France l'a débattu plus qu'ailleurs — des éloges d'avoir-alire et du Bleu du Miroir
+  au réquisitoire du Rayon Vert contre sa « misanthropie » d'artiste<sup class="fn"><a href="#src-2">[2]</a></sup><sup class="fn"><a href="#src-3">[3]</a></sup> —
+  signe généralement fiable qu'un film touche un nerf. Postérité immédiate : Reinsve
+  tourne désormais dans le monde entier, et « julie-core » est devenu un raccourci
+  critique pour tout portrait de trentenaire indécise — l'hommage lexical que le cinéma
+  réserve aux personnages devenus archétypes.</p>
+</section>
+
+<section id="conclusion">
+  <div class="chapitre-tete"><span class="no">Épilogue</span><h2>Conclusion</h2><div class="lettrine-ligne"></div></div>
+  <p><em>Julie (en 12 chapitres)</em> réussit le film le plus difficile qui soit : celui
+  dont l'héroïne ne veut rien de précis. Là où le récit classique exige un désir moteur,
+  Trier et Vogt construisent leur dramaturgie sur l'esquive elle-même — et trouvent dans
+  la forme romanesque le moyen de donner à l'indécision une architecture, un humour et,
+  in fine, une gravité. Que le dispositif frôle parfois la coquetterie, ses détracteurs
+  n'ont pas tort ; mais c'est le prix d'un pari tenu.</p>
+  <p>Reste l'épilogue, d'une intelligence discrète : Julie photographe, seule et sans
+  drame, cadrant une actrice qui rentre retrouver sa famille — la vie des autres devenue
+  son objet, au sens propre. Ni punition ni triomphe : une position dans le monde, la
+  première qu'elle occupe entière. « La pire personne du monde » aura mis douze chapitres
+  à devenir quelqu'un — c'est-à-dire, le film le sait mieux que quiconque, exactement le
+  temps que cela prend.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="chapitre-tete"><span class="no">Notes</span><h2>Sources</h2><div class="lettrine-ligne"></div></div>
+  <ol>
+    <li id="src-1">Wikipédia (en) — « The Worst Person in the World (film) » : production (Trier/Vogt, Tuxen, Oslo 2020, budget), structure (prologue + 12 chapitres + épilogue), séquences (ville figée, champignons), Cannes 2021 et prix d'interprétation, nominations aux Oscars, sorties (France 13 octobre 2021), box-office, citations critiques (Bradshaw, Vanity Fair, consensus RT). <a href="https://en.wikipedia.org/wiki/The_Worst_Person_in_the_World_(film)">en.wikipedia.org</a></li>
+    <li id="src-2">Le Rayon Vert — « Julie (en 12 chapitres) de Joachim Trier : Analyse » : lecture critique du dispositif (chapitrage comme légitimation), de la hiérarchie artiste/homme ordinaire (Aksel/Eivind), de la ville figée et de l'épilogue inversé. <a href="https://www.rayonvertcinema.org/julie-en-12-chapitres-joachim-trier/">rayonvertcinema.org</a></li>
+    <li id="src-3">Presse française consultée via recherche web (avoir-alire, Le Bleu du Miroir, Le Blog du Cinéma, Critikat) : trilogie d'Oslo, premier grand rôle de Renate Reinsve, « fausse comédie romantique et vrai film psychologique », portrait générationnel. <a href="https://www.lebleudumiroir.fr/critique-julie-en-12-chapitres/">lebleudumiroir.fr</a></li>
+    <li id="src-4">The Movie Database (TMDB) — fiche du film (données factuelles, affiche). <a href="https://www.themoviedb.org/movie/660120-verdens-verste-menneske">themoviedb.org/movie/660120</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="acheve">
+  Analyse sourcée · rédigée le 6 juillet 2026 · analyses-de-films
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

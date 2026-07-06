@@ -213,5 +213,15 @@ const FILMS = [
     summary: "Le tournage d'À bout de souffle rejoué plan par plan, en français et en 1.37 : la déclaration d'amour d'un cinéphile texan au geste le plus libre du cinéma.",
     url: 'films/nouvelle-vague.html',
     poster: 'assets/posters/nouvelle-vague.jpg'
+  },
+  {
+    slug: 'julie-en-12-chapitres',
+    title: 'Julie (en 12 chapitres)',
+    director: 'Joachim Trier',
+    year: 2021,
+    genre: 'Comédie dramatique',
+    summary: "Quatre ans de la vie d'une femme qui essaie toutes les vies possibles, racontés comme un roman — et le prix d'interprétation de Cannes pour Renate Reinsve.",
+    url: 'films/julie-en-12-chapitres.html',
+    poster: 'assets/posters/julie-en-12-chapitres.jpg'
   }
 ];
