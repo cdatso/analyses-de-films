@@ -1,4 +1,4 @@
-# Journal des analyses cinématographiques
+﻿# Journal des analyses cinématographiques
 
 Fichier de suivi interne recensant l'ensemble des films traités dans le cadre du projet
 d'analyses sourcées. Versionné dans le dépôt sous `docs/` (non lié depuis le site publié).
@@ -32,16 +32,16 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Au fil de l'eau | Fritz Lang | 1950 | Film noir gothique | ✅ Publié | 5 juillet 2026 | films/au-fil-de-leau.html | https://cdatso.github.io/analyses-de-films/films/au-fil-de-leau.html |
 | Raging Bull | Martin Scorsese | 1980 | Drame biographique | ✅ Publié | 5 juillet 2026 | films/raging-bull.html | https://cdatso.github.io/analyses-de-films/films/raging-bull.html |
 | Le Cheval de Turin | Béla Tarr | 2011 | Drame contemplatif | ✅ Publié | 5 juillet 2026 | films/le-cheval-de-turin.html | https://cdatso.github.io/analyses-de-films/films/le-cheval-de-turin.html |
-| La mariée était en noir | François Truffaut | 1968 | Thriller | 🟡 Staging | 6 juillet 2026 | films/la-mariee-etait-en-noir.html | https://cdatso.github.io/analyses-de-films/films/la-mariee-etait-en-noir.html |
-| Bienvenue à Suburbicon | George Clooney | 2017 | Comédie noire | 🟡 Staging | 6 juillet 2026 | films/bienvenue-a-suburbicon.html | https://cdatso.github.io/analyses-de-films/films/bienvenue-a-suburbicon.html |
-| Manhattan | Woody Allen | 1979 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/manhattan.html | https://cdatso.github.io/analyses-de-films/films/manhattan.html |
-| Sans Filtre | Ruben Östlund | 2022 | Comédie satirique | 🟡 Staging | 6 juillet 2026 | films/sans-filtre.html | https://cdatso.github.io/analyses-de-films/films/sans-filtre.html |
-| Retour à Séoul | Davy Chou | 2022 | Drame | 🟡 Staging | 6 juillet 2026 | films/retour-a-seoul.html | https://cdatso.github.io/analyses-de-films/films/retour-a-seoul.html |
-| Waterloo | Sergueï Bondartchouk | 1970 | Fresque historique | 🟡 Staging | 6 juillet 2026 | films/waterloo.html | https://cdatso.github.io/analyses-de-films/films/waterloo.html |
-| Nouvelle Vague | Richard Linklater | 2025 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/nouvelle-vague.html | https://cdatso.github.io/analyses-de-films/films/nouvelle-vague.html |
-| Julie (en 12 chapitres) | Joachim Trier | 2021 | Comédie dramatique | 🟡 Staging | 6 juillet 2026 | films/julie-en-12-chapitres.html | https://cdatso.github.io/analyses-de-films/films/julie-en-12-chapitres.html |
-| Le Golem | Julien Duvivier | 1936 | Fantastique | 🟡 Staging | 6 juillet 2026 | films/le-golem.html | https://cdatso.github.io/analyses-de-films/films/le-golem.html |
-| Moi, Daniel Blake | Ken Loach | 2016 | Drame social | 🟡 Staging | 6 juillet 2026 | films/moi-daniel-blake.html | https://cdatso.github.io/analyses-de-films/films/moi-daniel-blake.html |
+| La mariée était en noir | François Truffaut | 1968 | Thriller | ✅ Publié | 6 juillet 2026 | films/la-mariee-etait-en-noir.html | https://cdatso.github.io/analyses-de-films/films/la-mariee-etait-en-noir.html |
+| Bienvenue à Suburbicon | George Clooney | 2017 | Comédie noire | ✅ Publié | 6 juillet 2026 | films/bienvenue-a-suburbicon.html | https://cdatso.github.io/analyses-de-films/films/bienvenue-a-suburbicon.html |
+| Manhattan | Woody Allen | 1979 | Comédie dramatique | ✅ Publié | 6 juillet 2026 | films/manhattan.html | https://cdatso.github.io/analyses-de-films/films/manhattan.html |
+| Sans Filtre | Ruben Östlund | 2022 | Comédie satirique | ✅ Publié | 6 juillet 2026 | films/sans-filtre.html | https://cdatso.github.io/analyses-de-films/films/sans-filtre.html |
+| Retour à Séoul | Davy Chou | 2022 | Drame | ✅ Publié | 6 juillet 2026 | films/retour-a-seoul.html | https://cdatso.github.io/analyses-de-films/films/retour-a-seoul.html |
+| Waterloo | Sergueï Bondartchouk | 1970 | Fresque historique | ✅ Publié | 6 juillet 2026 | films/waterloo.html | https://cdatso.github.io/analyses-de-films/films/waterloo.html |
+| Nouvelle Vague | Richard Linklater | 2025 | Comédie dramatique | ✅ Publié | 6 juillet 2026 | films/nouvelle-vague.html | https://cdatso.github.io/analyses-de-films/films/nouvelle-vague.html |
+| Julie (en 12 chapitres) | Joachim Trier | 2021 | Comédie dramatique | ✅ Publié | 6 juillet 2026 | films/julie-en-12-chapitres.html | https://cdatso.github.io/analyses-de-films/films/julie-en-12-chapitres.html |
+| Le Golem | Julien Duvivier | 1936 | Fantastique | ✅ Publié | 6 juillet 2026 | films/le-golem.html | https://cdatso.github.io/analyses-de-films/films/le-golem.html |
+| Moi, Daniel Blake | Ken Loach | 2016 | Drame social | ✅ Publié | 6 juillet 2026 | films/moi-daniel-blake.html | https://cdatso.github.io/analyses-de-films/films/moi-daniel-blake.html |
 
 ---
 
