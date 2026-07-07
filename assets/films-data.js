@@ -253,5 +253,14 @@ const FILMS = [
     summary: "Neuf voyageurs que la bonne société ne mettrait jamais dans la même pièce, une diligence, le territoire apache : le film qui a rendu au western ses lettres de noblesse.",
     url: 'films/la-chevauchee-fantastique.html',
     poster: 'assets/posters/la-chevauchee-fantastique.jpg'
+  },
+  {
+    slug: 'le-doulos',
+    title: 'Le Doulos',
+    director: 'Jean-Pierre Melville',
+    year: 1962,
+    genre: 'Film noir',
+    summary: "Un mot d'argot qui désigne à la fois un chapeau et un indicateur : Melville construit tout un polar sur l'impossibilité de savoir, jusqu'au bout, qui porte lequel des deux sens.",
+    url: 'films/le-doulos.html'
   }
 ];

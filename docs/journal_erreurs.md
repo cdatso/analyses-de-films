@@ -28,6 +28,9 @@ Conventions :
 | 6 juil. 2026 | La mariée était en noir (1968) | DVDClassik — analyse et critique | https://www.dvdclassik.com/critique/la-mariee-etait-en-noir-truffaut | HTTP 403 (blocage robot, récurrent sur ce domaine) | Fort — analyse française de référence | 🟡 couverte par Wikipédia fr + CinéDweller + Libre Critique |
 | 6 juil. 2026 | Manhattan (1979) | American Society of Cinematographers — « Black-and-White Romantic Realism » | https://theasc.com/articles/manhattan-black-and-white-romantic-realism | HTTP 403 (blocage robot) | Fort — analyse technique de la photo de Gordon Willis | 🔴 non récupérée (citée en référence, non consultée) |
 | 6 juil. 2026 | Retour à Séoul (2022) | Festival de Cannes — « Retour à Séoul, le regard de Davy Chou » | https://www.festival-cannes.com/fr/75-editions/retrospective/2022/actualites/articles/retour-a-seoul-le-regard-de-davy-chou | HTTP 404 (page retirée) | Moyen — propos du réalisateur | 🟡 couverte par la presse française |
+| 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | DVDClassik — analyse et critique | https://www.dvdclassik.com/critique/le-doulos-melville | HTTP 403 (blocage robot, récurrent sur ce domaine) | Fort — analyse française de référence | 🟡 couverte par avoir-alire.com et Mon Cinéma à Moi |
+| 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | Criterion Collection — fiche/essai du film | https://www.criterion.com/films/759-le-doulos | HTTP 403 (blocage robot) | Fort — essai critique de référence | 🔴 non récupérée (analyse rédigée sans) |
+| 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | Slant Magazine — review | https://www.slantmagazine.com/film/le-doulos/ | HTTP 403 (blocage robot) | Moyen | 🟡 couverte par Wikipedia (EN) et La Cinémathèque française |
 
 ## Incidents techniques du pipeline
 

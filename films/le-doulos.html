@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis mortuaire — Le Doulos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece5d5;
+    --paper-deep:#e1d7bf;
+    --paper-shadow: rgba(20,18,13,0.16);
+    --ink:#17140f;
+    --ink-soft:#39332a;
+    --ink-faint:#79715f;
+    --rule:#17140f;
+    --nuit:#3d5566;
+    --nuit-deep:#26394a;
+    --line: rgba(23,20,15,0.2);
+    --line-soft: rgba(23,20,15,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 8% 0%, rgba(61,85,102,0.07), transparent 42%),
+      radial-gradient(ellipse at 95% 100%, rgba(23,20,15,0.05), transparent 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Lora', serif;
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--nuit-deep);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--nuit); }
+
+  /* ---------- HAT ICON ---------- */
+  .hat-icon{ display:block; margin:0 auto 0.9rem; opacity:0.85; }
+
+  /* ---------- COVER (page nécrologique) ---------- */
+  header.avis-cover{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    padding:1.3rem 0 0;
+    border-bottom:6px double var(--rule);
+  }
+  .edition-line{
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--paper-deep);
+    opacity:0.8;
+    padding-bottom:1.1rem;
+    border-bottom:1px solid rgba(236,229,213,0.25);
+    margin:0 1.6rem;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+  }
+  .avis-sheet{
+    background:var(--paper);
+    color:var(--ink);
+    border:3px solid var(--rule);
+    padding:2.6rem 2.2rem 2.2rem;
+    margin:1.8rem 0 0;
+    position:relative;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+  }
+  .avis-sheet::before, .avis-sheet::after{
+    content:"";
+    position:absolute; left:14px; right:14px;
+    height:1px; background:var(--line);
+  }
+  .avis-sheet::before{ top:8px; }
+  .avis-sheet::after{ bottom:8px; }
+
+  .cachet{
+    position:absolute;
+    top:1.5rem; right:1.4rem;
+    border:2.5px solid var(--nuit);
+    color:var(--nuit);
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    font-size:0.68rem;
+    padding:0.4rem 0.65rem;
+    border-radius:50%;
+    transform:rotate(-11deg);
+    opacity:0.85;
+    mix-blend-mode:multiply;
+    text-align:center;
+    line-height:1.25;
+    width:82px; height:82px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .avis-number{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:1.5rem;
+    max-width:75%;
+  }
+  .avis-number b{ color:var(--ink); }
+
+  h1.title{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:clamp(2.2rem, 6.6vw, 3.5rem);
+    line-height:1.05;
+    margin:0 0 0.7rem;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-family:'Lora', serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:46ch;
+    margin:0 0 2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--ink-faint);
+    padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+    filter:grayscale(0.25);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--nuit-deep);
+    margin-bottom:0.28rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--ink);
+    border-bottom:1px dotted var(--ink-faint);
+    padding-bottom:0.2rem;
+  }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    background:var(--nuit-deep);
+    border-bottom:3px solid var(--rule);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--paper);
+    opacity:0.72;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--paper); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.block{ padding:3rem 0; border-bottom:1px dashed var(--line); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .colonne-head{
+    margin-bottom:1.4rem;
+    border-top:3px double var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:0.6rem 0 0.7rem;
+  }
+  .colonne-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--nuit-deep);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  h2{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:1.6rem;
+    margin:0 0 0.15rem;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .colonne-sous{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+  }
+
+  h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:0.92rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--ink);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--nuit);
+    text-decoration:none;
+    border-bottom:1px dotted var(--nuit);
+    font-size:0.8em;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  .discretion{
+    font-family:'IBM Plex Mono', monospace;
+    font-style:normal;
+    font-size:0.8rem;
+    color:var(--ink-faint);
+    border-left:2px solid var(--nuit);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* ---------- fiches nécrologiques (personnages) ---------- */
+  .portrait-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .portrait-card{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--rule);
+  }
+  .portrait-card .name{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:1.05rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+  }
+  .portrait-card .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--nuit-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .portrait-card p{ font-size:0.87rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- coupure de presse (citation) ---------- */
+  .coupure{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.4deg);
+  }
+  .coupure p{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .coupure cite{
+    font-style:normal;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--nuit-deep);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--nuit-deep);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- bulletin (recettes) ---------- */
+  .bulletin{
+    margin:1.6rem 0 1.7rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:1px solid var(--rule);
+  }
+  .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .bulletin-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--paper-deep);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .bulletin-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+  }
+  .bulletin .stat .num{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--paper);
+    display:block;
+    line-height:1.15;
+  }
+  .bulletin .stat .cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+    color:#b8c4cc;
+    text-transform:uppercase;
+  }
+
+  section.sources{ background:var(--ink); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--paper); font-family:'Playfair Display', serif; font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--paper-deep);
+    border-bottom:1px dashed rgba(236,229,213,0.25);
+    padding-bottom:0.6rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  ol.source-list li::before{
+    content: "Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    color:#8fa8b6;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--paper); word-break:break-all; }
+  ol.source-list a:hover{ color:#8fa8b6; }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    background:var(--paper);
+  }
+  footer.endnote a{ color:var(--ink-faint); }
+  footer.endnote a:hover{ color:var(--nuit); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    .avis-sheet{ padding:2rem 1.3rem; }
+    section.block{ padding:2.2rem 0; }
+    .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
+  }
+</style>
+</head>
+<body>
+
+<header class="avis-cover">
+  <div class="edition-line">Rubrique nécrologique — édition du soir</div>
+  <div class="cover-inner">
+    <div class="avis-sheet">
+      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <svg class="hat-icon" width="46" height="30" viewBox="0 0 46 30" aria-hidden="true">
+        <ellipse cx="23" cy="24" rx="22" ry="4.4" fill="none" stroke="#17140f" stroke-width="2"/>
+        <path d="M12 24 C12 12, 17 5, 23 5 C29 5, 34 12, 34 24" fill="none" stroke="#17140f" stroke-width="2"/>
+        <rect x="12" y="19" width="22" height="3.4" fill="#3d5566"/>
+      </svg>
+      <div class="cachet">8 FÉV.<br>1963</div>
+      <div class="avis-number">Avis n<sup>o</sup> <b>1</b> — un mot d'argot pour deux vérités : un chapeau de feutre, ou un indicateur.</div>
+      <h1 class="title">Le Doulos</h1>
+      <p class="subtitle">Un polar où l'on ne sait jusqu'à la dernière minute si l'homme au chapeau protège ses complices ou les vend à la police.</p>
+
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/le-doulos.jpg" alt="Affiche du film Le Doulos" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Jean-Pierre Melville</dd></div>
+          <div><dt>Scénario</dt><dd>Jean-Pierre Melville, d'après Pierre Lesou</dd></div>
+          <div><dt>Année</dt><dd>1962</dd></div>
+          <div><dt>Durée</dt><dd>108 minutes</dd></div>
+          <div><dt>Production</dt><dd>Georges de Beauregard, Carlo Ponti</dd></div>
+          <div><dt>Photographie</dt><dd>Nicolas Hayer</dd></div>
+          <div><dt>Musique</dt><dd>Paul Misraki</dd></div>
+          <div><dt>Montage</dt><dd>Monique Bonnot</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 01</span>
+      <h2>Fiche technique <span class="colonne-sous">— état civil du film</span></h2>
+    </div>
+    <p>
+      <em>Le Doulos</em> est un film noir français écrit et réalisé par Jean-Pierre Melville, adapté du roman éponyme de Pierre Lesou paru en 1957 dans la collection Série Noire<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. Tourné entre avril et juin 1962 dans les studios que Melville possédait rue Jenner, à Paris, en dehors des circuits de production traditionnels de l'époque, le film est porté par un budget estimé par le CNC à 2 113 000 francs et produit sous l'égide de Georges de Beauregard et Carlo Ponti<a class="renvoi" href="#src-1" id="ref-1b">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      La photographie est signée Nicolas Hayer, le montage confié à Monique Bonnot — assistée de Melville lui-même et de Michèle Boëhm —, la musique à Paul Misraki et les décors à Daniel Guéret ; l'équipe de réalisation compte notamment Charles Bitsch et le futur cinéaste allemand Volker Schlöndorff comme assistants<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>. Le film réunit Jean-Paul Belmondo (Silien), Serge Reggiani (Maurice Faugel), Jean Desailly (le commissaire Clain), Michel Piccoli (Nuttheccio) et René Lefèvre (Gilbert Varnove)<a class="renvoi" href="#src-1" id="ref-1c">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+    <p>
+      Sorti en Italie dès le 13 décembre 1962 dans le cadre d'une coproduction transalpine, le film n'arrive sur les écrans parisiens que le 8 février 1963, où il est classé interdit aux moins de 13 ans jusqu'en 1983 avant d'être reclassé tous publics<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 02</span>
+      <h2>Synopsis <span class="colonne-sous">— faits rapportés</span></h2>
+    </div>
+    <p>
+      Maurice Faugel sort de prison résolu à se refaire. Il retrouve Gilbert Varnove, un receleur qu'il abat avant de s'emparer d'un lot de bijoux, puis recrute son ami Rémy pour un nouveau cambriolage et s'adresse à Silien — surnommé « le Doulos » — pour se procurer le matériel nécessaire<a class="renvoi" href="#src-2" id="ref-2d">[2]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>. Mais le cambriolage tourne mal : la police intervient sur les lieux comme si elle avait été prévenue, et Maurice, blessé, en vient à soupçonner Silien de l'avoir vendu à ses ennemis<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+    <p class="discretion">Le film retarde son verdict jusqu'aux toutes dernières minutes ; la question de savoir si Silien est réellement l'indicateur du titre n'est volontairement pas détaillée davantage ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 03</span>
+      <h2>Contexte de production <span class="colonne-sous">— antécédents</span></h2>
+    </div>
+    <p>
+      En adaptant le roman de Pierre Lesou, Melville s'écarte consciemment du cadre montmartrois et du ton plus sordide du texte original pour construire son propre univers stylisé<a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Il retrouve pour l'occasion Jean-Paul Belmondo, qu'il avait dirigé l'année précédente dans <em>Léon Morin, prêtre</em> (1961), avant une troisième collaboration à venir dans <em>L'Aîné des Ferchaux</em><a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. Le film marque une étape de transition dans la filmographie de Melville, qui y trouve peu à peu la forme et l'orientation tragique qui se cristalliseront ensuite dans <em>Le Deuxième souffle</em> et <em>Le Samouraï</em><a class="renvoi" href="#src-2" id="ref-2f">[2]</a>.
+    </p>
+    <p>
+      Sur le choix de Jean Desailly pour incarner le commissaire Clain, Melville expliquait avoir voulu « un fils de bonne famille » doté de « ce fond de cynisme et de vulgarité que tous les policiers finissent par attraper après un certain nombre d'années de fréquentation du milieu », ajoutant que l'acteur avait « parfaitement interprété son personnage »<a class="renvoi" href="#src-2" id="ref-2g">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 04</span>
+      <h2>Structure narrative <span class="colonne-sous">— reconstitution des faits</span></h2>
+    </div>
+    <p>
+      Le récit s'ouvre par un long plan-séquence qui suit Maurice Faugel marchant seul le long d'un terrain vague et d'une voie ferrée, avant de bifurquer en une intrigue à double foyer où le spectateur doit constamment réévaluer ce qu'il croit savoir sur la loyauté de chaque personnage<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. La narration entrelace tromperie et révélation progressive : ce que Maurice interprète comme une trahison de Silien se retourne, à mesure que le film avance, en son exact contraire, jusqu'à un dénouement qui rétablit rétroactivement le sens de chaque scène qui précède<a class="renvoi" href="#src-2" id="ref-2h">[2]</a><a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 05</span>
+      <h2>Mise en scène et procédés techniques <span class="colonne-sous">— relevé du lieu</span></h2>
+    </div>
+    <p>
+      Le directeur de la photographie Nicolas Hayer construit une image en contrastes marqués, que la critique a rapprochée de l'esthétique clinique d'un avis de décès — clarté presque géométrique de l'éclairage et du cadre<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. Melville y intègre discrètement des codes visuels empruntés au film noir américain — cabines téléphoniques, postes de police, fenêtres à guillotine — sans jamais dépayser un public français, qui n'y voit pas une copie francisée du genre mais un Milieu parisien pleinement habité<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>.
+    </p>
+    <p>
+      Le cinéaste impose également à ses acteurs un jeu « en retenue », à l'américaine, par contraste avec ce qu'il jugeait être la tendance des comédiens français à l'emphase<a class="renvoi" href="#src-2" id="ref-2i">[2]</a>.
+    </p>
+    <div class="coupure">
+      <p>« Le mensonge » forme le noyau philosophique du film — ses personnages pris entre survivre par la duplicité ou mourir, dans ce que le critique nomme un « humanisme glacial ».</p>
+      <cite>Claude Beylie, Cahiers du Cinéma, cité par Mon Cinéma à Moi<a class="renvoi" href="#src-4" id="ref-4c">[4]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 06</span>
+      <h2>Personnages principaux <span class="colonne-sous">— fiches signalétiques</span></h2>
+    </div>
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <span class="name">Silien</span>
+        <span class="role">Jean-Paul Belmondo</span>
+        <p>Ambigu jusqu'au bout, mélange de bravade et de mépris, traitant policiers et truands avec une indifférence calculée qui préfigure les figures existentielles que Melville affinera dans <em>Le Samouraï</em> et <em>Le Cercle rouge</em><a class="renvoi" href="#src-3" id="ref-3f">[3]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Maurice Faugel</span>
+        <span class="role">Serge Reggiani</span>
+        <p>Protagoniste abîmé par la prison, dont la méfiance envers Silien engage toute la mécanique du récit<a class="renvoi" href="#src-2" id="ref-2j">[2]</a><a class="renvoi" href="#src-3" id="ref-3g">[3]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Commissaire Clain</span>
+        <span class="role">Jean Desailly</span>
+        <p>Autorité froidement corrompue par des années de fréquentation du Milieu, selon les mots mêmes de Melville sur le personnage<a class="renvoi" href="#src-2" id="ref-2k">[2]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Nuttheccio</span>
+        <span class="role">Michel Piccoli</span>
+        <p>Figure mensongère du Milieu, représentative de l'opacité morale qui traverse l'ensemble des personnages du film<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 07</span>
+      <h2>Thèmes <span class="colonne-sous">— relevés d'enquête</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le mensonge comme noyau philosophique</span>
+        <p>Selon Claude Beylie dans <em>Cahiers du Cinéma</em>, <em>Le Doulos</em> organise tout son récit autour du mensonge, ses personnages étant pris entre survivre par la duplicité ou mourir, dans ce que le critique nomme un « humanisme glacial »<a class="renvoi" href="#src-4" id="ref-4d">[4]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'impossibilité de connaître autrui</span>
+        <p>Le film maintient jusqu'à la fin l'incertitude sur la loyauté de Silien, faisant de cette ambiguïté non résolue le moteur même du suspense plutôt qu'un simple rebondissement final<a class="renvoi" href="#src-4" id="ref-4e">[4]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le fatalisme d'un Milieu clos</span>
+        <p>La mort successive des personnages illustre un monde bouclé sur lui-même où la violence ne connaît pas d'issue, loin de toute psychologie naturaliste<a class="renvoi" href="#src-3" id="ref-3i">[3]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le double sens du titre</span>
+        <p>« Doulos » désigne à la fois, en argot, un chapeau de feutre et un indicateur de police — ambivalence que le film met en scène jusque dans son dénouement, sans jamais totalement trancher laquelle des deux définitions s'applique à son personnage central<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 08</span>
+      <h2>Réception critique et postérité <span class="colonne-sous">— suivi du dossier</span></h2>
+    </div>
+    <p>
+      En France, l'accueil critique est enthousiaste : <em>L'Express</em> évoque une « quasi perfection », et Claude Beylie, dans <em>Cahiers du Cinéma</em>, salue une « précision extraordinaire » d'exécution<a class="renvoi" href="#src-4" id="ref-4f">[4]</a>. Aux États-Unis, où le film sort en 1964, le <em>New York Times</em> se montre nettement plus sévère, le jugeant « fastidieux », « excessivement bavard » et « pseudo-intellectuel » — signe d'un écart de réception assez net entre les deux critiques nationales<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>.
+    </p>
+
+    <div class="bulletin">
+      <div class="bulletin-inner">
+        <span class="bulletin-label">Bulletin — chiffres à l'appui</span>
+        <div class="bulletin-grid">
+          <div class="stat"><span class="num">1 475 391</span><span class="cap">Entrées France</span></div>
+          <div class="stat"><span class="num">485 186</span><span class="cap">Entrées Paris</span></div>
+          <div class="stat"><span class="num">2 113 000 F</span><span class="cap">Budget estimé (CNC)</span></div>
+          <div class="stat"><span class="num">108 min</span><span class="cap">Durée</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="discretion">Chiffres exprimés en francs et en entrées de l'époque, selon la source indiquée ci-dessous.</p>
+
+    <p>
+      Commercialement, <em>Le Doulos</em> devient, à l'époque, le deuxième plus grand succès de Melville en France après <em>Léon Morin, prêtre</em><a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. Sa postérité se prolonge bien au-delà de sa sortie : <em>Empire Magazine</em> le classe 472<sup>e</sup> de ses 500 plus grands films en 2008, Olivier Marchal reprend le nom « Silien » en hommage dans <em>36 Quai des Orfèvres</em> (2004), et Quentin Tarantino cite son scénario comme une influence majeure sur <em>Reservoir Dogs</em><a class="renvoi" href="#src-1" id="ref-1h">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="colonne-head">
+      <span class="colonne-num">Colonne nº 09</span>
+      <h2>Conclusion <span class="colonne-sous">— clôture de l'avis</span></h2>
+    </div>
+    <p>
+      <em>Le Doulos</em> occupe une place charnière dans la filmographie de Jean-Pierre Melville : le cinéaste y maîtrise déjà si parfaitement les codes du film noir américain qu'il n'en résulte aucune impression de copie francisée, mais un Milieu parisien pleinement autonome, aussi crédible dans son atmosphère que dans son fatalisme. Le film annonce, dans son refus de la psychologie naturaliste et son goût pour les figures opaques, la trilogie qui suivra — <em>Le Deuxième souffle</em>, <em>Le Samouraï</em>, <em>Le Cercle rouge</em> — sans en avoir encore toute l'épure formelle.
+    </p>
+    <p>
+      Sa vraie réussite tient cependant à un pari plus risqué : faire reposer tout un film sur une question que le spectateur ne peut trancher qu'à la toute dernière minute, et dont le titre lui-même — ce mot d'argot qui désigne indifféremment un chapeau et un mouchard — refuse de livrer la clé. Plus de soixante ans après sa sortie parisienne mouvementée, saluée en France et rejetée sèchement par une partie de la critique américaine, <em>Le Doulos</em> reste moins un polar sur la trahison qu'une méditation sur l'impossibilité de connaître vraiment autrui — une thèse que Tarantino, entre autres héritiers, n'a pas manqué de retenir.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#b8c4cc;">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipedia (EN), « Le Doulos » — <a href="https://en.wikipedia.org/wiki/Le_Doulos" target="_blank" rel="noopener">en.wikipedia.org/wiki/Le_Doulos</a></li>
+      <li id="src-2">La Cinémathèque française, fiche du film « Le Doulos » — <a href="https://www.cinematheque.fr/film/50141.html" target="_blank" rel="noopener">cinematheque.fr/film/50141.html</a></li>
+      <li id="src-3">Avoir-alire.com, critique du film « Le Doulos » — <a href="https://www.avoir-alire.com/le-doulos-la-critique-du-film" target="_blank" rel="noopener">avoir-alire.com/le-doulos-la-critique-du-film</a></li>
+      <li id="src-4">Mon Cinéma à Moi, « Le Doulos — Jean-Pierre Melville (1962) » — <a href="https://moncinemaamoi.blog/2023/01/29/le-doulos-jean-pierre-melville-1962/" target="_blank" rel="noopener">moncinemaamoi.blog — Le Doulos</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Avis compilé à partir de sources publiques consultées le 6 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

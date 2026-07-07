@@ -43,6 +43,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Le Golem | Julien Duvivier | 1936 | Fantastique | ✅ Publié | 6 juillet 2026 | films/le-golem.html | https://cdatso.github.io/analyses-de-films/films/le-golem.html |
 | Moi, Daniel Blake | Ken Loach | 2016 | Drame social | ✅ Publié | 6 juillet 2026 | films/moi-daniel-blake.html | https://cdatso.github.io/analyses-de-films/films/moi-daniel-blake.html |
 | La Chevauchée fantastique | John Ford | 1939 | Western | ✅ Publié | 6 juillet 2026 | films/la-chevauchee-fantastique.html | https://cdatso.github.io/analyses-de-films/films/la-chevauchee-fantastique.html |
+| Le Doulos | Jean-Pierre Melville | 1962 | Film noir | 🟡 staging (merge en attente) | 6-7 juillet 2026 (routine nocturne) | films/le-doulos.html | https://cdatso.github.io/analyses-de-films/films/le-doulos.html |
 
 ---
 
