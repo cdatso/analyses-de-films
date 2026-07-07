@@ -261,6 +261,7 @@ const FILMS = [
     year: 1962,
     genre: 'Film noir',
     summary: "Un mot d'argot qui désigne à la fois un chapeau et un indicateur : Melville construit tout un polar sur l'impossibilité de savoir, jusqu'au bout, qui porte lequel des deux sens.",
-    url: 'films/le-doulos.html'
+    url: 'films/le-doulos.html',
+    poster: 'assets/posters/le-doulos.jpg'
   }
 ];
