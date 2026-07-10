@@ -425,10 +425,14 @@ form.request-form .form-note {
 .fallback-panel button:hover { background: var(--accent); }
 
 .fallback-panel .copy-feedback {
-  display: inline-block;
+  display: none;
   margin: 0 0 0 0.8rem;
   color: var(--accent);
   font-size: 0.82rem;
+}
+
+.fallback-panel .copy-feedback:not([hidden]) {
+  display: inline-block;
 }
 
 footer {
