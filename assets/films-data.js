@@ -263,5 +263,15 @@ const FILMS = [
     summary: "Un mot d'argot qui désigne à la fois un chapeau et un indicateur : Melville construit tout un polar sur l'impossibilité de savoir, jusqu'au bout, qui porte lequel des deux sens.",
     url: 'films/le-doulos.html',
     poster: 'assets/posters/le-doulos.jpg'
+  },
+  {
+    slug: 'sur-la-route-domaha',
+    title: "Sur la route d'Omaha",
+    director: 'Cole Webley',
+    year: 2025,
+    genre: 'Drame',
+    summary: "Un père ruiné par la crise de 2008 conduit ses deux enfants vers une destination qu'il leur tait — et que ce road movie ne dévoile qu'à ses tout derniers mètres, quitte à rétroéclairer chaque étape parcourue.",
+    url: 'films/sur-la-route-domaha.html',
+    poster: 'assets/posters/sur-la-route-domaha.jpg'
   }
 ];

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sortie prochaine — Sur la route d'Omaha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#201d19;
+    --asphalt-soft:#2c2822;
+    --paper:#f1e9d8;
+    --paper-deep:#e4d9bf;
+    --ink:#201d19;
+    --ink-soft:#43392c;
+    --ink-faint:#8a7c63;
+    --rule:#201d19;
+    --hwy:#375c46;
+    --hwy-deep:#24402f;
+    --rust:#b8562e;
+    --line: rgba(32,29,25,0.2);
+    --line-soft: rgba(32,29,25,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 8% 0%, rgba(55,92,70,0.08), transparent 42%),
+      radial-gradient(ellipse at 95% 100%, rgba(184,86,46,0.06), transparent 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'PT Serif', serif;
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:'Roboto Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:#a9c2ae;
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint);
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--hwy-deep); }
+
+  /* ---------- MILE-MARKER ICON ---------- */
+  .marker-icon{ display:block; margin:0 auto 0.9rem; opacity:0.9; }
+
+  /* ---------- COVER (panneau routier) ---------- */
+  header.route-cover{
+    position:relative;
+    background:var(--asphalt);
+    color:var(--paper);
+    padding:1.3rem 0 0;
+    border-bottom:6px double var(--rule);
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0 42px, rgba(241,233,216,0.12) 42px 72px, transparent 72px 114px);
+    background-position: 0 118px;
+    background-repeat: repeat-x;
+  }
+  .edition-line{
+    text-align:center;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--paper-deep);
+    opacity:0.8;
+    padding-bottom:1.1rem;
+    border-bottom:1px solid rgba(241,233,216,0.25);
+    margin:0 1.6rem;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+  }
+
+  /* panneau autoroutier vert */
+  .hwy-sign{
+    margin:1.8rem 0 0;
+    background:var(--hwy);
+    border:5px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--hwy-deep), 0 14px 30px rgba(0,0,0,0.35);
+    padding:1.4rem 1.6rem 1.6rem;
+    position:relative;
+  }
+  .hwy-sign .route-shield{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    background:var(--paper);
+    color:var(--hwy-deep);
+    font-family:'Roboto Mono', monospace;
+    font-weight:600;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:0.3rem 0.6rem;
+    margin-bottom:1rem;
+  }
+  h1.title{
+    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-weight:400;
+    font-size:clamp(2.6rem, 8vw, 4.4rem);
+    line-height:0.98;
+    margin:0 0 0.5rem;
+    letter-spacing:0.01em;
+    color:var(--paper);
+    text-transform:uppercase;
+  }
+  .subtitle{
+    font-family:'PT Serif', serif;
+    font-style:italic;
+    color:var(--paper-deep);
+    font-size:1rem;
+    max-width:50ch;
+    margin:0;
+  }
+
+  .avis-sheet{
+    background:var(--paper);
+    color:var(--ink);
+    border:3px solid var(--rule);
+    padding:2.2rem 2.2rem 2.2rem;
+    margin:1.6rem 0 0;
+    position:relative;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+  }
+
+  .cachet{
+    position:absolute;
+    top:1.3rem; right:1.4rem;
+    border:2.5px solid var(--rust);
+    color:var(--rust);
+    font-family:'Roboto Mono', monospace;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-size:0.62rem;
+    padding:0.4rem 0.5rem;
+    border-radius:50%;
+    transform:rotate(-9deg);
+    opacity:0.9;
+    mix-blend-mode:multiply;
+    text-align:center;
+    line-height:1.2;
+    width:80px; height:80px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--ink-faint);
+    padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+    filter:sepia(0.12) contrast(1.02);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--hwy-deep);
+    margin-bottom:0.28rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--ink);
+    border-bottom:1px dotted var(--ink-faint);
+    padding-bottom:0.2rem;
+  }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    background:var(--hwy-deep);
+    border-bottom:3px solid var(--rule);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--paper);
+    opacity:0.72;
+    text-decoration:none;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--paper); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.block{ padding:3rem 0; border-bottom:1px dashed var(--line); position:relative; }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .colonne-head{
+    margin-bottom:1.4rem;
+    border-top:3px double var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:0.6rem 0 0.7rem;
+    display:flex;
+    align-items:baseline;
+    gap:0.8rem;
+  }
+  .colonne-num{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--hwy-deep);
+    display:block;
+    white-space:nowrap;
+    background:var(--paper-deep);
+    border:1px solid var(--rule);
+    padding:0.15rem 0.4rem;
+  }
+  h2{
+    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-weight:400;
+    font-size:1.9rem;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+    line-height:1;
+  }
+  .colonne-sous{
+    display:block;
+    font-family:'PT Serif', serif;
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    text-transform:none;
+    letter-spacing:0;
+    margin-top:0.2rem;
+  }
+
+  h3{
+    font-family:'Roboto Mono', monospace;
+    font-weight:600;
+    font-size:0.92rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--ink);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--hwy-deep);
+    text-decoration:none;
+    border-bottom:1px dotted var(--hwy-deep);
+    font-size:0.8em;
+    font-family:'Roboto Mono', monospace;
+  }
+
+  .discretion{
+    font-family:'Roboto Mono', monospace;
+    font-style:normal;
+    font-size:0.8rem;
+    color:var(--ink-faint);
+    border-left:2px solid var(--rust);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* ---------- fiches signalétiques (personnages) ---------- */
+  .portrait-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .portrait-card{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--hwy);
+  }
+  .portrait-card .name{
+    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-weight:400;
+    font-size:1.25rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+    text-transform:uppercase;
+  }
+  .portrait-card .role{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--hwy-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .portrait-card p{ font-size:0.87rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- coupure de presse (citation) ---------- */
+  .coupure{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.4deg);
+  }
+  .coupure p{
+    font-family:'PT Serif', serif;
+    font-style:italic;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .coupure cite{
+    font-style:normal;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- thèmes en panneaux ---------- */
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item{
+    border:1px solid var(--ink-faint);
+    background:var(--paper-deep);
+    padding:1rem 1.2rem 1.1rem;
+    position:relative;
+  }
+  .theme-item .theme-tag{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--paper);
+    background:var(--hwy-deep);
+    display:inline-block;
+    margin-bottom:0.5rem;
+    padding:0.2rem 0.5rem;
+  }
+  .theme-item p{ margin:0; }
+
+  /* ---------- bulletin (chiffres) ---------- */
+  .bulletin{
+    margin:1.6rem 0 1.7rem;
+    background:var(--asphalt);
+    color:var(--paper);
+    border:1px solid var(--rule);
+  }
+  .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .bulletin-label{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--paper-deep);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .bulletin-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+  }
+  .bulletin .stat .num{
+    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-weight:400;
+    font-size:1.6rem;
+    color:var(--paper);
+    display:block;
+    line-height:1.15;
+  }
+  .bulletin .stat .cap{
+    font-family:'Roboto Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+    color:#c7d6cb;
+    text-transform:uppercase;
+  }
+
+  section.sources{ background:var(--asphalt); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--paper); font-family:'Bebas Neue', 'Roboto Mono', sans-serif; font-weight:400; font-size:1.7rem; margin:0; text-transform:uppercase; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.4rem;
+    position:relative;
+    color:var(--paper-deep);
+    border-bottom:1px dashed rgba(241,233,216,0.25);
+    padding-bottom:0.6rem;
+    font-family:'Roboto Mono', monospace;
+  }
+  ol.source-list li::before{
+    content: "Borne " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'Roboto Mono', monospace;
+    font-weight:600;
+    color:#a9c2ae;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--paper); word-break:break-all; }
+  ol.source-list a:hover{ color:#a9c2ae; }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    background:var(--paper);
+  }
+  footer.endnote a{ color:var(--ink-faint); }
+  footer.endnote a:hover{ color:var(--hwy-deep); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    .avis-sheet{ padding:1.8rem 1.3rem; }
+    .hwy-sign{ padding:1.1rem 1.2rem 1.3rem; }
+    section.block{ padding:2.2rem 0; }
+    .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
+    .colonne-head{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="route-cover">
+  <div class="edition-line">Itinéraire — direction Nebraska</div>
+  <div class="cover-inner">
+    <svg class="marker-icon" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+      <rect x="14" y="4" width="6" height="26" fill="#f1e9d8"/>
+      <rect x="4" y="10" width="26" height="10" fill="none" stroke="#f1e9d8" stroke-width="2"/>
+    </svg>
+    <div class="hwy-sign">
+      <span class="route-shield">Sundance Film Festival · 23.01.2025</span>
+      <h1 class="title">Omaha</h1>
+      <p class="subtitle">Un père conduit ses deux enfants à travers l'Ouest américain vers une destination qu'il tait jusqu'au bout — et que le film ne révèle qu'à ses derniers mètres.</p>
+    </div>
+
+    <div class="avis-sheet">
+      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <div class="cachet">84<br>MIN</div>
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/sur-la-route-domaha.jpg" alt="Affiche du film Sur la route d'Omaha" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Titre original</dt><dd>Omaha</dd></div>
+          <div><dt>Réalisation</dt><dd>Cole Webley</dd></div>
+          <div><dt>Scénario</dt><dd>Robert Machoian</dd></div>
+          <div><dt>Année</dt><dd>2025</dd></div>
+          <div><dt>Durée</dt><dd>84 minutes</dd></div>
+          <div><dt>Distribution</dt><dd>John Magaro, Molly Belle Wright, Wyatt Solis</dd></div>
+          <div><dt>Photographie</dt><dd>Paul Meyers</dd></div>
+          <div><dt>Musique</dt><dd>Christopher Bear</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 01</span>
+      <h2>Fiche technique <span class="colonne-sous">— papiers du véhicule</span></h2>
+    </div>
+    <p>
+      <em>Omaha</em> (titre français : <em>Sur la route d'Omaha</em>) est un film dramatique américain réalisé par Cole Webley, dans ses débuts en long métrage, d'après un scénario de Robert Machoian<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. Le film est porté par John Magaro dans le rôle du père, aux côtés des jeunes Molly Belle Wright (Ella) et Wyatt Solis (Charlie), avec Talia Balsam et Christina Cooper en soutien<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>.
+    </p>
+    <p>
+      La photographie est signée Paul Meyers, le montage confié à Jai Shukla et la musique à Christopher Bear ; le film, produit par Preston Lee pour Sanctuary Content, Kaleidoscope Pictures et Monarch Content, est distribué par Greenwich Entertainment<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>. Il fait sa première mondiale le 23 janvier 2025 au Festival du film de Sundance, en compétition dramatique américaine, avant une sortie en salles aux États-Unis le 24 avril 2026<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 02</span>
+      <h2>Synopsis <span class="colonne-sous">— feuille de route</span></h2>
+    </div>
+    <p>
+      Un père veuf, dont la maison vient d'être saisie par la banque, embarque ses deux jeunes enfants, Ella et Charlie, dans une traversée de l'Ouest américain en pleine crise des subprimes de 2008<a class="renvoi" href="#src-2" id="ref-2">[2]</a>. Il leur annonce qu'ils partent en vacances, quelque part vers le Nebraska ; Ella, neuf ans, la plus âgée et la plus observatrice, commence peu à peu à percevoir que quelque chose ne colle pas dans cette version des faits<a class="renvoi" href="#src-1" id="ref-1e">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p class="discretion">Le film retient sa véritable destination — et la raison de ce voyage — jusqu'à ses toutes dernières minutes ; cette révélation n'est volontairement pas détaillée davantage ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 03</span>
+      <h2>Contexte de production <span class="colonne-sous">— carnet de bord</span></h2>
+    </div>
+    <p>
+      Robert Machoian conçoit le scénario dès 2008, dans la foulée immédiate de la crise des subprimes, et le soumet en 2013 au laboratoire des scénaristes de Sundance, qui le refuse<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>. Le texte attend près d'une décennie avant que Cole Webley, qui rencontre Machoian lors d'un précédent passage à Sundance, ne s'y attelle : le tournage démarre en 2022, sous les restrictions de la grève de la SAG-AFTRA, avec un accord intérimaire obtenu pour l'occasion<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>.
+    </p>
+    <p>
+      Webley, père de quatre enfants et installé en Utah depuis plus de vingt ans, dit s'être reconnu immédiatement dans le texte de Machoian : « Quand vous lisez un scénario aussi bon, vous savez qu'il doit être adapté à l'écran »<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>. Le tournage, écourté à vingt jours pour tenir le budget, se déroule dans d'anciennes villes minières et sur les salt flats de l'Utah ; Webley tractait lui-même une caravane sur le plateau chaque jour pour limiter les coûts de production<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>. Il cite parmi ses influences Carl Theodor Dreyer, Wim Wenders et les frères Dardenne, et raconte avoir revu <em>Perfect Days</em> de Wenders pendant la post-production à New York<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>.
+    </p>
+    <p>
+      Le scénario s'inspire d'un fait réel : en 2008, le Nebraska adopte une loi dite « Safe Haven », destinée à permettre l'abandon sans poursuites d'un nourrisson dans un lieu sûr. Une ambiguïté de rédaction — le mot « enfant » s'y substitue à une limite d'âge précise — ouvre une faille : trente-six enfants, dont plusieurs adolescents, sont ainsi confiés par leurs parents avant que le Nebraska ne légifère en urgence pour restreindre la mesure aux nourrissons de moins de trente jours<a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Machoian, mormon pratiquant ayant effectué une mission au Nebraska, dit avoir été profondément marqué par ces histoires de parents à bout de ressources<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 04</span>
+      <h2>Structure narrative <span class="colonne-sous">— relevé kilométrique</span></h2>
+    </div>
+    <p>
+      Le film adopte la forme classique du road movie — stations-service, motels, aires de repos — mais en retarde délibérément la clé de lecture : ce n'est qu'à l'approche du Nebraska que le spectateur comprend l'objet réel du voyage<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>. Selon <em>In Review Online</em>, le récit est porté par le regard d'Ella, dont la maturité précoce structure la perception que le film donne des événements — un dispositif que le critique juge cependant sous-exploité, la voix de l'enfant n'apportant selon lui qu'une profondeur limitée à ce qui est montré<a class="renvoi" href="#src-5" id="ref-5">[5]</a>.
+    </p>
+    <p>
+      L'accueil critique diverge nettement sur ce choix de rétention. <em>The Hollywood Reporter</em> loue un scénario qui « prend son temps » avant d'atteindre un apogée émotionnel dévastateur<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>, tandis que <em>ScreenRant</em> nuance : le procédé « fonctionne » à la première vision mais, une fois la clé donnée, « rabaisse la portée de ce qu'on a regardé » — au point que le film, selon ce critique, ne se revoit pas de la même manière deux fois<a class="renvoi" href="#src-6" id="ref-6">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 05</span>
+      <h2>Mise en scène et procédés techniques <span class="colonne-sous">— état des lieux</span></h2>
+    </div>
+    <p>
+      Paul Meyers filme les paysages désertiques de l'Utah — anciennes villes minières, salt flats — avec ce que <em>The Hollywood Reporter</em> décrit comme une « weightlessness » typique du cinéma de Sundance, portée par la partition délicate de Christopher Bear<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. <em>In Review Online</em> porte un jugement inverse sur les mêmes choix formels, qu'il qualifie de conventionnels — « lens flares incessants » et montages au ralenti récurrents — et juge dépourvus d'originalité<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.
+    </p>
+    <div class="coupure">
+      <p>« Une traversée mélancolique vers une destination mystérieuse, qui récompense la patience par son impact émotionnel cumulatif et la performance discrètement hantée de John Magaro. »</p>
+      <cite>Consensus critique, Rotten Tomatoes<a class="renvoi" href="#src-1" id="ref-1f">[1]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 06</span>
+      <h2>Personnages principaux <span class="colonne-sous">— passagers à bord</span></h2>
+    </div>
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <span class="name">Le père</span>
+        <span class="role">John Magaro</span>
+        <p>Veuf, ruiné par la saisie de sa maison, il maintient devant ses enfants la fiction d'un voyage de vacances ; Magaro livre une interprétation que la critique dit « heartbreaking », toute en retenue jusqu'à une libération finale<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Ella</span>
+        <span class="role">Molly Belle Wright</span>
+        <p>Neuf ans, l'aînée, chargée sans qu'on le lui demande vraiment de canaliser son jeune frère aux stations-service et aux motels ; sa perspicacité progressive porte une large part de la tension du film<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Charlie</span>
+        <span class="role">Wyatt Solis</span>
+        <p>Six ans, « une boule d'énergie » selon Webley, dont l'imprévisibilité enfantine vient constamment percuter la gravité contenue du voyage<a class="renvoi" href="#src-3" id="ref-3g">[3]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 07</span>
+      <h2>Thèmes <span class="colonne-sous">— panneaux indicateurs</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le deuil et la paternité en état de crise</span>
+        <p>Le film noue le deuil d'une épouse et mère à la ruine matérielle d'une famille de la classe ouvrière pendant la récession de 2008, faisant de la paternité solitaire du personnage de Magaro le point d'appui de tout le récit<a class="renvoi" href="#src-2" id="ref-2g">[2]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'empathie contre le jugement rapide</span>
+        <p>Cole Webley présente son film comme une invitation à suspendre le jugement porté sur des parents aux abois : « l'empathie est universelle, apolitique, et plus nécessaire que jamais », dit-il, en espérant que le public « pose des questions » plutôt que de conclure trop vite<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La route comme dispositif de rétention</span>
+        <p>La forme du road movie — motels, aires de repos, silences dans l'habitacle — sert moins à raconter un trajet géographique qu'à retarder une information que le spectateur ne reçoit qu'à l'arrivée, retournant rétroactivement le sens de chaque étape qui précède<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Une faille législative comme vérité historique</span>
+        <p>Le postscript du film, révélant l'existence réelle de la loi « Safe Haven » du Nebraska et de sa faille de rédaction ayant permis l'abandon légal de trente-six enfants en 2008, ancre rétroactivement la fiction dans un fait divers législatif vérifiable<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 08</span>
+      <h2>Réception critique et postérité <span class="colonne-sous">— rapport de contrôle</span></h2>
+    </div>
+    <p>
+      Sur Rotten Tomatoes, 91 % des 80 critiques recensées sont positives, pour une note moyenne de 7,5/10 ; Metacritic recense un score de 74/100, jugé « généralement favorable »<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. Le film obtient un accueil festivalier soutenu : prix du jury (ex æquo) au Festival du film américain de Deauville, meilleur film international au Kerry International Film Festival, meilleur réalisateur pour Webley et meilleur acteur pour Magaro à Newport Beach, et prix spécial du jury pour Molly Belle Wright aux Hamptons<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>.
+    </p>
+
+    <div class="bulletin">
+      <div class="bulletin-inner">
+        <span class="bulletin-label">Bulletin — chiffres à l'appui</span>
+        <div class="bulletin-grid">
+          <div class="stat"><span class="num">91 %</span><span class="cap">Rotten Tomatoes (80 critiques)</span></div>
+          <div class="stat"><span class="num">74 / 100</span><span class="cap">Metacritic</span></div>
+          <div class="stat"><span class="num">171 317 $</span><span class="cap">Recettes domestiques</span></div>
+          <div class="stat"><span class="num">20 jours</span><span class="cap">Durée du tournage</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="discretion">Chiffres arrêtés à la date de consultation des sources indiquées ci-dessous.</p>
+
+    <p>
+      La réception n'est cependant pas unanime sur le dénouement : certains critiques y voient un « rug-pull » calculé, transformant un drame d'observation en dispositif plus ouvertement manipulateur sur le plan émotionnel, quand d'autres estiment que la fin, sans être heureuse, « sonne juste »<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>. <em>In Review Online</em> va plus loin et voit dans le film un exemple d'un certain cinéma indépendant américain qui, selon le critique, « doit mourir », lui reprochant des signifiants convenus sans apport substantiel<a class="renvoi" href="#src-5" id="ref-5c">[5]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="colonne-head">
+      <span class="colonne-num">Sortie 09</span>
+      <h2>Conclusion <span class="colonne-sous">— fin de trajet</span></h2>
+    </div>
+    <p>
+      <em>Omaha</em> tient sur un pari risqué : faire reposer la lecture entière d'un film sur une information retenue jusqu'à ses dernières minutes, quitte à devoir rétroactivement réévaluer tout ce qui précède. Le geste de premier long métrage de Cole Webley, porté par une interprétation retenue et bouleversante de John Magaro et par deux jeunes acteurs remarquablement dirigés, doit beaucoup à un scénario de Robert Machoian mûri pendant plus d'une décennie et directement enraciné dans un fait législatif réel — la faille de la loi « Safe Haven » du Nebraska de 2008.
+    </p>
+    <p>
+      C'est peut-être aussi la limite du film : la division très nette de la critique sur son dénouement — entre ceux qui saluent une révélation qui rend justice, rétrospectivement, à la dignité de ses personnages, et ceux qui y voient un procédé qui rabaisse un drame d'observation plus subtil qu'il ne le laisse paraître au premier regard — suggère qu'<em>Omaha</em> se joue moins dans son twist que dans le trajet qui y mène : celui d'un père qui protège ses enfants jusqu'au bout, y compris de la vérité.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Journal de bord</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipedia (EN), « Omaha (film) » — <a href="https://en.wikipedia.org/wiki/Omaha_(film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Omaha_(film)</a></li>
+      <li id="src-2">The Hollywood Reporter, « 'Omaha' Review: John Magaro in Affecting Family Drama » — <a href="https://www.hollywoodreporter.com/movies/movie-reviews/omaha-review-john-magaro-1236116276/" target="_blank" rel="noopener">hollywoodreporter.com — Omaha Review</a></li>
+      <li id="src-3">Sundance Institute, « Give Me the Backstory: Get to Know Cole Webley, the Director of "Omaha" » — <a href="https://www.sundance.org/blogs/give-me-the-backstory-get-to-know-cole-webley-the-director-of-omaha/" target="_blank" rel="noopener">sundance.org — Cole Webley Backstory</a></li>
+      <li id="src-4">Flatwater Free Press, « New film 'Omaha' drew its inspiration from disastrous Nebraska law » — <a href="https://flatwaterfreepress.org/new-film-omaha-drew-its-inspiration-from-disastrous-nebraska-law-its-winning-praise-from-critics/" target="_blank" rel="noopener">flatwaterfreepress.org — Omaha Safe Haven Law</a></li>
+      <li id="src-5">In Review Online, « Omaha — Cole Webley [Review] » — <a href="https://inreviewonline.com/2026/04/24/omaha-review/" target="_blank" rel="noopener">inreviewonline.com — Omaha Review</a></li>
+      <li id="src-6">ScreenRant, « Omaha Review: Don't Let This Moving Family Drama Be All About Its Ending » — <a href="https://screenrant.com/omaha-2025-movie-review/" target="_blank" rel="noopener">screenrant.com — Omaha Review</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 9 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">← Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
