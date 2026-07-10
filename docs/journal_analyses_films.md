@@ -44,7 +44,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Moi, Daniel Blake | Ken Loach | 2016 | Drame social | ✅ Publié | 6 juillet 2026 | films/moi-daniel-blake.html | https://cdatso.github.io/analyses-de-films/films/moi-daniel-blake.html |
 | La Chevauchée fantastique | John Ford | 1939 | Western | ✅ Publié | 6 juillet 2026 | films/la-chevauchee-fantastique.html | https://cdatso.github.io/analyses-de-films/films/la-chevauchee-fantastique.html |
 | Le Doulos | Jean-Pierre Melville | 1962 | Film noir | ✅ Publié | 6-7 juillet 2026 (routine nocturne) | films/le-doulos.html | https://cdatso.github.io/analyses-de-films/films/le-doulos.html |
-| Sur la route d'Omaha | Cole Webley | 2025 | Drame | 🟡 Staging | 10 juillet 2026 (reprise supervisée après incident routine du 9→10) | films/sur-la-route-domaha.html | https://cdatso.github.io/analyses-de-films/films/sur-la-route-domaha.html |
+| Sur la route d'Omaha | Cole Webley | 2025 | Drame | ✅ Publié | 10 juillet 2026 (reprise supervisée après incident routine du 9→10, merge le 10/07) | films/sur-la-route-domaha.html | https://cdatso.github.io/analyses-de-films/films/sur-la-route-domaha.html |
 
 ---
 
