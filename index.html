@@ -136,10 +136,23 @@
     document.getElementById('copy-feedback').hidden = true;
   });
 
-  document.getElementById('copy-button').addEventListener('click', function () {
+  const copyButton = document.getElementById('copy-button');
+  const copyFeedback = document.getElementById('copy-feedback');
+
+  // navigator.clipboard n'existe qu'en contexte sécurisé (HTTPS) : sans lui,
+  // on masque le bouton — le texte du panneau reste copiable à la main.
+  if (!navigator.clipboard) {
+    copyButton.hidden = true;
+  }
+
+  copyButton.addEventListener('click', function () {
     const text = document.getElementById('fallback-text').textContent;
     navigator.clipboard.writeText(text).then(function () {
-      document.getElementById('copy-feedback').hidden = false;
+      copyFeedback.textContent = 'Copié !';
+      copyFeedback.hidden = false;
+    }).catch(function () {
+      copyFeedback.textContent = 'Échec de la copie — sélectionnez le texte ci-dessus et copiez-le manuellement.';
+      copyFeedback.hidden = false;
     });
   });
 </script>
