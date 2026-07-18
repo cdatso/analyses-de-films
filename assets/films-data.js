@@ -273,5 +273,15 @@ const FILMS = [
     summary: "Un père ruiné par la crise de 2008 conduit ses deux enfants vers une destination qu'il leur tait — et que ce road movie ne dévoile qu'à ses tout derniers mètres, quitte à rétroéclairer chaque étape parcourue.",
     url: 'films/sur-la-route-domaha.html',
     poster: 'assets/posters/sur-la-route-domaha.jpg'
+  },
+  {
+    slug: 'pandora',
+    title: 'Pandora',
+    director: 'Albert Lewin',
+    year: 1951,
+    genre: 'Mélodrame fantastique',
+    summary: "Albert Lewin filme Ava Gardner comme une statue de déesse pour mieux la faire redescendre parmi les mortels : un mélodrame ouvertement surréaliste, jugé prétentieux à sa sortie avant d'être reconnu comme un sommet du romantisme noir.",
+    url: 'films/pandora.html',
+    poster: 'assets/posters/pandora.jpg'
   }
 ];

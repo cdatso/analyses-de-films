@@ -31,6 +31,8 @@ Conventions :
 | 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | DVDClassik — analyse et critique | https://www.dvdclassik.com/critique/le-doulos-melville | HTTP 403 (blocage robot, récurrent sur ce domaine) | Fort — analyse française de référence | 🟡 couverte par avoir-alire.com et Mon Cinéma à Moi |
 | 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | Criterion Collection — fiche/essai du film | https://www.criterion.com/films/759-le-doulos | HTTP 403 (blocage robot) | Fort — essai critique de référence | 🔴 non récupérée (analyse rédigée sans) |
 | 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | Slant Magazine — review | https://www.slantmagazine.com/film/le-doulos/ | HTTP 403 (blocage robot) | Moyen | 🟡 couverte par Wikipedia (EN) et La Cinémathèque française |
+| 18-19 juil. 2026 (routine nocturne) | Pandora (1951) | Variety — critique d'époque (1950) | https://variety.com/1950/film/reviews/pandora-and-the-flying-dutchman-1200416919/ | HTTP 402 Payment Required (redirection vers tollbit.variety.com, paywall) | Moyen — critique corporative contemporaine de la sortie | 🟡 réception d'époque couverte par la citation du *New York Times* (Howard Thompson) et par Moviediva |
+| 18-19 juil. 2026 (routine nocturne) | Pandora (1951) | CriterionCast — theatrical review de la restauration | https://criterioncast.com/reviews/theatrical/joshua-reviews-albert-lewins-pandora-and-the-flying-dutchman-theatrical-review | HTTP 403 (blocage robot) | Moyen — regard critique sur la restauration 4K | 🟡 restauration documentée par Wikipedia (EN) et TCM (Film Foundation / Scorsese) |
 
 ## Incidents techniques du pipeline
 

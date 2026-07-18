@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pandora — Analyse cinématographique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette « toile métaphysique » : ciel de fin d'après-midi, plâtre, sable, ombre longue */
+    --ciel:#1b3b5c;
+    --ciel-bas:#3f6488;
+    --ciel-haut:#0e2138;
+    --platre:#f2ead9;
+    --platre-dim:#e2d6bd;
+    --sable:#c9a97a;
+    --ombre:#6b4f37;
+    --ombre-longue:rgba(27,59,92,0.22);
+    --encre:#20242c;
+    --encre-douce:#3f4550;
+    --gris:#8d8677;
+    --filet:rgba(32,36,44,0.16);
+    --filet-clair:rgba(242,234,217,0.20);
+    --sang:#a3302a;
+    --mer:#2f7d80;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--platre);
+    color:var(--encre-douce);
+    font-family:'Spectral', Georgia, serif;
+    font-weight:300;
+    line-height:1.78;
+    font-size:1.02rem;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Marcellus', 'Times New Roman', serif;
+    font-weight:400;
+    margin:0;
+    color:var(--encre);
+    letter-spacing:0.02em;
+  }
+
+  a{ color:var(--sang); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:focus-visible{ outline:2px solid var(--sang); outline-offset:3px; }
+
+  .cartel{
+    font-family:'Cutive Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.66rem;
+    color:var(--gris);
+  }
+
+  /* ---------- Couverture : place déserte, ombre portée, horizon bas ---------- */
+
+  .cover{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(178deg, var(--ciel-haut) 0%, var(--ciel) 46%, var(--ciel-bas) 74%, var(--sable) 74.4%, #b8955f 100%);
+    color:var(--platre);
+    padding:5.5rem 1.5rem 4.2rem;
+  }
+
+  /* arcade de Chirico : deux arches en pure CSS, projetées à droite */
+  .cover::before{
+    content:"";
+    position:absolute;
+    right:-4%;
+    bottom:26%;
+    width:46%;
+    height:58%;
+    background:
+      radial-gradient(circle at 22% 100%, transparent 0 20%, var(--ciel-haut) 20.5% 100%) 0 0/50% 100% no-repeat,
+      radial-gradient(circle at 22% 100%, transparent 0 20%, var(--ciel-haut) 20.5% 100%) 50% 0/50% 100% no-repeat;
+    opacity:0.55;
+    pointer-events:none;
+  }
+
+  /* ombre longue jetée sur le sable, comme une figure hors champ */
+  .cover::after{
+    content:"";
+    position:absolute;
+    left:12%;
+    bottom:0;
+    width:34%;
+    height:26%;
+    background:linear-gradient(100deg, rgba(14,33,56,0.42), rgba(14,33,56,0));
+    transform:skewX(-38deg);
+    pointer-events:none;
+  }
+
+  .cover-inner{
+    position:relative;
+    z-index:2;
+    max-width:52rem;
+    margin:0 auto;
+  }
+
+  .back-link{
+    display:inline-block;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.74rem;
+    letter-spacing:0.08em;
+    color:var(--platre-dim);
+    text-decoration:none;
+    border-bottom:1px solid var(--filet-clair);
+    padding-bottom:2px;
+    margin-bottom:3rem;
+  }
+  .back-link:hover{ color:#fff; border-color:var(--platre); }
+
+  .eyebrow{
+    display:block;
+    color:var(--sable);
+    margin-bottom:1.4rem;
+  }
+
+  .cover h1{
+    font-size:clamp(3rem, 11vw, 5.6rem);
+    line-height:0.94;
+    color:var(--platre);
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    /* ombre portée oblique : l'objet et son ombre, motif central du film */
+    text-shadow:0.16em 0.10em 0 rgba(14,33,56,0.55);
+  }
+
+  .orig-title{
+    font-family:'Spectral', serif;
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--platre-dim);
+    margin-top:1.5rem;
+  }
+
+  .horizon{
+    height:1px;
+    background:linear-gradient(90deg, var(--sable), rgba(201,169,122,0.15));
+    margin:2.2rem 0 1.4rem;
+  }
+
+  .meta-line{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.10em;
+    color:var(--platre-dim);
+    text-transform:uppercase;
+  }
+
+  .content-warning{
+    margin-top:2.4rem;
+    padding:1rem 1.2rem;
+    border-left:3px solid var(--sang);
+    background:rgba(14,33,56,0.38);
+    font-size:0.9rem;
+    color:var(--platre-dim);
+  }
+  .content-warning strong{ color:var(--platre); font-weight:600; }
+
+  /* ---------- Sommaire ---------- */
+
+  .programme{
+    max-width:52rem;
+    margin:0 auto;
+    padding:2.8rem 1.5rem 0;
+  }
+  .programme ol{
+    list-style:none;
+    margin:1rem 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
+    gap:0.15rem 1.6rem;
+  }
+  .programme a{
+    display:block;
+    padding:0.42rem 0;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    color:var(--encre-douce);
+    text-decoration:none;
+    border-bottom:1px solid var(--filet);
+  }
+  .programme a:hover{ color:var(--sang); }
+  .programme .num{ color:var(--sable); margin-right:0.7rem; }
+
+  /* ---------- Corps ---------- */
+
+  main{
+    max-width:52rem;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+
+  section{ margin-top:3.6rem; }
+
+  /* en-tête de section = cartel de musée */
+  .toile{
+    border-top:2px solid var(--encre);
+    padding-top:0.9rem;
+    margin-bottom:1.8rem;
+  }
+  .toile .cartel{ display:block; margin-bottom:0.35rem; }
+  .toile h2{
+    font-size:clamp(1.5rem, 4vw, 2.05rem);
+    line-height:1.14;
+  }
+
+  p{ margin:0 0 1.15rem; }
+
+  h3{
+    font-size:1.12rem;
+    margin:2.1rem 0 0.6rem;
+    color:var(--ombre);
+    font-style:normal;
+  }
+  h3::before{
+    content:"— ";
+    color:var(--sable);
+  }
+
+  /* renvoi de source : petit numéro d'inventaire */
+  sup.ref{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.02em;
+  }
+  sup.ref a{
+    text-decoration:none;
+    color:var(--mer);
+    padding:0 0.08em;
+  }
+  sup.ref a:hover{ text-decoration:underline; }
+
+  blockquote{
+    margin:1.6rem 0;
+    padding:0.2rem 0 0.2rem 1.4rem;
+    border-left:2px solid var(--sable);
+    font-style:italic;
+    color:var(--encre);
+    font-size:1.04rem;
+  }
+  blockquote cite{
+    display:block;
+    margin-top:0.5rem;
+    font-style:normal;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+
+  /* ---------- Fiche technique : cartel + affiche ---------- */
+
+  .fiche-wrap{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:2rem;
+  }
+  @media (min-width:44rem){
+    .fiche-wrap{ grid-template-columns:1fr minmax(13rem, 17rem); }
+  }
+
+  .fiche{
+    background:var(--platre-dim);
+    border:1px solid var(--filet);
+    padding:1.5rem 1.6rem;
+  }
+  .fiche dl{
+    margin:0;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0.42rem 1.2rem;
+    font-size:0.95rem;
+  }
+  .fiche dt{
+    font-family:'Cutive Mono', monospace;
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--gris);
+    padding-top:0.28rem;
+    white-space:nowrap;
+  }
+  .fiche dd{ margin:0; color:var(--encre); }
+
+  figure.poster{
+    margin:0;
+    align-self:start;
+  }
+  figure.poster img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--filet);
+    /* l'affiche projette elle aussi son ombre oblique */
+    box-shadow:0.5rem 0.5rem 0 rgba(27,59,92,0.16);
+  }
+  figure.poster figcaption{
+    margin-top:0.8rem;
+    font-family:'Cutive Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--gris);
+    line-height:1.6;
+  }
+
+  /* ---------- Sources ---------- */
+
+  .sources ol{
+    padding-left:1.4rem;
+    font-size:0.9rem;
+    line-height:1.7;
+  }
+  .sources li{ margin-bottom:0.6rem; }
+  .sources li::marker{
+    font-family:'Cutive Mono', monospace;
+    color:var(--sable);
+  }
+
+  footer{
+    max-width:52rem;
+    margin:0 auto;
+    padding:2rem 1.5rem 4rem;
+    border-top:1px solid var(--filet);
+  }
+
+  .note{
+    background:var(--platre-dim);
+    border-left:3px solid var(--mer);
+    padding:0.9rem 1.2rem;
+    font-size:0.92rem;
+    margin:1.6rem 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <span class="eyebrow cartel">Royaume-Uni — 1951 — Technicolor</span>
+    <h1>Pandora</h1>
+    <div class="orig-title">Pandora and the Flying Dutchman</div>
+    <div class="horizon"></div>
+    <div class="meta-line">Albert Lewin · Romulus Films · Photographie de Jack Cardiff</div>
+    <div class="content-warning">
+      <strong>Avertissement.</strong> Le film comporte un suicide par empoisonnement, une mise à mort dans l'arène et une noyade ; son dénouement repose entièrement sur le sacrifice volontaire d'un personnage.
+    </div>
+  </div>
+</header>
+
+<nav class="programme">
+  <span class="cartel">Sommaire</span>
+  <ol>
+    <li><a href="#fiche"><span class="num">I</span> Fiche technique</a></li>
+    <li><a href="#synopsis"><span class="num">II</span> Synopsis</a></li>
+    <li><a href="#production"><span class="num">III</span> Contexte de production</a></li>
+    <li><a href="#structure"><span class="num">IV</span> Structure narrative</a></li>
+    <li><a href="#mise-en-scene"><span class="num">V</span> Mise en scène</a></li>
+    <li><a href="#personnages"><span class="num">VI</span> Personnages</a></li>
+    <li><a href="#themes"><span class="num">VII</span> Thèmes</a></li>
+    <li><a href="#reception"><span class="num">VIII</span> Réception et postérité</a></li>
+    <li><a href="#conclusion"><span class="num">IX</span> Conclusion</a></li>
+    <li><a href="#sources"><span class="num">·</span> Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="toile">
+    <span class="cartel">Toile I</span>
+    <h2>Fiche technique</h2>
+  </div>
+
+  <div class="fiche-wrap">
+    <div class="fiche">
+      <dl>
+        <dt>Titre original</dt><dd>Pandora and the Flying Dutchman</dd>
+        <dt>Réalisation</dt><dd>Albert Lewin</dd>
+        <dt>Scénario</dt><dd>Albert Lewin — scénario original<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Photographie</dt><dd>Jack Cardiff (Technicolor)<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Musique</dt><dd>Alan Rawsthorne<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Montage</dt><dd>Ralph Kemplen<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Interprétation</dt><dd>Ava Gardner (Pandora Reynolds), James Mason (Hendrik van der Zee), Nigel Patrick, Sheila Sim, Harold Warrender, Mario Cabré, Marius Goring<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Production</dt><dd>Romulus Films (James et John Woolf) ; distribution MGM<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Tournage</dt><dd>Tossa de Mar (Costa Brava, Catalogne) ; Pendine Sands, pays de Galles<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Budget</dt><dd>1,2 million de dollars<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Durée</dt><dd>122 minutes<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Sortie</dt><dd>Royaume-Uni, février 1951 ; États-Unis différée après <em>Show Boat</em><sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+      </dl>
+    </div>
+
+    <figure class="poster">
+      <img src="../assets/posters/pandora.jpg"
+           alt="Affiche du film Pandora"
+           onerror="this.closest('.poster').remove()">
+      <figcaption>Affiche d'exploitation — collection de référence du projet</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="toile">
+    <span class="cartel">Toile II</span>
+    <h2>Synopsis</h2>
+  </div>
+
+  <p>Esperanza, petit port de la côte espagnole, au printemps 1930. Le film s'ouvre sur la découverte, par des pêcheurs, de deux corps enlacés remontés dans leurs filets<sup class="ref"><a href="#src-7">7</a></sup>. L'archéologue Geoffrey Fielding entreprend alors de raconter comment on en est arrivé là.</p>
+
+  <p>Pandora Reynolds, chanteuse américaine, règne sur la colonie d'expatriés désœuvrés qui hantent les bars de la ville. Elle inspire des passions qu'elle ne partage pas : un soupirant se donne la mort devant elle ; un pilote automobile occupé à préparer une tentative de record de vitesse terrestre accepte, pour lui prouver son amour, de précipiter sa voiture du haut d'une falaise. Elle consent alors à l'épouser — sans rien éprouver.</p>
+
+  <p>Une nuit, elle nage jusqu'à un yacht mouillé dans la baie. À bord, un Hollandais solitaire, Hendrik van der Zee, achève un portrait d'elle — peint avant de l'avoir jamais rencontrée<sup class="ref"><a href="#src-7">7</a></sup>. Ce que Geoffrey finira par établir, en traduisant un manuscrit néerlandais du XVII<sup>e</sup> siècle, tient en une phrase : cet homme est le Hollandais volant, condamné à errer sur les mers jusqu'à ce qu'une femme accepte de mourir pour lui<sup class="ref"><a href="#src-1">1</a></sup>. Entre-temps, le torero Juan Montalvo, ancien amant de Pandora, s'emploie à faire disparaître son rival.</p>
+</section>
+
+<section id="production">
+  <div class="toile">
+    <span class="cartel">Toile III</span>
+    <h2>Contexte de production</h2>
+  </div>
+
+  <p>Albert Lewin est une anomalie hollywoodienne. Formé à Harvard<sup class="ref"><a href="#src-6">6</a></sup>, monté dans la hiérarchie de la MGM par le poste de producteur avant de passer à la réalisation, il n'a signé qu'une poignée de films — sept selon TCM<sup class="ref"><a href="#src-2">2</a></sup> — et n'est jamais devenu un nom populaire. La Harvard Film Archive le décrit comme « tout sauf une figure hollywoodienne typique », attaché à des « artistes et des décadents dont les obsessions sombres les placent en porte-à-faux avec le monde conventionnel », et créditant d'une « maîtrise attentive de la mise en scène qui marie un classicisme hollywoodien soigné à une passion du décor exotique »<sup class="ref"><a href="#src-5">5</a></sup>.</p>
+
+  <p><em>Pandora</em> est son premier scénario entièrement original<sup class="ref"><a href="#src-1">1</a></sup> et son premier long métrage intégralement en couleur<sup class="ref"><a href="#src-7">7</a></sup>. Le projet a pu se faire à la faveur du report de <em>Quo Vadis</em> en 1949, qui libérait Lewin de ses obligations de producteur ; le financement est venu de la société britannique Romulus Films, des frères James et John Woolf, la MGM assurant la distribution américaine<sup class="ref"><a href="#src-1">1</a></sup>. Les sources françaises insistent sur le versant négatif de ce montage : c'est parce que la MGM refusait de financer le film que Lewin a dû l'écrire et le produire lui-même<sup class="ref"><a href="#src-6">6</a></sup><sup class="ref"><a href="#src-7">7</a></sup>.</p>
+
+  <p>Lewin situe le récit dans le milieu de la « génération perdue » — celui de Fitzgerald et de Hemingway<sup class="ref"><a href="#src-6">6</a></sup> — et y greffe un appareil de citations : les quatre vers du <em>Rubaiyat</em> d'Omar Khayyam qui ouvrent le film, le « Dover Beach » de Matthew Arnold récité à mi-parcours, <em>Le soleil se lève aussi</em> de Hemingway en toile de fond<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-7">7</a></sup>. La version de la légende retenue doit à l'opéra de Wagner<sup class="ref"><a href="#src-6">6</a></sup>.</p>
+
+  <h3>Man Ray, et la question de qui a peint quoi</h3>
+
+  <p>Man Ray, ami de Lewin, a participé à la fabrication visuelle du film — mais les sources ne s'accordent pas sur l'étendue exacte de sa contribution, et il faut le dire plutôt que de trancher. Wikipédia lui attribue des pièces d'échecs de facture cubiste et « plusieurs tableaux visibles dans le film »<sup class="ref"><a href="#src-1">1</a></sup> ; TCM va plus loin et lui prête directement « le mémorable tableau de Pandora »<sup class="ref"><a href="#src-2">2</a></sup> ; le Ciné-club de Caen, lui, attribue la toile à Ferdinand Bellan et réserve à Man Ray l'échiquier de Geoffrey et les photographies d'Ava Gardner<sup class="ref"><a href="#src-7">7</a></sup>. Le point de convergence est plus intéressant que le litige : dans tous les cas, un surréaliste historique a été appelé à produire les objets autour desquels le film organise son sens.</p>
+
+  <p>De l'aveu rapporté par Moviediva, le film entier serait né d'une seule image mentale — une boule de feu roulant devant la statue d'une déesse grecque — que Lewin a maintenue contre les protestations du studio<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <h3>Le tournage, et son roman parallèle</h3>
+
+  <p>Le tournage de Tossa de Mar a produit sa propre légende, dûment documentée. Jack Cardiff a raconté l'obsession du réalisateur pour sa vedette : « Lewin pensait qu'Ava était une déesse […]. Il restait simplement à la regarder, la regarder »<sup class="ref"><a href="#src-4">4</a></sup> — réclamant tant de gros plans qu'il finissait, dit Cardiff, par ne plus filmer que son visage. Sa partenaire Sheila Sim estimait pour sa part que cette beauté écrasait le jugement porté sur son jeu, et tenait Gardner pour « bien meilleure actrice qu'on ne le lui a reconnu »<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>Pendant le tournage, Gardner s'éprit du torero Mario Cabré, qui joue Montalvo. Quand Frank Sinatra fit le voyage d'Espagne, le décorateur John Hawksworth alerta Lewin en rapportant la menace de Cabré — « Quand je le verrai… je vais le tuer » — à quoi Lewin répondit qu'« il ne serait pas bon qu'un de nos acteurs assassine Frank Sinatra »<sup class="ref"><a href="#src-4">4</a></sup>. Les scènes de corrida, tournées à Gérone, furent réellement dangereuses ; Cabré y déclara : « Peut-être qu'aujourd'hui je vais mourir pour Ava Gardner »<sup class="ref"><a href="#src-4">4</a></sup>. L'anecdote est plaisante, mais elle dit quelque chose du film : le sacrifice amoureux, sujet de <em>Pandora</em>, se jouait aussi en coulisses, sur le mode de la vantardise.</p>
+</section>
+
+<section id="structure">
+  <div class="toile">
+    <span class="cartel">Toile IV</span>
+    <h2>Structure narrative</h2>
+  </div>
+
+  <p>Le film est construit sur un retour en arrière encadré : il commence par sa fin — les deux corps ramenés par les filets — puis remonte au printemps précédent, sous la conduite d'un narrateur, l'archéologue Geoffrey Fielding<sup class="ref"><a href="#src-6">6</a></sup><sup class="ref"><a href="#src-7">7</a></sup>. Le procédé n'a rien d'ornemental. Il évacue d'emblée le suspense — nous savons que Pandora et Hendrik mourront ensemble — pour déplacer l'intérêt du <em>quoi</em> vers le <em>comment</em> : non pas « que va-t-il arriver ? », mais « qu'est-ce qui peut bien conduire une femme incapable d'aimer à mourir volontairement ? ».</p>
+
+  <p>Le choix du narrateur redouble cette logique. Confier le récit à un archéologue, c'est faire du film une opération de datation : Geoffrey lit et traduit le manuscrit du XVII<sup>e</sup> siècle qui révèle l'identité de Hendrik, exactement comme il déchiffrerait un tesson gréco-phénicien. Le fantastique n'entre donc pas dans le film par effraction ; il y est introduit par la voie savante, sous forme de document authentifié. C'est la ruse d'écriture la plus efficace de Lewin : elle rend le surnaturel discutable au lieu de le rendre spectaculaire.</p>
+
+  <p>Le corps du récit progresse par une série de prétendants — le suicidé, le pilote, le torero, le Hollandais — chacun offrant à Pandora une preuve d'amour d'un degré supérieur. La structure est celle d'un conte à épreuves, où l'enjeu monte jusqu'à ce que la seule surenchère restante soit la mort elle-même. Ce dispositif justifie rétrospectivement le caractère répétitif de la première heure : chaque prétendant est un palier nécessaire de l'escalade.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="toile">
+    <span class="cartel">Toile V</span>
+    <h2>Mise en scène et procédés techniques</h2>
+  </div>
+
+  <p>Jack Cardiff sort tout juste de sa collaboration avec Powell et Pressburger, et travaille ici en pleine forme expérimentale<sup class="ref"><a href="#src-3">3</a></sup>. Le Technicolor n'y sert pas la joliesse : il est utilisé pour produire une <em>étrangeté</em>. Les critiques s'accordent sur la référence tutélaire — Giorgio De Chirico<sup class="ref"><a href="#src-6">6</a></sup><sup class="ref"><a href="#src-7">7</a></sup>, dont la peinture métaphysique fournit au film ses places désertes, ses perspectives creusées et ses ombres portées démesurées ; DVDClassik ajoute Magritte à la généalogie<sup class="ref"><a href="#src-6">6</a></sup>.</p>
+
+  <p>Le principe formel le plus constant est un traitement inhabituel de la profondeur de champ. Dylan Adamson observe, à propos de la scène de fiançailles au clair de lune, que « l'arrière-plan écrase presque le premier plan »<sup class="ref"><a href="#src-3">3</a></sup> : Pandora est au premier plan, on la regarde, mais son propre regard part vers un navire qui vient de mouiller au fond du cadre. La composition dit ce que les dialogues taisent — le désir est déjà ailleurs. Adamson formule cette économie du regard avec justesse : dans <em>Pandora</em>, « quelqu'un regarde quelqu'un qui regarde quelqu'un d'autre », chaîne qui ne s'interrompt que sur un reflet de lune<sup class="ref"><a href="#src-3">3</a></sup>.</p>
+
+  <p>La logique surréaliste opère aussi par télescopage d'univers. Adamson relève que toreros, pilotes de course et capitaines hollandais du XVII<sup>e</sup> siècle coexistent sans que le film daigne justifier cette cohabitation<sup class="ref"><a href="#src-3">3</a></sup>. Ce n'est pas un défaut de vraisemblance mais une méthode : comme chez De Chirico, « l'échelle, la perspective et le temps sont agencés non selon la logique »<sup class="ref"><a href="#src-3">3</a></sup>, mais selon une nécessité intérieure.</p>
+
+  <p>Reste l'usage du gros plan, dont Cardiff a lui-même souligné l'excès<sup class="ref"><a href="#src-4">4</a></sup>. On peut y voir la complaisance d'un cinéaste amoureux de son actrice ; on peut aussi y lire un choix cohérent avec le sujet. Filmer Ava Gardner comme un objet d'adoration — cadrée frontalement, éclairée pour la statuaire plus que pour la psychologie — c'est produire à l'image ce que le récit affirme : cette femme est d'abord une idole, et le film devra travailler à la faire redescendre parmi les mortels.</p>
+</section>
+
+<section id="personnages">
+  <div class="toile">
+    <span class="cartel">Toile VI</span>
+    <h2>Personnages principaux</h2>
+  </div>
+
+  <h3>Pandora Reynolds</h3>
+
+  <p>Le trajet du personnage est une descente vers l'humain. DVDClassik le résume exactement : Pandora passe d'une figure indifférente, « statuaire », à une femme passionnée et humanisée<sup class="ref"><a href="#src-6">6</a></sup>. Au départ, elle exerce sur les hommes un pouvoir qu'elle ne désire pas et dont elle mesure mal le prix : quand un soupirant se tue devant elle, elle reprend sa chanson. Sa cruauté n'est pas de la méchanceté, c'est une absence — elle ne trouve rien en elle qui réponde à ce qu'on lui offre.</p>
+
+  <p>Le nom fait le programme. Le film assimile la Pandore grecque à Ève<sup class="ref"><a href="#src-7">7</a></sup> : la femme par qui le malheur entre dans le monde. Mais Lewin retourne la fable. Sa Pandora ne libère pas les maux par curiosité ; elle les provoque par indifférence, et se rachète par un acte de volonté. Le mythe est convoqué pour être corrigé.</p>
+
+  <h3>Hendrik van der Zee</h3>
+
+  <p>James Mason, déjà installé dans l'emploi du protagoniste ténébreux et magnétique<sup class="ref"><a href="#src-2">2</a></sup>, incarne un héros mélancolique et torturé<sup class="ref"><a href="#src-6">6</a></sup> dont la particularité est d'être en position inverse de la sienne : il ne peut pas mourir, elle ne peut pas aimer. Chacun détient exactement ce qui manque à l'autre.</p>
+
+  <p>Sa faute d'origine — avoir tué sa femme sur un soupçon d'infidélité — donne au personnage son épaisseur morale. Le Hollandais n'est pas une victime d'un sort arbitraire : il expie une jalousie meurtrière. Ce qui rend son dilemme final réellement tragique : demander à Pandora de mourir pour lui, ce serait répéter, sous une forme sublimée, le geste par lequel il a jadis disposé de la vie d'une femme.</p>
+
+  <h3>Le tableau comme troisième personnage</h3>
+
+  <p>La toile que Hendrik peint avant d'avoir rencontré Pandora est le pivot symbolique du film. Le Ciné-club de Caen restitue la scène décisive : furieuse, elle en gratte le visage ; il transforme alors le portrait en déclarant avoir eu tort de peindre la déesse d'après une femme réelle, et l'abstraction qui en résulte figure l'humanité originelle<sup class="ref"><a href="#src-7">7</a></sup>. Le geste condense toute la thèse du film : l'idole est effacée pour que la personne apparaisse.</p>
+</section>
+
+<section id="themes">
+  <div class="toile">
+    <span class="cartel">Toile VII</span>
+    <h2>Thèmes</h2>
+  </div>
+
+  <h3>Le prix de l'amour, ou ce qu'on accepte de sacrifier</h3>
+
+  <p>Le Ciné-club de Caen identifie le thème central sans détour : « ce que l'on accepte de sacrifier » à l'amour, jusqu'à l'acceptation du sacrifice ultime<sup class="ref"><a href="#src-7">7</a></sup>. Le film procède par gradation matérielle avant d'atteindre l'immatériel — on sacrifie d'abord une voiture de course (un objet coûteux, l'œuvre d'une vie technique), puis une carrière, puis une vie. La question posée par DVDClassik est bien celle que le récit instruit : l'amour justifie-t-il le sacrifice et la damnation<sup class="ref"><a href="#src-6">6</a></sup> ?</p>
+
+  <h3>L'idole et la mortelle</h3>
+
+  <p>Tout le film travaille l'écart entre l'image d'une femme et la femme elle-même — écart que la production elle-même a reproduit, entre un réalisateur qui la contemplait comme une déesse<sup class="ref"><a href="#src-4">4</a></sup> et une partenaire de plateau qui défendait son travail d'actrice<sup class="ref"><a href="#src-4">4</a></sup>. Que le film ait fini par consacrer Gardner comme icône est une ironie mesurable : l'œuvre qui raconte le désenvoûtement d'une idole a produit une idole.</p>
+
+  <h3>Le syncrétisme comme méthode</h3>
+
+  <p>Mythe grec, légende nordique, opéra wagnérien, archéologie gréco-phénicienne, poésie persane et victorienne, surréalisme contemporain : le Ciné-club de Caen parle justement d'un syncrétisme allant « de la Phénicie au surréalisme »<sup class="ref"><a href="#src-7">7</a></sup>. C'est le principe unificateur du film, et sa principale prise de risque — l'accusation de préciosité, qui lui fut adressée à sa sortie, vise exactement cet empilement de références.</p>
+
+  <h3>L'éternité comme malédiction</h3>
+
+  <p>Le film inverse méthodiquement la valeur accordée à l'immortalité. Ce que le Hollandais cherche n'est pas à vivre mais à finir ; la mort y est présentée comme un privilège de mortel. Adamson note que mort et immortalité finissent par fusionner dans une même économie du désir<sup class="ref"><a href="#src-3">3</a></sup> — le dénouement ne les oppose plus, il les confond.</p>
+</section>
+
+<section id="reception">
+  <div class="toile">
+    <span class="cartel">Toile VIII</span>
+    <h2>Réception critique et postérité</h2>
+  </div>
+
+  <p>L'accueil initial fut divisé, et le partage se fit sur une ligne nette : chef-d'œuvre ou pose d'esthète. Moviediva résume l'époque en constatant que les comptes rendus oscillaient entre le sommet artistique et la folie prétentieuse<sup class="ref"><a href="#src-4">4</a></sup>. Aux États-Unis, Howard Thompson, dans le <em>New York Times</em>, tenait le film pour une « étude sérieuse, complexe mais peu excitante », tout en saluant la photographie de Cardiff, capable de « capter les qualités spectrales du récit » et « les beautés exquises des décors et des coutumes espagnols »<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>Le jugement commercial fut plus favorable que le jugement critique : le film fut l'un des succès du box-office britannique de 1951, <em>Kinematograph Weekly</em> le désignant comme un « notable performer »<sup class="ref"><a href="#src-1">1</a></sup>. Les recettes déclarées — environ 1 247 000 dollars aux États-Unis et au Canada, 354 000 à l'international, pour un budget de 1,2 million<sup class="ref"><a href="#src-1">1</a></sup> — dessinent toutefois un résultat serré.</p>
+
+  <p>La France a d'abord été sévère : le film y fut jugé prétentieux à sa sortie, et il a fallu attendre plusieurs décennies pour que la critique le reprenne à son compte et lui reconnaisse un statut de chef-d'œuvre<sup class="ref"><a href="#src-6">6</a></sup>. Le mot le plus juste sur cette réévaluation vient d'ailleurs d'un critique français, cité par Moviediva, qui salua en Gardner « la plus grande femme surréaliste de l'histoire du cinéma »<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>La postérité s'est finalement jouée sur le terrain matériel, celui de la conservation. Martin Scorsese a admiré le film au point que sa Film Foundation en a entrepris la restauration Technicolor<sup class="ref"><a href="#src-2">2</a></sup>, et une version restaurée en 4K est sortie en février 2020 : plus d'une douzaine d'années de travail, financées in fine par Cohen Media Group, et plus de 700 heures de restauration numérique portant sur 177 120 photogrammes<sup class="ref"><a href="#src-1">1</a></sup>. Sur Rotten Tomatoes, 68 % des 34 critiques recensés sont favorables<sup class="ref"><a href="#src-1">1</a></sup>. Enfin, Tossa de Mar a érigé en 1996 une statue d'Ava Gardner sur la colline dominant la plage<sup class="ref"><a href="#src-1">1</a></sup> — le film aura donc laissé un monument avant d'obtenir une réputation.</p>
+</section>
+
+<section id="conclusion">
+  <div class="toile">
+    <span class="cartel">Toile IX</span>
+    <h2>Conclusion</h2>
+  </div>
+
+  <p><em>Pandora</em> est un film dont les défauts et les réussites procèdent de la même décision. Lewin a voulu un mélodrame qui pense — qui cite Arnold et Khayyam, qui convoque De Chirico et Man Ray, qui traite la légende du Hollandais volant comme un document d'archive à traduire. Cette ambition produit à la fois ce qui date le film (une littérarité appuyée, des dialogues qui expliquent parfois ce que l'image a déjà dit) et ce qui le rend, soixante-quinze ans plus tard, plus vivant que la plupart des romances de studio de son époque.</p>
+
+  <p>Le reproche de préciosité, formulé dès 1951 et longtemps répété en France<sup class="ref"><a href="#src-6">6</a></sup>, n'est pas infondé — il est simplement mal ciblé. Ce que l'on prenait pour de l'ornement était une méthode : l'accumulation de références hétérogènes est exactement le procédé par lequel le film obtient son régime onirique. Un mélodrame cohérent aurait exigé de choisir entre le torero et le capitaine fantôme ; en refusant de choisir, Lewin fabrique le seul espace où son sujet — un désir qui ne se fixe jamais, jusqu'à ce qu'il se fixe une fois et tue — devient représentable.</p>
+
+  <p>Reste la tension que le film n'a pas résolue, et qui fait peut-être sa plus grande valeur documentaire : il raconte le désenvoûtement d'une idole tout en la fabriquant plan par plan. Cardiff a lui-même décrit un tournage où le réalisateur ne filmait plus guère qu'un visage<sup class="ref"><a href="#src-4">4</a></sup>. <em>Pandora</em> est donc à la fois la critique et le produit de l'adoration cinématographique — et c'est cette contradiction, davantage que son érudition affichée, qui continue de le rendre troublant.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="toile">
+    <span class="cartel">Inventaire</span>
+    <h2>Sources</h2>
+  </div>
+
+  <div class="note">
+    Sources effectivement consultées lors de la préparation de cette analyse. Deux références souhaitées n'ont pas pu être ouvertes (la critique d'époque de <em>Variety</em>, HTTP 402, et la chronique de CriterionCast, HTTP 403) ; elles ne sont donc pas citées et sont consignées au journal d'erreurs du projet.
+  </div>
+
+  <ol>
+    <li id="src-1">Wikipedia (EN), « Pandora and the Flying Dutchman » — <a href="https://en.wikipedia.org/wiki/Pandora_and_the_Flying_Dutchman">en.wikipedia.org</a></li>
+    <li id="src-2">Turner Classic Movies, article sur <em>Pandora and the Flying Dutchman</em> — <a href="https://www.tcm.com/articles/345155/pandora-and-the-flying-dutchman">tcm.com</a></li>
+    <li id="src-3">Dylan Adamson, « Pandora and the Flying Dutchman — Albert Lewin », <em>In Review Online</em>, 14 avril 2023 — <a href="https://inreviewonline.com/2023/04/14/pandora-and-the-flying-dutchman/">inreviewonline.com</a></li>
+    <li id="src-4">Moviediva, « Pandora and the Flying Dutchman » — <a href="https://moviediva.com/reviewpages/mdpandoradutchman/">moviediva.com</a></li>
+    <li id="src-5">Harvard Film Archive, « Beyond Good &amp; Evil: The Films of Albert Lewin » — <a href="https://harvardfilmarchive.org/programs/beyond-good-and-evil-the-films-of-albert-lewin/3">harvardfilmarchive.org</a></li>
+    <li id="src-6">DVDClassik, « Pandora de Albert Lewin (1951) — analyse et critique du film » — <a href="https://www.dvdclassik.com/critique/pandora-lewin">dvdclassik.com</a></li>
+    <li id="src-7">Ciné-club de Caen, « Pandora d'Albert Lewin » — <a href="https://www.cineclubdecaen.com/realisateur/lewin/pandora.htm">cineclubdecaen.com</a></li>
+    <li id="src-poster">Affiche : collection de référence locale du projet (dépôt vérifié libre de droits par le propriétaire du site)</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <span class="cartel">Analyse rédigée à partir des sources ci-dessus — 18 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -247,6 +247,7 @@ dépôt (aucune de ces 16 affiches n'a été retouchée depuis son ajout).
 | 25 | La Chevauchée fantastique (John Ford, 1939) | `la-chevauchee-fantastique` | 2026-07-06 | `7f83058` | 780×1170 | 280 Ko | non enregistrée à l'origine |
 | 26 | Le Doulos (Jean-Pierre Melville, 1962) | `le-doulos` | 2026-07-07 | `f48f4c0` | 780×1170 | 230 Ko | **TMDB, id 20778, vérifié par titre** (seule provenance journalisée, dans le message de commit) |
 | 27 | Sur la route d'Omaha (Cole Webley, 2025) | `sur-la-route-domaha` | 2026-07-10 | `877d9b0` | 780×1170 | 184 Ko | non enregistrée à l'origine |
+| 28 | Pandora (Albert Lewin, 1951) | `pandora` | 2026-07-18 | (routine nocturne 18-19/07) | 1400×1887 | 1660 Ko | **Base d'images locale (priorité 1)** : `D:\documentation\Database of Movie's Pictures\1 affiches de films\1951 Pandora Albert Lewin_01.jpg` — dépôt vérifié libre de droits par AH, publiable directement |
 
 **⚠ Anomalie de format signalée (à instruire à l'étape qualité du dossier affiches, BKL-048).**
 L'affiche `moi-daniel-blake.jpg` est en **1000×750, orientation paysage** — atypique pour une
