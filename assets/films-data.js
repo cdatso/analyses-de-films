@@ -276,12 +276,25 @@ const FILMS = [
   },
   {
     slug: 'pandora',
-    title: 'Pandora',
+    title: 'Pandora — Champ',
     director: 'Albert Lewin',
     year: 1951,
     genre: 'Mélodrame fantastique',
     summary: "Albert Lewin filme Ava Gardner comme une statue de déesse pour mieux la faire redescendre parmi les mortels : un mélodrame ouvertement surréaliste, jugé prétentieux à sa sortie avant d'être reconnu comme un sommet du romantisme noir.",
     url: 'films/pandora.html',
-    poster: 'assets/posters/pandora.jpg'
+    poster: 'assets/posters/pandora.jpg',
+    producteur: 'Claude (pipeline, routine nocturne)'
+  },
+  {
+    slug: 'pandora-contrechamp',
+    title: 'Pandora — Contrechamp',
+    director: 'Albert Lewin',
+    year: 1951,
+    genre: 'Mélodrame fantastique',
+    summary: "La même œuvre relue par un second regard : reprise et enrichissement squad d'une analyse déléguée à OpenAI GPT-5.5, avec un appareil théorique deleuzien (l'ouverture à la lunette, la « femme originaire ») absent du champ.",
+    url: 'films/pandora-contrechamp.html',
+    poster: 'assets/posters/pandora.jpg',
+    producteur: 'OpenAI GPT-5.5 (reprise et enrichissement squad)',
+    variantOf: 'pandora'
   }
 ];
