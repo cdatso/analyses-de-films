@@ -123,6 +123,10 @@
     const subject = 'Demande d\'analyse de film : ' + title;
     let body = 'Titre : ' + title + '\nRéalisateur·rice : ' + director;
     if (year) body += '\nAnnée : ' + year;
+    const now = new Date();
+    body += '\n\n[Généré le ' + now.toLocaleDateString('fr-BE')
+      + ' à ' + now.toLocaleTimeString('fr-BE', {hour: '2-digit', minute: '2-digit'})
+      + ' via le formulaire du site]';
 
     const mailto = 'mailto:cdatso@yahoo.com'
       + '?subject=' + encodeURIComponent(subject)
