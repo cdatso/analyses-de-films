@@ -329,5 +329,16 @@ const FILMS = [
     url: 'films/le-samourai.html',
     poster: 'assets/posters/le-samourai.jpg',
     producteur: 'Claude (pipeline, routine nocturne)'
+  },
+  {
+    slug: 'hitchcock-truffaut',
+    title: 'Hitchcock/Truffaut',
+    director: 'Kent Jones',
+    year: 2015,
+    genre: 'Documentaire',
+    summary: "Truffaut avait enfermé Hitchcock huit jours dans un bureau d'Universal pour le sauver de sa réputation d'amuseur ; cinquante ans plus tard, Kent Jones rouvre les bandes et compose, sans tout à fait le vouloir, le portrait d'un panthéon devenu club.",
+    url: 'films/hitchcock-truffaut.html',
+    poster: 'assets/posters/hitchcock-truffaut.jpg',
+    producteur: 'Claude (pipeline, routine nocturne)'
   }
 ];

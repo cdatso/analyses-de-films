@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La bande et le livre — Hitchcock/Truffaut (2015)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#15120f;
+    --noir-doux:#241e19;
+    --oxyde:#7a4a24;
+    --oxyde-clair:#b07b45;
+    --oxyde-pale:#d9b98f;
+    --papier:#f1ece1;
+    --papier-creux:#e5ddcc;
+    --papier-ombre:rgba(33,28,24,0.10);
+    --rouge:#c1201d;
+    --rouge-sombre:#8e1512;
+    --encre:#211c18;
+    --encre-douce:#4c433a;
+    --gris:#8b8073;
+    --blanc:#fbf8f2;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--papier);
+    color:var(--encre);
+    font-family:'Crimson Pro', Georgia, serif;
+    font-size:1.09rem;
+    font-weight:400;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ---------- RUBAN MAGNÉTIQUE ---------- */
+  .ruban{
+    height:14px;
+    background:
+      linear-gradient(to bottom,
+        rgba(0,0,0,0.35) 0 1px,
+        var(--oxyde-clair) 1px 5px,
+        var(--oxyde) 5px 10px,
+        var(--noir-doux) 10px 13px,
+        rgba(0,0,0,0.35) 13px 14px);
+  }
+
+  /* ---------- BANDEAU DE TÊTE ---------- */
+  header.bobine{
+    background:var(--noir);
+    color:var(--blanc);
+    background-image:
+      repeating-linear-gradient(to bottom,
+        rgba(255,255,255,0.028) 0 1px,
+        rgba(0,0,0,0) 1px 4px);
+    padding:2.2rem 1.4rem 2.8rem;
+  }
+  .bobine-inner{ max-width:880px; margin:0 auto; }
+
+  .retour{
+    display:inline-block;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.64rem;
+    font-weight:400;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--oxyde-pale);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    margin-bottom:2.2rem;
+  }
+  .retour:hover{ color:var(--rouge); border-bottom-color:var(--rouge); }
+
+  .etiquette-bande{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.62rem;
+    font-weight:400;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gris);
+    margin-bottom:1.4rem;
+  }
+  .etiquette-bande::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(to right, var(--oxyde), rgba(0,0,0,0));
+  }
+  .disque{
+    width:13px; height:13px;
+    border-radius:50%;
+    border:2px solid var(--oxyde-clair);
+    flex:0 0 auto;
+  }
+
+  header h1{
+    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-size:clamp(1.5rem, 5.4vw, 2.9rem);
+    line-height:1.16;
+    letter-spacing:-0.01em;
+    margin:0 0 0.15rem;
+    text-transform:uppercase;
+  }
+  header h1 .barre{ color:var(--rouge); }
+  header .millesime{
+    font-family:'Azeret Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--oxyde-pale);
+    margin-top:0.9rem;
+  }
+
+  /* compteur mécanique */
+  .compteur{
+    display:inline-flex;
+    gap:3px;
+    margin:1.8rem 0 0.4rem;
+  }
+  .compteur span{
+    font-family:'Azeret Mono', monospace;
+    font-size:0.78rem;
+    font-weight:500;
+    background:var(--noir-doux);
+    border:1px solid rgba(217,185,143,0.28);
+    color:var(--oxyde-pale);
+    padding:0.18rem 0.42rem;
+    border-radius:2px;
+  }
+  .compteur .rouge{ color:var(--rouge); border-color:rgba(193,32,29,0.5); }
+
+  .accroche{
+    max-width:660px;
+    font-size:1.13rem;
+    font-weight:300;
+    line-height:1.66;
+    color:#ded5c6;
+    margin:1.3rem 0 0;
+  }
+  .accroche em{ color:var(--blanc); font-style:italic; }
+
+  /* ---------- CORPS ---------- */
+  main{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 1.4rem 3rem;
+  }
+
+  section{ padding:3rem 0 0.6rem; }
+
+  .tete-section{
+    display:flex;
+    align-items:flex-start;
+    gap:1.05rem;
+    margin-bottom:1.6rem;
+    padding-bottom:0.9rem;
+    border-bottom:1px solid var(--papier-ombre);
+  }
+  .piste-num{
+    flex:0 0 auto;
+    width:2.5rem; height:2.5rem;
+    border-radius:50%;
+    background:var(--noir);
+    color:var(--oxyde-pale);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.85rem;
+    font-weight:500;
+    position:relative;
+  }
+  .piste-num::after{
+    content:"";
+    position:absolute;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--papier);
+  }
+  .tete-section .libelle{
+    font-family:'Azeret Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gris);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .tete-section h2{
+    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-size:clamp(0.95rem, 2.7vw, 1.18rem);
+    line-height:1.35;
+    margin:0;
+    text-transform:uppercase;
+    letter-spacing:-0.005em;
+  }
+
+  h3{
+    font-family:'Azeret Mono', monospace;
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    color:var(--oxyde);
+    margin:2.1rem 0 0.6rem;
+  }
+  h3::before{ content:"▮ "; color:var(--rouge); }
+
+  p{ margin:0 0 1.05rem; }
+  em{ font-style:italic; }
+  strong{ font-weight:600; }
+
+  /* renvois de sources */
+  sup.piste{ font-size:0.62em; line-height:0; }
+  sup.piste a{
+    font-family:'Azeret Mono', monospace;
+    color:var(--rouge);
+    text-decoration:none;
+    padding:0 0.1em;
+    border-bottom:1px dotted rgba(193,32,29,0.45);
+  }
+  sup.piste a:hover{ background:rgba(193,32,29,0.10); }
+
+  /* ---------- FICHE TECHNIQUE ---------- */
+  .fiche{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 210px;
+    gap:2rem;
+    align-items:start;
+  }
+  @media (max-width:640px){
+    .fiche{ grid-template-columns:1fr; }
+  }
+  figure.poster{
+    margin:0;
+    border:1px solid var(--papier-ombre);
+    padding:8px;
+    background:var(--papier-creux);
+    box-shadow:0 8px 20px rgba(33,28,24,0.13);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+
+  dl.credits{ margin:0; }
+  dl.credits > div{
+    display:grid;
+    grid-template-columns:9.5rem minmax(0,1fr);
+    gap:0.7rem;
+    padding:0.42rem 0;
+    border-bottom:1px dotted rgba(33,28,24,0.16);
+  }
+  @media (max-width:520px){
+    dl.credits > div{ grid-template-columns:1fr; gap:0.1rem; }
+  }
+  dl.credits dt{
+    font-family:'Azeret Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    color:var(--gris);
+    padding-top:0.22rem;
+  }
+  dl.credits dd{ margin:0; }
+
+  /* ---------- BLOC TRANSCRIPTION ---------- */
+  .transcription{
+    background:var(--papier-creux);
+    border-left:4px solid var(--oxyde);
+    padding:1.1rem 1.3rem 0.8rem;
+    margin:1.5rem 0;
+  }
+  .transcription .voix{
+    display:block;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.6rem;
+    font-weight:500;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--rouge);
+    margin-bottom:0.3rem;
+  }
+  .transcription p{
+    margin:0 0 0.9rem;
+    font-size:1.05rem;
+    font-style:italic;
+    color:var(--encre-douce);
+  }
+  .transcription p:last-child{ margin-bottom:0.4rem; }
+
+  /* encart de vérification */
+  .verif{
+    border:1px solid var(--oxyde-pale);
+    background:rgba(217,185,143,0.16);
+    padding:1rem 1.2rem;
+    margin:1.6rem 0;
+  }
+  .verif .titre{
+    display:block;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--oxyde);
+    margin-bottom:0.45rem;
+  }
+  .verif p{ margin:0; font-size:0.99rem; color:var(--encre-douce); }
+
+  ul.liste{ margin:0 0 1.1rem; padding-left:1.1rem; }
+  ul.liste li{ margin-bottom:0.5rem; }
+  ul.liste li::marker{ color:var(--rouge); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{
+    margin-top:3rem;
+    background:var(--noir);
+    color:#ded5c6;
+    padding:2.2rem 1.5rem 2.4rem;
+  }
+  section.sources .tete-section{ border-bottom-color:rgba(217,185,143,0.22); }
+  section.sources .piste-num{ background:var(--oxyde); color:var(--noir); }
+  section.sources .piste-num::after{ background:var(--noir); }
+  section.sources h2{ color:var(--blanc); }
+  section.sources .libelle{ color:var(--oxyde-pale); }
+  section.sources ol{
+    padding-left:1.4rem;
+    font-size:0.95rem;
+    line-height:1.62;
+  }
+  section.sources li{ margin-bottom:0.65rem; }
+  section.sources li::marker{ font-family:'Azeret Mono', monospace; color:var(--rouge); }
+  section.sources a{ color:var(--oxyde-pale); }
+  section.sources em{ color:var(--blanc); }
+  section.sources .note{
+    font-size:0.9rem;
+    color:var(--gris);
+    max-width:640px;
+    margin-bottom:1.4rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1.4rem 2.6rem;
+    font-family:'Azeret Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+</style>
+</head>
+<body>
+
+<header class="bobine">
+  <div class="bobine-inner">
+    <a class="retour" href="../index.html">← Retour aux analyses</a>
+
+    <div class="etiquette-bande">
+      <span class="disque"></span>
+      <span>Bande magnétique · Universal City · août 1962</span>
+    </div>
+
+    <h1>Hitchcock<span class="barre">/</span>Truffaut</h1>
+    <div class="millesime">Kent Jones · France – États-Unis · 2015 · 80 min</div>
+
+    <div class="compteur">
+      <span>0</span><span>0</span><span class="rouge">8</span><span>0</span>
+    </div>
+
+    <p class="accroche">Un critique français de trente ans enferme pendant huit jours, dans un
+    bureau d'Universal, le cinéaste le plus populaire du monde, et lui demande plan par plan
+    comment il s'y prend. Cinquante-trois ans plus tard, Kent Jones rouvre les bandes. Il en
+    tire moins un film sur un livre qu'un film sur <em>ce que le livre a autorisé</em> —
+    et, sans le vouloir tout à fait, sur les limites d'un panthéon.</p>
+  </div>
+</header>
+
+<div class="ruban"></div>
+
+<main>
+
+<!-- 1 ------------------------------------------------------------------ -->
+<section id="fiche">
+  <div class="tete-section">
+    <span class="piste-num">1</span>
+    <div>
+      <span class="libelle">Bande 1 / 9</span>
+      <h2>Fiche technique</h2>
+    </div>
+  </div>
+
+  <div class="fiche">
+    <dl class="credits">
+      <div><dt>Titre</dt><dd>Hitchcock/Truffaut</dd></div>
+      <div><dt>Réalisation</dt><dd>Kent Jones</dd></div>
+      <div><dt>Scénario</dt><dd>Kent Jones et Serge Toubiana<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>D'après</dt><dd><em>Le Cinéma selon Hitchcock</em>, livre d'entretiens de François Truffaut (1966)</dd></div>
+      <div><dt>Production</dt><dd>Charles S. Cohen et Olivier Mille — Cohen Media Group, Artline Films<sup class="piste"><a href="#src-1">1</a></sup><sup class="piste"><a href="#src-11">11</a></sup></dd></div>
+      <div><dt>Montage</dt><dd>Rachel Reichman<sup class="piste"><a href="#src-11">11</a></sup></dd></div>
+      <div><dt>Musique</dt><dd>Jeremiah Bornfield<sup class="piste"><a href="#src-11">11</a></sup></dd></div>
+      <div><dt>Narration</dt><dd>Bob Balaban<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>Avec</dt><dd>Martin Scorsese, David Fincher, Wes Anderson, Olivier Assayas, Peter Bogdanovich, Arnaud Desplechin, James Gray, Kiyoshi Kurosawa, Richard Linklater, Paul Schrader<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>Durée</dt><dd>80 minutes<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>Première</dt><dd>19 mai 2015, Cannes Classics (salle Buñuel, 15 h 30)<sup class="piste"><a href="#src-6">6</a></sup></dd></div>
+      <div><dt>Sorties</dt><dd>2 décembre 2015 (États-Unis)<sup class="piste"><a href="#src-1">1</a></sup> ; décembre 2015 (France)</dd></div>
+      <div><dt>Distinction</dt><dd>Maysles Brothers Award du meilleur documentaire, 38<sup>e</sup> Denver Film Festival<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>Recettes</dt><dd>302 459 $<sup class="piste"><a href="#src-1">1</a></sup></dd></div>
+    </dl>
+
+    <figure class="poster">
+      <img src="../assets/posters/hitchcock-truffaut.jpg"
+           alt="Affiche du film Hitchcock/Truffaut"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+  </div>
+</section>
+
+<!-- 2 ------------------------------------------------------------------ -->
+<section id="synopsis">
+  <div class="tete-section">
+    <span class="piste-num">2</span>
+    <div>
+      <span class="libelle">Bande 2 / 9</span>
+      <h2>Synopsis</h2>
+    </div>
+  </div>
+
+  <p>En juin 1962, François Truffaut écrit à Alfred Hitchcock pour lui proposer une semaine
+  d'entretiens ininterrompus sur l'ensemble de sa carrière. Hitchcock répond par télégramme et
+  fixe le rendez-vous au 13 août 1962, dans son bureau d'Universal Studios, alors qu'il achève
+  la post-production des <em>Oiseaux</em><sup class="piste"><a href="#src-4">4</a></sup>. Truffaut
+  fait venir Helen Scott, du French Film Office de New York, qui traduit en direct ; les
+  magnétophones tournent huit jours durant, sur une cinquantaine de films. De cette semaine
+  naîtra, quatre ans plus tard, <em>Le Cinéma selon Hitchcock</em>.</p>
+
+  <p>Le film de Kent Jones part de ces bandes. Il en diffuse de longs extraits — les deux voix,
+  celle de Scott entre les deux — sur les images des films discutés, y mêle photographies de
+  plateau, archives et documents, et convoque dix cinéastes d'aujourd'hui pour dire ce que ce
+  livre leur a fait. La dernière partie s'immobilise sur trois titres : <em>Le Faux Coupable</em>,
+  <em>Vertigo</em> et <em>Psychose</em><sup class="piste"><a href="#src-7">7</a></sup>.</p>
+</section>
+
+<!-- 3 ------------------------------------------------------------------ -->
+<section id="production">
+  <div class="tete-section">
+    <span class="piste-num">3</span>
+    <div>
+      <span class="libelle">Bande 3 / 9</span>
+      <h2>Contexte de production</h2>
+    </div>
+  </div>
+
+  <p>Kent Jones n'arrive pas à ce sujet en touriste. Critique passé par <em>Film Comment</em>,
+  dont il devient <em>editor-at-large</em>, correspondant des <em>Cahiers du cinéma</em>,
+  collaborateur de <em>Artforum</em> et <em>Cinema Scope</em>, il entre en 1998 à la Film Society
+  of Lincoln Center, siège au comité de sélection du New York Film Festival à partir de 2002 et
+  en prend la direction en 2013, poste qu'il occupe encore à la sortie du film<sup class="piste"><a href="#src-9">9</a></sup>.
+  Il a déjà signé <em>Val Lewton: The Man in the Shadows</em> (2007) et coréalisé
+  <em>A Letter to Elia</em> (2010) avec Martin Scorsese<sup class="piste"><a href="#src-9">9</a></sup> :
+  <em>Hitchcock/Truffaut</em> est présenté à Cannes comme son quatrième
+  film<sup class="piste"><a href="#src-6">6</a></sup>. Le scénario est cosigné par Serge Toubiana,
+  ancien rédacteur en chef des <em>Cahiers</em> et alors directeur de la Cinémathèque
+  française<sup class="piste"><a href="#src-5">5</a></sup> — c'est-à-dire par un héritier direct
+  de la maison d'où Truffaut est parti.</p>
+
+  <h3>La matière première</h3>
+
+  <p>Le film repose sur un matériau d'archive dont le volume exact varie selon les sources : la
+  présentation officielle de Cannes annonce « trente heures » de conversations
+  enregistrées<sup class="piste"><a href="#src-6">6</a></sup>, tandis qu'un dossier documentaire
+  consacré au livre chiffre les sessions d'août 1962 à environ vingt-six heures de bande, dont
+  onze heures et demie montées seront diffusées à la radio française pour le centenaire
+  Hitchcock en 1999<sup class="piste"><a href="#src-4">4</a></sup>. Le point commun de toutes les
+  versions : une semaine complète, un seul bureau, deux hommes et une interprète.</p>
+
+  <div class="verif">
+    <span class="titre">Point de vérification</span>
+    <p>Les chiffres circulant sur ces entretiens (vingt-six, trente, voire cinquante heures)
+    ne concordent pas d'une source à l'autre, selon qu'on compte la bande brute, les sessions
+    utilisables ou l'ensemble des rencontres ultérieures — dont une seconde entrevue à Londres
+    en juillet 1966<sup class="piste"><a href="#src-4">4</a></sup>. Cette analyse retient la
+    fourchette plutôt qu'un chiffre unique.</p>
+  </div>
+
+  <h3>Quatre ans entre la bande et le livre</h3>
+
+  <p>Helen Scott ne se contente pas de traduire : elle transcrit puis traduit intégralement les
+  bandes en français, après quoi Truffaut et elle passent quatre ans à réduire et réécrire la
+  matière dans les deux langues simultanément<sup class="piste"><a href="#src-4">4</a></sup>.
+  L'édition française paraît en 1966 sous le titre <em>Le Cinéma selon Hitchcock</em> ; l'édition
+  anglaise augmentée, <em>Hitchcock/Truffaut</em>, suit en 1967, mise à jour après la rencontre
+  londonienne de 1966. Après la mort de Hitchcock en 1980, Truffaut donne une troisième version,
+  avec nouvelle préface et chapitre final sur les derniers films<sup class="piste"><a href="#src-4">4</a></sup> —
+  celle que la plupart des lecteurs francophones connaissent sous sa réédition de
+  1983<sup class="piste"><a href="#src-5">5</a></sup>.</p>
+</section>
+
+<!-- 4 ------------------------------------------------------------------ -->
+<section id="structure">
+  <div class="tete-section">
+    <span class="piste-num">4</span>
+    <div>
+      <span class="libelle">Bande 4 / 9</span>
+      <h2>Structure narrative</h2>
+    </div>
+  </div>
+
+  <p>Le film n'a pas de récit à proprement parler : il a un montage. Jones y a d'ailleurs pensé
+  contre le genre auquel il appartient. « Je ne voulais que des cinéastes. Je n'étais pas
+  intéressé par le fait de faire un documentaire », déclare-t-il<sup class="piste"><a href="#src-3">3</a></sup> —
+  formule qui dit l'ambition : non pas retracer une histoire, mais prolonger une conversation
+  entre praticiens.</p>
+
+  <p>La construction procède par alternance : extrait sonore de 1962, images du film discuté,
+  intervention d'un cinéaste contemporain, retour à la bande. Le procédé, remarquablement fluide
+  au premier abord, est aussi ce qu'on lui a le plus reproché : une critique française relève
+  une trentaine de séquences où chaque intervenant ne revient que deux ou trois fois, au point
+  que le fil des propos originaux se perd<sup class="piste"><a href="#src-2">2</a></sup>. La même
+  objection revient côté américain sous une autre forme — un premier tiers jugé « lent et
+  pédant », d'un niveau élémentaire pour qui connaît déjà les deux
+  hommes<sup class="piste"><a href="#src-7">7</a></sup>.</p>
+
+  <p>Le film ne trouve son régime propre que lorsqu'il renonce au panorama : dans le dernier
+  mouvement, il s'installe longuement sur trois titres, et c'est là que les commentaires cessent
+  d'illustrer pour analyser — la contribution de David Fincher sur <em>Vertigo</em>, qui voit
+  dans le film quelque chose de « perverti », sorti tel quel de l'inconscient de Hitchcock, y
+  est tenue pour la plus pénétrante du lot<sup class="piste"><a href="#src-7">7</a></sup>.</p>
+
+  <h3>Ouvrir par une image, pas par une archive</h3>
+
+  <p>Le choix d'ouverture est révélateur de la méthode. Jones commence par une séquence de
+  <em>Sabotage</em> (1936) plutôt que par des documents d'époque, expliquant qu'il tenait à
+  « partir des images que Hitchcock avait lui-même construites », parce que ces images-là
+  « ont tendance à écraser tout le reste »<sup class="piste"><a href="#src-3">3</a></sup>.
+  Un film sur un livre d'entretiens commence donc par un plan de cinéma muet de commentaire :
+  la thèse est posée avant la première phrase.</p>
+</section>
+
+<!-- 5 ------------------------------------------------------------------ -->
+<section id="mise-en-scene">
+  <div class="tete-section">
+    <span class="piste-num">5</span>
+    <div>
+      <span class="libelle">Bande 5 / 9</span>
+      <h2>Mise en scène et procédés techniques</h2>
+    </div>
+  </div>
+
+  <p>Le dispositif tient en trois matières : la bande, le photogramme, le visage parlant.</p>
+
+  <p><strong>La bande.</strong> Elle est la seule chose que le film possède en propre — les
+  images de Hitchcock appartiennent à Hitchcock, les commentaires aux commentateurs, mais le
+  grain de ces voix de 1962, l'accent de Truffaut, la diction posée de Hitchcock et la présence
+  constante de Helen Scott qui traduit entre eux, cela n'existe nulle part
+  ailleurs<sup class="piste"><a href="#src-10">10</a></sup>. Jones ne la traite jamais comme un
+  simple commentaire off : la bande porte le film, et l'image vient s'y ajuster.</p>
+
+  <p><strong>Le photogramme.</strong> Le film procède par extraits annotés, la parole désignant
+  précisément ce que l'œil doit voir. C'est la forme même du livre — un livre où l'on demande
+  au cinéaste pourquoi ce plan est à cette place — transposée au montage : les extraits ne sont
+  pas illustratifs mais démonstratifs.</p>
+
+  <p><strong>Le visage parlant.</strong> Dix cinéastes filmés en entretien classique. Le choix
+  a été assumé contre celui, plus attendu, des historiens et des critiques : Jones voulait
+  « seulement des cinéastes »<sup class="piste"><a href="#src-3">3</a></sup>. Le prix à payer est
+  celui de tout film de <em>talking heads</em> : une part du travail est déléguée à l'autorité
+  de qui parle.</p>
+
+  <h3>Ce que Hitchcock appelle le suspense</h3>
+
+  <p>Le film s'attarde sur le point de doctrine central : le suspense comme économie de
+  l'information, la maîtrise de ce que le personnage voit et de ce que le spectateur sait.
+  Jones le formule à propos de <em>Vertigo</em> : si l'on avait vu le visage de Madeleine ou
+  entendu sa voix dans la première partie, « l'impact aurait été
+  dissipé »<sup class="piste"><a href="#src-3">3</a></sup>. La leçon de mise en scène ne porte
+  donc pas sur ce qu'on montre, mais sur ce qu'on retient.</p>
+
+  <div class="transcription">
+    <span class="voix">Bande — au sujet de Psychose</span>
+    <p>Réalisé pour environ 800 000 dollars, avec l'équipe de sa série télévisée, le film
+    est discuté dans le livre comme un problème purement technique : combien de plans pour
+    une scène de douche, et selon quel ordre. Le documentaire suit ce fil et fait de la
+    séquence un cas d'école<sup class="piste"><a href="#src-2">2</a></sup>.</p>
+  </div>
+</section>
+
+<!-- 6 ------------------------------------------------------------------ -->
+<section id="personnages">
+  <div class="tete-section">
+    <span class="piste-num">6</span>
+    <div>
+      <span class="libelle">Bande 6 / 9</span>
+      <h2>Figures principales</h2>
+    </div>
+  </div>
+
+  <h3>Alfred Hitchcock, 63 ans</h3>
+  <p>Le film le saisit à un moment précis : celui où il est mondialement célèbre et critiquement
+  méprisé — l'homme de télévision, l'amuseur. Ce que la bande fait entendre, c'est un artisan
+  qui parle technique sans jamais parler d'art, et dont l'intuition, selon Jones, reste
+  entièrement arrimée aux pratiques du système des studios<sup class="piste"><a href="#src-3">3</a></sup>.
+  Le film montre aussi, par touches, ce que le livre laisse affleurer : l'angoisse, la culpabilité
+  transférée (<em>Le Faux Coupable</em>), la dimension apocalyptique et religieuse des
+  <em>Oiseaux</em><sup class="piste"><a href="#src-2">2</a></sup>.</p>
+
+  <h3>François Truffaut, 30 ans</h3>
+  <p>Deux fois plus jeune que son interlocuteur<sup class="piste"><a href="#src-2">2</a></sup>,
+  Truffaut vient de la critique et y a laissé des formules assassines — celle, souvent citée,
+  selon laquelle le plus mauvais film de Hitchcock l'intéresse davantage que le meilleur film de
+  Jean Delannoy<sup class="piste"><a href="#src-2">2</a></sup>. Son projet n'est pas
+  l'hommage : c'est une opération de sauvetage critique — libérer Hitchcock de sa réputation
+  d'amuseur<sup class="piste"><a href="#src-2">2</a></sup>. Jones le décrit comme le pôle
+  analytique du duo, conscient de ce qu'il fait quand il fait du cinéma, là où Hitchcock reste
+  intuitif et pragmatique<sup class="piste"><a href="#src-3">3</a></sup>. Après 1962, les deux
+  hommes s'écrivent et se téléphonent constamment ; Truffaut mourra à 52 ans, quatre ans après
+  Hitchcock<sup class="piste"><a href="#src-2">2</a></sup>.</p>
+
+  <h3>Helen Scott, la troisième voix</h3>
+  <p>Elle est la grande absente des commentaires et la présence continue de la bande. Sans elle,
+  aucun des deux hommes ne comprend l'autre : elle traduit en direct, transcrit, retraduit, puis
+  travaille quatre ans au montage du texte<sup class="piste"><a href="#src-4">4</a></sup>. Les
+  extraits sonores diffusés par ailleurs la créditent explicitement comme
+  traductrice<sup class="piste"><a href="#src-10">10</a></sup>. Le film l'entend beaucoup et
+  l'examine peu — un déséquilibre qui, avec le recul, en dit long sur la manière dont l'histoire
+  du cinéma range ses médiateurs.</p>
+
+  <h3>Les dix héritiers</h3>
+  <p>Scorsese, Fincher, Anderson, Assayas, Bogdanovich, Desplechin, Gray, Kiyoshi Kurosawa,
+  Linklater, Schrader<sup class="piste"><a href="#src-1">1</a></sup>. Chacun apporte un angle :
+  Fincher les inventions techniques, Scorsese la manipulation du spectateur, Anderson la
+  précision graphique, Assayas un cinéma qui prend conscience de lui-même, Desplechin la terreur
+  proprement hitchcockienne<sup class="piste"><a href="#src-2">2</a></sup>. Aucune femme, aucun
+  cinéaste non occidental hormis Kiyoshi Kurosawa : le point sera relevé partout
+  (voir bande 8).</p>
+</section>
+
+<!-- 7 ------------------------------------------------------------------ -->
+<section id="themes">
+  <div class="tete-section">
+    <span class="piste-num">7</span>
+    <div>
+      <span class="libelle">Bande 7 / 9</span>
+      <h2>Thèmes</h2>
+    </div>
+  </div>
+
+  <h3>1. Un livre comme permission</h3>
+  <p>Le thème le plus net n'est pas Hitchcock : c'est l'effet du livre. Pour Fincher, sa
+  découverte fut une révélation ; pour Scorsese, la fin de la « dictature de l'establishment »
+  décidant seul de ce qui compte comme cinéma
+  légitime<sup class="piste"><a href="#src-2">2</a></sup>. Jones va plus loin : le livre a donné
+  à toute une génération l'autorisation de « laisser tomber la mystification » et de chercher sa
+  liberté à l'intérieur des systèmes existants<sup class="piste"><a href="#src-3">3</a></sup>.
+  L'ouvrage n'a pas seulement décrit une pratique — il en a rendu une autre pensable.</p>
+
+  <h3>2. La promotion d'un artisan au rang d'artiste</h3>
+  <p>L'enjeu de 1962 est un enjeu de légitimité. Le livre a fait passer Hitchcock du statut de
+  divertisseur populaire à celui d'artiste que l'on ose comparer à Kafka ou
+  Dostoïevski<sup class="piste"><a href="#src-8">8</a></sup> ; Toubiana pousse la comparaison
+  jusqu'à Picasso et Duchamp, et rappelle la formule qui résume l'héritage :
+  « ce livre a été fondateur : on a appris la mise en scène à travers le regard
+  d'Hitchcock »<sup class="piste"><a href="#src-5">5</a></sup>. C'est un des moments décisifs
+  du débat sur la politique des auteurs, où s'affrontent alors Andrew Sarris et Pauline
+  Kael<sup class="piste"><a href="#src-8">8</a></sup>.</p>
+
+  <h3>3. La technique comme morale</h3>
+  <p>Ce que la bande enregistre, c'est un homme qui refuse de parler autrement qu'en termes de
+  découpage, de focale et de durée — et qui, ce faisant, livre plus sur ses obsessions que
+  n'importe quelle confession. Le film montre que la question « combien de plans ? » est chez
+  Hitchcock une question d'éthique du spectateur : de quoi le rend-on complice, à quel moment,
+  et à quel prix.</p>
+
+  <h3>4. La cinéphilie comme filiation</h3>
+  <p>Le film organise une chaîne : Hitchcock parle à Truffaut, Truffaut écrit pour ses pairs,
+  les pairs deviennent Scorsese et Fincher, qui parlent à leur tour face caméra. Cannes l'avait
+  perçu en présentant l'objet comme un hommage à un « acte pionnier de cinéphilie, de critique
+  et de culte des ancêtres vivants ». La générosité de ce geste est réelle ; sa clôture aussi —
+  une chaîne, par définition, se transmet entre semblables.</p>
+
+  <h3>5. Ce qu'un panthéon laisse dehors</h3>
+  <p>Le thème n'est pas dans le film : il naît de lui. En composant en 2015 un aréopage
+  exclusivement masculin, le documentaire reconduit sans le dire la géographie critique de 1962.
+  Ce n'est pas un détail de casting : c'est la démonstration involontaire que la canonisation
+  entreprise par Truffaut a produit, en même temps qu'une libération, un club.</p>
+</section>
+
+<!-- 8 ------------------------------------------------------------------ -->
+<section id="reception">
+  <div class="tete-section">
+    <span class="piste-num">8</span>
+    <div>
+      <span class="libelle">Bande 8 / 9</span>
+      <h2>Réception critique et postérité</h2>
+    </div>
+  </div>
+
+  <p>L'accueil a été largement favorable : 95 % d'avis positifs sur 110 critiques recensées par
+  Rotten Tomatoes (moyenne 7,7/10), 79/100 sur Metacritic pour 25
+  critiques<sup class="piste"><a href="#src-1">1</a></sup>. Le film a reçu le Maysles Brothers
+  Award du meilleur documentaire au 38<sup>e</sup> Denver Film
+  Festival<sup class="piste"><a href="#src-1">1</a></sup>, pour une exploitation en salles
+  modeste (302 459 dollars de recettes<sup class="piste"><a href="#src-1">1</a></sup>) — chiffres
+  cohérents avec un objet de cinéphiles.</p>
+
+  <h3>Les réserves</h3>
+  <ul class="liste">
+    <li><strong>Un club d'hommes.</strong> L'absence totale de réalisatrices est relevée comme
+    anachronique pour 2015, tout comme celle de cinéastes non
+    occidentaux<sup class="piste"><a href="#src-7">7</a></sup> ; l'expression de
+    « <em>virtual boy's club</em> » revient d'un critique à
+    l'autre<sup class="piste"><a href="#src-8">8</a></sup>.</li>
+    <li><strong>Truffaut escamoté.</strong> Le film consacre peu de place à celui qui a pourtant
+    porté le projet : les commentateurs traitent Hitchcock en objet d'adoration sans expliquer
+    vraiment ce que Truffaut, cinéaste, y cherchait<sup class="piste"><a href="#src-8">8</a></sup>.</li>
+    <li><strong>Une histoire plus grande manquée.</strong> Pour Kevin Courrier, le documentaire
+    rétrécit l'échange à une plaidoirie pour l'art de Hitchcock, et laisse échapper ce que le
+    livre représentait : le moment où la culture dominante a pu accorder la même valeur au
+    cinéma commercial et au cinéma d'art, jetant un pont culturel dont sont nées les études
+    cinématographiques<sup class="piste"><a href="#src-8">8</a></sup>.</li>
+    <li><strong>Erreurs de détail.</strong> Une voix off situe l'appel de Hollywood après
+    <em>L'Homme qui en savait trop</em> (1934) au lieu d'<em>Une femme disparaît</em>
+    (1938)<sup class="piste"><a href="#src-7">7</a></sup>.</li>
+    <li><strong>Le livre lui-même n'est pas un évangile.</strong> Un dossier documentaire
+    consacré à l'ouvrage souligne qu'il n'a jamais été correctement relu, annoté ni mis à jour,
+    et que sa citation en toutes circonstances comme parole d'évangile — travers dont le
+    documentaire est donné en exemple — pose problème<sup class="piste"><a href="#src-4">4</a></sup>.</li>
+  </ul>
+
+  <h3>Postérité</h3>
+  <p>Le film a fait ce que font les bons objets de cinéphilie : il a renvoyé au livre. Il a aussi
+  installé Kent Jones comme cinéaste — il quittera la direction du New York Film Festival en 2019
+  pour se consacrer à la réalisation, après le passage à la fiction de <em>Diane</em>
+  (2018)<sup class="piste"><a href="#src-9">9</a></sup>. Quant aux bandes, leur exploitation
+  continue hors du film : des extraits audio de 1962, illustrés d'images et de plans, sont
+  diffusés par ailleurs, portant mention explicite de la traduction de Helen
+  Scott<sup class="piste"><a href="#src-10">10</a></sup>.</p>
+</section>
+
+<!-- 9 ------------------------------------------------------------------ -->
+<section id="conclusion">
+  <div class="tete-section">
+    <span class="piste-num">9</span>
+    <div>
+      <span class="libelle">Bande 9 / 9</span>
+      <h2>Conclusion</h2>
+    </div>
+  </div>
+
+  <p>Il y a deux films dans <em>Hitchcock/Truffaut</em>, et ils ne sont pas de même force. Le
+  premier, dominant dans le premier tiers, est un film de vulgarisation : il explique qui sont
+  ces deux hommes, pourquoi le livre compte, et il l'explique à quelqu'un qui, en toute
+  probabilité, est déjà dans la salle parce qu'il le sait. Le second commence quand Jones
+  abandonne le panorama, laisse tourner la bande et s'installe sur trois films : là, le montage
+  redevient un instrument d'analyse, et l'on comprend ce que Truffaut était allé chercher — non
+  pas des confidences, mais une méthode.</p>
+
+  <p>Le paradoxe du film tient à sa réussite même. Kent Jones voulait « seulement des
+  cinéastes »<sup class="piste"><a href="#src-3">3</a></sup>, et il a obtenu exactement cela :
+  une confrérie de praticiens qui se reconnaissent dans une filiation. Mais c'est aussi ce qui
+  le rend, en 2015, plus daté que son objet de 1962. Le livre de Truffaut était une opération
+  d'ouverture : il faisait entrer dans le champ de l'art un cinéaste qu'on en tenait dehors. Le
+  film, lui, se contente d'en administrer les acquis, entre héritiers déjà consacrés. La
+  critique la plus juste qui lui ait été faite n'est pas qu'il célèbre trop : c'est qu'il
+  célèbre <em>trop peu de choses à la fois</em> — Hitchcock plutôt que la conversation,
+  l'adoration plutôt que la controverse<sup class="piste"><a href="#src-8">8</a></sup>.</p>
+
+  <p>Reste la bande. Quatre-vingts minutes plus tard, ce qui demeure n'est ni la thèse ni le
+  palmarès des intervenants : c'est le son de deux hommes séparés par une langue, une génération
+  et une réputation, que la voix d'une troisième personne relie phrase après phrase — et
+  l'évidence, rare, que la conversation entre cinéastes est un genre en soi. C'est bien ce que
+  Jones disait vouloir capter : « la chose principale, c'était juste de capter une conversation
+  entre cinéastes parlant de cinéma »<sup class="piste"><a href="#src-6">6</a></sup>. Sur ce
+  point précis, il a tenu parole.</p>
+</section>
+
+</main>
+
+<section id="sources" class="sources">
+  <div class="tete-section">
+    <span class="piste-num">S</span>
+    <div>
+      <span class="libelle">Fin de bande</span>
+      <h2>Sources</h2>
+    </div>
+  </div>
+
+  <p class="note">Sources effectivement consultées lors de la préparation de cette analyse
+  (21 juillet 2026). Trois ressources visées n'ont pas pu être ouvertes — la critique cannoise
+  de <em>Variety</em> (HTTP 402), l'entretien de Kent Jones sur <em>RogerEbert.com</em>
+  (HTTP 403) et le sujet de <em>NPR</em> du 1<sup>er</sup> décembre 2015 (délai dépassé) : elles
+  ne sont donc pas citées. La date de sortie française et les chiffres de durée des bandes
+  divergent selon les sources ; le texte le signale plutôt que de trancher.</p>
+
+  <ol>
+    <li id="src-1"><em>Hitchcock/Truffaut (film)</em>, Wikipedia (anglais) — fiche de production,
+    distribution, dates de sortie, scores Rotten Tomatoes et Metacritic, distinction de Denver,
+    recettes — <a href="https://en.wikipedia.org/wiki/Hitchcock/Truffaut_(film)">en.wikipedia.org</a></li>
+    <li id="src-2">« Hitchcock/Truffaut de Kent Jones », <em>Ciné-club de Caen</em> — analyse
+    française du documentaire, films abordés, propos des intervenants, réserves sur le découpage —
+    <a href="https://www.cineclubdecaen.com/realisateur/joneskent/hitchcocktruffaut.htm">cineclubdecaen.com</a></li>
+    <li id="src-3">« Everything You Always Wanted to Know About Hitchcock (But Were Afraid to Ask
+    Truffaut): A Conversation with Kent Jones », <em>MUBI Notebook</em> — entretien avec le
+    réalisateur (choix des intervenants, ouverture sur <em>Sabotage</em>, lecture de
+    <em>Vertigo</em>, portée du livre) —
+    <a href="https://mubi.com/en/notebook/posts/everything-you-always-wanted-to-know-about-hitchcock-but-were-afraid-to-ask-truffaut-a-conversation-with-kent-jones">mubi.com</a></li>
+    <li id="src-4">« Hitchcock/Truffaut: The Men Who Knew So Much », <em>Brenton Film</em> —
+    dossier sur les entretiens d'août 1962 (bureau d'Universal, durée des bandes, rôle de Helen
+    Scott), l'historique des éditions du livre et ses défauts éditoriaux —
+    <a href="https://brentonfilm.com/hitchcock-truffaut-the-men-who-knew-so-much">brentonfilm.com</a></li>
+    <li id="src-5">« <em>Hitchcock/Truffaut</em> (2015 – Kent Jones) », <em>Clé des langues</em>,
+    ENS de Lyon — présentation par Serge Toubiana (valeur fondatrice du livre, réédition de 1983,
+    comparaison Picasso/Duchamp) —
+    <a href="https://cle.ens-lyon.fr/anglais/arts/cinema/hitchcock-truffaut-2015-kent-jones">cle.ens-lyon.fr</a></li>
+    <li id="src-6">« Cannes Classics — Hitchcock &amp; Truffaut, a conversation between two
+    legends », <em>Festival de Cannes</em> — présentation officielle, séance du 19 mai 2015,
+    volume d'archives annoncé, déclaration de Kent Jones —
+    <a href="https://www.festival-cannes.com/en/2015/cannes-classics-hitchcock-truffaut-a-conversation-between-two-legends/">festival-cannes.com</a></li>
+    <li id="src-7">Gerald Peary, « Film Review: <em>Hitchcock/Truffaut</em> — A Mixed Homage »,
+    <em>The Arts Fuse</em> — critique mitigée (rythme du premier tiers, dernier acte sur trois
+    films, Fincher sur <em>Vertigo</em>, erreur de voix off, absence de réalisatrices) —
+    <a href="https://artsfuse.org/138557/fuse-film-review-hitchcocktruffaut-a-mixed-homage/">artsfuse.org</a></li>
+    <li id="src-8">Kevin Courrier, « High and Low: Notes on Film Criticism and
+    <em>Hitchcock/Truffaut</em> », <em>Critics At Large</em> — essai critique (portée du livre,
+    Sarris/Kael, traitement de Truffaut, « boy's club ») —
+    <a href="https://www.criticsatlarge.ca/2016/07/high-and-low-notes-on-film-criticism.html">criticsatlarge.ca</a></li>
+    <li id="src-9"><em>Kent Jones (critic)</em>, Wikipedia (anglais) — parcours critique
+    (<em>Film Comment</em>, <em>Cahiers du cinéma</em>), Film Society of Lincoln Center, direction
+    du New York Film Festival (2013-2019), filmographie —
+    <a href="https://en.wikipedia.org/wiki/Kent_Jones_(critic)">en.wikipedia.org</a></li>
+    <li id="src-10">« Alfred Hitchcock and François Truffaut », <em>The Criterion Channel</em> —
+    extrait audio des entretiens de 1962 (sur <em>Une femme disparaît</em>), crédit explicite de
+    Helen G. Scott comme traductrice —
+    <a href="https://www.criterionchannel.com/videos/alfred-hitchcock-and-francois-truffaut">criterionchannel.com</a></li>
+    <li id="src-11">Affiche officielle américaine du film (Cohen Media Group / Artline Films),
+    <em>IMP Awards</em> — crédits de production, montage et musique lus sur le bloc de crédits —
+    <a href="http://www.impawards.com/2015/hitchcock_truffaut.html">impawards.com</a></li>
+  </ol>
+</section>
+
+<footer>
+  <span>Analyse rédigée à partir des sources ci-dessus — 21 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
