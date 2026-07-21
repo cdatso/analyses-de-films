@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamlet (1964) — Grigori Kozintsev | Analyses de films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cardo:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     IDENTITÉ BESPOKE — « Pierre gravée, mer du Nord »
+     Kozintsev a refusé les décors de studio et nommé lui-même
+     son lexique : pierre, fer, feu, terre, mer. La page est donc
+     une dalle de granit baltique — capitales lapidaires pour le
+     titrage, gris froids du nord, une seule couleur chaude, celle
+     de l'oxyde de fer (les grilles, le corset d'Ophélie). Le motif
+     structurel est la GRILLE : Elseneur est une prison, et chaque
+     titre de section est barreaudé. Les barreaux sont dessinés en
+     CSS — aucun glyphe décoratif, donc aucun repli silencieux.
+     ========================================================= */
+
+  :root{
+    --granit:#23282b;
+    --granit-2:#31383c;
+    --granit-3:#414a4f;
+    --ardoise:#5d686d;
+    --mer:#8a9a9d;
+    --brume:#c9d0cf;
+    --papier:#eceeeb;
+    --papier-2:#dfe3e0;
+    --encre:#1b1f21;
+    --encre-pale:#565f62;
+    --rouille:#98602c;
+    --rouille-clair:#c08a52;
+    --ombre:rgba(35,40,43,0.16);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--papier);
+    color:var(--encre);
+    font-family:'Cardo', 'Palatino Linotype', Georgia, serif;
+    font-size:1.09rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- LA DALLE : couverture ---------- */
+
+  header.dalle{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(115deg, rgba(65,74,79,0.55) 0%, rgba(35,40,43,0) 42%),
+      linear-gradient(300deg, rgba(93,104,109,0.4) 0%, rgba(35,40,43,0) 38%),
+      linear-gradient(180deg, var(--granit) 0%, var(--granit-2) 70%, #2b3235 100%);
+    color:var(--brume);
+    padding:4.4rem 1.5rem 3.4rem;
+  }
+
+  /* la grille : barreaux verticaux, en CSS pur */
+  header.dalle::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(
+      90deg,
+      rgba(201,208,207,0.085) 0px,
+      rgba(201,208,207,0.085) 2px,
+      transparent 2px,
+      transparent 46px);
+    pointer-events:none;
+  }
+
+  /* la mer : une bande claire, basse, comme un horizon */
+  header.dalle::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:2px;
+    background:linear-gradient(90deg, rgba(138,154,157,0) 0%, rgba(138,154,157,0.75) 30%, rgba(201,208,207,0.5) 70%, rgba(138,154,157,0) 100%);
+    pointer-events:none;
+  }
+
+  .dalle-inner{ position:relative; z-index:2; max-width:780px; margin:0 auto; }
+
+  .retour{
+    display:inline-block;
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.82rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    color:var(--mer);
+    text-decoration:none;
+    border-bottom:1px solid rgba(138,154,157,0.4);
+    padding-bottom:2px;
+    margin-bottom:2.8rem;
+  }
+  .retour:hover{ color:var(--rouille-clair); border-color:var(--rouille-clair); }
+
+  .cartel{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.75rem;
+    font-weight:500;
+    letter-spacing:0.21em;
+    text-transform:uppercase;
+  }
+
+  header.dalle .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+
+  header.dalle h1{
+    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-weight:500;
+    font-size:clamp(2.4rem, 7vw, 3.7rem);
+    letter-spacing:0.06em;
+    line-height:1.1;
+    margin:0 0 0.55rem;
+    color:#e6eae8;
+  }
+
+  .titre-vo{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:1.05rem;
+    letter-spacing:0.06em;
+    color:var(--mer);
+    margin-bottom:1.9rem;
+  }
+
+  .filet-fer{
+    height:1px;
+    background:linear-gradient(90deg, rgba(152,96,44,0.9) 0%, rgba(138,154,157,0.5) 45%, rgba(138,154,157,0) 100%);
+    margin:1.9rem 0;
+  }
+
+  .generique{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.96rem;
+    color:var(--brume);
+    letter-spacing:0.02em;
+  }
+
+  .provenance{
+    margin-top:2rem;
+    padding:0.85rem 1.15rem;
+    background:rgba(65,74,79,0.5);
+    border-left:2px solid var(--rouille);
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.8rem;
+    line-height:1.6;
+    letter-spacing:0.02em;
+    color:var(--brume);
+  }
+  .provenance strong{ color:#eef1ef; font-weight:600; }
+
+  /* ---------- SOMMAIRE ---------- */
+
+  nav.grille{
+    background:var(--granit-3);
+    padding:2.1rem 1.5rem 2.3rem;
+    color:var(--brume);
+  }
+  nav.grille .inner{ max-width:780px; margin:0 auto; }
+  nav.grille .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+  nav.grille ol{
+    list-style:none;
+    margin:0; padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px, 1fr));
+    gap:0.35rem 1.8rem;
+  }
+  nav.grille a{
+    display:block;
+    padding:0.28rem 0;
+    color:var(--brume);
+    text-decoration:none;
+    font-size:1rem;
+    border-bottom:1px solid rgba(201,208,207,0.13);
+  }
+  nav.grille a:hover{ color:var(--rouille-clair); }
+  nav.grille .num{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.13em;
+    color:var(--mer);
+    margin-right:0.75rem;
+  }
+
+  /* ---------- LE TEXTE ---------- */
+
+  main{
+    max-width:780px;
+    margin:0 auto;
+    padding:3.6rem 1.5rem 2rem;
+  }
+
+  section{ margin-bottom:3.6rem; }
+
+  .scene{ margin-bottom:1.6rem; }
+  .scene .cartel{ color:var(--ardoise); display:block; margin-bottom:0.5rem; }
+
+  /* les barreaux du cartel : trois traits verticaux, dessinés */
+  .scene .cartel::before{
+    content:"";
+    display:inline-block;
+    width:11px; height:11px;
+    margin-right:0.7rem;
+    vertical-align:-0.06em;
+    background-image:repeating-linear-gradient(
+      90deg,
+      var(--rouille) 0px,
+      var(--rouille) 1.5px,
+      transparent 1.5px,
+      transparent 5px);
+  }
+
+  h2{
+    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-weight:500;
+    font-size:clamp(1.42rem, 3.4vw, 1.78rem);
+    letter-spacing:0.045em;
+    line-height:1.24;
+    margin:0;
+    color:var(--encre);
+  }
+  h2::after{
+    content:"";
+    display:block;
+    height:1px;
+    margin-top:0.75rem;
+    background:linear-gradient(90deg, var(--rouille) 0%, rgba(93,104,109,0.35) 40%, rgba(93,104,109,0) 100%);
+  }
+
+  h3{
+    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-weight:500;
+    font-size:1.06rem;
+    letter-spacing:0.05em;
+    color:var(--rouille);
+    margin:2.3rem 0 0.65rem;
+  }
+
+  p{ margin:0 0 1.15rem; }
+
+  a{ color:var(--rouille); }
+
+  sup.ref{ font-size:0.7em; line-height:0; }
+  sup.ref a{
+    text-decoration:none;
+    color:var(--ardoise);
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-weight:600;
+    padding:0 0.09em;
+  }
+  sup.ref a:hover{ color:var(--rouille); }
+
+  /* citation détachée — la voix de Kozintsev */
+  .lame{
+    margin:1.9rem 0;
+    padding:1.15rem 1.4rem;
+    background:var(--papier-2);
+    border-left:2px solid var(--ardoise);
+    font-size:1.05rem;
+    color:var(--encre-pale);
+  }
+  .lame em{ color:var(--encre); }
+
+  /* ---------- FICHE TECHNIQUE ---------- */
+
+  .fiche-wrap{
+    display:grid;
+    grid-template-columns:1fr 232px;
+    gap:2.2rem;
+    align-items:start;
+  }
+
+  .fiche dl{ margin:0; }
+  .fiche dt{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.73rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--ardoise);
+    margin-top:1rem;
+  }
+  .fiche dd{
+    margin:0.15rem 0 0;
+    padding-bottom:0.55rem;
+    border-bottom:1px solid rgba(93,104,109,0.18);
+  }
+
+  figure.poster{
+    margin:0;
+    background:var(--granit);
+    padding:9px 9px 0;
+    box-shadow:0 12px 30px var(--ombre);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  figure.poster figcaption{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.71rem;
+    line-height:1.5;
+    letter-spacing:0.05em;
+    color:var(--mer);
+    padding:0.6rem 0.15rem 0.7rem;
+  }
+
+  /* ---------- ENCADRÉ THÉORIQUE ---------- */
+
+  .theorie{
+    margin:2.2rem 0;
+    background:#e7ebe8;
+    border:1px solid rgba(93,104,109,0.35);
+    border-left:3px solid var(--ardoise);
+    padding:1.5rem 1.6rem 0.6rem;
+  }
+  .theorie .cartel{ color:var(--ardoise); display:block; margin-bottom:0.9rem; }
+  .theorie .garde{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.87rem;
+    line-height:1.62;
+    background:rgba(152,96,44,0.11);
+    border-left:2px solid var(--rouille);
+    padding:0.75rem 1rem;
+    margin-bottom:1.1rem;
+    color:var(--encre);
+  }
+  .theorie p:last-child{ margin-bottom:1rem; }
+
+  /* ---------- SOURCES ---------- */
+
+  .note{
+    background:var(--papier-2);
+    border-left:2px solid var(--ardoise);
+    padding:1rem 1.3rem;
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.89rem;
+    line-height:1.66;
+    color:var(--encre-pale);
+    margin-bottom:1.6rem;
+  }
+
+  #sources ol{
+    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-size:0.91rem;
+    line-height:1.64;
+    padding-left:1.4rem;
+    color:var(--encre-pale);
+  }
+  #sources li{ margin-bottom:0.62rem; }
+  #sources a{ color:var(--ardoise); }
+
+  /* ---------- PIED ---------- */
+
+  footer{
+    background:var(--granit);
+    color:var(--mer);
+    text-align:center;
+    padding:2.6rem 1.5rem;
+    margin-top:3rem;
+  }
+  footer .cartel{ color:var(--mer); }
+
+  @media (max-width:640px){
+    .fiche-wrap{ grid-template-columns:1fr; }
+    figure.poster{ max-width:232px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="dalle">
+  <div class="dalle-inner">
+    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <span class="cartel">Union soviétique — 1964 — Lenfilm</span>
+    <h1>Hamlet</h1>
+    <div class="titre-vo">Гамлет — <em>Gamlet</em></div>
+    <div class="filet-fer"></div>
+    <div class="generique">Grigori Kozintsev · d'après la traduction de Boris Pasternak · Musique de Dmitri Chostakovitch · Photographie de Jonas Gricius</div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse — Claude Opus, session supervisée du 21/07/2026.
+    </div>
+  </div>
+</header>
+
+<nav class="grille">
+  <div class="inner">
+    <span class="cartel">Sommaire</span>
+    <ol>
+      <li><a href="#fiche"><span class="num">I</span> Fiche technique</a></li>
+      <li><a href="#synopsis"><span class="num">II</span> Synopsis</a></li>
+      <li><a href="#production"><span class="num">III</span> Contexte de production</a></li>
+      <li><a href="#structure"><span class="num">IV</span> Structure narrative</a></li>
+      <li><a href="#mise-en-scene"><span class="num">V</span> Mise en scène</a></li>
+      <li><a href="#personnages"><span class="num">VI</span> Personnages</a></li>
+      <li><a href="#themes"><span class="num">VII</span> Thèmes</a></li>
+      <li><a href="#reception"><span class="num">VIII</span> Réception et postérité</a></li>
+      <li><a href="#conclusion"><span class="num">IX</span> Conclusion</a></li>
+      <li><a href="#sources"><span class="num">·</span> Sources</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="scene">
+    <span class="cartel">Scène I</span>
+    <h2>Fiche technique</h2>
+  </div>
+
+  <div class="fiche-wrap">
+    <div class="fiche">
+      <dl>
+        <dt>Titre original</dt><dd>Гамлет (<em>Gamlet</em>)<sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Réalisation</dt><dd>Grigori Kozintsev — co-réalisation Iossif Chapiro<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Adaptation</dt><dd>Grigori Kozintsev, d'après <em>Hamlet</em> de William Shakespeare dans la traduction russe de Boris Pasternak (1941)<sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Photographie</dt><dd>Jonas Gricius<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Décors</dt><dd>Evgueni Enei et Gueorgui Kropatchev<sup class="ref"><a href="#src-2">2</a></sup> — la notice anglophone crédite pour sa part S. Virsaladze au poste de chef décorateur, quand la notice française lui attribue les costumes<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Costumes</dt><dd>Simon Virsaladze<sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Musique</dt><dd>Dmitri Chostakovitch, direction Nikolaï Rabinovitch<sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Montage</dt><dd>Evguenia Makhankova<sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Production</dt><dd>Lenfilm<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Format</dt><dd>Noir et blanc, Sovscope anamorphique 2.35:1, son stéréophonique 4 pistes<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Interprétation</dt><dd>Innokenti Smoktounovski (Hamlet), Mikhaïl Nazvanov (Claudius), Elza Radziņa (Gertrude), Youri Toloubeïev (Polonius), Anastasia Vertinskaïa (Ophélie), Vladimir Erenberg (Horatio), Stepan Oleksenko (Laërte), Igor Dmitriev (Rosencrantz), Vadim Medvedev (Guildenstern), Aadu Krevald (Fortinbras)<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Durée</dt><dd>140 minutes selon la notice anglophone<sup class="ref"><a href="#src-1">1</a></sup>, 148 minutes selon la notice française<sup class="ref"><a href="#src-2">2</a></sup> — divergence non tranchée ici</dd>
+        <dt>Sortie</dt><dd>24 juin 1964<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+        <dt>Distinctions</dt><dd>Prix spécial du jury, Mostra de Venise 1964 (et nomination au Lion d'or) ; Sutherland Trophy du British Film Institute ; meilleur film au festival Shakespeare de Wiesbaden 1964 ; Prix Lénine 1965 à Kozintsev et Smoktounovski<sup class="ref"><a href="#src-2">2</a></sup> — la notice anglophone parle d'un Prix d'État de l'URSS<sup class="ref"><a href="#src-1">1</a></sup> ; nominations aux BAFTA 1966 (meilleur film, meilleur acteur étranger) et au Golden Globe 1967 du meilleur film en langue étrangère<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-2">2</a></sup></dd>
+      </dl>
+    </div>
+
+    <figure class="poster">
+      <img src="../assets/posters/hamlet.jpg"
+           alt="Affiche du film Hamlet de Grigori Kozintsev"
+           onerror="this.closest('.poster').remove()">
+      <figcaption>Affiche — base d'images de référence du projet (source prioritaire, droits vérifiés)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="scene">
+    <span class="cartel">Scène II</span>
+    <h2>Synopsis</h2>
+  </div>
+
+  <p>L'argument est celui de Shakespeare, que Kozintsev suit fidèlement quoique en l'abrégeant<sup class="ref"><a href="#src-1">1</a></sup>. Le prince Hamlet rentre à Elseneur pour les funérailles de son père et y trouve un mariage : sa mère Gertrude a épousé Claudius, frère du roi mort. Le spectre du père lui désigne l'assassin et lui commande vengeance. Hamlet contrefait la folie, éprouve la culpabilité de Claudius par le détour d'une représentation théâtrale, tue Polonius par méprise, perd Ophélie — devenue folle, puis noyée —, et meurt au terme du duel truqué avec Laërte, dans un dénouement que le film conserve tel que Shakespeare l'a écrit<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>Ce que le film ajoute n'est pas de l'intrigue, c'est un lieu. Chez Kozintsev, Elseneur n'est pas un décor où se joue une tragédie familiale : c'est une forteresse de pierre battue par la Baltique, un État en ordre de marche, et la question de savoir si le prince peut y respirer précède celle de savoir s'il va se venger.</p>
+</section>
+
+<section id="production">
+  <div class="scene">
+    <span class="cartel">Scène III</span>
+    <h2>Contexte de production</h2>
+  </div>
+
+  <p>Le film sort le 24 juin 1964, pour le quatrième centenaire de la naissance de Shakespeare<sup class="ref"><a href="#src-2">2</a></sup> ; c'est la première version soviétique du <em>Hamlet</em> au cinéma<sup class="ref"><a href="#src-1">1</a></sup>. Kozintsev n'y arrive pas en terrain neuf : il avait monté la pièce au théâtre Pouchkine de Leningrad en 1954<sup class="ref"><a href="#src-1">1</a></sup>. Dix ans séparent la scène de l'écran, et ces dix ans sont ceux du Dégel.</p>
+
+  <p>Le film est d'abord une conjonction de trois trajectoires soviétiques majeures : Kozintsev, vétéran de l'avant-garde des années 1920 ; Boris Pasternak, dont la traduction de 1941 fournit le texte — Pasternak mort en 1960, après la disgrâce du <em>Docteur Jivago</em> ; et Dmitri Chostakovitch à la musique<sup class="ref"><a href="#src-3">3</a></sup>. Daniel Fairfax souligne que cette rencontre suffit à faire du film un événement : trois des plus grands artistes du pays sur un seul objet<sup class="ref"><a href="#src-3">3</a></sup>.</p>
+
+  <h3>Refuser le studio</h3>
+
+  <p>Le parti pris de production est explicite et lourd de conséquences : Kozintsev a écarté les décors de studio, estimant que « la clé pour réincarner les mots de Shakespeare en images visuelles ne peut être trouvée que dans la nature »<sup class="ref"><a href="#src-1">1</a></sup>. Il a nommé lui-même son lexique — la pierre, le fer, le feu, la terre et la mer — de préférence à toute reconstitution d'époque<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>Les sources divergent, en revanche, sur la localisation exacte d'Elseneur, et la divergence est instructive. La notice française indique que le château monumental fut <em>construit</em> pour le tournage sur la côte rocheuse de la Baltique, à 28 km de Tallinn, sur des plans d'Evgueni Enei<sup class="ref"><a href="#src-2">2</a></sup> ; la notice anglophone situe les extérieurs à la forteresse d'Ivangorod, à la frontière russo-estonienne<sup class="ref"><a href="#src-1">1</a></sup> ; Fairfax, lui, décrit un Elseneur assemblé par le montage à partir de plusieurs lieux, des côtes baltes aux rivages de Crimée<sup class="ref"><a href="#src-3">3</a></sup>. Nous laissons les trois indications côte à côte : elles ne se contredisent d'ailleurs qu'en apparence si le château du film est, comme Fairfax le soutient, une construction de montage autant que de maçonnerie — ce qui serait, chez un ancien de l'avant-garde des années 1920, parfaitement cohérent.</p>
+
+  <p>Le film fut le plus gros succès public soviétique de l'année 1964<sup class="ref"><a href="#src-3">3</a></sup>.</p>
+</section>
+
+<section id="structure">
+  <div class="scene">
+    <span class="cartel">Scène IV</span>
+    <h2>Structure narrative</h2>
+  </div>
+
+  <p>Fidèle mais abrégé : la formule revient dans toutes les notices, et elle mérite d'être regardée de près, car les coupes de Kozintsev dessinent une lecture<sup class="ref"><a href="#src-1">1</a></sup>. Deux suppressions sont décisives. La première est le conseil d'Hamlet aux comédiens — c'est-à-dire le seul passage où le prince énonce une théorie du jeu et de la représentation<sup class="ref"><a href="#src-4">4</a></sup>. La seconde est la tirade vengeresse d'Hamlet pendant la prière de Claudius : Kozintsev la retire et montre à la place le roi tombant à genoux sous l'effet de la peur<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>Le résultat est net : ce Hamlet parle moins de lui-même et de son art, et l'on voit davantage ce que le pouvoir, en face, éprouve. Le film déplace le centre de gravité de la conscience du prince vers le rapport de forces qui l'enserre.</p>
+
+  <p>La durée moyenne des plans — vingt-quatre secondes<sup class="ref"><a href="#src-1">1</a></sup> — signale un cinéma de la tenue et non du découpage nerveux. C'est le paradoxe formel du film, relevé par Fairfax : sous une apparence classique, Kozintsev reste un homme du montage, mais il l'applique non plus à la durée des plans, à la manière des années 1920, mais à la géographie — c'est Elseneur lui-même, assemblé de morceaux distants, qui est monté<sup class="ref"><a href="#src-3">3</a></sup>.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="scene">
+    <span class="cartel">Scène V</span>
+    <h2>Mise en scène et procédés techniques</h2>
+  </div>
+
+  <p>Le noir et blanc en 70 mm de Jonas Gricius cherche, selon les mots de Kozintsev rapportés par Fairfax, « les vents du nord et les grands espaces de la mer », dans « les gris froids du nord »<sup class="ref"><a href="#src-3">3</a></sup>. Le paysage n'est pas un cadre, c'est l'état intérieur du personnage porté au-dehors : la tirade « Être ou ne pas être » se déroule au milieu de formations rocheuses écrasantes, la caméra suivant Hamlet <em>de dos</em>, les surfaces gris-noir dominant la silhouette<sup class="ref"><a href="#src-3">3</a></sup>. Le monologue le plus intérieur du répertoire est ainsi filmé sans visage : on entend une pensée dont on ne voit que le paysage qui l'écrase.</p>
+
+  <h3>La prison</h3>
+
+  <p>« Le Danemark est une prison » : la réplique de Shakespeare devient chez Kozintsev le principe d'organisation de l'espace<sup class="ref"><a href="#src-4">4</a></sup>. Fairfax décrit l'opposition systématique entre la claustrophobie des intérieurs et l'immensité des extérieurs, et note que les personnages apparaissent constamment <em>derrière des barreaux</em> — rampes d'escalier, colonnes de lit, grilles —, ce qui noue l'oppression politique à l'enfermement spatial<sup class="ref"><a href="#src-3">3</a></sup>. Le film n'a pas besoin d'énoncer une thèse sur l'État : il la met dans le champ, en permanence, sous forme de verticales.</p>
+
+  <h3>Le spectre qu'on n'a pas besoin de voir</h3>
+
+  <p>C'est la trouvaille de mise en scène la plus élégante du film, et elle résout un problème que le théâtre traîne depuis quatre siècles. Dans la scène du cabinet, Gertrude ne voit pas le spectre que voit Hamlet : la pièce laisse donc ouverte la question de savoir si le fantôme existe ou s'il est une hallucination. Kozintsev tranche en refusant de trancher — il ne montre pas l'apparition, mais fait entendre le motif musical du spectre composé par Chostakovitch<sup class="ref"><a href="#src-3">3</a></sup>. La présence est attestée par le son, jamais par l'image : sa réalité objective reste indécidable, et c'est le spectateur qui hérite du doute de Gertrude.</p>
+
+  <h3>Chostakovitch</h3>
+
+  <p>La partition n'est pas un accompagnement. Fairfax y entend « une haine féroce de la cruauté, du culte de la puissance et de l'oppression de la justice »<sup class="ref"><a href="#src-3">3</a></sup>, et relève le principe de thèmes attachés aux personnages — dispositif dont la scène du cabinet montre qu'il peut prendre en charge, seul, ce que l'image renonce à faire. Chez Kozintsev, la musique n'illustre pas : elle témoigne à la place de l'image.</p>
+
+  <h3>Le dressage d'Ophélie</h3>
+
+  <p>Le traitement d'Ophélie est l'endroit où la mise en scène est la plus cruelle, et la plus construite. Le guide de recherche consacré à la pièce en relève la mécanique : une leçon de danse aux gestes raides, sur une musique discordante de Chostakovitch ; un corset de fer rigide dans lequel on la sangle ; et une reprise des motifs musicaux de ce dressage au moment de sa folie<sup class="ref"><a href="#src-4">4</a></sup>. Sa noyade, enfin, est filmée dans la tradition poétique russe du corps porté par l'eau<sup class="ref"><a href="#src-4">4</a></sup>. La démonstration est implacable : Ophélie ne devient pas folle <em>malgré</em> son éducation, elle devient folle <em>dans la forme</em> de son éducation — la contrainte qu'on lui a apprise est le seul langage qui lui reste quand elle perd la raison. Le corset de fer et les barreaux d'Elseneur sont le même objet, à deux échelles.</p>
+</section>
+
+<section id="personnages">
+  <div class="scene">
+    <span class="cartel">Scène VI</span>
+    <h2>Personnages principaux</h2>
+  </div>
+
+  <h3>Hamlet — Innokenti Smoktounovski</h3>
+
+  <p>La rupture avec la tradition est délibérée et fut immédiatement perçue comme telle. Le guide de recherche résume la conception de Kozintsev : un homme « fort, honnête, idéaliste, aux prises avec une cour décadente », plutôt qu'une figure de l'irrésolution psychologique ; là où Olivier, en 1948, mettait l'indécision au centre, Kozintsev insiste sur les forces extérieures<sup class="ref"><a href="#src-4">4</a></sup>. Le cinéaste soviétique Fridrikh Ermler l'a formulé en opposant explicitement les deux films : « Notre Hamlet est un ennemi de tout Elseneur, du royaume de la violence, de l'inhumanité et du mensonge »<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>Ce déplacement a un coût et un bénéfice. Le coût : le vertige métaphysique du personnage — l'homme qui ne sait pas s'il doit agir — s'atténue. Le bénéfice : le prince cesse d'être un cas clinique pour devenir un opposant, et la pièce redevient politique. La critique Lioudmila Pogojeva louait le naturel de l'interprétation, « simple, élégante, psychologiquement motivée, vitale, directe », débarrassée de toute afféterie théâtrale<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <h3>Ophélie — Anastasia Vertinskaïa</h3>
+
+  <p>Voir la Scène V : le personnage est construit par ce qu'on lui impose — la leçon, le corset, la musique de son dressage<sup class="ref"><a href="#src-4">4</a></sup>. C'est la lecture la plus moderne du film, et elle n'est pas obtenue par un discours mais par des objets.</p>
+
+  <h3>La cour comme appareil</h3>
+
+  <p>Claudius (Mikhaïl Nazvanov), Gertrude (Elza Radziņa) et Polonius (Youri Toloubeïev) ne sont pas traités en figures du mal individuel. Le retrait de la tirade vengeresse pendant la prière, remplacée par la peur qui jette le roi à genoux<sup class="ref"><a href="#src-4">4</a></sup>, est révélateur : Claudius n'est pas un monstre à haïr, c'est un homme qui a peur — ce qui est bien plus inquiétant, puisque la machine qu'il fait tourner, elle, ne tremble pas.</p>
+</section>
+
+<section id="themes">
+  <div class="scene">
+    <span class="cartel">Scène VII</span>
+    <h2>Thèmes</h2>
+  </div>
+
+  <p>Ce film possède un thème dominant qui absorbe les autres ; nous adoptons donc la forme hybride — le motif central développé en continu, les motifs satellites en points titrés.</p>
+
+  <p><strong>La prison, et ce qu'elle désigne.</strong> Tout, dans <em>Gamlet</em>, revient à l'enfermement : les barreaux qui découpent les plans<sup class="ref"><a href="#src-3">3</a></sup>, le corset d'Ophélie<sup class="ref"><a href="#src-4">4</a></sup>, la pierre qui domine l'homme jusque dans le monologue le plus libre<sup class="ref"><a href="#src-3">3</a></sup>, et cette réplique de la pièce que Kozintsev promeut au rang de principe : le Danemark est une prison<sup class="ref"><a href="#src-4">4</a></sup>. La question que tout spectateur pose depuis 1964 est évidemment de savoir de quelle prison il s'agit. Le film ne répond pas, et Kozintsev a pris soin de ne pas répondre — il rappelait simplement que <em>Hamlet</em> « a été écrit en 1600 et joué la quarante-sixième année après la Révolution d'Octobre »<sup class="ref"><a href="#src-3">3</a></sup>. La phrase est un chef-d'œuvre de prudence : elle ne dit rien, et elle a tout dit. Un film financé par l'État soviétique, primé par le Prix Lénine, sur un royaume qui étouffe ses sujets et surveille leurs paroles — la contradiction n'est pas résolue par le film, elle est <em>portée</em> par lui, et c'est probablement ce qui le rend encore vivant.</p>
+
+  <h3>La pierre, le fer, la mer</h3>
+
+  <p>Le lexique élémentaire revendiqué par Kozintsev — pierre, fer, feu, terre, mer<sup class="ref"><a href="#src-1">1</a></sup> — tient lieu de décor <em>et</em> de vocabulaire moral : le minéral pour l'État, le fer pour la contrainte, la mer pour le seul dehors possible. C'est un choix qui coupe court à toute reconstitution historique : le film ne se passe pas au XVI<sup>e</sup> siècle, il se passe dans les éléments.</p>
+
+  <h3>L'indécidable</h3>
+
+  <p>Le spectre entendu et non vu<sup class="ref"><a href="#src-3">3</a></sup> installe au cœur du film un régime que le reste de la mise en scène confirme : ce qui compte n'est pas tranché. Le film est affirmatif dans sa forme et suspensif dans ses jugements — configuration rare, et politiquement commode dans l'URSS de 1964.</p>
+
+  <h3>Traduire est un acte</h3>
+
+  <p>Le texte du film n'est pas Shakespeare : c'est Pasternak<sup class="ref"><a href="#src-2">2</a></sup>. Faire dire au plus grand rôle du théâtre occidental les mots d'un poète mort quatre ans plus tôt en disgrâce<sup class="ref"><a href="#src-3">3</a></sup> n'est pas une décision technique. Le film réhabilite une voix par le seul fait de la faire entendre — la traduction, ici, est un geste de restitution.</p>
+
+  <div class="theorie">
+    <span class="cartel">Note théorique — Hamlet chez Deleuze</span>
+
+    <div class="garde">
+      <strong>Précaution nécessaire.</strong> Gilles Deleuze ne cite <strong>pas</strong> le film de Kozintsev, ni dans <em>L'Image-Mouvement</em>, ni à notre connaissance ailleurs. Ce qui suit ne concerne donc pas ce film : c'est le relevé de la manière dont <em>Hamlet comme figure</em> travaille son texte. Nous le versons au dossier parce qu'il éclaire, par contraste, le parti pris de Kozintsev — jamais comme une lecture deleuzienne du film, qui n'existe pas.
+    </div>
+
+    <p>Dans le chapitre consacré à la « grande forme » de l'image-action, Deleuze décrit le héros qui doit traverser un moment d'impuissance ou de doute avant d'être mûr pour l'action ; il qualifie de <em>hamlétien</em> le doute par lequel passe l'Ivan d'Eisenstein<sup class="ref"><a href="#src-5">5</a></sup>. Plus loin, à propos de la « petite forme », il relève que le Chaplin d'<em>Un roi à New York</em> « se lance dans le discours d'Hamlet »<sup class="ref"><a href="#src-5">5</a></sup>.</p>
+
+    <p>Hamlet est donc, chez Deleuze, un <em>opérateur</em> : le nom d'un intervalle entre la situation et l'action, l'écart où le héros n'est pas encore capable de ce que la situation exige. Or c'est précisément cet écart que Kozintsev réduit : son prince n'est pas un homme qui diffère l'action, c'est un homme qu'une forteresse empêche. La comparaison n'est pas une clé de lecture du film — elle mesure la distance entre deux idées de ce que le nom d'Hamlet désigne : chez Deleuze, une hésitation intérieure devenue catégorie ; chez Kozintsev, un rapport de forces extérieur.</p>
+  </div>
+</section>
+
+<section id="reception">
+  <div class="scene">
+    <span class="cartel">Scène VIII</span>
+    <h2>Réception critique et postérité</h2>
+  </div>
+
+  <p>La reconnaissance est immédiate et internationale : Prix spécial du jury à la Mostra de Venise 1964, Sutherland Trophy du British Film Institute, meilleur film au festival Shakespeare de Wiesbaden, puis Prix Lénine en 1965 pour Kozintsev et Smoktounovski<sup class="ref"><a href="#src-2">2</a></sup> — la notice anglophone désignant, elle, un Prix d'État de l'URSS<sup class="ref"><a href="#src-1">1</a></sup>. Suivent les nominations aux BAFTA 1966 et au Golden Globe 1967<sup class="ref"><a href="#src-1">1</a></sup>. En URSS, le film est le plus grand succès public de son année<sup class="ref"><a href="#src-3">3</a></sup>.</p>
+
+  <p>La critique soviétique y voit une œuvre de combat, non un exercice patrimonial : Ermler en loue le réalisme et la portée sociale, et pose l'opposition avec l'Hamlet réconciliateur d'Olivier<sup class="ref"><a href="#src-1">1</a></sup> ; Pogojeva salue une interprétation débarrassée de la convention théâtrale<sup class="ref"><a href="#src-1">1</a></sup>. À l'Ouest, le <em>New York Times</em> reconnaît la barrière de la langue mais souligne que « le paysage et l'architecture, le climat et l'atmosphère jouent des rôles presque aussi importants que ceux des acteurs »<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>La réserve la plus intéressante vient d'un homme de théâtre. Peter Brook accorde au film « un mérite gigantesque — tout y est rapporté à la recherche, par le metteur en scène, du sens de la pièce », mais juge que son style « réaliste post-eisensteinien » s'écarte du « Shakespeare essentiel »<sup class="ref"><a href="#src-1">1</a></sup>. L'objection est sérieuse et vaut d'être conservée : ce que Kozintsev gagne en épaisseur matérielle — la pierre, le fer, la mer —, il le perd peut-être en ambiguïté verbale, celle dont le théâtre élisabéthain fait sa matière. On peut soutenir que ce film magnifique est un peu trop <em>certain</em> de ce que la pièce veut dire.</p>
+
+  <p>Rien de tout cela n'a entamé sa réputation : <em>Gamlet</em> reste communément tenu pour l'une des meilleures transpositions cinématographiques de la pièce<sup class="ref"><a href="#src-3">3</a></sup>, et Kozintsev poursuivra ce travail sur Shakespeare avec <em>Le Roi Lear</em> en 1971.</p>
+</section>
+
+<section id="conclusion">
+  <div class="scene">
+    <span class="cartel">Scène IX</span>
+    <h2>Conclusion</h2>
+  </div>
+
+  <p>Il faut mesurer ce que Kozintsev a osé : prendre le rôle le plus commenté du théâtre occidental et lui retirer ce dont on croyait qu'il était fait — l'hésitation. Son Hamlet n'est pas un homme empêché par lui-même, c'est un homme empêché par une architecture. Toute la mise en scène tire ce fil avec une constance rare : les barreaux dans le champ, le corset d'Ophélie, la pierre qui domine le monologue, la mer comme seule sortie.</p>
+
+  <p>Cette cohérence est sa force et sa limite, et Peter Brook a mis le doigt exactement là où il fallait<sup class="ref"><a href="#src-1">1</a></sup> : un film qui sait si bien ce que la pièce signifie prend le risque de la fermer. Mais il y a un endroit où Kozintsev refuse magnifiquement de conclure, et c'est le plus beau moment du film — ce spectre que l'on entend sans le voir<sup class="ref"><a href="#src-3">3</a></sup>, cette réalité laissée indécidable au moment précis où la pièce l'exige. Un cinéaste qui, en 1964, à Leningrad, fait entendre les mots d'un poète mort en disgrâce, dans une forteresse d'État dont il filme les barreaux, et qui rappelle en souriant que la pièce se joue « la quarante-sixième année après la Révolution d'Octobre »<sup class="ref"><a href="#src-3">3</a></sup> — celui-là sait exactement ce qu'il fait, et ce qu'il ne dira pas.</p>
+
+  <p>C'est peut-être la définition la plus juste de ce film : un <em>Hamlet</em> qui a remplacé le doute du prince par la prudence du cinéaste, et qui en a tiré, contre toute attente, une œuvre plus politique que la pièce dont elle procède.</p>
+</section>
+
+<section id="sources">
+  <div class="scene">
+    <span class="cartel">Appareil</span>
+    <h2>Sources</h2>
+  </div>
+
+  <div class="note">
+    Sources effectivement consultées lors de la préparation de cette analyse. Une référence universitaire souhaitée n'a pas pu être exploitée — l'article de Saviour Catania, « The Beached Verge : On Filming the Unfilmable in Grigori Kozintsev's <em>Hamlet</em> » (<em>EnterText</em> 1.2, Brunel University), disponible en PDF mais non lisible dans l'environnement de rédaction ; elle n'est donc pas citée, et l'échec est consigné au journal d'erreurs du projet. Une critique française d'époque attribuée à Jean de Baroncelli (<em>Le Monde</em>, septembre 1964) a été écartée faute d'avoir pu être vérifiée sur pièce.
+  </div>
+
+  <ol>
+    <li id="src-1">Wikipedia (EN), « Hamlet (1964 film) » — <a href="https://en.wikipedia.org/wiki/Hamlet_(1964_film)">en.wikipedia.org</a></li>
+    <li id="src-2">Wikipédia (FR), « Hamlet (film, 1964) » — <a href="https://fr.wikipedia.org/wiki/Hamlet_(film,_1964)">fr.wikipedia.org</a></li>
+    <li id="src-3">Daniel Fairfax, « 1964: Hamlet (Grigori Kozintsev) », <em>Senses of Cinema</em>, n° 85, décembre 2017 — <a href="https://www.sensesofcinema.com/2017/soviet-cinema/hamlet-kozinetsev/">sensesofcinema.com</a></li>
+    <li id="src-4">« Kozintsev's <em>Hamlet</em> (1964) », <em>William Shakespeare's Hamlet: A Research Guide</em> — <a href="http://www.hamletguide.com/film/kozintsev1964.html">hamletguide.com</a></li>
+    <li id="src-5">Gilles Deleuze, <em>L'Image-Mouvement</em>, Éditions de Minuit, 1983 — chapitre IX (« L'image-action : la grande forme »), p. 212-213, et chapitre X (« L'image-action : la petite forme »), p. 236. Occurrences relevées via l'index Deleuze du projet, établi sur le texte ; <strong>le film de Kozintsev n'y figure pas</strong>.</li>
+    <li id="src-poster">Affiche : base d'images de référence du projet, fichier <code>1964 hamlet Grigory Kozintsev.jpg</code> — dépôt vérifié libre de droits par le propriétaire du site</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <span class="cartel">Analyse rédigée à partir des sources ci-dessus — 21 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

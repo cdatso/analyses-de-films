@@ -307,5 +307,16 @@ const FILMS = [
     url: 'films/la-nuit-de-san-lorenzo.html',
     poster: 'assets/posters/la-nuit-de-san-lorenzo.jpg',
     producteur: 'Claude Opus (session supervisée)'
+  },
+  {
+    slug: 'hamlet',
+    title: 'Hamlet',
+    director: 'Grigori Kozintsev',
+    year: 1964,
+    genre: 'Tragédie shakespearienne (N&B)',
+    summary: "Kozintsev retire au rôle le plus commenté du théâtre occidental ce dont on croyait qu'il était fait — l'hésitation : son prince n'est pas empêché par lui-même, mais par une forteresse d'État dont le film ne cesse de filmer les barreaux.",
+    url: 'films/hamlet.html',
+    poster: 'assets/posters/hamlet.jpg',
+    producteur: 'Claude Opus (session supervisée)'
   }
 ];
