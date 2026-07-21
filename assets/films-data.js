@@ -318,5 +318,16 @@ const FILMS = [
     url: 'films/hamlet.html',
     poster: 'assets/posters/hamlet.jpg',
     producteur: 'Claude Opus (session supervisée)'
+  },
+  {
+    slug: 'le-samourai',
+    title: 'Le Samouraï',
+    director: 'Jean-Pierre Melville',
+    year: 1967,
+    genre: 'Polar / film noir',
+    summary: "Un tueur à gages qui n'est plus qu'une méthode : Melville retire la couleur de la couleur, invente de toutes pièces la citation du Bushido qui ouvre le film, et fait tenir une morale entière sur un document faux.",
+    url: 'films/le-samourai.html',
+    poster: 'assets/posters/le-samourai.jpg',
+    producteur: 'Claude (pipeline, routine nocturne)'
   }
 ];

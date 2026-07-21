@@ -49,6 +49,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Pandora (contrechamp) | Albert Lewin | 1951 | Mélodrame fantastique | ✅ Publié | 18/07/2026 (délégation OpenAI GPT-5.5 + reprise squad Deleuze) — conversion au gabarit du site le 19/07/2026 ; *statut corrigé le 21/07/2026 sur gate AH : la ligne portait encore « 🟡 sur staging », la page est en ligne (vérification 200)* | films/pandora-contrechamp.html | https://www.cdatso.be/analyses-de-films/films/pandora-contrechamp.html |
 | La Nuit de San Lorenzo | Paolo et Vittorio Taviani | 1982 | Drame de guerre | ✅ Publié | 21 juillet 2026 (session supervisée Claude Opus — rattrapage après deux gels de la routine nocturne ; merge sur gate AH) | films/la-nuit-de-san-lorenzo.html | https://www.cdatso.be/analyses-de-films/films/la-nuit-de-san-lorenzo.html |
 | Hamlet | Grigori Kozintsev | 1964 | Tragédie shakespearienne (N&B) | ✅ Publié | 21 juillet 2026 (session supervisée Claude Opus ; encadré théorique Hamlet-figure chez Deleuze, film non cité ; enrichi de l'article de S. Catania sur gate AH) | films/hamlet.html | https://www.cdatso.be/analyses-de-films/films/hamlet.html |
+| Le Samouraï | Jean-Pierre Melville | 1967 | Polar / film noir | 🟡 Sur staging (merge en attente) | 21 juillet 2026 (routine nocturne — TEST 2 de validation de chaîne, gate AH ; identité bespoke « signalétique du métro parisien ») | films/le-samourai.html | https://www.cdatso.be/analyses-de-films/films/le-samourai.html |
 
 ---
 

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction terminus — Le Samouraï (1967)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carrelage:#eceee9;
+    --carrelage-creux:#dfe2dc;
+    --joint:rgba(20,24,28,0.10);
+    --email:#12417c;
+    --email-deep:#0a2a52;
+    --email-clair:#2a68b8;
+    --rouge:#b4302a;
+    --acier:#6d7a86;
+    --acier-clair:#98a3ad;
+    --encre:#15191d;
+    --encre-douce:#39424b;
+    --blanc:#fbfcfa;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--carrelage);
+    color:var(--encre);
+    font-family:'Spectral', Georgia, serif;
+    font-size:1.03rem;
+    font-weight:300;
+    line-height:1.78;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ---------- CARRELAGE BISEAUTÉ ---------- */
+  .carrelage{
+    background-color:var(--carrelage);
+    background-image:
+      linear-gradient(to bottom, rgba(255,255,255,0.85) 0 2px, rgba(0,0,0,0) 2px),
+      linear-gradient(to right, rgba(255,255,255,0.7) 0 2px, rgba(0,0,0,0) 2px),
+      linear-gradient(to bottom, rgba(0,0,0,0) calc(100% - 2px), var(--joint) calc(100% - 2px)),
+      linear-gradient(to right, rgba(0,0,0,0) calc(100% - 2px), var(--joint) calc(100% - 2px));
+    background-size:44px 22px;
+  }
+
+  /* ---------- BANDEAU DE TÊTE ---------- */
+  header.quai{
+    position:relative;
+    padding:2.4rem 1.4rem 3rem;
+    border-bottom:6px solid var(--email);
+  }
+  .quai-inner{ max-width:860px; margin:0 auto; }
+
+  .retour{
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--acier);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    margin-bottom:2rem;
+  }
+  .retour:hover{ color:var(--email); border-bottom-color:var(--email); }
+
+  /* plaque émaillée façon nom de station */
+  .plaque{
+    background:var(--email);
+    color:var(--blanc);
+    border-radius:6px;
+    padding:1.5rem 1.6rem 1.7rem;
+    box-shadow:0 2px 0 var(--email-deep), 0 10px 26px rgba(10,42,82,0.22);
+    position:relative;
+    overflow:hidden;
+  }
+  .plaque::after{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .plaque .ligne-num{
+    display:inline-flex;
+    align-items:center; justify-content:center;
+    width:2.05rem; height:2.05rem;
+    border-radius:50%;
+    background:var(--rouge);
+    color:var(--blanc);
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:0.85rem;
+  }
+  .plaque h1{
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:700;
+    letter-spacing:0.01em;
+    font-size:clamp(2.1rem, 6.4vw, 3.5rem);
+    line-height:1.02;
+    margin:0 0 0.5rem;
+    text-transform:uppercase;
+  }
+  .plaque .sous{
+    font-family:'DM Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(251,252,250,0.72);
+  }
+
+  .direction{
+    margin-top:1.5rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem 1.1rem;
+    align-items:baseline;
+    font-family:'DM Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    color:var(--acier);
+  }
+  .direction strong{ color:var(--encre); font-weight:500; }
+
+  .accroche{
+    margin-top:1.9rem;
+    font-size:1.13rem;
+    font-style:italic;
+    font-weight:300;
+    color:var(--encre-douce);
+    border-left:3px solid var(--rouge);
+    padding-left:1.1rem;
+    max-width:44rem;
+  }
+
+  /* ---------- LA LIGNE ---------- */
+  main{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 1.4rem 4rem;
+    position:relative;
+  }
+  @media (min-width:820px){
+    main::before{
+      content:"";
+      position:absolute;
+      left:-2.15rem; top:3.6rem; bottom:5rem;
+      width:6px;
+      background:var(--email);
+      border-radius:3px;
+      opacity:0.75;
+    }
+  }
+
+  section{ padding:3.2rem 0 0.4rem; position:relative; }
+
+  .station{
+    display:flex;
+    align-items:center;
+    gap:0.85rem;
+    margin-bottom:1.35rem;
+  }
+  .station .pastille{
+    flex:none;
+    width:2.35rem; height:2.35rem;
+    border-radius:50%;
+    background:var(--blanc);
+    border:4px solid var(--email);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--email-deep);
+  }
+  @media (min-width:820px){
+    .station .pastille{ position:absolute; left:-3.28rem; margin-top:0.1rem; }
+    .station{ padding-left:0; }
+  }
+  .station h2{
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:700;
+    font-size:clamp(1.28rem, 3.5vw, 1.72rem);
+    letter-spacing:0.005em;
+    line-height:1.16;
+    margin:0;
+    text-transform:uppercase;
+  }
+  .station .quai-label{
+    display:block;
+    font-family:'DM Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--acier);
+    font-weight:400;
+    margin-bottom:0.25rem;
+  }
+
+  p{ margin:0 0 1.15rem; }
+  main a{ color:var(--email); }
+
+  /* ---------- CORRESPONDANCES (renvois de sources) ---------- */
+  sup.corr{ line-height:0; font-size:0.62rem; }
+  sup.corr a{
+    display:inline-block;
+    min-width:1.15rem;
+    height:1.15rem;
+    line-height:1.15rem;
+    text-align:center;
+    border-radius:50%;
+    background:var(--email);
+    color:var(--blanc);
+    font-family:'DM Mono', monospace;
+    font-size:0.62rem;
+    text-decoration:none;
+    margin:0 0.1rem;
+    vertical-align:0.42rem;
+    transition:background 0.15s;
+  }
+  sup.corr a:hover{ background:var(--rouge); }
+
+  /* ---------- FICHE TECHNIQUE ---------- */
+  .fiche{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.8rem;
+    margin-top:0.5rem;
+  }
+  @media (min-width:660px){
+    .fiche{ grid-template-columns:minmax(0,1fr) 236px; align-items:start; }
+  }
+  .poster{ margin:0; }
+  .poster img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:4px;
+    box-shadow:0 3px 0 var(--email-deep), 0 14px 30px rgba(10,25,45,0.24);
+  }
+  .poster figcaption{
+    font-family:'DM Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--acier);
+    margin-top:0.6rem;
+    line-height:1.5;
+  }
+
+  dl.credits{ margin:0; }
+  dl.credits > div{
+    display:grid;
+    grid-template-columns:8.6rem 1fr;
+    gap:0.4rem 0.9rem;
+    padding:0.42rem 0;
+    border-bottom:1px solid var(--joint);
+  }
+  @media (max-width:520px){
+    dl.credits > div{ grid-template-columns:1fr; gap:0.1rem; padding:0.55rem 0; }
+  }
+  dl.credits dt{
+    font-family:'DM Mono', monospace;
+    font-size:0.63rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--acier);
+    padding-top:0.22rem;
+  }
+  dl.credits dd{ margin:0; font-size:0.97rem; }
+
+  /* ---------- ENCADRÉS ---------- */
+  .avis{
+    background:var(--blanc);
+    border-left:5px solid var(--rouge);
+    padding:1.1rem 1.25rem;
+    margin:1.6rem 0;
+    box-shadow:0 1px 0 rgba(20,24,28,0.07), 0 8px 20px rgba(20,24,28,0.05);
+  }
+  .avis .titre{
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:700;
+    font-size:0.74rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--rouge);
+    display:block;
+    margin-bottom:0.45rem;
+  }
+  .avis p:last-child{ margin-bottom:0; }
+
+  blockquote{
+    margin:1.5rem 0;
+    padding:0.2rem 0 0.2rem 1.3rem;
+    border-left:3px solid var(--email);
+    font-style:italic;
+    color:var(--encre-douce);
+  }
+  blockquote cite{
+    display:block;
+    font-style:normal;
+    font-family:'DM Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    color:var(--acier);
+    margin-top:0.6rem;
+  }
+
+  /* ---------- THÈMES : plaques de correspondance ---------- */
+  h3.correspondance{
+    font-family:'Archivo', system-ui, sans-serif;
+    font-weight:600;
+    font-size:1.03rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin:2rem 0 0.7rem;
+    padding:0.42rem 0.75rem;
+    display:inline-block;
+    background:var(--email);
+    color:var(--blanc);
+    border-radius:3px;
+  }
+  h3.correspondance.alt{ background:var(--rouge); }
+
+  /* ---------- SOURCES ---------- */
+  section.sources ol{
+    padding-left:1.3rem;
+    font-size:0.92rem;
+    line-height:1.68;
+  }
+  section.sources li{ margin-bottom:0.7rem; }
+  section.sources li::marker{ font-family:'DM Mono', monospace; color:var(--acier); }
+  .note{
+    font-family:'DM Mono', monospace;
+    font-size:0.7rem;
+    line-height:1.7;
+    letter-spacing:0.02em;
+    color:var(--acier);
+    background:var(--carrelage-creux);
+    padding:0.9rem 1rem;
+    border-radius:4px;
+    margin-bottom:1.3rem;
+  }
+
+  footer{
+    border-top:6px solid var(--email);
+    padding:1.5rem 1.4rem 3rem;
+    text-align:center;
+  }
+  footer span{
+    font-family:'DM Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--acier);
+  }
+</style>
+</head>
+<body>
+
+<header class="quai carrelage">
+  <div class="quai-inner">
+    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <div class="plaque">
+      <span class="ligne-num">S</span>
+      <h1>Le Samouraï</h1>
+      <div class="sous">Jean-Pierre Melville · France-Italie · 1967</div>
+    </div>
+    <div class="direction">
+      <span><strong>Direction</strong> terminus</span>
+      <span><strong>Correspondance</strong> film noir · yakuza eiga · polar</span>
+      <span><strong>Service</strong> analyse en 9 stations</span>
+    </div>
+    <p class="accroche">Un homme entre dans le métro pour semer ceux qui le suivent, et découvre
+    que le réseau tout entier a été retourné contre lui. Melville a fait de ce cauchemar
+    administratif la plus élégante des tragédies : un film qui commence par une citation
+    inventée et se termine par un revolver vide.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- 1 ------------------------------------------------------------------ -->
+<section id="fiche">
+  <div class="station">
+    <span class="pastille">1</span>
+    <div>
+      <span class="quai-label">Station 1</span>
+      <h2>Fiche technique</h2>
+    </div>
+  </div>
+
+  <div class="fiche">
+    <dl class="credits">
+      <div><dt>Titre</dt><dd>Le Samouraï</dd></div>
+      <div><dt>Réalisation</dt><dd>Jean-Pierre Melville</dd></div>
+      <div><dt>Scénario</dt><dd>Jean-Pierre Melville, avec Georges Pellegrin aux dialogues ; générique créditant le roman <em>The Ronin</em> de Joan McLeod<sup class="corr"><a href="#src-2">2</a><a href="#src-3">3</a></sup></dd></div>
+      <div><dt>Image</dt><dd>Henri Decaë</dd></div>
+      <div><dt>Montage</dt><dd>Monique Bonnot, Yolande Maurette</dd></div>
+      <div><dt>Décors</dt><dd>François de Lamothe</dd></div>
+      <div><dt>Musique</dt><dd>François de Roubaix, orchestration et direction d'Éric Demarsan<sup class="corr"><a href="#src-11">11</a></sup></dd></div>
+      <div><dt>Interprétation</dt><dd>Alain Delon (Jef Costello), François Périer (le commissaire), Nathalie Delon (Jane Lagrange), Cathy Rosier (Valérie), Michel Boisrond, Jacques Leroy</dd></div>
+      <div><dt>Production</dt><dd>Filmel (Paris), CICC, TC Productions, Fida Cinematografica (Rome) ; producteur Raymond Borderie<sup class="corr"><a href="#src-3">3</a></sup></dd></div>
+      <div><dt>Sortie</dt><dd>France, 25 octobre 1967<sup class="corr"><a href="#src-1">1</a></sup> — États-Unis, 1972, en version doublée sous le titre <em>The Godson</em><sup class="corr"><a href="#src-1">1</a></sup></dd></div>
+      <div><dt>Durée</dt><dd>105 minutes selon les fiches d'exploitation, 95 minutes selon la Cinémathèque française<sup class="corr"><a href="#src-2">2</a><a href="#src-3">3</a></sup></dd></div>
+      <div><dt>Entrées France</dt><dd>environ 1,9 million<sup class="corr"><a href="#src-1">1</a><a href="#src-12">12</a></sup></dd></div>
+      <div><dt>Restauration</dt><dd>Pathé, 2023 ; ressortie en salles par Les Films du Camélia<sup class="corr"><a href="#src-3">3</a></sup></dd></div>
+    </dl>
+
+    <figure class="poster">
+      <img src="../assets/posters/le-samourai.jpg"
+           alt="Affiche du film Le Samouraï"
+           onerror="this.closest('.poster').remove()">
+      <figcaption>Affiche d'exploitation — le chapeau, l'imperméable, et la cage en filigrane</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 2 ------------------------------------------------------------------ -->
+<section id="synopsis">
+  <div class="station">
+    <span class="pastille">2</span>
+    <div>
+      <span class="quai-label">Station 2</span>
+      <h2>Synopsis</h2>
+    </div>
+  </div>
+
+  <p>Jef Costello vit seul dans une chambre grise de Paris, avec un lit, un lavabo, quelques
+  bouteilles d'eau minérale et un bouvreuil en cage. Il est tueur à gages, et son métier
+  consiste surtout à fabriquer des alibis : il vole une voiture, en change les plaques, se
+  fait voir de témoins choisis, et rentre chez lui à l'heure dite.</p>
+
+  <p>Le contrat qu'on lui confie — abattre le patron d'un club de nuit — se déroule sans
+  accroc, à un détail près : en sortant du bureau, il croise la pianiste de l'établissement,
+  qui le regarde en face. Raflé le soir même dans un coup de filet, présenté à une parade
+  d'identification, il est relâché faute de charges — la pianiste, contre toute attente, ne
+  le reconnaît pas.</p>
+
+  <p>Commence alors une double traque. Un commissaire obstiné, convaincu de sa culpabilité,
+  entreprend de démonter son alibi et fait truffer sa chambre d'un micro. Et ses
+  commanditaires, jugeant qu'un tueur repéré est un tueur périmé, décident de le supprimer.
+  Jef n'a plus qu'à jouer, seul, la seule partie qui lui reste — celle de sa propre sortie.</p>
+</section>
+
+<!-- 3 ------------------------------------------------------------------ -->
+<section id="production">
+  <div class="station">
+    <span class="pastille">3</span>
+    <div>
+      <span class="quai-label">Station 3</span>
+      <h2>Contexte de production</h2>
+    </div>
+  </div>
+
+  <p>Melville aurait écrit le scénario dès 1963, plusieurs années avant de le tourner<sup class="corr"><a href="#src-2">2</a></sup>.
+  Le projet ne rencontre son acteur que par ricochet : Alain Delon avait décliné le rôle de
+  Gerbier dans <em>L'Armée des ombres</em>, et Melville lui propose alors celui-ci<sup class="corr"><a href="#src-2">2</a></sup>.
+  L'anecdote de leur rencontre est devenue légende, mais elle est rapportée de première main :
+  Melville lit le scénario à voix haute chez Delon, qui l'interrompt au bout de sept minutes et
+  demie — « <em>ça fait sept minutes et demi que vous lisez votre scénario et il n'y a pas encore
+  l'ombre d'un dialogue</em> » — et accepte immédiatement<sup class="corr"><a href="#src-2">2</a><a href="#src-10">10</a></sup>.
+  Le rôle sera d'ailleurs écrit pour lui<sup class="corr"><a href="#src-1">1</a></sup>. Melville double
+  la mise en distribuant François Périer, comédien identifié au registre comique, dans le rôle
+  du commissaire — à contre-emploi assumé<sup class="corr"><a href="#src-1">1</a></sup>.</p>
+
+  <div class="avis">
+    <span class="titre">Avis au voyageur — deux apocryphes</span>
+    <p>Le film s'ouvre sur une citation attribuée au <em>Bushido</em> : « Il n'y a pas de plus
+    profonde solitude que celle du samouraï, si ce n'est celle du tigre dans la jungle,
+    peut-être… ». Aucun texte japonais ne la contient : Melville l'a écrite lui-même<sup class="corr"><a href="#src-4">4</a></sup>.
+    Le générique crédite par ailleurs un roman, <em>The Ronin</em> de Joan McLeod, que les
+    fiches officielles reprennent<sup class="corr"><a href="#src-3">3</a></sup> mais que personne
+    n'a jamais retrouvé — Melville, de son côté, présentait le scénario comme original<sup class="corr"><a href="#src-2">2</a><a href="#src-4">4</a></sup>.
+    Le film le plus rigoureusement méthodique du cinéma français repose donc sur deux sources
+    qui n'existent probablement pas. Ce n'est pas une faute de fabrication : c'est le principe
+    même de l'œuvre, où le code tient lieu de vérité.</p>
+  </div>
+
+  <p>Le tournage est frappé par une catastrophe. Dans la nuit du 28 au 29 juin 1967, un
+  incendie ravage les studios de la rue Jenner, dans le XIII<sup>e</sup> arrondissement, que
+  Melville avait fondés en 1947 et où il vivait<sup class="corr"><a href="#src-9">9</a></sup>.
+  Le décorateur François de Lamothe a laissé de cette matinée une image que le cinéma n'aurait
+  pas osé écrire : Melville « <em>encore en pyjama, complètement trempé par les lances
+  d'incendie, errant hébété parmi les débris fumants</em> », serrant contre lui son chat
+  Griffaulait, seul bien sauvé<sup class="corr"><a href="#src-9">9</a></sup>. Melville a
+  soupçonné un acte criminel sans jamais pouvoir l'établir<sup class="corr"><a href="#src-1">1</a><a href="#src-9">9</a></sup>.
+  Le film s'achève dans d'autres studios<sup class="corr"><a href="#src-1">1</a><a href="#src-9">9</a></sup>.
+  Une source consacrée à la production ajoute que le bouvreuil du film — la seule créature
+  vivante de la chambre de Jef — a péri dans l'incendie<sup class="corr"><a href="#src-10">10</a></sup> ;
+  l'information n'a pas pu être recoupée ailleurs et est donnée ici sous cette réserve.</p>
+
+  <p>Cette possession d'un studio n'était pas un caprice de propriétaire : elle plaçait
+  Melville dans un club minuscule — celui des cinéastes maîtres de leur outil, avec Chaplin et
+  Pagnol<sup class="corr"><a href="#src-9">9</a></sup> — et fondait l'indépendance dont il
+  faisait sa fierté. « <em>Je suis le loup solitaire du cinéma français</em> », déclarait-il à
+  <em>Sight and Sound</em> quelques mois après la sortie, ajoutant avoir refusé cinquante-quatre
+  propositions américaines<sup class="corr"><a href="#src-6">6</a></sup>.</p>
+</section>
+
+<!-- 4 ------------------------------------------------------------------ -->
+<section id="structure">
+  <div class="station">
+    <span class="pastille">4</span>
+    <div>
+      <span class="quai-label">Station 4</span>
+      <h2>Structure narrative</h2>
+    </div>
+  </div>
+
+  <p>Le récit tient en trois mouvements d'une régularité de métronome : la préparation et
+  l'exécution du contrat ; la garde à vue et le démontage de l'alibi ; la traque croisée et la
+  sortie. Mais la véritable trouvaille de construction est ailleurs : le film s'ouvre sur près
+  de trois minutes sans une parole, sur un plan fixe où l'on distingue à peine, dans la pénombre
+  d'une chambre, un homme allongé sur un lit<sup class="corr"><a href="#src-10">10</a></sup>.
+  Melville, interrogé sur cette ouverture, en donne la clé sans détour : Jef est « <em>déjà
+  disposé, déjà mort</em> » dès ce premier plan, et le film n'est que le déroulé d'une mort
+  déjà advenue<sup class="corr"><a href="#src-6">6</a></sup>.</p>
+
+  <p>De là vient la sensation, unique, que le suspense de <em>Le Samouraï</em> ne fonctionne
+  jamais comme celui d'un thriller. On n'attend pas de savoir si Jef s'en sortira : on regarde
+  se refermer un mécanisme. Melville organise pour cela des « <em>mondes parallèles qui ne se
+  chevauchent jamais</em> »<sup class="corr"><a href="#src-6">6</a></sup> — celui de la police,
+  celui des commanditaires, celui de Jef — dont chacun exécute son propre protocole. Le
+  commissaire, incarnation d'une logique cartésienne française, procède par déduction ; les
+  commanditaires par élimination ; Jef, lui, reste une « <em>énigme complète</em> »<sup class="corr"><a href="#src-6">6</a></sup>,
+  un personnage dont on ne saura ni le passé, ni les motifs, ni même s'il éprouve quelque chose.</p>
+
+  <p>Les rares informations narratives passent par des scènes de pure procédure : la fabrication
+  de l'alibi, la parade d'identification, la pose du micro dans la chambre, la filature dans le
+  métro. Le récit avance par vérification de gestes techniques, non par révélation psychologique.
+  C'est un scénario écrit comme un procès-verbal — et l'on comprend pourquoi son auteur en
+  décrivait le point de départ comme la « <em>description méticuleuse, presque clinique, du
+  comportement d'un tueur à gages</em> »<sup class="corr"><a href="#src-6">6</a></sup>.</p>
+</section>
+
+<!-- 5 ------------------------------------------------------------------ -->
+<section id="mise-en-scene">
+  <div class="station">
+    <span class="pastille">5</span>
+    <div>
+      <span class="quai-label">Station 5</span>
+      <h2>Mise en scène et procédés techniques</h2>
+    </div>
+  </div>
+
+  <p><strong>La couleur retirée de la couleur.</strong> L'ambition affichée de Melville était de
+  « <em>faire un film en couleur en noir et blanc, dans lequel il n'y aurait qu'un tout petit
+  détail pour nous rappeler qu'on regarde bien un film en couleur</em> » — et avec Henri Decaë,
+  il refuse jusqu'à ce détail dans la longue séquence d'ouverture<sup class="corr"><a href="#src-10">10</a></sup>.
+  Le résultat est cette photographie que Jonathan Rosenbaum décrit comme trouvant « <em>quelque
+  chose de bleu-gris métallique dans pratiquement chaque plan</em> »<sup class="corr"><a href="#src-7">7</a></sup>,
+  et que Jason Wood résume en « <em>bleus et gris acier</em> » d'une atmosphère spectrale<sup class="corr"><a href="#src-5">5</a></sup>.
+  Le méthodisme de l'entreprise va loin : pour la scène où Delon manipule des billets, Melville
+  aurait fait photocopier des coupures en noir et blanc plutôt que d'introduire à l'écran la
+  seule tache de couleur saturée du film<sup class="corr"><a href="#src-10">10</a></sup>.</p>
+
+  <p><strong>Le métro comme dispositif.</strong> La grande séquence de filature — la police
+  suivant Jef de rame en rame, de correspondance en correspondance — a été tournée « <em>caméra
+  à la main sans trucage</em> », à « <em>l'éclairage ordinaire du métro</em> », et a demandé une
+  semaine de travail<sup class="corr"><a href="#src-6">6</a></sup>. Elle est le cœur formel du
+  film : un réseau, des embranchements, des agents postés aux nœuds, et un homme qui croit
+  encore pouvoir choisir sa direction. Le métro, que Jef maîtrise mieux que quiconque, se
+  retourne en piège — l'espace qu'il contrôle devient celui qui l'enferme<sup class="corr"><a href="#src-4">4</a></sup>.</p>
+
+  <p><strong>Le silence et la musique.</strong> Melville coupe le dialogue jusqu'à l'os ;
+  Wood note qu'« <em>aucune parole, aucun regard, aucun geste n'est superflu</em> »<sup class="corr"><a href="#src-5">5</a></sup>.
+  La partition de François de Roubaix accompagne ce dépouillement au lieu de le combler : seize
+  minutes trente-quatre de musique pour tout le film, sans effet ni synthétiseur, sur un
+  effectif d'orchestre à cordes, vibraphone, orgue Hammond, accordéon, flûte, trompette et
+  piano<sup class="corr"><a href="#src-11">11</a></sup>. C'est une musique qui ne raconte pas
+  l'action : elle souligne le rituel et l'inéluctable.</p>
+
+  <blockquote>
+    Je ne m'intéresse pas au réalisme. Tous mes films reposent sur le fantastique.
+    <cite>Jean-Pierre Melville, entretien avec Rui Nogueira et François Truchaud, <em>Sight and Sound</em>, été 1968<sup class="corr"><a href="#src-6">6</a></sup></cite>
+  </blockquote>
+
+  <p>Cette déclaration éclaire tout le reste. Les décors — la chambre nue, le club aux surfaces
+  froides, le commissariat aux perspectives interminables — ne cherchent pas la vraisemblance
+  sociologique mais une abstraction de conte. Melville refusait d'ancrer ses films dans une
+  époque datable : d'où, disait-il, l'absence de minijupes dans un film tourné en 1967<sup class="corr"><a href="#src-6">6</a></sup>.
+  Le Paris du <em>Samouraï</em> est un Paris mental, où il pleut toujours un peu et où personne
+  ne rit.</p>
+</section>
+
+<!-- 6 ------------------------------------------------------------------ -->
+<section id="personnages">
+  <div class="station">
+    <span class="pastille">6</span>
+    <div>
+      <span class="quai-label">Station 6</span>
+      <h2>Personnages principaux</h2>
+    </div>
+  </div>
+
+  <p><strong>Jef Costello.</strong> Il est moins un personnage qu'une méthode. On le connaît par
+  ses gestes : le passage de la main sur le bord du chapeau, le trousseau de passe-partout
+  essayé un par un dans une portière, la façon de retirer l'imperméable avant de s'allonger.
+  Melville en donne pourtant une lecture affective, presque romantique : Jef est « <em>amoureux
+  de sa propre mort</em> », et la femme en noir qui traverse le film relève d'un imaginaire
+  cocteauien assumé<sup class="corr"><a href="#src-6">6</a></sup> — Melville revendiquait une
+  affinité intellectuelle avec Cocteau depuis <em>Les Enfants terribles</em><sup class="corr"><a href="#src-6">6</a></sup>.
+  Delon, choisi pour une beauté que Wood qualifie d'androgyne<sup class="corr"><a href="#src-5">5</a></sup>,
+  y compose l'un des rares emplois de cinéma où l'inexpressivité est le sujet même.</p>
+
+  <p><strong>Le commissaire.</strong> Sans nom, sans vie privée, il est le double administratif
+  de Jef : même patience, même méthode, mêmes moyens douteux. La pose du micro dans la chambre,
+  l'organisation d'un faux témoignage, la manipulation de Jane : le film met en évidence que
+  policier et tueur usent des mêmes tactiques<sup class="corr"><a href="#src-4">4</a></sup>. La
+  seule différence est que l'un a un mandat. Périer, arraché à la comédie, joue cela sans
+  moralisme, avec une jubilation d'artisan.</p>
+
+  <p><strong>Jane Lagrange.</strong> Interprétée par Nathalie Delon, elle fournit l'alibi et
+  encaisse tout : les pressions de la police, l'indifférence de Jef, l'humiliation d'être un
+  élément du dispositif. Sa dernière réplique — l'aveu qu'elle ment par attachement, non par
+  peur — est l'un des rares moments où le film consent à l'émotion directe.</p>
+
+  <p><strong>Valérie, la pianiste.</strong> Cathy Rosier occupe la place la plus énigmatique du
+  film : elle voit Jef, peut le perdre d'un mot, et ne le fait pas. Le film ne comble jamais
+  ce trou — ni idylle, ni complicité claire. Elle est la seule brèche dans un monde de
+  protocoles, et c'est par elle que le protocole se terminera.</p>
+</section>
+
+<!-- 7 ------------------------------------------------------------------ -->
+<section id="themes">
+  <div class="station">
+    <span class="pastille">7</span>
+    <div>
+      <span class="quai-label">Station 7</span>
+      <h2>Thèmes</h2>
+    </div>
+  </div>
+
+  <p>Quatre axes se dégagent, suffisamment séparables pour être traités en correspondances
+  distinctes.</p>
+
+  <h3 class="correspondance">Le code comme substitut de sens</h3>
+  <p>Jef obéit à une règle qu'aucune instance ne garantit. Le titre lui-même est techniquement
+  trompeur : le code personnel du personnage relève moins du <em>bushido</em> des samouraïs que
+  du <em>jingi</em> des yakuzas — humanité et honneur d'un hors-la-loi —, deux idéologies
+  distinctes que le film amalgame<sup class="corr"><a href="#src-4">4</a></sup>. Et l'épigraphe
+  qui fonde ce code est fausse<sup class="corr"><a href="#src-4">4</a></sup>. Le film propose
+  ainsi une expérience limite : que reste-t-il d'une éthique dont on sait qu'elle est inventée ?
+  Réponse de Melville : exactement autant qu'avant, puisqu'un code ne vaut que par l'obéissance
+  qu'on lui accorde.</p>
+
+  <h3 class="correspondance alt">La solitude comme condition professionnelle</h3>
+  <p>La chambre grise, le bouvreuil pour seule compagnie, l'eau minérale, l'absence de
+  téléphone : le film ne psychologise jamais la solitude de Jef, il en fait l'équipement de son
+  métier. Wood inscrit le personnage dans une lignée d'« <em>âmes silencieusement souffrantes</em> »
+  qui va du Walker de <em>Le Point de non-retour</em> — sorti la même année 1967 — au Travis
+  Bickle de Scorsese<sup class="corr"><a href="#src-5">5</a></sup>. La différence, chez Melville,
+  est qu'il n'y a pas de trauma d'origine à découvrir : la solitude n'explique rien, elle est.</p>
+
+  <h3 class="correspondance">Le réseau et la proie</h3>
+  <p>Toute la seconde moitié du film est une réflexion sur la surveillance moderne. Micro
+  dissimulé, filatures à relais radiophoniques, plans du métro punaisés au mur du commissariat :
+  l'État y apparaît comme une machine à cartographier les trajets. Le motif de la cage — celle
+  du bouvreuil, dont l'agitation avertit Jef d'une intrusion — est le condensé visuel de cette
+  situation : un être qui signale l'enfermement d'un autre<sup class="corr"><a href="#src-4">4</a></sup>.
+  Il est frappant que l'affiche d'exploitation ait retenu ce motif, en dessinant les barreaux
+  d'une cage derrière le chapeau de Delon.</p>
+
+  <h3 class="correspondance alt">Le suicide comme dernière élégance</h3>
+  <p>La scène finale — Jef entrant au club avec une arme dont on découvre qu'elle est vide —
+  transforme un meurtre annoncé en autodestruction organisée. La lecture de Melville, qui voyait
+  son personnage épris de sa propre mort<sup class="corr"><a href="#src-6">6</a></sup>, en fait
+  moins un sacrifice amoureux qu'un dernier acte de méthode : le professionnel choisit l'heure
+  et le lieu de sa sortie, et il la met en scène. Une source consacrée à la production rapporte
+  que Melville aurait tourné deux fins — l'une où Jef sourit, l'autre où il conserve son masque —
+  et retenu la seconde<sup class="corr"><a href="#src-10">10</a></sup> ; l'information n'a pas
+  pu être vérifiée ailleurs, mais le choix qu'elle décrit est exactement celui du film.</p>
+</section>
+
+<!-- 8 ------------------------------------------------------------------ -->
+<section id="reception">
+  <div class="station">
+    <span class="pastille">8</span>
+    <div>
+      <span class="quai-label">Station 8</span>
+      <h2>Réception critique et postérité</h2>
+    </div>
+  </div>
+
+  <p>Le succès public est immédiat : environ 1,9 million d'entrées en France après la sortie du
+  25 octobre 1967<sup class="corr"><a href="#src-1">1</a><a href="#src-12">12</a></sup>. La
+  critique, elle, se divise. Ginette Vincendeau, qui a consacré au cinéaste l'ouvrage de
+  référence <em>Jean-Pierre Melville: An American in Paris</em> (BFI, 2003), décrit une presse
+  coupée en deux : les chroniqueurs généralistes saluent une maîtrise nouvelle du genre
+  policier, tandis que les critiques les plus politisés de la fin des années 1960 y voient un
+  divertissement vide, coupé des questions de l'époque<sup class="corr"><a href="#src-8">8</a></sup>.
+  Le jugement le plus cité de ce camp est celui de Michel Cournot dans <em>Le Nouvel
+  Observateur</em> — « une histoire de gangsters très banale, rien de plus » —, rapporté par la
+  littérature critique anglophone consacrée au film<sup class="corr"><a href="#src-8">8</a></sup> ;
+  nous n'avons pas pu le vérifier sur l'original.</p>
+
+  <p>Le film met du temps à traverser l'Atlantique : il ne sort aux États-Unis qu'en 1972, dans
+  une version doublée et rebaptisée <em>The Godson</em><sup class="corr"><a href="#src-1">1</a></sup> —
+  un titre de circonstance, un an après <em>Le Parrain</em>. C'est la réévaluation ultérieure,
+  puis la restauration Pathé de 2023 et sa ressortie en salles<sup class="corr"><a href="#src-3">3</a></sup>,
+  qui installeront le film au rang de classique.</p>
+
+  <p>Sa postérité est démesurée. John Woo en tire l'un des matériaux de <em>The Killer</em>
+  (1989), au point que le film est couramment décrit comme un remake officieux ; Jim Jarmusch
+  cite explicitement la fin dans <em>Ghost Dog</em> (1999), où le héros marche lui aussi vers
+  une arme vide ; Nicolas Winding Refn et Ryan Gosling revendiquent Jef Costello comme matrice
+  du conducteur de <em>Drive</em> (2011)<sup class="corr"><a href="#src-13">13</a></sup>. La
+  figure du tueur taiseux, méthodique et vêtu comme un fonctionnaire du crime vient très
+  largement de là.</p>
+
+  <div class="avis">
+    <span class="titre">Correspondance — une voix discordante</span>
+    <p>Toutes les relectures ne sont pas hagiographiques. Jonathan Rosenbaum, en 1994, juge le
+    film « <em>élégant et stylé</em> » mais « <em>maniériste et légèrement monotone</em> », et
+    conteste ouvertement qu'il soit « <em>vraiment l'écriture sainte que Quentin Tarantino et
+    John Woo ont prétendu</em> » ; il tient même les films en noir et blanc antérieurs de
+    Melville pour plus réussis que ses films en couleur<sup class="corr"><a href="#src-7">7</a></sup>.
+    L'objection mérite d'être entendue : elle nomme le risque réel du film, qui est de confondre
+    l'épure avec la profondeur.</p>
+  </div>
+</section>
+
+<!-- 9 ------------------------------------------------------------------ -->
+<section id="conclusion">
+  <div class="station">
+    <span class="pastille">9</span>
+    <div>
+      <span class="quai-label">Station 9 — terminus</span>
+      <h2>Conclusion</h2>
+    </div>
+  </div>
+
+  <p>La force de <em>Le Samouraï</em> tient à une opération unique : Melville a construit un
+  film entièrement fondé sur la loi — code d'honneur, protocole professionnel, procédure
+  policière — et l'a construit sur des documents faux. La citation liminaire est de sa main,
+  le roman crédité est introuvable, et le personnage obéit à un code qui n'a pas cours dans le
+  monde qu'il traverse. Loin d'affaiblir le film, cette imposture en est le sujet : il ne
+  s'agit pas de savoir si le code de Jef est vrai, mais de constater qu'il tient — qu'un homme
+  peut organiser une vie, et surtout une mort, autour d'une règle dont il est le seul garant.</p>
+
+  <p>C'est aussi ce qui distingue le film de ses innombrables descendants. Woo, Jarmusch ou
+  Refn ont hérité de la silhouette, du silence, du rituel ; ils en ont rarement gardé la froideur
+  documentaire — cette manière de filmer un homicide comme un geste d'atelier, une filature
+  comme un problème de logistique, une agonie comme la dernière ligne d'un procès-verbal. La
+  réserve de Rosenbaum garde ici sa valeur d'avertissement<sup class="corr"><a href="#src-7">7</a></sup> :
+  le film flirte avec le maniérisme, et il y a une part de séduction pure dans son bleu-gris.
+  Mais l'objection suppose que l'épure soit un habillage. Elle est plutôt, chez Melville, une
+  thèse : quand on retire d'une existence tout ce qui n'est pas méthode — les mobiles, les
+  attaches, le passé, jusqu'aux couleurs — il reste un homme dans un imperméable, qui vérifie
+  ses gestes, et qui traverse le réseau jusqu'à son terminus.</p>
+
+  <p>Melville affirmait à ses interlocuteurs de <em>Sight and Sound</em> que <em>Le Samouraï</em>
+  était « un film japonais »<sup class="corr"><a href="#src-6">6</a></sup>. La formule est
+  fausse et exacte à la fois, comme son épigraphe : ce n'est pas un film japonais, c'est un
+  film français qui a décidé de croire à un Japon inventé, et qui tient debout par la seule
+  rigueur de cette croyance.</p>
+</section>
+
+<!-- SOURCES ----------------------------------------------------------- -->
+<section id="sources" class="sources">
+  <div class="station">
+    <span class="pastille">◆</span>
+    <div>
+      <span class="quai-label">Appareil</span>
+      <h2>Sources</h2>
+    </div>
+  </div>
+
+  <div class="note">
+    Sources effectivement consultées lors de la préparation de cette analyse. Deux ressources
+    de premier intérêt sont restées inaccessibles (HTTP 403) et ne sont donc pas citées : la
+    notice et les essais de la Criterion Collection consacrés au film, et la « Great Movie »
+    de Roger Ebert. L'échec est consigné au journal d'erreurs du projet. La citation de Michel
+    Cournot (source 8) n'a pas pu être vérifiée sur l'original.
+  </div>
+
+  <ol>
+    <li id="src-1">Wikipedia (EN), « Le Samouraï » — <a href="https://en.wikipedia.org/wiki/Le_Samoura%C3%AF">en.wikipedia.org</a> (production, distribution, incendie des studios, entrées France, sortie américaine sous le titre <em>The Godson</em>)</li>
+    <li id="src-2">« Le Samouraï de Jean-Pierre Melville (1967) — Analyse et critique du film », <em>DVDClassik</em> — <a href="https://www.dvdclassik.com/critique/le-samourai-melville">dvdclassik.com</a> (générique, écriture du scénario en 1963, anecdote de la lecture à Delon)</li>
+    <li id="src-3">« Le Samouraï », fiche film, <em>La Cinémathèque française</em> — <a href="https://www.cinematheque.fr/film/50143.html">cinematheque.fr</a> (générique complet, production Filmel / Fida Cinematografica, restauration Pathé 2023)</li>
+    <li id="src-4">« Cinematic Cool: Jean-Pierre Melville's <em>Le Samouraï</em> », <em>Senses of Cinema</em>, CTEQ Annotations on Film, 2015 — <a href="https://www.sensesofcinema.com/2015/cteq/samourai/">sensesofcinema.com</a> (épigraphe apocryphe, <em>jingi</em> et <em>bushido</em>, métro, cage, convergence police/tueur)</li>
+    <li id="src-5">Jason Wood, « Melancholy masculinity in Jean-Pierre Melville's <em>Le Samouraï</em> », <em>ACMI</em> — <a href="https://www.acmi.net.au/stories-and-ideas/melancholy-masculinity-jean-pierre-melvilles-le-samourai/">acmi.net.au</a> (photographie bleu-gris acier, minimalisme, filiation Walker / Travis Bickle)</li>
+    <li id="src-6">Rui Nogueira et François Truchaud, entretien avec Jean-Pierre Melville, <em>Sight and Sound</em>, été 1968, republié par le <em>BFI</em> sous le titre « Jean-Pierre Melville: a samurai in Paris » — <a href="https://www.bfi.org.uk/sight-and-sound/features/jean-pierre-melville-samurai-paris">bfi.org.uk</a> (déclarations de Melville : « loup solitaire », le fantastique contre le réalisme, le tournage du métro, Jef « déjà mort », Cocteau, « un film japonais »). Ces entretiens ont nourri l'ouvrage de Nogueira, <em>Melville on Melville</em> (1971).</li>
+    <li id="src-7">Jonathan Rosenbaum, « Le Samourai », novembre 1994 — <a href="https://jonathanrosenbaum.net/1994/11/le-samourai/">jonathanrosenbaum.net</a> (réserves sur le maniérisme, « metallic blue gray », contestation de la mythification par Tarantino et Woo)</li>
+    <li id="src-8">Ginette Vincendeau, <em>Jean-Pierre Melville: An American in Paris</em>, BFI, 2003 ; et son entretien filmé « Ginette Vincendeau on <em>Le Samouraï</em> » (2005, 18 min), <em>The Criterion Channel</em> — <a href="https://www.criterionchannel.com/videos/ginette-vincendeau-on-le-samourai">criterionchannel.com</a> (division de la presse française à la sortie ; jugement de Michel Cournot dans <em>Le Nouvel Observateur</em>, rapporté par cette littérature et non vérifié sur l'original)</li>
+    <li id="src-9">Wikipédia (FR), « Studios Jenner » — <a href="https://fr.wikipedia.org/wiki/Studios_Jenner">fr.wikipedia.org</a> (fondation en 1947, adresse, incendie du 29 juin 1967, témoignage de François de Lamothe, chat Griffaulait, achèvement du film ailleurs)</li>
+    <li id="src-10">« The Untold Story of <em>Le Samouraï</em> », <em>The Beverly Theater</em> — <a href="https://www.thebeverlytheater.com/news/the-untold-story-of-le-samourai">thebeverlytheater.com</a> (ambition du « film en couleur en noir et blanc », billets photocopiés, plan d'ouverture de trois minutes, engagement de Delon ; les mentions du bouvreuil mort dans l'incendie et de la double fin tournée n'ont pas pu être recoupées)</li>
+    <li id="src-11">« François de Roubaix, le samouraï de Jean-Pierre Melville », <em>Cadence Info</em> — <a href="https://www.cadenceinfo.com/francois-de-roubaix-le-samourai.htm">cadenceinfo.com</a> ; et la fiche de la bande originale sur <em>Cinezik</em> — <a href="https://www.cinezik.org/critiques/affcritique.php?titre=samourai_aventuriers">cinezik.org</a> (durée de la partition, effectif instrumental, direction d'Éric Demarsan)</li>
+    <li id="src-12">« Le Samouraï (1967) », <em>JP Box-Office</em> — <a href="https://www.jpbox-office.com/mobile/fichfilm.php?id=9129">jpbox-office.com</a> (entrées France)</li>
+    <li id="src-13">Dossiers de postérité consultés : <em>Wikipedia (EN)</em>, section « Legacy » (source 1) ; « Face Off: Le Samourai (1967) and Drive (2011) », <em>Motion State Review</em> — <a href="https://motionstatereview.com/2021/07/09/face-off-le-samourai-1967-and-drive-2011/">motionstatereview.com</a> (filiations <em>The Killer</em>, <em>Ghost Dog</em>, <em>Drive</em>)</li>
+    <li id="src-poster">Affiche : <em>The Movie Database</em>, fiche « Le Samouraï (1967) » vérifiée par son titre avant téléchargement — <a href="https://www.themoviedb.org/movie/5511-le-samourai">themoviedb.org</a>. L'exemplaire de la base d'images de référence du projet (<code>1967 le_samourai  Jean-Pierre Melville.jpg</code>) n'a pas pu être copié depuis le disque D: au cours de cette session.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <span>Analyse rédigée à partir des sources ci-dessus — 21 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
