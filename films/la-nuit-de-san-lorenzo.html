@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Nuit de San Lorenzo (1982) — Paolo et Vittorio Taviani | Analyses de films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@400;500;700&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     IDENTITÉ BESPOKE — « Le ciel du 10 août »
+     Le film est un conte dit la nuit (la voix qui raconte, les
+     étoiles filantes, le vœu) sur un été de blé mûr (l'exode de
+     1944). La page fait donc la même chose que le récit : elle
+     s'ouvre et se ferme dans la nuit d'encre, et se déroule au
+     plein jour d'une moisson. Les étoiles sont DESSINÉES en CSS,
+     jamais posées comme glyphe — aucune fonte de texte ne porte
+     ✦, et un repli silencieux n'est pas une décision.
+     ========================================================= */
+
+  :root{
+    --nuit:#0b1526;
+    --nuit-2:#152541;
+    --nuit-3:#1e3457;
+    --etoile:#f6ecd2;
+    --etoile-dim:#b9c4d6;
+    --ble:#c08a2c;
+    --ble-clair:#e6c374;
+    --lin:#f4ede1;
+    --lin-2:#eae0cd;
+    --encre:#241f19;
+    --encre-pale:#5f5648;
+    --sang:#8c3122;
+    --terre:#6d5c3f;
+    --ombre:rgba(11,21,38,0.13);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--lin);
+    color:var(--encre);
+    font-family:'Alegreya', Georgia, 'Times New Roman', serif;
+    font-size:1.06rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- LA NUIT : couverture ---------- */
+
+  header.ciel{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 22% 8%, rgba(30,52,87,0.85) 0%, rgba(11,21,38,0) 60%),
+      radial-gradient(ellipse at 82% 22%, rgba(21,37,65,0.9) 0%, rgba(11,21,38,0) 55%),
+      linear-gradient(178deg, var(--nuit) 0%, var(--nuit-2) 62%, #22334d 100%);
+    color:var(--etoile);
+    padding:4.2rem 1.5rem 3.4rem;
+  }
+
+  /* champ d'étoiles : petits points, aucune image, aucune requête */
+  header.ciel::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.4px 1.4px at 12% 18%, rgba(246,236,210,0.85) 50%, transparent 51%),
+      radial-gradient(1.1px 1.1px at 27% 42%, rgba(246,236,210,0.6) 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 41% 12%, rgba(246,236,210,0.9) 50%, transparent 51%),
+      radial-gradient(1px 1px at 55% 33%, rgba(246,236,210,0.55) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 68% 8%, rgba(246,236,210,0.8) 50%, transparent 51%),
+      radial-gradient(1.2px 1.2px at 76% 47%, rgba(246,236,210,0.6) 50%, transparent 51%),
+      radial-gradient(1.3px 1.3px at 88% 26%, rgba(246,236,210,0.75) 50%, transparent 51%),
+      radial-gradient(1px 1px at 94% 55%, rgba(246,236,210,0.5) 50%, transparent 51%),
+      radial-gradient(1.1px 1.1px at 6% 62%, rgba(246,236,210,0.5) 50%, transparent 51%),
+      radial-gradient(1.4px 1.4px at 34% 70%, rgba(246,236,210,0.45) 50%, transparent 51%);
+    pointer-events:none;
+  }
+
+  /* l'étoile filante : une traînée fine, en CSS pur */
+  header.ciel::after{
+    content:"";
+    position:absolute;
+    top:16%; right:8%;
+    width:210px; height:1px;
+    background:linear-gradient(90deg, rgba(246,236,210,0) 0%, rgba(246,236,210,0.9) 88%, rgba(255,255,255,1) 100%);
+    transform:rotate(24deg);
+    opacity:0.75;
+    pointer-events:none;
+  }
+
+  .ciel-inner{ position:relative; z-index:2; max-width:780px; margin:0 auto; }
+
+  .retour{
+    display:inline-block;
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.82rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--etoile-dim);
+    text-decoration:none;
+    border-bottom:1px solid rgba(185,196,214,0.35);
+    padding-bottom:2px;
+    margin-bottom:2.6rem;
+  }
+  .retour:hover{ color:var(--ble-clair); border-color:var(--ble-clair); }
+
+  .cartel{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.74rem;
+    font-weight:500;
+    letter-spacing:0.19em;
+    text-transform:uppercase;
+  }
+
+  header.ciel .cartel{ color:var(--ble-clair); display:block; margin-bottom:1rem; }
+
+  header.ciel h1{
+    font-family:'Alegreya SC', Georgia, serif;
+    font-weight:500;
+    font-size:clamp(2.3rem, 6.4vw, 3.5rem);
+    line-height:1.08;
+    margin:0 0 0.5rem;
+    color:var(--etoile);
+  }
+
+  .titre-vo{
+    font-style:italic;
+    font-size:1.18rem;
+    color:var(--etoile-dim);
+    margin-bottom:1.9rem;
+  }
+
+  .filet-etoile{
+    height:1px;
+    background:linear-gradient(90deg, rgba(246,236,210,0) 0%, rgba(192,138,44,0.9) 22%, rgba(246,236,210,0.55) 60%, rgba(246,236,210,0) 100%);
+    margin:1.9rem 0;
+  }
+
+  .generique{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.95rem;
+    color:var(--etoile-dim);
+    letter-spacing:0.015em;
+  }
+
+  .provenance{
+    margin-top:1.9rem;
+    padding:0.85rem 1.15rem;
+    background:rgba(30,52,87,0.42);
+    border-left:2px solid var(--ble);
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.79rem;
+    line-height:1.6;
+    letter-spacing:0.02em;
+    color:var(--etoile-dim);
+  }
+  .provenance strong{ color:var(--etoile); font-weight:500; }
+
+  .avertissement{
+    margin-top:1.1rem;
+    padding:0.85rem 1.15rem;
+    background:rgba(140,49,34,0.22);
+    border-left:2px solid var(--sang);
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.83rem;
+    line-height:1.62;
+    color:#f0d9d2;
+  }
+  .avertissement strong{ color:#fff; font-weight:500; }
+
+  /* ---------- SOMMAIRE ---------- */
+
+  nav.veillee{
+    background:var(--nuit-3);
+    padding:2.1rem 1.5rem 2.3rem;
+    color:var(--etoile-dim);
+  }
+  nav.veillee .inner{ max-width:780px; margin:0 auto; }
+  nav.veillee .cartel{ color:var(--ble-clair); display:block; margin-bottom:1.1rem; }
+  nav.veillee ol{
+    list-style:none;
+    margin:0; padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px, 1fr));
+    gap:0.35rem 1.8rem;
+  }
+  nav.veillee a{
+    display:block;
+    padding:0.28rem 0;
+    color:var(--etoile-dim);
+    text-decoration:none;
+    font-size:0.99rem;
+    border-bottom:1px solid rgba(185,196,214,0.12);
+  }
+  nav.veillee a:hover{ color:var(--ble-clair); }
+  nav.veillee .num{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.74rem;
+    letter-spacing:0.12em;
+    color:var(--ble);
+    margin-right:0.75rem;
+  }
+
+  /* ---------- LE JOUR : le conte ---------- */
+
+  main{
+    max-width:780px;
+    margin:0 auto;
+    padding:3.6rem 1.5rem 2rem;
+  }
+
+  section{ margin-bottom:3.6rem; }
+
+  .chant{ margin-bottom:1.6rem; }
+  .chant .cartel{ color:var(--terre); display:block; margin-bottom:0.45rem; }
+
+  /* l'astérisque du conte, dessiné : deux barres croisées */
+  .chant .cartel::before{
+    content:"";
+    display:inline-block;
+    width:9px; height:9px;
+    margin-right:0.7rem;
+    vertical-align:0.02em;
+    background:
+      linear-gradient(90deg, transparent 42%, var(--ble) 42%, var(--ble) 58%, transparent 58%),
+      linear-gradient(0deg, transparent 42%, var(--ble) 42%, var(--ble) 58%, transparent 58%);
+    transform:rotate(45deg);
+  }
+
+  h2{
+    font-family:'Alegreya SC', Georgia, serif;
+    font-weight:500;
+    font-size:clamp(1.55rem, 3.6vw, 1.95rem);
+    line-height:1.2;
+    margin:0;
+    color:var(--encre);
+  }
+  h2::after{
+    content:"";
+    display:block;
+    height:1px;
+    margin-top:0.7rem;
+    background:linear-gradient(90deg, var(--ble) 0%, rgba(192,138,44,0.25) 38%, rgba(192,138,44,0) 100%);
+  }
+
+  h3{
+    font-family:'Alegreya SC', Georgia, serif;
+    font-weight:500;
+    font-size:1.16rem;
+    letter-spacing:0.02em;
+    color:var(--sang);
+    margin:2.2rem 0 0.6rem;
+  }
+
+  p{ margin:0 0 1.15rem; }
+
+  em{ font-style:italic; }
+
+  a{ color:var(--sang); }
+
+  sup.ref{ font-size:0.7em; line-height:0; }
+  sup.ref a{
+    text-decoration:none;
+    color:var(--ble);
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-weight:500;
+    padding:0 0.09em;
+  }
+  sup.ref a:hover{ color:var(--sang); }
+
+  /* la voix qui raconte — les inserts de la narratrice */
+  .voix{
+    margin:1.9rem 0;
+    padding:1.1rem 1.4rem;
+    background:var(--lin-2);
+    border-left:2px solid var(--ble);
+    font-style:italic;
+    font-size:1.04rem;
+    color:var(--terre);
+  }
+
+  /* ---------- FICHE TECHNIQUE ---------- */
+
+  .fiche-wrap{
+    display:grid;
+    grid-template-columns:1fr 232px;
+    gap:2.2rem;
+    align-items:start;
+  }
+
+  .fiche dl{ margin:0; }
+  .fiche dt{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--terre);
+    margin-top:1rem;
+  }
+  .fiche dd{
+    margin:0.15rem 0 0;
+    padding-bottom:0.55rem;
+    border-bottom:1px solid rgba(109,92,63,0.16);
+  }
+
+  figure.poster{
+    margin:0;
+    background:var(--nuit);
+    padding:9px 9px 0;
+    box-shadow:0 12px 30px var(--ombre);
+  }
+  figure.poster img{ display:block; width:100%; height:auto; }
+  figure.poster figcaption{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.7rem;
+    line-height:1.5;
+    letter-spacing:0.05em;
+    color:var(--etoile-dim);
+    padding:0.6rem 0.15rem 0.7rem;
+  }
+
+  /* ---------- L'ENCADRÉ DU LITIGE ---------- */
+
+  .dossier{
+    margin:2rem 0;
+    background:#fbf6ec;
+    border:1px solid rgba(140,49,34,0.3);
+    border-top:3px solid var(--sang);
+    padding:1.5rem 1.6rem 0.6rem;
+  }
+  .dossier .cartel{ color:var(--sang); display:block; margin-bottom:0.9rem; }
+  .dossier p:last-child{ margin-bottom:1rem; }
+
+  /* ---------- SOURCES ---------- */
+
+  .note{
+    background:var(--lin-2);
+    border-left:2px solid var(--terre);
+    padding:1rem 1.3rem;
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.88rem;
+    line-height:1.65;
+    color:var(--encre-pale);
+    margin-bottom:1.6rem;
+  }
+
+  #sources ol{
+    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-size:0.9rem;
+    line-height:1.62;
+    padding-left:1.4rem;
+    color:var(--encre-pale);
+  }
+  #sources li{ margin-bottom:0.62rem; }
+  #sources a{ color:var(--terre); }
+
+  /* ---------- RETOUR À LA NUIT ---------- */
+
+  footer{
+    background:var(--nuit);
+    color:var(--etoile-dim);
+    text-align:center;
+    padding:2.6rem 1.5rem;
+    margin-top:3rem;
+  }
+  footer .cartel{ color:var(--etoile-dim); }
+
+  @media (max-width:640px){
+    .fiche-wrap{ grid-template-columns:1fr; }
+    figure.poster{ max-width:232px; }
+    header.ciel::after{ width:120px; right:4%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="ciel">
+  <div class="ciel-inner">
+    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <span class="cartel">Italie — 1982 — Toscane, août 1944</span>
+    <h1>La Nuit de San Lorenzo</h1>
+    <div class="titre-vo">La notte di San Lorenzo</div>
+    <div class="filet-etoile"></div>
+    <div class="generique">Paolo et Vittorio Taviani · Photographie de Franco Di Giacomo · Musique de Nicola Piovani</div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse — Claude Opus, session supervisée du 21/07/2026.
+    </div>
+
+    <div class="avertissement">
+      <strong>Avertissement.</strong> Le film repose sur le massacre de civils réfugiés dans une église, et montre des exécutions sommaires, la mort d'enfants et une guerre civile entre voisins.
+    </div>
+  </div>
+</header>
+
+<nav class="veillee">
+  <div class="inner">
+    <span class="cartel">Le conte, en neuf chants</span>
+    <ol>
+      <li><a href="#fiche"><span class="num">I</span> Fiche technique</a></li>
+      <li><a href="#synopsis"><span class="num">II</span> Synopsis</a></li>
+      <li><a href="#production"><span class="num">III</span> Contexte de production</a></li>
+      <li><a href="#structure"><span class="num">IV</span> Structure narrative</a></li>
+      <li><a href="#mise-en-scene"><span class="num">V</span> Mise en scène</a></li>
+      <li><a href="#personnages"><span class="num">VI</span> Personnages</a></li>
+      <li><a href="#themes"><span class="num">VII</span> Thèmes</a></li>
+      <li><a href="#reception"><span class="num">VIII</span> Réception et postérité</a></li>
+      <li><a href="#conclusion"><span class="num">IX</span> Conclusion</a></li>
+      <li><a href="#sources"><span class="num">·</span> Sources</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="chant">
+    <span class="cartel">Chant I</span>
+    <h2>Fiche technique</h2>
+  </div>
+
+  <div class="fiche-wrap">
+    <div class="fiche">
+      <dl>
+        <dt>Titre original</dt><dd><em>La notte di San Lorenzo</em><sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Titre international</dt><dd><em>The Night of the Shooting Stars</em><sup class="ref"><a href="#src-5">5</a></sup></dd>
+        <dt>Réalisation</dt><dd>Paolo Taviani et Vittorio Taviani<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Scénario</dt><dd>Paolo et Vittorio Taviani, Giuliani G. De Negri — collaboration de Tonino Guerra<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-6">6</a></sup></dd>
+        <dt>Photographie</dt><dd>Franco Di Giacomo<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Musique</dt><dd>Nicola Piovani — première collaboration avec les Taviani<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Montage</dt><dd>Roberto Perpignani<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Décors, costumes</dt><dd>Gianni Sbarra ; Lina Nerli Taviani<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Interprétation</dt><dd>Omero Antonutti (Galvano), Margarita Lozano (Concetta), Claudio Bigagli (Corrado), Massimo Bonetti (Nicola), Enrica Maria Modugno, Paolo Hendel, David Riondino<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-5">5</a></sup></dd>
+        <dt>Production</dt><dd>Giuliani G. De Negri — RAI et Ager Cinematografica<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-6">6</a></sup></dd>
+        <dt>Tournage</dt><dd>San Miniato et la campagne toscane ; intérieurs d'église à la collégiale Sant'Andrea d'Empoli ; ferme finale à la Tenuta di Cortina e Mandorli, Montespertoli<sup class="ref"><a href="#src-1">1</a></sup></dd>
+        <dt>Durée</dt><dd>105 minutes<sup class="ref"><a href="#src-1">1</a></sup> — 107 min selon la copie restaurée diffusée par Film Forum<sup class="ref"><a href="#src-7">7</a></sup>, 108 min selon la Cinémathèque française<sup class="ref"><a href="#src-6">6</a></sup></dd>
+        <dt>Sortie</dt><dd>Italie, 1982 ; France, 20 octobre 1982<sup class="ref"><a href="#src-4">4</a></sup></dd>
+        <dt>Distinctions</dt><dd>Grand Prix spécial du jury et Prix du jury œcuménique, Cannes 1982 ; David di Donatello 1983 (film, réalisation, production, photographie, montage) ; Nastro d'argento 1983 (réalisation, scénario) ; Globo d'oro et Grolla d'oro 1983<sup class="ref"><a href="#src-1">1</a></sup> ; meilleur film de l'année pour la National Society of Film Critics et la Boston Society of Film Critics<sup class="ref"><a href="#src-5">5</a></sup> ; prix Venice Classics du meilleur film restauré, Venise 2018<sup class="ref"><a href="#src-1">1</a></sup></dd>
+      </dl>
+    </div>
+
+    <figure class="poster">
+      <img src="../assets/posters/la-nuit-de-san-lorenzo.jpg"
+           alt="Affiche du film La Nuit de San Lorenzo"
+           onerror="this.closest('.poster').remove()">
+      <figcaption>Affiche d'exploitation — source TMDB, notice vérifiée par titre et année</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="chant">
+    <span class="cartel">Chant II</span>
+    <h2>Synopsis</h2>
+  </div>
+
+  <p>Une femme veille son enfant, la nuit du 10 août — la nuit de la Saint-Laurent, celle des étoiles filantes, où l'on peut formuler un vœu. Elle lui raconte la nuit du même nom qu'elle a vécue à six ans<sup class="ref"><a href="#src-3">3</a></sup><sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>Été 1944, San Martino, un bourg de Toscane. Les Allemands minent le vieux quartier et ordonnent à la population de se rassembler dans la cathédrale, en promettant qu'elle y sera épargnée ; l'évêque relaie la consigne<sup class="ref"><a href="#src-1">1</a></sup>. Une partie du village obéit. Une poignée d'habitants refuse et quitte le bourg de nuit, derrière le vieux Galvano, pour marcher à la rencontre des Américains que l'on dit tout proches<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-4">4</a></sup>.</p>
+
+  <p>Ceux qui sont restés meurent dans l'église. Les fuyards, eux, traversent une campagne où l'on ne sait plus qui aide et qui dénonce : ils croisent des paysannes qui moissonnent avec les partisans, et le champ de blé devient un champ de bataille où partisans et fascistes se reconnaissent — ils sont souvent parents, amis, voisins<sup class="ref"><a href="#src-2">2</a></sup>. Au bout de la marche, l'arrivée des Américains ; et pour Galvano et Concetta, séparés toute une vie par la différence de condition, une seule nuit ensemble<sup class="ref"><a href="#src-4">4</a></sup>.</p>
+</section>
+
+<section id="production">
+  <div class="chant">
+    <span class="cartel">Chant III</span>
+    <h2>Contexte de production</h2>
+  </div>
+
+  <p>Neuvième long métrage des frères Taviani<sup class="ref"><a href="#src-1">1</a></sup>, <em>La Nuit de San Lorenzo</em> est aussi un retour : celui de deux cinéastes sur l'événement fondateur de leur propre enfance. Paolo et Vittorio Taviani sont nés à San Miniato, en Toscane, et leur père — avocat — siégea dans la première commission d'enquête municipale sur le massacre de 1944<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>Ils avaient déjà filmé cette histoire. En 1954, avec Valentino Orsini et sous le parrainage de Cesare Zavattini, ils signent leur premier film, <em>San Miniato, luglio '44</em> — un documentaire d'enquête sur le massacre du 22 juillet 1944, alors unanimement attribué aux troupes allemandes en retraite<sup class="ref"><a href="#src-8">8</a></sup>.</p>
+
+  <p>Vingt-huit ans séparent le documentaire de la fiction, et tout le sens du film tient dans ce que les Taviani ont changé entre-temps : non pas les faits, mais le <em>régime</em> du récit. Vittorio Taviani l'a formulé sans ambiguïté : « dans le film, nous n'avons pas raconté les choses telles qu'elles se sont déroulées mais au contraire telles qu'elles se sont métamorphosées dans la conscience des survivants, dans l'imaginaire collectif »<sup class="ref"><a href="#src-4">4</a></sup>. Ce n'est plus une enquête, c'est une transmission.</p>
+
+  <p>La production, portée par Giuliani G. De Negri pour la RAI et Ager Cinematografica<sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-6">6</a></sup>, marque la première rencontre des Taviani avec Nicola Piovani<sup class="ref"><a href="#src-1">1</a></sup>, qui deviendra l'un de leurs compagnons de route.</p>
+
+  <h3>Ne pas filmer dans le vrai duomo</h3>
+
+  <p>Un choix de tournage résume à lui seul la méthode du film. Les Taviani ont tourné à San Miniato et dans la campagne alentour, mais ils ont refusé de filmer l'église dans la vraie cathédrale : ils lui ont substitué la collégiale Sant'Andrea d'Empoli, la charge émotionnelle du duomo étant, disent-ils, restée trop forte<sup class="ref"><a href="#src-1">1</a></sup>. Dans le même mouvement, le bourg change de nom : San Miniato devient San Martino<sup class="ref"><a href="#src-1">1</a></sup>. Le film déplace le lieu réel de quelques kilomètres et d'une syllabe — exactement le travail que la mémoire opère sur ce qu'elle ne peut pas regarder en face.</p>
+</section>
+
+<section id="structure">
+  <div class="chant">
+    <span class="cartel">Chant IV</span>
+    <h2>Structure narrative</h2>
+  </div>
+
+  <p>Tout le film est tenu par un cadre : une femme adulte raconte à son nourrisson une nuit qu'elle a traversée à six ans. L'<em>Enciclopedia del Cinema</em> note que le récit s'ouvre « <em>come una ninna nanna</em> » — comme une berceuse — et que cette énonciation devient le principe organisateur du film, qui superpose deux strates temporelles : le présent du souvenir et l'août 1944<sup class="ref"><a href="#src-2">2</a></sup>.</p>
+
+  <p>Le dispositif est plus retors qu'il n'y paraît, car il empile trois distances. Ce que nous voyons a été vu par une enfant de six ans ; il est raconté par la femme qu'elle est devenue ; il est adressé à un enfant trop petit pour comprendre. Le film n'est donc jamais un témoignage : c'est un souvenir déjà mis en forme pour être transmis, et la mise en forme fait partie de ce qui est transmis.</p>
+
+  <div class="voix">
+    Darragh O'Donoghue relève que l'ouverture pose d'emblée un cadre de théâtre : la fenêtre est encadrée de rideaux « comme les rideaux d'un théâtre », tandis que la musique se déploie « comme une ouverture d'opéra »<sup class="ref"><a href="#src-3">3</a></sup>. Le film prévient qu'il est une représentation avant même d'avoir commencé à raconter.
+  </div>
+
+  <p>Cette licence assumée autorise deux choses que le réalisme interdirait. D'abord les ellipses : un conte a le droit de sauter ce qu'il ne veut pas dire. Ensuite le merveilleux, qui pourra surgir en plein champ de blé sans que le film ait à s'en excuser — puisqu'il n'a jamais promis autre chose qu'un souvenir.</p>
+
+  <p>Le corps du récit, lui, est celui d'un exode. Il progresse par étapes — le départ nocturne, la traversée des champs, la rencontre des partisans, la bataille, l'arrivée des Américains — sans héros unique : le protagoniste est un groupe. Ce choix est politique autant que narratif. La libération, dans ce film, n'est pas obtenue par une armée mais par une décision collective de désobéir à un ordre, ce qui suffit à en faire un film de résistance sans jamais en faire un film de guerre.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="chant">
+    <span class="cartel">Chant V</span>
+    <h2>Mise en scène et procédés techniques</h2>
+  </div>
+
+  <p>La photographie de Franco Di Giacomo installe une Toscane d'été, mûre et écrasée de lumière, que les Taviani composent en tableaux. O'Donoghue situe leur langage visuel dans l'héritage de la peinture médiévale, de la Renaissance et du baroque : des cadres composés qui chargent les gestes ordinaires d'une valeur rituelle, et un paysage qui « n'est jamais simplement un paysage », mais le lieu où l'activité humaine et le trauma historique se croisent<sup class="ref"><a href="#src-3">3</a></sup>. L'<em>Enciclopedia del Cinema</em> parle d'une esthétique « <em>arcaicizzante</em> », d'une rigueur « <em>quasi ieratica</em> »<sup class="ref"><a href="#src-2">2</a></sup>. J. Hoberman disait la même chose plus vite : le film « a la terrestrité angélique de l'art du Quattrocento »<sup class="ref"><a href="#src-7">7</a></sup>.</p>
+
+  <h3>L'église : le sanctuaire retourné</h3>
+
+  <p>La séquence de la cathédrale est le centre moral du film, et sa mise en scène repose sur une inversion de signes. O'Donoghue relève que la croix, falsifiée par les fascistes pour désigner les bâtiments à détruire, devient l'instrument même de la trahison ; le lieu d'asile par excellence se referme en « brasier inéluctable »<sup class="ref"><a href="#src-3">3</a></sup>. Sur l'explosion, les Taviani posent l'<em>Offertorium</em> du <em>Requiem</em> de Verdi — un choix que O'Donoghue interprète justement : chez ces cinéastes communistes, la musique sacrée ne vient pas racheter la scène, elle sert de monument aux morts<sup class="ref"><a href="#src-3">3</a></sup>. La consolation est refusée à l'image ; elle est concédée au seul deuil.</p>
+
+  <h3>Les guerriers d'Homère</h3>
+
+  <p>C'est la séquence dont tout le monde se souvient. Dans la bataille du champ de blé, la petite Cecilia voit un fascista tomber sous les lances de guerriers antiques surgis de nulle part<sup class="ref"><a href="#src-5">5</a></sup>. Le film ne présente pas cela comme un miracle : il le présente comme ce qu'une enfant de six ans a mis à la place de ce qu'elle ne pouvait pas regarder. Le merveilleux n'est pas un ornement lyrique, c'est un mécanisme de défense — et le film a l'honnêteté de le montrer comme tel, en revenant aussitôt au cadavre réel. Les Taviani font ici, en une image, la théorie de leur propre film : voilà comment un événement se métamorphose dans une conscience.</p>
+
+  <h3>La bataille entre parents</h3>
+
+  <p>La bataille du champ de blé refuse le partage habituel des rôles. Les fuyards y rejoignent des femmes qui moissonnent avec les partisans, jusqu'à l'arrivée des camions fascistes ; et l'affrontement se joue « <em>nonostante i partigiani e i fascisti siano spesso parenti, amici, vicini</em> » — bien que partisans et fascistes soient souvent parents, amis, voisins<sup class="ref"><a href="#src-2">2</a></sup>. La guerre civile est filmée non comme un combat entre deux camps, mais comme une catastrophe de famille. Aucun fasciste n'est un étranger.</p>
+
+  <p>Reste le régime de ton, qui est le plus difficile à tenir et que la critique a immédiatement identifié comme la signature du film : la comédie ne s'interrompt pas devant l'horreur, elle s'y mêle. Pauline Kael le formulait en une phrase — le film est « si robuste que ses moments les plus tragiques peuvent être vertigineusement comiques »<sup class="ref"><a href="#src-7">7</a></sup>.</p>
+</section>
+
+<section id="personnages">
+  <div class="chant">
+    <span class="cartel">Chant VI</span>
+    <h2>Personnages principaux</h2>
+  </div>
+
+  <h3>Galvano</h3>
+
+  <p>Omero Antonutti — que les Taviani avaient révélé en père de <em>Padre Padrone</em> — donne à Galvano une autorité qui ne repose sur rien d'institutionnel<sup class="ref"><a href="#src-1">1</a></sup>. Ce n'est ni un chef militaire, ni un élu, ni un notable : c'est un vieil homme dont on suit l'avis parce qu'on l'a toujours suivi. Sa décision — refuser la cathédrale, partir dans la nuit — est le seul acte véritablement héroïque du film, et il consiste à désobéir à la fois à l'occupant et à l'évêque. Le personnage porte la thèse politique des Taviani sans jamais l'énoncer : la survie du groupe tient à ce qu'un homme du peuple a préféré son propre jugement à deux autorités constituées.</p>
+
+  <h3>Concetta</h3>
+
+  <p>Margarita Lozano incarne la femme que Galvano a aimée toute sa vie sans pouvoir la rejoindre, la condition sociale les séparant<sup class="ref"><a href="#src-4">4</a></sup>. Le film leur accorde une nuit, une seule, au terme de l'exode. Ce dénouement intime, greffé sur un récit de massacre, est ce qui empêche <em>La Nuit de San Lorenzo</em> d'être un film commémoratif : la nuit de la Saint-Laurent est celle où l'on formule un vœu, et le film prend au sérieux l'idée qu'un vœu privé de vieillards puisse être exaucé le même jour qu'une libération collective.</p>
+
+  <h3>Cecilia, l'enfant qui regarde</h3>
+
+  <p>La fillette de six ans dont le regard porte le récit est le personnage le plus important du film et le moins interprété : elle voit, elle ne commente pas. C'est par elle que passent les deux gestes décisifs — le merveilleux des guerriers homériques, et la voix adulte qui, quarante ans plus tard, raconte. <em>Note documentaire</em> : les sources divergent sur son identification au générique — la notice anglophone la nomme Cecilia et attribue le rôle à Micol Guidelli<sup class="ref"><a href="#src-5">5</a></sup>, la notice française l'appelle Belindia et écrit Miriam Guidelli<sup class="ref"><a href="#src-4">4</a></sup>. Nous laissons la divergence ouverte plutôt que de trancher entre deux fiches.</p>
+
+  <h3>Le groupe</h3>
+
+  <p>Les fuyards forment un protagoniste collectif où chacun n'a droit qu'à quelques traits — Corrado, Nicola, les paysannes moissonneuses<sup class="ref"><a href="#src-1">1</a></sup>. Ce refus de la hiérarchie des rôles est cohérent avec le projet : un conte transmis par une communauté ne peut pas privilégier un destin individuel, sans quoi il cesserait d'être le conte de tout le monde.</p>
+</section>
+
+<section id="themes">
+  <div class="chant">
+    <span class="cartel">Chant VII</span>
+    <h2>Thèmes</h2>
+  </div>
+
+  <p>Les axes de ce film se laissent nommer séparément — nous adoptons donc la forme du relevé titré.</p>
+
+  <h3>1. Le vœu, contre l'événement</h3>
+
+  <p>Le titre ne désigne pas une date militaire mais une coutume : la nuit du 10 août est celle où les étoiles filantes autorisent un vœu<sup class="ref"><a href="#src-4">4</a></sup><sup class="ref"><a href="#src-6">6</a></sup>. Placer sous ce signe le récit d'un massacre, c'est refuser de faire de l'Histoire l'unique juge de ce qui compte. La formule que Paolo Taviani donnait du film dit exactement cela : « quand tout est perdu, tout peut encore être sauvé »<sup class="ref"><a href="#src-2">2</a></sup>. Le film ne prétend pas que le vœu remplace l'événement ; il montre qu'il survit à côté de lui.</p>
+
+  <h3>2. La mémoire comme métamorphose</h3>
+
+  <p>C'est le thème dont procèdent tous les autres, et les Taviani l'ont revendiqué : raconter les choses « telles qu'elles se sont métamorphosées dans la conscience des survivants »<sup class="ref"><a href="#src-4">4</a></sup>. L'<em>Enciclopedia del Cinema</em> le confirme du dehors : les Taviani explorent « <em>l'evoluzione di questo episodio nel ricordo</em> » plutôt qu'ils ne restituent un témoignage brut<sup class="ref"><a href="#src-2">2</a></sup>. Le film assume donc d'être un document sur la mémoire, et non sur l'événement — position magnifique en esthétique, et coûteuse en histoire, comme la suite l'a montré (voir le Chant VIII).</p>
+
+  <h3>3. La guerre civile entre proches</h3>
+
+  <p>Le film tient que la ligne de front de 1944 passait à l'intérieur des familles<sup class="ref"><a href="#src-2">2</a></sup>. Il n'y a donc pas, dans <em>La Nuit de San Lorenzo</em>, de fascistes venus d'ailleurs : il y a des voisins en chemise noire. C'est ce qui rend la bataille du blé insoutenable, et c'est aussi ce qui distingue le film de la plupart des récits de la Résistance produits en Italie : le mal n'y est pas importé, il est domestique.</p>
+
+  <h3>4. Le sacré retourné</h3>
+
+  <p>La croix qui désigne les maisons à détruire, l'église qui devient un piège, le <em>Requiem</em> de Verdi utilisé comme épitaphe et non comme absolution<sup class="ref"><a href="#src-3">3</a></sup> : le film opère méthodiquement le retournement des signes religieux. L'évêque relaie l'ordre allemand<sup class="ref"><a href="#src-1">1</a></sup>, et ceux qui lui obéissent meurent ; ceux qui suivent un vieux paysan survivent. Le jugement est sévère — mais il n'est pas anticlérical au sens polémique : le film ne se moque de rien, il constate un abandon.</p>
+
+  <h3>5. L'enfance comme instance de récit</h3>
+
+  <p>Enfin, le film soutient qu'un événement historique n'est pleinement transmis que lorsqu'il est passé par une forme — conte, berceuse, épopée. La séquence homérique et le cadre de la berceuse<sup class="ref"><a href="#src-2">2</a></sup><sup class="ref"><a href="#src-3">3</a></sup> ne sont pas deux fantaisies mais un seul argument : ce que l'enfance métamorphose, elle le sauve de l'oubli, au prix exact de l'exactitude.</p>
+</section>
+
+<section id="reception">
+  <div class="chant">
+    <span class="cartel">Chant VIII</span>
+    <h2>Réception critique et postérité</h2>
+  </div>
+
+  <p>Présenté en compétition au 35<sup>e</sup> Festival de Cannes, le film y obtient le Grand Prix spécial du jury et le prix du jury œcuménique<sup class="ref"><a href="#src-1">1</a></sup>. L'année suivante, il rafle l'essentiel des récompenses italiennes — David di Donatello du meilleur film et de la meilleure réalisation, Nastri d'argento, Globo d'oro, Grolla d'oro<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <p>L'accueil anglo-américain est encore plus enthousiaste : la National Society of Film Critics et la Boston Society of Film Critics l'élisent meilleur film de l'année<sup class="ref"><a href="#src-5">5</a></sup>. Pauline Kael va jusqu'à le rapprocher de <em>La Grande Illusion</em> de Renoir<sup class="ref"><a href="#src-5">5</a></sup> ; David Denby y voit « certaines des séquences les plus stupéfiantes » depuis le premier Bertolucci, Jonathan Rosenbaum en retient les « moments de poésie bucolique », David Edelstein parle d'un « jalon humaniste » et d'un « chef-d'œuvre »<sup class="ref"><a href="#src-7">7</a></sup>. En France, Gérard Legrand résume l'ambition du film d'une formule : par-delà la Toscane, « c'est l'Italie tout entière qui est appelée à témoigner pour elle-même »<sup class="ref"><a href="#src-4">4</a></sup>. Le film a été restauré sous la supervision des Taviani eux-mêmes<sup class="ref"><a href="#src-7">7</a></sup> et primé à ce titre à Venise en 2018<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+  <h3>Ce que les archives ont fait au film</h3>
+
+  <p>La postérité de <em>La Nuit de San Lorenzo</em> comporte cependant un chapitre que l'on ne peut pas passer sous silence, et que le film n'a pas choisi.</p>
+
+  <div class="dossier">
+    <span class="cartel">Pièces du litige — exposées, non tranchées</span>
+
+    <p><strong>L'événement.</strong> Le massacre a eu lieu le 22 juillet 1944 vers 10 h 15, dans le duomo de San Miniato, où la population avait reçu l'ordre de se rassembler : cinquante-cinq personnes sont tuées par un projectile qui frappe l'édifice<sup class="ref"><a href="#src-9">9</a></sup>. (Le décompte varie selon les documents : la notice de <em>San Miniato, luglio '44</em> évoque vingt-huit civils<sup class="ref"><a href="#src-8">8</a></sup>.)</p>
+
+    <p><strong>La première attribution.</strong> Pendant des décennies, la responsabilité est imputée aux troupes allemandes de la 3<sup>e</sup> division de <em>Panzergrenadiere</em>, qui occupaient le bourg et avaient ordonné le rassemblement<sup class="ref"><a href="#src-9">9</a></sup>. C'est la version du documentaire des Taviani de 1954<sup class="ref"><a href="#src-8">8</a></sup>, puis celle du film de 1982<sup class="ref"><a href="#src-1">1</a></sup>.</p>
+
+    <p><strong>La contestation.</strong> En janvier 1983, peu après la sortie du film, une lettre publique conteste ce récit et affirme qu'au cours d'un échange d'artillerie, un obus américain a frappé la cathédrale<sup class="ref"><a href="#src-9">9</a></sup>.</p>
+
+    <p><strong>Les archives.</strong> En 2000, l'ouvrage de Paolo Paoletti <em>1944 San Miniato — tutta la verità sulla strage</em> verse au dossier des documents des archives de l'armée américaine : le journal de marche du 337<sup>e</sup> bataillon d'artillerie de campagne, conservé aux National Archives de Washington, enregistre cinquante et un coups tirés à 10 h 30 sur des positions de mitrailleuses ennemies ; un obus de 105 mm pénètre par une fenêtre du côté sud-ouest et éclate près de la nef droite. La mission est notée « <em>GOOD</em> »<sup class="ref"><a href="#src-9">9</a></sup>.</p>
+
+    <p><strong>Les conclusions institutionnelles.</strong> En avril 2002, le magistrat militaire Marco De Paolis classe la procédure ouverte contre des « soldats allemands inconnus », en retenant l'hypothèse d'un tir d'artillerie allié erroné. En 2004, une commission historique municipale conclut que « la thèse de la responsabilité allemande apparaît insoutenable au vu de la documentation disponible ». Deux plaques jumelles, à la mairie de San Miniato, portent aujourd'hui les deux lectures<sup class="ref"><a href="#src-9">9</a></sup>.</p>
+  </div>
+
+  <p>Il faut être précis sur ce que ce dossier met en cause, et sur ce qu'il ne met pas en cause. Le film ne se donne pas pour une reconstitution : il transpose l'événement du 22 juillet à la nuit du 10 août, change le nom du bourg, refuse de tourner dans la vraie cathédrale<sup class="ref"><a href="#src-1">1</a></sup>, et déclare explicitement raconter une mémoire métamorphosée<sup class="ref"><a href="#src-4">4</a></sup>. À ce titre, il n'a jamais promis l'exactitude d'un procès-verbal. Mais il est aussi vrai qu'il a donné à une attribution ensuite renversée par les archives la forme la plus durable qui soit — une œuvre couronnée à Cannes, vue dans le monde entier —, et que la version anglophone de sa notice signale le reproche qui lui en a été fait<sup class="ref"><a href="#src-5">5</a></sup>.</p>
+
+  <p>Les deux propositions tiennent ensemble, et nous les laissons telles : un film peut être fidèle à la conscience de ceux qui ont survécu <em>et</em> avoir contribué à fixer, dans la conscience de tous les autres, une responsabilité que la recherche a depuis déplacée. C'est même, à la lettre, ce que <em>La Nuit de San Lorenzo</em> raconte : la manière dont un événement se métamorphose dans le souvenir. Le film aura fourni la démonstration de sa propre thèse, à ses dépens.</p>
+</section>
+
+<section id="conclusion">
+  <div class="chant">
+    <span class="cartel">Chant IX</span>
+    <h2>Conclusion</h2>
+  </div>
+
+  <p>Il y a peu de films où le geste qui fait la beauté soit exactement celui qui fait la fragilité. <em>La Nuit de San Lorenzo</em> est de ceux-là. En passant du documentaire de 1954 au conte de 1982, les Taviani ont trouvé la seule forme capable de rendre ce qu'une enquête ne saisit pas — la peur d'une enfant, la décision d'un vieil homme, la nuit d'un vœu, la métamorphose d'un massacre en récit transmissible. Ils ont, du même mouvement, renoncé au régime de preuve qui aurait protégé leur film du démenti des archives.</p>
+
+  <p>Ce serait mal lire l'affaire que d'y voir une faute. Les Taviani n'ont pas falsifié : ils ont filmé, avec une honnêteté rare, l'état d'un savoir collectif à un moment donné — celui qu'ils avaient hérité de leur propre père et de leur propre ville. Et ils ont pris la précaution, dans le film même, de dire à quel régime de vérité ils s'adressaient : rideaux de théâtre, ouverture d'opéra, berceuse, guerriers d'Homère surgissant dans un champ de blé. On ne pouvait pas être plus loyalement prévenu.</p>
+
+  <p>Reste ce que le temps n'a pas entamé : une des rares représentations de la guerre civile italienne où l'ennemi soit un voisin, une séquence d'église dont l'inversion des signes sacrés atteint une dureté que le cinéma italien d'après-guerre s'était souvent épargnée, et une idée du récit — le conte comme mode de survie — qui n'a rien de décoratif. Quarante ans après, le film continue de poser la question à laquelle son propre destin a répondu : que transmet-on, au juste, quand on transmet une histoire vraie ?</p>
+</section>
+
+<section id="sources">
+  <div class="chant">
+    <span class="cartel">Registre</span>
+    <h2>Sources</h2>
+  </div>
+
+  <div class="note">
+    Sources effectivement consultées lors de la préparation de cette analyse. Une référence souhaitée n'a pas pu être ouverte (la critique de Roger Ebert, HTTP 403) ; elle n'est donc pas citée, et l'échec est consigné au journal d'erreurs du projet.
+  </div>
+
+  <ol>
+    <li id="src-1">Wikipedia (IT), « La notte di San Lorenzo (film) » — <a href="https://it.wikipedia.org/wiki/La_notte_di_San_Lorenzo_(film)">it.wikipedia.org</a></li>
+    <li id="src-2">« La notte di San Lorenzo », <em>Enciclopedia del Cinema</em>, Istituto Treccani — <a href="https://www.treccani.it/enciclopedia/la-notte-di-san-lorenzo_(Enciclopedia-del-Cinema)/">treccani.it</a></li>
+    <li id="src-3">Darragh O'Donoghue, « The Night of the Shooting Stars », <em>Senses of Cinema</em>, février 2024 — <a href="http://www.sensesofcinema.com/2024/cteq/the-night-of-the-shooting-stars/">sensesofcinema.com</a></li>
+    <li id="src-4">Wikipédia (FR), « La Nuit de San Lorenzo » — <a href="https://fr.wikipedia.org/wiki/La_Nuit_de_San_Lorenzo">fr.wikipedia.org</a></li>
+    <li id="src-5">Wikipedia (EN), « The Night of the Shooting Stars » — <a href="https://en.wikipedia.org/wiki/The_Night_of_the_Shooting_Stars">en.wikipedia.org</a></li>
+    <li id="src-6">La Cinémathèque française, fiche « La Nuit de San Lorenzo » — <a href="https://www.cinematheque.fr/film/42717.html">cinematheque.fr</a></li>
+    <li id="src-7">Film Forum, note de programme « Paolo and Vittorio Taviani's <em>The Night of the Shooting Stars</em> » (copie restaurée, Cohen Media Group) — <a href="https://filmforum.org/film/paolo-and-vittorio-tavianis-the-night-of-the-shooting-stars-film">filmforum.org</a></li>
+    <li id="src-8">MUBI, notice « San Miniato, luglio '44 » (1954) — <a href="https://mubi.com/en/us/films/san-miniato-luglio-44">mubi.com</a></li>
+    <li id="src-9">Wikipedia (IT), « Strage del Duomo di San Miniato » — <a href="https://it.wikipedia.org/wiki/Strage_del_Duomo_di_San_Miniato">it.wikipedia.org</a></li>
+    <li id="src-poster">Affiche : The Movie Database, notice <em>The Night of the Shooting Stars</em> (1982), correspondance titre et année vérifiée avant téléchargement — <a href="https://www.themoviedb.org/movie/42130-la-notte-di-san-lorenzo">themoviedb.org</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <span class="cartel">Analyse rédigée à partir des sources ci-dessus — 21 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

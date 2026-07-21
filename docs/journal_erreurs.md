@@ -33,6 +33,7 @@ Conventions :
 | 6-7 juil. 2026 (routine nocturne) | Le Doulos (1962) | Slant Magazine — review | https://www.slantmagazine.com/film/le-doulos/ | HTTP 403 (blocage robot) | Moyen | 🟡 couverte par Wikipedia (EN) et La Cinémathèque française |
 | 18-19 juil. 2026 (routine nocturne) | Pandora (1951) | Variety — critique d'époque (1950) | https://variety.com/1950/film/reviews/pandora-and-the-flying-dutchman-1200416919/ | HTTP 402 Payment Required (redirection vers tollbit.variety.com, paywall) | Moyen — critique corporative contemporaine de la sortie | 🟡 réception d'époque couverte par la citation du *New York Times* (Howard Thompson) et par Moviediva |
 | 18-19 juil. 2026 (routine nocturne) | Pandora (1951) | CriterionCast — theatrical review de la restauration | https://criterioncast.com/reviews/theatrical/joshua-reviews-albert-lewins-pandora-and-the-flying-dutchman-theatrical-review | HTTP 403 (blocage robot) | Moyen — regard critique sur la restauration 4K | 🟡 restauration documentée par Wikipedia (EN) et TCM (Film Foundation / Scorsese) |
+| 21 juil. 2026 (session supervisée Opus) | La Nuit de San Lorenzo (1982) | RogerEbert.com — review du film | https://www.rogerebert.com/reviews/the-night-of-the-shooting-stars-1982 | HTTP 403 (blocage robot — 2ᵉ occurrence sur ce domaine, cf. Raging Bull le 5 juil.) | Moyen — regard critique américain de référence | 🟡 réception anglophone couverte par la note de programme de Film Forum (Kael, Denby, Rosenbaum, Hoberman, Edelstein) et Wikipedia (EN) |
 
 ## Incidents techniques du pipeline
 

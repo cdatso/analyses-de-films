@@ -296,5 +296,16 @@ const FILMS = [
     poster: 'assets/posters/pandora.jpg',
     producteur: 'OpenAI GPT-5.5 (reprise et enrichissement squad)',
     variantOf: 'pandora'
+  },
+  {
+    slug: 'la-nuit-de-san-lorenzo',
+    title: 'La Nuit de San Lorenzo',
+    director: 'Paolo et Vittorio Taviani',
+    year: 1982,
+    genre: 'Drame de guerre',
+    summary: "Les Taviani racontent le massacre de leur propre ville comme une berceuse d'étoiles filantes — parti pris magnifique, qui aura aussi fixé pour le monde entier une responsabilité que les archives ont depuis déplacée.",
+    url: 'films/la-nuit-de-san-lorenzo.html',
+    poster: 'assets/posters/la-nuit-de-san-lorenzo.jpg',
+    producteur: 'Claude Opus (session supervisée)'
   }
 ];

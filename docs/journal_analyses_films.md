@@ -47,6 +47,7 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
 | Sur la route d'Omaha | Cole Webley | 2025 | Drame | ✅ Publié | 10 juillet 2026 (reprise supervisée après incident routine du 9→10, merge le 10/07) | films/sur-la-route-domaha.html | https://cdatso.github.io/analyses-de-films/films/sur-la-route-domaha.html |
 | Pandora (champ) | Albert Lewin | 1951 | Mélodrame fantastique | ✅ Publié | 18-19 juillet 2026 (routine nocturne, reprise partielle ; merge 23h33 le 18/07) | films/pandora.html | https://cdatso.github.io/analyses-de-films/films/pandora.html |
 | Pandora (contrechamp) | Albert Lewin | 1951 | Mélodrame fantastique | 🟡 Sur `staging` (merge en attente) | 18/07/2026 (délégation OpenAI GPT-5.5 + reprise squad Deleuze) — conversion au gabarit du site le 19/07/2026 | films/pandora-contrechamp.html | https://cdatso.github.io/analyses-de-films/films/pandora-contrechamp.html |
+| La Nuit de San Lorenzo | Paolo et Vittorio Taviani | 1982 | Drame de guerre | 🟡 Sur `staging` (merge en attente) | 21 juillet 2026 (session supervisée Claude Opus — rattrapage après deux gels de la routine nocturne) | films/la-nuit-de-san-lorenzo.html | https://cdatso.github.io/analyses-de-films/films/la-nuit-de-san-lorenzo.html |
 
 ---
 
