@@ -29,6 +29,7 @@ Codes : 0 succes -- 1 assert en echec -- 2 fichier introuvable.
 import argparse
 import io
 import os
+import re
 import sys
 
 
@@ -87,6 +88,53 @@ def collision_waterloo(depot, simuler):
     return 0
 
 
+ANCIEN_CONTENEUR = '<div class="wrap" style="padding-top:1.6rem;">'
+NOUVEAU_CONTENEUR = '<div class="mobilier-wrap" style="padding-top:1.6rem;">'
+
+
+def classe_mobilier(depot, simuler):
+    """Le mobilier cesse d'emprunter la classe d'ossature des pages.
+
+    Gate AH du 22/07/2026 20h34. Le gabarit posait le cartouche dans un
+    `<div class="wrap">` -- une classe que chaque page bespoke definit a sa
+    guise, ou pas du tout. La largeur du mobilier dependait donc de la feuille
+    de la page : 4 pages la gouvernaient par leur propre regle, une cinquieme
+    par `style.css`, et le filet defensif ne pouvait pas les rattraper (meme
+    specificite, declaree avant). La classe propre `.mobilier-wrap` retire le
+    sujet a la cascade des pages.
+
+    Le motif remplace est la chaine EXACTE emise par le gabarit : les `.wrap`
+    d'ossature des pages ne sont pas touchees -- elles ne regardent que
+    l'ossature, et c'est tres bien ainsi.
+    """
+    dossier = os.path.join(depot, "films")
+    noms = sorted(n for n in os.listdir(dossier) if n.endswith(".html"))
+    faits, sans_objet = 0, []
+    for nom in noms:
+        chemin = os.path.join(dossier, nom)
+        src = lire(chemin)
+        if NOUVEAU_CONTENEUR in src:
+            sans_objet.append((nom, "deja converti"))
+            continue
+        if src.count(ANCIEN_CONTENEUR) != 1:
+            sans_objet.append((nom, "%d occurrence(s) du conteneur attendu"
+                               % src.count(ANCIEN_CONTENEUR)))
+            continue
+        t = src.replace(ANCIEN_CONTENEUR, NOUVEAU_CONTENEUR, 1)
+        if not simuler:
+            ecrire(chemin, t)
+        faits += 1
+    print("conteneurs convertis : %d%s" % (faits,
+                                           "  [SIMULATION]" if simuler else ""))
+    if sans_objet:
+        print("pages non converties : %d" % len(sans_objet))
+        for nom, motif in sans_objet:
+            print("   %-32s %s" % (nom, motif))
+    if faits == 0:
+        echec("aucun conteneur converti -- motif absent ou deja applique")
+    return 0
+
+
 def calage_mobilier(depot, simuler):
     """Pose --mobilier-largeur sur chaque page, a la valeur MESUREE.
 
@@ -113,14 +161,41 @@ def calage_mobilier(depot, simuler):
         chemin = os.path.join(depot, "films", m["page"])
         src = lire(chemin)
         if "--mobilier-largeur" in src:
-            ignorees.append((m["page"], "variable deja posee"))
+            # Une mesure plus juste remplace une mesure plus ancienne : la
+            # valeur suit le constat, elle ne se fige pas au premier passage.
+            attendue = "--mobilier-largeur:%srem;" % m["largeur_proposee_rem"]
+            if attendue in src:
+                ignorees.append((m["page"], "deja calee a la bonne valeur"))
+                continue
+            t = re.sub(r"--mobilier-largeur:\s*[0-9.]+rem;", attendue, src)
+            if t == src:
+                echec("%s : valeur non remplacee" % m["page"])
+            if not simuler:
+                ecrire(chemin, t)
+            poses += 1
             continue
         # La variable se pose sur :root de la page, la ou vit sa palette.
         ancre = ":root{"
         if ancre not in src:
             ancre = ":root {"
         if ancre not in src:
-            ignorees.append((m["page"], "pas de bloc :root ou poser la variable"))
+            # Page sans feuille propre (annie-hall) : il n'existe aucun :root
+            # ou loger la variable, et on n'invente pas un bloc <style> pour
+            # une page qui a fait le choix de n'en pas avoir. La valeur se
+            # pose sur le conteneur lui-meme -- meme mecanisme, autre porteur.
+            if NOUVEAU_CONTENEUR not in src:
+                ignorees.append((m["page"],
+                                 "ni :root ni conteneur de mobilier"))
+                continue
+            inline = ('<div class="mobilier-wrap" '
+                      'style="--mobilier-largeur:%srem;padding-top:1.6rem;">'
+                      % m["largeur_proposee_rem"])
+            t = src.replace(NOUVEAU_CONTENEUR, inline, 1)
+            if t == src:
+                echec("%s : la variable n'a pas ete posee en ligne" % m["page"])
+            if not simuler:
+                ecrire(chemin, t)
+            poses += 1
             continue
         declaration = (
             "\n    /* Largeur du mobilier partage (cartouche, bandeau de\n"
@@ -147,6 +222,7 @@ def calage_mobilier(depot, simuler):
 
 
 REGLES = {"collision-waterloo": collision_waterloo,
+          "classe-mobilier": classe_mobilier,
           "calage-mobilier": calage_mobilier}
 
 

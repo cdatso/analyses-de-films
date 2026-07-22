@@ -267,7 +267,11 @@ def bloc_cartouche(p):
         '  <span class="date-pub">Publi&eacute;e le %s</span>\n'
         '</div>'
         % (p["regime"], p["signature"], p["producteur"], p["date_lisible"]))
-    return '<div class="wrap" style="padding-top:1.6rem;">\n' \
+    # `.mobilier-wrap` et non `.wrap` : le mobilier ne partage plus la classe
+    # d'ossature des pages (gate AH du 22/07 20h34). Emprunter une classe
+    # bespoke, c'etait remettre la largeur du cartouche entre les mains de
+    # chaque feuille de page -- et deux pages sur 33 y echappaient encore.
+    return '<div class="mobilier-wrap" style="padding-top:1.6rem;">\n' \
            + "\n".join(lignes) + "\n</div>\n"
 
 

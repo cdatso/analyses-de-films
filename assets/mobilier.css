@@ -31,24 +31,34 @@
   --mobilier-attenue: currentColor;
 }
 
-/* --- Filet défensif du conteneur de mobilier ------------------------------
+/* --- Conteneur du mobilier ------------------------------------------------
    CONSTAT DE REVUE AH n°1 (22/07/2026 17h59) : le gabarit de migration
-   enveloppe le mobilier dans `<div class="wrap">` en SUPPOSANT que chaque page
-   bespoke définit `.wrap`. Sur les 5 pages d'analyse qui emploient cette
-   classe, 4 la définissent (900 à 920 px) et les DEUX pages Pandora non — un
-   div sans style s'étale sur toute la largeur de l'écran, et le cartouche avec
+   enveloppait le mobilier dans `<div class="wrap">` en SUPPOSANT que chaque
+   page bespoke définit `.wrap`. Sur les 5 pages d'analyse qui employaient
+   cette classe, 4 la définissaient (900 à 920 px) et les DEUX pages Pandora
+   non — un div sans style s'étale sur toute la largeur, et le cartouche avec
    lui. Motif d'erreur : « prendre son échantillon pour la règle », le gabarit
    ayant été calibré sur la seule page qui possédait la classe attendue.
 
-   La règle ci-dessous est un FILET, pas une norme : même spécificité que les
-   `.wrap` bespoke, mais déclarée AVANT elles (mobilier.css est lié en tête,
-   les feuilles de page suivent) — toute page qui définit son `.wrap` continue
-   donc de gagner par la cascade, et `style.css` de même pour les 6 pages du
-   menu. Ce qui change : aucune page ne peut PLUS faire déborder le mobilier,
-   quelle que soit son ossature, y compris les 30 pages du rétrofit à venir.
+   CORRECTIF STRUCTUREL (gate AH du 22/07 20h34) : le mobilier ne PARTAGE plus
+   la classe d'ossature des pages. Il porte la sienne, `.mobilier-wrap`, que
+   nulle feuille bespoke ne connaît — donc que nulle cascade ne peut détourner.
+   Le premier correctif (un filet sur `.wrap`) réparait le symptôme : il
+   laissait le mobilier à la merci de la règle `.wrap` de chaque page, et deux
+   pages y échappaient encore (annie-hall par `style.css`, persona par sa
+   propre règle). Emprunter une classe d'ossature était le défaut lui-même.
 
-   La largeur passe par une variable pour qu'une page puisse aligner le
-   mobilier sur SA colonne de lecture en une ligne, sans redéclarer la règle. */
+   La largeur reste une variable : chaque page cale le mobilier sur SA colonne
+   éditoriale, à la valeur MESURÉE au rendu (sonde-mobilier.py), jamais devinée.
+   Le défaut de 62rem ne sert plus qu'aux pages non mesurées. */
+.mobilier-wrap {
+  max-width: var(--mobilier-largeur, 62rem);
+  margin-left: auto; margin-right: auto;
+  padding-left: 1.6rem; padding-right: 1.6rem;
+}
+
+/* Filet résiduel : plus aucun mobilier n'en dépend, mais une page bespoke qui
+   emploierait `.wrap` sans la définir ne déborderait pas pour autant. */
 .wrap {
   max-width: var(--mobilier-largeur, 62rem);
   margin-left: auto; margin-right: auto;

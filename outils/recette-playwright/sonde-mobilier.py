@@ -33,12 +33,23 @@ MESURE = """() => {
   const wrap = document.querySelector('.wrap');
   res.wrap = wrap ? Math.round(wrap.getBoundingClientRect().width) : null;
   res.wrapMaxWidth = wrap ? getComputedStyle(wrap).maxWidth : null;
-  // La colonne editoriale : le premier paragraphe de section assez large
-  // pour etre du texte courant et non une legende.
+  // La colonne editoriale, c'est le BLOC QUI CONTIENT le texte, pas le
+  // paragraphe. La distinction n'est pas theorique : 3 pages sur 33 bornent
+  // leurs paragraphes (max-width en ch) a l'interieur d'un conteneur plus
+  // large et cale a gauche. Mesurer le paragraphe y decalait le mobilier de
+  // plus de 100 px -- dans l'autre sens. On mesure donc le parent.
   let col = null;
   for (const p of document.querySelectorAll('section p')) {
     const r = p.getBoundingClientRect();
-    if (r.width > 200) { col = r; break; }
+    if (r.width > 200) {
+      const parent = p.parentElement;
+      col = parent ? parent.getBoundingClientRect() : r;
+      res.paragraphe = Math.round(r.width);
+      res.conteneur = parent ? parent.tagName.toLowerCase()
+                             + (parent.className ? '.' + String(parent.className).split(' ')[0] : '')
+                             : null;
+      break;
+    }
   }
   res.colonne = col ? Math.round(col.width) : null;
   res.colonneGauche = col ? Math.round(col.left) : null;
@@ -83,10 +94,13 @@ def main():
                                 else m["cartoucheGauche"] - m["colonneGauche"]),
                 "debordement_px": m["scrollWidth"] - m["innerWidth"],
             }
-            if propre or not m["colonne"]:
+            # Depuis le correctif structurel du 22/07 20h34, le mobilier porte
+            # sa propre classe : qu'une page declare ou non son `.wrap`
+            # d'ossature ne le concerne plus, et n'exclut donc plus du calage.
+            # Le champ reste mesure, a titre informatif.
+            if not m["colonne"]:
                 entree["largeur_proposee_rem"] = None
-                entree["motif"] = ("declare son propre .wrap" if propre
-                                   else "colonne editoriale non mesurable")
+                entree["motif"] = "colonne editoriale non mesurable"
             else:
                 rem = (m["colonne"] + PADDING_TOTAL_PX) / RACINE_PX
                 entree["largeur_proposee_rem"] = round(rem, 1)

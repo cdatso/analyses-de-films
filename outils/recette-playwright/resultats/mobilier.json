@@ -2,11 +2,11 @@
  {
   "colonne_px": 656,
   "debordement_px": 0,
-  "decalage_px": -142,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.2,
   "page": "annie-hall.html",
-  "wrap_px": 992
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -15,7 +15,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "au-fil-de-leau.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -24,7 +24,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "bienvenue-a-suburbicon.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 732,
@@ -33,7 +33,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 49.0,
   "page": "hamlet.html",
-  "wrap_px": 784
+  "wrap_px": null
  },
  {
   "colonne_px": 652,
@@ -42,7 +42,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "hamnet.html",
-  "wrap_px": 704
+  "wrap_px": null
  },
  {
   "colonne_px": 835,
@@ -51,7 +51,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 55.4,
   "page": "hitchcock-truffaut.html",
-  "wrap_px": 886
+  "wrap_px": null
  },
  {
   "colonne_px": 632,
@@ -60,7 +60,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 42.7,
   "page": "julie-en-12-chapitres.html",
-  "wrap_px": 683
+  "wrap_px": null
  },
  {
   "colonne_px": 652,
@@ -69,7 +69,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "la-chevauchee-fantastique.html",
-  "wrap_px": 704
+  "wrap_px": null
  },
  {
   "colonne_px": 652,
@@ -78,7 +78,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "la-mariee-etait-en-noir.html",
-  "wrap_px": 704
+  "wrap_px": null
  },
  {
   "colonne_px": 732,
@@ -87,7 +87,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 49.0,
   "page": "la-nuit-de-san-lorenzo.html",
-  "wrap_px": 784
+  "wrap_px": null
  },
  {
   "colonne_px": 652,
@@ -96,7 +96,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "le-cheval-de-turin.html",
-  "wrap_px": 704
+  "wrap_px": null
  },
  {
   "colonne_px": 689,
@@ -105,7 +105,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "le-doulos.html",
-  "wrap_px": 741
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -114,7 +114,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "le-golem.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 815,
@@ -123,15 +123,14 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 54.1,
   "page": "le-samourai.html",
-  "wrap_px": 866
+  "wrap_px": null
  },
  {
-  "colonne_px": 611,
+  "colonne_px": 920,
   "debordement_px": 0,
   "decalage_px": 0,
   "declare_son_wrap": true,
-  "largeur_proposee_rem": null,
-  "motif": "declare son propre .wrap",
+  "largeur_proposee_rem": 60.7,
   "page": "les-deux-orphelines.html",
   "wrap_px": 920
  },
@@ -142,7 +141,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "manhattan.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -151,7 +150,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "moi-daniel-blake.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -160,35 +159,34 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "nouvelle-vague.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 784,
   "debordement_px": 0,
-  "decalage_px": 2,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 52.2,
   "page": "pandora-contrechamp.html",
-  "wrap_px": 832
+  "wrap_px": null
  },
  {
   "colonne_px": 784,
   "debordement_px": 0,
-  "decalage_px": 2,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 52.2,
   "page": "pandora.html",
-  "wrap_px": 832
+  "wrap_px": null
  },
  {
   "colonne_px": 709,
   "debordement_px": 0,
-  "decalage_px": -70,
+  "decalage_px": 0,
   "declare_son_wrap": true,
-  "largeur_proposee_rem": null,
-  "motif": "declare son propre .wrap",
+  "largeur_proposee_rem": 47.5,
   "page": "persona.html",
-  "wrap_px": 900
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -197,7 +195,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "raging-bull.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -206,25 +204,23 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "retour-a-seoul.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
-  "colonne_px": 611,
+  "colonne_px": 900,
   "debordement_px": 0,
   "decalage_px": 0,
   "declare_son_wrap": true,
-  "largeur_proposee_rem": null,
-  "motif": "declare son propre .wrap",
+  "largeur_proposee_rem": 59.5,
   "page": "rosetta.html",
   "wrap_px": 900
  },
  {
-  "colonne_px": 611,
+  "colonne_px": 920,
   "debordement_px": 0,
   "decalage_px": 0,
   "declare_son_wrap": true,
-  "largeur_proposee_rem": null,
-  "motif": "declare son propre .wrap",
+  "largeur_proposee_rem": 60.7,
   "page": "rouges-et-blancs.html",
   "wrap_px": 920
  },
@@ -235,7 +231,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "sans-filtre.html",
-  "wrap_px": 704
+  "wrap_px": null
  },
  {
   "colonne_px": 689,
@@ -244,7 +240,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "shutter-island.html",
-  "wrap_px": 741
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -253,7 +249,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "soudain-lete-dernier.html",
-  "wrap_px": 723
+  "wrap_px": null
  },
  {
   "colonne_px": 689,
@@ -262,7 +258,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "soy-cuba.html",
-  "wrap_px": 741
+  "wrap_px": null
  },
  {
   "colonne_px": 609,
@@ -271,7 +267,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 41.3,
   "page": "sud.html",
-  "wrap_px": 661
+  "wrap_px": null
  },
  {
   "colonne_px": 689,
@@ -280,7 +276,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "sur-la-route-domaha.html",
-  "wrap_px": 741
+  "wrap_px": null
  },
  {
   "colonne_px": 712,
@@ -289,7 +285,7 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 47.7,
   "page": "the-old-oak.html",
-  "wrap_px": 763
+  "wrap_px": null
  },
  {
   "colonne_px": 672,
@@ -298,6 +294,6 @@
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "waterloo.html",
-  "wrap_px": 723
+  "wrap_px": null
  }
 ]
