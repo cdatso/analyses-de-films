@@ -2,8 +2,11 @@
 # -*- coding: ascii -*-
 """migre-page-v2.py -- migration d'une page d'analyse vers le gabarit v2.
 
-Prototype BKL-065-3, lot de 3 pages. C'est aussi la REPETITION du retrofit de
-masse de BKL-065-5 : ce qui n'est pas scriptable ici ne le sera pas la-bas.
+Ecrit pour le prototype BKL-065-3 (lot de 3 pages), ETENDU pour le retrofit de
+masse de BKL-065-5 (les 30 pages restantes). La repetition du prototype tient :
+ce qui n'etait pas scriptable la-bas ne l'est pas devenu ici -- on l'a mesure,
+5 pages sur 30 resistent aux asserts d'origine, et elles sont traitees a part,
+jamais forcees.
 
 Ce que la migration fait, et rien d'autre :
   1. retire les appels de fontes tierces (P-24) ;
@@ -20,40 +23,59 @@ Ce que la migration fait, et rien d'autre :
 Ce qu'elle ne touche PAS : la palette, la couverture, l'ossature, le texte.
 L'identite bespoke appartient a l'oeuvre (SPEC-SITE-V2 section 6.1).
 
+RETROFIT PAR NATURE (P-45) -- les transformations sont groupees pour etre
+commitees separement, donc revocables une par une :
+  --nature typo        : etapes 1, 2, 3
+  --nature signatures  : etape 5 (cartouche et variante)
+  --nature gabarit     : etapes 4 et 6 (menu et chevron)
+Sans --nature, les trois s'enchainent dans CET ordre (comportement du
+prototype). L'ordre est contraint : le cartouche s'ancre sur l'unique
+</header> de la page, que le menu dedoublerait -- signatures AVANT gabarit.
+
 Chaque transformation porte son assert : si un motif attendu est absent ou si
 un remplacement ne change rien, le script s'arrete AVANT d'ecrire. Aucune
 ecriture partielle.
 
-Usage : python migre-page-v2.py [--depot CHEMIN] [--verifier]
-  --verifier : n'ecrit rien, controle l'etat des pages deja migrees.
+Usage : python migre-page-v2.py [--depot CHEMIN] [--lot proto|retrofit]
+                               [--nature typo|gabarit|signatures|tout]
+                               [--verifier] [--simuler]
+  --verifier : n'ecrit rien, controle l'etat des pages du lot.
+  --simuler  : joue toutes les transformations en memoire, n'ecrit rien,
+               et rapporte ce qui aurait change. C'est la repetition.
 Codes : 0 succes -- 1 assert en echec -- 2 fichier introuvable.
 """
 
 import argparse
 import io
+import json
 import os
 import re
+import subprocess
 import sys
 
 # Le caractere lui-meme n'est PAS ecrit dans ce source : il s'y glisserait un
 # octet non ASCII, et c'est precisement le glyphe qu'on retire.
 FLECHE = u"\u2190"
 
-# Le lot du prototype. Le volet, la provenance et la date viennent du registre
-# (P-17 : le registre fait foi) ; ils sont repris ici pour que la page et le
-# registre portent la meme information.
 # Les libelles VISIBLES portent leurs entites HTML : ce fichier reste ASCII
 # pur, la page reste en francais correct. Les textes de signature sont ceux du
-# section 5.3 de la spec, au caractere pres -- ils ne se reecrivent pas film par film
-# (P-14).
+# section 5.3 de la spec, au caractere pres -- ils ne se reecrivent pas film
+# par film (P-14).
 SIGNATURE_R1 = ("Analyse faite par IAGen Claude d'Anthropic "
                 "(mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).")
 
-LOT = [
+REGIME_R1 = "R1 &mdash; Critique publi&eacute;e avant le site v2"
+
+MOIS = ["janvier", "f&eacute;vrier", "mars", "avril", "mai", "juin",
+        "juillet", "ao&ucirc;t", "septembre", "octobre", "novembre",
+        "d&eacute;cembre"]
+
+# --- Le lot du prototype (065-3), conserve tel quel ------------------------
+LOT_PROTO = [
     {
         "fichier": "pandora.html",
         "volet": "critique",
-        "regime": "R1 &mdash; Critique publi&eacute;e avant le site v2",
+        "regime": REGIME_R1,
         "producteur": "Claude (pipeline, routine nocturne)",
         "signature": SIGNATURE_R1,
         "date": "2026-07-18 20:45",
@@ -68,8 +90,6 @@ LOT = [
         "regime": "R3 &mdash; &Eacute;tude",
         "producteur": "OpenAI GPT-5.5 (reprise et enrichissement squad)",
         # P-19 : le premier jet n'a pas ete produit par un modele de la squad.
-        # Le segment "premier jet produit par..." nomme le producteur reel ;
-        # le reste de la formule R3 est celui du section 5.3, inchange.
         "signature": ("&Eacute;tude &mdash; premier jet produit par OpenAI "
                       "GPT-5.5, repris et enrichi par la squad, r&eacute;vision "
                       "&eacute;ditoriale et validation par Christo Datso."),
@@ -82,7 +102,7 @@ LOT = [
     {
         "fichier": "rouges-et-blancs.html",
         "volet": "critique",
-        "regime": "R1 &mdash; Critique publi&eacute;e avant le site v2",
+        "regime": REGIME_R1,
         "producteur": "non sp&eacute;cifi&eacute;",
         "signature": SIGNATURE_R1,
         "date": "2026-07-04 10:11",
@@ -90,6 +110,30 @@ LOT = [
         "variante": None,
     },
 ]
+
+DEJA_MIGREES = set(p["fichier"] for p in LOT_PROTO)
+
+# --- Les pages qui RESISTENT aux asserts d'origine, et pourquoi ------------
+# Mesure du 22/07/2026 : 25 des 30 pages passent tel quel. Les 5 autres ne
+# sont pas des exceptions inventees pour faire passer le script -- chacune
+# porte un ecart CONSTATE, nomme, et son traitement est explicite.
+CAS_A_PART = {
+    # Publiee sans identite bespoke : elle lit style.css (le chrome du site)
+    # et ne declare ni fonte tierce, ni font-family, ni bloc <style>. Il n'y a
+    # donc RIEN a substituer -- mais tout a lier : sans mobilier.css, les
+    # variables de role (--serif, --sans) qu'emploie style.css v2 ne sont
+    # definies nulle part et la page tomberait en repli.
+    "annie-hall.html": {
+        "sans_fonte_tierce": True,
+        "sans_famille": True,
+        "sans_bloc_style": True,
+    },
+}
+
+# Les 4 pages publiees le 21/07 nomment leur lien de retour "retour" et non
+# "back-link" : variante de gabarit du skill, constatee, sans consequence
+# editoriale. Le script accepte les deux noms plutot que d'en imposer un.
+CLASSES_RETOUR = ("back-link", "retour")
 
 MENU = [
     ("../index.html", "Accueil", None),
@@ -100,8 +144,6 @@ MENU = [
     ("../demander-une-analyse.html", "Demander une analyse", None),
 ]
 
-# Les entites HTML evitent d'ecrire un seul caractere accentue dans ce source :
-# le script reste ASCII pur, la page reste en francais.
 ETUDES = "&Eacute;tudes"
 
 
@@ -118,6 +160,72 @@ def lire(chemin):
 def ecrire(chemin, texte):
     with io.open(chemin, "w", encoding="utf-8", newline="\n") as f:
         f.write(texte)
+
+
+def date_git(depot, relatif):
+    """Date de PREMIERE apparition du fichier sur main (P-45, D-5).
+
+    Mecanique, jamais devinee : c'est git qui repond. Le dernier element de la
+    liste est le commit d'ajout le plus ancien.
+    """
+    sortie = subprocess.check_output(
+        ["git", "-C", depot, "log", "main", "--diff-filter=A",
+         "--format=%ad", "--date=format:%Y-%m-%d %H:%M", "--", relatif],
+        stderr=subprocess.STDOUT).decode("ascii", "replace")
+    lignes = [l.strip() for l in sortie.splitlines() if l.strip()]
+    if not lignes:
+        echec("%s : aucune date d'ajout dans l'historique de main" % relatif)
+    return lignes[-1]
+
+
+def date_lisible(iso):
+    a, m, j = iso[:10].split("-")
+    return "%d %s %s" % (int(j), MOIS[int(m) - 1], a)
+
+
+def producteurs_du_registre(depot):
+    """Lit le champ producteur de chaque entree. Le registre FAIT FOI (P-17).
+
+    Ce qui n'y est pas journalise ne s'invente pas : la valeur est alors
+    'non specifie', explicitement (P-18) -- jamais un champ vide, jamais une
+    valeur deduite.
+    """
+    t = lire(os.path.join(depot, "assets", "films-data.js"))
+    trouve = {}
+    for bloc in re.split(r"\n\s*\{", t):
+        m = re.search(r"slug:\s*['\"]([^'\"]+)", bloc)
+        if not m:
+            continue
+        p = re.search(r"producteur:\s*['\"]([^'\"]*)['\"]", bloc)
+        trouve[m.group(1)] = p.group(1) if p and p.group(1).strip() else None
+    return trouve
+
+
+def lot_retrofit(depot):
+    """Construit le lot des 30 pages, entierement a partir de MESURES."""
+    dossier = os.path.join(depot, "films")
+    noms = sorted(n for n in os.listdir(dossier)
+                  if n.endswith(".html") and n not in DEJA_MIGREES)
+    prod = producteurs_du_registre(depot)
+    lot = []
+    for nom in noms:
+        slug = nom[:-5]
+        iso = date_git(depot, "films/" + nom)
+        valeur = prod.get(slug)
+        lot.append({
+            "fichier": nom,
+            # Les 30 sont des Critiques : la seule Etude du corpus
+            # (pandora-contrechamp) appartient au lot du prototype.
+            "volet": "critique",
+            "regime": REGIME_R1,
+            # Journalise -> nomme ; non journalise -> dit non specifie.
+            "producteur": valeur if valeur else "non sp&eacute;cifi&eacute;",
+            "signature": SIGNATURE_R1,
+            "date": iso,
+            "date_lisible": date_lisible(iso),
+            "variante": None,
+        })
+    return lot
 
 
 def bloc_menu(volet):
@@ -147,10 +255,10 @@ def bloc_cartouche(p):
             '<p class="variante"><span class="quoi">Autre regard sur ce film</span>'
             '<a href="%s">%s &mdash; %s</a></p>'
             % (v["url"], v["titre"], v["volet"]))
-    # Les chaines de LOT portent DEJA leurs entites : aucune substitution
-    # d'accents ici. La premiere version enchainait des .replace() partiels
-    # et laissait passer "ETUDE", "Modele", "Publiee" -- une chaine de
-    # remplacements n'est pas un encodage.
+    # Les chaines portent DEJA leurs entites : aucune substitution d'accents
+    # ici. La premiere version enchainait des .replace() partiels et laissait
+    # passer "ETUDE", "Modele", "Publiee" -- une chaine de remplacements n'est
+    # pas un encodage.
     lignes.append(
         '<div class="cartouche">\n'
         '  <span class="regime">%s</span>\n'
@@ -172,24 +280,26 @@ def role_typo(valeur):
     return "var(--serif)"
 
 
-def migre(chemin, p):
-    src = lire(chemin)
-    t = src
-
+def nature_typo(t, chemin, cas, journal):
     # 1. Fontes tierces -----------------------------------------------------
     avant = len(re.findall(r"fonts\.(?:googleapis|gstatic)\.com", t))
-    if avant == 0:
+    if avant == 0 and not cas.get("sans_fonte_tierce"):
         echec("%s : aucun appel de fonte tierce, page deja migree ?"
               % os.path.basename(chemin))
-    t = re.sub(r'[ \t]*<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*\n',
-               "", t)
-    if re.search(r"fonts\.(?:googleapis|gstatic)\.com", t):
-        echec("%s : appel de fonte tierce residuel" % chemin)
+    if avant:
+        t = re.sub(
+            r'[ \t]*<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*\n',
+            "", t)
+        if re.search(r"fonts\.(?:googleapis|gstatic)\.com", t):
+            echec("%s : appel de fonte tierce residuel" % chemin)
+    journal["fontes_tierces_retirees"] = avant
 
     # 2. Feuilles auto-hebergees -------------------------------------------
     ancre = "</title>"
     if ancre not in t:
         echec("%s : pas de </title> ou inserer les feuilles" % chemin)
+    if "assets/mobilier.css" in t:
+        echec("%s : mobilier.css deja lie" % chemin)
     t = t.replace(
         ancre,
         ancre + '\n<link rel="stylesheet" href="../assets/fonts.css">'
@@ -197,41 +307,39 @@ def migre(chemin, p):
 
     # 3. Substitution typographique ----------------------------------------
     n_familles = len(re.findall(r"font-family\s*:", t))
-    if n_familles == 0:
+    if n_familles == 0 and not cas.get("sans_famille"):
         echec("%s : aucune declaration font-family" % chemin)
-
-    def sub_famille(m):
-        return "font-family:" + role_typo(m.group(1))
-
-    t = re.sub(r"font-family\s*:\s*([^;}]+)", sub_famille, t)
-    if re.search(r"font-family\s*:\s*'", t):
-        echec("%s : famille nommee residuelle apres substitution" % chemin)
+    journal["familles_substituees"] = n_familles
+    if n_familles:
+        def sub_famille(m):
+            return "font-family:" + role_typo(m.group(1))
+        t = re.sub(r"font-family\s*:\s*([^;}]+)", sub_famille, t)
+        if re.search(r"font-family\s*:\s*'", t):
+            echec("%s : famille nommee residuelle apres substitution" % chemin)
 
     # Les titres suivent le texte courant (P-26). Regle posee en FIN de la
     # feuille de la page : meme specificite, elle l'emporte par l'ordre.
     fin_style = t.rfind("</style>")
     if fin_style < 0:
-        echec("%s : pas de </style>" % chemin)
-    t = (t[:fin_style]
-         + "\n  /* Substitution typographique v2 (P-20, P-26) : titrage et\n"
-           "     texte courant sur la meme famille. Palette, couverture et\n"
-           "     ossature de la page restent intactes. */\n"
-           "  body{font-family:var(--serif);}\n"
-           "  h1,h2,h3{font-family:var(--serif);}\n"
-         + t[fin_style:])
+        if not cas.get("sans_bloc_style"):
+            echec("%s : pas de </style>" % chemin)
+        # Page sans feuille propre : rien a surcharger, elle herite du
+        # systeme par mobilier.css. On n'INVENTE pas un bloc <style>.
+        journal["regle_titrage"] = "sans objet (page sans feuille propre)"
+    else:
+        t = (t[:fin_style]
+             + "\n  /* Substitution typographique v2 (P-20, P-26) : titrage et\n"
+               "     texte courant sur la meme famille. Palette, couverture et\n"
+               "     ossature de la page restent intactes. */\n"
+               "  body{font-family:var(--serif);}\n"
+               "  h1,h2,h3{font-family:var(--serif);}\n"
+             + t[fin_style:])
+        journal["regle_titrage"] = "posee"
+    return t
 
-    # 4. Cartouche et variante ---------------------------------------------
-    # AVANT le menu, et non apres : le menu apporte son propre </header>, ce
-    # qui rendrait l'ancre ambigue. L'assert l'a attrape au premier essai --
-    # c'est sa raison d'etre, et la page n'a pas ete ecrite pour autant.
-    if "</header>" not in t:
-        echec("%s : pas de </header> ou poser le cartouche" % chemin)
-    if t.count("</header>") != 1:
-        echec("%s : %d occurrences de </header>, ancre ambigue"
-              % (chemin, t.count("</header>")))
-    t = t.replace("</header>", "</header>\n\n" + bloc_cartouche(p), 1)
 
-    # 5. Menu ---------------------------------------------------------------
+def nature_gabarit(t, chemin, p, journal):
+    # 4. Menu ---------------------------------------------------------------
     m = re.search(r"<body[^>]*>", t)
     if not m:
         echec("%s : pas de balise body" % chemin)
@@ -247,21 +355,74 @@ def migre(chemin, p):
     t = t.replace(FLECHE + " ", "").replace(FLECHE, "")
     if FLECHE in t:
         echec("%s : fleche residuelle" % chemin)
-    t = re.sub(r'class="back-link"', 'class="back-link lien-retour"', t)
-    if "lien-retour" not in t:
-        echec("%s : lien de retour introuvable" % chemin)
+    # Le lien de retour porte 'back-link' ou 'retour' selon la generation du
+    # skill qui a produit la page. Les deux sont acceptes ; aucune n'est
+    # renommee, on AJOUTE la classe de mobilier.
+    pose = 0
+    for classe in CLASSES_RETOUR:
+        motif = r'class="%s(?![-\w])' % classe
+        if re.search(motif, t):
+            t = re.sub(motif, 'class="%s lien-retour' % classe, t)
+            pose += 1
+    if pose == 0 or "lien-retour" not in t:
+        echec("%s : lien de retour introuvable (ni %s)"
+              % (chemin, " ni ".join(CLASSES_RETOUR)))
+    journal["fleches_retirees"] = n_fleches
+    journal["classe_retour"] = pose
+    return t
 
+
+def nature_signatures(t, chemin, p, journal):
+    # 5. Cartouche et variante ---------------------------------------------
+    # AVANT le menu, et non apres : le menu apporte son propre </header>, ce
+    # qui rendrait l'ancre ambigue. L'assert l'a attrape au premier essai --
+    # c'est sa raison d'etre, et la page n'a pas ete ecrite pour autant.
+    if 'class="cartouche"' in t:
+        echec("%s : cartouche deja pose" % chemin)
+    if 'class="chrome"' in t:
+        # L'ordre des natures n'est pas un detail : le menu apporte un second
+        # </header> et l'ancre du cartouche cesse d'etre unique. Le prototype
+        # l'avait deja rencontre ; l'assert le redit plutot que de deviner
+        # laquelle des deux ancres est la bonne.
+        echec("%s : le menu est deja pose -- le cartouche s'ancre AVANT lui "
+              "(ordre des natures : typo, signatures, gabarit)" % chemin)
+    if "</header>" not in t:
+        echec("%s : pas de </header> ou poser le cartouche" % chemin)
+    if t.count("</header>") != 1:
+        echec("%s : %d occurrences de </header>, ancre ambigue"
+              % (chemin, t.count("</header>")))
+    t = t.replace("</header>", "</header>\n\n" + bloc_cartouche(p), 1)
+    journal["cartouche"] = "pose"
+    journal["producteur"] = p["producteur"]
+    journal["date"] = p["date"]
+    return t
+
+
+NATURES = {
+    "typo": [nature_typo],
+    "gabarit": [nature_gabarit],
+    "signatures": [nature_signatures],
+}
+
+
+def migre(chemin, p, natures, simuler):
+    src = lire(chemin)
+    t = src
+    cas = CAS_A_PART.get(os.path.basename(chemin), {})
+    journal = {"page": os.path.basename(chemin),
+               "cas_a_part": bool(cas)}
+    for nom in natures:
+        for fonction in NATURES[nom]:
+            if fonction is nature_typo:
+                t = fonction(t, chemin, cas, journal)
+            else:
+                t = fonction(t, chemin, p, journal)
     if t == src:
         echec("%s : aucune modification produite" % chemin)
-
-    ecrire(chemin, t)
-    return {
-        "page": os.path.basename(chemin),
-        "fontes_tierces_retirees": avant,
-        "familles_substituees": n_familles,
-        "fleches_retirees": n_fleches,
-        "octets": (len(src), len(t)),
-    }
+    journal["octets"] = (len(src), len(t))
+    if not simuler:
+        ecrire(chemin, t)
+    return journal
 
 
 def verifie(chemin):
@@ -283,25 +444,49 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--depot", default=os.path.dirname(os.path.dirname(
         os.path.abspath(__file__))))
+    ap.add_argument("--lot", choices=["proto", "retrofit"], default="proto")
+    ap.add_argument("--nature",
+                    choices=["typo", "gabarit", "signatures", "tout"],
+                    default="tout")
     ap.add_argument("--verifier", action="store_true")
+    ap.add_argument("--simuler", action="store_true")
+    ap.add_argument("--json", action="store_true",
+                    help="rapport machine, pour le rapport de migration")
     args = ap.parse_args()
 
-    for p in LOT:
+    lot = LOT_PROTO if args.lot == "proto" else lot_retrofit(args.depot)
+    # ORDRE IMPOSE, pas arbitraire : le cartouche s'ancre sur l'unique
+    # </header> de la page, que le menu dedoublerait. signatures AVANT gabarit.
+    natures = (["typo", "signatures", "gabarit"] if args.nature == "tout"
+               else [args.nature])
+
+    rapports = []
+    for p in lot:
         chemin = os.path.join(args.depot, "films", p["fichier"])
         if not os.path.isfile(chemin):
             sys.stderr.write("Introuvable : %s\n" % chemin)
             return 2
         if args.verifier:
             r = verifie(chemin)
-            print("%-28s %s" % (r.pop("page"), "  ".join(
-                "%s=%s" % (k, v) for k, v in r.items())))
+            rapports.append(r)
+            if not args.json:
+                print("%-32s %s" % (r["page"], "  ".join(
+                    "%s=%s" % (k, v) for k, v in r.items() if k != "page")))
         else:
-            r = migre(chemin, p)
-            print("%-28s fontes tierces retirees=%d  familles substituees=%d  "
-                  "fleches=%d  %d -> %d octets" % (
-                      r["page"], r["fontes_tierces_retirees"],
-                      r["familles_substituees"], r["fleches_retirees"],
-                      r["octets"][0], r["octets"][1]))
+            r = migre(chemin, p, natures, args.simuler)
+            rapports.append(r)
+            if not args.json:
+                marque = " [cas a part]" if r["cas_a_part"] else ""
+                print("%-32s %d -> %d octets%s" % (
+                    r["page"], r["octets"][0], r["octets"][1], marque))
+    if args.json:
+        print(json.dumps(rapports, indent=1, sort_keys=True))
+    elif not args.verifier:
+        print("")
+        print("lot=%s  natures=%s  %s  pages=%d" % (
+            args.lot, ",".join(natures),
+            "SIMULATION (rien ecrit)" if args.simuler else "ECRIT",
+            len(rapports)))
     return 0
 
 
