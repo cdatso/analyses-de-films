@@ -45,7 +45,7 @@
   }
 
   /* ---------- CARTOUCHE DE LA CARTE (EN-TÊTE) ---------- */
-  header.cartouche{
+  header.carte-titre{
     background:
       radial-gradient(120% 100% at 50% -20%, rgba(160,125,51,0.15), transparent 60%),
       var(--sepia);
@@ -53,12 +53,12 @@
     padding:4.6rem 1.5rem 3.8rem;
     position:relative;
   }
-  header.cartouche::after{
+  header.carte-titre::after{
     content:"";
     position:absolute; left:0; right:0; bottom:0; height:4px;
     background:linear-gradient(90deg, var(--bleu) 0 50%, var(--rouge) 50% 100%);
   }
-  .cartouche-inner{ max-width:760px; margin:0 auto; }
+  .carte-titre-inner{ max-width:760px; margin:0 auto; }
   .back-link{
     display:inline-block;
     color:rgba(233,223,198,0.55);
@@ -258,8 +258,8 @@
 </head>
 <body>
 
-<header class="cartouche">
-  <div class="cartouche-inner">
+<header class="carte-titre">
+  <div class="carte-titre-inner">
     <a class="back-link" href="../index.html">← Retour aux analyses</a>
     <div><span class="date-bataille">Plateau de Mont-Saint-Jean · 18 juin 1815</span></div>
     <h1 class="title">Waterloo</h1>
