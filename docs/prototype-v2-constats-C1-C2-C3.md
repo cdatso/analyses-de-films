@@ -232,4 +232,46 @@ recette** : il nomme où regarder, il ne clôt pas P-39.
 | 2 | C-2 — le bloc de une à une seule carte | AH, sur l'instrument livré |
 | 3 | Chacun des 23 écarts E1 — corriger la palette ou documenter l'exception | AH, écart par écart |
 | 4 | Le ton `--ink-muted` du pied de page, hérité et sous AA | AH |
-| 5 | La dégradation sans JavaScript, balisée PROVISOIRE | AH (§4.5, poste de décision) |
+| 5 | ~~La dégradation sans JavaScript, balisée PROVISOIRE~~ | **TRANCHÉ — voir erratum 1** |
+
+---
+
+## ERRATUM 1 — 22/07/2026 08h30
+
+**La ligne 5 du tableau ci-dessus n'est plus vraie.** Elle est barrée et non
+effacée : le raisonnement d'origine fait partie de la mémoire du projet
+(charte, règle 5).
+
+**Gate d'AH relayé dans la fenêtre du prototype, 22/07** — « go option (b)
+pour la dégradation sans JS », relais de l'enregistrement de 08h24 :
+
+> **Option (b)** — la liste complète du corpus est rendue **en dur dans le
+> HTML** ; le JavaScript ne fait plus que la **filtrer**. Sans JS, on voit
+> tout, simplement non filtrable.
+
+**Ce que le prototype constatait est donc résolu, et par la racine.** Le repli
+qui « tournait en rond » — renvoyer vers « Critiques », page dépendant du même
+script — disparaît : il n'y a plus de repli à faire, puisqu'il n'y a plus rien
+à remplacer. Les trois pages qui rendent le composant (`index`, `critiques`,
+`etudes`) portent leur liste en HTML ordinaire ; le script révèle les commandes
+de filtrage à l'amorçage, et se contente de filtrer ensuite.
+
+**Implémentation et contrôle** : bloc généré par
+`outils/genere-liste-statique.py` entre marqueurs, **jamais édité à la main**.
+Le risque réel de ce dispositif est la **dérive entre deux gabarits** — celui
+du script Python et celui de `corpus.js`. D'où le mode `--verifier`, qui
+régénère en mémoire et compare au disque : *contrôle de recette à rejouer.*
+
+**Vérifié au moteur** : les **33 `<li>`** du rendu JavaScript et ceux du HTML
+statique sont **identiques balise à balise** (comparaison des `outerHTML`
+normalisés, 0 divergence). Le lecteur sans JavaScript voit exactement la même
+liste que le lecteur qui en a un.
+
+*Frontière P-31 respectée telle qu'elle a été ratifiée le 21/07 : ce que la
+règle proscrit est une transformation **au déploiement**, pas un fichier généré
+avant commit, versionné et lisible tel quel. Le HTML publié se lit dans le
+dépôt, et se sert sans étape intermédiaire.*
+
+**Reste hors de cet erratum** : le point ② du gate enregistré à 08h24 — la
+mécanique de recherche et de classement déléguée à ce mandat — **n'a pas été
+relayé** dans la fenêtre du prototype. La session ne se l'attribue pas.
