@@ -11,119 +11,119 @@
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "au-fil-de-leau.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "bienvenue-a-suburbicon.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 732,
   "debordement_px": 0,
-  "decalage_px": -104,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 49.0,
   "page": "hamlet.html",
-  "wrap_px": 992
+  "wrap_px": 784
  },
  {
   "colonne_px": 652,
   "debordement_px": 0,
-  "decalage_px": -144,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "hamnet.html",
-  "wrap_px": 992
+  "wrap_px": 704
  },
  {
   "colonne_px": 835,
   "debordement_px": 0,
-  "decalage_px": -52,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 55.4,
   "page": "hitchcock-truffaut.html",
-  "wrap_px": 992
+  "wrap_px": 886
  },
  {
   "colonne_px": 632,
   "debordement_px": 0,
-  "decalage_px": -154,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 42.7,
   "page": "julie-en-12-chapitres.html",
-  "wrap_px": 992
+  "wrap_px": 683
  },
  {
   "colonne_px": 652,
   "debordement_px": 0,
-  "decalage_px": -144,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "la-chevauchee-fantastique.html",
-  "wrap_px": 992
+  "wrap_px": 704
  },
  {
   "colonne_px": 652,
   "debordement_px": 0,
-  "decalage_px": -144,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "la-mariee-etait-en-noir.html",
-  "wrap_px": 992
+  "wrap_px": 704
  },
  {
   "colonne_px": 732,
   "debordement_px": 0,
-  "decalage_px": -104,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 49.0,
   "page": "la-nuit-de-san-lorenzo.html",
-  "wrap_px": 992
+  "wrap_px": 784
  },
  {
   "colonne_px": 652,
   "debordement_px": 0,
-  "decalage_px": -144,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "le-cheval-de-turin.html",
-  "wrap_px": 992
+  "wrap_px": 704
  },
  {
   "colonne_px": 689,
   "debordement_px": 0,
-  "decalage_px": -126,
+  "decalage_px": -1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "le-doulos.html",
-  "wrap_px": 992
+  "wrap_px": 741
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "le-golem.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 815,
   "debordement_px": 0,
-  "decalage_px": -62,
+  "decalage_px": 1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 54.1,
   "page": "le-samourai.html",
-  "wrap_px": 992
+  "wrap_px": 866
  },
  {
   "colonne_px": 611,
@@ -138,29 +138,29 @@
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "manhattan.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "moi-daniel-blake.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "nouvelle-vague.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 784,
@@ -193,20 +193,20 @@
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "raging-bull.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "retour-a-seoul.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 611,
@@ -231,73 +231,73 @@
  {
   "colonne_px": 652,
   "debordement_px": 0,
-  "decalage_px": -144,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 44.0,
   "page": "sans-filtre.html",
-  "wrap_px": 992
+  "wrap_px": 704
  },
  {
   "colonne_px": 689,
   "debordement_px": 0,
-  "decalage_px": -126,
+  "decalage_px": -1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "shutter-island.html",
-  "wrap_px": 992
+  "wrap_px": 741
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "soudain-lete-dernier.html",
-  "wrap_px": 992
+  "wrap_px": 723
  },
  {
   "colonne_px": 689,
   "debordement_px": 0,
-  "decalage_px": -126,
+  "decalage_px": -1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "soy-cuba.html",
-  "wrap_px": 992
+  "wrap_px": 741
  },
  {
   "colonne_px": 609,
   "debordement_px": 0,
-  "decalage_px": -166,
+  "decalage_px": -1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 41.3,
   "page": "sud.html",
-  "wrap_px": 992
+  "wrap_px": 661
  },
  {
   "colonne_px": 689,
   "debordement_px": 0,
-  "decalage_px": -126,
+  "decalage_px": -1,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 46.3,
   "page": "sur-la-route-domaha.html",
-  "wrap_px": 992
+  "wrap_px": 741
  },
  {
   "colonne_px": 712,
   "debordement_px": 0,
-  "decalage_px": -114,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 47.7,
   "page": "the-old-oak.html",
-  "wrap_px": 992
+  "wrap_px": 763
  },
  {
   "colonne_px": 672,
   "debordement_px": 0,
-  "decalage_px": -134,
+  "decalage_px": 0,
   "declare_son_wrap": false,
   "largeur_proposee_rem": 45.2,
   "page": "waterloo.html",
-  "wrap_px": 992
+  "wrap_px": 723
  }
 ]
