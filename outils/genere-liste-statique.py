@@ -86,6 +86,37 @@ def etiquette(v):
     return echappe(v[:1].upper() + v[1:])
 
 
+# Repli des diacritiques -- MEME table que la constante PLI de corpus.js.
+# Ecrite en points de code : le fichier reste ASCII pur, et la table reste
+# lisible caractere par caractere. Elle sert a deux choses, la recherche
+# (cote JS) et la CLE DE TRI (des deux cotes) : c'est elle qui garantit que le
+# HTML statique sort dans exactement l'ordre que produira le script.
+_ACCENTUES = (u"\u00e0\u00e2\u00e4\u00e3\u00e5\u00e1\u00e7\u00e9\u00e8\u00ea"
+              u"\u00eb\u00ee\u00ef\u00ec\u00ed\u00f1\u00f4\u00f6\u00f2\u00f3"
+              u"\u00f5\u00f8\u00f9\u00fb\u00fc\u00fa\u00ff\u00fd")
+_PLATS = u"aaaaaaceeeeiiiinoooooouuuuyy"
+PLI = dict(zip(_ACCENTUES, _PLATS))
+PLI[u"\u0153"] = u"oe"   # oe lie
+PLI[u"\u00e6"] = u"ae"   # ae lie
+
+
+
+
+def norm(s):
+    s = unicode_str(s or u"").lower()
+    return u"".join(PLI.get(c, c) for c in s)
+
+
+def ordre_catalogue(f):
+    """Ordre du catalogue : alphabetique par titre replie.
+
+    Voir corpus.js pour le motif. Les articles initiaux ne sont pas escamotes.
+    Le titre brut sert de departage, pour que deux titres de meme repli aient
+    un ordre stable et identique des deux cotes.
+    """
+    return (norm(f["title"]), unicode_str(f["title"] or u""))
+
+
 def decoupe_entrees(source):
     debut = source.find("const FILMS")
     if debut < 0:
@@ -206,6 +237,10 @@ def main():
     films = [entree(b) for b in decoupe_entrees(lire(registre))]
     films = [f for f in films if f["slug"]]
     derniere = derniere_publiee(films)
+    # L'ordre du catalogue, arrete par le gate du 22/07 : alphabetique sur le
+    # titre replie. Applique ICI, une fois, avant tout filtrage -- exactement
+    # comme corpus.js trie sa copie de travail a l'amorcage.
+    films.sort(key=ordre_catalogue)
 
     code = 0
     for nom, filtre in PAGES:

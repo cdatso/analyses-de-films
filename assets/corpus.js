@@ -100,6 +100,57 @@
 
   function trie(films) { return films.slice().sort(parDate); }
 
+  /* ------------------------------------------------- ordre du catalogue ---
+     GATE AH du 22/07 : la mécanique et le classement sont à la main de ce
+     mandat. Choix rendu, et motivé au constat de fin.
+
+     L'ordre de la liste est ALPHABÉTIQUE par titre, replié sans accent.
+     Ce n'est pas l'ordre du registre (qui est celui des ajouts, arbitraire
+     pour un lecteur), ni l'ordre de publication (qui ferait doublon avec
+     l'objet en une, et qui de toute façon n'existe que sur 3 entrées).
+     Un index est un catalogue : on y cherche un titre.
+
+     Le repli des accents sert AUSSI de clé de tri, au lieu de
+     localeCompare : Python n'a pas de collation française dans sa
+     bibliothèque standard, et le HTML statique doit sortir dans EXACTEMENT
+     le même ordre que ce script. Une clé repliée, elle, se reproduit à
+     l'identique des deux côtés — et le contrôle de dérive le prouve.
+     Les articles initiaux ne sont pas escamotés : « Le Doulos » se range à
+     « L », comme il s'écrit. Escamoter demanderait une règle de plus, et
+     surprendrait autant qu'elle aiderait. */
+  function cleCatalogue(f) { return norm(f.title || ''); }
+
+  function ordreCatalogue(a, b) {
+    var ka = cleCatalogue(a), kb = cleCatalogue(b);
+    if (ka !== kb) { return ka < kb ? -1 : 1; }
+    return (a.title || '') < (b.title || '') ? -1 : 1;
+  }
+
+  /* ------------------------------------------------------- la recherche ---
+     JETONS, et non sous-chaîne globale. La sous-chaîne sur un champ
+     concaténé impose au lecteur l'ordre des mots : « loach drame »
+     n'y trouve rien, « annie woody » non plus. Découper la requête en
+     jetons et exiger que CHACUN se trouve quelque part (ET) libère cet
+     ordre — c'est ce qu'un lecteur attend d'un champ de recherche.
+     Chaque jeton reste une SOUS-CHAÎNE : « melv » trouve Melville, ce qui
+     évite d'avoir à gérer les pluriels et les formes fléchies du français
+     avec un analyseur qu'on n'aura pas. */
+  function jetons(requete) {
+    var bruts = norm(requete).split(/\s+/), sortie = [], i;
+    for (i = 0; i < bruts.length; i++) {
+      if (bruts[i]) { sortie.push(bruts[i]); }
+    }
+    return sortie;
+  }
+
+  function correspondJetons(index, mots) {
+    var i;
+    for (i = 0; i < mots.length; i++) {
+      if (index.indexOf(mots[i]) === -1) { return false; }
+    }
+    return true;
+  }
+
   /* ---------------------------------------------------------------- une --- */
 
   function carteUne(f) {
@@ -231,8 +282,13 @@
       for (k in f) { if (Object.prototype.hasOwnProperty.call(f, k)) { c[k] = f[k]; } }
       c.volet = volet(f);
       c.decennie = f.year ? (Math.floor(f.year / 10) * 10) + 's' : null;
+      /* Index de recherche calculé UNE FOIS par entrée, à l'amorçage, et non
+         à chaque frappe : c'est ce qui tient le seuil de 100 ms de P-41 quand
+         le corpus grandira. */
+      c._index = norm([f.title, f.director, f.year, f.genreBase, f.genre,
+                       (f.pays || []).join(' '), c.decennie].join(' '));
       return c;
-    });
+    }).sort(ordreCatalogue);
 
     function facettesVisibles() {
       var vues = [], i, n;
@@ -267,16 +323,23 @@
     }
 
     function rend() {
-      var t = elQ ? norm(elQ.value.trim()) : '';
+      /* Aucun classement par pertinence : les résultats gardent l'ordre du
+         catalogue. Le filtre étant conjonctif, TOUTES les entrées retenues
+         satisfont TOUS les jetons — il n'y a pas de gradient à trier. Un
+         pseudo-score (le titre vaut plus que le réalisateur) ferait bouger
+         les lignes d'une manière que le lecteur ne peut pas prévoir, sur une
+         liste qui tient le plus souvent dans un écran une fois filtrée. */
+      var mots = elQ ? jetons(elQ.value) : [];
       var vus = travail.filter(function (f) {
         var axe;
         for (axe in actifs) {
           if (actifs[axe] && !correspond(f, axe, actifs[axe])) { return false; }
         }
-        if (!t) { return true; }
-        return norm([f.title, f.director, f.year, f.genreBase, f.genre,
-                     (f.pays || []).join(' '), f.decennie].join(' ')).indexOf(t) !== -1;
+        return mots.length ? correspondJetons(f._index, mots) : true;
       });
+      /* Le compteur cite la requête TELLE QUE TAPÉE, pas les jetons repliés :
+         le repli est une mécanique interne, le lecteur n'a pas à la voir. */
+      var t = mots.length && elQ ? elQ.value.trim() : '';
 
       if (elCompte) {
         elCompte.textContent = vus.length + (vus.length > 1 ? ' analyses' : ' analyse')
