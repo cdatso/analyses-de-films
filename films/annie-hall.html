@@ -8,7 +8,22 @@
 <link rel="stylesheet" href="../assets/mobilier.css">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 <script>
   function hideBrokenImg(img, groupId) {
     img.remove();
@@ -22,7 +37,7 @@
   <h1>Annie Hall</h1>
   <p class="subtitle">Woody Allen, 1977 — comment un film sur une rupture amoureuse a redéfini la comédie romantique américaine.</p>
   <div class="meta">États-Unis · 93 minutes · Comédie dramatique romantique</div>
-  <a class="back-link" href="../index.html">← Retour aux analyses</a>
+  <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
 </header>
 
 <div class="wrap" style="padding-top:1.6rem;">
@@ -167,7 +182,7 @@
 <footer>
   Analyse rédigée à titre d'exercice critique et pédagogique.
   <br>
-  <a class="back-link" href="../index.html">← Retour aux analyses</a>
+  <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
 </footer>
 
 </body>

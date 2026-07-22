@@ -524,7 +524,22 @@
   h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 <script>
   function hideBrokenImg(img, groupId) {
     img.remove();
@@ -539,7 +554,7 @@
   <div class="cover-inner">
     <div class="folder-tab">Ashecliffe Hospital — Service des dossiers</div>
     <div class="case-sheet">
-      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
       <div class="stamp-diag">Confidentiel<small>Eyes only</small></div>
       <div class="case-number">Dossier n<sup>o</sup> <b>67</b> — Ouvert le 3 juillet 2026</div>
       <h1 class="title">Shutter Island</h1>
@@ -843,7 +858,7 @@
 
 <footer class="endnote">
   Dossier compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 <script>

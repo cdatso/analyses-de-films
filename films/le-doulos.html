@@ -464,13 +464,28 @@
   h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="avis-cover">
   <div class="edition-line">Rubrique nécrologique — édition du soir</div>
   <div class="cover-inner">
     <div class="avis-sheet">
-      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
       <svg class="hat-icon" width="46" height="30" viewBox="0 0 46 30" aria-hidden="true">
         <ellipse cx="23" cy="24" rx="22" ry="4.4" fill="none" stroke="#17140f" stroke-width="2"/>
         <path d="M12 24 C12 12, 17 5, 23 5 C29 5, 34 12, 34 24" fill="none" stroke="#17140f" stroke-width="2"/>
@@ -705,7 +720,7 @@
 
 <footer class="endnote">
   Avis compilé à partir de sources publiques consultées le 6 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 <script>
