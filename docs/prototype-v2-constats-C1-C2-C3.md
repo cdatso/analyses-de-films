@@ -1,0 +1,235 @@
+# Les trois constats du prototype v2 — C-1, C-2, C-3
+
+**Item** : BKL-065-3 · **Branche** : `v2-proto` · **Session** : « Opus BKL-065-3
+Prototype-Site-V2 » (AC-Exec / Code / Opus 4.8)
+**Rédigé le** : 22/07/2026 à 08h11 (horodatage instrumental)
+**Contrat** : `SPEC-SITE-V2.md` v1.0 — §12 (Q-3), §3.2 (réserve P-51), P-39
+
+> Ces trois constats sont des **livrables de rang égal avec le prototype**
+> (mandat §7.2). La session **observe et compte** ; elle ne tranche rien et ne
+> corrige rien. Chaque écart relevé est un arbitrage d'AH.
+
+---
+
+## Limite commune aux trois constats — à lire d'abord
+
+**Cette session n'a pas pu mesurer une seule géométrie.** Le navigateur
+disponible ne compose aucune image : `document.documentElement.clientWidth`
+et `window.innerWidth` y valent **0**, y compris après redimensionnement
+explicite. Toute mesure de largeur, de hauteur, de longueur de ligne ou de
+débordement prise dans cet environnement serait fausse — et une mesure fausse
+vaut moins que pas de mesure.
+
+**Ce qui reste valide et a été employé** : les **styles calculés** (famille
+résolue, style et épaisseur de filet, couleur effective, contenu de
+pseudo-élément) et le **journal réseau**, qui ne dépendent pas de la mise en
+page. C'est sur eux que reposent les vérifications de P-20, P-21, P-24, P-26
+et P-28.
+
+**Ce qui reste dû** : tout jugement de proportion. Il appartient à AH sur un
+navigateur réel — ce que le mandat prévoyait déjà (« la revue sur maquette
+vivante est SON travail »). Les instruments sont livrés pour qu'il n'ait rien
+à reconstruire.
+
+---
+
+## C-1 — La typographie unifiée tient-elle sur trois ossatures bespoke ? *(Q-3)*
+
+### Ce qui a été fait
+
+Trois pages migrées, choisies pour s'opposer :
+
+| Page | Fond | Luminance | Ossature | Familles d'origine |
+|---|---|---|---|---|
+| `pandora.html` | `#f2ead9` | 0,827 | couverture « toile métaphysique », colonne unique | Marcellus (titres) · Spectral (texte) · Cutive Mono (cartels) |
+| `pandora-contrechamp.html` | `#f2ead9` | 0,827 | la même, plus l'appareil théorique | idem |
+| `rouges-et-blancs.html` | `#0c0c0b` | **0,004** | letterbox, cadre scope 2.35:1 | **Oswald** (titres) · Inter (texte) · JetBrains Mono |
+
+**Critère de choix de la page sombre, écrit avant la migration** : fond le plus
+sombre du corpus à 0,0007 près (2ᵉ des 33) **et** déplacement typographique
+maximal — trois familles dont **aucune n'est une serif**, quand Pandora en
+porte deux. `soudain-lete-dernier.html`, marginalement plus sombre, emploie
+déjà **IBM Plex Mono**, une famille du système v2 : sa substitution aurait été
+en partie un non-événement, donc le moins bon test de Q-3.
+
+**Mesuré après migration** (styles calculés, moteur réel) : `body` et `h1` sur
+**Literata** dans les trois pages ; **42 déclarations** de famille substituées
+(13 + 13 + 16) ; **0 famille nommée résiduelle** ; **0 requête tierce** ;
+cartels sur **IBM Plex Mono**.
+
+### Ce que la session observe
+
+**① Le rôle « mono » se pose sans heurt.** Les trois pages avaient déjà une
+monospace, et à la même place — les cartels et la fiche technique. IBM Plex
+Mono y remplace Cutive Mono et JetBrains Mono dans une fonction identique.
+C'est la substitution la plus sûre des trois.
+
+**② Le rôle « serif » absorbe deux fonctions qui étaient distinctes.** Chaque
+page opposait une famille de titrage à une famille de texte ; P-26 les réunit.
+Sur Pandora, l'écart est faible : Marcellus et Spectral sont deux serifs, et
+Literata se substitue à l'une comme à l'autre sans changer la nature de la page.
+
+**③ Le point dur est nommément `rouges-et-blancs.html`, et il n'est pas
+chromatique.** Son titrage était **Oswald**, une display **condensée**, posée
+sur une ossature qui en dépend : barres letterbox, cadre scope 2.35:1, titres
+en capitales étirées à l'horizontale. Literata 600 est large, ronde, de faible
+contraste — l'inverse d'une condensée. *C'est là, et d'abord là, qu'il faut
+regarder si la typographie unifiée « tient ».* La session ne peut pas le
+trancher : c'est un jugement de proportion, et elle n'a pas de géométrie.
+
+**④ Une conséquence non anticipée par la spec.** Les cartels de la fiche
+technique servent d'**étiquettes de gabarit** — leur largeur participe de la
+grille. Changer de monospace change leur chasse. Aucune prescription ne couvre
+ce point ; il n'est pas grave, il est simplement à voir.
+
+**⑤ Ce qui n'a PAS bougé, et c'est l'essentiel** : palette, couverture,
+ossature, texte. La migration ne touche qu'aux familles. L'identité bespoke
+appartient à l'œuvre (§6.1) et elle est intacte dans les trois pages.
+
+### Ce que la session ne dit pas
+
+Elle ne dit pas que la typographie unifiée est réussie, ni qu'elle échoue.
+**Q-3 n'attend aucune décision d'AH** (spec §12) : c'est un constat de design,
+et le constat est celui-ci — *le risque est réel, il est localisé, et il porte
+sur une seule des trois pages.*
+
+**À regarder en priorité** :
+`films/rouges-et-blancs.html` — le titre en capitales, les barres letterbox,
+et le rapport entre la hauteur du bloc-titre et le cadre scope.
+
+---
+
+## C-2 — Une carte seule « sonne-t-elle vide » ? *(réserve P-51)*
+
+### L'instrument
+
+`outils/observation-C2-carte-seule.html` — **page hors site**, liée par aucun
+menu, jamais publiée. Elle montre côte à côte, sur le registre réel :
+
+- **cas A** : l'objet en une réduit à **une carte seule** (l'unique Étude est
+  retirée du tableau à la volée, ce qui prive la dernière publiée de sa variante) ;
+- **cas B** : le **couple** champ / contrechamp, état de l'accueil au 22/07.
+
+### Comportement vérifié (logique, pas géométrie)
+
+| | cas A | cas B |
+|---|---|---|
+| Cartes rendues | **1** | 2 |
+| Classe du bloc | `bloc-une` | `bloc-une couple` |
+| Cartel | « Dernière analyse publiée » | « …— et son pendant » |
+| Ligne de liaison | vide | « Même film, deux régimes » |
+
+**P-51 se comporte comme écrite** : aucune entrée qui ne soit ni la dernière
+publiée ni sa variante n'apparaît dans le bloc.
+
+### Ce que la session observe
+
+**① Le risque n'est probablement pas le vide, c'est l'étirement.** La grille
+passe de deux colonnes à une seule : une carte seule occupe alors **toute la
+largeur du bloc**, soit la pleine mesure de la page. Ce n'est pas une carte
+dans un espace vide, c'est une carte étirée sur une mesure conçue pour deux.
+Si le bloc « sonne » mal, le levier est la **grille**, pas P-51 — la
+prescription peut rester telle quelle. *(Non vérifié par la mesure : pas de
+géométrie. Déduit de la règle CSS `grid-template-columns`.)*
+
+**② Et surtout — le cas A n'est pas hypothétique, il sera le cas normal.**
+Aujourd'hui l'accueil affiche le couple, parce que `datePublication` n'existe
+que sur les 3 entrées migrées et que la plus récente des trois est le
+Contrechamp (18/07 23h45). **Après le rétro-remplissage de 065-5**, la dernière
+publiée du corpus réel deviendra **`hitchcock-truffaut.html`** — ajoutée le
+**21/07 à 23h38** (relevé git), une **Critique sans variante**.
+
+> **Autrement dit : le cas que le prototype montre aujourd'hui n'est pas celui
+> que le site montrera demain.** C'est le cas A qu'il faut juger, et c'est
+> exactement pour cela que l'instrument existe.
+
+Le corpus ne comptant qu'une Étude et le régime Scholar étant coûteux par
+construction, le couple restera l'exception — ce que l'arbitrage Q-1 avait
+anticipé en écartant l'option qui aurait figé Pandora à l'accueil.
+
+---
+
+## C-3 — Comptage mécanique du contraste AA *(P-39)*
+
+**Outil** : `outils/controle-contraste.py` — Python stdlib, ASCII pur, sans
+navigateur. L'arithmétique WCAG (luminance relative, rapport
+`(L1+0,05)/(L2+0,05)`) n'exige aucun rendu. **Sortie intégrale** :
+`outils/contraste-sortie.md`. **Aucune palette n'a été modifiée.**
+
+### Pourquoi le comptage est donné en deux classes
+
+La première version de l'outil appariait toute règle `color` au fond du `body`.
+Elle annonçait **136 écarts sur 34 pages, dont 34 pages en échec** — avec des
+ratios de **1,00** en série, c'est-à-dire du texte exactement de la couleur du
+fond. Ce n'étaient pas des défauts de palette : c'étaient des **artefacts de
+nesting**, une règle vivant dans un bloc à fond distinct. *Un comptage qui
+aurait déclenché 33 arbitrages inutiles ne vaut rien.* L'outil a donc été
+durci avant que le constat ne soit rendu.
+
+| Classe | Définition | Nature |
+|---|---|---|
+| **E1 — certain** | la règle déclare `color` **et** un fond : le couple est celui que l'auteur a écrit | aucune inférence |
+| **E2 — probable** | la règle ne déclare que `color`, et cette couleur échoue contre **tous** les fonds déclarés de la page | borne **basse** |
+
+Ce qui passe sur au moins un fond déclaré n'est pas compté : **le comptage
+sous-estime plutôt qu'il n'invente.**
+
+### Résultat
+
+| Mesure | Valeur |
+|---|---|
+| Pages analysées | **34** (33 analyses + l'accueil) |
+| Couples texte/fond distincts examinés | 421 |
+| **Écarts CERTAINS (E1)** | **23** |
+| Écarts PROBABLES (E2) | 48 |
+| **Pages portant au moins un écart CERTAIN** | **17 / 34** |
+| Pages portant au moins un écart, toutes classes | 25 / 34 |
+| Pages sans aucun écart | 9 |
+
+### Cinq observations qui commandent les arbitrages
+
+**① Tous les écarts ne sont pas des défauts.** Le pire ratio du corpus est
+`1,00`, sur le sélecteur **`.redact`** — du texte caviardé, de la couleur exacte
+de son fond. C'est un **effet voulu**. Une correction automatique le
+détruirait. C'est l'illustration la plus nette de ce que P-39 demande : chaque
+écart est un arbitrage, jamais une correction mécanique.
+
+**② Les fautes se concentrent sur le mobilier, pas sur le texte courant.** Les
+sélecteurs qui échouent sont `.provenance`, `.content-warning`,
+`.avertissement`, `.cartel`, `.eyebrow`, `.back-link`, `header.dalle` — des
+mentions secondaires en gris clair. Le corps des analyses passe presque partout.
+
+**③ Le chrome v2 hérite lui-même d'un écart.** `index.html` porte un E1 :
+`footer` en `#7a7a74` sur `#f1ede4` = **3,70**. Ce ton vient de la palette v1
+(`--ink-muted`), reprise telle quelle par le prototype — et il est désormais
+sur les **six** pages du menu, qui partagent ce pied de page. *Écart introduit
+par héritage, non par le prototype ; signalé, non corrigé.*
+
+**④ La page sombre est la plus propre du lot.** `rouges-et-blancs.html` :
+**zéro écart**, E1 comme E2. Le préjugé selon lequel les palettes sombres
+seraient les plus exposées ne tient pas ici — c'est `shutter-island.html`
+(fond clair `#ece3ca`) qui en porte le plus, avec 3 écarts certains.
+
+**⑤ Le diptyque Pandora en porte un, certain** : `.content-warning`,
+`#e2d6bd` sur `#9b9e9c` = **1,88**, dans la page champ. Le contrechamp n'en a
+aucun de certain. Les deux pages partageant la palette, l'écart tient au bloc,
+pas au film.
+
+### Ce qui reste dû
+
+P-39 se vérifie « mécanisé (§9.2) », c'est-à-dire **au navigateur**, sur les
+couples réellement empilés. Playwright n'est pas installé (BKL-069,
+autorisation R4 distincte). Le présent comptage est **une borne, pas la
+recette** : il nomme où regarder, il ne clôt pas P-39.
+
+---
+
+## Ce que la session n'a pas tranché — récapitulatif
+
+| # | Point | À qui |
+|---|---|---|
+| 1 | Q-3 — la typographie unifiée tient-elle sur `rouges-et-blancs` ? | AH, sur navigateur |
+| 2 | C-2 — le bloc de une à une seule carte | AH, sur l'instrument livré |
+| 3 | Chacun des 23 écarts E1 — corriger la palette ou documenter l'exception | AH, écart par écart |
+| 4 | Le ton `--ink-muted` du pied de page, hérité et sous AA | AH |
+| 5 | La dégradation sans JavaScript, balisée PROVISOIRE | AH (§4.5, poste de décision) |
