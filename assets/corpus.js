@@ -61,7 +61,16 @@
      identifiants sans accent et en minuscules (stables, comparables) ; l'écran
      montre du français. Aucune valeur n'est traduite : seule sa casse change,
      sauf pour le volet dont le pluriel est celui des entrées de menu. */
-  var ETIQUETTES = { critique: 'Critiques', etude: 'Études', 'n&b': 'N&B' };
+  var ETIQUETTES = {
+    critique: 'Critiques', etude: 'Études', 'n&b': 'N&B',
+    /* Les identifiants du vocabulaire sont sans accent — c'est ce qui les rend
+       stables et comparables. L'accent est une affaire d'affichage, et il vit
+       ici. Cette table doit rester identique à celle de
+       outils/genere-liste-statique.py : le contrôle --verifier détecte toute
+       dérive entre les deux gabarits. */
+    melodrame: 'Mélodrame', comedie: 'Comédie', tragedie: 'Tragédie',
+    'Etats-Unis': 'États-Unis', 'Union sovietique': 'Union soviétique'
+  };
 
   function etiquette(v) {
     if (ETIQUETTES[v]) { return ETIQUETTES[v]; }
@@ -184,6 +193,14 @@
         elFacettes = options.facettes ? document.getElementById(options.facettes) : null;
 
     if (!elListe) { return; }
+
+    /* Option (b) — gate AH du 22/07 08h24. La liste est déjà dans le HTML,
+       écrite en dur par outils/genere-liste-statique.py : sans JavaScript le
+       lecteur voit TOUT le corpus, simplement non filtrable. Le script ne fait
+       que filtrer — et il commence par révéler les commandes, masquées dans le
+       HTML parce qu'elles ne serviraient à rien sans lui. */
+    if (elQ) { elQ.hidden = false; }
+    if (elFacettes) { elFacettes.hidden = false; }
 
     /* Le corpus de cette vue : c'est ici, et ici seulement, que « Critiques »
        et « Études » diffèrent de l'accueil (P-07). */
