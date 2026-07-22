@@ -1,0 +1,149 @@
+/* MOBILIER PARTAGÉ — SPEC-SITE-V2 §5.4, §6.3, §7.3.
+ *
+ * Cette feuille est lue par TOUTES les pages du site : les 6 pages du menu ET
+ * les 33 pages d'analyse. C'est elle qui porte les composants uniques —
+ * menu (P-02), chevron de navigation (P-28), cartouche de provenance (P-16),
+ * marqueur de volet (P-21), variable de rôle --volet (P-23).
+ *
+ * ⚠️ ÉCART DE STRUCTURE SIGNALÉ (§2.1) — l'arborescence cible de la spec ne
+ * prévoit qu'un `style.css`. Le prototype a dû en séparer DEUX, pour une
+ * raison mesurée : `style.css` porte la palette v1 (--ink, --paper, --line).
+ * Liée à une page bespoke, elle y injecte ses propres couleurs partout où la
+ * page ne redéfinit pas le sélecteur — un filet beige sur une couverture
+ * noire. Le mobilier ci-dessous n'emploie donc AUCUNE couleur de palette :
+ * il vit en `currentColor` et hérite de la page. C'est le raisonnement du
+ * chevron et du filet de volet, étendu à tout le mobilier :
+ * invariant en forme, variable en couleur.
+ * Décision d'amender §2.1 : à AH, non à cette session.
+ */
+
+:root {
+  /* Système typographique unifié (§7.1). Déclaré ici parce que le mobilier
+     est la seule feuille que TOUTES les pages partagent. */
+  --serif: 'Literata', Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* Tons du mobilier : par défaut la couleur courante de la page. Une page
+     peut les affiner (les 6 pages du menu le font via style.css) ; aucune
+     n'est obligée de les connaître. */
+  --mobilier-filet: currentColor;
+  --mobilier-attenue: currentColor;
+}
+
+/* --- Variable de rôle du volet (P-23) -------------------------------------
+   Déclarée UNE SEULE FOIS par volet, ici et nulle part ailleurs : aucune page
+   de films/ ne la redéfinit. Marqueur de P-21 : filet DOUBLE pour les Études,
+   SIMPLE pour les Critiques, en currentColor. */
+[data-volet="critique"] { --volet: 1px solid currentColor; }
+[data-volet="etude"]    { --volet: 3px double currentColor; }
+
+/* Focus toujours visible (P-40). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* --- Menu (P-02) ---------------------------------------------------------- */
+header.chrome {
+  border-bottom: 1px solid var(--mobilier-filet);
+  font-family: var(--sans);
+}
+
+.chrome-in {
+  max-width: 62rem; margin: 0 auto; padding: 1.1rem 1.6rem;
+  display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap;
+}
+
+.chrome-in .marque {
+  font-family: var(--serif); font-weight: 600; font-size: 1.05rem;
+  letter-spacing: -0.01em; text-decoration: none; color: inherit;
+}
+
+nav.menu {
+  margin-left: auto; display: flex; gap: 1.3rem; flex-wrap: wrap;
+  font-family: var(--sans); font-size: 0.88rem;
+}
+
+nav.menu a {
+  color: var(--mobilier-attenue); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1px solid transparent;
+}
+
+nav.menu a:hover { border-bottom-color: currentColor; }
+
+nav.menu a[aria-current="page"] {
+  color: inherit; border-bottom-color: currentColor;
+}
+
+/* --- Chevron de navigation (P-28) ----------------------------------------
+   Le lien de retour ne dépend d'aucun glyphe : U+2190 n'est présent dans
+   AUCUNE des trois familles du système, et il est vocalisé par certains
+   lecteurs d'écran avant le texte du lien. Un pseudo-élément ne l'est pas. */
+a.lien-retour {
+  display: inline-block; font-family: var(--sans); font-size: 0.86rem;
+  color: var(--mobilier-attenue); text-decoration: none;
+}
+
+a.lien-retour::before {
+  content: ""; display: inline-block;
+  width: 0.42em; height: 0.42em;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-right: 0.5em; vertical-align: 0.08em;
+}
+
+/* --- Cartouche de provenance (P-15, P-16) --------------------------------
+   Composant UNIQUE, décliné par volet via --volet. Aucune page ne déclare de
+   style de cartouche qui lui soit propre. */
+.cartouche {
+  font-family: var(--mono); font-size: 0.74rem; line-height: 1.55;
+  background: transparent; color: inherit;
+  border-top: var(--volet); border-bottom: var(--volet);
+  padding: 0.9rem 0; margin: 0 0 2rem;
+}
+
+.cartouche .regime {
+  display: block; text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.62rem; margin-bottom: 0.4rem;
+}
+
+.cartouche .signature { display: block; }
+
+.cartouche .date-pub {
+  display: block; color: var(--mobilier-attenue); margin-top: 0.3rem;
+}
+
+/* --- Navigation croisée champ / contrechamp (P-03) ------------------------ */
+.variante {
+  font-family: var(--sans); font-size: 0.86rem;
+  padding: 0.7rem 0; margin: 0 0 1.6rem;
+  border-bottom: 1px solid var(--mobilier-filet);
+}
+
+.variante .quoi {
+  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.13em; color: var(--mobilier-attenue); margin-right: 0.6rem;
+}
+
+/* --- Bandeau de prototype — PROVISOIRE, retiré à la bascule (065-5) ------- */
+.proto-note {
+  font-family: var(--mono); font-size: 0.7rem; line-height: 1.6;
+  border-bottom: 1px solid var(--mobilier-filet);
+  padding: 0.7rem 1.6rem;
+}
+
+/* --- Pied de page --------------------------------------------------------- */
+footer .f-in {
+  max-width: 62rem; margin: 0 auto; padding: 0 1.6rem;
+  font-family: var(--sans); font-size: 0.82rem; color: var(--mobilier-attenue);
+}
+
+@media (max-width: 640px) {
+  .chrome-in { gap: 0.8rem; }
+  nav.menu { margin-left: 0; gap: 0.9rem; font-size: 0.82rem; }
+}
