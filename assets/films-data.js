@@ -12,7 +12,12 @@ const FILMS = [
     genre: 'Comédie dramatique romantique',
     summary: "Comment un film sur une rupture amoureuse a redéfini la comédie romantique américaine.",
     url: 'films/annie-hall.html',
-    poster: 'assets/posters/annie-hall.jpg'
+    poster: 'assets/posters/annie-hall.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 09:00',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'the-old-oak',
@@ -22,7 +27,12 @@ const FILMS = [
     genre: 'Drame social',
     summary: "Le dernier pub debout, la dernière fable de Ken Loach : réfugiés syriens et mineurs abandonnés dans le nord-est de l'Angleterre.",
     url: 'films/the-old-oak.html',
-    poster: 'assets/posters/the-old-oak.jpg'
+    poster: 'assets/posters/the-old-oak.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 09:00',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'soudain-lete-dernier',
@@ -32,7 +42,12 @@ const FILMS = [
     genre: 'Mélodrame gothique',
     summary: "Un mélodrame gothique sur l'emprise maternelle, la censure du Code Hays et une vérité qu'on tente de faire taire à coups de scalpel.",
     url: 'films/soudain-lete-dernier.html',
-    poster: 'assets/posters/soudain-lete-dernier.jpg'
+    poster: 'assets/posters/soudain-lete-dernier.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 10:14',
+    genreBase: 'melodrame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'soy-cuba',
@@ -42,7 +57,12 @@ const FILMS = [
     genre: 'Drame de propagande',
     summary: "Un manifeste de propagande cubano-soviétique dont la virtuosité visuelle a fini par échapper à ses propres commanditaires.",
     url: 'films/soy-cuba.html',
-    poster: 'assets/posters/soy-cuba.jpg'
+    poster: 'assets/posters/soy-cuba.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 18:11',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'sud',
@@ -52,7 +72,12 @@ const FILMS = [
     genre: 'Documentaire',
     summary: "Une traversée silencieuse du Sud des États-Unis, hantée par le meurtre raciste de James Byrd Jr.",
     url: 'films/sud.html',
-    poster: 'assets/posters/sud.jpg'
+    poster: 'assets/posters/sud.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 18:11',
+    genreBase: 'documentaire',
+    producteur: 'non spécifié'
   },
   {
     slug: 'shutter-island',
@@ -62,7 +87,12 @@ const FILMS = [
     genre: 'Thriller psychologique',
     summary: "Un marshal fédéral enquête sur une île-asile où la vérité qu'il cherche finit par se retourner contre lui.",
     url: 'films/shutter-island.html',
-    poster: 'assets/posters/shutter-island.jpg'
+    poster: 'assets/posters/shutter-island.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 18:12',
+    genreBase: 'thriller',
+    producteur: 'non spécifié'
   },
   {
     slug: 'hamnet',
@@ -72,7 +102,12 @@ const FILMS = [
     genre: 'Drame historique',
     summary: "Comment le deuil d'un fils disparu a pu donner naissance à l'un des chefs-d'œuvre de Shakespeare.",
     url: 'films/hamnet.html',
-    poster: 'assets/posters/hamnet.jpg'
+    poster: 'assets/posters/hamnet.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-03 18:12',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'les-deux-orphelines',
@@ -82,7 +117,12 @@ const FILMS = [
     genre: 'Mélodrame historique (muet)',
     summary: "Deux sœurs de cœur séparées par la Révolution française, dans le dernier mélodrame muet où Griffith réunit une dernière fois les sœurs Gish.",
     url: 'films/les-deux-orphelines.html',
-    poster: 'assets/posters/les-deux-orphelines.jpg'
+    poster: 'assets/posters/les-deux-orphelines.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-04 10:11',
+    genreBase: 'melodrame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'rosetta',
@@ -92,7 +132,12 @@ const FILMS = [
     genre: 'Drame social',
     summary: "Une adolescente en quête désespérée d'un emploi stable, filmée caméra à l'épaule par les frères Dardenne jusqu'à la Palme d'or.",
     url: 'films/rosetta.html',
-    poster: 'assets/posters/rosetta.jpg'
+    poster: 'assets/posters/rosetta.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-04 10:11',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'rouges-et-blancs',
@@ -119,7 +164,12 @@ const FILMS = [
     genre: 'Drame psychologique',
     summary: "Écrit en quatorze jours sur un lit d'hôpital, un huis clos entre une infirmière et une actrice devenue muette qui a fini par redéfinir le cinéma moderne.",
     url: 'films/persona.html',
-    poster: 'assets/posters/persona.jpg'
+    poster: 'assets/posters/persona.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 00:33',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'au-fil-de-leau',
@@ -129,7 +179,11 @@ const FILMS = [
     genre: 'Film noir gothique',
     summary: "Un romancier raté transforme son crime en roman à succès — mais la rivière de Fritz Lang rend toujours ce qu'on lui confie.",
     url: 'films/au-fil-de-leau.html',
-    poster: 'assets/posters/au-fil-de-leau.jpg'
+    poster: 'assets/posters/au-fil-de-leau.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 16:58',
+    producteur: 'non spécifié'
   },
   {
     slug: 'raging-bull',
@@ -139,7 +193,12 @@ const FILMS = [
     genre: 'Drame biographique',
     summary: "Scorsese pensait signer son dernier film ; il a filmé la jalousie d'un champion comme un opéra en noir et blanc, à hauteur de coups.",
     url: 'films/raging-bull.html',
-    poster: 'assets/posters/raging-bull.jpg'
+    poster: 'assets/posters/raging-bull.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 17:06',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'le-cheval-de-turin',
@@ -149,7 +208,12 @@ const FILMS = [
     genre: 'Drame contemplatif',
     summary: "Six jours de vent, un cheval qui refuse, la lumière qui s'éteint : le dernier film de Béla Tarr regarde la fin du monde à hauteur de pommes de terre.",
     url: 'films/le-cheval-de-turin.html',
-    poster: 'assets/posters/le-cheval-de-turin.jpg'
+    poster: 'assets/posters/le-cheval-de-turin.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 17:14',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'la-mariee-etait-en-noir',
@@ -159,7 +223,12 @@ const FILMS = [
     genre: 'Thriller',
     summary: "Cinq noms sur une liste, une robe mi-lys mi-corbeau : Truffaut filme la vengeance comme un chagrin d'amour, sous le regard d'Hitchcock.",
     url: 'films/la-mariee-etait-en-noir.html',
-    poster: 'assets/posters/la-mariee-etait-en-noir.jpg'
+    poster: 'assets/posters/la-mariee-etait-en-noir.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 20:13',
+    genreBase: 'thriller',
+    producteur: 'non spécifié'
   },
   {
     slug: 'bienvenue-a-suburbicon',
@@ -169,7 +238,12 @@ const FILMS = [
     genre: 'Comédie noire',
     summary: "Un scénario noir des Coen greffé sur un fait divers de la ségrégation : pendant que la banlieue assiège sa seule famille innocente, le crime blanc prospère pavillon contre pavillon.",
     url: 'films/bienvenue-a-suburbicon.html',
-    poster: 'assets/posters/bienvenue-a-suburbicon.jpg'
+    poster: 'assets/posters/bienvenue-a-suburbicon.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 20:19',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'manhattan',
@@ -179,7 +253,12 @@ const FILMS = [
     genre: 'Comédie dramatique',
     summary: "Une déclaration d'amour en Scope noir et blanc à une ville rêvée sur du Gershwin — chef-d'œuvre formel devenu pièce à conviction de son propre auteur.",
     url: 'films/manhattan.html',
-    poster: 'assets/posters/manhattan.jpg'
+    poster: 'assets/posters/manhattan.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 21:04',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'sans-filtre',
@@ -189,7 +268,12 @@ const FILMS = [
     genre: 'Comédie satirique',
     summary: "Un yacht d'oligarques, une tempête gastrique, une dame pipi promue capitaine : la Palme d'or la plus clivante de la décennie filme la lutte des classes à hauteur d'estomac.",
     url: 'films/sans-filtre.html',
-    poster: 'assets/posters/sans-filtre.jpg'
+    poster: 'assets/posters/sans-filtre.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 21:14',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'retour-a-seoul',
@@ -199,7 +283,12 @@ const FILMS = [
     genre: 'Drame',
     summary: "Une adoptée française rentre « chez elle » dans un pays dont elle ne parle pas la langue — et refuse huit ans durant toutes les identités qu'on lui tend.",
     url: 'films/retour-a-seoul.html',
-    poster: 'assets/posters/retour-a-seoul.jpg'
+    poster: 'assets/posters/retour-a-seoul.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 21:21',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'waterloo',
@@ -209,7 +298,12 @@ const FILMS = [
     genre: 'Fresque historique',
     summary: "Vingt mille soldats soviétiques, un producteur italien et deux empires du cinéma pour rejouer la journée qui a défait Napoléon — la dernière bataille filmée sans trucage à cette échelle.",
     url: 'films/waterloo.html',
-    poster: 'assets/posters/waterloo.jpg'
+    poster: 'assets/posters/waterloo.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 23:32',
+    genreBase: 'fresque',
+    producteur: 'non spécifié'
   },
   {
     slug: 'nouvelle-vague',
@@ -219,7 +313,12 @@ const FILMS = [
     genre: 'Comédie dramatique',
     summary: "Le tournage d'À bout de souffle rejoué plan par plan, en français et en 1.37 : la déclaration d'amour d'un cinéphile texan au geste le plus libre du cinéma.",
     url: 'films/nouvelle-vague.html',
-    poster: 'assets/posters/nouvelle-vague.jpg'
+    poster: 'assets/posters/nouvelle-vague.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-05 23:44',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'julie-en-12-chapitres',
@@ -229,7 +328,12 @@ const FILMS = [
     genre: 'Comédie dramatique',
     summary: "Quatre ans de la vie d'une femme qui essaie toutes les vies possibles, racontés comme un roman — et le prix d'interprétation de Cannes pour Renate Reinsve.",
     url: 'films/julie-en-12-chapitres.html',
-    poster: 'assets/posters/julie-en-12-chapitres.jpg'
+    poster: 'assets/posters/julie-en-12-chapitres.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-06 08:20',
+    genreBase: 'comedie',
+    producteur: 'non spécifié'
   },
   {
     slug: 'le-golem',
@@ -239,7 +343,12 @@ const FILMS = [
     genre: 'Fantastique',
     summary: "Un cinéaste français filme à Prague, trois ans après l'arrivée de Hitler au pouvoir, la légende du géant d'argile qui venge le ghetto : le fantastique comme éditorial.",
     url: 'films/le-golem.html',
-    poster: 'assets/posters/le-golem.jpg'
+    poster: 'assets/posters/le-golem.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-06 08:26',
+    genreBase: 'fantastique',
+    producteur: 'non spécifié'
   },
   {
     slug: 'moi-daniel-blake',
@@ -249,7 +358,12 @@ const FILMS = [
     genre: 'Drame social',
     summary: "Trop malade pour travailler, pas assez pour être indemnisé : la Palme d'or la plus politique de la décennie, écrite à la bombe sur le mur d'une administration.",
     url: 'films/moi-daniel-blake.html',
-    poster: 'assets/posters/moi-daniel-blake.jpg'
+    poster: 'assets/posters/moi-daniel-blake.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-06 08:32',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'la-chevauchee-fantastique',
@@ -259,7 +373,12 @@ const FILMS = [
     genre: 'Western',
     summary: "Neuf voyageurs que la bonne société ne mettrait jamais dans la même pièce, une diligence, le territoire apache : le film qui a rendu au western ses lettres de noblesse.",
     url: 'films/la-chevauchee-fantastique.html',
-    poster: 'assets/posters/la-chevauchee-fantastique.jpg'
+    poster: 'assets/posters/la-chevauchee-fantastique.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-06 11:21',
+    genreBase: 'western',
+    producteur: 'non spécifié'
   },
   {
     slug: 'le-doulos',
@@ -269,7 +388,11 @@ const FILMS = [
     genre: 'Film noir',
     summary: "Un mot d'argot qui désigne à la fois un chapeau et un indicateur : Melville construit tout un polar sur l'impossibilité de savoir, jusqu'au bout, qui porte lequel des deux sens.",
     url: 'films/le-doulos.html',
-    poster: 'assets/posters/le-doulos.jpg'
+    poster: 'assets/posters/le-doulos.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-07 06:38',
+    producteur: 'non spécifié'
   },
   {
     slug: 'sur-la-route-domaha',
@@ -279,7 +402,12 @@ const FILMS = [
     genre: 'Drame',
     summary: "Un père ruiné par la crise de 2008 conduit ses deux enfants vers une destination qu'il leur tait — et que ce road movie ne dévoile qu'à ses tout derniers mètres, quitte à rétroéclairer chaque étape parcourue.",
     url: 'films/sur-la-route-domaha.html',
-    poster: 'assets/posters/sur-la-route-domaha.jpg'
+    poster: 'assets/posters/sur-la-route-domaha.jpg',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-10 08:29',
+    genreBase: 'drame',
+    producteur: 'non spécifié'
   },
   {
     slug: 'pandora',
@@ -327,7 +455,11 @@ const FILMS = [
     summary: "Les Taviani racontent le massacre de leur propre ville comme une berceuse d'étoiles filantes — parti pris magnifique, qui aura aussi fixé pour le monde entier une responsabilité que les archives ont depuis déplacée.",
     url: 'films/la-nuit-de-san-lorenzo.html',
     poster: 'assets/posters/la-nuit-de-san-lorenzo.jpg',
-    producteur: 'Claude Opus (session supervisée)'
+    producteur: 'Claude Opus (session supervisée)',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-21 09:06',
+    genreBase: 'drame'
   },
   {
     slug: 'hamlet',
@@ -338,7 +470,11 @@ const FILMS = [
     summary: "Kozintsev retire au rôle le plus commenté du théâtre occidental ce dont on croyait qu'il était fait — l'hésitation : son prince n'est pas empêché par lui-même, mais par une forteresse d'État dont le film ne cesse de filmer les barreaux.",
     url: 'films/hamlet.html',
     poster: 'assets/posters/hamlet.jpg',
-    producteur: 'Claude Opus (session supervisée)'
+    producteur: 'Claude Opus (session supervisée)',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-21 09:20',
+    genreBase: 'tragedie'
   },
   {
     slug: 'le-samourai',
@@ -349,7 +485,11 @@ const FILMS = [
     summary: "Un tueur à gages qui n'est plus qu'une méthode : Melville retire la couleur de la couleur, invente de toutes pièces la citation du Bushido qui ouvre le film, et fait tenir une morale entière sur un document faux.",
     url: 'films/le-samourai.html',
     poster: 'assets/posters/le-samourai.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)'
+    producteur: 'Claude (pipeline, routine nocturne)',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-21 11:13',
+    genreBase: 'polar'
   },
   {
     slug: 'hitchcock-truffaut',
@@ -360,6 +500,10 @@ const FILMS = [
     summary: "Truffaut avait enfermé Hitchcock huit jours dans un bureau d'Universal pour le sauver de sa réputation d'amuseur ; cinquante ans plus tard, Kent Jones rouvre les bandes et compose, sans tout à fait le vouloir, le portrait d'un panthéon devenu club.",
     url: 'films/hitchcock-truffaut.html',
     poster: 'assets/posters/hitchcock-truffaut.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)'
+    producteur: 'Claude (pipeline, routine nocturne)',
+    // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
+    volet: 'critique',
+    datePublication: '2026-07-21 23:38',
+    genreBase: 'documentaire'
   }
 ];
