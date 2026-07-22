@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sortie prochaine — Sur la route d'Omaha</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --asphalt:#201d19;
@@ -33,7 +33,7 @@
       radial-gradient(ellipse at 95% 100%, rgba(184,86,46,0.06), transparent 45%),
       var(--paper);
     color:var(--ink);
-    font-family:'PT Serif', serif;
+    font-family:var(--serif);
     font-size:1.02rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -42,7 +42,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .meta-label{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-weight:500;
@@ -53,7 +53,7 @@
   .back-link{
     display:inline-block;
     color:var(--ink-faint);
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -80,7 +80,7 @@
   }
   .edition-line{
     text-align:center;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -112,7 +112,7 @@
     gap:0.5rem;
     background:var(--paper);
     color:var(--hwy-deep);
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     font-size:0.68rem;
     letter-spacing:0.08em;
@@ -121,7 +121,7 @@
     margin-bottom:1rem;
   }
   h1.title{
-    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:clamp(2.6rem, 8vw, 4.4rem);
     line-height:0.98;
@@ -131,7 +131,7 @@
     text-transform:uppercase;
   }
   .subtitle{
-    font-family:'PT Serif', serif;
+    font-family:var(--serif);
     font-style:italic;
     color:var(--paper-deep);
     font-size:1rem;
@@ -154,7 +154,7 @@
     top:1.3rem; right:1.4rem;
     border:2.5px solid var(--rust);
     color:var(--rust);
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.06em;
@@ -193,7 +193,7 @@
     gap:1rem 1.6rem;
   }
   .identite dt{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -219,7 +219,7 @@
     color:var(--paper);
     opacity:0.72;
     text-decoration:none;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -246,7 +246,7 @@
     gap:0.8rem;
   }
   .colonne-num{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     font-weight:600;
     text-transform:uppercase;
@@ -259,7 +259,7 @@
     padding:0.15rem 0.4rem;
   }
   h2{
-    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:1.9rem;
     margin:0;
@@ -270,7 +270,7 @@
   }
   .colonne-sous{
     display:block;
-    font-family:'PT Serif', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.78rem;
     color:var(--ink-faint);
@@ -280,7 +280,7 @@
   }
 
   h3{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     font-size:0.92rem;
     text-transform:uppercase;
@@ -296,11 +296,11 @@
     text-decoration:none;
     border-bottom:1px dotted var(--hwy-deep);
     font-size:0.8em;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
   }
 
   .discretion{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.8rem;
     color:var(--ink-faint);
@@ -330,7 +330,7 @@
     background:var(--hwy);
   }
   .portrait-card .name{
-    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:1.25rem;
     display:block;
@@ -339,7 +339,7 @@
     text-transform:uppercase;
   }
   .portrait-card .role{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -360,7 +360,7 @@
     transform:rotate(-0.4deg);
   }
   .coupure p{
-    font-family:'PT Serif', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1rem;
     color:var(--ink);
@@ -368,7 +368,7 @@
   }
   .coupure cite{
     font-style:normal;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -385,7 +385,7 @@
     position:relative;
   }
   .theme-item .theme-tag{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -407,7 +407,7 @@
   }
   .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
   .bulletin-label{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -422,7 +422,7 @@
     gap:1rem;
   }
   .bulletin .stat .num{
-    font-family:'Bebas Neue', 'Roboto Mono', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:1.6rem;
     color:var(--paper);
@@ -430,7 +430,7 @@
     line-height:1.15;
   }
   .bulletin .stat .cap{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.03em;
     color:#c7d6cb;
@@ -439,7 +439,7 @@
 
   section.sources{ background:var(--asphalt); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
   section.sources .sources-inner{ max-width:740px; margin:0 auto; }
-  section.sources h2{ color:var(--paper); font-family:'Bebas Neue', 'Roboto Mono', sans-serif; font-weight:400; font-size:1.7rem; margin:0; text-transform:uppercase; }
+  section.sources h2{ color:var(--paper); font-family:var(--sans); font-weight:400; font-size:1.7rem; margin:0; text-transform:uppercase; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -452,12 +452,12 @@
     color:var(--paper-deep);
     border-bottom:1px dashed rgba(241,233,216,0.25);
     padding-bottom:0.6rem;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: "Borne " counter(src);
     position:absolute; left:0; top:0;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     color:#a9c2ae;
     font-size:0.66rem;
@@ -469,7 +469,7 @@
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     font-weight:500;
     letter-spacing:0.09em;
@@ -488,6 +488,12 @@
     .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
     .colonne-head{ flex-wrap:wrap; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Golem (1936) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Gelasio:ital,wght@0,400;0,600;1,400&family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== L'ARGILE ET LA LETTRE =====
      Prague expressionniste, 1936 : terre cuite du ghetto, ombres portées,
@@ -27,7 +27,7 @@
     margin:0;
     background:var(--parchemin);
     color:var(--ombre-douce);
-    font-family:'Gelasio', serif;
+    font-family:var(--serif);
     font-size:1.0rem;
     line-height:1.73;
   }
@@ -35,7 +35,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.66rem;
@@ -71,7 +71,7 @@
   .back-link{
     display:inline-block;
     color:rgba(233,223,200,0.5);
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -83,7 +83,7 @@
     display:inline-block;
     border:1px solid rgba(183,140,46,0.55);
     color:var(--kabbale);
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -91,7 +91,7 @@
     margin-bottom:1.8rem;
   }
   h1.title{
-    font-family:'Yeseva One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.8rem, 8.5vw, 5rem);
     line-height:1.02;
@@ -106,7 +106,7 @@
     margin:0 0 1.9rem;
   }
   .meta-line{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -140,7 +140,7 @@
   section{ margin-top:3.5rem; }
   .signe{ margin-bottom:1.4rem; }
   .signe .ref{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -149,7 +149,7 @@
     margin-bottom:0.25rem;
   }
   .signe h2{
-    font-family:'Yeseva One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.65rem;
     color:var(--ombre);
@@ -175,7 +175,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
@@ -185,7 +185,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--argile-sombre);
     text-decoration:none;
@@ -216,7 +216,7 @@
   }
   @media (max-width:480px){ .tablette{ grid-template-columns:1fr; } }
   .tablette .label{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -236,12 +236,18 @@
     margin-top:3.5rem;
     padding:1.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
     color:rgba(233,223,200,0.5);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

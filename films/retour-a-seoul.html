@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Retour à Séoul (2022) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Noto+Sans+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE DOSSIER HAMMOND =====
      Formulaire d'adoption : papier administratif froid, encre bleue,
@@ -28,7 +28,7 @@
     margin:0;
     background:var(--papier);
     color:var(--encre-douce);
-    font-family:'Manrope', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -36,12 +36,12 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.64rem;
   }
-  .kr{ font-family:'Noto Sans KR', sans-serif; }
+  .kr{ font-family:var(--sans); }
 
   /* ---------- NUIT DE SÉOUL (EN-TÊTE) ---------- */
   header.nuit{
@@ -57,7 +57,7 @@
     content:"서울";
     position:absolute;
     right:-0.1em; top:0.35em;
-    font-family:'Noto Sans KR', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:clamp(6rem, 22vw, 13rem);
     line-height:1;
@@ -69,7 +69,7 @@
   .back-link{
     display:inline-block;
     color:var(--gris);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -81,7 +81,7 @@
     display:inline-block;
     border:1px solid rgba(214,58,99,0.5);
     color:var(--neon);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -89,7 +89,7 @@
     margin-bottom:1.7rem;
   }
   h1.title{
-    font-family:'Manrope', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:clamp(2.5rem, 7vw, 4.1rem);
     line-height:1.04;
@@ -105,7 +105,7 @@
     margin:0 0 1.9rem;
   }
   .meta-line{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.65rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -127,7 +127,7 @@
   nav.bordereau::after{
     content:"확인";
     position:absolute; right:1rem; top:0.8rem;
-    font-family:'Noto Sans KR', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:0.85rem;
     color:var(--tampon);
@@ -153,7 +153,7 @@
   section{ margin-top:3.5rem; }
   .piece{ margin-bottom:1.4rem; }
   .piece .ref{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -162,7 +162,7 @@
     margin-bottom:0.25rem;
   }
   .piece h2{
-    font-family:'Manrope', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:1.6rem;
     letter-spacing:-0.01em;
@@ -190,7 +190,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -200,7 +200,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--admin);
     text-decoration:none;
@@ -230,7 +230,7 @@
   }
   @media (max-width:480px){ .formulaire{ grid-template-columns:1fr; } }
   .formulaire .label{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -250,12 +250,18 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--gris);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

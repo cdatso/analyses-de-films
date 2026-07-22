@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julie (en 12 chapitres) (2021) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Mulish:ital,wght@0,300;0,400;0,600;1,300&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE ROMAN NORVÉGIEN =====
      Couverture scandinave épurée : blanc chaud, rose d'aube sur Oslo,
@@ -27,7 +27,7 @@
     margin:0;
     background:var(--page);
     color:var(--encre);
-    font-family:'Mulish', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.73;
   }
@@ -35,7 +35,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.64rem;
@@ -55,7 +55,7 @@
   .back-link{
     display:inline-block;
     color:var(--gris-fjord);
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -64,7 +64,7 @@
   }
   .back-link:hover{ color:var(--aube); }
   .auteur{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     letter-spacing:0.3em;
     text-transform:uppercase;
@@ -72,7 +72,7 @@
     margin-bottom:1.6rem;
   }
   h1.title{
-    font-family:'Literata', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:clamp(2.4rem, 6.5vw, 3.8rem);
     line-height:1.1;
@@ -98,7 +98,7 @@
     display:inline-block;
     background:var(--aube);
     color:var(--nuit);
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -106,7 +106,7 @@
     margin-bottom:1.6rem;
   }
   .meta-line{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -138,7 +138,7 @@
     transform:translateY(-3px);
   }
   nav.matiere li .no{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     color:var(--aube);
   }
@@ -150,7 +150,7 @@
   section{ margin-top:3.6rem; }
   .chapitre-tete{ margin-bottom:1.4rem; }
   .chapitre-tete .no{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -159,7 +159,7 @@
     margin-bottom:0.3rem;
   }
   .chapitre-tete h2{
-    font-family:'Literata', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.6rem;
     color:var(--nuit);
@@ -177,7 +177,7 @@
     margin:1.7rem 0;
     padding:0.3rem 0 0.3rem 1.4rem;
     border-left:3px solid var(--aube);
-    font-family:'Literata', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.06rem;
     color:var(--nuit);
@@ -185,7 +185,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -195,7 +195,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--nuit-douce);
     text-decoration:none;
@@ -226,7 +226,7 @@
   }
   @media (max-width:480px){ .pagedegarde{ grid-template-columns:1fr; } }
   .pagedegarde .label{
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -246,12 +246,18 @@
     margin-top:3.5rem;
     padding:1.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Roboto Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--gris-fjord);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

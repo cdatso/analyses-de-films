@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sud — Chantal Akerman</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --dust:#efe7d6;
@@ -29,7 +29,7 @@
     margin:0;
     background:var(--dust);
     color:var(--ink);
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-size:1.08rem;
     line-height:1.78;
     -webkit-font-smoothing:antialiased;
@@ -38,7 +38,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.18em;
     font-size:0.66rem;
@@ -49,7 +49,7 @@
     display:inline-block;
     color:var(--dust-deep);
     opacity:0.75;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -68,7 +68,7 @@
   .cover-inner{ max-width:640px; margin:0 auto; padding:0 1.6rem; }
   .cover-inner .eyebrow{ color:var(--ash); display:block; margin-bottom:2.2rem; }
   h1.title{
-    font-family:'Fraunces', serif;
+    font-family:var(--serif);
     font-optical-sizing:auto;
     font-weight:300;
     font-size:clamp(3.4rem, 13vw, 6.8rem);
@@ -94,7 +94,7 @@
   .road-rule::before{ left:0; }
   .road-rule::after{ right:0; }
   .subtitle{
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-weight:400;
     color:var(--dust-deep);
@@ -120,7 +120,7 @@
     border:1px solid rgba(239,231,214,0.3);
   }
   .cover-media .poster figcaption{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.06em;
@@ -135,14 +135,14 @@
     gap:1.3rem 1.6rem;
   }
   .colophon-card dt{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
     color:var(--ash);
     margin-bottom:0.28rem;
   }
-  .colophon-card dd{ margin:0; font-size:0.9rem; color:var(--dust); font-family:'Newsreader', serif; }
+  .colophon-card dd{ margin:0; font-size:0.9rem; color:var(--dust); font-family:var(--serif); }
 
   /* ---------- NAV ---------- */
   nav.toc{ background:var(--pine-deep); border-bottom:1px solid rgba(239,231,214,0.1); }
@@ -155,7 +155,7 @@
     color:var(--dust-deep);
     opacity:0.75;
     text-decoration:none;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -171,7 +171,7 @@
     padding:1.2rem 1.4rem;
     border:1px solid var(--clay);
     background:rgba(160,81,56,0.06);
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-size:0.92rem;
     color:var(--ink-soft);
   }
@@ -182,7 +182,7 @@
 
   .frame-head{ margin-bottom:1.7rem; }
   .chapter-num{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -191,7 +191,7 @@
     margin-bottom:0.5rem;
   }
   h2{
-    font-family:'Fraunces', serif;
+    font-family:var(--serif);
     font-optical-sizing:auto;
     font-weight:300;
     font-size:2.1rem;
@@ -200,7 +200,7 @@
     letter-spacing:0.005em;
   }
   .frame-jargon{
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.92rem;
     color:var(--ink-soft);
@@ -208,7 +208,7 @@
   }
 
   h3{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:500;
     font-size:0.78rem;
     text-transform:uppercase;
@@ -224,11 +224,11 @@
     text-decoration:none;
     border-bottom:1px dotted var(--clay);
     font-size:0.78em;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
 
   .caution{
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.92rem;
     color:var(--ink-soft);
@@ -275,7 +275,7 @@
     display:flex;
     justify-content:space-between;
     padding:0 2rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.05em;
@@ -283,7 +283,7 @@
   }
   .road-note{
     text-align:center;
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.88rem;
     color:var(--dust-deep);
@@ -298,7 +298,7 @@
     border-top:1px solid var(--line);
   }
   .cast-card .name{
-    font-family:'Fraunces', serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:1.2rem;
     display:block;
@@ -306,7 +306,7 @@
     color:var(--ink);
   }
   .cast-card .role{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -323,7 +323,7 @@
     border-left:2px solid var(--clay);
   }
   .pinned p{
-    font-family:'Newsreader', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-weight:400;
     font-size:1.22rem;
@@ -333,7 +333,7 @@
   }
   .pinned cite{
     font-style:normal;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -342,7 +342,7 @@
 
   .theme-list{ display:grid; gap:1.7rem; margin-top:0.6rem; }
   .theme-item .theme-tag{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -362,7 +362,7 @@
     border-bottom:1px solid var(--line);
   }
   .bulletin .stat .num{
-    font-family:'Fraunces', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.5rem;
     color:var(--clay-deep);
@@ -370,7 +370,7 @@
     line-height:1.15;
   }
   .bulletin .stat .cap{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.05em;
@@ -379,7 +379,7 @@
 
   section.sources{ background:var(--black); color:var(--dust); padding:3.6rem 1.6rem 4.4rem; }
   section.sources .sources-inner{ max-width:660px; margin:0 auto; }
-  section.sources h2{ color:var(--dust); font-family:'Fraunces', serif; font-weight:300; font-size:1.7rem; margin:0; }
+  section.sources h2{ color:var(--dust); font-family:var(--serif); font-weight:300; font-size:1.7rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.8rem 0 0; padding:0;
     display:grid; gap:0.7rem;
@@ -392,7 +392,7 @@
     color:var(--dust-deep);
     border-bottom:1px solid rgba(239,231,214,0.1);
     padding-bottom:0.7rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: counter(src);
@@ -407,7 +407,7 @@
   footer.endnote{
     text-align:center;
     padding:2.4rem 1.5rem 3.4rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
@@ -423,6 +423,12 @@
     .road-line{ margin:0 0.5rem 1.5rem; }
     .road-caption{ padding:0 0.5rem; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

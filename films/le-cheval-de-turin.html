@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Cheval de Turin (2011) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== L'ALMANACH DES SIX JOURS =====
      Gris de tempête, brun de terre, rayures de vent en diagonale :
@@ -29,7 +29,7 @@
       repeating-linear-gradient(115deg, transparent 0 26px, var(--wind) 26px 27px),
       var(--storm);
     color:var(--ink-soft);
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.02rem;
     line-height:1.75;
@@ -38,7 +38,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.66rem;
@@ -57,7 +57,7 @@
   .back-link{
     display:inline-block;
     color:var(--dust);
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -72,7 +72,7 @@
   }
   .storm-eyebrow .gust{ flex:0 0 44px; height:1px; background:var(--lamp); opacity:0.7; }
   h1.title{
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:300;
     font-size:clamp(2.5rem, 6.5vw, 4rem);
     line-height:1.05;
@@ -98,7 +98,7 @@
     display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem;
     border-top:1px solid rgba(217,214,207,0.2);
     padding-top:1.1rem;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -131,7 +131,7 @@
   section{ margin-top:3.6rem; }
   .entete{ margin-bottom:1.5rem; }
   .entete .jour{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -140,7 +140,7 @@
     margin-bottom:0.3rem;
   }
   .entete h2{
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.6rem;
     color:var(--ink);
@@ -166,7 +166,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
@@ -176,7 +176,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--earth);
     text-decoration:none;
@@ -206,7 +206,7 @@
   }
   @media (max-width:480px){ .registre{ grid-template-columns:1fr; } }
   .registre .label{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -225,13 +225,19 @@
     margin-top:3.5rem;
     padding:1.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--storm);
     background:linear-gradient(180deg, var(--storm) 0%, #55504a 45%, #191816 100%);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

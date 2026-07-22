@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Direction terminus — Le Samouraï (1967)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --carrelage:#eceee9;
@@ -30,7 +29,7 @@
     margin:0;
     background:var(--carrelage);
     color:var(--encre);
-    font-family:'Spectral', Georgia, serif;
+    font-family:var(--serif);
     font-size:1.03rem;
     font-weight:300;
     line-height:1.78;
@@ -60,7 +59,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -95,13 +94,13 @@
     border-radius:50%;
     background:var(--rouge);
     color:var(--blanc);
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:0.95rem;
     margin-bottom:0.85rem;
   }
   .plaque h1{
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     letter-spacing:0.01em;
     font-size:clamp(2.1rem, 6.4vw, 3.5rem);
@@ -110,7 +109,7 @@
     text-transform:uppercase;
   }
   .plaque .sous{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.72rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -123,7 +122,7 @@
     flex-wrap:wrap;
     gap:0.5rem 1.1rem;
     align-items:baseline;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.13em;
     text-transform:uppercase;
@@ -176,7 +175,7 @@
     background:var(--blanc);
     border:4px solid var(--email);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:0.85rem;
     color:var(--email-deep);
@@ -186,7 +185,7 @@
     .station{ padding-left:0; }
   }
   .station h2{
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:clamp(1.28rem, 3.5vw, 1.72rem);
     letter-spacing:0.005em;
@@ -196,7 +195,7 @@
   }
   .station .quai-label{
     display:block;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -219,7 +218,7 @@
     border-radius:50%;
     background:var(--email);
     color:var(--blanc);
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-decoration:none;
     margin:0 0.1rem;
@@ -247,7 +246,7 @@
     box-shadow:0 3px 0 var(--email-deep), 0 14px 30px rgba(10,25,45,0.24);
   }
   .poster figcaption{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -268,7 +267,7 @@
     dl.credits > div{ grid-template-columns:1fr; gap:0.1rem; padding:0.55rem 0; }
   }
   dl.credits dt{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
@@ -286,7 +285,7 @@
     box-shadow:0 1px 0 rgba(20,24,28,0.07), 0 8px 20px rgba(20,24,28,0.05);
   }
   .avis .titre{
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:0.74rem;
     letter-spacing:0.16em;
@@ -307,7 +306,7 @@
   blockquote cite{
     display:block;
     font-style:normal;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.65rem;
     letter-spacing:0.13em;
     text-transform:uppercase;
@@ -317,7 +316,7 @@
 
   /* ---------- THÈMES : plaques de correspondance ---------- */
   h3.correspondance{
-    font-family:'Archivo', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:1.03rem;
     text-transform:uppercase;
@@ -338,9 +337,9 @@
     line-height:1.68;
   }
   section.sources li{ margin-bottom:0.7rem; }
-  section.sources li::marker{ font-family:'DM Mono', monospace; color:var(--acier); }
+  section.sources li::marker{ font-family:var(--mono); color:var(--acier); }
   .note{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     line-height:1.7;
     letter-spacing:0.02em;
@@ -357,12 +356,18 @@
     text-align:center;
   }
   footer span{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--acier);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

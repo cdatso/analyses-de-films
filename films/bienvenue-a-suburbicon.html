@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bienvenue à Suburbicon (2017) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA BROCHURE DU LOTISSEMENT =====
      Prospectus immobilier 1959 : pastels publicitaires, crème et turquoise,
@@ -27,7 +27,7 @@
     margin:0;
     background:var(--creme);
     color:var(--encre-douce);
-    font-family:'Karla', sans-serif;
+    font-family:var(--sans);
     font-size:1.01rem;
     line-height:1.7;
   }
@@ -35,7 +35,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.65rem;
@@ -62,7 +62,7 @@
   .back-link{
     display:inline-block;
     color:rgba(244,239,227,0.65);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -74,7 +74,7 @@
     display:inline-block;
     background:var(--creme);
     color:var(--turquoise-deep);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.18em;
@@ -82,7 +82,7 @@
     margin-bottom:1.8rem;
   }
   h1.title{
-    font-family:'Abril Fatface', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.5rem, 7vw, 4.3rem);
     line-height:1.04;
@@ -99,7 +99,7 @@
   }
   .brochure-meta{
     display:flex; flex-wrap:wrap; gap:0.5rem 1.6rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -140,7 +140,7 @@
   nav.plan li::before{
     content:"Lot " counter(lot) " · ";
     counter-increment:lot;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     color:var(--saumon);
   }
@@ -152,7 +152,7 @@
   section{ margin-top:3.5rem; }
   .panneau{ margin-bottom:1.4rem; }
   .panneau .lot{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.65rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -161,7 +161,7 @@
     margin-bottom:0.25rem;
   }
   .panneau h2{
-    font-family:'Abril Fatface', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.75rem;
     color:var(--turquoise-deep);
@@ -187,7 +187,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.63rem;
     text-transform:uppercase;
@@ -197,7 +197,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--turquoise-deep);
     text-decoration:none;
@@ -228,7 +228,7 @@
   }
   @media (max-width:480px){ .acte{ grid-template-columns:1fr; } }
   .acte .label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -248,12 +248,18 @@
     margin-top:3.5rem;
     padding:1.4rem 1.5rem 2.5rem;
     text-align:center;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
     color:var(--turquoise-deep);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

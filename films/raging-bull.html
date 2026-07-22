@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raging Bull (1980) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Noticia+Text:ital,wght@0,400;0,700;1,400&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE PROGRAMME DE COMBAT =====
      Affiche de match des années 1940 : papier journal jauni, encre grasse,
@@ -28,7 +28,7 @@
       repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(19,18,17,0.014) 3px, rgba(19,18,17,0.014) 4px),
       var(--newsprint);
     color:var(--ink-grey);
-    font-family:'Noticia Text', serif;
+    font-family:var(--serif);
     font-size:1.0rem;
     line-height:1.7;
   }
@@ -36,7 +36,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.66rem;
@@ -62,7 +62,7 @@
   .back-link{
     display:inline-block;
     color:rgba(232,225,207,0.55);
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -78,7 +78,7 @@
     color:var(--belt);
   }
   h1.title{
-    font-family:'Big Shoulders Display', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:clamp(3.2rem, 11vw, 6.2rem);
     line-height:0.92;
@@ -95,7 +95,7 @@
   }
   .bill-meta{
     display:flex; flex-wrap:wrap; gap:0.5rem 1.6rem;
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -134,7 +134,7 @@
   nav.card li::before{
     content:"R" counter(round) " ";
     counter-increment:round;
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     color:var(--belt);
   }
@@ -147,7 +147,7 @@
   section{ margin-top:3.6rem; }
   .round-head{ margin-bottom:1.5rem; }
   .round-head .bell{
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -156,7 +156,7 @@
     margin-bottom:0.2rem;
   }
   .round-head h2{
-    font-family:'Big Shoulders Display', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:2.1rem;
     text-transform:uppercase;
@@ -187,7 +187,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
@@ -197,7 +197,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--belt);
     text-decoration:none;
@@ -228,7 +228,7 @@
   }
   @media (max-width:480px){ .weigh-in{ grid-template-columns:1fr; } }
   .weigh-in .label{
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.13em;
@@ -249,12 +249,18 @@
     margin-top:3.5rem;
     padding:1.4rem 1.5rem 2.5rem;
     text-align:center;
-    font-family:'Fira Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--halftone);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

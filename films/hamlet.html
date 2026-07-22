@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hamlet (1964) — Grigori Kozintsev | Analyses de films</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cardo:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* =========================================================
      IDENTITÉ BESPOKE — « Pierre gravée, mer du Nord »
@@ -43,7 +43,7 @@
     margin:0;
     background:var(--papier);
     color:var(--encre);
-    font-family:'Cardo', 'Palatino Linotype', Georgia, serif;
+    font-family:var(--serif);
     font-size:1.09rem;
     line-height:1.74;
     -webkit-font-smoothing:antialiased;
@@ -89,7 +89,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.82rem;
     letter-spacing:0.11em;
     text-transform:uppercase;
@@ -102,7 +102,7 @@
   .retour:hover{ color:var(--rouille-clair); border-color:var(--rouille-clair); }
 
   .cartel{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.75rem;
     font-weight:500;
     letter-spacing:0.21em;
@@ -112,7 +112,7 @@
   header.dalle .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
 
   header.dalle h1{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(2.4rem, 7vw, 3.7rem);
     letter-spacing:0.06em;
@@ -122,7 +122,7 @@
   }
 
   .titre-vo{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:1.05rem;
     letter-spacing:0.06em;
     color:var(--mer);
@@ -136,7 +136,7 @@
   }
 
   .generique{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.96rem;
     color:var(--brume);
     letter-spacing:0.02em;
@@ -147,7 +147,7 @@
     padding:0.85rem 1.15rem;
     background:rgba(65,74,79,0.5);
     border-left:2px solid var(--rouille);
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.8rem;
     line-height:1.6;
     letter-spacing:0.02em;
@@ -181,7 +181,7 @@
   }
   nav.grille a:hover{ color:var(--rouille-clair); }
   nav.grille .num{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.75rem;
     letter-spacing:0.13em;
     color:var(--mer);
@@ -217,7 +217,7 @@
   }
 
   h2{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(1.42rem, 3.4vw, 1.78rem);
     letter-spacing:0.045em;
@@ -234,7 +234,7 @@
   }
 
   h3{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:1.06rem;
     letter-spacing:0.05em;
@@ -250,7 +250,7 @@
   sup.ref a{
     text-decoration:none;
     color:var(--ardoise);
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     padding:0 0.09em;
   }
@@ -278,7 +278,7 @@
 
   .fiche dl{ margin:0; }
   .fiche dt{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.73rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
@@ -299,7 +299,7 @@
   }
   figure.poster img{ display:block; width:100%; height:auto; }
   figure.poster figcaption{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.71rem;
     line-height:1.5;
     letter-spacing:0.05em;
@@ -318,7 +318,7 @@
   }
   .theorie .cartel{ color:var(--ardoise); display:block; margin-bottom:0.9rem; }
   .theorie .garde{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.87rem;
     line-height:1.62;
     background:rgba(152,96,44,0.11);
@@ -335,7 +335,7 @@
     background:var(--papier-2);
     border-left:2px solid var(--ardoise);
     padding:1rem 1.3rem;
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.89rem;
     line-height:1.66;
     color:var(--encre-pale);
@@ -343,7 +343,7 @@
   }
 
   #sources ol{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.91rem;
     line-height:1.64;
     padding-left:1.4rem;
@@ -367,6 +367,12 @@
     .fiche-wrap{ grid-template-columns:1fr; }
     figure.poster{ max-width:232px; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

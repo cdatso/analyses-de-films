@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Au fil de l'eau (House by the River, 1950) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE MANUSCRIT REPÊCHÉ =====
      Épreuves d'un roman victorien gagnées par l'eau : papier ivoire,
@@ -29,7 +29,7 @@
     margin:0;
     background:var(--paper);
     color:var(--ink-soft);
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-size:1.02rem;
     line-height:1.72;
   }
@@ -37,7 +37,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.68rem;
@@ -66,7 +66,7 @@
   .back-link{
     display:inline-block;
     color:var(--mist);
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -81,7 +81,7 @@
   }
   .river-eyebrow .wave{ letter-spacing:0.3em; opacity:0.8; font-size:0.75rem; }
   h1.title{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-size:clamp(2.4rem, 6vw, 3.7rem);
     line-height:1.06;
@@ -89,7 +89,7 @@
     color:var(--paper);
   }
   .title-orig{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-weight:500;
     font-size:clamp(1.05rem, 2.4vw, 1.35rem);
@@ -103,7 +103,7 @@
     margin:0 0 1.8rem;
   }
   .meta-line{
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-size:0.72rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -156,13 +156,13 @@
     margin-bottom:1.4rem;
   }
   .folio .num{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.1rem;
     color:var(--gaslight);
   }
   .folio h2{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.55rem;
     color:var(--ink);
@@ -182,7 +182,7 @@
     margin:1.6rem 0;
     padding:0.2rem 0 0.2rem 1.3rem;
     border-left:3px solid var(--river);
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.08rem;
     color:var(--ink);
@@ -190,7 +190,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.66rem;
     text-transform:uppercase;
@@ -200,7 +200,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--river);
     text-decoration:none;
@@ -231,7 +231,7 @@
   }
   @media (max-width:480px){ .colophon{ grid-template-columns:1fr; } }
   .colophon .label{
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.13em;
@@ -251,12 +251,18 @@
     margin-top:3.5rem;
     padding:1.4rem 1.5rem 2.5rem;
     text-align:center;
-    font-family:'Cousine', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
     color:var(--mist);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

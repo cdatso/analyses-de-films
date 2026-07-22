@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rosetta — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --ink:#1b1a17;
@@ -29,7 +29,7 @@
     margin:0;
     background:var(--ink);
     color:var(--paper);
-    font-family:'Work Sans', sans-serif;
+    font-family:var(--sans);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
@@ -40,7 +40,7 @@
   }
 
   h1,h2,h3{
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:var(--sans);
     text-transform:uppercase;
     margin:0;
   }
@@ -52,7 +52,7 @@
   }
 
   .label{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.66rem;
@@ -80,7 +80,7 @@
   }
   .id-card .id-top{
     display:flex; justify-content:space-between; align-items:center;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.1em;
     color:var(--concrete-dark);
@@ -98,7 +98,7 @@
     overflow:hidden;
   }
   .id-card .silhouette svg{ width:44px; height:60px; }
-  .id-card .id-fields{ font-family:'JetBrains Mono', monospace; font-size:0.62rem; line-height:1.9; color:var(--ink); }
+  .id-card .id-fields{ font-family:var(--mono); font-size:0.62rem; line-height:1.9; color:var(--ink); }
   .id-card .id-fields b{ color:var(--concrete-dark); font-weight:600; display:inline-block; width:78px; }
   .id-card .barcode{
     margin-top:0.8rem;
@@ -112,7 +112,7 @@
     transform:rotate(-11deg);
     border:3px solid var(--vest);
     color:var(--vest);
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:1.15rem;
     letter-spacing:0.06em;
@@ -130,7 +130,7 @@
   }
   header.cover .meta-line{
     margin-top:0.7rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.76rem;
     letter-spacing:0.08em;
     color:var(--vest);
@@ -158,7 +158,7 @@
     display:flex; gap:0.55rem; align-items:baseline;
   }
   nav.programme a:hover{ color:var(--vest); }
-  nav.programme .num{ font-family:'JetBrains Mono', monospace; color:var(--vest); font-size:0.74rem; }
+  nav.programme .num{ font-family:var(--mono); color:var(--vest); font-size:0.74rem; }
   @media (max-width:600px){ nav.programme ol{ grid-template-columns:1fr; } }
 
   .content-note{
@@ -182,7 +182,7 @@
     border-bottom:3px solid var(--ink);
   }
   .section-head .tag{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     color:var(--vest);
     background:var(--concrete);
@@ -201,7 +201,7 @@
   }
 
   sup.fn a{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     color:var(--vest-deep);
     text-decoration:none;
@@ -216,7 +216,7 @@
   }
   .fiche dt, .fiche dd{ margin:0; padding:0.65rem 1rem; border-bottom:1px solid var(--line-dark); font-size:0.9rem; }
   .fiche dt{
-    font-family:'JetBrains Mono', monospace; font-size:0.64rem;
+    font-family:var(--mono); font-size:0.64rem;
     text-transform:uppercase; letter-spacing:0.08em;
     color:var(--vest-deep); background:var(--concrete);
     display:flex; align-items:center;
@@ -227,7 +227,7 @@
     display:inline-block;
     color:var(--concrete-dim);
     opacity:0.75;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -245,8 +245,8 @@
   .cast-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:1rem; margin-top:1.6rem; }
   .cast-card{ background:#fff; border:1px solid var(--line-dark); border-top:3px solid var(--vest); padding:1rem 1.1rem; }
   .cast-card h3{ font-size:1.15rem; margin-bottom:0.15rem; }
-  .cast-card .role{ font-family:'JetBrains Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep); display:block; margin-bottom:0.5rem; }
-  .cast-card p{ font-size:0.86rem; margin:0; font-family:'Work Sans', sans-serif; }
+  .cast-card .role{ font-family:var(--mono); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep); display:block; margin-bottom:0.5rem; }
+  .cast-card p{ font-size:0.86rem; margin:0; font-family:var(--sans); }
 
   /* ---------- signature : le circuit de rosetta ---------- */
   .circuit{
@@ -257,7 +257,7 @@
   }
   .circuit-title{
     text-align:center; color:var(--paper);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
     margin-bottom:1.6rem;
   }
@@ -275,19 +275,19 @@
     text-align:center;
   }
   .circuit-stop .time{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem; color:var(--vest);
     display:block; margin-bottom:0.3rem;
   }
   .circuit-stop .place{
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:var(--sans);
     font-weight:600; font-size:0.92rem;
     color:var(--paper); text-transform:uppercase;
     letter-spacing:0.02em;
   }
   .circuit-arrow{
     text-align:center; color:var(--vest);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     display:flex; align-items:center; justify-content:center;
   }
   @media (max-width:640px){
@@ -307,7 +307,7 @@
   }
   blockquote cite{
     display:block; margin-top:0.5rem;
-    font-family:'JetBrains Mono', monospace; font-style:normal;
+    font-family:var(--mono); font-style:normal;
     font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em;
     color:var(--vest-deep);
   }
@@ -327,8 +327,14 @@
   footer{
     background:var(--ink-deep); color:var(--concrete-dark);
     text-align:center; padding:2rem 1.6rem 2.4rem;
-    font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.06em;
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em;
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

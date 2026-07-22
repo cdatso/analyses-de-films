@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Waterloo (1970) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@300;400;600&family=Oxygen+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA CARTE D'ÉTAT-MAJOR =====
      Papier bistre de 1815, hachures cartographiques, flèches de troupes :
@@ -30,7 +30,7 @@
       repeating-linear-gradient(90deg, transparent 0 34px, var(--hachure) 34px 35px),
       var(--bistre);
     color:var(--sepia-doux);
-    font-family:'Archivo', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -38,7 +38,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.64rem;
@@ -62,7 +62,7 @@
   .back-link{
     display:inline-block;
     color:rgba(233,223,198,0.55);
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -74,7 +74,7 @@
     display:inline-block;
     border:1px solid rgba(160,125,51,0.6);
     color:var(--laiton);
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -82,7 +82,7 @@
     margin-bottom:1.7rem;
   }
   h1.title{
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-weight:800;
     font-size:clamp(2.8rem, 8vw, 4.8rem);
     line-height:1.02;
@@ -100,7 +100,7 @@
   }
   .forces{
     display:flex; flex-wrap:wrap; gap:0.5rem 2rem;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -136,7 +136,7 @@
   section{ margin-top:3.5rem; }
   .ordre{ margin-bottom:1.4rem; }
   .ordre .ref{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -145,7 +145,7 @@
     margin-bottom:0.25rem;
   }
   .ordre h2{
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.7rem;
     color:var(--sepia);
@@ -173,7 +173,7 @@
     border:1px solid var(--ligne);
     border-left:5px solid var(--rouge);
     background:var(--bistre-fonce);
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.08rem;
     color:var(--sepia);
@@ -181,7 +181,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -191,7 +191,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--bleu);
     text-decoration:none;
@@ -222,7 +222,7 @@
   }
   @media (max-width:480px){ .etat-forces{ grid-template-columns:1fr; } }
   .etat-forces .label{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -242,12 +242,18 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--sepia-doux);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moi, Daniel Blake (2016) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Permanent+Marker&family=B612+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE FORMULAIRE BARRÉ =====
      Dossier gris du jobcentre : cases à cocher, tampons, files d'attente —
@@ -27,7 +27,7 @@
     margin:0;
     background:var(--formulaire);
     color:var(--encre-douce);
-    font-family:'Libre Franklin', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -35,12 +35,12 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-size:0.63rem;
   }
-  .graffiti{ font-family:'Permanent Marker', cursive; }
+  .graffiti{ font-family:var(--serif); }
 
   /* ---------- LE MUR DU JOBCENTRE (EN-TÊTE) ---------- */
   header.mur{
@@ -56,7 +56,7 @@
   .back-link{
     display:inline-block;
     color:var(--gris);
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -68,7 +68,7 @@
     display:inline-block;
     background:var(--formulaire);
     color:var(--jobcentre);
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -76,7 +76,7 @@
     margin-bottom:2rem;
   }
   h1.title{
-    font-family:'Permanent Marker', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.6rem, 8vw, 4.6rem);
     line-height:1.05;
@@ -93,7 +93,7 @@
     margin:0 0 1.9rem;
   }
   .meta-line{
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.11em;
     text-transform:uppercase;
@@ -114,7 +114,7 @@
   nav.formulaire::after{
     content:"REÇU — EN ATTENTE DE DÉCISION";
     position:absolute; right:1rem; top:-0.7rem;
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.58rem;
     letter-spacing:0.12em;
     color:var(--tampon);
@@ -144,7 +144,7 @@
   section{ margin-top:3.5rem; }
   .case{ margin-bottom:1.4rem; }
   .case .ref{
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -153,7 +153,7 @@
     margin-bottom:0.25rem;
   }
   .case h2{
-    font-family:'Libre Franklin', sans-serif;
+    font-family:var(--sans);
     font-weight:800;
     font-size:1.6rem;
     letter-spacing:-0.01em;
@@ -174,7 +174,7 @@
     padding:1.1rem 1.4rem;
     background:var(--encre-admin);
     color:var(--formulaire);
-    font-family:'Permanent Marker', cursive;
+    font-family:var(--serif);
     font-size:1.15rem;
     line-height:1.5;
     transform:rotate(-0.6deg);
@@ -182,7 +182,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.6rem;
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
@@ -192,7 +192,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--jobcentre);
     text-decoration:none;
@@ -223,7 +223,7 @@
   }
   @media (max-width:480px){ .identite{ grid-template-columns:1fr; } }
   .identite .label{
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.59rem;
     text-transform:uppercase;
     letter-spacing:0.13em;
@@ -243,12 +243,18 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'B612 Mono', monospace;
+    font-family:var(--mono);
     font-size:0.61rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--gris);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

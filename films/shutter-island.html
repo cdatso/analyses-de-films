@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dossier confidentiel — Shutter Island</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --manila:#c9b384;
@@ -36,7 +36,7 @@
       radial-gradient(ellipse at 90% 100%, rgba(51,63,64,0.06), transparent 45%),
       var(--paper);
     color:var(--ink);
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:1.02rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -45,7 +45,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .stamp-label{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-weight:600;
@@ -56,7 +56,7 @@
   .back-link{
     display:inline-block;
     color:var(--ink-faint);
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -103,7 +103,7 @@
     border:1px solid var(--manila-dark);
     border-bottom:none;
     padding:0.55rem 1.3rem 0.4rem;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:0.72rem;
     letter-spacing:0.1em;
@@ -131,7 +131,7 @@
     top:1.6rem; right:1.4rem;
     border:3px solid var(--stamp-red);
     color:var(--stamp-red);
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -146,7 +146,7 @@
   .stamp-diag small{ display:block; font-size:0.58rem; letter-spacing:0.1em; }
 
   .case-number{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.72rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -156,7 +156,7 @@
   .case-number b{ color:var(--ink); }
 
   h1.title{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.1rem, 6.4vw, 3.4rem);
     line-height:1.08;
@@ -165,7 +165,7 @@
     color:var(--ink);
   }
   .subtitle{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     color:var(--ink-soft);
     font-size:0.98rem;
@@ -195,7 +195,7 @@
     gap:1rem 1.6rem;
   }
   .intake-form dt{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -221,7 +221,7 @@
     color:var(--paper);
     opacity:0.72;
     text-decoration:none;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -240,7 +240,7 @@
     padding:1.1rem 1.3rem;
     border:1.5px solid var(--stamp-red);
     background:rgba(156,43,35,0.06);
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:0.82rem;
     color:var(--ink-soft);
     line-height:1.6;
@@ -259,7 +259,7 @@
     padding-bottom:0.7rem;
   }
   .rapport-num{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.68rem;
     font-weight:600;
     text-transform:uppercase;
@@ -269,7 +269,7 @@
     margin-bottom:0.15rem;
   }
   h2{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.55rem;
     margin:0 0 0.15rem;
@@ -277,14 +277,14 @@
     letter-spacing:-0.005em;
   }
   .frame-jargon{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:0.72rem;
     color:var(--ink-faint);
   }
 
   h3{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:1rem;
     text-transform:uppercase;
@@ -300,11 +300,11 @@
     text-decoration:none;
     border-bottom:1px dotted var(--stamp-red);
     font-size:0.85em;
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
   }
 
   .caution{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:0.82rem;
     color:var(--ink-faint);
@@ -355,7 +355,7 @@
     opacity:0.6;
   }
   .cast-card .name{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.02rem;
     display:block;
@@ -363,7 +363,7 @@
     color:var(--ink);
   }
   .cast-card .role{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -393,7 +393,7 @@
     box-shadow:0 2px 3px rgba(0,0,0,0.35);
   }
   .pinned p{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:1rem;
     color:var(--ink);
@@ -401,7 +401,7 @@
   }
   .pinned cite{
     font-style:normal;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -411,7 +411,7 @@
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
   .theme-item .theme-tag{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -437,7 +437,7 @@
   }
   .telex-inner{ padding:1.2rem 1.4rem 1.35rem; }
   .telex-label{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -452,14 +452,14 @@
     gap:1rem;
   }
   .telex .stat .num{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-size:1.4rem;
     color:var(--paper);
     display:block;
     line-height:1.15;
   }
   .telex .stat .cap{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     letter-spacing:0.03em;
     color:#b9c4c2;
@@ -468,7 +468,7 @@
 
   section.sources{ background:var(--manila); padding:3.2rem 1.6rem 4.2rem; border-top:4px solid var(--manila-dark); }
   section.sources .sources-inner{ max-width:740px; margin:0 auto; }
-  section.sources h2{ color:var(--ink); font-family:'Special Elite', cursive; font-weight:400; font-size:1.4rem; margin:0; }
+  section.sources h2{ color:var(--ink); font-family:var(--serif); font-weight:400; font-size:1.4rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -481,12 +481,12 @@
     color:var(--ink-soft);
     border-bottom:1px dashed var(--manila-dark);
     padding-bottom:0.6rem;
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: "PJ-" counter(src);
     position:absolute; left:0; top:0;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     color:var(--stamp-red);
     font-size:0.66rem;
@@ -498,7 +498,7 @@
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.64rem;
     font-weight:600;
     letter-spacing:0.09em;
@@ -516,6 +516,12 @@
     section.block{ padding:2.2rem 0; }
     .stamp-diag{ position:static; display:inline-block; margin-bottom:1.2rem; transform:rotate(-4deg); }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

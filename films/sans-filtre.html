@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sans Filtre (Triangle of Sadness, 2022) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA CARTE DU DÎNER DE GALA =====
      Menu de croisière de luxe : blanc nappe, bleu marine, or champagne —
@@ -27,7 +27,7 @@
     margin:0;
     background:var(--nappe);
     color:var(--encre);
-    font-family:'Figtree', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -35,7 +35,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.64rem;
@@ -65,7 +65,7 @@
   .back-link{
     display:inline-block;
     color:rgba(246,244,238,0.55);
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -84,7 +84,7 @@
   }
   .menu .mono{ color:var(--or); }
   h1.title{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.6rem, 7vw, 4.2rem);
     line-height:1.05;
@@ -92,7 +92,7 @@
     color:var(--nappe);
   }
   .title-orig{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-size:1.1rem;
     letter-spacing:0.12em;
     color:rgba(246,244,238,0.6);
@@ -108,7 +108,7 @@
   .trois-services{
     display:flex; flex-wrap:wrap; justify-content:center;
     gap:0.4rem 2rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -118,7 +118,7 @@
   }
   .meta-line{
     margin-top:1.2rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -151,7 +151,7 @@
   section{ margin-top:3.5rem; }
   .service{ text-align:center; margin-bottom:1.5rem; }
   .service .num{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -160,7 +160,7 @@
     margin-bottom:0.3rem;
   }
   .service h2{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.7rem;
     color:var(--marine);
@@ -191,7 +191,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -201,7 +201,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--marine-doux);
     text-decoration:none;
@@ -232,7 +232,7 @@
   }
   @media (max-width:480px){ .embarquement{ grid-template-columns:1fr; } }
   .embarquement .label{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -253,12 +253,18 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--or);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

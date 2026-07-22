@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avis mortuaire — Le Doulos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --paper:#ece5d5;
@@ -31,7 +31,7 @@
       radial-gradient(ellipse at 95% 100%, rgba(23,20,15,0.05), transparent 45%),
       var(--paper);
     color:var(--ink);
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-size:1.02rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -40,7 +40,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .meta-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-weight:500;
@@ -51,7 +51,7 @@
   .back-link{
     display:inline-block;
     color:var(--ink-faint);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -74,7 +74,7 @@
   }
   .edition-line{
     text-align:center;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -112,7 +112,7 @@
     top:1.5rem; right:1.4rem;
     border:2.5px solid var(--nuit);
     color:var(--nuit);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -129,7 +129,7 @@
   }
 
   .avis-number{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.72rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
@@ -140,7 +140,7 @@
   .avis-number b{ color:var(--ink); }
 
   h1.title{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:900;
     font-style:italic;
     font-size:clamp(2.2rem, 6.6vw, 3.5rem);
@@ -150,7 +150,7 @@
     color:var(--ink);
   }
   .subtitle{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     color:var(--ink-soft);
     font-size:1rem;
@@ -181,7 +181,7 @@
     gap:1rem 1.6rem;
   }
   .identite dt{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -207,7 +207,7 @@
     color:var(--paper);
     opacity:0.72;
     text-decoration:none;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -231,7 +231,7 @@
     padding:0.6rem 0 0.7rem;
   }
   .colonne-num{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     font-weight:600;
     text-transform:uppercase;
@@ -241,7 +241,7 @@
     margin-bottom:0.2rem;
   }
   h2{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.6rem;
@@ -250,14 +250,14 @@
     letter-spacing:-0.005em;
   }
   .colonne-sous{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.78rem;
     color:var(--ink-faint);
   }
 
   h3{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     font-size:0.92rem;
     text-transform:uppercase;
@@ -273,11 +273,11 @@
     text-decoration:none;
     border-bottom:1px dotted var(--nuit);
     font-size:0.8em;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
 
   .discretion{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.8rem;
     color:var(--ink-faint);
@@ -307,7 +307,7 @@
     background:var(--rule);
   }
   .portrait-card .name{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.05rem;
@@ -316,7 +316,7 @@
     color:var(--ink);
   }
   .portrait-card .role{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -337,7 +337,7 @@
     transform:rotate(-0.4deg);
   }
   .coupure p{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1rem;
     color:var(--ink);
@@ -345,7 +345,7 @@
   }
   .coupure cite{
     font-style:normal;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -355,7 +355,7 @@
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
   .theme-item .theme-tag{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -376,7 +376,7 @@
   }
   .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
   .bulletin-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -391,7 +391,7 @@
     gap:1rem;
   }
   .bulletin .stat .num{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.35rem;
@@ -400,7 +400,7 @@
     line-height:1.15;
   }
   .bulletin .stat .cap{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.03em;
     color:#b8c4cc;
@@ -409,7 +409,7 @@
 
   section.sources{ background:var(--ink); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
   section.sources .sources-inner{ max-width:740px; margin:0 auto; }
-  section.sources h2{ color:var(--paper); font-family:'Playfair Display', serif; font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
+  section.sources h2{ color:var(--paper); font-family:var(--serif); font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -422,12 +422,12 @@
     color:var(--paper-deep);
     border-bottom:1px dashed rgba(236,229,213,0.25);
     padding-bottom:0.6rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: "Réf. " counter(src);
     position:absolute; left:0; top:0;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     color:#8fa8b6;
     font-size:0.66rem;
@@ -439,7 +439,7 @@
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     font-weight:500;
     letter-spacing:0.09em;
@@ -456,6 +456,12 @@
     section.block{ padding:2.2rem 0; }
     .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

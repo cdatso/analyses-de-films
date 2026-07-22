@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La bande et le livre — Hitchcock/Truffaut (2015)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     --noir:#15120f;
@@ -32,7 +31,7 @@
     margin:0;
     background:var(--papier);
     color:var(--encre);
-    font-family:'Crimson Pro', Georgia, serif;
+    font-family:var(--serif);
     font-size:1.09rem;
     font-weight:400;
     line-height:1.72;
@@ -67,7 +66,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     font-weight:400;
     letter-spacing:0.16em;
@@ -83,7 +82,7 @@
     display:flex;
     align-items:center;
     gap:0.9rem;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:400;
     letter-spacing:0.2em;
@@ -105,7 +104,7 @@
   }
 
   header h1{
-    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-family:var(--sans);
     font-size:clamp(1.5rem, 5.4vw, 2.9rem);
     line-height:1.16;
     letter-spacing:-0.01em;
@@ -114,7 +113,7 @@
   }
   header h1 .barre{ color:var(--rouge); }
   header .millesime{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -129,7 +128,7 @@
     margin:1.8rem 0 0.4rem;
   }
   .compteur span{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     font-weight:500;
     background:var(--noir-doux);
@@ -174,7 +173,7 @@
     background:var(--noir);
     color:var(--oxyde-pale);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.85rem;
     font-weight:500;
     position:relative;
@@ -187,7 +186,7 @@
     background:var(--papier);
   }
   .tete-section .libelle{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -196,7 +195,7 @@
     margin-bottom:0.25rem;
   }
   .tete-section h2{
-    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-family:var(--sans);
     font-size:clamp(0.95rem, 2.7vw, 1.18rem);
     line-height:1.35;
     margin:0;
@@ -205,7 +204,7 @@
   }
 
   h3{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     font-weight:500;
     letter-spacing:0.11em;
@@ -222,7 +221,7 @@
   /* renvois de sources */
   sup.piste{ font-size:0.62em; line-height:0; }
   sup.piste a{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     color:var(--rouge);
     text-decoration:none;
     padding:0 0.1em;
@@ -261,7 +260,7 @@
     dl.credits > div{ grid-template-columns:1fr; gap:0.1rem; }
   }
   dl.credits dt{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.13em;
     text-transform:uppercase;
@@ -279,7 +278,7 @@
   }
   .transcription .voix{
     display:block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     font-weight:500;
     letter-spacing:0.18em;
@@ -304,7 +303,7 @@
   }
   .verif .titre{
     display:block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -335,7 +334,7 @@
     line-height:1.62;
   }
   section.sources li{ margin-bottom:0.65rem; }
-  section.sources li::marker{ font-family:'Azeret Mono', monospace; color:var(--rouge); }
+  section.sources li::marker{ font-family:var(--mono); color:var(--rouge); }
   section.sources a{ color:var(--oxyde-pale); }
   section.sources em{ color:var(--blanc); }
   section.sources .note{
@@ -348,12 +347,18 @@
   footer{
     text-align:center;
     padding:2rem 1.4rem 2.6rem;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--gris);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>

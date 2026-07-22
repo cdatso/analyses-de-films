@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nouvelle Vague (2025) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA FEUILLE DE SERVICE =====
      Tournage parisien, été 1959 : ronéo noir et blanc, perforations 35 mm,
@@ -26,7 +26,7 @@
     margin:0;
     background:var(--papier);
     color:var(--carbone-doux);
-    font-family:'PT Serif', serif;
+    font-family:var(--serif);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -34,7 +34,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.12em;
     font-size:0.68rem;
@@ -59,7 +59,7 @@
   .back-link{
     display:inline-block;
     color:var(--gris-labo);
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -69,7 +69,7 @@
   .back-link:hover{ color:var(--kodak); }
   .prod-line{
     display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.4rem 1.5rem;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -79,7 +79,7 @@
     margin-bottom:1.9rem;
   }
   h1.title{
-    font-family:'Bebas Neue', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:clamp(3.4rem, 11vw, 6.4rem);
     line-height:0.94;
@@ -94,7 +94,7 @@
     margin:0 0 1.7rem;
   }
   .meta-line{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -115,7 +115,7 @@
   nav.plandetravail::before{
     content:"RONÉO — NE PAS DIFFUSER";
     position:absolute; right:1rem; top:-0.65rem;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.14em;
     background:var(--kodak);
@@ -138,7 +138,7 @@
   section{ margin-top:3.5rem; }
   .jour{ margin-bottom:1.4rem; }
   .jour .ref{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -147,7 +147,7 @@
     margin-bottom:0.25rem;
   }
   .jour h2{
-    font-family:'Bebas Neue', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:2rem;
     letter-spacing:0.03em;
@@ -176,7 +176,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
@@ -186,7 +186,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--kodak);
     text-decoration:none;
@@ -217,7 +217,7 @@
   }
   @media (max-width:480px){ .generique{ grid-template-columns:1fr; } }
   .generique .label{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
@@ -240,12 +240,18 @@
   }
   footer.fin .fin-inner{
     padding:1.4rem 1.5rem;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--gris-labo);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
 <body>
