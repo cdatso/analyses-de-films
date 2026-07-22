@@ -72,6 +72,13 @@
 [data-volet="critique"] { --volet: 1px solid currentColor; }
 [data-volet="etude"]    { --volet: 3px double currentColor; }
 
+/* Mots insécables plus larges que l'écran (P-38) — URLs de bibliographie,
+   noms de fichiers en chasse fixe. `break-word` ne coupe QUE ce qui ne tient
+   pas, contrairement à `anywhere` qui découperait des mots ordinaires.
+   Constat de mesure : `persona` débordait de 76 px à 320 px sur une seule
+   adresse de source. */
+a, code { overflow-wrap: break-word; }
+
 /* Focus toujours visible (P-40). */
 a:focus-visible,
 button:focus-visible,

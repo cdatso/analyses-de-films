@@ -199,12 +199,32 @@
   /* ------------------------------------------------------------ facettes --- */
 
   /* P-13 : une facette ne s'affiche que si elle discrimine — au moins 3 valeurs
-     distinctes, et aucune au-dessus de 80 %. P-52 : le volet est EXEMPTÉ, il
-     s'affiche toujours (sans quoi la règle masquerait la thèse éditoriale du
-     site, 97 % du corpus étant sur une seule valeur). */
-  function discrimine(valeurs, total) {
+     distinctes, aucune au-dessus de 80 %, ET le champ renseigné sur au moins
+     la MOITIÉ du corpus affiché. P-52 : le volet est EXEMPTÉ, il s'affiche
+     toujours (sans quoi la règle masquerait la thèse éditoriale du site, 97 %
+     du corpus étant sur une seule valeur).
+
+     Le seuil de COUVERTURE est l'ajout de la v1.1 de la spec (É-3, gate AH du
+     22/07 11h54) : le prototype affichait « Pays », renseignée sur 3 entrées
+     sur 33 — une facette qui, actionnée, MASQUAIT 30 analyses. Une facette
+     éparse ne discrimine pas le corpus, elle le tronque. */
+  function couverture(films, cle) {
+    var n = 0, i, v;
+    for (i = 0; i < films.length; i++) {
+      v = films[i][cle];
+      if (v === undefined || v === null || v === '') { continue; }
+      if (Object.prototype.toString.call(v) === '[object Array]' && !v.length) {
+        continue;
+      }
+      n++;
+    }
+    return films.length ? n / films.length : 0;
+  }
+
+  function discrimine(valeurs, total, tauxCouverture) {
     var noms = Object.keys(valeurs), i;
     if (noms.length < 3) { return false; }
+    if (tauxCouverture < 0.5) { return false; }
     for (i = 0; i < noms.length; i++) {
       if (valeurs[noms[i]] / total > 0.8) { return false; }
     }
@@ -295,7 +315,9 @@
       for (i = 0; i < AXES.length; i++) {
         if (filtreVolet && AXES[i].cle === 'volet') { continue; }
         n = compte(travail, AXES[i].cle);
-        if (AXES[i].exempt || discrimine(n, travail.length)) {
+        if (AXES[i].exempt
+            || discrimine(n, travail.length,
+                          couverture(travail, AXES[i].cle))) {
           vues.push({ axe: AXES[i], valeurs: n });
         }
       }

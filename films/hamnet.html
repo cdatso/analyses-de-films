@@ -137,7 +137,11 @@
     align-items:center;
     justify-content:center;
     text-align:left;
-    max-width:640px;
+    /* ECART P-38 corrige au retrofit 065-5 : la largeur etait bornee en
+       absolu, jamais relativement a l'ecran. A 320 px la boite debordait de
+       262 px. `min()` garde l'intention de composition et ajoute la borne
+       qui manquait. */
+    max-width:min(640px, 100%);
   }
   .cover-media .poster{ flex:0 0 150px; margin:0; }
   .cover-media .poster img{
@@ -149,13 +153,18 @@
 
   .colophon-card{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    /* ECART P-38 (suite) : `minmax(150px, 1fr)` impose un plancher ABSOLU a
+       chaque colonne — deux colonnes de 150 px et leur gouttiere ne tiennent
+       pas dans 320 px. `min(150px, 100%)` laisse la colonne se replier quand
+       l'ecran est plus etroit que le plancher. */
+    grid-template-columns:repeat(auto-fit, minmax(min(150px, 100%),1fr));
     gap:0.95rem 2.2rem;
     text-align:left;
     padding:1.5rem 2rem;
     border:1px solid var(--line);
     background:rgba(255,252,240,0.28);
-    max-width:640px;
+    /* Meme defaut que .cover-media : borne absolue sans borne relative. */
+    max-width:min(640px, 100%);
     margin:0 auto;
   }
   .colophon-card dt{
