@@ -53,9 +53,20 @@ const VOCABULAIRES = {
      Une liste fermée ne se garnit pas de termes décoratifs « pour plus tard » :
      P-12 fait de chaque ajout un acte daté et commité. */
   pays: [
+    'Allemagne',
+    'Belgique',
+    'Coree du Sud',
+    'Cuba',
+    'Danemark',
     'Etats-Unis',
+    'France',
     'Hongrie',
+    'Italie',
+    'Norvege',
     'Royaume-Uni',
+    'Suede',
+    'Suisse',
+    'Tchecoslovaquie',
     'Union sovietique'
   ],
 
