@@ -379,8 +379,11 @@
           + '</span>'
           + '<span class="a">' + (f.year || '') + '</span>'
           + '<span class="d">' + echappe(f.director)
-          + (f.genreBase ? ' — ' + echappe(etiquette(f.genreBase))
-                         : (f.genre ? ' — ' + echappe(f.genre) : ''))
+          /* P-50 : `genre` est déprécié et n'est plus lu. Le repli sur le
+             texte libre était l'écart assumé du prototype, le temps que
+             `genreBase` couvre le corpus — il le couvre à 33/33 depuis le
+             rétrofit 065-5, le repli n'a plus d'objet. */
+          + (f.genreBase ? ' — ' + echappe(etiquette(f.genreBase)) : '')
           + '</span>'
           + '</a></li>';
       }).join('') : '<li class="vide">Aucune analyse ne correspond.</li>';

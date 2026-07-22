@@ -176,8 +176,15 @@ def etape_registre(depot, simuler):
             ajouts.append("    genreBase: '%s'," % genre_force)
         if deleuze:
             oeuvre, pages, concepts = deleuze
+            # Guillemets DOUBLES : les concepts deleuziens sont pleins
+            # d'apostrophes ("de la situation a l'action"), et une apostrophe
+            # dans une chaine a quotes simples la referme. La premiere version
+            # a produit un registre que le navigateur refusait de parser --
+            # detecte par la sonde, pas par la relecture.
+            if '"' in concepts:
+                echec("%s : concepts contenant un guillemet double" % slug)
             ajouts.append(
-                "    deleuze: { oeuvre: '%s', pages: [%s], concepts: '%s' },"
+                '    deleuze: { oeuvre: \'%s\', pages: [%s], concepts: "%s" },'
                 % (oeuvre, ", ".join(str(p) for p in pages), concepts))
         ajouts[-1] = ajouts[-1].rstrip(",")
         if not corps2.rstrip().endswith(","):
@@ -199,19 +206,62 @@ def etape_registre(depot, simuler):
     return 0
 
 
+def etape_retrait_genre(depot, simuler):
+    """P-50 : le champ `genre` deprecie disparait du registre.
+
+    Il n'est retire qu'EN DERNIER, et sous condition : il a servi de source au
+    remplissage de `genreBase`, de `technique` et des deux arbitrages du gate.
+    Le retirer avant aurait detruit la source avant l'usage. Le script refuse
+    donc de l'effacer tant qu'une entree n'a pas son `genreBase`.
+    """
+    chemin = os.path.join(depot, "assets", "films-data.js")
+    src = lire(chemin)
+
+    entrees = re.findall(r"slug:\s*'([^']+)'", src)
+    sans = [s for s in entrees
+            if not re.search(r"slug:\s*'%s'.*?genreBase:" % re.escape(s),
+                             src, re.S)]
+    # Le controle porte sur le NOMBRE : genreBase doit couvrir tout le corpus.
+    n_gb = len(re.findall(r"genreBase:", src))
+    if n_gb != len(entrees):
+        echec("genreBase couvre %d entrees sur %d -- `genre` reste la source, "
+              "il ne sera pas retire" % (n_gb, len(entrees)))
+
+    avant = len(re.findall(r"\n    genre:\s*'", src))
+    if avant == 0:
+        print("aucun champ `genre` -- deja retire")
+        return 0
+    # La ligne entiere s'en va, virgule comprise.
+    nouveau = re.sub(r"\n    genre:\s*'[^']*',", "", src)
+    apres = len(re.findall(r"\n    genre:\s*'", nouveau))
+    if apres != 0:
+        echec("%d champ(s) `genre` residuel(s)" % apres)
+    if not simuler:
+        ecrire(chemin, nouveau)
+    print("champs `genre` retires : %d%s" % (avant,
+                                             "  [SIMULATION]" if simuler else ""))
+    print("genreBase couvre       : %d / %d entrees" % (n_gb, len(entrees)))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--depot", default=os.path.dirname(os.path.dirname(
         os.path.abspath(__file__))))
     ap.add_argument("--vocabulaire", action="store_true")
     ap.add_argument("--registre", action="store_true")
+    ap.add_argument("--retrait-genre", action="store_true")
     ap.add_argument("--simuler", action="store_true")
     args = ap.parse_args()
-    if args.vocabulaire == args.registre:
-        echec("choisir --vocabulaire OU --registre (P-12 : jamais les deux)")
+    choisies = [args.vocabulaire, args.registre, args.retrait_genre]
+    if sum(1 for c in choisies if c) != 1:
+        echec("choisir UNE etape : --vocabulaire, --registre ou "
+              "--retrait-genre (P-12 : jamais melangees)")
     if args.vocabulaire:
         return etape_vocabulaire(args.depot, args.simuler)
-    return etape_registre(args.depot, args.simuler)
+    if args.registre:
+        return etape_registre(args.depot, args.simuler)
+    return etape_retrait_genre(args.depot, args.simuler)
 
 
 if __name__ == "__main__":
