@@ -1,0 +1,86 @@
+{
+ "corpus_500": {
+  "entrees": 500,
+  "mesures": [
+   {
+    "ms": 9.300000011920929,
+    "requete": "a",
+    "resultats": 485
+   },
+   {
+    "ms": 0.9000000357627869,
+    "requete": "pan",
+    "resultats": 15
+   },
+   {
+    "ms": 0.40000003576278687,
+    "requete": "dora",
+    "resultats": 15
+   },
+   {
+    "ms": 0.2999999523162842,
+    "requete": "ren",
+    "resultats": 15
+   },
+   {
+    "ms": 0.20000004768371582,
+    "requete": "1954",
+    "resultats": 1
+   },
+   {
+    "ms": 0.09999996423721313,
+    "requete": "zzzz",
+    "resultats": 1
+   },
+   {
+    "ms": 5.199999988079071,
+    "requete": "",
+    "resultats": 485
+   }
+  ]
+ },
+ "corpus_reel": {
+  "entrees": 33,
+  "mesures": [
+   {
+    "ms": 1.4000000357627869,
+    "requete": "a",
+    "resultats": 32
+   },
+   {
+    "ms": 0.10000002384185791,
+    "requete": "pan",
+    "resultats": 1
+   },
+   {
+    "ms": 0,
+    "requete": "dora",
+    "resultats": 1
+   },
+   {
+    "ms": 0,
+    "requete": "ren",
+    "resultats": 1
+   },
+   {
+    "ms": 0,
+    "requete": "1954",
+    "resultats": 1
+   },
+   {
+    "ms": 0.09999996423721313,
+    "requete": "zzzz",
+    "resultats": 1
+   },
+   {
+    "ms": 0.30000001192092896,
+    "requete": "",
+    "resultats": 32
+   }
+  ]
+ },
+ "gonflage": {
+  "entrees": 500,
+  "rendus": 485
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "critique": {
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderTopColor": "rgb(63, 69, 80)",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+  "regime_en_toutes_lettres": "R1 — Critique publiée avant le site v2",
+  "variable_volet": "1px solid currentColor",
+  "volet_declare": "critique"
+ },
+ "etude": {
+  "borderBottomStyle": "double",
+  "borderBottomWidth": "3px",
+  "borderTopColor": "rgb(63, 69, 80)",
+  "borderTopStyle": "double",
+  "borderTopWidth": "3px",
+  "regime_en_toutes_lettres": "R3 — Étude",
+  "variable_volet": "3px double currentColor",
+  "volet_declare": "etude"
+ }
+}

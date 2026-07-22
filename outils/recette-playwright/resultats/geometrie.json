@@ -1,0 +1,1104 @@
+{
+ "comment-ca-marche.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "critiques.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "demander-une-analyse.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "etudes.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/annie-hall.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/au-fil-de-leau.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/bienvenue-a-suburbicon.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/hamlet.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/hamnet.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 262,
+   "fautifs": [
+    {
+     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media",
+     "debord": 262,
+     "droite": 582,
+     "largeur": 564
+    },
+    {
+     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card",
+     "debord": 262,
+     "droite": 582,
+     "largeur": 564
+    },
+    {
+     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
+     "debord": 240,
+     "droite": 560,
+     "largeur": 150
+    }
+   ],
+   "nb_fautifs": 19,
+   "scrollWidth": 582
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 207,
+   "fautifs": [
+    {
+     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media",
+     "debord": 207,
+     "droite": 582,
+     "largeur": 564
+    },
+    {
+     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card",
+     "debord": 207,
+     "droite": 582,
+     "largeur": 564
+    },
+    {
+     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    },
+    {
+     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
+     "debord": 185,
+     "droite": 560,
+     "largeur": 150
+    }
+   ],
+   "nb_fautifs": 8,
+   "scrollWidth": 582
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/hitchcock-truffaut.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 100,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 420
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 45,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 420
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/julie-en-12-chapitres.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/la-chevauchee-fantastique.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/la-mariee-etait-en-noir.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/la-nuit-de-san-lorenzo.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/le-cheval-de-turin.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/le-doulos.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/le-golem.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/le-samourai.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/les-deux-orphelines.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/manhattan.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/moi-daniel-blake.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/nouvelle-vague.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/pandora-contrechamp.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 18,
+   "fautifs": [
+    {
+     "chemin": "section#sources > div.note > code",
+     "debord": 18,
+     "droite": 338,
+     "largeur": 292
+    }
+   ],
+   "nb_fautifs": 1,
+   "scrollWidth": 338
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/pandora.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/persona.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 34,
+   "fautifs": [
+    {
+     "chemin": "li#src-1 > a",
+     "debord": 34,
+     "droite": 354,
+     "largeur": 288
+    },
+    {
+     "chemin": "li#src-4 > a",
+     "debord": 34,
+     "droite": 354,
+     "largeur": 289
+    },
+    {
+     "chemin": "li#src-3 > a",
+     "debord": 21,
+     "droite": 341,
+     "largeur": 276
+    }
+   ],
+   "nb_fautifs": 3,
+   "scrollWidth": 354
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/raging-bull.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/retour-a-seoul.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/rosetta.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/rouges-et-blancs.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/sans-filtre.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/shutter-island.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/soudain-lete-dernier.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 501,
+     "droite": 821,
+     "largeur": 74
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 428,
+     "droite": 748,
+     "largeur": 65
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 363,
+     "droite": 683,
+     "largeur": 135
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 228,
+     "droite": 548,
+     "largeur": 74
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 154,
+     "droite": 474,
+     "largeur": 65
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 89,
+     "droite": 409,
+     "largeur": 135
+    }
+   ],
+   "nb_fautifs": 6,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 446,
+     "droite": 821,
+     "largeur": 74
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 373,
+     "droite": 748,
+     "largeur": 65
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 308,
+     "droite": 683,
+     "largeur": 135
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 173,
+     "droite": 548,
+     "largeur": 74
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 99,
+     "droite": 474,
+     "largeur": 65
+    },
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 34,
+     "droite": 409,
+     "largeur": 135
+    }
+   ],
+   "nb_fautifs": 6,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [
+    {
+     "chemin": "html > body > div.edge-code > span",
+     "debord": 53,
+     "droite": 821,
+     "largeur": 74
+    }
+   ],
+   "nb_fautifs": 1,
+   "scrollWidth": 768
+  }
+ },
+ "films/soy-cuba.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/sud.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/sur-la-route-domaha.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/the-old-oak.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "films/waterloo.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "index.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ },
+ "qui-sommes-nous.html": {
+  "320": {
+   "clientWidth": 320,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
+  },
+  "375": {
+   "clientWidth": 375,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
+  },
+  "768": {
+   "clientWidth": 768,
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 768
+  }
+ }
+}
