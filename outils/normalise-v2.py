@@ -9,6 +9,11 @@ s'applique qu'aux fichiers qu'elle nomme, et echoue bruyamment si le motif
 attendu a disparu.
 
 Regles disponibles (--regle) :
+  calage-mobilier    : pose --mobilier-largeur sur chaque page, a la valeur
+                       MESUREE par sonde-mobilier.py (arbitrage AH option B :
+                       le mobilier se cale sur la colonne editoriale, pas sur
+                       le menu). Aucune valeur devinee : une page non mesuree
+                       n est pas touchee.
   collision-waterloo : la page nomme `cartouche` son en-tete de COUVERTURE
                        (header.cartouche + .cartouche-inner), nom qui entre en
                        collision avec le composant de mobilier `.cartouche`
@@ -82,7 +87,67 @@ def collision_waterloo(depot, simuler):
     return 0
 
 
-REGLES = {"collision-waterloo": collision_waterloo}
+def calage_mobilier(depot, simuler):
+    """Pose --mobilier-largeur sur chaque page, a la valeur MESUREE.
+
+    Arbitrage AH du 22/07/2026 (option B) : le mobilier se cale sur la colonne
+    editoriale de sa page. La valeur ne se devine pas -- elle vient de
+    `sonde-mobilier.py`, qui l'a mesuree au rendu reel. Une page dont la
+    colonne n'etait pas mesurable, ou qui declare son propre `.wrap`, n'est
+    PAS touchee : on ne pose pas une valeur qu'on n'a pas constatee.
+    """
+    import json
+    mesures = os.path.join(depot, "outils", "recette-playwright", "resultats",
+                           "mobilier.json")
+    if not os.path.isfile(mesures):
+        echec("mesures absentes : jouer d'abord sonde-mobilier.py (%s)"
+              % mesures)
+    with io.open(mesures, "r", encoding="utf-8") as f:
+        donnees = json.load(f)
+
+    poses, ignorees = 0, []
+    for m in donnees:
+        if not m.get("largeur_proposee_rem"):
+            ignorees.append((m["page"], m.get("motif", "sans mesure")))
+            continue
+        chemin = os.path.join(depot, "films", m["page"])
+        src = lire(chemin)
+        if "--mobilier-largeur" in src:
+            ignorees.append((m["page"], "variable deja posee"))
+            continue
+        # La variable se pose sur :root de la page, la ou vit sa palette.
+        ancre = ":root{"
+        if ancre not in src:
+            ancre = ":root {"
+        if ancre not in src:
+            ignorees.append((m["page"], "pas de bloc :root ou poser la variable"))
+            continue
+        declaration = (
+            "\n    /* Largeur du mobilier partage (cartouche, bandeau de\n"
+            "       variante), calee sur la colonne editoriale MESUREE de\n"
+            "       cette page (%d px au rendu). Arbitrage AH du 22/07/2026,\n"
+            "       option B : le mobilier suit le texte, pas le menu. */\n"
+            "    --mobilier-largeur:%srem;\n" % (m["colonne_px"],
+                                                 m["largeur_proposee_rem"]))
+        t = src.replace(ancre, ancre + declaration, 1)
+        if t == src:
+            echec("%s : la variable n'a pas ete posee" % m["page"])
+        if not simuler:
+            ecrire(chemin, t)
+        poses += 1
+
+    print("variables posees : %d%s" % (poses,
+                                       "  [SIMULATION]" if simuler else ""))
+    print("pages ignorees   : %d" % len(ignorees))
+    for nom, motif in ignorees:
+        print("   %-32s %s" % (nom, motif))
+    if poses == 0:
+        echec("aucune variable posee -- rien a faire ou mesures perimees")
+    return 0
+
+
+REGLES = {"collision-waterloo": collision_waterloo,
+          "calage-mobilier": calage_mobilier}
 
 
 def main():
