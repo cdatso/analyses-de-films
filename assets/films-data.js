@@ -17,7 +17,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 09:00',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['couleur']
   },
   {
     slug: 'the-old-oak',
@@ -32,7 +34,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 09:00',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Royaume-Uni', 'France', 'Belgique'],
+    technique: ['couleur']
   },
   {
     slug: 'soudain-lete-dernier',
@@ -47,7 +51,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 10:14',
     genreBase: 'melodrame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis', 'Royaume-Uni'],
+    technique: ['n&b']
   },
   {
     slug: 'soy-cuba',
@@ -62,7 +68,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 18:11',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Cuba', 'Union sovietique'],
+    technique: ['n&b']
   },
   {
     slug: 'sud',
@@ -77,7 +85,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 18:11',
     genreBase: 'documentaire',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['France', 'Belgique'],
+    technique: ['couleur']
   },
   {
     slug: 'shutter-island',
@@ -92,7 +102,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 18:12',
     genreBase: 'thriller',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['couleur']
   },
   {
     slug: 'hamnet',
@@ -107,7 +119,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-03 18:12',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Royaume-Uni', 'Etats-Unis'],
+    technique: ['couleur']
   },
   {
     slug: 'les-deux-orphelines',
@@ -122,7 +136,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-04 10:11',
     genreBase: 'melodrame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['muet', 'n&b']
   },
   {
     slug: 'rosetta',
@@ -137,7 +153,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-04 10:11',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Belgique', 'France'],
+    technique: ['couleur']
   },
   {
     slug: 'rouges-et-blancs',
@@ -169,7 +187,10 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 00:33',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Suede'],
+    technique: ['n&b'],
+    deleuze: { oeuvre: 'IM', pages: [142, 149], concepts: 'la limite du visage ou le néant : Bergman ; les composantes affectives du gros plan' }
   },
   {
     slug: 'au-fil-de-leau',
@@ -183,7 +204,10 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-05 16:58',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['n&b'],
+    genreBase: 'polar'
   },
   {
     slug: 'raging-bull',
@@ -198,7 +222,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 17:06',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['n&b']
   },
   {
     slug: 'le-cheval-de-turin',
@@ -213,7 +239,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 17:14',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Hongrie', 'France', 'Allemagne', 'Suisse'],
+    technique: ['n&b']
   },
   {
     slug: 'la-mariee-etait-en-noir',
@@ -228,7 +256,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 20:13',
     genreBase: 'thriller',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['France', 'Italie'],
+    technique: ['couleur']
   },
   {
     slug: 'bienvenue-a-suburbicon',
@@ -243,7 +273,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 20:19',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis', 'Royaume-Uni'],
+    technique: ['couleur']
   },
   {
     slug: 'manhattan',
@@ -258,7 +290,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 21:04',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['n&b']
   },
   {
     slug: 'sans-filtre',
@@ -273,7 +307,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 21:14',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Suede', 'Allemagne', 'France', 'Royaume-Uni'],
+    technique: ['couleur']
   },
   {
     slug: 'retour-a-seoul',
@@ -288,7 +324,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 21:21',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['France', 'Allemagne', 'Belgique', 'Coree du Sud'],
+    technique: ['couleur']
   },
   {
     slug: 'waterloo',
@@ -303,7 +341,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 23:32',
     genreBase: 'fresque',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Italie', 'Union sovietique'],
+    technique: ['couleur']
   },
   {
     slug: 'nouvelle-vague',
@@ -318,7 +358,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-05 23:44',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis', 'France'],
+    technique: ['n&b']
   },
   {
     slug: 'julie-en-12-chapitres',
@@ -333,7 +375,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-06 08:20',
     genreBase: 'comedie',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Norvege', 'France', 'Suede', 'Danemark'],
+    technique: ['couleur']
   },
   {
     slug: 'le-golem',
@@ -348,7 +392,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-06 08:26',
     genreBase: 'fantastique',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['France', 'Tchecoslovaquie'],
+    technique: ['n&b']
   },
   {
     slug: 'moi-daniel-blake',
@@ -363,7 +409,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-06 08:32',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Royaume-Uni', 'France', 'Belgique'],
+    technique: ['couleur']
   },
   {
     slug: 'la-chevauchee-fantastique',
@@ -378,7 +426,10 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-06 11:21',
     genreBase: 'western',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['n&b'],
+    deleuze: { oeuvre: 'IM', pages: [203], concepts: 'le western (Ford) : de la situation a l'action, l'englobant et le duel' }
   },
   {
     slug: 'le-doulos',
@@ -392,7 +443,10 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-07 06:38',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['France', 'Italie'],
+    technique: ['n&b'],
+    genreBase: 'polar'
   },
   {
     slug: 'sur-la-route-domaha',
@@ -407,7 +461,9 @@ const FILMS = [
     volet: 'critique',
     datePublication: '2026-07-10 08:29',
     genreBase: 'drame',
-    producteur: 'non spécifié'
+    producteur: 'non spécifié',
+    pays: ['Etats-Unis'],
+    technique: ['couleur']
   },
   {
     slug: 'pandora',
@@ -459,7 +515,9 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 09:06',
-    genreBase: 'drame'
+    genreBase: 'drame',
+    pays: ['Italie'],
+    technique: ['couleur']
   },
   {
     slug: 'hamlet',
@@ -474,7 +532,9 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 09:20',
-    genreBase: 'tragedie'
+    genreBase: 'tragedie',
+    pays: ['Union sovietique'],
+    technique: ['n&b']
   },
   {
     slug: 'le-samourai',
@@ -489,7 +549,9 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 11:13',
-    genreBase: 'polar'
+    genreBase: 'polar',
+    pays: ['France', 'Italie'],
+    technique: ['couleur']
   },
   {
     slug: 'hitchcock-truffaut',
@@ -504,6 +566,8 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 23:38',
-    genreBase: 'documentaire'
+    genreBase: 'documentaire',
+    pays: ['Etats-Unis', 'France'],
+    technique: ['couleur']
   }
 ];
