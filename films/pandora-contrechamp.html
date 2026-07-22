@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pandora — Contrechamp — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
     /* Palette « toile métaphysique » : identique au champ (pandora.html), polarité inversée */
@@ -33,7 +33,7 @@
     margin:0;
     background:var(--platre);
     color:var(--encre-douce);
-    font-family:'Spectral', Georgia, serif;
+    font-family:var(--serif);
     font-weight:300;
     line-height:1.78;
     font-size:1.02rem;
@@ -46,7 +46,7 @@
   }
 
   h1,h2,h3{
-    font-family:'Marcellus', 'Times New Roman', serif;
+    font-family:var(--serif);
     font-weight:400;
     margin:0;
     color:var(--encre);
@@ -57,7 +57,7 @@
   a:focus-visible{ outline:2px solid var(--mer); outline-offset:3px; }
 
   .cartel{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.66rem;
@@ -112,7 +112,7 @@
 
   .back-link{
     display:inline-block;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.74rem;
     letter-spacing:0.08em;
     color:var(--encre-douce);
@@ -140,7 +140,7 @@
   }
 
   .orig-title{
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.08rem;
     color:var(--encre-douce);
@@ -154,7 +154,7 @@
   }
 
   .meta-line{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.76rem;
     letter-spacing:0.10em;
     color:var(--encre-douce);
@@ -166,7 +166,7 @@
     padding:0.9rem 1.2rem;
     border-left:3px solid var(--mer);
     background:rgba(47,125,128,0.08);
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.76rem;
     letter-spacing:0.03em;
     color:var(--encre-douce);
@@ -202,7 +202,7 @@
   .programme a{
     display:block;
     padding:0.42rem 0;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.8rem;
     letter-spacing:0.05em;
     color:var(--encre-douce);
@@ -259,7 +259,7 @@
 
   /* renvoi de source : petit numéro d'inventaire */
   sup.ref{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.02em;
   }
@@ -282,7 +282,7 @@
     display:block;
     margin-top:0.5rem;
     font-style:normal;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     letter-spacing:0.09em;
     text-transform:uppercase;
@@ -313,7 +313,7 @@
     font-size:0.95rem;
   }
   .fiche dt{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.11em;
@@ -336,7 +336,7 @@
   }
   figure.poster figcaption{
     margin-top:0.8rem;
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.09em;
     text-transform:uppercase;
@@ -353,7 +353,7 @@
   }
   .sources li{ margin-bottom:0.6rem; }
   .sources li::marker{
-    font-family:'Cutive Mono', monospace;
+    font-family:var(--mono);
     color:var(--mer);
   }
 
@@ -371,13 +371,34 @@
     font-size:0.92rem;
     margin:1.6rem 0;
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="etude">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html">Critiques</a>
+      <a href="../etudes.html" aria-current="page">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="cover">
   <div class="cover-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <span class="eyebrow cartel">Royaume-Uni — 1951 — Technicolor · Contrechamp</span>
     <h1>Pandora</h1>
     <div class="orig-title">Pandora and the Flying Dutchman</div>
@@ -394,6 +415,17 @@
     </div>
   </div>
 </header>
+
+<div class="wrap" style="padding-top:1.6rem;">
+<p class="variante"><span class="quoi">Autre regard sur ce film</span><a href="pandora.html">Pandora &mdash; Champ &mdash; Critique</a></p>
+<div class="cartouche">
+  <span class="regime">R3 &mdash; &Eacute;tude</span>
+  <span class="signature">&Eacute;tude &mdash; premier jet produit par OpenAI GPT-5.5, repris et enrichi par la squad, r&eacute;vision &eacute;ditoriale et validation par Christo Datso.</span>
+  <span class="signature">Mod&egrave;le producteur : OpenAI GPT-5.5 (reprise et enrichissement squad)</span>
+  <span class="date-pub">Publi&eacute;e le 18 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="programme">
   <span class="cartel">Sommaire</span>
