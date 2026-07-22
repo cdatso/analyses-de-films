@@ -78,8 +78,19 @@ ce que le gate du 20/07 20h38 prévoit — travail de modèle **sous relecture**
 
 ## 3. Ce que la table implique pour le vocabulaire fermé
 
+> **ERRATUM (22/07/2026 23h12, charte règle 5).** Les chiffres de ce paragraphe
+> étaient faux dans la version soumise au gate : j'y annonçais « 17 » pays
+> demandés et « 13 » ajouts, en contradiction avec ma propre liste juste
+> en dessous. Le décompte exact, fait par le script au moment de l'application,
+> est de **15 pays distincts** dans la table et **11 ajouts** au vocabulaire
+> (les 4 existants étant `Etats-Unis`, `Hongrie`, `Royaume-Uni`,
+> `Union sovietique`). La table de valeurs et la décision gatée sont
+> inchangées — seul mon comptage était erroné. Le texte d'origine est conservé
+> ci-dessous, barré par le présent erratum.
+
 `assets\vocabulaires.js` ne contient aujourd'hui que **4 pays** (les seules
-valeurs des 3 entrées migrées). La table en demande **17** :
+valeurs des 3 entrées migrées). ~~La table en demande **17**~~ **→ 15, dont 11
+à ajouter** :
 
 ```
 Allemagne · Belgique · Coree du Sud · Cuba · Danemark · Etats-Unis · France
@@ -88,7 +99,7 @@ Union sovietique
 ```
 *(+ `Etats-Unis`, `Hongrie`, `Royaume-Uni`, `Union sovietique` déjà présents.)*
 
-**P-12 fait de chaque ajout un acte délibéré, dans un commit propre.** Ces 13
+**P-12 fait de chaque ajout un acte délibéré, dans un commit propre.** Ces 11
 ajouts iront donc dans **un commit à eux**, distinct de l'écriture du registre —
 et seulement sur ton gate.
 
