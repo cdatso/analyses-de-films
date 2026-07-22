@@ -275,3 +275,111 @@ dépôt, et se sert sans étape intermédiaire.*
 **Reste hors de cet erratum** : le point ② du gate enregistré à 08h24 — la
 mécanique de recherche et de classement déléguée à ce mandat — **n'a pas été
 relayé** dans la fenêtre du prototype. La session ne se l'attribue pas.
+*(Relayé depuis, à 08h40 — voir la section suivante.)*
+
+---
+
+# La mécanique de recherche — choix rendu par la session
+
+**Gate d'AH du 22/07** : « la mécanique de recherche et le classement sont à ta
+main, choix documenté au constat ». C'est la **seule décision de design que ce
+mandat rend lui-même** ; tout le reste est constat. Elle est donc écrite ici
+avec ses motifs et ses mesures, pour être révocable en connaissance de cause.
+
+## Décision 1 — Des JETONS, et non une sous-chaîne globale
+
+**Ce qui existait** : la requête entière était cherchée comme une sous-chaîne
+dans un champ concaténé (titre + réalisateur + année + genre + pays + décennie).
+
+**Le défaut, vérifié** : cette forme **impose au lecteur l'ordre des mots**.
+`loach drame` ne trouvait rien — les deux termes existent, mais pas côte à côte
+et pas dans cet ordre. `annie woody` non plus.
+
+**Retenu** : la requête est découpée en jetons sur les espaces, et **chaque
+jeton doit se trouver quelque part** dans l'entrée (conjonction, ET). Chaque
+jeton reste une **sous-chaîne** : `melv` trouve Melville — ce qui dispense
+d'un analyseur morphologique du français qu'on n'aura pas, et qu'un site
+statique n'a pas à embarquer.
+
+**Mesuré** : `loach drame` et `drame loach` renvoient désormais **le même
+résultat** (*Moi, Daniel Blake* et *The Old Oak*), dans le même ordre.
+
+**Ce qui a été écarté** : le OU (une requête à deux mots ramènerait la moitié
+du corpus) ; les opérateurs (`"` , `-`, `OR`) — une syntaxe que personne
+n'apprendra sur un site de 33 films ; la recherche floue, qui ferait apparaître
+des résultats que le lecteur n'a pas demandés sans qu'il comprenne pourquoi.
+
+## Décision 2 — Aucun classement par pertinence
+
+**Retenu** : les résultats **gardent l'ordre du catalogue**. Il n'y a pas de
+score.
+
+**Motif** : le filtre étant conjonctif, **toutes** les entrées retenues
+satisfont **tous** les jetons — il n'existe pas de gradient à trier. Un
+pseudo-score (« le titre vaut plus que le réalisateur ») ferait bouger les
+lignes d'une manière que le lecteur ne peut pas prévoir, sur une liste qui,
+une fois filtrée, tient presque toujours dans un écran. *Un classement se
+justifie quand il y a trop de résultats pour les lire ; ce n'est pas le cas ici,
+et ce ne le sera pas davantage à 500 films avec des facettes.*
+
+## Décision 3 — L'ordre du catalogue est ALPHABÉTIQUE par titre
+
+C'est le vrai changement, et il touche la page même sans recherche.
+
+**Ce qui existait** : la liste sortait dans **l'ordre du registre**, c'est-à-dire
+l'ordre où les analyses ont été ajoutées au fichier — *Annie Hall, The Old Oak,
+Soudain l'été dernier, Soy Cuba…* Un ordre parfaitement arbitraire pour un
+lecteur, et qui de surcroît **bouge à chaque publication**.
+
+**Retenu** : alphabétique par titre, sur le titre **replié sans accent**.
+
+**Motifs** : ① un index est un **catalogue** — on y cherche un titre, on ne le
+parcourt pas comme un fil d'actualité ; ② la **nouveauté est déjà servie** par
+l'objet en une, juste au-dessus : un corpus trié par date en ferait le doublon ;
+③ l'ordre alphabétique est **stable** — publier une analyse insère une ligne,
+sans déplacer les autres ; ④ argument décisif et pratique : `datePublication`
+n'existe que sur **3 entrées sur 33**, un tri par date serait aujourd'hui du
+bruit.
+
+**Deux choix subordonnés, nommés pour être discutables** :
+
+- **Le repli sans accent sert de clé de tri**, et non `localeCompare('fr')`.
+  Motif technique dur : le HTML statique de l'option (b) est produit par un
+  script Python, dont la bibliothèque standard **n'a pas de collation
+  française**. Une clé repliée, elle, se reproduit à l'identique des deux côtés
+  — et le contrôle de dérive le prouve à chaque exécution. *Effet : les accents
+  sont ignorés au tri, ce qui est le comportement français attendu.*
+- **Les articles initiaux ne sont pas escamotés.** *Le Doulos* se range à « L »,
+  comme il s'écrit. Un catalogue de bibliothèque rangerait « Doulos, Le » ;
+  c'est plus savant, mais cela demande une règle de plus, elle échoue sur les
+  titres étrangers (*The Old Oak*), et elle surprend autant qu'elle aide.
+
+## Mesures — P-41 est désormais VÉRIFIÉE, et non plus « non vérifiable »
+
+Une mesure de **temps** ne demande aucune géométrie : elle est valide dans cet
+environnement, contrairement à tout le reste. P-41 exige « moins de 100 ms sur
+le corpus complet, et utilisable jusqu'à 500 entrées ».
+
+| Requête | Corpus réel (33) | Jeu synthétique (500) |
+|---|---|---|
+| vide (rendu de toute la liste) | **0,38 ms** | **5,98 ms** |
+| un jeton (`loach`) | **0,065 ms** | **0,87 ms** |
+| deux jetons (`loach drame`) | **0,065 ms** | **0,89 ms** |
+| terme accentué (`melodrame`) | **0,065 ms** | — |
+
+*Protocole : moyenne de 20 passes (10 à 500 entrées), horloge `performance.now()`,
+mesure du cycle complet frappe → filtrage → rendu du HTML de la liste.*
+
+**Marge : le seuil de 100 ms n'est atteint à aucun moment — le cas le plus
+lourd, le rendu des 500 entrées sans filtre, en consomme 6 %.** L'index de
+recherche de chaque entrée est calculé **une fois à l'amorçage** et non à
+chaque frappe : c'est ce qui tient le seuil quand le corpus grandira.
+
+## Ce qui reste révocable
+
+Aucune de ces trois décisions n'est structurante : elles vivent dans
+`assets/corpus.js` et dans le gabarit jumeau `outils/genere-liste-statique.py`.
+La seule contrainte à respecter en les révoquant est que **les deux gabarits
+restent d'accord** — ce que `--verifier` contrôle. *Au rétrofit de 065-5, un
+troisième gabarit entrera en scène : le skill. Il devra s'aligner sur les deux
+autres, faute de quoi une publication réordonnera silencieusement la liste.*

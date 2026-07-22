@@ -67,7 +67,7 @@
 | **P-38** | Aucun défilement horizontal à 320 px | **NV** | **aucune géométrie mesurable** : le moteur disponible ne compose pas — `clientWidth` = 0 même après redimensionnement |
 | **P-39** | Contraste AA 4,5:1 / 3:1 | **ÉCART** | comptage mécanique livré : **23 écarts certains** sur **17 pages**, 48 probables. Détail : `outils/contraste-sortie.md`, constat C-3. **Compté, jamais corrigé** |
 | **P-40** | Interactif atteignable et visible au clavier | **ÉCART** | la règle `:focus-visible` est posée dans `mobilier.css` et s'applique ; **le parcours à la tabulation est NV**. La ligne ne peut donc pas être déclarée satisfaite |
-| **P-41** | Recherche < 100 ms, jusqu'à 500 entrées | **NV** | ni mesure de temps de rendu, ni jeu de 500 entrées synthétiques (non demandé au prototype) |
+| **P-41** | Recherche < 100 ms, jusqu'à 500 entrées | **OK** | *(révisé le 22/07 08h40 — voir erratum 1)* mesuré : corpus réel **0,065 à 0,38 ms** ; jeu synthétique de **500 entrées** : **0,87 à 5,98 ms**. Une mesure de temps ne demande aucune géométrie, elle est donc valide ici. Le cas le plus lourd consomme **6 %** du seuil |
 | **P-42** | Chaque ligne vérifiée et datée | **OK** | le présent document : 52 lignes, aucune réputée satisfaite par défaut |
 | **P-43** | Le volet pilote ne conditionne pas la bascule | **HP** | 065-4 |
 | **P-44** | `v2-proto` poussée dès création, jamais fusionnée | **OK** | `origin/v2-proto` créée et poussée **avant toute autre écriture** ; `origin/main` inchangé à `0b0f476` du début à la fin ; `git log main..v2-proto` = 6 commits, aucun sur `main` |
@@ -95,9 +95,31 @@
 ## Les neuf lignes non vérifiables, et pourquoi
 
 `P-29`, `P-30` (outil hors dépôt) · `P-32` (rien n'est publié) · `P-37`,
-`P-38`, `P-41` (aucune géométrie ni journal réseau : le moteur disponible ne
+`P-38`, ~~`P-41`~~ (aucune géométrie ni journal réseau : le moteur disponible ne
 compose pas d'image) · plus les volets non mesurables de `P-22`, `P-24`
 et `P-27`.
 
 **Aucune n'est déclarée satisfaite.** C'est la même exigence que « zéro repli
 NON DÉCLARÉ » : ce qui n'a pas été vérifié doit se voir.
+
+---
+
+## ERRATUM 1 — 22/07/2026 08h40 : P-41 passe de « non vérifiable » à VÉRIFIÉE
+
+Ligne barrée et non effacée (charte, règle 5). **Le comptage devient
+25 OK · 5 OK/lot · 7 ÉCART · 8 NV · 7 HP.**
+
+**Ce qui avait été mal jugé** : j'avais rangé P-41 avec les lignes que
+l'absence de rendu rend inaccessibles. C'était une erreur de raisonnement, pas
+une contrainte d'environnement — **une mesure de temps ne demande aucune
+géométrie**. La règle « il n'y a pas de navigateur utile » avait été appliquée
+plus largement qu'elle ne vaut.
+
+Le gate d'AH du 22/07 confiant la mécanique de recherche à ce mandat a fourni
+l'occasion de mesurer pour de bon : `performance.now()` autour du cycle complet
+frappe → filtrage → rendu, sur le corpus réel puis sur **500 entrées
+synthétiques** — les deux jeux que P-41 nomme explicitement. Résultats et
+protocole : constat C-3, section « La mécanique de recherche ».
+
+*Les huit lignes restantes demandent, elles, une géométrie ou un journal réseau
+réels. Elles restent non vérifiées.*
