@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment ce site fonctionne — Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="proto-note">
+  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  Page en ossature : son contenu est un <b>texte d'auteur d'AH</b> que le
+  prototype ne rédige pas (§2.4). Bandeau <b>PROVISOIRE</b>.
+</div>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html" aria-current="page">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:3.4rem;padding-bottom:5rem;max-width:44rem;">
+
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 1.6rem;line-height:1.2;">Comment ce site fonctionne</h1>
+
+  <div class="reserve-auteur">
+    <span class="etiquette">Emplacement réservé — texte d'auteur</span>
+    La méthode, ses limites et le journal d'erreurs sont un <strong>texte d'AH</strong>
+    (§2.4). Le prototype pose l'ossature et les ancres ; il n'écrit pas la page.
+  </div>
+
+  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">
+    Trois régimes de signature existent et sont déjà portés par le gabarit v2 —
+    ils sont décrits ici pour mémoire, non comme texte définitif :
+  </p>
+
+  <table>
+    <caption>Les trois régimes de provenance (SPEC-SITE-V2 §5.2)</caption>
+    <thead>
+      <tr><th>Régime</th><th>Cas</th><th>Ce que la signature dit</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>R1</td><td>Critique publiée avant le site v2</td><td>modèle non spécifié, supervision humaine</td></tr>
+      <tr><td>R2</td><td>Critique publiée à partir du site v2</td><td>modèle nommé</td></tr>
+      <tr><td>R3</td><td>Étude</td><td>signature double : modèle du premier jet + révision éditoriale humaine</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">
+    Matière disponible pour la rédaction : <code>docs/journal_erreurs.md</code> et
+    <code>docs/journal_analyses_films.md</code>, déjà dans le dépôt.
+  </p>
+
+  <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
+
+</main>
+
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+</div></footer>
+
+</body>
+</html>

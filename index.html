@@ -4,160 +4,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<header class="hero">
-  <div class="eyebrow">Bibliothèque critique</div>
-  <h1>Analyses de films</h1>
-  <p class="subtitle">Des analyses cinématographiques sourcées : contexte de production, structure narrative, mise en scène, thèmes et réception critique.</p>
+<div class="proto-note">
+  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  Trois pages sont migrées (diptyque Pandora + Rouges et Blancs) ; les 30 autres
+  sont intactes et gardent leur gabarit v1. <b>L'objet en une porte sur les seules
+  entrées datées</b> : <code>datePublication</code> n'existe que sur les 3 entrées
+  migrées, son rétro-remplissage est le périmètre de BKL-065-5. Bandeau
+  <b>PROVISOIRE</b>, retiré à la bascule.
+</div>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="critiques.html">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
 </header>
 
 <main>
 
-  <section id="demande">
-    <div class="num">01</div>
-    <h2>Demander une analyse</h2>
-    <p>Titre et réalisateur·rice sont obligatoires. L'année de sortie est facultative mais recommandée si plusieurs versions ou remakes existent.</p>
-
-    <form class="request-form" id="request-form">
-      <div class="field">
-        <label for="film-title">Titre du film <span class="req">*</span></label>
-        <input type="text" id="film-title" name="film-title" required placeholder="ex. Annie Hall">
-      </div>
-      <div class="field">
-        <label for="film-director">Réalisateur·rice <span class="req">*</span></label>
-        <input type="text" id="film-director" name="film-director" required placeholder="ex. Woody Allen">
-      </div>
-      <div class="field">
-        <label for="film-year">Année de sortie (optionnel)</label>
-        <input type="text" id="film-year" name="film-year" placeholder="ex. 1977" inputmode="numeric" pattern="[0-9]{4}">
-      </div>
-      <button type="submit">Envoyer la demande</button>
-      <p class="form-note">L'envoi tente d'ouvrir votre client mail habituel avec les informations pré-remplies. Aucune analyse n'est générée automatiquement : elle sera préparée puis ajoutée manuellement au site.</p>
-    </form>
-
-    <div class="fallback-panel" id="fallback-panel" hidden>
-      <p class="fallback-title">Votre client mail ne s'est pas ouvert ?</p>
-      <p>Copiez ce message et collez-le manuellement dans un nouvel email à <strong>cdatso@yahoo.com</strong> :</p>
-      <pre id="fallback-text"></pre>
-      <button type="button" id="copy-button">Copier le message</button>
-      <p class="copy-feedback" id="copy-feedback" hidden>Copié !</p>
+<section class="seuil">
+  <div class="wrap"><div class="seuil-in">
+    <div class="reserve-auteur">
+      <span class="etiquette">Emplacement réservé — texte d'auteur</span>
+      Le chapeau du seuil (3 à 5 paragraphes posant la thèse du site : l'IA n'a pas
+      vu les films, ce sont des synthèses méta-critiques sourcées revendiquées comme
+      un genre propre, et deux régimes y cohabitent) est un <strong>texte d'AH</strong>
+      — SPEC-SITE-V2 §2.4 et §3.1, lié à BKL-038. Le prototype ne le rédige pas.
+      Une formulation d'essai figure dans la maquette validée du 20/07
+      (<code>_scratch\prototypes-accueil\accueil-A-le-seuil.html</code>) ; elle n'a
+      pas été reprise ici, un texte de maquette n'étant pas un texte d'auteur.
     </div>
-  </section>
+    <p class="appui">Sur la méthode, ses limites et son journal d'erreurs :
+      <a href="comment-ca-marche.html">comment ce site fonctionne</a>.</p>
+  </div></div>
+</section>
 
-  <section id="index-films">
-    <div class="num">02</div>
-    <h2>Index des films</h2>
-    <table id="film-index">
-      <thead>
-        <tr><th>Titre</th><th>Réalisateur·rice</th><th>Année</th><th>Genre</th></tr>
-      </thead>
-      <tbody id="film-index-body">
-        <!-- Lignes injectées ci-dessous à partir de films-data.js -->
-      </tbody>
-    </table>
-  </section>
+<section class="une">
+  <div class="wrap">
+    <div class="cartel" id="cartel-une">Dernière analyse publiée</div>
+    <div class="bloc-une" id="bloc-une"></div>
+    <div class="liaison" id="liaison"></div>
+    <noscript>
+      <p class="vide">L'objet en une se construit à partir du registre et demande
+      JavaScript. <strong>Repli PROVISOIRE</strong> — la dégradation sans JavaScript
+      n'est pas tranchée (SPEC-SITE-V2 §4.5).</p>
+    </noscript>
+  </div>
+</section>
 
-  <section id="analyses">
-    <div class="num">03</div>
-    <h2>Analyses publiées</h2>
-    <div class="film-grid" id="film-grid">
-      <!-- Les fiches films sont injectées par script.js à partir de films-data.js -->
+<section class="corpus">
+  <div class="wrap">
+    <div class="barre">
+      <h2>Le corpus</h2>
+      <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
+             aria-label="Rechercher dans le corpus">
     </div>
-  </section>
+    <div class="facettes" id="facettes"></div>
+    <div class="compte" id="compte" role="status"></div>
+    <ol class="liste" id="liste"></ol>
+    <noscript>
+      <p class="vide"><strong>Repli PROVISOIRE.</strong> La recherche et l'index
+      demandent JavaScript. Le repli des maquettes renvoyait vers la page
+      « Critiques » — qui dépend du même script : <em>le repli tourne en rond</em>.
+      Constaté par le prototype, non corrigé : point non tranché (§4.5).</p>
+    </noscript>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  Analyses rédigées à titre d'exercice critique et pédagogique.
-</footer>
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+</div></footer>
 
 <script src="assets/films-data.js"></script>
+<script src="assets/corpus.js"></script>
 <script>
-  const grid = document.getElementById('film-grid');
-  const indexBody = document.getElementById('film-index-body');
-  const sortedFilms = FILMS.slice().sort((a, b) => a.title.localeCompare(b.title, 'fr'));
+  Corpus.rendUne(FILMS,
+    document.getElementById('bloc-une'),
+    document.getElementById('cartel-une'),
+    document.getElementById('liaison'));
 
-  if (!FILMS.length) {
-    grid.innerHTML = '<div class="empty-state">Aucune analyse publiée pour le moment.</div>';
-  } else {
-    sortedFilms.forEach(function (film) {
-      const card = document.createElement('article');
-      card.className = 'film-card';
-      const yearText = film.year ? ' · ' + film.year : '';
-      const posterHtml = film.poster
-        ? '<img class="poster-thumb" src="' + film.poster + '" alt="Affiche de ' + film.title + '" onerror="this.closest(\'.film-card\').classList.add(\'no-poster\')">'
-        : '';
-      card.classList.toggle('no-poster', !film.poster);
-      card.innerHTML =
-        posterHtml +
-        '<div class="poster-placeholder" aria-hidden="true">' + film.title.charAt(0) + '</div>' +
-        '<div class="card-body">' +
-        '<h3>' + film.title + '</h3>' +
-        '<div class="film-meta">' + film.director + yearText + '</div>' +
-        '<p>' + film.summary + '</p>' +
-        '<a class="read-more" href="' + film.url + '">Lire l\'analyse →</a>' +
-        '</div>';
-      grid.appendChild(card);
-    });
-
-    sortedFilms.forEach(function (film) {
-      const row = document.createElement('tr');
-      row.innerHTML =
-        '<td><a href="' + film.url + '">' + film.title + '</a></td>' +
-        '<td>' + film.director + '</td>' +
-        '<td>' + (film.year || '') + '</td>' +
-        '<td>' + (film.genre || '') + '</td>';
-      indexBody.appendChild(row);
-    });
-  }
-
-  document.getElementById('request-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const title = document.getElementById('film-title').value.trim();
-    const director = document.getElementById('film-director').value.trim();
-    const year = document.getElementById('film-year').value.trim();
-
-    const subject = 'Demande d\'analyse de film : ' + title;
-    let body = 'Titre : ' + title + '\nRéalisateur·rice : ' + director;
-    if (year) body += '\nAnnée : ' + year;
-    const now = new Date();
-    body += '\n\n[Généré le ' + now.toLocaleDateString('fr-BE')
-      + ' à ' + now.toLocaleTimeString('fr-BE', {hour: '2-digit', minute: '2-digit'})
-      + ' via le formulaire du site]';
-
-    const mailto = 'mailto:cdatso@yahoo.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailto;
-
-    document.getElementById('fallback-text').textContent =
-      'À : cdatso@yahoo.com\nObjet : ' + subject + '\n\n' + body;
-    document.getElementById('fallback-panel').hidden = false;
-    document.getElementById('copy-feedback').hidden = true;
-  });
-
-  const copyButton = document.getElementById('copy-button');
-  const copyFeedback = document.getElementById('copy-feedback');
-
-  // navigator.clipboard n'existe qu'en contexte sécurisé (HTTPS) : sans lui,
-  // on masque le bouton — le texte du panneau reste copiable à la main.
-  if (!navigator.clipboard) {
-    copyButton.hidden = true;
-  }
-
-  copyButton.addEventListener('click', function () {
-    const text = document.getElementById('fallback-text').textContent;
-    navigator.clipboard.writeText(text).then(function () {
-      copyFeedback.textContent = 'Copié !';
-      copyFeedback.hidden = false;
-    }).catch(function () {
-      copyFeedback.textContent = 'Échec de la copie — sélectionnez le texte ci-dessus et copiez-le manuellement.';
-      copyFeedback.hidden = false;
-    });
+  Corpus.monte({
+    films: FILMS,
+    liste: 'liste',
+    compte: 'compte',
+    recherche: 'q',
+    facettes: 'facettes'
   });
 </script>
 

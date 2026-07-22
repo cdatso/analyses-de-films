@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critiques — Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="proto-note">
+  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  Cette page rend <b>le même composant</b> que l'accueil et que « Études »
+  (P-07) : seul le filtre change. Bandeau <b>PROVISOIRE</b>.
+</div>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html" aria-current="page">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="corpus">
+  <div class="wrap">
+    <div class="barre">
+      <h2>Critiques</h2>
+      <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
+             aria-label="Rechercher dans les Critiques">
+    </div>
+    <p class="appui" style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);max-width:44rem;">
+      Analyses produites par la machine seule, au niveau d'exigence d'une presse
+      sérieuse. Chaque page dit quel modèle l'a produite. Le régime n'est pas un
+      jugement de valeur : une Étude n'est pas « meilleure » qu'une Critique, elle
+      est produite autrement.
+    </p>
+    <div class="facettes" id="facettes"></div>
+    <div class="compte" id="compte" role="status"></div>
+    <ol class="liste" id="liste"></ol>
+    <noscript>
+      <p class="vide"><strong>Repli PROVISOIRE.</strong> L'index demande
+      JavaScript (SPEC-SITE-V2 §4.5, point non tranché).</p>
+    </noscript>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+</div></footer>
+
+<script src="assets/films-data.js"></script>
+<script src="assets/corpus.js"></script>
+<script>
+  Corpus.monte({
+    films: FILMS,
+    volet: 'critique',
+    liste: 'liste',
+    compte: 'compte',
+    recherche: 'q',
+    facettes: 'facettes'
+  });
+</script>
+
+</body>
+</html>

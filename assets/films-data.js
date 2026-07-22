@@ -102,7 +102,14 @@ const FILMS = [
     genre: 'Drame de guerre',
     summary: "Une chorégraphie glaciale de la guerre civile russe, où Miklós Jancsó filme la violence comme une géométrie sans héros.",
     url: 'films/rouges-et-blancs.html',
-    poster: 'assets/posters/rouges-et-blancs.jpg'
+    poster: 'assets/posters/rouges-et-blancs.jpg',
+    // --- schéma v2 (annexe B) — entrée migrée par le prototype BKL-065-3 ---
+    volet: 'critique',
+    datePublication: '2026-07-04 10:11',
+    pays: ['Hongrie', 'Union sovietique'],
+    genreBase: 'drame',
+    technique: ['n&b'],
+    producteur: 'non spécifié'
   },
   {
     slug: 'persona',
@@ -283,7 +290,14 @@ const FILMS = [
     summary: "Albert Lewin filme Ava Gardner comme une statue de déesse pour mieux la faire redescendre parmi les mortels : un mélodrame ouvertement surréaliste, jugé prétentieux à sa sortie avant d'être reconnu comme un sommet du romantisme noir.",
     url: 'films/pandora.html',
     poster: 'assets/posters/pandora.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)'
+    producteur: 'Claude (pipeline, routine nocturne)',
+    // --- schéma v2 (annexe B) — entrée migrée par le prototype BKL-065-3 ---
+    volet: 'critique',
+    datePublication: '2026-07-18 20:45',
+    pays: ['Royaume-Uni', 'Etats-Unis'],
+    genreBase: 'melodrame',
+    technique: ['couleur'],
+    courant: ['romantisme noir', 'surrealisme']
   },
   {
     slug: 'pandora-contrechamp',
@@ -295,7 +309,14 @@ const FILMS = [
     url: 'films/pandora-contrechamp.html',
     poster: 'assets/posters/pandora.jpg',
     producteur: 'OpenAI GPT-5.5 (reprise et enrichissement squad)',
-    variantOf: 'pandora'
+    variantOf: 'pandora',
+    // --- schéma v2 (annexe B) — entrée migrée par le prototype BKL-065-3 ---
+    volet: 'etude',
+    datePublication: '2026-07-18 23:45',
+    pays: ['Royaume-Uni', 'Etats-Unis'],
+    genreBase: 'melodrame',
+    technique: ['couleur'],
+    courant: ['romantisme noir', 'surrealisme']
   },
   {
     slug: 'la-nuit-de-san-lorenzo',
