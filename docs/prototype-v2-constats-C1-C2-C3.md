@@ -228,11 +228,49 @@ recette** : il nomme où regarder, il ne clôt pas P-39.
 
 | # | Point | À qui |
 |---|---|---|
-| 1 | Q-3 — la typographie unifiée tient-elle sur `rouges-et-blancs` ? | AH, sur navigateur |
-| 2 | C-2 — le bloc de une à une seule carte | AH, sur l'instrument livré |
+| 1 | ~~Q-3 — la typographie unifiée tient-elle sur `rouges-et-blancs` ?~~ | **TRANCHÉ — erratum 2** |
+| 2 | ~~C-2 — le bloc de une à une seule carte~~ | **TRANCHÉ — erratum 2** |
 | 3 | Chacun des 23 écarts E1 — corriger la palette ou documenter l'exception | AH, écart par écart |
 | 4 | Le ton `--ink-muted` du pied de page, hérité et sous AA | AH |
 | 5 | ~~La dégradation sans JavaScript, balisée PROVISOIRE~~ | **TRANCHÉ — voir erratum 1** |
+
+---
+
+## ERRATUM 2 — 22/07/2026 11h44 : C-1 et C-2 sont tranchés
+
+Lignes 1 et 2 barrées et non effacées (charte, règle 5). **Gates d'AH
+prononcés dans la fenêtre de la session, sur la maquette vivante**, après la
+validation du prototype de 11h41.
+
+**C-1 / Q-3 — « oui » : la typographie unifiée TIENT.** Y compris sur le point
+dur que ce constat avait nommé : `films/rouges-et-blancs.html`, dont le titrage
+était une display **condensée** (Oswald) posée sur une ossature **letterbox
+scope 2.35:1**, et que remplace Literata 600 — large, ronde, de faible
+contraste. Le risque de design ouvert depuis le 20/07 est levé **sur pièces**.
+
+> **Conséquence pour 065-5** : le système typographique unique auto-hébergé est
+> éprouvé, plus rien ne s'oppose à la substitution des **30 pages restantes**.
+> *La session note, sans en tirer de conclusion : le verdict a porté sur les 3
+> pages migrées ; les 30 autres n'ont pas été vues sous Literata.*
+
+**C-2 — « non » : la carte seule ne sonne PAS vide.** La réserve de conception
+du §3.2 est levée : **`P-51` s'applique telle qu'elle est écrite, sans
+modification**. L'observation de la session — le risque n'était peut-être pas
+le vide mais l'**étirement** d'une carte unique sur une grille conçue pour deux
+— n'appelle donc aucune suite.
+
+*Ce qui rendait ce verdict urgent : le cas jugé n'est pas théorique. C'est
+celui que le site affichera dès le rétro-remplissage de `datePublication` en
+065-5, la dernière publiée devenant `hitchcock-truffaut`, Critique sans
+variante.*
+
+**Q-3 était la dernière question ouverte de `SPEC-SITE-V2`** (§12) : la spec
+n'en porte plus aucune. *L'inscrire dans la spec elle-même revient au greffe —
+c'est hors du périmètre d'écriture de cette session.*
+
+**Non couverts par ces deux gates**, et toujours ouverts : les **6 décisions de
+spec** (ligne 3 du tableau de la note de fin) et les **23 arbitrages de
+contraste AA** (lignes 3 et 4 ci-dessus).
 
 ---
 
