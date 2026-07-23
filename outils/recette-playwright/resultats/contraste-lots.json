@@ -1,0 +1,2053 @@
+[
+ {
+  "deplacement_clarte": 0.028,
+  "elements": 34,
+  "extraits": [
+   "Accueil",
+   "Publiée le 3 juillet 2026",
+   "Sommaire"
+  ],
+  "fond": "#faf8f4",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "annie-hall.html": 6,
+   "comment-ca-marche.html": 5,
+   "critiques.html": 6,
+   "demander-une-analyse.html": 2,
+   "etudes.html": 5,
+   "index.html": 7,
+   "qui-sommes-nous.html": 3
+  },
+  "pire_ratio": 4.07,
+  "propose": "#73736d",
+  "seuil": 4.5,
+  "texte": "#7a7a74"
+ },
+ {
+  "deplacement_clarte": 0.054,
+  "elements": 20,
+  "extraits": [
+   "Analyse cinématographique",
+   "États-Unis · 93 minutes · Comédie dramatique ",
+   "Retour aux analyses"
+  ],
+  "fond": "#f1ede4",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "annie-hall.html": 4,
+   "comment-ca-marche.html": 3,
+   "critiques.html": 1,
+   "demander-une-analyse.html": 2,
+   "etudes.html": 1,
+   "index.html": 4,
+   "qui-sommes-nous.html": 5
+  },
+  "pire_ratio": 3.7,
+  "propose": "#6c6c67",
+  "seuil": 4.5,
+  "texte": "#7a7a74"
+ },
+ {
+  "deplacement_clarte": 0.05,
+  "elements": 6,
+  "extraits": [
+   "Station 1",
+   "Titre",
+   "Affiche d'exploitation — le chapeau, l'imperm"
+  ],
+  "fond": "#eceee9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-samourai.html": 6
+  },
+  "pire_ratio": 3.76,
+  "propose": "#626d78",
+  "seuil": 4.5,
+  "texte": "#6d7a86"
+ },
+ {
+  "deplacement_clarte": 0.056,
+  "elements": 5,
+  "extraits": [
+   "— colophon",
+   "La scène finale, construite comme une représe",
+   "Hamlet"
+  ],
+  "fond": "#e5d4b4",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hamnet.html": 5
+  },
+  "pire_ratio": 3.54,
+  "propose": "#685c3d",
+  "seuil": 4.5,
+  "texte": "#7a6c48"
+ },
+ {
+  "deplacement_clarte": 0.592,
+  "elements": 5,
+  "extraits": [
+   "Pandora and the Flying Dutchman",
+   "Albert Lewin · Romulus Films · Photographie d",
+   "Analyse du pipeline — Claude (routine nocturn"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 5
+  },
+  "pire_ratio": 1.55,
+  "propose": "#4f4023",
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "deplacement_clarte": 0.092,
+  "elements": 5,
+  "extraits": [
+   "Planche contact — mélodrame gothique",
+   "Réalisation",
+   "Négatif nº 01"
+  ],
+  "fond": "#0a0a09",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 5
+  },
+  "pire_ratio": 3.34,
+  "propose": "#ce4e41",
+  "seuil": 4.5,
+  "texte": "#b23a2e"
+ },
+ {
+  "deplacement_clarte": 0.012,
+  "elements": 5,
+  "extraits": [
+   "Bobine 01 · 35 mm",
+   "— planche contact",
+   "Le mécanisme de révélation final, construit c"
+  ],
+  "fond": "#0a0a09",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 5
+  },
+  "pire_ratio": 4.32,
+  "propose": "#7d786d",
+  "seuil": 4.5,
+  "texte": "#7a756a"
+ },
+ {
+  "deplacement_clarte": 0.04,
+  "elements": 4,
+  "extraits": [
+   "Avis n  — un mot d'argot pour deux vérités : ",
+   "o",
+   "Avis compilé à partir de sources publiques co"
+  ],
+  "fond": "#ece5d5",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-doulos.html": 4
+  },
+  "pire_ratio": 3.86,
+  "propose": "#6e6656",
+  "seuil": 4.5,
+  "texte": "#79715f"
+ },
+ {
+  "deplacement_clarte": 0.108,
+  "elements": 4,
+  "extraits": [
+   "Sommaire",
+   "Affiche d'exploitation — collection de référe",
+   "Sommaire"
+  ],
+  "fond": "#f2ead9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 2,
+   "pandora.html": 2
+  },
+  "pire_ratio": 3.02,
+  "propose": "#6f6a5d",
+  "seuil": 4.5,
+  "texte": "#8d8677"
+ },
+ {
+  "deplacement_clarte": 0.072,
+  "elements": 4,
+  "extraits": [
+   "Pandora and the Flying Dutchman",
+   "Albert Lewin · Romulus Films · Photographie d",
+   "Analyse déléguée — OpenAI GPT-5.5, relecture "
+  ],
+  "fond": "#b8955f",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 4
+  },
+  "pire_ratio": 3.44,
+  "propose": "#2f333b",
+  "seuil": 4.5,
+  "texte": "#3f4550"
+ },
+ {
+  "deplacement_clarte": 0.04,
+  "elements": 4,
+  "extraits": [
+   "Dossier n  — Ouvert le 3 juillet 2026",
+   "o",
+   "Dossier compilé à partir de sources publiques"
+  ],
+  "fond": "#ece3ca",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 4
+  },
+  "pire_ratio": 3.81,
+  "propose": "#716548",
+  "seuil": 4.5,
+  "texte": "#7d7050"
+ },
+ {
+  "deplacement_clarte": 0.836,
+  "elements": 3,
+  "extraits": [
+   "Retour aux analyses",
+   "George Clooney, 2017 — un scénario noir des f",
+   "États-Unis · Paramount"
+  ],
+  "fond": "#3e8f8a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "bienvenue-a-suburbicon.html": 3
+  },
+  "pire_ratio": 3.33,
+  "propose": "#201a0d",
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "deplacement_clarte": 0.086,
+  "elements": 3,
+  "extraits": [
+   "Bande 1 / 9",
+   "Titre",
+   "Analyse rédigée à partir des sources ci-dessu"
+  ],
+  "fond": "#f1ece1",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 3
+  },
+  "pire_ratio": 3.28,
+  "propose": "#736a5f",
+  "seuil": 4.5,
+  "texte": "#8b8073"
+ },
+ {
+  "deplacement_clarte": 0.14,
+  "elements": 3,
+  "extraits": [
+   "Réalisation",
+   "Consensus Rotten Tomatoes, cité par Wikipédia",
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#f5f2ec",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 3
+  },
+  "pire_ratio": 2.76,
+  "propose": "#696f7b",
+  "seuil": 4.5,
+  "texte": "#8d939e"
+ },
+ {
+  "deplacement_clarte": 0.208,
+  "elements": 3,
+  "extraits": [
+   "Réalisation",
+   "Jean-Louis Bory, 1968, cité par Wikipédia",
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#f1efe9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-mariee-etait-en-noir.html": 3
+  },
+  "pire_ratio": 2.24,
+  "propose": "#716c64",
+  "seuil": 4.5,
+  "texte": "#a5a19a"
+ },
+ {
+  "deplacement_clarte": 0.072,
+  "elements": 3,
+  "extraits": [
+   "1er mouvement · Partition",
+   "Réalisation",
+   "[1]"
+  ],
+  "fond": "#f2f3f5",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "manhattan.html": 3
+  },
+  "pire_ratio": 3.48,
+  "propose": "#6a7079",
+  "seuil": 4.5,
+  "texte": "#7c828c"
+ },
+ {
+  "deplacement_clarte": 0.024,
+  "elements": 3,
+  "extraits": [
+   "Pandora — Champ — Critique",
+   "I",
+   "7"
+  ],
+  "fond": "#f2ead9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 2,
+   "pandora.html": 1
+  },
+  "pire_ratio": 4.02,
+  "propose": "#2c7477",
+  "seuil": 4.5,
+  "texte": "#2f7d80"
+ },
+ {
+  "deplacement_clarte": 0.04,
+  "elements": 3,
+  "extraits": [
+   "Analyse cinématographique — drame social · 19",
+   "JEAN-PIERRE & LUC DARDENNE — 1999 — BELGIQUE ",
+   "06:40"
+  ],
+  "fond": "#26251f",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 3
+  },
+  "pire_ratio": 3.87,
+  "propose": "#ec5e10",
+  "seuil": 4.5,
+  "texte": "#d9560f"
+ },
+ {
+  "deplacement_clarte": 0.116,
+  "elements": 3,
+  "extraits": [
+   "Premier service",
+   "Réalisation & scénario",
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#f6f4ee",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sans-filtre.html": 3
+  },
+  "pire_ratio": 2.75,
+  "propose": "#866d30",
+  "seuil": 4.5,
+  "texte": "#b2903f"
+ },
+ {
+  "deplacement_clarte": 0.138,
+  "elements": 2,
+  "extraits": [
+   "House by the River",
+   "États-Unis · Republic Pictures · 88 minutes ·"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 2
+  },
+  "pire_ratio": 3.1,
+  "propose": "#b6c3be",
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "deplacement_clarte": 0.136,
+  "elements": 2,
+  "extraits": [
+   "Гамлет —",
+   "Gamlet"
+  ],
+  "fond": "#434b50",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 2
+  },
+  "pire_ratio": 3.05,
+  "propose": "#b0bbbd",
+  "seuil": 4.5,
+  "texte": "#8a9a9d"
+ },
+ {
+  "deplacement_clarte": 0.004,
+  "elements": 2,
+  "extraits": [
+   "Bande — au sujet de Psychose",
+   "2"
+  ],
+  "fond": "#e5ddcc",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 2
+  },
+  "pire_ratio": 4.45,
+  "propose": "#bf201d",
+  "seuil": 4.5,
+  "texte": "#c1201d"
+ },
+ {
+  "deplacement_clarte": 0.008,
+  "elements": 2,
+  "extraits": [
+   "Retour aux analyses",
+   "2021 — quatre ans de la vie d'une femme qui e"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 2
+  },
+  "pire_ratio": 4.43,
+  "propose": "#f6f4ef",
+  "seuil": 4.5,
+  "texte": "#f5f2ec"
+ },
+ {
+  "deplacement_clarte": 0.278,
+  "elements": 2,
+  "extraits": [
+   "Overland Stage Line · Territoire de l'Arizona",
+   "→"
+  ],
+  "fond": "#363b41",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 2
+  },
+  "pire_ratio": 1.79,
+  "propose": "#dd9086",
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "deplacement_clarte": 0.158,
+  "elements": 2,
+  "extraits": [
+   "Analyse cinématographique",
+   "Jour VI — obscurité"
+  ],
+  "fond": "#413c35",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 2
+  },
+  "pire_ratio": 2.77,
+  "propose": "#c0a271",
+  "seuil": 4.5,
+  "texte": "#9c7b45"
+ },
+ {
+  "deplacement_clarte": 0.128,
+  "elements": 2,
+  "extraits": [
+   "A torinói ló",
+   "Jour I"
+  ],
+  "fond": "#413c35",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 2
+  },
+  "pire_ratio": 3.03,
+  "propose": "#aba69e",
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "deplacement_clarte": 0.064,
+  "elements": 2,
+  "extraits": [
+   "— état civil du film",
+   "Le film retarde son verdict jusqu'aux toutes "
+  ],
+  "fond": "#e0dbcd",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-doulos.html": 2
+  },
+  "pire_ratio": 3.5,
+  "propose": "#676051",
+  "seuil": 4.5,
+  "texte": "#79715f"
+ },
+ {
+  "deplacement_clarte": 0.022,
+  "elements": 2,
+  "extraits": [
+   "Titre français",
+   "Moving Picture World, cité par TCM"
+  ],
+  "fond": "#d8c9a4",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "les-deux-orphelines.html": 2
+  },
+  "pire_ratio": 4.07,
+  "propose": "#734e1d",
+  "seuil": 4.5,
+  "texte": "#7c541f"
+ },
+ {
+  "deplacement_clarte": 0.19,
+  "elements": 2,
+  "extraits": [
+   "Jour 1 · Générique",
+   "[1]"
+  ],
+  "fond": "#f0eee8",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "nouvelle-vague.html": 2
+  },
+  "pire_ratio": 1.91,
+  "propose": "#83691b",
+  "seuil": 4.5,
+  "texte": "#d3a92c"
+ },
+ {
+  "deplacement_clarte": 0.19,
+  "elements": 2,
+  "extraits": [
+   "Royaume-Uni — 1951 — Technicolor · Contrecham",
+   "→ Voir aussi le champ : analyse du pipeline ("
+  ],
+  "fond": "#b8955f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 2
+  },
+  "pire_ratio": 1.72,
+  "propose": "#153839",
+  "seuil": 4.5,
+  "texte": "#2f7d80"
+ },
+ {
+  "deplacement_clarte": 0.154,
+  "elements": 2,
+  "extraits": [
+   "Titre original",
+   "Titre original"
+  ],
+  "fond": "#e2d6bd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 1,
+   "pandora.html": 1
+  },
+  "pire_ratio": 2.51,
+  "propose": "#635e53",
+  "seuil": 4.5,
+  "texte": "#8d8677"
+ },
+ {
+  "deplacement_clarte": 0.06,
+  "elements": 2,
+  "extraits": [
+   "2",
+   "1"
+  ],
+  "fond": "#e2d6bd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 1,
+   "pandora.html": 1
+  },
+  "pire_ratio": 3.34,
+  "propose": "#27676a",
+  "seuil": 4.5,
+  "texte": "#2f7d80"
+ },
+ {
+  "deplacement_clarte": 0.688,
+  "elements": 2,
+  "extraits": [
+   "Retour aux analyses",
+   "Provenance."
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 2
+  },
+  "pire_ratio": 1.86,
+  "propose": "#51401c",
+  "seuil": 4.5,
+  "texte": "#f2ead9"
+ },
+ {
+  "deplacement_clarte": 0.134,
+  "elements": 2,
+  "extraits": [
+   "01",
+   "Réalisation, scénario"
+  ],
+  "fond": "#e9e9e6",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "persona.html": 2
+  },
+  "pire_ratio": 2.78,
+  "propose": "#696964",
+  "seuil": 4.5,
+  "texte": "#8c8c86"
+ },
+ {
+  "deplacement_clarte": 0.116,
+  "elements": 2,
+  "extraits": [
+   "Round 1 · Pesée officielle",
+   "[1]"
+  ],
+  "fond": "#e5decc",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "raging-bull.html": 2
+  },
+  "pire_ratio": 2.61,
+  "propose": "#795f20",
+  "seuil": 4.5,
+  "texte": "#a8842c"
+ },
+ {
+  "deplacement_clarte": 0.074,
+  "elements": 2,
+  "extraits": [
+   "Réalisation",
+   "Analyse sourcée · rédigée le 5 juillet 2026 ·"
+  ],
+  "fond": "#e5decc",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "raging-bull.html": 2
+  },
+  "pire_ratio": 3.41,
+  "propose": "#676259",
+  "seuil": 4.5,
+  "texte": "#7b756a"
+ },
+ {
+  "deplacement_clarte": 0.18,
+  "elements": 2,
+  "extraits": [
+   "DOSSIER N° 94/1999",
+   "NOM"
+  ],
+  "fond": "#d8d5c9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 2
+  },
+  "pire_ratio": 2.3,
+  "propose": "#5f5d52",
+  "seuil": 4.5,
+  "texte": "#8f8c7e"
+ },
+ {
+  "deplacement_clarte": 0.012,
+  "elements": 2,
+  "extraits": [
+   "Titre",
+   "Jean-Pierre Dardenne, The Guardian, cité par "
+  ],
+  "fond": "#d8d5c9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 2
+  },
+  "pire_ratio": 4.3,
+  "propose": "#9d3f0b",
+  "seuil": 4.5,
+  "texte": "#a3410b"
+ },
+ {
+  "deplacement_clarte": 0.064,
+  "elements": 2,
+  "extraits": [
+   "— pièce d'ouverture",
+   "Le mécanisme de la révélation finale, qui rec"
+  ],
+  "fond": "#e1d9c2",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 2
+  },
+  "pire_ratio": 3.46,
+  "propose": "#695e43",
+  "seuil": 4.5,
+  "texte": "#7d7050"
+ },
+ {
+  "deplacement_clarte": 0.014,
+  "elements": 2,
+  "extraits": [
+   "Confidentiel",
+   "Eyes only"
+  ],
+  "fond": "#ece3ca",
+  "nature": "opacite",
+  "opacite": 0.82,
+  "pages": {
+   "shutter-island.html": 2
+  },
+  "pire_ratio": 4.3,
+  "propose": "#a54a3f",
+  "seuil": 4.5,
+  "texte": "#aa4c41"
+ },
+ {
+  "deplacement_clarte": 0.13,
+  "elements": 2,
+  "extraits": [
+   "[18]",
+   "Katharine Hepburn"
+  ],
+  "fond": "#1a1916",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 2
+  },
+  "pire_ratio": 2.96,
+  "propose": "#d25c50",
+  "seuil": 4.5,
+  "texte": "#b23a2e"
+ },
+ {
+  "deplacement_clarte": 0.102,
+  "elements": 2,
+  "extraits": [
+   "— papiers du véhicule",
+   "Le film retient sa véritable destination — et"
+  ],
+  "fond": "#e2decc",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "sur-la-route-domaha.html": 2
+  },
+  "pire_ratio": 3.02,
+  "propose": "#6c614d",
+  "seuil": 4.5,
+  "texte": "#8a7c63"
+ },
+ {
+  "deplacement_clarte": 0.074,
+  "elements": 2,
+  "extraits": [
+   "Analyse compilée à partir de sources publique",
+   "Retour aux analyses"
+  ],
+  "fond": "#f1e9d8",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sur-la-route-domaha.html": 2
+  },
+  "pire_ratio": 3.38,
+  "propose": "#746853",
+  "seuil": 4.5,
+  "texte": "#8a7c63"
+ },
+ {
+  "deplacement_clarte": 0.142,
+  "elements": 2,
+  "extraits": [
+   "Ordre n°1 · État des forces",
+   "Réalisation"
+  ],
+  "fond": "#d3c9b1",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "waterloo.html": 2
+  },
+  "pire_ratio": 2.33,
+  "propose": "#695221",
+  "seuil": 4.5,
+  "texte": "#a07d33"
+ },
+ {
+  "deplacement_clarte": 0.214,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 5 juillet 2026 ·"
+  ],
+  "fond": "#ece7da",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.16,
+  "propose": "#596c64",
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "deplacement_clarte": 0.146,
+  "elements": 1,
+  "extraits": [
+   "Ch. I"
+  ],
+  "fond": "#ece7da",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.45,
+  "propose": "#81632c",
+  "seuil": 4.5,
+  "texte": "#b98d3f"
+ },
+ {
+  "deplacement_clarte": 0.21,
+  "elements": 1,
+  "extraits": [
+   "Analyse cinématographique"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.73,
+  "propose": "#d8bc8b",
+  "seuil": 4.5,
+  "texte": "#b98d3f"
+ },
+ {
+  "deplacement_clarte": 0.132,
+  "elements": 1,
+  "extraits": [
+   "≈≈≈"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 0.8,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 3.32,
+  "propose": "#d5bc8f",
+  "seuil": 4.5,
+  "texte": "#c39f5e"
+ },
+ {
+  "deplacement_clarte": 0.212,
+  "elements": 1,
+  "extraits": [
+   "Lot 1 · Acte de vente"
+  ],
+  "fond": "#f4efe3",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "bienvenue-a-suburbicon.html": 1
+  },
+  "pire_ratio": 2.33,
+  "propose": "#b84927",
+  "seuil": 4.5,
+  "texte": "#e0876b"
+ },
+ {
+  "deplacement_clarte": 0.16,
+  "elements": 1,
+  "extraits": [
+   "Union soviétique — 1964 — Lenfilm"
+  ],
+  "fond": "#434b50",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 2.96,
+  "propose": "#d6b28e",
+  "seuil": 4.5,
+  "texte": "#c08a52"
+ },
+ {
+  "deplacement_clarte": 0.152,
+  "elements": 1,
+  "extraits": [
+   "Sommaire"
+  ],
+  "fond": "#414a4f",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 3.02,
+  "propose": "#d5b08b",
+  "seuil": 4.5,
+  "texte": "#c08a52"
+ },
+ {
+  "deplacement_clarte": 0.13,
+  "elements": 1,
+  "extraits": [
+   "I"
+  ],
+  "fond": "#414a4f",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 3.1,
+  "propose": "#aeb9bb",
+  "seuil": 4.5,
+  "texte": "#8a9a9d"
+ },
+ {
+  "deplacement_clarte": 0.004,
+  "elements": 1,
+  "extraits": [
+   "Refuser le studio"
+  ],
+  "fond": "#eceeeb",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 4.45,
+  "propose": "#965f2c",
+  "seuil": 4.5,
+  "texte": "#98602c"
+ },
+ {
+  "deplacement_clarte": 0.034,
+  "elements": 1,
+  "extraits": [
+   "IndieWire, critique de 2025"
+  ],
+  "fond": "#eadfc3",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hamnet.html": 1
+  },
+  "pire_ratio": 3.9,
+  "propose": "#6f6242",
+  "seuil": 4.5,
+  "texte": "#7a6c48"
+ },
+ {
+  "deplacement_clarte": 1.0,
+  "elements": 1,
+  "extraits": [
+   "S"
+  ],
+  "fond": "#7a4a24",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 1
+  },
+  "pire_ratio": 2.52,
+  "propose": "#ffffff",
+  "seuil": 4.5,
+  "texte": "#15120f"
+ },
+ {
+  "deplacement_clarte": 0.176,
+  "elements": 1,
+  "extraits": [
+   "8"
+  ],
+  "fond": "#241e19",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 1
+  },
+  "pire_ratio": 2.74,
+  "propose": "#e55553",
+  "seuil": 4.5,
+  "texte": "#c1201d"
+ },
+ {
+  "deplacement_clarte": 0.006,
+  "elements": 1,
+  "extraits": [
+   "/"
+  ],
+  "fond": "#1b1815",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 1
+  },
+  "pire_ratio": 2.94,
+  "propose": "#c4201d",
+  "seuil": 3,
+  "texte": "#c1201d"
+ },
+ {
+  "deplacement_clarte": 0.372,
+  "elements": 1,
+  "extraits": [
+   "Norvège / France / Suède / Danemark · 128 min"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 1.6,
+  "propose": "#f4f4f5",
+  "seuil": 4.5,
+  "texte": "#8d939e"
+ },
+ {
+  "deplacement_clarte": 0.334,
+  "elements": 1,
+  "extraits": [
+   "Joachim Trier"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 1.74,
+  "propose": "#f9f3f1",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.17,
+  "elements": 1,
+  "extraits": [
+   "Prologue"
+  ],
+  "fond": "#f5f2ec",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 2.54,
+  "propose": "#a75a42",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.14,
+  "elements": 1,
+  "extraits": [
+   "Prologue"
+  ],
+  "fond": "#ffffff",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 2.84,
+  "propose": "#b26047",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.008,
+  "elements": 1,
+  "extraits": [
+   "Verdens verste menneske · « La pire personne "
+  ],
+  "fond": "#c98a77",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 4.39,
+  "propose": "#25324a",
+  "seuil": 4.5,
+  "texte": "#26344d"
+ },
+ {
+  "deplacement_clarte": 0.39,
+  "elements": 1,
+  "extraits": [
+   "Lordsburg"
+  ],
+  "fond": "#241a12",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 1,
+  "propose": "#a97a54",
+  "seuil": 4.5,
+  "texte": "#241a12"
+ },
+ {
+  "deplacement_clarte": 0.068,
+  "elements": 1,
+  "extraits": [
+   "[3]"
+  ],
+  "fond": "#ddcda9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 3.47,
+  "propose": "#3e5b75",
+  "seuil": 4.5,
+  "texte": "#4a6d8c"
+ },
+ {
+  "deplacement_clarte": 0.034,
+  "elements": 1,
+  "extraits": [
+   "[1]"
+  ],
+  "fond": "#e9dbbd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 3.97,
+  "propose": "#446481",
+  "seuil": 4.5,
+  "texte": "#4a6d8c"
+ },
+ {
+  "deplacement_clarte": 0.15,
+  "elements": 1,
+  "extraits": [
+   "3"
+  ],
+  "fond": "#eae0cd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 2.32,
+  "propose": "#825d1e",
+  "seuil": 4.5,
+  "texte": "#c08a2c"
+ },
+ {
+  "deplacement_clarte": 0.124,
+  "elements": 1,
+  "extraits": [
+   "1"
+  ],
+  "fond": "#f4ede1",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 2.61,
+  "propose": "#8d6520",
+  "seuil": 4.5,
+  "texte": "#c08a2c"
+ },
+ {
+  "deplacement_clarte": 0.108,
+  "elements": 1,
+  "extraits": [
+   "9"
+  ],
+  "fond": "#fbf6ec",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 2.82,
+  "propose": "#936a22",
+  "seuil": 4.5,
+  "texte": "#c08a2c"
+ },
+ {
+  "deplacement_clarte": 0.024,
+  "elements": 1,
+  "extraits": [
+   "I"
+  ],
+  "fond": "#1e3457",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 4.11,
+  "propose": "#ca912e",
+  "seuil": 4.5,
+  "texte": "#c08a2c"
+ },
+ {
+  "deplacement_clarte": 0.484,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 5 juillet 2026 ·"
+  ],
+  "fond": "#d9d6cf",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 1
+  },
+  "pire_ratio": 1,
+  "propose": "#635d4e",
+  "seuil": 4.5,
+  "texte": "#d9d6cf"
+ },
+ {
+  "deplacement_clarte": 0.184,
+  "elements": 1,
+  "extraits": [
+   "A. O. Scott, New York Times, cité par Wikipéd"
+  ],
+  "fond": "#cfccc6",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 1
+  },
+  "pire_ratio": 2.25,
+  "propose": "#5b564f",
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "deplacement_clarte": 0.072,
+  "elements": 1,
+  "extraits": [
+   "Claude Beylie, Cahiers du Cinéma, cité par Mo"
+  ],
+  "fond": "#e1d7bf",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-doulos.html": 1
+  },
+  "pire_ratio": 3.38,
+  "propose": "#645e4f",
+  "seuil": 4.5,
+  "texte": "#79715f"
+ },
+ {
+  "deplacement_clarte": 0.004,
+  "elements": 1,
+  "extraits": [
+   "8 FÉV.1963"
+  ],
+  "fond": "#ece5d5",
+  "nature": "opacite",
+  "opacite": 0.85,
+  "pages": {
+   "le-doulos.html": 1
+  },
+  "pire_ratio": 4.43,
+  "propose": "#566a76",
+  "seuil": 4.5,
+  "texte": "#576b77"
+ },
+ {
+  "deplacement_clarte": 0.144,
+  "elements": 1,
+  "extraits": [
+   "Signe I"
+  ],
+  "fond": "#e9dfc8",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 2.33,
+  "propose": "#7c5f1f",
+  "seuil": 4.5,
+  "texte": "#b78c2e"
+ },
+ {
+  "deplacement_clarte": 0.166,
+  "elements": 1,
+  "extraits": [
+   "[3]"
+  ],
+  "fond": "#171310",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 2.36,
+  "propose": "#bd663a",
+  "seuil": 4.5,
+  "texte": "#7c4326"
+ },
+ {
+  "deplacement_clarte": 0.09,
+  "elements": 1,
+  "extraits": [
+   "Prague · règne de Rodolphe II · d'après la lé"
+  ],
+  "fond": "#553928",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 3.4,
+  "propose": "#d0a443",
+  "seuil": 4.5,
+  "texte": "#b78c2e"
+ },
+ {
+  "deplacement_clarte": 0.014,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#171310",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 4.28,
+  "propose": "#847d6f",
+  "seuil": 4.5,
+  "texte": "#80796c"
+ },
+ {
+  "deplacement_clarte": 0.102,
+  "elements": 1,
+  "extraits": [
+   "terminus"
+  ],
+  "fond": "#d6d9d5",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-samourai.html": 1
+  },
+  "pire_ratio": 3.09,
+  "propose": "#566069",
+  "seuil": 4.5,
+  "texte": "#6d7a86"
+ },
+ {
+  "deplacement_clarte": 0.08,
+  "elements": 1,
+  "extraits": [
+   "Sources effectivement consultées lors de la p"
+  ],
+  "fond": "#dfe2dc",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "le-samourai.html": 1
+  },
+  "pire_ratio": 3.36,
+  "propose": "#5b6670",
+  "seuil": 4.5,
+  "texte": "#6d7a86"
+ },
+ {
+  "deplacement_clarte": 0.266,
+  "elements": 1,
+  "extraits": [
+   "[1]"
+  ],
+  "fond": "#0a0806",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "les-deux-orphelines.html": 1
+  },
+  "pire_ratio": 1.74,
+  "propose": "#4c79bb",
+  "seuil": 4.5,
+  "texte": "#233a5c"
+ },
+ {
+  "deplacement_clarte": 0.006,
+  "elements": 1,
+  "extraits": [
+   "01"
+  ],
+  "fond": "#1e1812",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "les-deux-orphelines.html": 1
+  },
+  "pire_ratio": 4.41,
+  "propose": "#ab7730",
+  "seuil": 4.5,
+  "texte": "#a9752f"
+ },
+ {
+  "deplacement_clarte": 0.208,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#ebebe8",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "moi-daniel-blake.html": 1
+  },
+  "pire_ratio": 2.21,
+  "propose": "#646b6f",
+  "seuil": 4.5,
+  "texte": "#9aa0a4"
+ },
+ {
+  "deplacement_clarte": 0.032,
+  "elements": 1,
+  "extraits": [
+   "Royaume-Uni / France · 100 minutes · Couleur "
+  ],
+  "fond": "#373e44",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "moi-daniel-blake.html": 1
+  },
+  "pire_ratio": 4.1,
+  "propose": "#a3a8ac",
+  "seuil": 4.5,
+  "texte": "#9aa0a4"
+ },
+ {
+  "deplacement_clarte": 0.12,
+  "elements": 1,
+  "extraits": [
+   "Réalisation"
+  ],
+  "fond": "#f0eee8",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "nouvelle-vague.html": 1
+  },
+  "pire_ratio": 2.94,
+  "propose": "#6f6c64",
+  "seuil": 4.5,
+  "texte": "#8e8b82"
+ },
+ {
+  "deplacement_clarte": 0.406,
+  "elements": 1,
+  "extraits": [
+   "Royaume-Uni — 1951 — Technicolor"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1,
+  "propose": "#523f21",
+  "seuil": 4.5,
+  "texte": "#c9a97a"
+ },
+ {
+  "deplacement_clarte": 0.604,
+  "elements": 1,
+  "extraits": [
+   "Pandora"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1.86,
+  "propose": "#705926",
+  "seuil": 3,
+  "texte": "#f2ead9"
+ },
+ {
+  "deplacement_clarte": 0.268,
+  "elements": 1,
+  "extraits": [
+   "I"
+  ],
+  "fond": "#f2ead9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1.86,
+  "propose": "#856536",
+  "seuil": 4.5,
+  "texte": "#c9a97a"
+ },
+ {
+  "deplacement_clarte": 0.144,
+  "elements": 1,
+  "extraits": [
+   "Bibi Andersson"
+  ],
+  "fond": "#e5e5e2",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "persona.html": 1
+  },
+  "pire_ratio": 2.68,
+  "propose": "#676762",
+  "seuil": 4.5,
+  "texte": "#8c8c86"
+ },
+ {
+  "deplacement_clarte": 0.136,
+  "elements": 1,
+  "extraits": [
+   "[4]"
+  ],
+  "fond": "#ddd4bd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "raging-bull.html": 1
+  },
+  "pire_ratio": 2.37,
+  "propose": "#71591e",
+  "seuil": 4.5,
+  "texte": "#a8842c"
+ },
+ {
+  "deplacement_clarte": 0.096,
+  "elements": 1,
+  "extraits": [
+   "Martin Scorsese, cité par Cinephilia & Beyond"
+  ],
+  "fond": "#ddd4bd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "raging-bull.html": 1
+  },
+  "pire_ratio": 3.1,
+  "propose": "#615c53",
+  "seuil": 4.5,
+  "texte": "#7b756a"
+ },
+ {
+  "deplacement_clarte": 0.138,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#eef0ef",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "retour-a-seoul.html": 1
+  },
+  "pire_ratio": 2.78,
+  "propose": "#676e76",
+  "seuil": 4.5,
+  "texte": "#8a9199"
+ },
+ {
+  "deplacement_clarte": 0.138,
+  "elements": 1,
+  "extraits": [
+   "Dossier d'adoption · Hammond · réf. K-85"
+  ],
+  "fond": "#452634",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "retour-a-seoul.html": 1
+  },
+  "pire_ratio": 2.94,
+  "propose": "#e27491",
+  "seuil": 4.5,
+  "texte": "#d63a63"
+ },
+ {
+  "deplacement_clarte": 0.024,
+  "elements": 1,
+  "extraits": [
+   "France / Allemagne / Belgique / Qatar / Cambo"
+  ],
+  "fond": "#452634",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "retour-a-seoul.html": 1
+  },
+  "pire_ratio": 4.17,
+  "propose": "#91979f",
+  "seuil": 4.5,
+  "texte": "#8a9199"
+ },
+ {
+  "deplacement_clarte": 0.176,
+  "elements": 1,
+  "extraits": [
+   "PRÉCARITÉ"
+  ],
+  "fond": "#d8d5c9",
+  "nature": "opacite",
+  "opacite": 0.82,
+  "pages": {
+   "rosetta.html": 1
+  },
+  "pire_ratio": 2.31,
+  "propose": "#94471b",
+  "seuil": 4.5,
+  "texte": "#d96d30"
+ },
+ {
+  "deplacement_clarte": 0.124,
+  "elements": 1,
+  "extraits": [
+   "01"
+  ],
+  "fond": "#d8d5c9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 1
+  },
+  "pire_ratio": 2.7,
+  "propose": "#9e3f0b",
+  "seuil": 4.5,
+  "texte": "#d9560f"
+ },
+ {
+  "deplacement_clarte": 1.0,
+  "elements": 1,
+  "extraits": [
+   "MONASTÈRE"
+  ],
+  "fond": "#1a1914",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 1.11,
+  "propose": "#ffffff",
+  "seuil": 4.5,
+  "texte": "#0c0c0b"
+ },
+ {
+  "deplacement_clarte": 0.132,
+  "elements": 1,
+  "extraits": [
+   "Rouges"
+  ],
+  "fond": "#26251f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 1.9,
+  "propose": "#d22c2c",
+  "seuil": 3,
+  "texte": "#9a2020"
+ },
+ {
+  "deplacement_clarte": 0.178,
+  "elements": 1,
+  "extraits": [
+   "01"
+  ],
+  "fond": "#050504",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 2.53,
+  "propose": "#d73e3e",
+  "seuil": 4.5,
+  "texte": "#9a2020"
+ },
+ {
+  "deplacement_clarte": 0.096,
+  "elements": 1,
+  "extraits": [
+   "Titre de la critique cannoise de Bulles de Cu"
+  ],
+  "fond": "#ffffff",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sans-filtre.html": 1
+  },
+  "pire_ratio": 3.02,
+  "propose": "#8e7332",
+  "seuil": 4.5,
+  "texte": "#b2903f"
+ },
+ {
+  "deplacement_clarte": 0.066,
+  "elements": 1,
+  "extraits": [
+   "Analyse cinématographique · M/Y Christina O"
+  ],
+  "fond": "#1d3d5c",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "sans-filtre.html": 1
+  },
+  "pire_ratio": 3.71,
+  "propose": "#c1a051",
+  "seuil": 4.5,
+  "texte": "#b2903f"
+ },
+ {
+  "deplacement_clarte": 0.722,
+  "elements": 1,
+  "extraits": [
+   "Ashecliffe Hospital — Service des dossiers"
+  ],
+  "fond": "#a88f61",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 1
+  },
+  "pire_ratio": 2.42,
+  "propose": "#332b12",
+  "seuil": 4.5,
+  "texte": "#ece3ca"
+ },
+ {
+  "deplacement_clarte": 0.074,
+  "elements": 1,
+  "extraits": [
+   "Roger Ebert, critique de 2010"
+  ],
+  "fond": "#e0d4b2",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 1
+  },
+  "pire_ratio": 3.31,
+  "propose": "#665b41",
+  "seuil": 4.5,
+  "texte": "#7d7050"
+ },
+ {
+  "deplacement_clarte": 0.056,
+  "elements": 1,
+  "extraits": [
+   "Sources consultées"
+  ],
+  "fond": "#c9b384",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 1
+  },
+  "pire_ratio": 3.69,
+  "propose": "#85251e",
+  "seuil": 4.5,
+  "texte": "#9c2b23"
+ },
+ {
+  "deplacement_clarte": 0.046,
+  "elements": 1,
+  "extraits": [
+   "Bulletin — chiffres à l'appui"
+  ],
+  "fond": "#232c2d",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "shutter-island.html": 1
+  },
+  "pire_ratio": 3.7,
+  "propose": "#bd8723",
+  "seuil": 4.5,
+  "texte": "#a9791f"
+ },
+ {
+  "deplacement_clarte": 0.112,
+  "elements": 1,
+  "extraits": [
+   "Sources consultées"
+  ],
+  "fond": "#141311",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 1
+  },
+  "pire_ratio": 3.13,
+  "propose": "#d05549",
+  "seuil": 4.5,
+  "texte": "#b23a2e"
+ },
+ {
+  "deplacement_clarte": 0.062,
+  "elements": 1,
+  "extraits": [
+   "Table lumineuse — chiffres à l'appui"
+  ],
+  "fond": "#e8e2d2",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 1
+  },
+  "pire_ratio": 3.55,
+  "propose": "#69655b",
+  "seuil": 4.5,
+  "texte": "#7a756a"
+ },
+ {
+  "deplacement_clarte": 0.044,
+  "elements": 1,
+  "extraits": [
+   "Variety, critique de 1959"
+  ],
+  "fond": "#1a1916",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 1
+  },
+  "pire_ratio": 3.83,
+  "propose": "#868174",
+  "seuil": 4.5,
+  "texte": "#7a756a"
+ },
+ {
+  "deplacement_clarte": 0.118,
+  "elements": 1,
+  "extraits": [
+   "[5]"
+  ],
+  "fond": "#171410",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soy-cuba.html": 1
+  },
+  "pire_ratio": 3.18,
+  "propose": "#e34539",
+  "seuil": 4.5,
+  "texte": "#c3281c"
+ },
+ {
+  "deplacement_clarte": 0.034,
+  "elements": 1,
+  "extraits": [
+   "[6]"
+  ],
+  "fond": "#e3d6b4",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soy-cuba.html": 1
+  },
+  "pire_ratio": 3.99,
+  "propose": "#b4251a",
+  "seuil": 4.5,
+  "texte": "#c3281c"
+ },
+ {
+  "deplacement_clarte": 0.012,
+  "elements": 1,
+  "extraits": [
+   "Avis — contenu sensible"
+  ],
+  "fond": "#eedcc9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soy-cuba.html": 1
+  },
+  "pire_ratio": 4.32,
+  "propose": "#be271b",
+  "seuil": 4.5,
+  "texte": "#c3281c"
+ },
+ {
+  "deplacement_clarte": 0.038,
+  "elements": 1,
+  "extraits": [
+   "Le plan final — env. 7 minutes, sans coupe ni"
+  ],
+  "fond": "#20281f",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sud.html": 1
+  },
+  "pire_ratio": 3.98,
+  "propose": "#938b7b",
+  "seuil": 4.5,
+  "texte": "#8a8271"
+ },
+ {
+  "deplacement_clarte": 0.016,
+  "elements": 1,
+  "extraits": [
+   "Avis — contenu sensible"
+  ],
+  "fond": "#eadecd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sud.html": 1
+  },
+  "pire_ratio": 4.24,
+  "propose": "#9a4e36",
+  "seuil": 4.5,
+  "texte": "#a05138"
+ },
+ {
+  "deplacement_clarte": 0.112,
+  "elements": 1,
+  "extraits": [
+   "Consensus critique, Rotten Tomatoes"
+  ],
+  "fond": "#e4d9bf",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sur-la-route-domaha.html": 1
+  },
+  "pire_ratio": 2.91,
+  "propose": "#695e4b",
+  "seuil": 4.5,
+  "texte": "#8a7c63"
+ },
+ {
+  "deplacement_clarte": 0.078,
+  "elements": 1,
+  "extraits": [
+   "84MIN"
+  ],
+  "fond": "#f1e9d8",
+  "nature": "opacite",
+  "opacite": 0.9,
+  "pages": {
+   "sur-la-route-domaha.html": 1
+  },
+  "pire_ratio": 3.39,
+  "propose": "#a05535",
+  "seuil": 4.5,
+  "texte": "#be653f"
+ },
+ {
+  "deplacement_clarte": 0.08,
+  "elements": 1,
+  "extraits": [
+   "Plateau de Mont-Saint-Jean · 18 juin 1815"
+  ],
+  "fond": "#3f321b",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "waterloo.html": 1
+  },
+  "pire_ratio": 3.25,
+  "propose": "#bf953d",
+  "seuil": 4.5,
+  "texte": "#a07d33"
+ },
+ {
+  "deplacement_clarte": 0.064,
+  "elements": 1,
+  "extraits": [
+   "Italie / URSS · 134 min · Couleur"
+  ],
+  "fond": "#3f321b",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "waterloo.html": 1
+  },
+  "pire_ratio": 3.71,
+  "propose": "#a39b89",
+  "seuil": 4.5,
+  "texte": "#958b77"
+ }
+]
