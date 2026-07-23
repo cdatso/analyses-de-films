@@ -199,13 +199,31 @@ def main():
                                    "aucune valeur ne tient sur %s"
                                    % fond_racine))
                     continue
+                # La substitution doit porter sur la declaration de :root, et
+                # sur elle SEULE. Sans cet ancrage, elle mordait sur la
+                # premiere occurrence rencontree -- y compris une regle
+                # contextuelle posee par une passe precedente, dont la valeur
+                # aurait ete remplacee par celle du contexte oppose. Le bloc
+                # :root est isole d'abord ; le remplacement s'y fait, puis le
+                # bloc est reinsere a sa place.
+                m_root = re.search(r":root\s*\{", t)
+                if not m_root:
+                    sautes.append((nom_page, var, "pas de bloc :root"))
+                    continue
+                debut = m_root.end()
+                fin_root = t.find("}", debut)
+                bloc_root = t[debut:fin_root]
                 decl = re.compile(r"(" + re.escape(cible) + r"\s*:\s*)"
                                   + re.escape(x["valeur"]) + r"\s*;", re.I)
-                if not decl.search(t):
+                if not decl.search(bloc_root):
                     sautes.append((nom_page, var,
-                                   "declaration de %s introuvable" % cible))
+                                   "%s ne vaut pas %s dans :root"
+                                   % (cible, x["valeur"])))
                     continue
-                t = decl.sub(lambda m: m.group(1) + racine + ";", t, count=1)
+                t = (t[:debut]
+                     + decl.sub(lambda m: m.group(1) + racine + ";",
+                                bloc_root, count=1)
+                     + t[fin_root:])
                 print("  %-26s %-20s :root %s -> %s (pour %s)"
                       % (nom_page[:-5], cible, x["valeur"], racine,
                          fond_racine))
@@ -234,7 +252,18 @@ def main():
                     sautes.append((nom_page, var,
                                    "aucune valeur ne tient sur %s" % fond_hex))
                     continue
-                regles.append((", ".join(porteurs), cible, valeur, fond_hex,
+                # IDEMPOTENCE. Sans ce garde-fou, une seconde execution
+                # reecrit les memes selecteurs avec des valeurs a un
+                # centieme pres : le bloc de palette contextuelle doublerait
+                # a chaque passe. On ne redefinit jamais deux fois le meme
+                # couple (selecteur, variable).
+                selecteur = ", ".join(porteurs)
+                if re.search(re.escape(selecteur) + r"\s*\{\s*"
+                             + re.escape(cible) + r"\s*:", t):
+                    sautes.append((nom_page, var,
+                                   "deja redefinie sur %s" % selecteur))
+                    continue
+                regles.append((selecteur, cible, valeur, fond_hex,
                                f["elements"]))
                 faits += 1
 

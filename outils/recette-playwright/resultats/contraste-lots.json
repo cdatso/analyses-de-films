@@ -58,25 +58,6 @@
   "texte": "#f4efe3"
  },
  {
-  "deplacement_clarte": 0.306,
-  "elements": 3,
-  "extraits": [
-   "Retour aux analyses",
-   "Grigori Kozintsev · d'après la traduction de ",
-   "Analyse — Claude Opus, session supervisée du "
-  ],
-  "fond": "#434b50",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "hamlet.html": 3
-  },
-  "pire_ratio": 1.69,
-  "propose": "#b0bbb9",
-  "seuil": 4.5,
-  "texte": "#606f6d"
- },
- {
   "deplacement_clarte": 0.14,
   "elements": 3,
   "extraits": [
@@ -96,25 +77,6 @@
   "texte": "#8d939e"
  },
  {
-  "deplacement_clarte": 0.18,
-  "elements": 3,
-  "extraits": [
-   "La notte di San Lorenzo",
-   "Paolo et Vittorio Taviani · Photographie de F",
-   "Analyse — Claude Opus, session supervisée du "
-  ],
-  "fond": "#1f3456",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "la-nuit-de-san-lorenzo.html": 3
-  },
-  "pire_ratio": 2.38,
-  "propose": "#8a9cbb",
-  "seuil": 4.5,
-  "texte": "#566d93"
- },
- {
   "deplacement_clarte": 0.002,
   "elements": 3,
   "extraits": [
@@ -132,25 +94,6 @@
   "propose": "#6a6f78",
   "seuil": 4.5,
   "texte": "#6a7079"
- },
- {
-  "deplacement_clarte": 0.058,
-  "elements": 3,
-  "extraits": [
-   "Analyse cinématographique — drame social · 19",
-   "JEAN-PIERRE & LUC DARDENNE — 1999 — BELGIQUE ",
-   "06:40"
-  ],
-  "fond": "#26251f",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "rosetta.html": 3
-  },
-  "pire_ratio": 3.63,
-  "propose": "#ed5e11",
-  "seuil": 4.5,
-  "texte": "#d1530f"
  },
  {
   "deplacement_clarte": 0.002,
@@ -208,6 +151,24 @@
   "texte": "#5f6e71"
  },
  {
+  "deplacement_clarte": 0.306,
+  "elements": 2,
+  "extraits": [
+   "Retour aux analyses",
+   "Grigori Kozintsev · d'après la traduction de "
+  ],
+  "fond": "#434b50",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 2
+  },
+  "pire_ratio": 1.69,
+  "propose": "#b0bbb9",
+  "seuil": 4.5,
+  "texte": "#606f6d"
+ },
+ {
   "deplacement_clarte": 0.278,
   "elements": 2,
   "extraits": [
@@ -224,6 +185,24 @@
   "propose": "#dd9086",
   "seuil": 4.5,
   "texte": "#a63d2f"
+ },
+ {
+  "deplacement_clarte": 0.18,
+  "elements": 2,
+  "extraits": [
+   "La notte di San Lorenzo",
+   "Paolo et Vittorio Taviani · Photographie de F"
+  ],
+  "fond": "#1f3456",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 2
+  },
+  "pire_ratio": 2.38,
+  "propose": "#8a9cbb",
+  "seuil": 4.5,
+  "texte": "#566d93"
  },
  {
   "deplacement_clarte": 0.158,
@@ -438,7 +417,24 @@
   "texte": "#e0876b"
  },
  {
-  "deplacement_clarte": 0.01,
+  "deplacement_clarte": 0.384,
+  "elements": 1,
+  "extraits": [
+   "Analyse — Claude Opus, session supervisée du "
+  ],
+  "fond": "#2b3235",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 1.04,
+  "propose": "#8c9b99",
+  "seuil": 4.5,
+  "texte": "#2e3534"
+ },
+ {
+  "deplacement_clarte": 0.006,
   "elements": 1,
   "extraits": [
    "Union soviétique — 1964 — Lenfilm"
@@ -449,27 +445,10 @@
   "pages": {
    "hamlet.html": 1
   },
-  "pire_ratio": 4.41,
-  "propose": "#d6b38f",
+  "pire_ratio": 4.45,
+  "propose": "#d6b38e",
   "seuil": 4.5,
-  "texte": "#d5b08b"
- },
- {
-  "deplacement_clarte": 0.002,
-  "elements": 1,
-  "extraits": [
-   "Sommaire"
-  ],
-  "fond": "#414a4f",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "hamlet.html": 1
-  },
-  "pire_ratio": 4.49,
-  "propose": "#d5b18c",
-  "seuil": 4.5,
-  "texte": "#d5b08b"
+  "texte": "#d5b18c"
  },
  {
   "deplacement_clarte": 1.0,
@@ -623,6 +602,23 @@
   "propose": "#a97a54",
   "seuil": 4.5,
   "texte": "#241a12"
+ },
+ {
+  "deplacement_clarte": 0.408,
+  "elements": 1,
+  "extraits": [
+   "Analyse — Claude Opus, session supervisée du "
+  ],
+  "fond": "#1f3456",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 1.04,
+  "propose": "#8a9dbb",
+  "seuil": 4.5,
+  "texte": "#2b374a"
  },
  {
   "deplacement_clarte": 0.14,
@@ -863,7 +859,7 @@
   "texte": "#676e76"
  },
  {
-  "deplacement_clarte": 0.16,
+  "deplacement_clarte": 0.22,
   "elements": 1,
   "extraits": [
    "PRÉCARITÉ"
@@ -874,27 +870,10 @@
   "pages": {
    "rosetta.html": 1
   },
-  "pire_ratio": 2.44,
-  "propose": "#914820",
+  "pire_ratio": 2.05,
+  "propose": "#9a4111",
   "seuil": 4.5,
-  "texte": "#d26a30"
- },
- {
-  "deplacement_clarte": 0.018,
-  "elements": 1,
-  "extraits": [
-   "Avertissement"
-  ],
-  "fond": "#20150d",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "rosetta.html": 1
-  },
-  "pire_ratio": 4.22,
-  "propose": "#da5610",
-  "seuil": 4.5,
-  "texte": "#d1530f"
+  "texte": "#e97332"
  },
  {
   "deplacement_clarte": 1.0,
@@ -965,7 +944,7 @@
   "texte": "#866d30"
  },
  {
-  "deplacement_clarte": 0.074,
+  "deplacement_clarte": 0.002,
   "elements": 1,
   "extraits": [
    "Table lumineuse — chiffres à l'appui"
@@ -976,61 +955,10 @@
   "pages": {
    "soudain-lete-dernier.html": 1
   },
-  "pire_ratio": 3.4,
-  "propose": "#69655b",
+  "pire_ratio": 4.49,
+  "propose": "#68645b",
   "seuil": 4.5,
-  "texte": "#7d786d"
- },
- {
-  "deplacement_clarte": 0.034,
-  "elements": 1,
-  "extraits": [
-   "Variety, critique de 1959"
-  ],
-  "fond": "#1a1916",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soudain-lete-dernier.html": 1
-  },
-  "pire_ratio": 4,
-  "propose": "#868175",
-  "seuil": 4.5,
-  "texte": "#7d786d"
- },
- {
-  "deplacement_clarte": 0.046,
-  "elements": 1,
-  "extraits": [
-   "[6]"
-  ],
-  "fond": "#e3d6b4",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soy-cuba.html": 1
-  },
-  "pire_ratio": 3.81,
-  "propose": "#b42519",
-  "seuil": 4.5,
-  "texte": "#c9291c"
- },
- {
-  "deplacement_clarte": 0.026,
-  "elements": 1,
-  "extraits": [
-   "Avis — contenu sensible"
-  ],
-  "fond": "#eedcc9",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soy-cuba.html": 1
-  },
-  "pire_ratio": 4.12,
-  "propose": "#bd271a",
-  "seuil": 4.5,
-  "texte": "#c9291c"
+  "texte": "#69655b"
  },
  {
   "deplacement_clarte": 0.002,

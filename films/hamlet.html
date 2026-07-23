@@ -39,7 +39,7 @@
     --rouille:#98602c;
     --rouille-texte:#965f2c;
     --rouille-clair:#c08a52;
-    --rouille-clair-texte:#d5b08b;
+    --rouille-clair-texte:#d5b18c;
     --ombre:rgba(35,40,43,0.16);
   }
 
@@ -389,6 +389,12 @@
   nav.grille{ --brume:#c9d0cf; }   /* sur #414a4f, 10 element(s) */
   nav.grille{ --mer:#b0bbbd; }   /* sur #414a4f, 10 element(s) */
   figure.poster, footer{ --mer:#b0bbbd; }   /* sur #23282b, 2 element(s) */
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.provenance{ --brume:#2e3534; }   /* sur #979c9d, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

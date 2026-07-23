@@ -465,6 +465,14 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.edge-code{ --silver-texte:#827d71; }   /* sur #141311, 9 element(s) */
+  div.pinned{ --silver-texte:#868175; }   /* sur #1a1916, 1 element(s) */
+  div.lighttable{ --silver-texte:#69655b; }   /* sur #e8e2d2, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">
