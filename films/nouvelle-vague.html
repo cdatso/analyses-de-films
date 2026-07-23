@@ -23,6 +23,7 @@
     --carbone-doux:#37352f;
     --gris-labo:#6f6c64;
     --kodak:#d3a92c;
+    --kodak-texte:#83691b;
     --ligne:rgba(29,28,26,0.18);
     --ligne-claire:rgba(240,238,232,0.18);
   }
@@ -72,14 +73,14 @@
     text-decoration:none;
     margin-bottom:2rem;
   }
-  .back-link:hover{ color:var(--kodak); }
+  .back-link:hover{ color:var(--kodak-texte); }
   .prod-line{
     display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.4rem 1.5rem;
     font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--kodak);
+    color:var(--kodak-texte);
     border:1px dashed rgba(211,169,44,0.5);
     padding:0.5rem 0.9rem;
     margin-bottom:1.9rem;
@@ -137,7 +138,7 @@
   @media (max-width:600px){ nav.plandetravail ol{ columns:1; } }
   nav.plandetravail li{ margin-bottom:0.35rem; }
   nav.plandetravail a{ color:var(--carbone); text-decoration:none; border-bottom:1px solid var(--ligne); }
-  nav.plandetravail a:hover{ color:var(--kodak); border-color:var(--kodak); }
+  nav.plandetravail a:hover{ color:var(--kodak-texte); border-color:var(--kodak); }
 
   /* ---------- CORPS ---------- */
   main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
@@ -148,7 +149,7 @@
     font-size:0.66rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--kodak);
+    color:var(--kodak-texte);
     display:block;
     margin-bottom:0.25rem;
   }
@@ -187,14 +188,14 @@
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
-    color:var(--kodak);
+    color:var(--kodak-texte);
   }
 
   sup.fn{ line-height:0; }
   sup.fn a{
     font-family:var(--mono);
     font-size:0.62rem;
-    color:var(--kodak);
+    color:var(--kodak-texte);
     text-decoration:none;
     padding:0 0.1rem;
   }
@@ -258,6 +259,13 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  header.amorce{ --kodak-texte:#d3a92c; }   /* sur #1d1c1a, 3 element(s) */
+  header.amorce, footer.fin{ --gris-labo:#87837a; }   /* sur #1d1c1a, 2 element(s) */
 </style>
 </head>
 <body data-volet="critique">

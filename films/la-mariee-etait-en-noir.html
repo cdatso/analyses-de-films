@@ -22,6 +22,7 @@
     --noir:#0e0d0c;
     --noir-doux:#2e2c29;
     --voile:#a5a19a;
+    --voile-texte:#716c64;
     --lys:#ffffff;
     --sang-seche:#6e2f2a;
     --ligne:rgba(14,13,12,0.16);
@@ -64,7 +65,7 @@
   .fairepart-inner{ max-width:720px; margin:0 auto; }
   .back-link{
     display:inline-block;
-    color:var(--voile);
+    color:var(--voile-texte);
     font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
@@ -77,7 +78,7 @@
     width:64px; height:1px; background:var(--voile);
     margin:0 auto 2.2rem;
   }
-  .fairepart .mono{ color:var(--voile); }
+  .fairepart .mono{ color:var(--voile-texte); }
   h1.title{
     font-family:var(--serif);
     font-weight:400;
@@ -100,7 +101,7 @@
     font-size:0.66rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
     border-top:1px solid var(--ligne-claire);
     padding-top:1.3rem;
   }
@@ -111,7 +112,7 @@
     font-size:0.64rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
 
   /* ---------- SOMMAIRE ---------- */
@@ -181,7 +182,7 @@
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
 
   sup.fn{ line-height:0; }
@@ -221,7 +222,7 @@
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--voile);
+    color:var(--voile-texte);
     margin-bottom:0.15rem;
   }
   .etat-civil .value{ font-size:0.93rem; color:var(--noir); }
@@ -241,7 +242,7 @@
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
 
   /* Substitution typographique v2 (P-20, P-26) : titrage et
@@ -249,6 +250,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  header.fairepart{ --voile-texte:#a5a19a; }   /* sur #0e0d0c, 7 element(s) */
 </style>
 </head>
 <body data-volet="critique">

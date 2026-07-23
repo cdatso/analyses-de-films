@@ -26,6 +26,7 @@
     --tint-red:#7c2320;
     --tint-red-deep:#571816;
     --tint-blue:#233a5c;
+    --tint-blue-texte:#233a5c;
     --tint-blue-deep:#182740;
     --gold:#c9a227;
     --gold-dim:#8f731c;
@@ -246,7 +247,7 @@
   sup.fn a{
     font-family:var(--mono);
     font-size:0.68rem;
-    color:var(--tint-blue);
+    color:var(--tint-blue-texte);
     text-decoration:none;
     padding:0 0.1rem;
   }
@@ -444,6 +445,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.crosscut{ --tint-blue-texte:#4c79bb; }   /* sur #0a0806, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

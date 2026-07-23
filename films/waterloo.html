@@ -262,6 +262,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  header.carte-titre{ --laiton:#ad8736; }   /* sur #2e2517, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

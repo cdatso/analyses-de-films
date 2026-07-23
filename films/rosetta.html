@@ -20,9 +20,10 @@
     --concrete:#d8d5c9;
     --concrete-dim:#c2bfb0;
     --concrete-dark:#8f8c7e;
+    --concrete-dark-texte:#5f5d52;
     --paper:#eeece3;
     --vest:#d9560f;
-    --vest-texte:#9e3f0b;
+    --vest-texte:#d1530f;
     --vest-deep:#a3410b;
     --vest-deep-texte:#9d3f0b;
     --vest-pale:#f2c9a8;
@@ -91,7 +92,7 @@
     font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.1em;
-    color:var(--concrete-dark);
+    color:var(--concrete-dark-texte);
     border-bottom:1px solid var(--line-dark);
     padding-bottom:0.5rem;
     margin-bottom:0.7rem;
@@ -107,7 +108,7 @@
   }
   .id-card .silhouette svg{ width:44px; height:60px; }
   .id-card .id-fields{ font-family:var(--mono); font-size:0.62rem; line-height:1.9; color:var(--ink); }
-  .id-card .id-fields b{ color:var(--concrete-dark); font-weight:600; display:inline-block; width:78px; }
+  .id-card .id-fields b{ color:var(--concrete-dark-texte); font-weight:600; display:inline-block; width:78px; }
   .id-card .barcode{
     margin-top:0.8rem;
     height:20px;
@@ -201,7 +202,7 @@
   section > .wrap > p{ max-width:66ch; }
   .lead{
     font-size:1.08rem; font-style:italic;
-    color:var(--concrete-dark);
+    color:var(--concrete-dark-texte);
     border-left:3px solid var(--vest);
     padding-left:1rem;
     margin-bottom:1.5rem;
@@ -333,7 +334,7 @@
   #sources a:hover{ text-decoration:underline; }
 
   footer{
-    background:var(--ink-deep); color:var(--concrete-dark);
+    background:var(--ink-deep); color:var(--concrete-dark-texte);
     text-align:center; padding:2rem 1.6rem 2.4rem;
     font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em;
   }
@@ -343,6 +344,13 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  span.tag{ --vest-texte:#9e3f0b; }   /* sur #d8d5c9, 10 element(s) */
+  footer{ --concrete-dark-texte:#8f8c7e; }   /* sur #100f0d, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

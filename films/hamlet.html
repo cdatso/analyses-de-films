@@ -30,8 +30,8 @@
     --granit-2:#31383c;
     --granit-3:#414a4f;
     --ardoise:#5d686d;
-    --mer:#b0bbbd;
-    --brume:#c9d0cf;
+    --mer:#5f6e71;
+    --brume:#606f6d;
     --papier:#eceeeb;
     --papier-2:#dfe3e0;
     --encre:#1b1f21;
@@ -39,6 +39,7 @@
     --rouille:#98602c;
     --rouille-texte:#965f2c;
     --rouille-clair:#c08a52;
+    --rouille-clair-texte:#d5b08b;
     --ombre:rgba(35,40,43,0.16);
   }
 
@@ -106,7 +107,7 @@
     padding-bottom:2px;
     margin-bottom:2.8rem;
   }
-  .retour:hover{ color:var(--rouille-clair); border-color:var(--rouille-clair); }
+  .retour:hover{ color:var(--rouille-clair-texte); border-color:var(--rouille-clair); }
 
   .cartel{
     font-family:var(--sans);
@@ -116,7 +117,7 @@
     text-transform:uppercase;
   }
 
-  header.dalle .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+  header.dalle .cartel{ color:var(--rouille-clair-texte); display:block; margin-bottom:1.1rem; }
 
   header.dalle h1{
     font-family:var(--serif);
@@ -170,7 +171,7 @@
     color:var(--brume);
   }
   nav.grille .inner{ max-width:780px; margin:0 auto; }
-  nav.grille .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+  nav.grille .cartel{ color:var(--rouille-clair-texte); display:block; margin-bottom:1.1rem; }
   nav.grille ol{
     list-style:none;
     margin:0; padding:0;
@@ -186,7 +187,7 @@
     font-size:1rem;
     border-bottom:1px solid rgba(201,208,207,0.13);
   }
-  nav.grille a:hover{ color:var(--rouille-clair); }
+  nav.grille a:hover{ color:var(--rouille-clair-texte); }
   nav.grille .num{
     font-family:var(--sans);
     font-size:0.75rem;
@@ -380,6 +381,14 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  nav.grille{ --brume:#c9d0cf; }   /* sur #414a4f, 10 element(s) */
+  nav.grille{ --mer:#b0bbbd; }   /* sur #414a4f, 10 element(s) */
+  figure.poster, footer{ --mer:#b0bbbd; }   /* sur #23282b, 2 element(s) */
 </style>
 </head>
 <body data-volet="critique">

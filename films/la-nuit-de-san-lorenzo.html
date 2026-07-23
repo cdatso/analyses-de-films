@@ -29,10 +29,11 @@
     --nuit-2:#152541;
     --nuit-3:#1e3457;
     --etoile:#f6ecd2;
-    --etoile-dim:#b9c4d6;
+    --etoile-dim:#566d93;
     --ble:#c08a2c;
     --ble-texte:#825d1e;
     --ble-clair:#e6c374;
+    --ble-clair-texte:#896619;
     --lin:#f4ede1;
     --lin-2:#eae0cd;
     --encre:#241f19;
@@ -113,7 +114,7 @@
     padding-bottom:2px;
     margin-bottom:2.6rem;
   }
-  .retour:hover{ color:var(--ble-clair); border-color:var(--ble-clair); }
+  .retour:hover{ color:var(--ble-clair-texte); border-color:var(--ble-clair); }
 
   .cartel{
     font-family:var(--sans);
@@ -123,7 +124,7 @@
     text-transform:uppercase;
   }
 
-  header.ciel .cartel{ color:var(--ble-clair); display:block; margin-bottom:1rem; }
+  header.ciel .cartel{ color:var(--ble-clair-texte); display:block; margin-bottom:1rem; }
 
   header.ciel h1{
     font-family:var(--serif);
@@ -187,7 +188,7 @@
     color:var(--etoile-dim);
   }
   nav.veillee .inner{ max-width:780px; margin:0 auto; }
-  nav.veillee .cartel{ color:var(--ble-clair); display:block; margin-bottom:1.1rem; }
+  nav.veillee .cartel{ color:var(--ble-clair-texte); display:block; margin-bottom:1.1rem; }
   nav.veillee ol{
     list-style:none;
     margin:0; padding:0;
@@ -203,7 +204,7 @@
     font-size:0.99rem;
     border-bottom:1px solid rgba(185,196,214,0.12);
   }
-  nav.veillee a:hover{ color:var(--ble-clair); }
+  nav.veillee a:hover{ color:var(--ble-clair-texte); }
   nav.veillee .num{
     font-family:var(--sans);
     font-size:0.74rem;
@@ -387,6 +388,15 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  nav.veillee{ --ble-clair-texte:#e6c374; }   /* sur #1e3457, 1 element(s) */
+  nav.veillee{ --etoile-dim:#b9c4d6; }   /* sur #1e3457, 10 element(s) */
+  figure.poster, footer{ --etoile-dim:#b9c4d6; }   /* sur #0b1526, 2 element(s) */
+  nav.veillee{ --ble-texte:#ca912f; }   /* sur #1e3457, 10 element(s) */
 </style>
 </head>
 <body data-volet="critique">

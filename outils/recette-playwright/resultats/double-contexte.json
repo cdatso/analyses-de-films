@@ -1,0 +1,1363 @@
+[
+ {
+  "borne_basse": 3.999,
+  "borne_haute": -0.024,
+  "fond_qui_l_impose": "#eceeeb",
+  "fond_qui_l_impose_2": "#414a4f",
+  "fonds": {
+   "#414a4f": {
+    "echecs": 0,
+    "elements": 10,
+    "luminance": 0.066,
+    "pire": 5.79,
+    "porteurs": [
+     "nav.grille"
+    ],
+    "seuil": 4.5
+   },
+   "#979c9d": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.328,
+    "pire": 1.77,
+    "porteurs": [
+     "div.provenance"
+    ],
+    "seuil": 4.5
+   },
+   "#eceeeb": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.85,
+    "pire": 1.34,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "hamlet.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#c9d0cf",
+  "variable": "--brume"
+ },
+ {
+  "borne_basse": 3.999,
+  "borne_haute": -0.024,
+  "fond_qui_l_impose": "#eceeeb",
+  "fond_qui_l_impose_2": "#414a4f",
+  "fonds": {
+   "#414a4f": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.066,
+    "pire": 3.02,
+    "porteurs": [
+     "nav.grille"
+    ],
+    "seuil": 4.5
+   },
+   "#eceeeb": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.85,
+    "pire": 2.57,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "hamlet.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#c08a52",
+  "variable": "--rouille-clair"
+ },
+ {
+  "borne_basse": 3.999,
+  "borne_haute": -0.034,
+  "fond_qui_l_impose": "#eceeeb",
+  "fond_qui_l_impose_2": "#23282b",
+  "fonds": {
+   "#23282b": {
+    "echecs": 0,
+    "elements": 2,
+    "luminance": 0.02,
+    "pire": 7.58,
+    "porteurs": [
+     "figure.poster",
+     "footer"
+    ],
+    "seuil": 4.5
+   },
+   "#414a4f": {
+    "echecs": 0,
+    "elements": 10,
+    "luminance": 0.066,
+    "pire": 4.61,
+    "porteurs": [
+     "nav.grille"
+    ],
+    "seuil": 4.5
+   },
+   "#eceeeb": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.85,
+    "pire": 1.68,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "hamlet.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#b0bbbd",
+  "variable": "--mer"
+ },
+ {
+  "borne_basse": 3.961,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#f1ece1",
+  "fond_qui_l_impose_2": "#15120f",
+  "fonds": {
+   "#15120f": {
+    "echecs": 3,
+    "elements": 3,
+    "luminance": 0.006,
+    "pire": 3.52,
+    "porteurs": [
+     "section.sources",
+     "header.bobine"
+    ],
+    "seuil": 4.5
+   },
+   "#f1ece1": {
+    "echecs": 0,
+    "elements": 24,
+    "luminance": 0.841,
+    "pire": 4.51,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "hitchcock-truffaut.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#736a5f",
+  "variable": "--gris"
+ },
+ {
+  "borne_basse": 3.961,
+  "borne_haute": -0.036,
+  "fond_qui_l_impose": "#f1ece1",
+  "fond_qui_l_impose_2": "#241e19",
+  "fonds": {
+   "#15120f": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.006,
+    "pire": 3.1,
+    "porteurs": [
+     "header.bobine"
+    ],
+    "seuil": 3
+   },
+   "#241e19": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.014,
+    "pire": 2.74,
+    "porteurs": [
+     "span.rouge"
+    ],
+    "seuil": 4.5
+   },
+   "#e5ddcc": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.727,
+    "pire": 4.45,
+    "porteurs": [
+     "div.transcription"
+    ],
+    "seuil": 4.5
+   },
+   "#ede4d4": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.782,
+    "pire": 4.77,
+    "porteurs": [
+     "div.verif"
+    ],
+    "seuil": 4.5
+   },
+   "#f1ece1": {
+    "echecs": 0,
+    "elements": 61,
+    "luminance": 0.841,
+    "pire": 5.1,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "hitchcock-truffaut.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#c1201d",
+  "variable": "--rouge"
+ },
+ {
+  "borne_basse": 4.059,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#f1efe9",
+  "fond_qui_l_impose_2": "#0e0d0c",
+  "fonds": {
+   "#0e0d0c": {
+    "echecs": 0,
+    "elements": 7,
+    "luminance": 0.004,
+    "pire": 7.55,
+    "porteurs": [
+     "header.fairepart"
+    ],
+    "seuil": 4.5
+   },
+   "#f1efe9": {
+    "echecs": 10,
+    "elements": 10,
+    "luminance": 0.863,
+    "pire": 2.24,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "la-mariee-etait-en-noir.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#a5a19a",
+  "variable": "--voile"
+ },
+ {
+  "borne_basse": 4.011,
+  "borne_haute": -0.031,
+  "fond_qui_l_impose": "#f4ede1",
+  "fond_qui_l_impose_2": "#1e3457",
+  "fonds": {
+   "#1e3457": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.034,
+    "pire": 7.38,
+    "porteurs": [
+     "nav.veillee"
+    ],
+    "seuil": 4.5
+   },
+   "#f4ede1": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.852,
+    "pire": 1.45,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "la-nuit-de-san-lorenzo.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#e6c374",
+  "variable": "--ble-clair"
+ },
+ {
+  "borne_basse": 4.011,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#f4ede1",
+  "fond_qui_l_impose_2": "#0b1526",
+  "fonds": {
+   "#0b1526": {
+    "echecs": 0,
+    "elements": 2,
+    "luminance": 0.007,
+    "pire": 10.38,
+    "porteurs": [
+     "figure.poster",
+     "footer"
+    ],
+    "seuil": 4.5
+   },
+   "#1e3457": {
+    "echecs": 0,
+    "elements": 10,
+    "luminance": 0.034,
+    "pire": 7.08,
+    "porteurs": [
+     "nav.veillee"
+    ],
+    "seuil": 4.5
+   },
+   "#9a9fa7": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.345,
+    "pire": 1.51,
+    "porteurs": [
+     "div.provenance"
+    ],
+    "seuil": 4.5
+   },
+   "#f4ede1": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.852,
+    "pire": 1.51,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "la-nuit-de-san-lorenzo.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#b9c4d6",
+  "variable": "--etoile-dim"
+ },
+ {
+  "borne_basse": 4.336,
+  "borne_haute": -0.031,
+  "fond_qui_l_impose": "#fbf6ec",
+  "fond_qui_l_impose_2": "#1e3457",
+  "fonds": {
+   "#1e3457": {
+    "echecs": 10,
+    "elements": 10,
+    "luminance": 0.034,
+    "pire": 2.1,
+    "porteurs": [
+     "nav.veillee"
+    ],
+    "seuil": 4.5
+   },
+   "#eae0cd": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.752,
+    "pire": 4.54,
+    "porteurs": [
+     "div.voix"
+    ],
+    "seuil": 4.5
+   },
+   "#f4ede1": {
+    "echecs": 0,
+    "elements": 72,
+    "luminance": 0.852,
+    "pire": 5.11,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   },
+   "#fbf6ec": {
+    "echecs": 0,
+    "elements": 8,
+    "luminance": 0.925,
+    "pire": 5.52,
+    "porteurs": [
+     "div.dossier"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "la-nuit-de-san-lorenzo.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#825d1e",
+  "variable": "--ble-texte"
+ },
+ {
+  "borne_basse": 3.517,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#e9dfc8",
+  "fond_qui_l_impose_2": "#171310",
+  "fonds": {
+   "#171310": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.007,
+    "pire": 13.94,
+    "porteurs": [
+     "blockquote"
+    ],
+    "seuil": 4.5
+   },
+   "#e9dfc8": {
+    "echecs": 4,
+    "elements": 4,
+    "luminance": 0.743,
+    "pire": 1,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "le-golem.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#e9dfc8",
+  "variable": "--parchemin"
+ },
+ {
+  "borne_basse": 3.517,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#e9dfc8",
+  "fond_qui_l_impose_2": "#171310",
+  "fonds": {
+   "#171310": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.007,
+    "pire": 3.09,
+    "porteurs": [
+     "blockquote"
+    ],
+    "seuil": 4.5
+   },
+   "#e9dfc8": {
+    "echecs": 0,
+    "elements": 11,
+    "luminance": 0.743,
+    "pire": 4.51,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "le-golem.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#7c5f1f",
+  "variable": "--kabbale-texte"
+ },
+ {
+  "borne_basse": 3.517,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#e9dfc8",
+  "fond_qui_l_impose_2": "#171310",
+  "fonds": {
+   "#171310": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.007,
+    "pire": 2.36,
+    "porteurs": [
+     "blockquote"
+    ],
+    "seuil": 4.5
+   },
+   "#ddd1b4": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.643,
+    "pire": 5.15,
+    "porteurs": [
+     "nav.grimoire"
+    ],
+    "seuil": 4.5
+   },
+   "#e9dfc8": {
+    "echecs": 0,
+    "elements": 34,
+    "luminance": 0.743,
+    "pire": 5.9,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "le-golem.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#7c4326",
+  "variable": "--argile-sombre"
+ },
+ {
+  "borne_basse": 3.827,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#f2e8d0",
+  "fond_qui_l_impose_2": "#0a0806",
+  "fonds": {
+   "#0a0806": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.003,
+    "pire": 1.74,
+    "porteurs": [
+     "div.crosscut"
+    ],
+    "seuil": 4.5
+   },
+   "#e9dcc0": {
+    "echecs": 0,
+    "elements": 43,
+    "luminance": 0.723,
+    "pire": 8.44,
+    "porteurs": [
+     "main"
+    ],
+    "seuil": 4.5
+   },
+   "#f2e8d0": {
+    "echecs": 0,
+    "elements": 3,
+    "luminance": 0.811,
+    "pire": 9.41,
+    "porteurs": [
+     "div.cast-card"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "les-deux-orphelines.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#233a5c",
+  "variable": "--tint-blue"
+ },
+ {
+  "borne_basse": 4.206,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#f2f3f5",
+  "fond_qui_l_impose_2": "#0c0e12",
+  "fonds": {
+   "#0c0e12": {
+    "echecs": 4,
+    "elements": 4,
+    "luminance": 0.004,
+    "pire": 3.87,
+    "porteurs": [
+     "blockquote",
+     "header.skyline",
+     "footer.coda"
+    ],
+    "seuil": 4.5
+   },
+   "#f2f3f5": {
+    "echecs": 0,
+    "elements": 38,
+    "luminance": 0.896,
+    "pire": 4.5,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "manhattan.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#6a7079",
+  "variable": "--gris"
+ },
+ {
+  "borne_basse": 4.023,
+  "borne_haute": -0.036,
+  "fond_qui_l_impose": "#f0eee8",
+  "fond_qui_l_impose_2": "#1d1c1a",
+  "fonds": {
+   "#1d1c1a": {
+    "echecs": 0,
+    "elements": 3,
+    "luminance": 0.012,
+    "pire": 7.69,
+    "porteurs": [
+     "header.amorce"
+    ],
+    "seuil": 4.5
+   },
+   "#f0eee8": {
+    "echecs": 32,
+    "elements": 32,
+    "luminance": 0.855,
+    "pire": 1.91,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "nouvelle-vague.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#d3a92c",
+  "variable": "--kodak"
+ },
+ {
+  "borne_basse": 4.023,
+  "borne_haute": -0.036,
+  "fond_qui_l_impose": "#f0eee8",
+  "fond_qui_l_impose_2": "#1d1c1a",
+  "fonds": {
+   "#1d1c1a": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.012,
+    "pire": 3.25,
+    "porteurs": [
+     "header.amorce",
+     "footer.fin"
+    ],
+    "seuil": 4.5
+   },
+   "#f0eee8": {
+    "echecs": 0,
+    "elements": 8,
+    "luminance": 0.855,
+    "pire": 4.52,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "nouvelle-vague.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#6f6c64",
+  "variable": "--gris-labo"
+ },
+ {
+  "borne_basse": 3.834,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#e9e9e6",
+  "fond_qui_l_impose_2": "#0d0d0c",
+  "fonds": {
+   "#0d0d0c": {
+    "echecs": 14,
+    "elements": 15,
+    "luminance": 0.004,
+    "pire": 3.42,
+    "porteurs": [
+     "nav.programme",
+     "header.cover",
+     "footer"
+    ],
+    "seuil": 4.5
+   },
+   "#e5e5e2": {
+    "echecs": 0,
+    "elements": 5,
+    "luminance": 0.782,
+    "pire": 4.5,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   },
+   "#e9e9e6": {
+    "echecs": 0,
+    "elements": 20,
+    "luminance": 0.813,
+    "pire": 4.67,
+    "porteurs": [
+     "body",
+     "div.k"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "persona.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#676762",
+  "variable": "--grey"
+ },
+ {
+  "borne_basse": 3.573,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#e8e1cf",
+  "fond_qui_l_impose_2": "#131211",
+  "fonds": {
+   "#131211": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.006,
+    "pire": 2.81,
+    "porteurs": [
+     "header.bill"
+    ],
+    "seuil": 4.5
+   },
+   "#ddd4bd": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.661,
+    "pire": 4.52,
+    "porteurs": [
+     "blockquote"
+    ],
+    "seuil": 4.5
+   },
+   "#e8e1cf": {
+    "echecs": 0,
+    "elements": 41,
+    "luminance": 0.755,
+    "pire": 5.11,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "raging-bull.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#71591e",
+  "variable": "--belt-texte"
+ },
+ {
+  "borne_basse": 3.163,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#d8d5c9",
+  "fond_qui_l_impose_2": "#100f0d",
+  "fonds": {
+   "#100f0d": {
+    "echecs": 31,
+    "elements": 31,
+    "luminance": 0.005,
+    "pire": 2.89,
+    "porteurs": [
+     "section",
+     "nav.programme",
+     "div.circuit"
+    ],
+    "seuil": 4.5
+   },
+   "#20150d": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.009,
+    "pire": 2.7,
+    "porteurs": [
+     "div.content-note"
+    ],
+    "seuil": 4.5
+   },
+   "#26251f": {
+    "echecs": 6,
+    "elements": 6,
+    "luminance": 0.018,
+    "pire": 2.32,
+    "porteurs": [
+     "div.circuit-stop",
+     "header.cover"
+    ],
+    "seuil": 4.5
+   },
+   "#d8d5c9": {
+    "echecs": 0,
+    "elements": 10,
+    "luminance": 0.664,
+    "pire": 4.51,
+    "porteurs": [
+     "span.tag"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "rosetta.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#9e3f0b",
+  "variable": "--vest-texte"
+ },
+ {
+  "borne_basse": 3.163,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#d8d5c9",
+  "fond_qui_l_impose_2": "#100f0d",
+  "fonds": {
+   "#100f0d": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.005,
+    "pire": 5.67,
+    "porteurs": [
+     "footer"
+    ],
+    "seuil": 4.5
+   },
+   "#d8d5c9": {
+    "echecs": 7,
+    "elements": 7,
+    "luminance": 0.664,
+    "pire": 2.3,
+    "porteurs": [
+     "div.id-card"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "rosetta.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#8f8c7e",
+  "variable": "--concrete-dark"
+ },
+ {
+  "borne_basse": 4.675,
+  "borne_haute": -0.039,
+  "fond_qui_l_impose": "#ffffff",
+  "fond_qui_l_impose_2": "#050504",
+  "fonds": {
+   "#050504": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.001,
+    "pire": 1.04,
+    "porteurs": [
+     "div.geometry"
+    ],
+    "seuil": 4.5
+   },
+   "#c9c4b4": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.552,
+    "pire": 11.22,
+    "porteurs": [
+     "blockquote"
+    ],
+    "seuil": 4.5
+   },
+   "#efece3": {
+    "echecs": 0,
+    "elements": 48,
+    "luminance": 0.839,
+    "pire": 16.57,
+    "porteurs": [
+     "main"
+    ],
+    "seuil": 3
+   },
+   "#ffffff": {
+    "echecs": 0,
+    "elements": 8,
+    "luminance": 1.0,
+    "pire": 19.57,
+    "porteurs": [
+     "div.cast-card.red-side",
+     "div.cast-card.neutral",
+     "div.cast-card.white-side"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "rouges-et-blancs.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#0c0c0b",
+  "variable": "--black"
+ },
+ {
+  "borne_basse": 1.472,
+  "borne_haute": -0.034,
+  "fond_qui_l_impose": "#a88f61",
+  "fond_qui_l_impose_2": "#232c2d",
+  "fonds": {
+   "#232c2d": {
+    "echecs": 0,
+    "elements": 4,
+    "luminance": 0.023,
+    "pire": 11.16,
+    "porteurs": [
+     "div.telex"
+    ],
+    "seuil": 4.5
+   },
+   "#a88f61": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.288,
+    "pire": 2.42,
+    "porteurs": [
+     "div.folder-tab"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "shutter-island.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#ece3ca",
+  "variable": "--paper"
+ },
+ {
+  "borne_basse": 3.604,
+  "borne_haute": -0.038,
+  "fond_qui_l_impose": "#e8e2d2",
+  "fond_qui_l_impose_2": "#0a0a09",
+  "fonds": {
+   "#0a0a09": {
+    "echecs": 14,
+    "elements": 14,
+    "luminance": 0.003,
+    "pire": 3.41,
+    "porteurs": [
+     "body",
+     "footer.endnote",
+     "header.cover"
+    ],
+    "seuil": 4.5
+   },
+   "#141311": {
+    "echecs": 9,
+    "elements": 9,
+    "luminance": 0.007,
+    "pire": 3.19,
+    "porteurs": [
+     "div.edge-code"
+    ],
+    "seuil": 4.5
+   },
+   "#1a1916": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.01,
+    "pire": 3.02,
+    "porteurs": [
+     "div.pinned"
+    ],
+    "seuil": 4.5
+   },
+   "#e8e2d2": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.762,
+    "pire": 4.49,
+    "porteurs": [
+     "div.lighttable"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "soudain-lete-dernier.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#69655b",
+  "variable": "--silver-texte"
+ },
+ {
+  "borne_basse": 3.828,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#f1e8d4",
+  "fond_qui_l_impose_2": "#171410",
+  "fonds": {
+   "#171410": {
+    "echecs": 0,
+    "elements": 1,
+    "luminance": 0.007,
+    "pire": 4.53,
+    "porteurs": [
+     "div.pinned"
+    ],
+    "seuil": 4.5
+   },
+   "#e3d6b4": {
+    "echecs": 4,
+    "elements": 4,
+    "luminance": 0.677,
+    "pire": 2.81,
+    "porteurs": [
+     "div.cast-card"
+    ],
+    "seuil": 4.5
+   },
+   "#eedcc9": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.736,
+    "pire": 3.04,
+    "porteurs": [
+     "p.content-note"
+    ],
+    "seuil": 4.5
+   },
+   "#f1e8d4": {
+    "echecs": 54,
+    "elements": 54,
+    "luminance": 0.812,
+    "pire": 3.33,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "soy-cuba.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#e34539",
+  "variable": "--red-texte"
+ },
+ {
+  "borne_basse": 3.513,
+  "borne_haute": -0.035,
+  "fond_qui_l_impose": "#e9dfc6",
+  "fond_qui_l_impose_2": "#2e2517",
+  "fonds": {
+   "#2e2517": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.02,
+    "pire": 2.03,
+    "porteurs": [
+     "header.carte-titre"
+    ],
+    "seuil": 4.5
+   },
+   "#e9dfc6": {
+    "echecs": 0,
+    "elements": 18,
+    "luminance": 0.742,
+    "pire": 5.6,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "waterloo.html",
+  "possible": false,
+  "strategie_claire": false,
+  "strategie_sombre": false,
+  "valeur": "#695221",
+  "variable": "--laiton"
+ },
+ {
+  "borne_basse": 4.675,
+  "borne_haute": 0.159,
+  "fond_qui_l_impose": "#ffffff",
+  "fond_qui_l_impose_2": "#f5f2ec",
+  "fonds": {
+   "#f5f2ec": {
+    "echecs": 11,
+    "elements": 11,
+    "luminance": 0.89,
+    "pire": 2.54,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   },
+   "#ffffff": {
+    "echecs": 10,
+    "elements": 10,
+    "luminance": 1.0,
+    "pire": 2.84,
+    "porteurs": [
+     "nav.matiere"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "julie-en-12-chapitres.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#c98a77",
+  "variable": "--aube"
+ },
+ {
+  "borne_basse": 4.011,
+  "borne_haute": 0.038,
+  "fond_qui_l_impose": "#f4ede1",
+  "fond_qui_l_impose_2": "#9a9fa7",
+  "fonds": {
+   "#9a9fa7": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.345,
+    "pire": 2.26,
+    "porteurs": [
+     "div.provenance"
+    ],
+    "seuil": 4.5
+   },
+   "#f4ede1": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.852,
+    "pire": 1.01,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "la-nuit-de-san-lorenzo.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#f6ecd2",
+  "variable": "--etoile"
+ },
+ {
+  "borne_basse": 3.898,
+  "borne_haute": 0.112,
+  "fond_qui_l_impose": "#f2ead9",
+  "fond_qui_l_impose_2": "#e2d6bd",
+  "fonds": {
+   "#e2d6bd": {
+    "echecs": 3,
+    "elements": 3,
+    "luminance": 0.679,
+    "pire": 3.34,
+    "porteurs": [
+     "div.fiche"
+    ],
+    "seuil": 4.5
+   },
+   "#e2e1d2": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.747,
+    "pire": 3.65,
+    "porteurs": [
+     "div.provenance"
+    ],
+    "seuil": 4.5
+   },
+   "#f2ead9": {
+    "echecs": 41,
+    "elements": 41,
+    "luminance": 0.827,
+    "pire": 4.02,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "pandora-contrechamp.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#2f7d80",
+  "variable": "--mer"
+ },
+ {
+  "borne_basse": 3.898,
+  "borne_haute": 0.112,
+  "fond_qui_l_impose": "#f2ead9",
+  "fond_qui_l_impose_2": "#e2d6bd",
+  "fonds": {
+   "#e2d6bd": {
+    "echecs": 11,
+    "elements": 11,
+    "luminance": 0.679,
+    "pire": 2.51,
+    "porteurs": [
+     "div.fiche"
+    ],
+    "seuil": 4.5
+   },
+   "#f2ead9": {
+    "echecs": 13,
+    "elements": 13,
+    "luminance": 0.827,
+    "pire": 3.02,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "pandora-contrechamp.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#8d8677",
+  "variable": "--gris"
+ },
+ {
+  "borne_basse": 3.898,
+  "borne_haute": 0.036,
+  "fond_qui_l_impose": "#f2ead9",
+  "fond_qui_l_impose_2": "#9b9e9c",
+  "fonds": {
+   "#9b9e9c": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.338,
+    "pire": 2.26,
+    "porteurs": [
+     "div.note",
+     "div.content-warning"
+    ],
+    "seuil": 4.5
+   },
+   "#f2ead9": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.827,
+    "pire": 1,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "pandora.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#f2ead9",
+  "variable": "--platre"
+ },
+ {
+  "borne_basse": 3.898,
+  "borne_haute": 0.036,
+  "fond_qui_l_impose": "#f2ead9",
+  "fond_qui_l_impose_2": "#9b9e9c",
+  "fonds": {
+   "#9b9e9c": {
+    "echecs": 3,
+    "elements": 3,
+    "luminance": 0.338,
+    "pire": 1.88,
+    "porteurs": [
+     "div.note",
+     "div.content-warning"
+    ],
+    "seuil": 4.5
+   },
+   "#f2ead9": {
+    "echecs": 2,
+    "elements": 2,
+    "luminance": 0.827,
+    "pire": 1.2,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "pandora.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#e2d6bd",
+  "variable": "--platre-dim"
+ },
+ {
+  "borne_basse": 3.898,
+  "borne_haute": 0.112,
+  "fond_qui_l_impose": "#f2ead9",
+  "fond_qui_l_impose_2": "#e2d6bd",
+  "fonds": {
+   "#e2d6bd": {
+    "echecs": 12,
+    "elements": 12,
+    "luminance": 0.679,
+    "pire": 2.51,
+    "porteurs": [
+     "div.fiche"
+    ],
+    "seuil": 4.5
+   },
+   "#f2ead9": {
+    "echecs": 13,
+    "elements": 13,
+    "luminance": 0.827,
+    "pire": 3.02,
+    "porteurs": [
+     "body"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "pandora.html",
+  "possible": true,
+  "strategie_claire": false,
+  "strategie_sombre": true,
+  "valeur": "#8d8677",
+  "variable": "--gris"
+ },
+ {
+  "borne_basse": 0.262,
+  "borne_haute": -0.037,
+  "fond_qui_l_impose": "#20281f",
+  "fond_qui_l_impose_2": "#17150f",
+  "fonds": {
+   "#17150f": {
+    "echecs": 0,
+    "elements": 9,
+    "luminance": 0.008,
+    "pire": 5.41,
+    "porteurs": [
+     "header.cover",
+     "section.sources"
+    ],
+    "seuil": 4.5
+   },
+   "#20281f": {
+    "echecs": 1,
+    "elements": 1,
+    "luminance": 0.019,
+    "pire": 4.49,
+    "porteurs": [
+     "div.road-diagram"
+    ],
+    "seuil": 4.5
+   }
+  },
+  "page": "sud.html",
+  "possible": true,
+  "strategie_claire": true,
+  "strategie_sombre": false,
+  "valeur": "#938b7b",
+  "variable": "--ash-texte"
+ }
+]

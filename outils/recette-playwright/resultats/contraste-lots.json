@@ -19,44 +19,6 @@
   "texte": "#e2d6bd"
  },
  {
-  "deplacement_clarte": 0.074,
-  "elements": 5,
-  "extraits": [
-   "Bobine 01 · 35 mm",
-   "— planche contact",
-   "Le mécanisme de révélation final, construit c"
-  ],
-  "fond": "#0a0a09",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soudain-lete-dernier.html": 5
-  },
-  "pire_ratio": 3.41,
-  "propose": "#7d786d",
-  "seuil": 4.5,
-  "texte": "#69655b"
- },
- {
-  "deplacement_clarte": 0.044,
-  "elements": 4,
-  "extraits": [
-   "États-Unis · United Artists · 96 minutes · N&",
-   "Pauline Kael, citée dans les relectures conte",
-   "[4]"
-  ],
-  "fond": "#0c0e12",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "manhattan.html": 4
-  },
-  "pire_ratio": 3.87,
-  "propose": "#747b85",
-  "seuil": 4.5,
-  "texte": "#6a7079"
- },
- {
   "deplacement_clarte": 0.108,
   "elements": 4,
   "extraits": [
@@ -75,44 +37,6 @@
   "propose": "#6f6a5d",
   "seuil": 4.5,
   "texte": "#8d8677"
- },
- {
-  "deplacement_clarte": 0.074,
-  "elements": 4,
-  "extraits": [
-   "Suède — 1966 — Noir et blanc",
-   "TITRE DE TRAVAIL : « KINEMATOGRAF »",
-   "Sommaire"
-  ],
-  "fond": "#0d0d0c",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "persona.html": 4
-  },
-  "pire_ratio": 3.42,
-  "propose": "#7a7a74",
-  "seuil": 4.5,
-  "texte": "#676762"
- },
- {
-  "deplacement_clarte": 0.106,
-  "elements": 4,
-  "extraits": [
-   "Au dossier",
-   "01",
-   "→"
-  ],
-  "fond": "#100f0d",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "rosetta.html": 4
-  },
-  "pire_ratio": 2.89,
-  "propose": "#d1530f",
-  "seuil": 4.5,
-  "texte": "#9e3f0b"
  },
  {
   "deplacement_clarte": 0.836,
@@ -134,6 +58,25 @@
   "texte": "#f4efe3"
  },
  {
+  "deplacement_clarte": 0.306,
+  "elements": 3,
+  "extraits": [
+   "Retour aux analyses",
+   "Grigori Kozintsev · d'après la traduction de ",
+   "Analyse — Claude Opus, session supervisée du "
+  ],
+  "fond": "#434b50",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 3
+  },
+  "pire_ratio": 1.69,
+  "propose": "#b0bbb9",
+  "seuil": 4.5,
+  "texte": "#606f6d"
+ },
+ {
   "deplacement_clarte": 0.14,
   "elements": 3,
   "extraits": [
@@ -153,23 +96,23 @@
   "texte": "#8d939e"
  },
  {
-  "deplacement_clarte": 0.208,
+  "deplacement_clarte": 0.18,
   "elements": 3,
   "extraits": [
-   "Réalisation",
-   "Jean-Louis Bory, 1968, cité par Wikipédia",
-   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+   "La notte di San Lorenzo",
+   "Paolo et Vittorio Taviani · Photographie de F",
+   "Analyse — Claude Opus, session supervisée du "
   ],
-  "fond": "#f1efe9",
-  "nature": "texte courant",
+  "fond": "#1f3456",
+  "nature": "degrade",
   "opacite": 1,
   "pages": {
-   "la-mariee-etait-en-noir.html": 3
+   "la-nuit-de-san-lorenzo.html": 3
   },
-  "pire_ratio": 2.24,
-  "propose": "#716c64",
+  "pire_ratio": 2.38,
+  "propose": "#8a9cbb",
   "seuil": 4.5,
-  "texte": "#a5a19a"
+  "texte": "#566d93"
  },
  {
   "deplacement_clarte": 0.002,
@@ -191,7 +134,7 @@
   "texte": "#6a7079"
  },
  {
-  "deplacement_clarte": 0.164,
+  "deplacement_clarte": 0.058,
   "elements": 3,
   "extraits": [
    "Analyse cinématographique — drame social · 19",
@@ -204,10 +147,10 @@
   "pages": {
    "rosetta.html": 3
   },
-  "pire_ratio": 2.32,
-  "propose": "#ec5e10",
+  "pire_ratio": 3.63,
+  "propose": "#ed5e11",
   "seuil": 4.5,
-  "texte": "#9e3f0b"
+  "texte": "#d1530f"
  },
  {
   "deplacement_clarte": 0.002,
@@ -229,25 +172,6 @@
   "texte": "#866d30"
  },
  {
-  "deplacement_clarte": 0.106,
-  "elements": 3,
-  "extraits": [
-   "Repère 01",
-   "[1]",
-   "Cuba personnifiée"
-  ],
-  "fond": "#f1e8d4",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soy-cuba.html": 3
-  },
-  "pire_ratio": 3.33,
-  "propose": "#c9291c",
-  "seuil": 4.5,
-  "texte": "#e34539"
- },
- {
   "deplacement_clarte": 0.138,
   "elements": 2,
   "extraits": [
@@ -266,40 +190,22 @@
   "texte": "#8fa39b"
  },
  {
-  "deplacement_clarte": 0.068,
+  "deplacement_clarte": 0.308,
   "elements": 2,
   "extraits": [
-   "Sources effectivement consultées lors de la p",
-   "er"
+   "Гамлет —",
+   "Gamlet"
   ],
-  "fond": "#15120f",
-  "nature": "texte courant",
+  "fond": "#434b50",
+  "nature": "degrade",
   "opacite": 1,
   "pages": {
-   "hitchcock-truffaut.html": 2
+   "hamlet.html": 2
   },
-  "pire_ratio": 3.52,
-  "propose": "#867c6f",
+  "pire_ratio": 1.68,
+  "propose": "#b0bbbd",
   "seuil": 4.5,
-  "texte": "#736a5f"
- },
- {
-  "deplacement_clarte": 0.004,
-  "elements": 2,
-  "extraits": [
-   "Bande — au sujet de Psychose",
-   "2"
-  ],
-  "fond": "#e5ddcc",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "hitchcock-truffaut.html": 2
-  },
-  "pire_ratio": 4.45,
-  "propose": "#bf201d",
-  "seuil": 4.5,
-  "texte": "#c1201d"
+  "texte": "#5f6e71"
  },
  {
   "deplacement_clarte": 0.278,
@@ -354,42 +260,6 @@
   "propose": "#aba69e",
   "seuil": 4.5,
   "texte": "#8d867b"
- },
- {
-  "deplacement_clarte": 0.19,
-  "elements": 2,
-  "extraits": [
-   "Jour 1 · Générique",
-   "[1]"
-  ],
-  "fond": "#f0eee8",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "nouvelle-vague.html": 2
-  },
-  "pire_ratio": 1.91,
-  "propose": "#83691b",
-  "seuil": 4.5,
-  "texte": "#d3a92c"
- },
- {
-  "deplacement_clarte": 0.09,
-  "elements": 2,
-  "extraits": [
-   "France / États-Unis · 106 minutes · N&B 35 mm",
-   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
-  ],
-  "fond": "#1d1c1a",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "nouvelle-vague.html": 2
-  },
-  "pire_ratio": 3.25,
-  "propose": "#87837a",
-  "seuil": 4.5,
-  "texte": "#6f6c64"
  },
  {
   "deplacement_clarte": 0.19,
@@ -465,7 +335,7 @@
   "texte": "#f2ead9"
  },
  {
-  "deplacement_clarte": 0.18,
+  "deplacement_clarte": 0.002,
   "elements": 2,
   "extraits": [
    "DOSSIER N° 94/1999",
@@ -477,10 +347,10 @@
   "pages": {
    "rosetta.html": 2
   },
-  "pire_ratio": 2.3,
-  "propose": "#5f5d52",
+  "pire_ratio": 4.5,
+  "propose": "#5e5c52",
   "seuil": 4.5,
-  "texte": "#8f8c7e"
+  "texte": "#5f5d52"
  },
  {
   "deplacement_clarte": 0.214,
@@ -568,7 +438,7 @@
   "texte": "#e0876b"
  },
  {
-  "deplacement_clarte": 0.16,
+  "deplacement_clarte": 0.01,
   "elements": 1,
   "extraits": [
    "Union soviétique — 1964 — Lenfilm"
@@ -579,13 +449,13 @@
   "pages": {
    "hamlet.html": 1
   },
-  "pire_ratio": 2.96,
-  "propose": "#d6b28e",
+  "pire_ratio": 4.41,
+  "propose": "#d6b38f",
   "seuil": 4.5,
-  "texte": "#c08a52"
+  "texte": "#d5b08b"
  },
  {
-  "deplacement_clarte": 0.152,
+  "deplacement_clarte": 0.002,
   "elements": 1,
   "extraits": [
    "Sommaire"
@@ -596,10 +466,10 @@
   "pages": {
    "hamlet.html": 1
   },
-  "pire_ratio": 3.02,
-  "propose": "#d5b08b",
+  "pire_ratio": 4.49,
+  "propose": "#d5b18c",
   "seuil": 4.5,
-  "texte": "#c08a52"
+  "texte": "#d5b08b"
  },
  {
   "deplacement_clarte": 1.0,
@@ -619,23 +489,6 @@
   "texte": "#15120f"
  },
  {
-  "deplacement_clarte": 0.176,
-  "elements": 1,
-  "extraits": [
-   "8"
-  ],
-  "fond": "#241e19",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "hitchcock-truffaut.html": 1
-  },
-  "pire_ratio": 2.74,
-  "propose": "#e55553",
-  "seuil": 4.5,
-  "texte": "#c1201d"
- },
- {
   "deplacement_clarte": 0.006,
   "elements": 1,
   "extraits": [
@@ -653,7 +506,7 @@
   "texte": "#c1201d"
  },
  {
-  "deplacement_clarte": 0.082,
+  "deplacement_clarte": 0.012,
   "elements": 1,
   "extraits": [
    "Bande magnétique · Universal City · août 1962"
@@ -664,10 +517,10 @@
   "pages": {
    "hitchcock-truffaut.html": 1
   },
-  "pire_ratio": 3.33,
-  "propose": "#8a7f72",
+  "pire_ratio": 4.31,
+  "propose": "#897f72",
   "seuil": 4.5,
-  "texte": "#736a5f"
+  "texte": "#867c6f"
  },
  {
   "deplacement_clarte": 0.372,
@@ -772,21 +625,21 @@
   "texte": "#241a12"
  },
  {
-  "deplacement_clarte": 0.174,
+  "deplacement_clarte": 0.14,
   "elements": 1,
   "extraits": [
-   "I"
+   "Italie — 1982 — Toscane, août 1944"
   ],
-  "fond": "#1e3457",
-  "nature": "texte courant",
+  "fond": "#1f3456",
+  "nature": "degrade",
   "opacite": 1,
   "pages": {
    "la-nuit-de-san-lorenzo.html": 1
   },
-  "pire_ratio": 2.1,
-  "propose": "#ca912f",
+  "pire_ratio": 2.36,
+  "propose": "#c59324",
   "seuil": 4.5,
-  "texte": "#825d1e"
+  "texte": "#896619"
  },
  {
   "deplacement_clarte": 0.484,
@@ -840,55 +693,38 @@
   "texte": "#7c5f1f"
  },
  {
-  "deplacement_clarte": 0.166,
+  "deplacement_clarte": 0.258,
   "elements": 1,
   "extraits": [
-   "[3]"
+   "Retour aux analyses"
   ],
-  "fond": "#171310",
-  "nature": "texte courant",
+  "fond": "#553928",
+  "nature": "degrade",
   "opacite": 1,
   "pages": {
    "le-golem.html": 1
   },
-  "pire_ratio": 2.36,
-  "propose": "#bd663a",
+  "pire_ratio": 1.76,
+  "propose": "#c2a766",
   "seuil": 4.5,
-  "texte": "#7c4326"
+  "texte": "#76612f"
  },
  {
-  "deplacement_clarte": 0.08,
+  "deplacement_clarte": 0.122,
   "elements": 1,
   "extraits": [
-   "Graham Greene, 1937, cité via la recherche do"
+   "Le Golem"
   ],
-  "fond": "#171310",
-  "nature": "texte courant",
+  "fond": "#553928",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "le-golem.html": 1
   },
-  "pire_ratio": 3.09,
-  "propose": "#9d7827",
-  "seuil": 4.5,
-  "texte": "#7c5f1f"
- },
- {
-  "deplacement_clarte": 0.266,
-  "elements": 1,
-  "extraits": [
-   "[1]"
-  ],
-  "fond": "#0a0806",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "les-deux-orphelines.html": 1
-  },
-  "pire_ratio": 1.74,
-  "propose": "#4c79bb",
-  "seuil": 4.5,
-  "texte": "#233a5c"
+  "pire_ratio": 1.76,
+  "propose": "#a28641",
+  "seuil": 3,
+  "texte": "#76612f"
  },
  {
   "deplacement_clarte": 0.208,
@@ -993,23 +829,6 @@
   "texte": "#c9a97a"
  },
  {
-  "deplacement_clarte": 0.098,
-  "elements": 1,
-  "extraits": [
-   "Analyse cinématographique"
-  ],
-  "fond": "#131211",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "raging-bull.html": 1
-  },
-  "pire_ratio": 2.81,
-  "propose": "#987828",
-  "seuil": 4.5,
-  "texte": "#71591e"
- },
- {
   "deplacement_clarte": 0.002,
   "elements": 1,
   "extraits": [
@@ -1044,24 +863,7 @@
   "texte": "#676e76"
  },
  {
-  "deplacement_clarte": 0.124,
-  "elements": 1,
-  "extraits": [
-   "Avertissement"
-  ],
-  "fond": "#20150d",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "rosetta.html": 1
-  },
-  "pire_ratio": 2.7,
-  "propose": "#d9570f",
-  "seuil": 4.5,
-  "texte": "#9e3f0b"
- },
- {
-  "deplacement_clarte": 0.068,
+  "deplacement_clarte": 0.16,
   "elements": 1,
   "extraits": [
    "PRÉCARITÉ"
@@ -1072,10 +874,27 @@
   "pages": {
    "rosetta.html": 1
   },
-  "pire_ratio": 3.43,
-  "propose": "#8d4b26",
+  "pire_ratio": 2.44,
+  "propose": "#914820",
   "seuil": 4.5,
-  "texte": "#a85a2d"
+  "texte": "#d26a30"
+ },
+ {
+  "deplacement_clarte": 0.018,
+  "elements": 1,
+  "extraits": [
+   "Avertissement"
+  ],
+  "fond": "#20150d",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 1
+  },
+  "pire_ratio": 4.22,
+  "propose": "#da5610",
+  "seuil": 4.5,
+  "texte": "#d1530f"
  },
  {
   "deplacement_clarte": 1.0,
@@ -1146,41 +965,7 @@
   "texte": "#866d30"
  },
  {
-  "deplacement_clarte": 0.722,
-  "elements": 1,
-  "extraits": [
-   "Ashecliffe Hospital — Service des dossiers"
-  ],
-  "fond": "#a88f61",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "shutter-island.html": 1
-  },
-  "pire_ratio": 2.42,
-  "propose": "#332b12",
-  "seuil": 4.5,
-  "texte": "#ece3ca"
- },
- {
-  "deplacement_clarte": 0.106,
-  "elements": 1,
-  "extraits": [
-   "Variety, critique de 1959"
-  ],
-  "fond": "#1a1916",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "soudain-lete-dernier.html": 1
-  },
-  "pire_ratio": 3.02,
-  "propose": "#868174",
-  "seuil": 4.5,
-  "texte": "#69655b"
- },
- {
-  "deplacement_clarte": 0.002,
+  "deplacement_clarte": 0.074,
   "elements": 1,
   "extraits": [
    "Table lumineuse — chiffres à l'appui"
@@ -1191,13 +976,30 @@
   "pages": {
    "soudain-lete-dernier.html": 1
   },
-  "pire_ratio": 4.49,
-  "propose": "#68645b",
+  "pire_ratio": 3.4,
+  "propose": "#69655b",
   "seuil": 4.5,
-  "texte": "#69655b"
+  "texte": "#7d786d"
  },
  {
-  "deplacement_clarte": 0.154,
+  "deplacement_clarte": 0.034,
+  "elements": 1,
+  "extraits": [
+   "Variety, critique de 1959"
+  ],
+  "fond": "#1a1916",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 1
+  },
+  "pire_ratio": 4,
+  "propose": "#868175",
+  "seuil": 4.5,
+  "texte": "#7d786d"
+ },
+ {
+  "deplacement_clarte": 0.046,
   "elements": 1,
   "extraits": [
    "[6]"
@@ -1208,13 +1010,13 @@
   "pages": {
    "soy-cuba.html": 1
   },
-  "pire_ratio": 2.81,
-  "propose": "#b42419",
+  "pire_ratio": 3.81,
+  "propose": "#b42519",
   "seuil": 4.5,
-  "texte": "#e34539"
+  "texte": "#c9291c"
  },
  {
-  "deplacement_clarte": 0.132,
+  "deplacement_clarte": 0.026,
   "elements": 1,
   "extraits": [
    "Avis — contenu sensible"
@@ -1225,10 +1027,10 @@
   "pages": {
    "soy-cuba.html": 1
   },
-  "pire_ratio": 3.04,
-  "propose": "#be261b",
+  "pire_ratio": 4.12,
+  "propose": "#bd271a",
   "seuil": 4.5,
-  "texte": "#e34539"
+  "texte": "#c9291c"
  },
  {
   "deplacement_clarte": 0.002,
@@ -1248,7 +1050,7 @@
   "texte": "#938b7b"
  },
  {
-  "deplacement_clarte": 0.222,
+  "deplacement_clarte": 0.048,
   "elements": 1,
   "extraits": [
    "Plateau de Mont-Saint-Jean · 18 juin 1815"
@@ -1259,10 +1061,10 @@
   "pages": {
    "waterloo.html": 1
   },
-  "pire_ratio": 1.68,
-  "propose": "#bf953c",
+  "pire_ratio": 3.74,
+  "propose": "#c0963c",
   "seuil": 4.5,
-  "texte": "#695221"
+  "texte": "#ad8736"
  },
  {
   "deplacement_clarte": 0.018,

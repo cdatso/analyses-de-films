@@ -15,6 +15,7 @@
     --mobilier-largeur:60.7rem;
 
     --black:#0c0c0b;
+    --black-texte:#0c0c0b;
     --black-deep:#050504;
     --steppe:#c9c4b4;
     --steppe-dim:#aba690;
@@ -129,7 +130,7 @@
   .content-note .label{ color:#d98686; margin-bottom:0.45rem; }
 
   /* ---------- main ---------- */
-  main{ background:var(--paper); color:var(--black); }
+  main{ background:var(--paper); color:var(--black-texte); }
   section{ padding:3.4rem 0; border-bottom:1px solid var(--line-dark); }
   section:last-of-type{ border-bottom:none; }
 
@@ -262,6 +263,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.geometry{ --black-texte:#77776d; }   /* sur #050504, 2 element(s) */
 </style>
 </head>
 <body data-volet="critique">

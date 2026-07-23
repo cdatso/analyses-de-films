@@ -23,6 +23,7 @@
     --papier-creux:#e5ddcc;
     --papier-ombre:rgba(33,28,24,0.10);
     --rouge:#c1201d;
+    --rouge-texte:#c1201d;
     --rouge-sombre:#8e1512;
     --encre:#211c18;
     --encre-douce:#4c433a;
@@ -82,7 +83,7 @@
     border-bottom:1px solid transparent;
     margin-bottom:2.2rem;
   }
-  .retour:hover{ color:var(--rouge); border-bottom-color:var(--rouge); }
+  .retour:hover{ color:var(--rouge-texte); border-bottom-color:var(--rouge); }
 
   .etiquette-bande{
     display:flex;
@@ -117,7 +118,7 @@
     margin:0 0 0.15rem;
     text-transform:uppercase;
   }
-  header h1 .barre{ color:var(--rouge); }
+  header h1 .barre{ color:var(--rouge-texte); }
   header .millesime{
     font-family:var(--mono);
     font-size:0.7rem;
@@ -143,7 +144,7 @@
     padding:0.18rem 0.42rem;
     border-radius:2px;
   }
-  .compteur .rouge{ color:var(--rouge); border-color:rgba(193,32,29,0.5); }
+  .compteur .rouge{ color:var(--rouge-texte); border-color:rgba(193,32,29,0.5); }
 
   .accroche{
     max-width:660px;
@@ -218,7 +219,7 @@
     color:var(--oxyde);
     margin:2.1rem 0 0.6rem;
   }
-  h3::before{ content:"▮ "; color:var(--rouge); }
+  h3::before{ content:"▮ "; color:var(--rouge-texte); }
 
   p{ margin:0 0 1.05rem; }
   em{ font-style:italic; }
@@ -228,7 +229,7 @@
   sup.piste{ font-size:0.62em; line-height:0; }
   sup.piste a{
     font-family:var(--mono);
-    color:var(--rouge);
+    color:var(--rouge-texte);
     text-decoration:none;
     padding:0 0.1em;
     border-bottom:1px dotted rgba(193,32,29,0.45);
@@ -289,7 +290,7 @@
     font-weight:500;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--rouge);
+    color:var(--rouge-texte);
     margin-bottom:0.3rem;
   }
   .transcription p{
@@ -320,7 +321,7 @@
 
   ul.liste{ margin:0 0 1.1rem; padding-left:1.1rem; }
   ul.liste li{ margin-bottom:0.5rem; }
-  ul.liste li::marker{ color:var(--rouge); }
+  ul.liste li::marker{ color:var(--rouge-texte); }
 
   /* ---------- SOURCES ---------- */
   section.sources{
@@ -340,7 +341,7 @@
     line-height:1.62;
   }
   section.sources li{ margin-bottom:0.65rem; }
-  section.sources li::marker{ font-family:var(--mono); color:var(--rouge); }
+  section.sources li::marker{ font-family:var(--mono); color:var(--rouge-texte); }
   section.sources a{ color:var(--oxyde-pale); }
   section.sources em{ color:var(--blanc); }
   section.sources .note{
@@ -365,6 +366,14 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  section.sources, header.bobine{ --gris:#867c6f; }   /* sur #15120f, 3 element(s) */
+  div.transcription{ --rouge-texte:#bf201d; }   /* sur #e5ddcc, 2 element(s) */
+  span.rouge{ --rouge-texte:#e55553; }   /* sur #241e19, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

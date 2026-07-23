@@ -18,9 +18,11 @@
     --mobilier-largeur:45.2rem;
 
     --parchemin:#e9dfc8;
+    --parchemin-texte:#76612f;
     --parchemin-ombre:#ddd1b4;
     --argile:#a35c35;
     --argile-sombre:#7c4326;
+    --argile-sombre-texte:#7c4326;
     --ombre:#171310;
     --ombre-douce:#332a22;
     --kabbale:#b78c2e;
@@ -53,7 +55,7 @@
     background:
       radial-gradient(80% 90% at 20% 0%, rgba(163,92,53,0.3), transparent 55%),
       linear-gradient(160deg, var(--ombre) 0%, #241d16 70%, var(--ombre-douce) 100%);
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     padding:4.8rem 1.5rem 4rem;
     position:relative;
     overflow:hidden;
@@ -103,7 +105,7 @@
     font-size:clamp(2.8rem, 8.5vw, 5rem);
     line-height:1.02;
     margin:0 0 0.9rem;
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     text-shadow:4px 5px 0 rgba(163,92,53,0.35);
   }
   .subtitle{
@@ -131,7 +133,7 @@
     border-top:4px solid var(--argile);
     background:var(--parchemin-ombre);
   }
-  nav.grimoire .mono{ color:var(--argile-sombre); display:block; margin-bottom:0.8rem; }
+  nav.grimoire .mono{ color:var(--argile-sombre-texte); display:block; margin-bottom:0.8rem; }
   nav.grimoire ol{
     margin:0; padding:0 0 0 1.4rem;
     columns:2; column-gap:2.6rem;
@@ -140,7 +142,7 @@
   @media (max-width:600px){ nav.grimoire ol{ columns:1; } }
   nav.grimoire li{ margin-bottom:0.35rem; }
   nav.grimoire a{ color:var(--ombre); text-decoration:none; border-bottom:1px solid var(--ligne); }
-  nav.grimoire a:hover{ color:var(--argile-sombre); border-color:var(--argile-sombre); }
+  nav.grimoire a:hover{ color:var(--argile-sombre-texte); border-color:var(--argile-sombre); }
 
   /* ---------- CORPS ---------- */
   main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
@@ -174,7 +176,7 @@
     margin:1.7rem 0;
     padding:1rem 1.4rem;
     background:var(--ombre);
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     font-style:italic;
     font-size:1.04rem;
     border-left:5px solid var(--kabbale);
@@ -194,7 +196,7 @@
   sup.fn a{
     font-family:var(--mono);
     font-size:0.62rem;
-    color:var(--argile-sombre);
+    color:var(--argile-sombre-texte);
     text-decoration:none;
     padding:0 0.1rem;
   }
@@ -227,7 +229,7 @@
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--argile-sombre);
+    color:var(--argile-sombre-texte);
     margin-bottom:0.15rem;
   }
   .tablette .value{ font-size:0.93rem; color:var(--ombre); }
@@ -235,7 +237,7 @@
   /* ---------- SOURCES ---------- */
   section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
   section.sources li{ margin-bottom:0.55rem; }
-  section.sources a{ color:var(--argile-sombre); word-break:break-all; }
+  section.sources a{ color:var(--argile-sombre-texte); word-break:break-all; }
   section.sources a:hover{ color:var(--kabbale-texte); }
 
   footer.poussiere{
@@ -258,6 +260,14 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  blockquote{ --parchemin-texte:#e9dfc8; }   /* sur #171310, 1 element(s) */
+  blockquote{ --kabbale-texte:#9d7827; }   /* sur #171310, 1 element(s) */
+  blockquote{ --argile-sombre-texte:#bd663a; }   /* sur #171310, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

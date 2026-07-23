@@ -18,6 +18,7 @@
     --manila-deep:#a88f61;
     --manila-dark:#5c4d34;
     --paper:#ece3ca;
+    --paper-texte:#ece3ca;
     --paper-deep:#e0d4b2;
     --ink:#211d16;
     --ink-soft:#4a4130;
@@ -117,7 +118,7 @@
     font-size:0.72rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--paper);
+    color:var(--paper-texte);
     clip-path: polygon(6% 0, 94% 0, 100% 100%, 0% 100%);
     position:relative;
     top:1px;
@@ -227,7 +228,7 @@
     display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
   }
   nav.toc a{
-    color:var(--paper);
+    color:var(--paper-texte);
     opacity:0.72;
     text-decoration:none;
     font-family:var(--sans);
@@ -436,7 +437,7 @@
   .telex{
     margin:1.6rem 0 1.7rem;
     background:var(--federal-deep);
-    color:var(--paper);
+    color:var(--paper-texte);
     border:1px solid var(--ink);
     padding:0;
   }
@@ -463,7 +464,7 @@
   .telex .stat .num{
     font-family:var(--serif);
     font-size:1.4rem;
-    color:var(--paper);
+    color:var(--paper-texte);
     display:block;
     line-height:1.15;
   }
@@ -531,6 +532,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.folder-tab{ --paper-texte:#332b12; }   /* sur #a88f61, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">

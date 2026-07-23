@@ -20,7 +20,7 @@
     --ink:#221f1a;
     --ink-soft:#4a4436;
     --red:#c3281c;
-    --red-texte:#e34539;
+    --red-texte:#c9291c;
     --red-deep:#8f1d14;
     --gold:#d29a3c;
     --teal:#1d4741;
@@ -479,6 +479,12 @@
      ossature de la page restent intactes. */
   body{font-family:var(--serif);}
   h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.pinned{ --red-texte:#e34539; }   /* sur #171410, 1 element(s) */
 </style>
 </head>
 <body data-volet="critique">
