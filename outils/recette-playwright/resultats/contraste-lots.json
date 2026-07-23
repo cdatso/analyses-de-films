@@ -1,55 +1,5 @@
 [
  {
-  "deplacement_clarte": 0.028,
-  "elements": 34,
-  "extraits": [
-   "Accueil",
-   "Publiée le 3 juillet 2026",
-   "Sommaire"
-  ],
-  "fond": "#faf8f4",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "annie-hall.html": 6,
-   "comment-ca-marche.html": 5,
-   "critiques.html": 6,
-   "demander-une-analyse.html": 2,
-   "etudes.html": 5,
-   "index.html": 7,
-   "qui-sommes-nous.html": 3
-  },
-  "pire_ratio": 4.07,
-  "propose": "#73736d",
-  "seuil": 4.5,
-  "texte": "#7a7a74"
- },
- {
-  "deplacement_clarte": 0.054,
-  "elements": 20,
-  "extraits": [
-   "Analyse cinématographique",
-   "États-Unis · 93 minutes · Comédie dramatique ",
-   "Retour aux analyses"
-  ],
-  "fond": "#f1ede4",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "annie-hall.html": 4,
-   "comment-ca-marche.html": 3,
-   "critiques.html": 1,
-   "demander-une-analyse.html": 2,
-   "etudes.html": 1,
-   "index.html": 4,
-   "qui-sommes-nous.html": 5
-  },
-  "pire_ratio": 3.7,
-  "propose": "#6c6c67",
-  "seuil": 4.5,
-  "texte": "#7a7a74"
- },
- {
   "deplacement_clarte": 0.05,
   "elements": 6,
   "extraits": [
