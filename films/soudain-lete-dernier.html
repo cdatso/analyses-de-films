@@ -20,8 +20,10 @@
     --negative:#e8e2d2;
     --negative-dim:#b8b2a2;
     --safelight:#b23a2e;
+    --safelight-texte:#d25c50;
     --safelight-deep:#8a2c22;
     --silver:#7a756a;
+    --silver-texte:#69655b;
     --line: rgba(232,226,210,0.13);
     --line-soft: rgba(232,226,210,0.07);
   }
@@ -58,7 +60,7 @@
     text-decoration:none;
     margin-bottom:1.4rem;
   }
-  .back-link:hover{ opacity:1; color:var(--safelight); }
+  .back-link:hover{ opacity:1; color:var(--safelight-texte); }
 
   .sprockets{
     height:14px;
@@ -74,7 +76,7 @@
     font-size:0.58rem;
     letter-spacing:0.35em;
     text-transform:uppercase;
-    color:var(--silver);
+    color:var(--silver-texte);
     white-space:nowrap;
     overflow:hidden;
     padding:0.35rem 0;
@@ -105,7 +107,7 @@
     content:"+";
     position:absolute;
     font-family:var(--mono);
-    color:var(--silver);
+    color:var(--silver-texte);
     font-size:0.9rem;
   }
   .frame-border::before{ top:-9px; left:-7px; }
@@ -115,7 +117,7 @@
     display:flex;
     align-items:center;
     gap:0.7rem;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     margin-bottom:1.9rem;
   }
   .cover-eyebrow .rule{ height:1px; width:32px; background:var(--safelight); }
@@ -126,7 +128,7 @@
     right:2rem;
     font-family:var(--mono);
     font-size:0.7rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     letter-spacing:0.08em;
   }
 
@@ -186,7 +188,7 @@
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.11em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     margin-bottom:0.3rem;
   }
   .filecard dd{ margin:0; font-size:0.9rem; color:var(--negative); }
@@ -207,7 +209,7 @@
     letter-spacing:0.08em;
     transition:opacity 0.15s ease, color 0.15s ease;
   }
-  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; color:var(--safelight); }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; color:var(--safelight-texte); }
 
   /* ---------- MAIN ---------- */
   main{ max-width:720px; margin:0 auto; padding:0 1.5rem; }
@@ -239,7 +241,7 @@
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:block;
     margin-bottom:0.15rem;
   }
@@ -255,7 +257,7 @@
     font-family:var(--mono);
     font-style:normal;
     font-size:0.72rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     text-transform:lowercase;
   }
 
@@ -270,7 +272,7 @@
   p:last-child{ margin-bottom:0; }
 
   a.foot{
-    color:var(--safelight);
+    color:var(--safelight-texte);
     text-decoration:none;
     border-bottom:1px dotted var(--safelight);
     font-size:0.85em;
@@ -279,7 +281,7 @@
   .caution{
     font-family:var(--mono);
     font-size:0.76rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     border-left:2px solid var(--silver);
     padding-left:0.8rem;
     margin:1rem 0;
@@ -326,7 +328,7 @@
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:block;
     margin-bottom:0.5rem;
   }
@@ -362,7 +364,7 @@
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--silver);
+    color:var(--silver-texte);
   }
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
@@ -371,7 +373,7 @@
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:inline-block;
     margin-bottom:0.3rem;
   }
@@ -407,7 +409,7 @@
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
-    color:var(--silver);
+    color:var(--silver-texte);
     margin-bottom:0.6rem;
     display:block;
   }
@@ -432,11 +434,11 @@
     content: counter(src);
     position:absolute; left:0; top:0;
     font-family:var(--mono);
-    color:var(--safelight);
+    color:var(--safelight-texte);
     font-size:0.76rem;
   }
   ol.source-list a{ color:var(--negative); word-break:break-all; }
-  ol.source-list a:hover{ color:var(--safelight); }
+  ol.source-list a:hover{ color:var(--safelight-texte); }
 
   footer.endnote{
     text-align:center;
@@ -445,11 +447,11 @@
     font-size:0.66rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--silver);
+    color:var(--silver-texte);
     background:var(--dark);
   }
-  footer.endnote a{ color:var(--silver); }
-  footer.endnote a:hover{ color:var(--safelight); }
+  footer.endnote a{ color:var(--silver-texte); }
+  footer.endnote a:hover{ color:var(--safelight-texte); }
 
   @media (max-width:600px){
     .cover-inner{ padding:3rem 1.1rem 0; }
@@ -795,7 +797,7 @@
 
 <section class="sources" id="sources">
   <div class="sources-inner">
-    <span class="label" style="color:var(--safelight)">Sources consultées</span>
+    <span class="label" style="color:var(--safelight-texte)">Sources consultées</span>
     <h2 style="margin-top:0.6rem;">Références</h2>
     <ol class="source-list">
       <li id="src-1">Wikipédia (EN), « Suddenly, Last Summer (film) » — <a href="https://en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)</a></li>

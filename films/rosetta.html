@@ -22,7 +22,9 @@
     --concrete-dark:#8f8c7e;
     --paper:#eeece3;
     --vest:#d9560f;
+    --vest-texte:#9e3f0b;
     --vest-deep:#a3410b;
+    --vest-deep-texte:#9d3f0b;
     --vest-pale:#f2c9a8;
     --line:rgba(238,236,227,0.14);
     --line-dark:rgba(27,26,23,0.16);
@@ -62,7 +64,7 @@
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.66rem;
-    color:var(--vest);
+    color:var(--vest-texte);
   }
 
   .wrap{ max-width:900px; margin:0 auto; padding:0 1.6rem; }
@@ -117,7 +119,7 @@
     right:-18px; top:38%;
     transform:rotate(-11deg);
     border:3px solid var(--vest);
-    color:var(--vest);
+    color:var(--vest-texte);
     font-family:var(--sans);
     font-weight:800;
     font-size:1.15rem;
@@ -139,7 +141,7 @@
     font-family:var(--mono);
     font-size:0.76rem;
     letter-spacing:0.08em;
-    color:var(--vest);
+    color:var(--vest-texte);
   }
   header.cover .eyebrow{ display:block; text-align:center; margin-bottom:1.6rem; }
 
@@ -163,8 +165,8 @@
     font-size:0.92rem;
     display:flex; gap:0.55rem; align-items:baseline;
   }
-  nav.programme a:hover{ color:var(--vest); }
-  nav.programme .num{ font-family:var(--mono); color:var(--vest); font-size:0.74rem; }
+  nav.programme a:hover{ color:var(--vest-texte); }
+  nav.programme .num{ font-family:var(--mono); color:var(--vest-texte); font-size:0.74rem; }
   @media (max-width:600px){ nav.programme ol{ grid-template-columns:1fr; } }
 
   .content-note{
@@ -174,7 +176,7 @@
     background:rgba(217,86,15,0.08);
     font-size:0.9rem;
   }
-  .content-note .label{ color:var(--vest); margin-bottom:0.45rem; }
+  .content-note .label{ color:var(--vest-texte); margin-bottom:0.45rem; }
 
   /* ---------- main ---------- */
   main{ background:var(--paper); color:var(--ink); }
@@ -190,7 +192,7 @@
   .section-head .tag{
     font-family:var(--mono);
     font-size:0.7rem;
-    color:var(--vest);
+    color:var(--vest-texte);
     background:var(--concrete);
     padding:0.15rem 0.5rem;
   }
@@ -209,7 +211,7 @@
   sup.fn a{
     font-family:var(--mono);
     font-size:0.66rem;
-    color:var(--vest-deep);
+    color:var(--vest-deep-texte);
     text-decoration:none;
   }
   sup.fn a:hover{ text-decoration:underline; }
@@ -224,7 +226,7 @@
   .fiche dt{
     font-family:var(--mono); font-size:0.64rem;
     text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--vest-deep); background:var(--concrete);
+    color:var(--vest-deep-texte); background:var(--concrete);
     display:flex; align-items:center;
   }
   @media (max-width:600px){ .fiche{ grid-template-columns:1fr; } .fiche dt{ border-bottom:none; padding-bottom:0.2rem; } }
@@ -240,7 +242,7 @@
     text-decoration:none;
     margin-bottom:1.2rem;
   }
-  .back-link:hover{ opacity:1; color:var(--vest); }
+  .back-link:hover{ opacity:1; color:var(--vest-texte); }
 
   .fiche-wrap{ display:flex; gap:1.8rem; flex-wrap:wrap; align-items:flex-start; max-width:780px; }
   .fiche-wrap .poster{ flex:0 0 180px; margin:0; }
@@ -251,7 +253,7 @@
   .cast-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:1rem; margin-top:1.6rem; }
   .cast-card{ background:#fff; border:1px solid var(--line-dark); border-top:3px solid var(--vest); padding:1rem 1.1rem; }
   .cast-card h3{ font-size:1.15rem; margin-bottom:0.15rem; }
-  .cast-card .role{ font-family:var(--mono); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep); display:block; margin-bottom:0.5rem; }
+  .cast-card .role{ font-family:var(--mono); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep-texte); display:block; margin-bottom:0.5rem; }
   .cast-card p{ font-size:0.86rem; margin:0; font-family:var(--sans); }
 
   /* ---------- signature : le circuit de rosetta ---------- */
@@ -282,7 +284,7 @@
   }
   .circuit-stop .time{
     font-family:var(--mono);
-    font-size:0.62rem; color:var(--vest);
+    font-size:0.62rem; color:var(--vest-texte);
     display:block; margin-bottom:0.3rem;
   }
   .circuit-stop .place{
@@ -292,7 +294,7 @@
     letter-spacing:0.02em;
   }
   .circuit-arrow{
-    text-align:center; color:var(--vest);
+    text-align:center; color:var(--vest-texte);
     font-family:var(--mono);
     display:flex; align-items:center; justify-content:center;
   }
@@ -315,19 +317,19 @@
     display:block; margin-top:0.5rem;
     font-family:var(--mono); font-style:normal;
     font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em;
-    color:var(--vest-deep);
+    color:var(--vest-deep-texte);
   }
 
   ul.theme-list{ padding-left:1.2rem; max-width:66ch; }
   ul.theme-list li{ margin-bottom:0.9rem; }
-  ul.theme-list strong{ color:var(--vest-deep); }
+  ul.theme-list strong{ color:var(--vest-deep-texte); }
 
   #sources{ background:var(--ink-deep); color:var(--paper); }
-  #sources .section-head{ border-bottom-color:var(--vest); }
+  #sources .section-head{ border-bottom-color:var(--vest-texte); }
   #sources .section-head h2{ color:var(--paper); }
   #sources ol{ max-width:780px; padding-left:1.4rem; font-size:0.85rem; color:var(--concrete-dim); }
   #sources li{ margin-bottom:0.55rem; }
-  #sources a{ color:var(--vest); text-decoration:none; word-break:break-word; }
+  #sources a{ color:var(--vest-texte); text-decoration:none; word-break:break-word; }
   #sources a:hover{ text-decoration:underline; }
 
   footer{

@@ -22,12 +22,15 @@
     --ink:#211d16;
     --ink-soft:#4a4130;
     --ink-faint:#7d7050;
+    --ink-faint-texte:#665b41;
     --redact:#161310;
     --stamp-red:#9c2b23;
+    --stamp-red-texte:#85251e;
     --stamp-red-deep:#7a2019;
     --federal:#333f40;
     --federal-deep:#232c2d;
     --warn-amber:#a9791f;
+    --warn-amber-texte:#bd8723;
     --line: rgba(33,29,22,0.22);
     --line-soft: rgba(33,29,22,0.11);
   }
@@ -56,12 +59,12 @@
     letter-spacing:0.13em;
     font-weight:600;
     font-size:0.7rem;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
   }
 
   .back-link{
     display:inline-block;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
@@ -70,7 +73,7 @@
     text-decoration:none;
     margin-bottom:1rem;
   }
-  .back-link:hover{ color:var(--stamp-red); }
+  .back-link:hover{ color:var(--stamp-red-texte); }
 
   /* ---------- RING HOLES (marge de classeur) ---------- */
   .ring-margin{
@@ -136,7 +139,7 @@
     position:absolute;
     top:1.6rem; right:1.4rem;
     border:3px solid var(--stamp-red);
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     font-family:var(--sans);
     font-weight:700;
     text-transform:uppercase;
@@ -156,7 +159,7 @@
     font-size:0.72rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     margin-bottom:1.6rem;
   }
   .case-number b{ color:var(--ink); }
@@ -205,7 +208,7 @@
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     margin-bottom:0.28rem;
   }
   .intake-form dd{
@@ -236,7 +239,7 @@
     border:1px solid transparent;
     transition:opacity 0.15s ease, border-color 0.15s ease;
   }
-  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--stamp-red); }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--stamp-red-texte); }
 
   /* ---------- MAIN ---------- */
   main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
@@ -270,7 +273,7 @@
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:block;
     margin-bottom:0.15rem;
   }
@@ -286,7 +289,7 @@
     font-family:var(--mono);
     font-style:italic;
     font-size:0.72rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   h3{
@@ -302,7 +305,7 @@
   p:last-child{ margin-bottom:0; }
 
   a.foot{
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     text-decoration:none;
     border-bottom:1px dotted var(--stamp-red);
     font-size:0.85em;
@@ -313,7 +316,7 @@
     font-family:var(--mono);
     font-style:italic;
     font-size:0.82rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     border-left:2px solid var(--warn-amber);
     padding-left:0.9rem;
     margin:1.1rem 0;
@@ -374,7 +377,7 @@
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:block;
     margin-bottom:0.55rem;
   }
@@ -412,7 +415,7 @@
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
@@ -422,7 +425,7 @@
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.09em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:inline-block;
     margin-bottom:0.3rem;
     border-bottom:1px solid var(--stamp-red);
@@ -448,7 +451,7 @@
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.13em;
-    color:var(--warn-amber);
+    color:var(--warn-amber-texte);
     margin-bottom:0.8rem;
     display:block;
   }
@@ -494,12 +497,12 @@
     position:absolute; left:0; top:0;
     font-family:var(--sans);
     font-weight:600;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     font-size:0.66rem;
     letter-spacing:0.03em;
   }
   ol.source-list a{ color:var(--ink); word-break:break-all; }
-  ol.source-list a:hover{ color:var(--stamp-red); }
+  ol.source-list a:hover{ color:var(--stamp-red-texte); }
 
   footer.endnote{
     text-align:center;
@@ -509,11 +512,11 @@
     font-weight:600;
     letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     background:var(--paper);
   }
-  footer.endnote a{ color:var(--ink-faint); }
-  footer.endnote a:hover{ color:var(--stamp-red); }
+  footer.endnote a{ color:var(--ink-faint-texte); }
+  footer.endnote a:hover{ color:var(--stamp-red-texte); }
 
   @media (max-width:600px){
     .cover-inner{ padding:0 1.1rem; }
