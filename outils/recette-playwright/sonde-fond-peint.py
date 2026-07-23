@@ -10,8 +10,8 @@ texte qui, lui, ne descend jamais si bas. On corrigerait alors un defaut que
 personne ne peut voir -- et on abimerait une identite pour rien.
 
 La mesure juste ne se lit pas dans le CSS, elle se lit A L'ECRAN. Le procede :
-  1. tous les textes candidats de la page passent en `visibility:hidden` --
-     ils disparaissent SANS que la mise en page bouge d'un pixel ;
+  1. les glyphes des textes candidats passent en `color:transparent` -- ils
+     disparaissent SANS emporter le fond propre de leur element ;
   2. une capture est prise ; elle montre donc les fonds nus ;
   3. pour chaque element, on lit les pixels de son cadre exact et on en tire
      la luminance la PLUS DEFAVORABLE au texte qu'il portait ;
@@ -39,6 +39,7 @@ SEUIL_COURANT, SEUIL_GRAND = 4.5, 3.0
 
 JS_CANDIDATS = r"""
 (seuils) => {
+  const TOUT = true;   // audit complet : on mesure meme les conformes
   const out = [];
   let i = 0;
   for (const el of document.querySelectorAll('*')) {
@@ -66,7 +67,6 @@ JS_CANDIDATS = r"""
                 : window.__composer({r: brut.r, g: brut.g, b: brut.b, a: alpha}, fond);
 
     const cand = window.__fondsCandidats(el);
-    if (!cand.degrade) continue;              // seuls les degrades nous occupent
     let pire = Infinity;
     for (const f of cand.fonds) {
       const r2 = window.__ratio(texte, f);
@@ -76,7 +76,7 @@ JS_CANDIDATS = r"""
     const poids = parseInt(st.fontWeight, 10) || 400;
     const seuil = (px >= 24 || (px >= 18.66 && poids >= 700))
                 ? seuils.grand : seuils.courant;
-    if (pire >= seuil) continue;              // deja conforme au pire theorique
+    if (!TOUT && pire >= seuil) continue;     // deja conforme au pire theorique
 
     el.setAttribute('data-sonde', 'p' + (i++));
     out.push({
@@ -94,9 +94,24 @@ JS_CANDIDATS = r"""
 }
 """
 
+# ATTENTION : `visibility:hidden` serait un PIEGE ici -- il masque l'element
+# ENTIER, son propre fond compris. On mesurerait alors ce qui se trouve
+# DERRIERE le bloc et non le fond sur lequel le texte repose : un cartel a
+# fond saumon pose sur une couverture sombre serait mesure contre la
+# couverture, et declare illisible alors qu'il ne l'est pas.
+# `color:transparent` ne retire que les GLYPHES : le fond de l'element reste
+# peint, et la mise en page ne bouge pas d'un pixel.
+# Et la DESCENDANCE avec : un `<em>` ou un `<strong>` a l'interieur garde sa
+# propre couleur, ses glyphes resteraient peints dans le cadre mesure et
+# seraient pris pour du fond. Le masquage couvre donc tout le sous-arbre.
 JS_MASQUE = """() => {
   for (const el of document.querySelectorAll('[data-sonde]')) {
-    el.style.visibility = 'hidden';
+    for (const n of [el, ...el.querySelectorAll('*')]) {
+      n.style.setProperty('color', 'transparent', 'important');
+      n.style.setProperty('text-shadow', 'none', 'important');
+      n.style.setProperty('-webkit-text-stroke-color', 'transparent',
+                          'important');
+    }
   }
 }"""
 
