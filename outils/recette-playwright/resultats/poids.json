@@ -12,7 +12,7 @@
     ],
     [
      "/assets/style.css",
-     16702
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -24,7 +24,7 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
@@ -32,19 +32,19 @@
     ],
     [
      "/comment-ca-marche.html",
-     3238
+     3314
     ]
    ],
-   "octets": 233311
+   "octets": 236670
   },
   "suivante": {
    "detail": [
     [
      "/comment-ca-marche.html",
-     3238
+     3314
     ]
    ],
-   "octets": 3238
+   "octets": 3314
   }
  },
  "critiques.html": {
@@ -55,16 +55,16 @@
      85876
     ],
     [
-     "/assets/style.css",
-     16702
+     "/assets/films-data.js",
+     22222
     ],
     [
      "/assets/corpus.js",
-     16668
+     18178
     ],
     [
-     "/assets/films-data.js",
-     15777
+     "/assets/style.css",
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -76,27 +76,27 @@
     ],
     [
      "/critiques.html",
-     10110
+     10228
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
      5763
     ]
    ],
-   "octets": 186752
+   "octets": 198108
   },
   "suivante": {
    "detail": [
     [
      "/critiques.html",
-     10110
+     10228
     ]
    ],
-   "octets": 10110
+   "octets": 10228
   }
  },
  "demander-une-analyse.html": {
@@ -112,7 +112,7 @@
     ],
     [
      "/assets/style.css",
-     16702
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -124,7 +124,7 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
@@ -132,19 +132,19 @@
     ],
     [
      "/demander-une-analyse.html",
-     5554
+     5679
     ]
    ],
-   "octets": 235627
+   "octets": 239035
   },
   "suivante": {
    "detail": [
     [
      "/demander-une-analyse.html",
-     5554
+     5679
     ]
    ],
-   "octets": 5554
+   "octets": 5679
   }
  },
  "etudes.html": {
@@ -155,16 +155,16 @@
      85876
     ],
     [
-     "/assets/style.css",
-     16702
+     "/assets/films-data.js",
+     22222
     ],
     [
      "/assets/corpus.js",
-     16668
+     18178
     ],
     [
-     "/assets/films-data.js",
-     15777
+     "/assets/style.css",
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -176,7 +176,7 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
@@ -184,19 +184,19 @@
     ],
     [
      "/etudes.html",
-     3490
+     3577
     ]
    ],
-   "octets": 180132
+   "octets": 191457
   },
   "suivante": {
    "detail": [
     [
      "/etudes.html",
-     3490
+     3577
     ]
    ],
-   "octets": 3490
+   "octets": 3577
   }
  },
  "films/pandora-contrechamp.html": {
@@ -204,7 +204,7 @@
    "detail": [
     [
      "/assets/posters/pandora.jpg",
-     1700184
+     291376
     ],
     [
      "/assets/fonts/literata-latin-600-normal.woff2",
@@ -220,7 +220,7 @@
     ],
     [
      "/films/pandora-contrechamp.html",
-     36192
+     36619
     ],
     [
      "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
@@ -228,20 +228,20 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
      5763
     ]
    ],
-   "octets": 1982715
+   "octets": 576759
   },
   "suivante": {
    "detail": [
     [
      "/assets/posters/pandora.jpg",
-     1700184
+     291376
     ],
     [
      "/assets/fonts/literata-latin-400-italic.woff2",
@@ -249,10 +249,10 @@
     ],
     [
      "/films/pandora-contrechamp.html",
-     36192
+     36619
     ]
    ],
-   "octets": 1784436
+   "octets": 376055
   }
  },
  "films/pandora.html": {
@@ -260,14 +260,14 @@
    "detail": [
     [
      "/assets/posters/pandora.jpg",
-     1700184
-    ],
-    [
-     "/assets/fonts/literata-latin-400-normal.woff2",
-     85876
+     291376
     ],
     [
      "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
      85876
     ],
     [
@@ -276,7 +276,7 @@
     ],
     [
      "/films/pandora.html",
-     37080
+     37682
     ],
     [
      "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
@@ -284,20 +284,20 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
      5763
     ]
    ],
-   "octets": 1983603
+   "octets": 577822
   },
   "suivante": {
    "detail": [
     [
      "/assets/posters/pandora.jpg",
-     1700184
+     291376
     ],
     [
      "/assets/fonts/literata-latin-400-italic.woff2",
@@ -305,21 +305,21 @@
     ],
     [
      "/films/pandora.html",
-     37080
+     37682
     ]
    ],
-   "octets": 1785324
+   "octets": 377118
   }
  },
  "films/rouges-et-blancs.html": {
   "premiere": {
    "detail": [
     [
-     "/assets/fonts/literata-latin-400-normal.woff2",
+     "/assets/fonts/literata-latin-600-normal.woff2",
      85876
     ],
     [
-     "/assets/fonts/literata-latin-600-normal.woff2",
+     "/assets/fonts/literata-latin-400-normal.woff2",
      85876
     ],
     [
@@ -336,7 +336,7 @@
     ],
     [
      "/films/rouges-et-blancs.html",
-     32788
+     33517
     ],
     [
      "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
@@ -348,14 +348,14 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
      5763
     ]
    ],
-   "octets": 400963
+   "octets": 404117
   },
   "suivante": {
    "detail": [
@@ -373,14 +373,14 @@
     ],
     [
      "/films/rouges-et-blancs.html",
-     32788
+     33517
     ],
     [
      "/assets/fonts/ibmplexmono-latin-ext-400-normal.woff2",
      13552
     ]
    ],
-   "octets": 202684
+   "octets": 203413
   }
  },
  "index.html": {
@@ -395,16 +395,16 @@
      85876
     ],
     [
-     "/assets/style.css",
-     16702
+     "/assets/films-data.js",
+     22222
     ],
     [
      "/assets/corpus.js",
-     16668
+     18178
     ],
     [
-     "/assets/films-data.js",
-     15777
+     "/assets/style.css",
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -416,18 +416,18 @@
     ],
     [
      "/index.html",
-     12018
+     12170
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
      5763
     ]
    ],
-   "octets": 274536
+   "octets": 285926
   },
   "suivante": {
    "detail": [],
@@ -438,16 +438,16 @@
   "premiere": {
    "detail": [
     [
-     "/assets/fonts/literata-latin-600-normal.woff2",
-     85876
-    ],
-    [
      "/assets/fonts/literata-latin-400-normal.woff2",
      85876
     ],
     [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
      "/assets/style.css",
-     16702
+     17560
     ],
     [
      "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
@@ -459,7 +459,7 @@
     ],
     [
      "/assets/mobilier.css",
-     5852
+     8277
     ],
     [
      "/assets/fonts.css",
@@ -467,19 +467,19 @@
     ],
     [
      "/qui-sommes-nous.html",
-     2621
+     2683
     ]
    ],
-   "octets": 232694
+   "octets": 236039
   },
   "suivante": {
    "detail": [
     [
      "/qui-sommes-nous.html",
-     2621
+     2683
     ]
    ],
-   "octets": 2621
+   "octets": 2683
   }
  }
 }

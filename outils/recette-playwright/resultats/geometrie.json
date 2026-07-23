@@ -186,115 +186,17 @@
  "films/hamnet.html": {
   "320": {
    "clientWidth": 320,
-   "debordement": 262,
-   "fautifs": [
-    {
-     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media",
-     "debord": 262,
-     "droite": 582,
-     "largeur": 564
-    },
-    {
-     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card",
-     "debord": 262,
-     "droite": 582,
-     "largeur": 564
-    },
-    {
-     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
-     "debord": 240,
-     "droite": 560,
-     "largeur": 150
-    }
-   ],
-   "nb_fautifs": 19,
-   "scrollWidth": 582
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
   },
   "375": {
    "clientWidth": 375,
-   "debordement": 207,
-   "fautifs": [
-    {
-     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media",
-     "debord": 207,
-     "droite": 582,
-     "largeur": 564
-    },
-    {
-     "chemin": "html > body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card",
-     "debord": 207,
-     "droite": 582,
-     "largeur": 564
-    },
-    {
-     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "body > header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    },
-    {
-     "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dd",
-     "debord": 185,
-     "droite": 560,
-     "largeur": 150
-    }
-   ],
-   "nb_fautifs": 8,
-   "scrollWidth": 582
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 375
   },
   "768": {
    "clientWidth": 768,
@@ -307,17 +209,17 @@
  "films/hitchcock-truffaut.html": {
   "320": {
    "clientWidth": 320,
-   "debordement": 100,
+   "debordement": 0,
    "fautifs": [],
    "nb_fautifs": 0,
-   "scrollWidth": 420
+   "scrollWidth": 320
   },
   "375": {
    "clientWidth": 375,
-   "debordement": 45,
+   "debordement": 0,
    "fautifs": [],
    "nb_fautifs": 0,
-   "scrollWidth": 420
+   "scrollWidth": 375
   },
   "768": {
    "clientWidth": 768,
@@ -606,17 +508,10 @@
  "films/pandora-contrechamp.html": {
   "320": {
    "clientWidth": 320,
-   "debordement": 18,
-   "fautifs": [
-    {
-     "chemin": "section#sources > div.note > code",
-     "debord": 18,
-     "droite": 338,
-     "largeur": 292
-    }
-   ],
-   "nb_fautifs": 1,
-   "scrollWidth": 338
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
   },
   "375": {
    "clientWidth": 375,
@@ -659,29 +554,10 @@
  "films/persona.html": {
   "320": {
    "clientWidth": 320,
-   "debordement": 34,
-   "fautifs": [
-    {
-     "chemin": "li#src-1 > a",
-     "debord": 34,
-     "droite": 354,
-     "largeur": 288
-    },
-    {
-     "chemin": "li#src-4 > a",
-     "debord": 34,
-     "droite": 354,
-     "largeur": 289
-    },
-    {
-     "chemin": "li#src-3 > a",
-     "debord": 21,
-     "droite": 341,
-     "largeur": 276
-    }
-   ],
-   "nb_fautifs": 3,
-   "scrollWidth": 354
+   "debordement": 0,
+   "fautifs": [],
+   "nb_fautifs": 0,
+   "scrollWidth": 320
   },
   "375": {
    "clientWidth": 375,

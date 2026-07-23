@@ -20,7 +20,14 @@
 :root {
   /* Système typographique unifié (§7.1). Déclaré ici parce que le mobilier
      est la seule feuille que TOUTES les pages partagent. */
-  --serif: 'Literata', Georgia, 'Times New Roman', serif;
+  /* `Frank Ruhl Libre` était embarquée, déclarée en @font-face avec son
+     unicode-range hébreu, sa licence versée au dépôt — et nommée par AUCUNE
+     pile : le navigateur ne pouvait donc jamais l'atteindre, et l'hébreu de
+     `le-golem` tombait sur Times New Roman. Le reliquat était routé vers
+     065-5 par la note de clôture de la recette ; la sonde des fontes l'a
+     retrouvé. Son unicode-range la borne à l'hébreu : la nommer ici ne coûte
+     rien aux 38 autres pages, qui n'en chargeront pas un octet (P-27). */
+  --serif: 'Literata', 'Frank Ruhl Libre', Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 

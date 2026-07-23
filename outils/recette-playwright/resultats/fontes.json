@@ -60,8 +60,7 @@
    "ù",
    "û",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/au-fil-de-leau.html": [
    "«",
@@ -82,7 +81,6 @@
    "Œ",
    "œ",
    "—",
-   "←",
    "≈",
    "✦"
   ],
@@ -103,7 +101,6 @@
    "û",
    "œ",
    "—",
-   "←",
    "−"
   ],
   "films/hamlet.html": [
@@ -137,8 +134,7 @@
    "т",
    "—",
    "“",
-   "”",
-   "←"
+   "”"
   ],
   "films/hamnet.html": [
    "«",
@@ -158,8 +154,7 @@
    "Ł",
    "œ",
    "Ż",
-   "—",
-   "←"
+   "—"
   ],
   "films/hitchcock-truffaut.html": [
    "«",
@@ -179,8 +174,7 @@
    "û",
    "œ",
    "–",
-   "—",
-   "←"
+   "—"
   ],
   "films/julie-en-12-chapitres.html": [
    "«",
@@ -201,8 +195,7 @@
    "û",
    "œ",
    "—",
-   "€",
-   "←"
+   "€"
   ],
   "films/la-chevauchee-fantastique.html": [
    "«",
@@ -224,7 +217,6 @@
    "û",
    "œ",
    "—",
-   "←",
    "→"
   ],
   "films/la-mariee-etait-en-noir.html": [
@@ -232,6 +224,7 @@
    "·",
    "»",
    "À",
+   "É",
    "à",
    "â",
    "ç",
@@ -245,7 +238,6 @@
    "œ",
    "–",
    "—",
-   "←",
    "✦"
   ],
   "films/la-nuit-de-san-lorenzo.html": [
@@ -266,8 +258,7 @@
    "ù",
    "û",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/le-cheval-de-turin.html": [
    "«",
@@ -291,8 +282,7 @@
    "œ",
    "ű",
    "—",
-   "…",
-   "←"
+   "…"
   ],
   "films/le-doulos.html": [
    "«",
@@ -311,14 +301,14 @@
    "ö",
    "ù",
    "û",
-   "—",
-   "←"
+   "—"
   ],
   "films/le-golem.html": [
    "«",
    "·",
    "»",
    "À",
+   "É",
    "à",
    "á",
    "â",
@@ -337,8 +327,7 @@
    "א",
    "מ",
    "ת",
-   "—",
-   "←"
+   "—"
   ],
   "films/le-samourai.html": [
    "«",
@@ -360,7 +349,6 @@
    "œ",
    "—",
    "…",
-   "←",
    "◆"
   ],
   "films/les-deux-orphelines.html": [
@@ -383,7 +371,6 @@
    "œ",
    "–",
    "—",
-   "←",
    "↔"
   ],
   "films/manhattan.html": [
@@ -401,14 +388,14 @@
    "ô",
    "ù",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/moi-daniel-blake.html": [
    "«",
    "·",
    "»",
    "À",
+   "É",
    "à",
    "ç",
    "è",
@@ -418,8 +405,7 @@
    "ô",
    "ù",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/nouvelle-vague.html": [
    "«",
@@ -438,8 +424,7 @@
    "ù",
    "û",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/pandora-contrechamp.html": [
    "«",
@@ -503,8 +488,7 @@
    "ù",
    "û",
    "–",
-   "—",
-   "←"
+   "—"
   ],
   "films/raging-bull.html": [
    "«",
@@ -524,8 +508,7 @@
    "ù",
    "œ",
    "–",
-   "—",
-   "←"
+   "—"
   ],
   "films/retour-a-seoul.html": [
    "«",
@@ -544,8 +527,7 @@
    "ï",
    "ô",
    "ù",
-   "—",
-   "←"
+   "—"
   ],
   "films/rosetta.html": [
    "«",
@@ -568,7 +550,6 @@
    "ô",
    "ù",
    "—",
-   "←",
    "→"
   ],
   "films/rouges-et-blancs.html": [
@@ -604,6 +585,7 @@
    "·",
    "»",
    "À",
+   "É",
    "Î",
    "Ö",
    "à",
@@ -617,8 +599,7 @@
    "ù",
    "û",
    "ć",
-   "—",
-   "←"
+   "—"
   ],
   "films/shutter-island.html": [
    "«",
@@ -639,14 +620,14 @@
    "û",
    "œ",
    "–",
-   "—",
-   "←"
+   "—"
   ],
   "films/soudain-lete-dernier.html": [
    "«",
    "·",
    "º",
    "»",
+   "É",
    "à",
    "â",
    "ç",
@@ -658,8 +639,7 @@
    "ù",
    "û",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/soy-cuba.html": [
    "«",
@@ -686,8 +666,7 @@
    "а",
    "б",
    "у",
-   "—",
-   "←"
+   "—"
   ],
   "films/sud.html": [
    "«",
@@ -705,8 +684,7 @@
    "ù",
    "œ",
    "–",
-   "—",
-   "←"
+   "—"
   ],
   "films/sur-la-route-domaha.html": [
    "«",
@@ -724,14 +702,14 @@
    "ï",
    "ô",
    "û",
-   "—",
-   "←"
+   "—"
   ],
   "films/the-old-oak.html": [
    "«",
    "·",
    "»",
    "À",
+   "É",
    "à",
    "â",
    "ç",
@@ -740,8 +718,7 @@
    "ê",
    "ô",
    "œ",
-   "—",
-   "←"
+   "—"
   ],
   "films/waterloo.html": [
    "£",
@@ -764,24 +741,19 @@
    "Œ",
    "œ",
    "—",
-   "←",
    "◼"
   ],
   "index.html": [
    "§",
-   "«",
    "·",
-   "»",
    "É",
    "Ö",
    "à",
    "ç",
    "è",
    "é",
-   "ê",
    "ï",
    "ó",
-   "œ",
    "—"
   ],
   "qui-sommes-nous.html": [
@@ -1005,13 +977,13 @@
    "Literata"
   ],
   "U+05D0": [
-   "Times New Roman"
+   "Frank Ruhl Libre"
   ],
   "U+05DE": [
-   "Times New Roman"
+   "Frank Ruhl Libre"
   ],
   "U+05EA": [
-   "Times New Roman"
+   "Frank Ruhl Libre"
   ],
   "U+2013": [
    "Literata"
@@ -1030,9 +1002,6 @@
   ],
   "U+20AC": [
    "Literata"
-  ],
-  "U+2190": [
-   "Times New Roman"
   ],
   "U+2192": [
    "Times New Roman"
@@ -1115,7 +1084,7 @@
       26
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   },
   "critiques.html": {
@@ -1173,7 +1142,7 @@
       137
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    },
    "titre": {
     "composee": [
@@ -1182,7 +1151,7 @@
       20
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   },
   "etudes.html": {
@@ -1219,7 +1188,7 @@
     "composee": [
      [
       "IBM Plex Mono",
-      236
+      235
      ]
     ],
     "demandee": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Consolas, monospace"
@@ -1245,15 +1214,11 @@
    "texte courant": {
     "composee": [
      [
-      "Segoe UI Light",
-      26
-     ],
-     [
-      "IBM Plex Mono",
-      24
+      "Literata",
+      591
      ]
     ],
-    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    },
    "titre": {
     "composee": [
@@ -1262,7 +1227,7 @@
       7
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   },
   "films/pandora.html": {
@@ -1287,15 +1252,11 @@
    "texte courant": {
     "composee": [
      [
-      "Segoe UI Light",
-      29
-     ],
-     [
-      "IBM Plex Mono",
-      24
+      "Literata",
+      250
      ]
     ],
-    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    },
    "titre": {
     "composee": [
@@ -1304,7 +1265,7 @@
       7
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   },
   "films/rouges-et-blancs.html": {
@@ -1333,7 +1294,7 @@
       391
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    },
    "titre": {
     "composee": [
@@ -1342,7 +1303,7 @@
       16
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   },
   "index.html": {
@@ -1409,26 +1370,12 @@
       15
      ]
     ],
-    "demandee": "Literata, Georgia, \"Times New Roman\", serif"
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
    }
   }
  },
- "polices_contre_epreuve": [
-  "http://127.0.0.1:8765/assets/fonts/frankruhllibre-hebrew-400-normal.woff2"
- ],
+ "polices_contre_epreuve": [],
  "replis": {
-  "U+05D0": [
-   "Times New Roman"
-  ],
-  "U+05DE": [
-   "Times New Roman"
-  ],
-  "U+05EA": [
-   "Times New Roman"
-  ],
-  "U+2190": [
-   "Times New Roman"
-  ],
   "U+2192": [
    "Times New Roman"
   ],

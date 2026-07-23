@@ -19,7 +19,7 @@
   "sans_indicateur": []
  },
  "critiques.html": {
-  "atteints": 55,
+  "atteints": 81,
   "exemple": {
    "balise": "a",
    "bordure_focus": "rgb(26, 26, 24)",
@@ -32,7 +32,7 @@
    "outlineWidth": "2px",
    "visible": true
   },
-  "focalisables": 55,
+  "focalisables": 81,
   "hors_inventaire": 0,
   "manques": [],
   "sans_indicateur": []
@@ -54,44 +54,7 @@
   "focalisables": 12,
   "hors_inventaire": 0,
   "manques": [],
-  "sans_indicateur": [
-   {
-    "balise": "input",
-    "bordure_focus": "rgb(122, 59, 46)",
-    "boxShadow": "none",
-    "chemin": "input#film-title",
-    "fond_focus": "rgb(250, 248, 244)",
-    "idx": 7,
-    "outlineColor": "rgb(26, 26, 24)",
-    "outlineStyle": "none",
-    "outlineWidth": "3px",
-    "visible": false
-   },
-   {
-    "balise": "input",
-    "bordure_focus": "rgb(122, 59, 46)",
-    "boxShadow": "none",
-    "chemin": "input#film-director",
-    "fond_focus": "rgb(250, 248, 244)",
-    "idx": 8,
-    "outlineColor": "rgb(26, 26, 24)",
-    "outlineStyle": "none",
-    "outlineWidth": "3px",
-    "visible": false
-   },
-   {
-    "balise": "input",
-    "bordure_focus": "rgb(122, 59, 46)",
-    "boxShadow": "none",
-    "chemin": "input#film-year",
-    "fond_focus": "rgb(250, 248, 244)",
-    "idx": 9,
-    "outlineColor": "rgb(26, 26, 24)",
-    "outlineStyle": "none",
-    "outlineWidth": "3px",
-    "visible": false
-   }
-  ]
+  "sans_indicateur": []
  },
  "etudes.html": {
   "atteints": 9,
@@ -116,7 +79,7 @@
   "atteints": 52,
   "exemple": {
    "balise": "a",
-   "bordure_focus": "rgb(63, 69, 80)",
+   "bordure_focus": "rgb(47, 51, 59)",
    "boxShadow": "none",
    "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
    "fond_focus": "rgba(0, 0, 0, 0)",
@@ -170,7 +133,7 @@
   "sans_indicateur": []
  },
  "index.html": {
-  "atteints": 62,
+  "atteints": 87,
   "exemple": {
    "balise": "a",
    "bordure_focus": "rgb(26, 26, 24)",
@@ -183,7 +146,7 @@
    "outlineWidth": "2px",
    "visible": true
   },
-  "focalisables": 62,
+  "focalisables": 87,
   "hors_inventaire": 0,
   "manques": [],
   "sans_indicateur": []
