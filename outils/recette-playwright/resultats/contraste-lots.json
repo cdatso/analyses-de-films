@@ -19,26 +19,6 @@
   "texte": "#e2d6bd"
  },
  {
-  "deplacement_clarte": 0.108,
-  "elements": 4,
-  "extraits": [
-   "Sommaire",
-   "Affiche d'exploitation — collection de référe",
-   "Sommaire"
-  ],
-  "fond": "#f2ead9",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "pandora-contrechamp.html": 2,
-   "pandora.html": 2
-  },
-  "pire_ratio": 3.02,
-  "propose": "#6f6a5d",
-  "seuil": 4.5,
-  "texte": "#8d8677"
- },
- {
   "deplacement_clarte": 0.836,
   "elements": 3,
   "extraits": [
@@ -259,25 +239,6 @@
   "texte": "#2f7d80"
  },
  {
-  "deplacement_clarte": 0.154,
-  "elements": 2,
-  "extraits": [
-   "Titre original",
-   "Titre original"
-  ],
-  "fond": "#e2d6bd",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "pandora-contrechamp.html": 1,
-   "pandora.html": 1
-  },
-  "pire_ratio": 2.51,
-  "propose": "#635e53",
-  "seuil": 4.5,
-  "texte": "#8d8677"
- },
- {
   "deplacement_clarte": 0.024,
   "elements": 2,
   "extraits": [
@@ -398,23 +359,6 @@
   "propose": "#d5bc8f",
   "seuil": 4.5,
   "texte": "#c39f5e"
- },
- {
-  "deplacement_clarte": 0.212,
-  "elements": 1,
-  "extraits": [
-   "Lot 1 · Acte de vente"
-  ],
-  "fond": "#f4efe3",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "bienvenue-a-suburbicon.html": 1
-  },
-  "pire_ratio": 2.33,
-  "propose": "#b84927",
-  "seuil": 4.5,
-  "texte": "#e0876b"
  },
  {
   "deplacement_clarte": 0.006,
