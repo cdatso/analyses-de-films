@@ -1,7 +1,7 @@
 # Annexe A regeneree - Inventaire des URLs publies
 
 **Item** : BKL-065-4-recette - **Genere** (jamais recopie) depuis
-le depot du site, branche `v2-proto`, HEAD `72a78e8` (dernier commit du 2026-07-22 11:46).
+le depot du site, branche `v2-proto`, HEAD `13dab97` (dernier commit du 2026-07-23 11:51).
 
 > **Ce fichier n'est PAS l'annexe A de la spec.** Le mandat
 > interdit d'ecrire dans `SPEC-SITE-V2.md` : l'integration de
