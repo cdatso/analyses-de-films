@@ -160,7 +160,11 @@
     position:absolute;
     top:1.3rem; right:1.4rem;
     border:2.5px solid var(--rust);
-    color:var(--rust);
+    /* AA lot 5 (retrofit 065-5) : seul cas du lot ou l'opacite ne suffit pas
+       -- meme a 1.00 le composite reste sous 4,5. La rouille du TEXTE descend
+       donc localement (dL 0,086), et `--rust` n'est PAS touchee : le cercle
+       du tampon garde exactement sa couleur. Composite obtenu : 4,51. */
+    color:#954625;
     font-family:var(--mono);
     font-weight:600;
     text-transform:uppercase;

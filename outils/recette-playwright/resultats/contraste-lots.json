@@ -823,23 +823,6 @@
   "texte": "#8d867b"
  },
  {
-  "deplacement_clarte": 0.004,
-  "elements": 1,
-  "extraits": [
-   "8 FÉV.1963"
-  ],
-  "fond": "#ece5d5",
-  "nature": "opacite",
-  "opacite": 0.85,
-  "pages": {
-   "le-doulos.html": 1
-  },
-  "pire_ratio": 4.43,
-  "propose": "#566a76",
-  "seuil": 4.5,
-  "texte": "#576b77"
- },
- {
   "deplacement_clarte": 0.232,
   "elements": 1,
   "extraits": [
@@ -889,23 +872,6 @@
   "propose": "#9d7827",
   "seuil": 4.5,
   "texte": "#7c5f1f"
- },
- {
-  "deplacement_clarte": 0.014,
-  "elements": 1,
-  "extraits": [
-   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
-  ],
-  "fond": "#171310",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "le-golem.html": 1
-  },
-  "pire_ratio": 4.28,
-  "propose": "#847d6f",
-  "seuil": 4.5,
-  "texte": "#80796c"
  },
  {
   "deplacement_clarte": 0.266,
@@ -1282,23 +1248,6 @@
   "texte": "#938b7b"
  },
  {
-  "deplacement_clarte": 0.078,
-  "elements": 1,
-  "extraits": [
-   "84MIN"
-  ],
-  "fond": "#f1e9d8",
-  "nature": "opacite",
-  "opacite": 0.9,
-  "pages": {
-   "sur-la-route-domaha.html": 1
-  },
-  "pire_ratio": 3.39,
-  "propose": "#a05535",
-  "seuil": 4.5,
-  "texte": "#be653f"
- },
- {
   "deplacement_clarte": 0.222,
   "elements": 1,
   "extraits": [
@@ -1316,7 +1265,7 @@
   "texte": "#695221"
  },
  {
-  "deplacement_clarte": 0.064,
+  "deplacement_clarte": 0.018,
   "elements": 1,
   "extraits": [
    "Italie / URSS · 134 min · Couleur"
@@ -1327,9 +1276,9 @@
   "pages": {
    "waterloo.html": 1
   },
-  "pire_ratio": 3.71,
-  "propose": "#a39b89",
+  "pire_ratio": 4.26,
+  "propose": "#a49a87",
   "seuil": 4.5,
-  "texte": "#958b77"
+  "texte": "#a09682"
  }
 ]

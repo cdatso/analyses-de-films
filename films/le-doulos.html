@@ -127,7 +127,11 @@
     padding:0.4rem 0.65rem;
     border-radius:50%;
     transform:rotate(-11deg);
-    opacity:0.85;
+    /* AA lot 5 (retrofit 065-5) : 0.85 composait un bleu-gris a 4,45 sur le
+       creme du dossier -- sous le seuil de 5 centiemes. L'encre du cachet est
+       un effet voulu : on ne change pas sa teinte, on rend 1 centieme
+       d'opacite. Le tampon reste use, le texte passe a 4,52. */
+    opacity:0.86;
     mix-blend-mode:multiply;
     text-align:center;
     line-height:1.25;
