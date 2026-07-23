@@ -1,24 +1,6 @@
 {
  "lots": [
   {
-   "deplacement": 0.058,
-   "elements": 4,
-   "fond_dimensionnant": "#26251f",
-   "fonds": [
-    "#20150d",
-    "#26251f"
-   ],
-   "lourd": false,
-   "natures": [
-    "texte courant"
-   ],
-   "page": "rosetta.html",
-   "pire_ratio": 3.63,
-   "propose": "#ed5e11",
-   "valeur": "#d1530f",
-   "variable": "--vest-texte"
-  },
-  {
    "deplacement": 0.002,
    "elements": 3,
    "fond_dimensionnant": "#f2f3f5",
@@ -53,59 +35,21 @@
    "variable": "--concrete-dark-texte"
   },
   {
-   "deplacement": 0.01,
-   "elements": 2,
+   "deplacement": 0.006,
+   "elements": 1,
    "fond_dimensionnant": "#434b50",
    "fonds": [
-    "#414a4f",
     "#434b50"
    ],
    "lourd": false,
    "natures": [
-    "degrade partiel",
-    "texte courant"
+    "degrade partiel"
    ],
    "page": "hamlet.html",
-   "pire_ratio": 4.41,
-   "propose": "#d6b38f",
-   "valeur": "#d5b08b",
+   "pire_ratio": 4.45,
+   "propose": "#d6b38e",
+   "valeur": "#d5b18c",
    "variable": "--rouille-clair-texte"
-  },
-  {
-   "deplacement": 0.074,
-   "elements": 2,
-   "fond_dimensionnant": "#e8e2d2",
-   "fonds": [
-    "#1a1916",
-    "#e8e2d2"
-   ],
-   "lourd": false,
-   "natures": [
-    "texte courant"
-   ],
-   "page": "soudain-lete-dernier.html",
-   "pire_ratio": 3.4,
-   "propose": "#69655b",
-   "valeur": "#7d786d",
-   "variable": "--silver-texte"
-  },
-  {
-   "deplacement": 0.046,
-   "elements": 2,
-   "fond_dimensionnant": "#e3d6b4",
-   "fonds": [
-    "#e3d6b4",
-    "#eedcc9"
-   ],
-   "lourd": false,
-   "natures": [
-    "texte courant"
-   ],
-   "page": "soy-cuba.html",
-   "pire_ratio": 3.81,
-   "propose": "#b42519",
-   "valeur": "#c9291c",
-   "variable": "--red-texte"
   },
   {
    "deplacement": 0.006,
@@ -191,6 +135,23 @@
    "propose": "#605b53",
    "valeur": "#615c53",
    "variable": "--halftone"
+  },
+  {
+   "deplacement": 0.002,
+   "elements": 1,
+   "fond_dimensionnant": "#e8e2d2",
+   "fonds": [
+    "#e8e2d2"
+   ],
+   "lourd": false,
+   "natures": [
+    "texte courant"
+   ],
+   "page": "soudain-lete-dernier.html",
+   "pire_ratio": 4.49,
+   "propose": "#68645b",
+   "valeur": "#69655b",
+   "variable": "--silver-texte"
   },
   {
    "deplacement": 0.002,
@@ -355,40 +316,6 @@
    "variable": "--creme"
   },
   {
-   "deplacement": 0.306,
-   "elements": 3,
-   "fond_dimensionnant": "#434b50",
-   "fonds": [
-    "#434b50"
-   ],
-   "lourd": true,
-   "natures": [
-    "degrade"
-   ],
-   "page": "hamlet.html",
-   "pire_ratio": 1.69,
-   "propose": "#b0bbb9",
-   "valeur": "#606f6d",
-   "variable": "--brume"
-  },
-  {
-   "deplacement": 0.18,
-   "elements": 3,
-   "fond_dimensionnant": "#1f3456",
-   "fonds": [
-    "#1f3456"
-   ],
-   "lourd": true,
-   "natures": [
-    "degrade"
-   ],
-   "page": "la-nuit-de-san-lorenzo.html",
-   "pire_ratio": 2.38,
-   "propose": "#8a9cbb",
-   "valeur": "#566d93",
-   "variable": "--etoile-dim"
-  },
-  {
    "deplacement": 0.214,
    "elements": 3,
    "fond_dimensionnant": "#ece7da",
@@ -481,6 +408,23 @@
    "variable": "--mer"
   },
   {
+   "deplacement": 0.306,
+   "elements": 2,
+   "fond_dimensionnant": "#434b50",
+   "fonds": [
+    "#434b50"
+   ],
+   "lourd": true,
+   "natures": [
+    "degrade"
+   ],
+   "page": "hamlet.html",
+   "pire_ratio": 1.69,
+   "propose": "#b0bbb9",
+   "valeur": "#606f6d",
+   "variable": "--brume"
+  },
+  {
    "deplacement": 0.278,
    "elements": 2,
    "fond_dimensionnant": "#363b41",
@@ -496,6 +440,23 @@
    "propose": "#dd9086",
    "valeur": "#a63d2f",
    "variable": "--mesa"
+  },
+  {
+   "deplacement": 0.18,
+   "elements": 2,
+   "fond_dimensionnant": "#1f3456",
+   "fonds": [
+    "#1f3456"
+   ],
+   "lourd": true,
+   "natures": [
+    "degrade"
+   ],
+   "page": "la-nuit-de-san-lorenzo.html",
+   "pire_ratio": 2.38,
+   "propose": "#8a9cbb",
+   "valeur": "#566d93",
+   "variable": "--etoile-dim"
   },
   {
    "deplacement": 0.158,
@@ -643,23 +604,6 @@
    "variable": "--noir"
   },
   {
-   "deplacement": 0.39,
-   "elements": 1,
-   "fond_dimensionnant": "#241a12",
-   "fonds": [
-    "#241a12"
-   ],
-   "lourd": true,
-   "natures": [
-    "degrade"
-   ],
-   "page": "la-chevauchee-fantastique.html",
-   "pire_ratio": 1,
-   "propose": "#a97a54",
-   "valeur": "#241a12",
-   "variable": "--brule"
-  },
-  {
    "deplacement": 0.484,
    "elements": 1,
    "fond_dimensionnant": "#d9d6cf",
@@ -743,9 +687,9 @@
    "fond": "#d8d5c9",
    "nature": "opacite",
    "page": "rosetta.html",
-   "propose": "#914820",
-   "ratio": 2.44,
-   "texte": "#d26a30"
+   "propose": "#9a4111",
+   "ratio": 2.05,
+   "texte": "#e97332"
   },
   {
    "elements": 1,

@@ -1,35 +1,11 @@
 [
  {
   "classe": "SUR",
-  "deplacement": 0.106,
-  "elements": 7,
+  "deplacement": 0.002,
+  "elements": 3,
   "exemples_autres": [],
-  "fond_dimensionnant": "#1a1916",
+  "fond_dimensionnant": "#f2f3f5",
   "fonds": [
-   "#0a0a09",
-   "#1a1916",
-   "#e8e2d2"
-  ],
-  "lourd": false,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "soudain-lete-dernier.html",
-  "pire_ratio": 3.02,
-  "propose": "#868174",
-  "usages_autres": 0,
-  "usages_color": 9,
-  "valeur": "#69655b",
-  "variable": "--silver-texte"
- },
- {
-  "classe": "SUR",
-  "deplacement": 0.044,
-  "elements": 7,
-  "exemples_autres": [],
-  "fond_dimensionnant": "#0c0e12",
-  "fonds": [
-   "#0c0e12",
    "#f2f3f5"
   ],
   "lourd": false,
@@ -37,8 +13,8 @@
    "texte courant"
   ],
   "page": "manhattan.html",
-  "pire_ratio": 3.87,
-  "propose": "#747b85",
+  "pire_ratio": 4.5,
+  "propose": "#6a6f78",
   "usages_autres": 0,
   "usages_color": 7,
   "valeur": "#6a7079",
@@ -46,68 +22,89 @@
  },
  {
   "classe": "SUR",
-  "deplacement": 0.074,
-  "elements": 4,
+  "deplacement": 0.002,
+  "elements": 2,
   "exemples_autres": [],
-  "fond_dimensionnant": "#0d0d0c",
+  "fond_dimensionnant": "#d8d5c9",
   "fonds": [
-   "#0d0d0c"
+   "#d8d5c9"
   ],
   "lourd": false,
   "natures": [
    "texte courant"
   ],
-  "page": "persona.html",
-  "pire_ratio": 3.42,
-  "propose": "#7a7a74",
+  "page": "rosetta.html",
+  "pire_ratio": 4.5,
+  "propose": "#5e5c52",
   "usages_autres": 0,
-  "usages_color": 12,
-  "valeur": "#676762",
-  "variable": "--grey"
+  "usages_color": 4,
+  "valeur": "#5f5d52",
+  "variable": "--concrete-dark-texte"
  },
  {
   "classe": "SUR",
-  "deplacement": 0.082,
-  "elements": 3,
+  "deplacement": 0.006,
+  "elements": 1,
   "exemples_autres": [],
+  "fond_dimensionnant": "#434b50",
+  "fonds": [
+   "#434b50"
+  ],
+  "lourd": false,
+  "natures": [
+   "degrade partiel"
+  ],
+  "page": "hamlet.html",
+  "pire_ratio": 4.45,
+  "propose": "#d6b38e",
+  "usages_autres": 0,
+  "usages_color": 4,
+  "valeur": "#d5b18c",
+  "variable": "--rouille-clair-texte"
+ },
+ {
+  "classe": "MIXTE",
+  "deplacement": 0.006,
+  "elements": 1,
+  "exemples_autres": [
+   "border-bottom-color"
+  ],
   "fond_dimensionnant": "#1b1815",
   "fonds": [
-   "#15120f",
    "#1b1815"
   ],
   "lourd": false,
   "natures": [
-   "degrade",
-   "texte courant"
+   "degrade"
   ],
   "page": "hitchcock-truffaut.html",
-  "pire_ratio": 3.33,
-  "propose": "#8a7f72",
-  "usages_autres": 0,
-  "usages_color": 5,
-  "valeur": "#736a5f",
-  "variable": "--gris"
+  "pire_ratio": 2.94,
+  "propose": "#c4201d",
+  "usages_autres": 1,
+  "usages_color": 0,
+  "valeur": "#c1201d",
+  "variable": "--rouge"
  },
  {
   "classe": "SUR",
-  "deplacement": 0.09,
-  "elements": 2,
+  "deplacement": 0.012,
+  "elements": 1,
   "exemples_autres": [],
-  "fond_dimensionnant": "#1d1c1a",
+  "fond_dimensionnant": "#1b1815",
   "fonds": [
-   "#1d1c1a"
+   "#1b1815"
   ],
   "lourd": false,
   "natures": [
-   "texte courant"
+   "degrade"
   ],
-  "page": "nouvelle-vague.html",
-  "pire_ratio": 3.25,
-  "propose": "#87837a",
+  "page": "hitchcock-truffaut.html",
+  "pire_ratio": 4.31,
+  "propose": "#897f72",
   "usages_autres": 0,
-  "usages_color": 4,
-  "valeur": "#6f6c64",
-  "variable": "--gris-labo"
+  "usages_color": 5,
+  "valeur": "#867c6f",
+  "variable": "--gris"
  },
  {
   "classe": "MIXTE",
@@ -133,27 +130,25 @@
   "variable": "--page"
  },
  {
-  "classe": "MIXTE",
-  "deplacement": 0.098,
+  "classe": "SUR",
+  "deplacement": 0.14,
   "elements": 1,
-  "exemples_autres": [
-   "border-color"
-  ],
-  "fond_dimensionnant": "#131211",
+  "exemples_autres": [],
+  "fond_dimensionnant": "#1f3456",
   "fonds": [
-   "#131211"
+   "#1f3456"
   ],
   "lourd": false,
   "natures": [
-   "texte courant"
+   "degrade"
   ],
-  "page": "raging-bull.html",
-  "pire_ratio": 2.81,
-  "propose": "#987828",
-  "usages_autres": 1,
-  "usages_color": 7,
-  "valeur": "#71591e",
-  "variable": "--belt-texte"
+  "page": "la-nuit-de-san-lorenzo.html",
+  "pire_ratio": 2.36,
+  "propose": "#c59324",
+  "usages_autres": 0,
+  "usages_color": 4,
+  "valeur": "#896619",
+  "variable": "--ble-clair-texte"
  },
  {
   "classe": "SUR",
@@ -175,6 +170,27 @@
   "usages_color": 3,
   "valeur": "#615c53",
   "variable": "--halftone"
+ },
+ {
+  "classe": "SUR",
+  "deplacement": 0.002,
+  "elements": 1,
+  "exemples_autres": [],
+  "fond_dimensionnant": "#e8e2d2",
+  "fonds": [
+   "#e8e2d2"
+  ],
+  "lourd": false,
+  "natures": [
+   "texte courant"
+  ],
+  "page": "soudain-lete-dernier.html",
+  "pire_ratio": 4.49,
+  "propose": "#68645b",
+  "usages_autres": 0,
+  "usages_color": 9,
+  "valeur": "#69655b",
+  "variable": "--silver-texte"
  },
  {
   "classe": "MIXTE",
@@ -200,29 +216,25 @@
   "variable": "--ash-texte"
  },
  {
-  "classe": "MIXTE",
-  "deplacement": 0.164,
-  "elements": 8,
-  "exemples_autres": [
-   "border-bottom-color"
-  ],
-  "fond_dimensionnant": "#26251f",
+  "classe": "SUR",
+  "deplacement": 0.048,
+  "elements": 1,
+  "exemples_autres": [],
+  "fond_dimensionnant": "#3f321b",
   "fonds": [
-   "#100f0d",
-   "#20150d",
-   "#26251f"
+   "#3f321b"
   ],
-  "lourd": true,
+  "lourd": false,
   "natures": [
-   "texte courant"
+   "degrade"
   ],
-  "page": "rosetta.html",
-  "pire_ratio": 2.32,
-  "propose": "#ec5e10",
-  "usages_autres": 1,
-  "usages_color": 11,
-  "valeur": "#9e3f0b",
-  "variable": "--vest-texte"
+  "page": "waterloo.html",
+  "pire_ratio": 3.74,
+  "propose": "#c0963c",
+  "usages_autres": 0,
+  "usages_color": 4,
+  "valeur": "#ad8736",
+  "variable": "--laiton"
  },
  {
   "classe": "MIXTE",
@@ -247,29 +259,6 @@
   "usages_color": 6,
   "valeur": "#e2d6bd",
   "variable": "--platre-dim"
- },
- {
-  "classe": "SUR",
-  "deplacement": 0.154,
-  "elements": 5,
-  "exemples_autres": [],
-  "fond_dimensionnant": "#e3d6b4",
-  "fonds": [
-   "#e3d6b4",
-   "#eedcc9",
-   "#f1e8d4"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "soy-cuba.html",
-  "pire_ratio": 2.81,
-  "propose": "#b42419",
-  "usages_autres": 0,
-  "usages_color": 5,
-  "valeur": "#e34539",
-  "variable": "--red-texte"
  },
  {
   "classe": "MIXTE",
@@ -347,32 +336,6 @@
   "variable": "--or-texte"
  },
  {
-  "classe": "MIXTE",
-  "deplacement": 0.176,
-  "elements": 4,
-  "exemples_autres": [
-   "border-bottom-color"
-  ],
-  "fond_dimensionnant": "#241e19",
-  "fonds": [
-   "#1b1815",
-   "#241e19",
-   "#e5ddcc"
-  ],
-  "lourd": true,
-  "natures": [
-   "degrade",
-   "texte courant"
-  ],
-  "page": "hitchcock-truffaut.html",
-  "pire_ratio": 2.74,
-  "propose": "#e55553",
-  "usages_autres": 1,
-  "usages_color": 8,
-  "valeur": "#c1201d",
-  "variable": "--rouge"
- },
- {
   "classe": "SUR",
   "deplacement": 0.154,
   "elements": 3,
@@ -440,31 +403,6 @@
   "usages_color": 2,
   "valeur": "#f4efe3",
   "variable": "--creme"
- },
- {
-  "classe": "MIXTE",
-  "deplacement": 0.208,
-  "elements": 3,
-  "exemples_autres": [
-   "background",
-   "background",
-   "border-bottom"
-  ],
-  "fond_dimensionnant": "#f1efe9",
-  "fonds": [
-   "#f1efe9"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "la-mariee-etait-en-noir.html",
-  "pire_ratio": 2.24,
-  "propose": "#716c64",
-  "usages_autres": 3,
-  "usages_color": 7,
-  "valeur": "#a5a19a",
-  "variable": "--voile"
  },
  {
   "classe": "MIXTE",
@@ -569,6 +507,48 @@
   "variable": "--aube"
  },
  {
+  "classe": "SUR",
+  "deplacement": 0.308,
+  "elements": 2,
+  "exemples_autres": [],
+  "fond_dimensionnant": "#434b50",
+  "fonds": [
+   "#434b50"
+  ],
+  "lourd": true,
+  "natures": [
+   "degrade"
+  ],
+  "page": "hamlet.html",
+  "pire_ratio": 1.68,
+  "propose": "#b0bbbd",
+  "usages_autres": 0,
+  "usages_color": 6,
+  "valeur": "#5f6e71",
+  "variable": "--mer"
+ },
+ {
+  "classe": "SUR",
+  "deplacement": 0.306,
+  "elements": 2,
+  "exemples_autres": [],
+  "fond_dimensionnant": "#434b50",
+  "fonds": [
+   "#434b50"
+  ],
+  "lourd": true,
+  "natures": [
+   "degrade"
+  ],
+  "page": "hamlet.html",
+  "pire_ratio": 1.69,
+  "propose": "#b0bbb9",
+  "usages_autres": 0,
+  "usages_color": 5,
+  "valeur": "#606f6d",
+  "variable": "--brume"
+ },
+ {
   "classe": "MIXTE",
   "deplacement": 0.278,
   "elements": 2,
@@ -594,6 +574,27 @@
   "variable": "--mesa"
  },
  {
+  "classe": "SUR",
+  "deplacement": 0.18,
+  "elements": 2,
+  "exemples_autres": [],
+  "fond_dimensionnant": "#1f3456",
+  "fonds": [
+   "#1f3456"
+  ],
+  "lourd": true,
+  "natures": [
+   "degrade"
+  ],
+  "page": "la-nuit-de-san-lorenzo.html",
+  "pire_ratio": 2.38,
+  "propose": "#8a9cbb",
+  "usages_autres": 0,
+  "usages_color": 9,
+  "valeur": "#566d93",
+  "variable": "--etoile-dim"
+ },
+ {
   "classe": "MIXTE",
   "deplacement": 0.158,
   "elements": 2,
@@ -615,53 +616,6 @@
   "usages_color": 5,
   "valeur": "#9c7b45",
   "variable": "--lamp"
- },
- {
-  "classe": "MIXTE",
-  "deplacement": 0.19,
-  "elements": 2,
-  "exemples_autres": [
-   "background",
-   "border-color"
-  ],
-  "fond_dimensionnant": "#f0eee8",
-  "fonds": [
-   "#f0eee8"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "nouvelle-vague.html",
-  "pire_ratio": 1.91,
-  "propose": "#83691b",
-  "usages_autres": 2,
-  "usages_color": 6,
-  "valeur": "#d3a92c",
-  "variable": "--kodak"
- },
- {
-  "classe": "MIXTE",
-  "deplacement": 0.18,
-  "elements": 2,
-  "exemples_autres": [
-   "border"
-  ],
-  "fond_dimensionnant": "#d8d5c9",
-  "fonds": [
-   "#d8d5c9"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "rosetta.html",
-  "pire_ratio": 2.3,
-  "propose": "#5f5d52",
-  "usages_autres": 1,
-  "usages_color": 4,
-  "valeur": "#8f8c7e",
-  "variable": "--concrete-dark"
  },
  {
   "classe": "SUR",
@@ -687,52 +641,26 @@
   "variable": "--gaslight"
  },
  {
-  "classe": "MIXTE",
-  "deplacement": 0.16,
-  "elements": 2,
-  "exemples_autres": [
-   "border-color"
-  ],
-  "fond_dimensionnant": "#434b50",
-  "fonds": [
-   "#414a4f",
-   "#434b50"
-  ],
-  "lourd": true,
-  "natures": [
-   "degrade partiel",
-   "texte courant"
-  ],
-  "page": "hamlet.html",
-  "pire_ratio": 2.96,
-  "propose": "#d6b28e",
-  "usages_autres": 1,
-  "usages_color": 4,
-  "valeur": "#c08a52",
-  "variable": "--rouille-clair"
- },
- {
   "classe": "SUR",
-  "deplacement": 0.232,
+  "deplacement": 0.258,
   "elements": 2,
   "exemples_autres": [],
   "fond_dimensionnant": "#553928",
   "fonds": [
-   "#171310",
    "#553928"
   ],
   "lourd": true,
   "natures": [
    "degrade",
-   "texte courant"
+   "degrade partiel"
   ],
   "page": "le-golem.html",
-  "pire_ratio": 1.75,
-  "propose": "#d0a342",
+  "pire_ratio": 1.76,
+  "propose": "#c2a766",
   "usages_autres": 0,
-  "usages_color": 6,
-  "valeur": "#7c5f1f",
-  "variable": "--kabbale-texte"
+  "usages_color": 3,
+  "valeur": "#76612f",
+  "variable": "--parchemin-texte"
  },
  {
   "classe": "SUR",
@@ -862,52 +790,6 @@
  },
  {
   "classe": "MIXTE",
-  "deplacement": 0.39,
-  "elements": 1,
-  "exemples_autres": [
-   "background",
-   "background",
-   "gradient"
-  ],
-  "fond_dimensionnant": "#241a12",
-  "fonds": [
-   "#241a12"
-  ],
-  "lourd": true,
-  "natures": [
-   "degrade"
-  ],
-  "page": "la-chevauchee-fantastique.html",
-  "pire_ratio": 1,
-  "propose": "#a97a54",
-  "usages_autres": 3,
-  "usages_color": 5,
-  "valeur": "#241a12",
-  "variable": "--brule"
- },
- {
-  "classe": "SUR",
-  "deplacement": 0.174,
-  "elements": 1,
-  "exemples_autres": [],
-  "fond_dimensionnant": "#1e3457",
-  "fonds": [
-   "#1e3457"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "la-nuit-de-san-lorenzo.html",
-  "pire_ratio": 2.1,
-  "propose": "#ca912f",
-  "usages_autres": 0,
-  "usages_color": 2,
-  "valeur": "#825d1e",
-  "variable": "--ble-texte"
- },
- {
-  "classe": "MIXTE",
   "deplacement": 0.484,
   "elements": 1,
   "exemples_autres": [
@@ -932,51 +814,25 @@
   "variable": "--storm"
  },
  {
-  "classe": "MIXTE",
-  "deplacement": 0.166,
+  "classe": "SUR",
+  "deplacement": 0.232,
   "elements": 1,
-  "exemples_autres": [
-   "border-color"
-  ],
-  "fond_dimensionnant": "#171310",
+  "exemples_autres": [],
+  "fond_dimensionnant": "#553928",
   "fonds": [
-   "#171310"
+   "#553928"
   ],
   "lourd": true,
   "natures": [
-   "texte courant"
+   "degrade"
   ],
   "page": "le-golem.html",
-  "pire_ratio": 2.36,
-  "propose": "#bd663a",
-  "usages_autres": 1,
-  "usages_color": 5,
-  "valeur": "#7c4326",
-  "variable": "--argile-sombre"
- },
- {
-  "classe": "MIXTE",
-  "deplacement": 0.266,
-  "elements": 1,
-  "exemples_autres": [
-   "background",
-   "gradient"
-  ],
-  "fond_dimensionnant": "#0a0806",
-  "fonds": [
-   "#0a0806"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "les-deux-orphelines.html",
-  "pire_ratio": 1.74,
-  "propose": "#4c79bb",
-  "usages_autres": 2,
-  "usages_color": 1,
-  "valeur": "#233a5c",
-  "variable": "--tint-blue"
+  "pire_ratio": 1.75,
+  "propose": "#d0a342",
+  "usages_autres": 0,
+  "usages_color": 6,
+  "valeur": "#7c5f1f",
+  "variable": "--kabbale-texte"
  },
  {
   "classe": "SUR",
@@ -1020,55 +876,8 @@
   "pire_ratio": 1.11,
   "propose": "#ffffff",
   "usages_autres": 3,
-  "usages_color": 1,
+  "usages_color": 0,
   "valeur": "#0c0c0b",
   "variable": "--black"
- },
- {
-  "classe": "MIXTE",
-  "deplacement": 0.722,
-  "elements": 1,
-  "exemples_autres": [
-   "background",
-   "background",
-   "background",
-   "gradient"
-  ],
-  "fond_dimensionnant": "#a88f61",
-  "fonds": [
-   "#a88f61"
-  ],
-  "lourd": true,
-  "natures": [
-   "texte courant"
-  ],
-  "page": "shutter-island.html",
-  "pire_ratio": 2.42,
-  "propose": "#332b12",
-  "usages_autres": 5,
-  "usages_color": 4,
-  "valeur": "#ece3ca",
-  "variable": "--paper"
- },
- {
-  "classe": "SUR",
-  "deplacement": 0.222,
-  "elements": 1,
-  "exemples_autres": [],
-  "fond_dimensionnant": "#3f321b",
-  "fonds": [
-   "#3f321b"
-  ],
-  "lourd": true,
-  "natures": [
-   "degrade"
-  ],
-  "page": "waterloo.html",
-  "pire_ratio": 1.68,
-  "propose": "#bf953c",
-  "usages_autres": 0,
-  "usages_color": 4,
-  "valeur": "#695221",
-  "variable": "--laiton"
  }
 ]

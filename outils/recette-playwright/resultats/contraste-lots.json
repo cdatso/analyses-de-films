@@ -417,23 +417,6 @@
   "texte": "#e0876b"
  },
  {
-  "deplacement_clarte": 0.384,
-  "elements": 1,
-  "extraits": [
-   "Analyse — Claude Opus, session supervisée du "
-  ],
-  "fond": "#2b3235",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "hamlet.html": 1
-  },
-  "pire_ratio": 1.04,
-  "propose": "#8c9b99",
-  "seuil": 4.5,
-  "texte": "#2e3534"
- },
- {
   "deplacement_clarte": 0.006,
   "elements": 1,
   "extraits": [
@@ -585,40 +568,6 @@
   "propose": "#f6f4ef",
   "seuil": 4.5,
   "texte": "#f5f2ec"
- },
- {
-  "deplacement_clarte": 0.39,
-  "elements": 1,
-  "extraits": [
-   "Lordsburg"
-  ],
-  "fond": "#241a12",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "la-chevauchee-fantastique.html": 1
-  },
-  "pire_ratio": 1,
-  "propose": "#a97a54",
-  "seuil": 4.5,
-  "texte": "#241a12"
- },
- {
-  "deplacement_clarte": 0.408,
-  "elements": 1,
-  "extraits": [
-   "Analyse — Claude Opus, session supervisée du "
-  ],
-  "fond": "#1f3456",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "la-nuit-de-san-lorenzo.html": 1
-  },
-  "pire_ratio": 1.04,
-  "propose": "#8a9dbb",
-  "seuil": 4.5,
-  "texte": "#2b374a"
  },
  {
   "deplacement_clarte": 0.14,
