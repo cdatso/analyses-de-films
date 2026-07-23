@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observation C-2 — l'objet en une réduit à une carte seule</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="proto-note">
+  <b>INSTRUMENT D'OBSERVATION — constat C-2, BKL-065-3.</b>
+  Cette page <b>n'est pas une page du site</b> : elle n'est liée par aucun menu
+  et ne sera jamais publiée. Elle sert à voir le cas que l'accueil réel ne
+  montre pas aujourd'hui — <b>l'objet en une réduit à une carte seule</b>
+  (P-51, arbitrage Q-1 du 21/07). Le registre est le vrai ; seule l'entrée
+  <code>pandora-contrechamp</code> en est retirée à la volée, ce qui prive la
+  dernière publiée de sa variante.
+</div>
+
+<main>
+
+<section class="une">
+  <div class="wrap">
+    <h2 style="font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--ink);margin:2rem 0 0.4rem;">Cas A — carte seule (P-51)</h2>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--ink-muted);margin:0 0 1.4rem;">
+      Ce que voit un lecteur quand la dernière analyse publiée est une Critique
+      sans contrechamp. C'est le cas le plus fréquent à venir : le corpus ne
+      compte qu'une seule Étude, et le régime Scholar est coûteux par construction.
+    </p>
+    <div class="cartel" id="cartel-a">Dernière analyse publiée</div>
+    <div class="bloc-une" id="bloc-a"></div>
+    <div class="liaison" id="liaison-a"></div>
+  </div>
+</section>
+
+<section class="une">
+  <div class="wrap">
+    <h2 style="font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--ink);margin:3rem 0 0.4rem;">Cas B — couple champ / contrechamp</h2>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--ink-muted);margin:0 0 1.4rem;">
+      Le même bloc avec le registre complet — état de l'accueil au 22/07.
+      À comparer au cas A : c'est la comparaison, et elle seule, qui permet de
+      dire si une carte seule « sonne vide ».
+    </p>
+    <div class="cartel" id="cartel-b">Dernière analyse publiée</div>
+    <div class="bloc-une" id="bloc-b"></div>
+    <div class="liaison" id="liaison-b"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="../assets/films-data.js"></script>
+<script src="../assets/corpus.js"></script>
+<script>
+  // Cas A : registre privé de l'unique Étude — la dernière publiée devient
+  // une Critique sans variante. Aucun fichier n'est modifié.
+  var sansEtude = FILMS.filter(function (f) { return f.slug !== 'pandora-contrechamp'; });
+  Corpus.rendUne(sansEtude,
+    document.getElementById('bloc-a'),
+    document.getElementById('cartel-a'),
+    document.getElementById('liaison-a'));
+
+  // Cas B : le registre réel.
+  Corpus.rendUne(FILMS,
+    document.getElementById('bloc-b'),
+    document.getElementById('cartel-b'),
+    document.getElementById('liaison-b'));
+</script>
+
+</body>
+</html>

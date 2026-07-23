@@ -4,13 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Cheval de Turin (2011) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== L'ALMANACH DES SIX JOURS =====
      Gris de tempête, brun de terre, rayures de vent en diagonale :
      l'éphéméride d'une fin du monde à hauteur de pommes de terre. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (652 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:44.0rem;
+
     --storm:#d9d6cf;
     --storm-dark:#cbc7be;
     --ink:#191816;
@@ -18,6 +24,7 @@
     --earth:#5c4a38;
     --dust:#8d867b;
     --lamp:#9c7b45;
+    --lamp-texte:#b7945c;
     --wind:rgba(25,24,22,0.05);
     --line:rgba(25,24,22,0.18);
   }
@@ -29,7 +36,7 @@
       repeating-linear-gradient(115deg, transparent 0 26px, var(--wind) 26px 27px),
       var(--storm);
     color:var(--ink-soft);
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.02rem;
     line-height:1.75;
@@ -38,7 +45,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.66rem;
@@ -57,22 +64,22 @@
   .back-link{
     display:inline-block;
     color:var(--dust);
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
     text-decoration:none;
     margin-bottom:2.4rem;
   }
-  .back-link:hover{ color:var(--lamp); }
+  .back-link:hover{ color:var(--lamp-texte); }
   .storm-eyebrow{
-    color:var(--lamp);
+    color:var(--lamp-texte);
     margin-bottom:2.4rem;
     display:flex; align-items:center; gap:0.9rem;
   }
   .storm-eyebrow .gust{ flex:0 0 44px; height:1px; background:var(--lamp); opacity:0.7; }
   h1.title{
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:300;
     font-size:clamp(2.5rem, 6.5vw, 4rem);
     line-height:1.05;
@@ -98,13 +105,13 @@
     display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem;
     border-top:1px solid rgba(217,214,207,0.2);
     padding-top:1.1rem;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--dust);
   }
-  .ephemeride .jour-vi{ color:var(--lamp); }
+  .ephemeride .jour-vi{ color:var(--lamp-texte); }
 
   /* ---------- SOMMAIRE ---------- */
   nav.almanach{
@@ -131,7 +138,7 @@
   section{ margin-top:3.6rem; }
   .entete{ margin-bottom:1.5rem; }
   .entete .jour{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -140,7 +147,7 @@
     margin-bottom:0.3rem;
   }
   .entete h2{
-    font-family:'Spectral', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.6rem;
     color:var(--ink);
@@ -166,7 +173,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
@@ -176,13 +183,13 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--earth);
     text-decoration:none;
     padding:0 0.1rem;
   }
-  sup.fn a:hover{ color:var(--lamp); }
+  sup.fn a:hover{ color:var(--lamp-texte); }
 
   /* ---------- FICHE ---------- */
   .fiche-layout{
@@ -206,7 +213,7 @@
   }
   @media (max-width:480px){ .registre{ grid-template-columns:1fr; } }
   .registre .label{
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -219,26 +226,54 @@
   section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
   section.sources li{ margin-bottom:0.55rem; }
   section.sources a{ color:var(--earth); word-break:break-all; }
-  section.sources a:hover{ color:var(--lamp); }
+  section.sources a:hover{ color:var(--lamp-texte); }
 
   footer.extinction{
     margin-top:3.5rem;
-    padding:1.6rem 1.5rem 2.6rem;
+    /* DEFAUT DE LISIBILITE corrige au retrofit 065-5, mesure sur pixels
+       peints. Le degrade du pied part de --storm -- la couleur MEME de son
+       texte -- pour s'eteindre en noir : le pied emerge du fond de la page
+       avant de disparaitre, et c'est l'intention. Le texte, lui, se posait
+       dans le haut du fondu, au ratio 1,00 : invisible. On ne touche pas au
+       degrade ; on fait DESCENDRE le texte dans la zone sombre, ou sa
+       couleur claire se lit. L'extinction reste entiere. */
+    padding:3.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Inconsolata', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--storm);
     background:linear-gradient(180deg, var(--storm) 0%, #55504a 45%, #191816 100%);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="storm">
   <div class="storm-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div class="storm-eyebrow">
       <span class="gust"></span>
       <span class="mono">Analyse cinématographique</span>
@@ -253,6 +288,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 5 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="almanach" aria-label="Sommaire">
   <span class="mono">Éphéméride</span>

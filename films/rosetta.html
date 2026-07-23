@@ -4,19 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rosetta — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (611 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:59.5rem;
+
     --ink:#1b1a17;
     --ink-deep:#100f0d;
     --asphalt:#26251f;
     --concrete:#d8d5c9;
     --concrete-dim:#c2bfb0;
     --concrete-dark:#8f8c7e;
+    --concrete-dark-texte:#5f5d52;
     --paper:#eeece3;
     --vest:#d9560f;
+    --vest-texte:#d1530f;
     --vest-deep:#a3410b;
+    --vest-deep-texte:#9d3f0b;
     --vest-pale:#f2c9a8;
     --line:rgba(238,236,227,0.14);
     --line-dark:rgba(27,26,23,0.16);
@@ -29,7 +38,7 @@
     margin:0;
     background:var(--ink);
     color:var(--paper);
-    font-family:'Work Sans', sans-serif;
+    font-family:var(--sans);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
@@ -40,7 +49,7 @@
   }
 
   h1,h2,h3{
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:var(--sans);
     text-transform:uppercase;
     margin:0;
   }
@@ -52,11 +61,11 @@
   }
 
   .label{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.66rem;
-    color:var(--vest);
+    color:var(--vest-texte);
   }
 
   .wrap{ max-width:900px; margin:0 auto; padding:0 1.6rem; }
@@ -80,10 +89,10 @@
   }
   .id-card .id-top{
     display:flex; justify-content:space-between; align-items:center;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.1em;
-    color:var(--concrete-dark);
+    color:var(--concrete-dark-texte);
     border-bottom:1px solid var(--line-dark);
     padding-bottom:0.5rem;
     margin-bottom:0.7rem;
@@ -98,8 +107,8 @@
     overflow:hidden;
   }
   .id-card .silhouette svg{ width:44px; height:60px; }
-  .id-card .id-fields{ font-family:'JetBrains Mono', monospace; font-size:0.62rem; line-height:1.9; color:var(--ink); }
-  .id-card .id-fields b{ color:var(--concrete-dark); font-weight:600; display:inline-block; width:78px; }
+  .id-card .id-fields{ font-family:var(--mono); font-size:0.62rem; line-height:1.9; color:var(--ink); }
+  .id-card .id-fields b{ color:var(--concrete-dark-texte); font-weight:600; display:inline-block; width:78px; }
   .id-card .barcode{
     margin-top:0.8rem;
     height:20px;
@@ -111,8 +120,8 @@
     right:-18px; top:38%;
     transform:rotate(-11deg);
     border:3px solid var(--vest);
-    color:var(--vest);
-    font-family:'Barlow Condensed', sans-serif;
+    color:var(--vest-texte);
+    font-family:var(--sans);
     font-weight:800;
     font-size:1.15rem;
     letter-spacing:0.06em;
@@ -130,10 +139,10 @@
   }
   header.cover .meta-line{
     margin-top:0.7rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.76rem;
     letter-spacing:0.08em;
-    color:var(--vest);
+    color:var(--vest-texte);
   }
   header.cover .eyebrow{ display:block; text-align:center; margin-bottom:1.6rem; }
 
@@ -157,8 +166,8 @@
     font-size:0.92rem;
     display:flex; gap:0.55rem; align-items:baseline;
   }
-  nav.programme a:hover{ color:var(--vest); }
-  nav.programme .num{ font-family:'JetBrains Mono', monospace; color:var(--vest); font-size:0.74rem; }
+  nav.programme a:hover{ color:var(--vest-texte); }
+  nav.programme .num{ font-family:var(--mono); color:var(--vest-texte); font-size:0.74rem; }
   @media (max-width:600px){ nav.programme ol{ grid-template-columns:1fr; } }
 
   .content-note{
@@ -168,7 +177,7 @@
     background:rgba(217,86,15,0.08);
     font-size:0.9rem;
   }
-  .content-note .label{ color:var(--vest); margin-bottom:0.45rem; }
+  .content-note .label{ color:var(--vest-texte); margin-bottom:0.45rem; }
 
   /* ---------- main ---------- */
   main{ background:var(--paper); color:var(--ink); }
@@ -182,9 +191,9 @@
     border-bottom:3px solid var(--ink);
   }
   .section-head .tag{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
-    color:var(--vest);
+    color:var(--vest-texte);
     background:var(--concrete);
     padding:0.15rem 0.5rem;
   }
@@ -193,7 +202,7 @@
   section > .wrap > p{ max-width:66ch; }
   .lead{
     font-size:1.08rem; font-style:italic;
-    color:var(--concrete-dark);
+    color:var(--concrete-dark-texte);
     border-left:3px solid var(--vest);
     padding-left:1rem;
     margin-bottom:1.5rem;
@@ -201,9 +210,9 @@
   }
 
   sup.fn a{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
-    color:var(--vest-deep);
+    color:var(--vest-deep-texte);
     text-decoration:none;
   }
   sup.fn a:hover{ text-decoration:underline; }
@@ -216,9 +225,9 @@
   }
   .fiche dt, .fiche dd{ margin:0; padding:0.65rem 1rem; border-bottom:1px solid var(--line-dark); font-size:0.9rem; }
   .fiche dt{
-    font-family:'JetBrains Mono', monospace; font-size:0.64rem;
+    font-family:var(--mono); font-size:0.64rem;
     text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--vest-deep); background:var(--concrete);
+    color:var(--vest-deep-texte); background:var(--concrete);
     display:flex; align-items:center;
   }
   @media (max-width:600px){ .fiche{ grid-template-columns:1fr; } .fiche dt{ border-bottom:none; padding-bottom:0.2rem; } }
@@ -227,14 +236,14 @@
     display:inline-block;
     color:var(--concrete-dim);
     opacity:0.75;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
     text-decoration:none;
     margin-bottom:1.2rem;
   }
-  .back-link:hover{ opacity:1; color:var(--vest); }
+  .back-link:hover{ opacity:1; color:var(--vest-texte); }
 
   .fiche-wrap{ display:flex; gap:1.8rem; flex-wrap:wrap; align-items:flex-start; max-width:780px; }
   .fiche-wrap .poster{ flex:0 0 180px; margin:0; }
@@ -245,8 +254,8 @@
   .cast-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:1rem; margin-top:1.6rem; }
   .cast-card{ background:#fff; border:1px solid var(--line-dark); border-top:3px solid var(--vest); padding:1rem 1.1rem; }
   .cast-card h3{ font-size:1.15rem; margin-bottom:0.15rem; }
-  .cast-card .role{ font-family:'JetBrains Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep); display:block; margin-bottom:0.5rem; }
-  .cast-card p{ font-size:0.86rem; margin:0; font-family:'Work Sans', sans-serif; }
+  .cast-card .role{ font-family:var(--mono); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--vest-deep-texte); display:block; margin-bottom:0.5rem; }
+  .cast-card p{ font-size:0.86rem; margin:0; font-family:var(--sans); }
 
   /* ---------- signature : le circuit de rosetta ---------- */
   .circuit{
@@ -257,7 +266,7 @@
   }
   .circuit-title{
     text-align:center; color:var(--paper);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
     margin-bottom:1.6rem;
   }
@@ -275,19 +284,19 @@
     text-align:center;
   }
   .circuit-stop .time{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.62rem; color:var(--vest);
+    font-family:var(--mono);
+    font-size:0.62rem; color:var(--vest-texte);
     display:block; margin-bottom:0.3rem;
   }
   .circuit-stop .place{
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:var(--sans);
     font-weight:600; font-size:0.92rem;
     color:var(--paper); text-transform:uppercase;
     letter-spacing:0.02em;
   }
   .circuit-arrow{
-    text-align:center; color:var(--vest);
-    font-family:'JetBrains Mono', monospace;
+    text-align:center; color:var(--vest-texte);
+    font-family:var(--mono);
     display:flex; align-items:center; justify-content:center;
   }
   @media (max-width:640px){
@@ -307,34 +316,69 @@
   }
   blockquote cite{
     display:block; margin-top:0.5rem;
-    font-family:'JetBrains Mono', monospace; font-style:normal;
+    font-family:var(--mono); font-style:normal;
     font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em;
-    color:var(--vest-deep);
+    color:var(--vest-deep-texte);
   }
 
   ul.theme-list{ padding-left:1.2rem; max-width:66ch; }
   ul.theme-list li{ margin-bottom:0.9rem; }
-  ul.theme-list strong{ color:var(--vest-deep); }
+  ul.theme-list strong{ color:var(--vest-deep-texte); }
 
   #sources{ background:var(--ink-deep); color:var(--paper); }
   #sources .section-head{ border-bottom-color:var(--vest); }
   #sources .section-head h2{ color:var(--paper); }
   #sources ol{ max-width:780px; padding-left:1.4rem; font-size:0.85rem; color:var(--concrete-dim); }
   #sources li{ margin-bottom:0.55rem; }
-  #sources a{ color:var(--vest); text-decoration:none; word-break:break-word; }
+  #sources a{ color:var(--vest-texte); text-decoration:none; word-break:break-word; }
   #sources a:hover{ text-decoration:underline; }
 
   footer{
-    background:var(--ink-deep); color:var(--concrete-dark);
+    background:var(--ink-deep); color:var(--concrete-dark-texte);
     text-align:center; padding:2rem 1.6rem 2.4rem;
-    font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.06em;
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em;
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  span.tag{ --vest-texte:#9e3f0b; }   /* sur #d8d5c9, 10 element(s) */
+  footer{ --concrete-dark-texte:#8f8c7e; }   /* sur #100f0d, 1 element(s) */
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.circuit-stop, header.cover{ --vest-texte:#ed5e11; }   /* sur #26251f, 6 element(s) */
+  div.content-note{ --vest-texte:#da5610; }   /* sur #20150d, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="cover">
-  <a class="back-link" href="../index.html">← Retour aux analyses</a>
+  <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
   <span class="label eyebrow">Analyse cinématographique — drame social · 1999</span>
   <div class="id-card">
     <div class="id-top"><span>DOSSIER N° 94/1999</span><span>SERAING · BE</span></div>
@@ -361,6 +405,16 @@
     <div class="meta-line">JEAN-PIERRE &amp; LUC DARDENNE — 1999 — BELGIQUE / FRANCE</div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 4 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="programme">
   <span class="label">Au dossier</span>

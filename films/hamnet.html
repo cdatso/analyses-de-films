@@ -4,16 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manuscrit enluminé — Hamnet</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (652 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:44.0rem;
+
     --parchment:#ece0bf;
     --parchment-deep:#ddc99a;
     --parchment-shadow:rgba(70,54,20,0.16);
     --ink:#241d10;
     --ink-soft:#4d4127;
-    --ink-faint:#7a6c48;
+    --ink-faint:#685c3d;
     --forest:#333f24;
     --forest-deep:#232b18;
     --rubric:#8a2f1f;
@@ -34,7 +40,7 @@
       radial-gradient(ellipse at 85% 92%, rgba(138,47,31,0.07), transparent 50%),
       var(--parchment);
     color:var(--ink);
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
     font-size:1.08rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -43,7 +49,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .rubric-label{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.78rem;
@@ -53,7 +59,7 @@
   .back-link{
     display:inline-block;
     color:var(--ink-faint);
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.72rem;
     letter-spacing:0.07em;
     text-transform:uppercase;
@@ -85,7 +91,7 @@
     border:2px solid var(--gold);
     box-shadow: 0 0 0 4px var(--parchment), 0 0 0 5px var(--gold-bright);
     color:var(--parchment);
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-size:2.7rem;
     font-style:italic;
@@ -107,7 +113,7 @@
   }
 
   h1.title{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:clamp(2.6rem, 7vw, 4rem);
@@ -116,7 +122,7 @@
     color:var(--forest-deep);
   }
   .subtitle{
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
     font-style:italic;
     color:var(--ink-soft);
     font-size:1.12rem;
@@ -131,7 +137,11 @@
     align-items:center;
     justify-content:center;
     text-align:left;
-    max-width:640px;
+    /* ECART P-38 corrige au retrofit 065-5 : la largeur etait bornee en
+       absolu, jamais relativement a l'ecran. A 320 px la boite debordait de
+       262 px. `min()` garde l'intention de composition et ajoute la borne
+       qui manquait. */
+    max-width:min(640px, 100%);
   }
   .cover-media .poster{ flex:0 0 150px; margin:0; }
   .cover-media .poster img{
@@ -143,17 +153,22 @@
 
   .colophon-card{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    /* ECART P-38 (suite) : `minmax(150px, 1fr)` impose un plancher ABSOLU a
+       chaque colonne — deux colonnes de 150 px et leur gouttiere ne tiennent
+       pas dans 320 px. `min(150px, 100%)` laisse la colonne se replier quand
+       l'ecran est plus etroit que le plancher. */
+    grid-template-columns:repeat(auto-fit, minmax(min(150px, 100%),1fr));
     gap:0.95rem 2.2rem;
     text-align:left;
     padding:1.5rem 2rem;
     border:1px solid var(--line);
     background:rgba(255,252,240,0.28);
-    max-width:640px;
+    /* Meme defaut que .cover-media : borne absolue sans borne relative. */
+    max-width:min(640px, 100%);
     margin:0 auto;
   }
   .colophon-card dt{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.72rem;
     letter-spacing:0.09em;
     text-transform:uppercase;
@@ -175,7 +190,7 @@
   nav.toc a{
     color:var(--ink-soft);
     text-decoration:none;
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.76rem;
     letter-spacing:0.07em;
     text-transform:uppercase;
@@ -193,7 +208,7 @@
     border:1px solid var(--line);
     border-left:3px solid var(--rubric);
     background:rgba(138,47,31,0.05);
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.92rem;
     color:var(--ink-soft);
@@ -212,7 +227,7 @@
   .frame-head{ margin-bottom:1.5rem; text-align:center; }
   .frame-num-label{
     display:block;
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.72rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -220,7 +235,7 @@
     margin-bottom:0.35rem;
   }
   h2{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.85rem;
@@ -228,14 +243,14 @@
     color:var(--forest-deep);
   }
   .frame-jargon{
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.85rem;
     color:var(--ink-faint);
   }
 
   h3{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-style:italic;
     font-size:1.25rem;
@@ -246,7 +261,7 @@
   p:last-child{ margin-bottom:0; }
 
   .dropcap p:first-of-type::first-letter{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:3.6rem;
@@ -261,11 +276,11 @@
     text-decoration:none;
     border-bottom:1px dotted var(--rubric);
     font-size:0.82em;
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
   }
 
   .caution{
-    font-family:'EB Garamond', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.88rem;
     color:var(--ink-faint);
@@ -308,7 +323,7 @@
     font-size:1rem;
   }
   .cast-card .name{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.15rem;
@@ -317,7 +332,7 @@
     color:var(--forest-deep);
   }
   .cast-card .role{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.68rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
@@ -345,7 +360,7 @@
     font-size:1.1rem;
   }
   .pinned p{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.18rem;
     color:var(--ink);
@@ -356,7 +371,7 @@
     display:block;
     text-align:center;
     font-style:normal;
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.68rem;
     letter-spacing:0.09em;
     text-transform:uppercase;
@@ -365,7 +380,7 @@
 
   .theme-list{ display:grid; gap:1.5rem; margin-top:0.6rem; }
   .theme-item .theme-tag{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.7rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -387,7 +402,7 @@
     border:1px solid var(--gold);
   }
   .almanach .stat .num{
-    font-family:'Cormorant Garamond', serif;
+    font-family:var(--serif);
     font-size:1.65rem;
     font-weight:700;
     color:var(--parchment);
@@ -395,14 +410,14 @@
     line-height:1.15;
   }
   .almanach .stat .cap{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.62rem;
     letter-spacing:0.07em;
     text-transform:uppercase;
     color:#c9b98a;
   }
   .almanach-label{
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -430,7 +445,7 @@
   ol.source-list li::before{
     content: counter(src);
     position:absolute; left:0; top:0;
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     color:var(--rubric);
     font-size:0.8rem;
   }
@@ -440,7 +455,7 @@
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'IM Fell English SC', serif;
+    font-family:var(--serif);
     font-size:0.68rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
@@ -454,9 +469,30 @@
     section.block{ padding:2.3rem 0; }
     .colophon-card{ padding:1.2rem 1.3rem; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 <script>
   function hideBrokenImg(img, groupId) {
     img.remove();
@@ -467,7 +503,7 @@
 
 <header class="cover">
   <div class="cover-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div class="initial-block" aria-hidden="true">H</div>
     <span class="cover-eyebrow rubric-label">Manuscrit enluminé — chronique du deuil et de la scène</span>
     <h1 class="title">Hamnet</h1>
@@ -490,6 +526,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 3 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="toc" aria-label="Sommaire">
   <div class="toc-inner">
@@ -719,7 +765,7 @@
 
 <footer class="endnote">
   Manuscrit compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 <script>

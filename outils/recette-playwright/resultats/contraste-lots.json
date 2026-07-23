@@ -1,0 +1,871 @@
+[
+ {
+  "deplacement_clarte": 0.592,
+  "elements": 4,
+  "extraits": [
+   "Pandora and the Flying Dutchman",
+   "Albert Lewin · Romulus Films · Photographie d",
+   "Analyse du pipeline — Claude (routine nocturn"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 4
+  },
+  "pire_ratio": 1.55,
+  "propose": "#4f4023",
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "deplacement_clarte": 0.836,
+  "elements": 3,
+  "extraits": [
+   "Retour aux analyses",
+   "George Clooney, 2017 — un scénario noir des f",
+   "États-Unis · Paramount"
+  ],
+  "fond": "#3e8f8a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "bienvenue-a-suburbicon.html": 3
+  },
+  "pire_ratio": 3.33,
+  "propose": "#201a0d",
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "deplacement_clarte": 0.14,
+  "elements": 3,
+  "extraits": [
+   "Réalisation",
+   "Consensus Rotten Tomatoes, cité par Wikipédia",
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#f5f2ec",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 3
+  },
+  "pire_ratio": 2.76,
+  "propose": "#696f7b",
+  "seuil": 4.5,
+  "texte": "#8d939e"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 3,
+  "extraits": [
+   "1er mouvement · Partition",
+   "Réalisation",
+   "[1]"
+  ],
+  "fond": "#f2f3f5",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "manhattan.html": 3
+  },
+  "pire_ratio": 4.5,
+  "propose": "#6a6f78",
+  "seuil": 4.5,
+  "texte": "#6a7079"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 3,
+  "extraits": [
+   "Premier service",
+   "Réalisation & scénario",
+   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+  ],
+  "fond": "#f6f4ee",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sans-filtre.html": 3
+  },
+  "pire_ratio": 4.5,
+  "propose": "#856c30",
+  "seuil": 4.5,
+  "texte": "#866d30"
+ },
+ {
+  "deplacement_clarte": 0.138,
+  "elements": 2,
+  "extraits": [
+   "House by the River",
+   "États-Unis · Republic Pictures · 88 minutes ·"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 2
+  },
+  "pire_ratio": 3.1,
+  "propose": "#b6c3be",
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "deplacement_clarte": 0.1,
+  "elements": 2,
+  "extraits": [
+   "Retour aux analyses",
+   "Grigori Kozintsev · d'après la traduction de "
+  ],
+  "fond": "#434b50",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 2
+  },
+  "pire_ratio": 3.4,
+  "propose": "#b0bbb9",
+  "seuil": 4.5,
+  "texte": "#95a3a1"
+ },
+ {
+  "deplacement_clarte": 0.094,
+  "elements": 2,
+  "extraits": [
+   "Гамлет —",
+   "Gamlet"
+  ],
+  "fond": "#434b50",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 2
+  },
+  "pire_ratio": 3.46,
+  "propose": "#b0bbbd",
+  "seuil": 4.5,
+  "texte": "#96a4a7"
+ },
+ {
+  "deplacement_clarte": 0.04,
+  "elements": 2,
+  "extraits": [
+   "La notte di San Lorenzo",
+   "Paolo et Vittorio Taviani · Photographie de F"
+  ],
+  "fond": "#1f3456",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 2
+  },
+  "pire_ratio": 3.95,
+  "propose": "#8b9dbb",
+  "seuil": 4.5,
+  "texte": "#7e92b3"
+ },
+ {
+  "deplacement_clarte": 0.128,
+  "elements": 2,
+  "extraits": [
+   "A torinói ló",
+   "Jour I"
+  ],
+  "fond": "#413c35",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 2
+  },
+  "pire_ratio": 3.03,
+  "propose": "#aba69e",
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "deplacement_clarte": 0.06,
+  "elements": 2,
+  "extraits": [
+   "Analyse cinématographique",
+   "Jour VI — obscurité"
+  ],
+  "fond": "#413c35",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 2
+  },
+  "pire_ratio": 3.85,
+  "propose": "#c0a271",
+  "seuil": 4.5,
+  "texte": "#b7945c"
+ },
+ {
+  "deplacement_clarte": 0.128,
+  "elements": 2,
+  "extraits": [
+   "Royaume-Uni — 1951 — Technicolor · Contrecham",
+   "→ Voir aussi le champ : analyse du pipeline ("
+  ],
+  "fond": "#b8955f",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora-contrechamp.html": 2
+  },
+  "pire_ratio": 2.35,
+  "propose": "#153839",
+  "seuil": 4.5,
+  "texte": "#276669"
+ },
+ {
+  "deplacement_clarte": 0.688,
+  "elements": 2,
+  "extraits": [
+   "Retour aux analyses",
+   "Provenance."
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 2
+  },
+  "pire_ratio": 1.86,
+  "propose": "#51401c",
+  "seuil": 4.5,
+  "texte": "#f2ead9"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 2,
+  "extraits": [
+   "DOSSIER N° 94/1999",
+   "NOM"
+  ],
+  "fond": "#d8d5c9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rosetta.html": 2
+  },
+  "pire_ratio": 4.5,
+  "propose": "#5e5c52",
+  "seuil": 4.5,
+  "texte": "#5f5d52"
+ },
+ {
+  "deplacement_clarte": 0.214,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 5 juillet 2026 ·"
+  ],
+  "fond": "#ece7da",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.16,
+  "propose": "#596c64",
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "deplacement_clarte": 0.146,
+  "elements": 1,
+  "extraits": [
+   "Ch. I"
+  ],
+  "fond": "#ece7da",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.45,
+  "propose": "#81632c",
+  "seuil": 4.5,
+  "texte": "#b98d3f"
+ },
+ {
+  "deplacement_clarte": 0.21,
+  "elements": 1,
+  "extraits": [
+   "Analyse cinématographique"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 2.73,
+  "propose": "#d8bc8b",
+  "seuil": 4.5,
+  "texte": "#b98d3f"
+ },
+ {
+  "deplacement_clarte": 0.132,
+  "elements": 1,
+  "extraits": [
+   "≈≈≈"
+  ],
+  "fond": "#415343",
+  "nature": "degrade partiel",
+  "opacite": 0.8,
+  "pages": {
+   "au-fil-de-leau.html": 1
+  },
+  "pire_ratio": 3.32,
+  "propose": "#d5bc8f",
+  "seuil": 4.5,
+  "texte": "#c39f5e"
+ },
+ {
+  "deplacement_clarte": 0.006,
+  "elements": 1,
+  "extraits": [
+   "Union soviétique — 1964 — Lenfilm"
+  ],
+  "fond": "#434b50",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "hamlet.html": 1
+  },
+  "pire_ratio": 4.45,
+  "propose": "#d6b38e",
+  "seuil": 4.5,
+  "texte": "#d5b18c"
+ },
+ {
+  "deplacement_clarte": 0.006,
+  "elements": 1,
+  "extraits": [
+   "/"
+  ],
+  "fond": "#1b1815",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 1
+  },
+  "pire_ratio": 2.94,
+  "propose": "#c4201d",
+  "seuil": 3,
+  "texte": "#c1201d"
+ },
+ {
+  "deplacement_clarte": 0.012,
+  "elements": 1,
+  "extraits": [
+   "Bande magnétique · Universal City · août 1962"
+  ],
+  "fond": "#1b1815",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "hitchcock-truffaut.html": 1
+  },
+  "pire_ratio": 4.31,
+  "propose": "#897f72",
+  "seuil": 4.5,
+  "texte": "#867c6f"
+ },
+ {
+  "deplacement_clarte": 0.372,
+  "elements": 1,
+  "extraits": [
+   "Norvège / France / Suède / Danemark · 128 min"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 1.6,
+  "propose": "#f4f4f5",
+  "seuil": 4.5,
+  "texte": "#8d939e"
+ },
+ {
+  "deplacement_clarte": 0.334,
+  "elements": 1,
+  "extraits": [
+   "Joachim Trier"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 1.74,
+  "propose": "#f9f3f1",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.17,
+  "elements": 1,
+  "extraits": [
+   "Prologue"
+  ],
+  "fond": "#f5f2ec",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 2.54,
+  "propose": "#a75a42",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.14,
+  "elements": 1,
+  "extraits": [
+   "Prologue"
+  ],
+  "fond": "#ffffff",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 2.84,
+  "propose": "#b26047",
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "deplacement_clarte": 0.008,
+  "elements": 1,
+  "extraits": [
+   "2021 — quatre ans de la vie d'une femme qui e"
+  ],
+  "fond": "#826a6f",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "julie-en-12-chapitres.html": 1
+  },
+  "pire_ratio": 4.43,
+  "propose": "#f6f4ef",
+  "seuil": 4.5,
+  "texte": "#f5f2ec"
+ },
+ {
+  "deplacement_clarte": 0.278,
+  "elements": 1,
+  "extraits": [
+   "→"
+  ],
+  "fond": "#363b41",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 1.79,
+  "propose": "#dd9086",
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "deplacement_clarte": 0.104,
+  "elements": 1,
+  "extraits": [
+   "Overland Stage Line · Territoire de l'Arizona"
+  ],
+  "fond": "#363b41",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 3.19,
+  "propose": "#dd9086",
+  "seuil": 4.5,
+  "texte": "#d16a5d"
+ },
+ {
+  "deplacement_clarte": 0.14,
+  "elements": 1,
+  "extraits": [
+   "Italie — 1982 — Toscane, août 1944"
+  ],
+  "fond": "#1f3456",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-nuit-de-san-lorenzo.html": 1
+  },
+  "pire_ratio": 2.36,
+  "propose": "#c59324",
+  "seuil": 4.5,
+  "texte": "#896619"
+ },
+ {
+  "deplacement_clarte": 0.484,
+  "elements": 1,
+  "extraits": [
+   "Analyse sourcée · rédigée le 5 juillet 2026 ·"
+  ],
+  "fond": "#d9d6cf",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 1
+  },
+  "pire_ratio": 1,
+  "propose": "#635d4e",
+  "seuil": 4.5,
+  "texte": "#d9d6cf"
+ },
+ {
+  "deplacement_clarte": 0.184,
+  "elements": 1,
+  "extraits": [
+   "A. O. Scott, New York Times, cité par Wikipéd"
+  ],
+  "fond": "#cfccc6",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 1
+  },
+  "pire_ratio": 2.25,
+  "propose": "#5b564f",
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "deplacement_clarte": 0.218,
+  "elements": 1,
+  "extraits": [
+   "Retour aux analyses"
+  ],
+  "fond": "#553928",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 2.12,
+  "propose": "#c2a767",
+  "seuil": 4.5,
+  "texte": "#856d35"
+ },
+ {
+  "deplacement_clarte": 0.082,
+  "elements": 1,
+  "extraits": [
+   "Le Golem"
+  ],
+  "fond": "#553928",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 2.12,
+  "propose": "#a38641",
+  "seuil": 3,
+  "texte": "#856d35"
+ },
+ {
+  "deplacement_clarte": 0.138,
+  "elements": 1,
+  "extraits": [
+   "Prague · règne de Rodolphe II · d'après la lé"
+  ],
+  "fond": "#553928",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-golem.html": 1
+  },
+  "pire_ratio": 2.76,
+  "propose": "#d0a443",
+  "seuil": 4.5,
+  "texte": "#a37d29"
+ },
+ {
+  "deplacement_clarte": 0.032,
+  "elements": 1,
+  "extraits": [
+   "Royaume-Uni / France · 100 minutes · Couleur "
+  ],
+  "fond": "#373e44",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "moi-daniel-blake.html": 1
+  },
+  "pire_ratio": 4.1,
+  "propose": "#a3a8ac",
+  "seuil": 4.5,
+  "texte": "#9aa0a4"
+ },
+ {
+  "deplacement_clarte": 0.406,
+  "elements": 1,
+  "extraits": [
+   "Royaume-Uni — 1951 — Technicolor"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1,
+  "propose": "#523f21",
+  "seuil": 4.5,
+  "texte": "#c9a97a"
+ },
+ {
+  "deplacement_clarte": 0.604,
+  "elements": 1,
+  "extraits": [
+   "Pandora"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1.86,
+  "propose": "#705926",
+  "seuil": 3,
+  "texte": "#f2ead9"
+ },
+ {
+  "deplacement_clarte": 0.268,
+  "elements": 1,
+  "extraits": [
+   "I"
+  ],
+  "fond": "#f2ead9",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 1.86,
+  "propose": "#856536",
+  "seuil": 4.5,
+  "texte": "#c9a97a"
+ },
+ {
+  "deplacement_clarte": 0.768,
+  "elements": 1,
+  "extraits": [
+   "Le film comporte un suicide par empoisonnemen"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 2.15,
+  "propose": "#4c4120",
+  "seuil": 4.5,
+  "texte": "#fcfbf8"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 1,
+  "extraits": [
+   "Martin Scorsese, cité par Cinephilia & Beyond"
+  ],
+  "fond": "#ddd4bd",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "raging-bull.html": 1
+  },
+  "pire_ratio": 4.5,
+  "propose": "#605b53",
+  "seuil": 4.5,
+  "texte": "#615c53"
+ },
+ {
+  "deplacement_clarte": 0.062,
+  "elements": 1,
+  "extraits": [
+   "France / Allemagne / Belgique / Qatar / Cambo"
+  ],
+  "fond": "#452634",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "retour-a-seoul.html": 1
+  },
+  "pire_ratio": 3.66,
+  "propose": "#91979f",
+  "seuil": 4.5,
+  "texte": "#808790"
+ },
+ {
+  "deplacement_clarte": 0.22,
+  "elements": 1,
+  "extraits": [
+   "PRÉCARITÉ"
+  ],
+  "fond": "#d8d5c9",
+  "nature": "opacite",
+  "opacite": 0.82,
+  "pages": {
+   "rosetta.html": 1
+  },
+  "pire_ratio": 2.05,
+  "propose": "#9a4111",
+  "seuil": 4.5,
+  "texte": "#e97332"
+ },
+ {
+  "deplacement_clarte": 1.0,
+  "elements": 1,
+  "extraits": [
+   "MONASTÈRE"
+  ],
+  "fond": "#1a1914",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 1.11,
+  "propose": "#ffffff",
+  "seuil": 4.5,
+  "texte": "#0c0c0b"
+ },
+ {
+  "deplacement_clarte": 0.062,
+  "elements": 1,
+  "extraits": [
+   "Rouges"
+  ],
+  "fond": "#26251f",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 2.43,
+  "propose": "#d12b2b",
+  "seuil": 3,
+  "texte": "#b72626"
+ },
+ {
+  "deplacement_clarte": 0.11,
+  "elements": 1,
+  "extraits": [
+   "01"
+  ],
+  "fond": "#050504",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "rouges-et-blancs.html": 1
+  },
+  "pire_ratio": 3.22,
+  "propose": "#d73e3e",
+  "seuil": 4.5,
+  "texte": "#b72626"
+ },
+ {
+  "deplacement_clarte": 0.182,
+  "elements": 1,
+  "extraits": [
+   "Analyse cinématographique · M/Y Christina O"
+  ],
+  "fond": "#1d3d5c",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "sans-filtre.html": 1
+  },
+  "pire_ratio": 2.26,
+  "propose": "#c1a152",
+  "seuil": 4.5,
+  "texte": "#866d30"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 1,
+  "extraits": [
+   "Table lumineuse — chiffres à l'appui"
+  ],
+  "fond": "#e8e2d2",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "soudain-lete-dernier.html": 1
+  },
+  "pire_ratio": 4.49,
+  "propose": "#68645b",
+  "seuil": 4.5,
+  "texte": "#69655b"
+ },
+ {
+  "deplacement_clarte": 0.002,
+  "elements": 1,
+  "extraits": [
+   "Le plan final — env. 7 minutes, sans coupe ni"
+  ],
+  "fond": "#20281f",
+  "nature": "texte courant",
+  "opacite": 1,
+  "pages": {
+   "sud.html": 1
+  },
+  "pire_ratio": 4.49,
+  "propose": "#938b7c",
+  "seuil": 4.5,
+  "texte": "#938b7b"
+ },
+ {
+  "deplacement_clarte": 0.048,
+  "elements": 1,
+  "extraits": [
+   "Plateau de Mont-Saint-Jean · 18 juin 1815"
+  ],
+  "fond": "#3f321b",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "waterloo.html": 1
+  },
+  "pire_ratio": 3.74,
+  "propose": "#c0963c",
+  "seuil": 4.5,
+  "texte": "#ad8736"
+ },
+ {
+  "deplacement_clarte": 0.018,
+  "elements": 1,
+  "extraits": [
+   "Italie / URSS · 134 min · Couleur"
+  ],
+  "fond": "#3f321b",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "waterloo.html": 1
+  },
+  "pire_ratio": 4.26,
+  "propose": "#a49a87",
+  "seuil": 4.5,
+  "texte": "#a09682"
+ }
+]

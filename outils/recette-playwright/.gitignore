@@ -1,0 +1,5 @@
+# Caches de l'interpreteur : artefacts de build, jamais versionnes.
+# Ce fichier est LOCAL au dossier de la recette : le .gitignore du depot
+# n'est pas touche (mandat BKL-065-4-recette, autorisations 8).
+__pycache__/
+*.pyc

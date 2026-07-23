@@ -1,0 +1,485 @@
+{
+ "comment-ca-marche.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ],
+    [
+     "/comment-ca-marche.html",
+     3314
+    ]
+   ],
+   "octets": 236670
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/comment-ca-marche.html",
+     3314
+    ]
+   ],
+   "octets": 3314
+  }
+ },
+ "critiques.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/films-data.js",
+     22222
+    ],
+    [
+     "/assets/corpus.js",
+     18178
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/critiques.html",
+     10228
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ]
+   ],
+   "octets": 198108
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/critiques.html",
+     10228
+    ]
+   ],
+   "octets": 10228
+  }
+ },
+ "demander-une-analyse.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ],
+    [
+     "/demander-une-analyse.html",
+     5679
+    ]
+   ],
+   "octets": 239035
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/demander-une-analyse.html",
+     5679
+    ]
+   ],
+   "octets": 5679
+  }
+ },
+ "etudes.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/films-data.js",
+     22222
+    ],
+    [
+     "/assets/corpus.js",
+     18178
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ],
+    [
+     "/etudes.html",
+     3577
+    ]
+   ],
+   "octets": 191457
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/etudes.html",
+     3577
+    ]
+   ],
+   "octets": 3577
+  }
+ },
+ "films/pandora-contrechamp.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/posters/pandora.jpg",
+     291376
+    ],
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/films/pandora-contrechamp.html",
+     36619
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ]
+   ],
+   "octets": 576759
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/assets/posters/pandora.jpg",
+     291376
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/films/pandora-contrechamp.html",
+     36619
+    ]
+   ],
+   "octets": 376055
+  }
+ },
+ "films/pandora.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/posters/pandora.jpg",
+     291376
+    ],
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/films/pandora.html",
+     37682
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ]
+   ],
+   "octets": 577822
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/assets/posters/pandora.jpg",
+     291376
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/films/pandora.html",
+     37682
+    ]
+   ],
+   "octets": 377118
+  }
+ },
+ "films/rouges-et-blancs.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-ext-400-normal.woff2",
+     71008
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/assets/posters/rouges-et-blancs.jpg",
+     37276
+    ],
+    [
+     "/films/rouges-et-blancs.html",
+     33517
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-ext-400-normal.woff2",
+     13552
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ]
+   ],
+   "octets": 404117
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-ext-400-normal.woff2",
+     71008
+    ],
+    [
+     "/assets/fonts/literata-latin-400-italic.woff2",
+     48060
+    ],
+    [
+     "/assets/posters/rouges-et-blancs.jpg",
+     37276
+    ],
+    [
+     "/films/rouges-et-blancs.html",
+     33517
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-ext-400-normal.woff2",
+     13552
+    ]
+   ],
+   "octets": 203413
+  }
+ },
+ "index.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/films-data.js",
+     22222
+    ],
+    [
+     "/assets/corpus.js",
+     18178
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/index.html",
+     12170
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ]
+   ],
+   "octets": 285926
+  },
+  "suivante": {
+   "detail": [],
+   "octets": 0
+  }
+ },
+ "qui-sommes-nous.html": {
+  "premiere": {
+   "detail": [
+    [
+     "/assets/fonts/literata-latin-400-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/fonts/literata-latin-600-normal.woff2",
+     85876
+    ],
+    [
+     "/assets/style.css",
+     17560
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-500-normal.woff2",
+     15092
+    ],
+    [
+     "/assets/fonts/ibmplexmono-latin-400-normal.woff2",
+     14912
+    ],
+    [
+     "/assets/mobilier.css",
+     8277
+    ],
+    [
+     "/assets/fonts.css",
+     5763
+    ],
+    [
+     "/qui-sommes-nous.html",
+     2683
+    ]
+   ],
+   "octets": 236039
+  },
+  "suivante": {
+   "detail": [
+    [
+     "/qui-sommes-nous.html",
+     2683
+    ]
+   ],
+   "octets": 2683
+  }
+ }
+}

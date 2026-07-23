@@ -4,10 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Les Deux Orphelines — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (611 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:60.7rem;
+
     --ink:#15110d;
     --ink-deep:#0a0806;
     --ink-elev:#1e1812;
@@ -15,10 +21,12 @@
     --paper-dim:#d8c9a4;
     --paper-bright:#f2e8d0;
     --sepia:#a9752f;
-    --sepia-deep:#7c541f;
+    --sepia-texte:#ab7730;
+    --sepia-deep:#734e1d;
     --tint-red:#7c2320;
     --tint-red-deep:#571816;
     --tint-blue:#233a5c;
+    --tint-blue-texte:#233a5c;
     --tint-blue-deep:#182740;
     --gold:#c9a227;
     --gold-dim:#8f731c;
@@ -34,7 +42,7 @@
     margin:0;
     background:var(--ink);
     color:var(--paper);
-    font-family:'Libre Caslon Text', serif;
+    font-family:var(--serif);
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
   }
@@ -45,7 +53,7 @@
   }
 
   h1,h2,h3{
-    font-family:'Bodoni Moda', serif;
+    font-family:var(--serif);
     font-weight:700;
     margin:0;
   }
@@ -57,7 +65,7 @@
   }
 
   .label{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.68rem;
@@ -124,7 +132,7 @@
     letter-spacing:0.01em;
   }
   header.cover .orig-title{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     letter-spacing:0.1em;
     color:var(--paper-dim);
@@ -132,7 +140,7 @@
   }
   header.cover .meta-line{
     margin-top:1.6rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     letter-spacing:0.06em;
     color:var(--gold);
@@ -163,14 +171,14 @@
   }
   nav.programme a{
     text-decoration:none;
-    font-family:'Libre Caslon Text', serif;
+    font-family:var(--serif);
     font-size:0.94rem;
     display:flex; gap:0.6rem; align-items:baseline;
   }
   nav.programme a:hover{ color:var(--gold); }
   nav.programme .num{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--sepia);
+    font-family:var(--mono);
+    color:var(--sepia-texte);
     font-size:0.78rem;
   }
   @media (max-width:600px){
@@ -212,7 +220,7 @@
   .carton::before{ left:8px; }
   .carton::after{ right:8px; }
   .carton .num-acte{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.2em;
     color:var(--gold);
@@ -237,9 +245,9 @@
   }
 
   sup.fn a{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
-    color:var(--tint-blue);
+    color:var(--tint-blue-texte);
     text-decoration:none;
     padding:0 0.1rem;
   }
@@ -259,7 +267,7 @@
     font-size:0.92rem;
   }
   .fiche dt{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -287,12 +295,12 @@
   }
   .cast-card h3{
     font-size:1.02rem;
-    font-family:'Libre Caslon Text', serif;
+    font-family:var(--serif);
     font-weight:700;
     margin-bottom:0.15rem;
   }
   .cast-card .role{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -312,7 +320,7 @@
   .crosscut .cc-title{
     text-align:center;
     color:var(--paper-bright);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.72rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -332,7 +340,7 @@
     font-size:0.78rem;
     color:var(--paper-bright);
     border:1px solid rgba(233,220,192,0.22);
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
   }
   .cc-col.red .cc-frame{ background:linear-gradient(180deg, var(--tint-red), var(--tint-red-deep)); }
   .cc-col.blue .cc-frame{ background:linear-gradient(180deg, var(--tint-blue), var(--tint-blue-deep)); }
@@ -341,7 +349,7 @@
     align-items:center;
   }
   .cc-links span{
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     color:var(--gold);
   }
@@ -350,7 +358,7 @@
     color:var(--paper-dim);
     font-size:0.84rem;
     text-align:center;
-    font-family:'Libre Caslon Text', serif;
+    font-family:var(--serif);
     font-style:italic;
   }
   @media (max-width:560px){
@@ -369,7 +377,7 @@
   blockquote cite{
     display:block;
     margin-top:0.5rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.68rem;
     text-transform:uppercase;
@@ -399,7 +407,7 @@
     color:var(--paper-dim);
     text-align:center;
     padding:2.2rem 1.6rem 2.6rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.06em;
   }
@@ -408,7 +416,7 @@
     display:inline-block;
     color:var(--paper-dim);
     opacity:0.75;
-    font-family:'JetBrains Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -431,14 +439,41 @@
     border:1px solid var(--gold-dim);
   }
   .fiche-wrap dl.fiche{ flex:1; min-width:280px; max-width:none; }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.crosscut{ --tint-blue-texte:#4c79bb; }   /* sur #0a0806, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="cover">
   <div class="sprockets"></div>
   <div class="cover-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <span class="label eyebrow">Analyse cinématographique — mélodrame · 1921</span>
     <div class="iris">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -452,6 +487,16 @@
     <div class="rule"></div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 4 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="programme">
   <span class="label">Au programme</span>

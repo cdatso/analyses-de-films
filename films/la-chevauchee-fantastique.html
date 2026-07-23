@@ -4,20 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Chevauchée fantastique (Stagecoach, 1939) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bitter:ital,wght@0,400;0,600;1,400&family=PT+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE BILLET DE DILIGENCE =====
      Overland Stage Line, Tonto -> Lordsburg : parchemin du désert,
      bois brûlé, rouge mesa — un passage payé pour neuf voyageurs. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (652 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:44.0rem;
+
     --sable:#e9dbbd;
     --sable-ombre:#ddcda9;
     --brule:#241a12;
     --brule-doux:#43352a;
     --selle:#6b4226;
     --mesa:#a63d2f;
-    --ciel:#4a6d8c;
+    --ciel:#3e5b75;
     --ligne:rgba(36,26,18,0.2);
     --pointille:rgba(36,26,18,0.35);
   }
@@ -27,7 +33,7 @@
     margin:0;
     background:var(--sable);
     color:var(--brule-doux);
-    font-family:'Bitter', serif;
+    font-family:var(--serif);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -35,7 +41,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.14em;
     font-size:0.64rem;
@@ -65,7 +71,7 @@
   .back-link{
     display:inline-block;
     color:rgba(233,219,189,0.55);
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -74,7 +80,7 @@
   }
   .back-link:hover{ color:var(--mesa); }
   .compagnie{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.28em;
     text-transform:uppercase;
@@ -86,7 +92,7 @@
     margin-bottom:1.8rem;
   }
   h1.title{
-    font-family:'Alfa Slab One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.2rem, 6.5vw, 3.9rem);
     line-height:1.1;
@@ -95,7 +101,7 @@
     text-shadow:3px 3px 0 rgba(166,61,47,0.45);
   }
   .title-orig{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.9rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -111,7 +117,7 @@
   .itineraire{
     display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
     gap:0.3rem 0.7rem;
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -120,7 +126,7 @@
   .itineraire .fleche{ color:var(--mesa); }
   .meta-line{
     margin-top:1.3rem;
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -139,7 +145,7 @@
   nav.billet::before{
     content:"BON POUR UN PASSAGE";
     position:absolute; left:50%; top:-0.7rem; transform:translateX(-50%);
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.2em;
     background:var(--mesa);
@@ -162,7 +168,7 @@
   section{ margin-top:3.6rem; }
   .relais{ margin-bottom:1.4rem; }
   .relais .halte{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -171,7 +177,7 @@
     margin-bottom:0.25rem;
   }
   .relais h2{
-    font-family:'Alfa Slab One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.55rem;
     color:var(--brule);
@@ -190,6 +196,13 @@
   }
   p{ margin:0 0 1.1rem; }
   strong{ color:var(--brule); font-weight:600; }
+  /* DEFAUT DE LISIBILITE corrige au retrofit 065-5, mesure sur pixels peints.
+     La regle generique ci-dessus s'appliquait AUSSI dans l'en-tete, dont le
+     fond descend precisement jusqu'a --brule : le mot « Lordsburg » -- le
+     terme du voyage, seul mot en gras de l'itineraire -- s'y rendait au ratio
+     1,00, c'est-a-dire invisible. Le gras y reprend la couleur de son
+     contexte ; ailleurs dans la page, la regle generique est inchangee. */
+  header.ligne strong{ color:inherit; }
   em{ font-style:italic; }
 
   blockquote{
@@ -205,7 +218,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -215,7 +228,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--ciel);
     text-decoration:none;
@@ -248,7 +261,7 @@
   }
   @media (max-width:480px){ .registre-cie{ grid-template-columns:1fr; } }
   .registre-cie .label{
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -268,19 +281,43 @@
     margin-top:3.5rem;
     padding:1.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'PT Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:rgba(233,219,189,0.55);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Contraste AA -- lot 4, revue visuelle validee par AH le 23/07 */
+  span.compagnie, span.fleche{ color:#d16a5d; }
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="ligne">
   <div class="ligne-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div><span class="compagnie">Overland Stage Line · Territoire de l'Arizona</span></div>
     <h1 class="title">La Chevauchée fantastique</h1>
     <p class="title-orig">Stagecoach</p>
@@ -298,6 +335,16 @@
     <div class="meta-line">États-Unis · United Artists · 96 minutes · N&amp;B · Western</div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 6 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="billet" aria-label="Sommaire">
   <span class="mono">Feuille de route</span>

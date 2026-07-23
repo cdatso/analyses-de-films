@@ -1,0 +1,1398 @@
+{
+ "caracteres_par_page": {
+  "comment-ca-marche.html": [
+   "§",
+   "É",
+   "à",
+   "è",
+   "é",
+   "ô",
+   "—"
+  ],
+  "critiques.html": [
+   "«",
+   "»",
+   "É",
+   "Ö",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ï",
+   "ó",
+   "—"
+  ],
+  "demander-une-analyse.html": [
+   "·",
+   "É",
+   "à",
+   "è",
+   "é",
+   "—"
+  ],
+  "etudes.html": [
+   "§",
+   "«",
+   "»",
+   "É",
+   "à",
+   "è",
+   "é",
+   "ê",
+   "û",
+   "—"
+  ],
+  "films/annie-hall.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—"
+  ],
+  "films/au-fil-de-leau.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "Œ",
+   "œ",
+   "—",
+   "≈",
+   "✦"
+  ],
+  "films/bienvenue-a-suburbicon.html": [
+   "«",
+   "·",
+   "»",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—",
+   "−"
+  ],
+  "films/hamlet.html": [
+   "«",
+   "°",
+   "·",
+   "»",
+   "À",
+   "É",
+   "Ê",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ë",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "ü",
+   "ņ",
+   "œ",
+   "Г",
+   "а",
+   "е",
+   "л",
+   "м",
+   "т",
+   "—",
+   "“",
+   "”"
+  ],
+  "films/hamnet.html": [
+   "«",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "Ł",
+   "œ",
+   "Ż",
+   "—"
+  ],
+  "films/hitchcock-truffaut.html": [
+   "«",
+   "·",
+   "»",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ñ",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "–",
+   "—"
+  ],
+  "films/julie-en-12-chapitres.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—",
+   "€"
+  ],
+  "films/la-chevauchee-fantastique.html": [
+   "«",
+   "°",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—",
+   "→"
+  ],
+  "films/la-mariee-etait-en-noir.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "œ",
+   "–",
+   "—",
+   "✦"
+  ],
+  "films/la-nuit-de-san-lorenzo.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—"
+  ],
+  "films/le-cheval-de-turin.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "Á",
+   "É",
+   "à",
+   "á",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "í",
+   "î",
+   "ó",
+   "ù",
+   "û",
+   "œ",
+   "ű",
+   "—",
+   "…"
+  ],
+  "films/le-doulos.html": [
+   "«",
+   "º",
+   "»",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ë",
+   "î",
+   "ï",
+   "ô",
+   "ö",
+   "ù",
+   "û",
+   "—"
+  ],
+  "films/le-golem.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "á",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "í",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "ř",
+   "א",
+   "מ",
+   "ת",
+   "—"
+  ],
+  "films/le-samourai.html": [
+   "«",
+   "·",
+   "»",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ë",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—",
+   "…",
+   "◆"
+  ],
+  "films/les-deux-orphelines.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "æ",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "œ",
+   "–",
+   "—",
+   "↔"
+  ],
+  "films/manhattan.html": [
+   "«",
+   "·",
+   "»",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "œ",
+   "—"
+  ],
+  "films/moi-daniel-blake.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "œ",
+   "—"
+  ],
+  "films/nouvelle-vague.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—"
+  ],
+  "films/pandora-contrechamp.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "í",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "œ",
+   "—",
+   "→"
+  ],
+  "films/pandora.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "È",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—",
+   "…",
+   "→"
+  ],
+  "films/persona.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "å",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ö",
+   "ù",
+   "û",
+   "–",
+   "—"
+  ],
+  "films/raging-bull.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "œ",
+   "–",
+   "—"
+  ],
+  "films/retour-a-seoul.html": [
+   "«",
+   "°",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "—"
+  ],
+  "films/rosetta.html": [
+   "«",
+   "°",
+   "·",
+   "»",
+   "À",
+   "Â",
+   "É",
+   "à",
+   "â",
+   "æ",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ó",
+   "ô",
+   "ù",
+   "—",
+   "→"
+  ],
+  "films/rouges-et-blancs.html": [
+   "«",
+   "°",
+   "·",
+   "»",
+   "À",
+   "Á",
+   "È",
+   "É",
+   "Ó",
+   "Ô",
+   "à",
+   "á",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "í",
+   "î",
+   "ï",
+   "ó",
+   "ô",
+   "ù",
+   "ł",
+   "œ",
+   "—"
+  ],
+  "films/sans-filtre.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "Î",
+   "Ö",
+   "à",
+   "ä",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "ć",
+   "—"
+  ],
+  "films/shutter-island.html": [
+   "«",
+   "º",
+   "»",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ë",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "–",
+   "—"
+  ],
+  "films/soudain-lete-dernier.html": [
+   "«",
+   "·",
+   "º",
+   "»",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ô",
+   "ù",
+   "û",
+   "œ",
+   "—"
+  ],
+  "films/soy-cuba.html": [
+   "«",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "í",
+   "î",
+   "ï",
+   "ñ",
+   "ó",
+   "ô",
+   "ù",
+   "ú",
+   "œ",
+   "К",
+   "Я",
+   "а",
+   "б",
+   "у",
+   "—"
+  ],
+  "films/sud.html": [
+   "«",
+   "»",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ë",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "œ",
+   "–",
+   "—"
+  ],
+  "films/sur-la-route-domaha.html": [
+   "«",
+   "·",
+   "»",
+   "É",
+   "à",
+   "â",
+   "æ",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "û",
+   "—"
+  ],
+  "films/the-old-oak.html": [
+   "«",
+   "·",
+   "»",
+   "À",
+   "É",
+   "à",
+   "â",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "ô",
+   "œ",
+   "—"
+  ],
+  "films/waterloo.html": [
+   "£",
+   "«",
+   "°",
+   "·",
+   "»",
+   "É",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ê",
+   "î",
+   "ï",
+   "ô",
+   "ù",
+   "û",
+   "ü",
+   "Œ",
+   "œ",
+   "—",
+   "◼"
+  ],
+  "index.html": [
+   "§",
+   "·",
+   "É",
+   "Ö",
+   "à",
+   "ç",
+   "è",
+   "é",
+   "ï",
+   "ó",
+   "—"
+  ],
+  "qui-sommes-nous.html": [
+   "§",
+   "«",
+   "»",
+   "É",
+   "à",
+   "è",
+   "é",
+   "ê",
+   "—"
+  ]
+ },
+ "caracteres_prototype": [
+  "§",
+  "«",
+  "°",
+  "·",
+  "»",
+  "À",
+  "Á",
+  "È",
+  "É",
+  "Ó",
+  "Ô",
+  "Ö",
+  "à",
+  "á",
+  "â",
+  "ç",
+  "è",
+  "é",
+  "ê",
+  "í",
+  "î",
+  "ï",
+  "ó",
+  "ô",
+  "ù",
+  "û",
+  "ł",
+  "œ",
+  "—",
+  "…",
+  "→"
+ ],
+ "composition": {
+  "U+00A3": [
+   "Literata"
+  ],
+  "U+00A7": [
+   "Literata"
+  ],
+  "U+00AB": [
+   "Literata"
+  ],
+  "U+00B0": [
+   "Literata"
+  ],
+  "U+00B7": [
+   "Literata"
+  ],
+  "U+00BA": [
+   "Literata"
+  ],
+  "U+00BB": [
+   "Literata"
+  ],
+  "U+00C0": [
+   "Literata"
+  ],
+  "U+00C1": [
+   "Literata"
+  ],
+  "U+00C2": [
+   "Literata"
+  ],
+  "U+00C8": [
+   "Literata"
+  ],
+  "U+00C9": [
+   "Literata"
+  ],
+  "U+00CA": [
+   "Literata"
+  ],
+  "U+00CE": [
+   "Literata"
+  ],
+  "U+00D3": [
+   "Literata"
+  ],
+  "U+00D4": [
+   "Literata"
+  ],
+  "U+00D6": [
+   "Literata"
+  ],
+  "U+00E0": [
+   "Literata"
+  ],
+  "U+00E1": [
+   "Literata"
+  ],
+  "U+00E2": [
+   "Literata"
+  ],
+  "U+00E4": [
+   "Literata"
+  ],
+  "U+00E5": [
+   "Literata"
+  ],
+  "U+00E6": [
+   "Literata"
+  ],
+  "U+00E7": [
+   "Literata"
+  ],
+  "U+00E8": [
+   "Literata"
+  ],
+  "U+00E9": [
+   "Literata"
+  ],
+  "U+00EA": [
+   "Literata"
+  ],
+  "U+00EB": [
+   "Literata"
+  ],
+  "U+00ED": [
+   "Literata"
+  ],
+  "U+00EE": [
+   "Literata"
+  ],
+  "U+00EF": [
+   "Literata"
+  ],
+  "U+00F1": [
+   "Literata"
+  ],
+  "U+00F3": [
+   "Literata"
+  ],
+  "U+00F4": [
+   "Literata"
+  ],
+  "U+00F6": [
+   "Literata"
+  ],
+  "U+00F9": [
+   "Literata"
+  ],
+  "U+00FA": [
+   "Literata"
+  ],
+  "U+00FB": [
+   "Literata"
+  ],
+  "U+00FC": [
+   "Literata"
+  ],
+  "U+0107": [
+   "Literata"
+  ],
+  "U+0141": [
+   "Literata"
+  ],
+  "U+0142": [
+   "Literata"
+  ],
+  "U+0146": [
+   "Literata"
+  ],
+  "U+0152": [
+   "Literata"
+  ],
+  "U+0153": [
+   "Literata"
+  ],
+  "U+0159": [
+   "Literata"
+  ],
+  "U+0171": [
+   "Literata"
+  ],
+  "U+017B": [
+   "Literata"
+  ],
+  "U+0413": [
+   "Literata"
+  ],
+  "U+041A": [
+   "Literata"
+  ],
+  "U+042F": [
+   "Literata"
+  ],
+  "U+0430": [
+   "Literata"
+  ],
+  "U+0431": [
+   "Literata"
+  ],
+  "U+0435": [
+   "Literata"
+  ],
+  "U+043B": [
+   "Literata"
+  ],
+  "U+043C": [
+   "Literata"
+  ],
+  "U+0442": [
+   "Literata"
+  ],
+  "U+0443": [
+   "Literata"
+  ],
+  "U+05D0": [
+   "Frank Ruhl Libre"
+  ],
+  "U+05DE": [
+   "Frank Ruhl Libre"
+  ],
+  "U+05EA": [
+   "Frank Ruhl Libre"
+  ],
+  "U+2013": [
+   "Literata"
+  ],
+  "U+2014": [
+   "Literata"
+  ],
+  "U+201C": [
+   "Literata"
+  ],
+  "U+201D": [
+   "Literata"
+  ],
+  "U+2026": [
+   "Literata"
+  ],
+  "U+20AC": [
+   "Literata"
+  ],
+  "U+2192": [
+   "Times New Roman"
+  ],
+  "U+2194": [
+   "Times New Roman"
+  ],
+  "U+2212": [
+   "Literata"
+  ],
+  "U+2248": [
+   "Georgia"
+  ],
+  "U+25C6": [
+   "Cambria Math"
+  ],
+  "U+25FC": [
+   "Cambria Math"
+  ],
+  "U+2726": [
+   "Segoe UI Symbol"
+  ]
+ },
+ "contre_epreuve": [
+  {
+   "caractere": "U+05D0",
+   "famille_composee": [
+    "Frank Ruhl Libre"
+   ],
+   "famille_demandee": "'Frank Ruhl Libre'"
+  },
+  {
+   "caractere": "U+05EA",
+   "famille_composee": [
+    "Frank Ruhl Libre"
+   ],
+   "famille_demandee": "'Frank Ruhl Libre'"
+  },
+  {
+   "caractere": "U+0410",
+   "famille_composee": [
+    "Literata"
+   ],
+   "famille_demandee": "'Literata'"
+  }
+ ],
+ "fontes_par_page": {
+  "comment-ca-marche.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Segoe UI",
+      137
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      26
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  },
+  "critiques.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Segoe UI",
+      248
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   }
+  },
+  "demander-une-analyse.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Literata",
+      137
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      20
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  },
+  "etudes.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Segoe UI",
+      246
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   }
+  },
+  "films/pandora-contrechamp.html": {
+   "cartouche (mono)": {
+    "composee": [
+     [
+      "IBM Plex Mono",
+      235
+     ]
+    ],
+    "demandee": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Consolas, monospace"
+   },
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      33
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI Light",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Literata",
+      591
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      7
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  },
+  "films/pandora.html": {
+   "cartouche (mono)": {
+    "composee": [
+     [
+      "IBM Plex Mono",
+      205
+     ]
+    ],
+    "demandee": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Consolas, monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI Light",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Literata",
+      250
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      7
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  },
+  "films/rouges-et-blancs.html": {
+   "cartouche (mono)": {
+    "composee": [
+     [
+      "IBM Plex Mono",
+      181
+     ]
+    ],
+    "demandee": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Consolas, monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Literata",
+      391
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      16
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  },
+  "index.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Segoe UI",
+      82
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   }
+  },
+  "qui-sommes-nous.html": {
+   "code": {
+    "composee": [
+     [
+      "Consolas",
+      8
+     ]
+    ],
+    "demandee": "monospace"
+   },
+   "menu": {
+    "composee": [
+     [
+      "Segoe UI",
+      7
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "texte courant": {
+    "composee": [
+     [
+      "Segoe UI",
+      138
+     ]
+    ],
+    "demandee": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+   },
+   "titre": {
+    "composee": [
+     [
+      "Literata",
+      15
+     ]
+    ],
+    "demandee": "Literata, \"Frank Ruhl Libre\", Georgia, \"Times New Roman\", serif"
+   }
+  }
+ },
+ "polices_contre_epreuve": [],
+ "replis": {
+  "U+2192": [
+   "Times New Roman"
+  ],
+  "U+2194": [
+   "Times New Roman"
+  ],
+  "U+2248": [
+   "Georgia"
+  ],
+  "U+25C6": [
+   "Cambria Math"
+  ],
+  "U+25FC": [
+   "Cambria Math"
+  ],
+  "U+2726": [
+   "Segoe UI Symbol"
+  ]
+ }
+}

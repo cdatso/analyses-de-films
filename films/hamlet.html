@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hamlet (1964) — Grigori Kozintsev | Analyses de films</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cardo:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* =========================================================
      IDENTITÉ BESPOKE — « Pierre gravée, mer du Nord »
@@ -20,18 +20,26 @@
      ========================================================= */
 
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (732 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:49.0rem;
+
     --granit:#23282b;
     --granit-2:#31383c;
     --granit-3:#414a4f;
     --ardoise:#5d686d;
-    --mer:#8a9a9d;
-    --brume:#c9d0cf;
+    --mer:#96a4a7;
+    --brume:#95a3a1;
     --papier:#eceeeb;
     --papier-2:#dfe3e0;
     --encre:#1b1f21;
     --encre-pale:#565f62;
     --rouille:#98602c;
+    --rouille-texte:#965f2c;
     --rouille-clair:#c08a52;
+    --rouille-clair-texte:#d5b18c;
     --ombre:rgba(35,40,43,0.16);
   }
 
@@ -43,7 +51,7 @@
     margin:0;
     background:var(--papier);
     color:var(--encre);
-    font-family:'Cardo', 'Palatino Linotype', Georgia, serif;
+    font-family:var(--serif);
     font-size:1.09rem;
     line-height:1.74;
     -webkit-font-smoothing:antialiased;
@@ -89,7 +97,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.82rem;
     letter-spacing:0.11em;
     text-transform:uppercase;
@@ -99,20 +107,20 @@
     padding-bottom:2px;
     margin-bottom:2.8rem;
   }
-  .retour:hover{ color:var(--rouille-clair); border-color:var(--rouille-clair); }
+  .retour:hover{ color:var(--rouille-clair-texte); border-color:var(--rouille-clair); }
 
   .cartel{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.75rem;
     font-weight:500;
     letter-spacing:0.21em;
     text-transform:uppercase;
   }
 
-  header.dalle .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+  header.dalle .cartel{ color:var(--rouille-clair-texte); display:block; margin-bottom:1.1rem; }
 
   header.dalle h1{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(2.4rem, 7vw, 3.7rem);
     letter-spacing:0.06em;
@@ -122,7 +130,7 @@
   }
 
   .titre-vo{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:1.05rem;
     letter-spacing:0.06em;
     color:var(--mer);
@@ -136,7 +144,7 @@
   }
 
   .generique{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.96rem;
     color:var(--brume);
     letter-spacing:0.02em;
@@ -147,7 +155,7 @@
     padding:0.85rem 1.15rem;
     background:rgba(65,74,79,0.5);
     border-left:2px solid var(--rouille);
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.8rem;
     line-height:1.6;
     letter-spacing:0.02em;
@@ -163,7 +171,7 @@
     color:var(--brume);
   }
   nav.grille .inner{ max-width:780px; margin:0 auto; }
-  nav.grille .cartel{ color:var(--rouille-clair); display:block; margin-bottom:1.1rem; }
+  nav.grille .cartel{ color:var(--rouille-clair-texte); display:block; margin-bottom:1.1rem; }
   nav.grille ol{
     list-style:none;
     margin:0; padding:0;
@@ -179,9 +187,9 @@
     font-size:1rem;
     border-bottom:1px solid rgba(201,208,207,0.13);
   }
-  nav.grille a:hover{ color:var(--rouille-clair); }
+  nav.grille a:hover{ color:var(--rouille-clair-texte); }
   nav.grille .num{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.75rem;
     letter-spacing:0.13em;
     color:var(--mer);
@@ -217,7 +225,7 @@
   }
 
   h2{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(1.42rem, 3.4vw, 1.78rem);
     letter-spacing:0.045em;
@@ -234,27 +242,27 @@
   }
 
   h3{
-    font-family:'Cinzel', 'Trajan Pro', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:1.06rem;
     letter-spacing:0.05em;
-    color:var(--rouille);
+    color:var(--rouille-texte);
     margin:2.3rem 0 0.65rem;
   }
 
   p{ margin:0 0 1.15rem; }
 
-  a{ color:var(--rouille); }
+  a{ color:var(--rouille-texte); }
 
   sup.ref{ font-size:0.7em; line-height:0; }
   sup.ref a{
     text-decoration:none;
     color:var(--ardoise);
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     padding:0 0.09em;
   }
-  sup.ref a:hover{ color:var(--rouille); }
+  sup.ref a:hover{ color:var(--rouille-texte); }
 
   /* citation détachée — la voix de Kozintsev */
   .lame{
@@ -278,7 +286,7 @@
 
   .fiche dl{ margin:0; }
   .fiche dt{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.73rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
@@ -299,7 +307,7 @@
   }
   figure.poster img{ display:block; width:100%; height:auto; }
   figure.poster figcaption{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.71rem;
     line-height:1.5;
     letter-spacing:0.05em;
@@ -318,7 +326,7 @@
   }
   .theorie .cartel{ color:var(--ardoise); display:block; margin-bottom:0.9rem; }
   .theorie .garde{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.87rem;
     line-height:1.62;
     background:rgba(152,96,44,0.11);
@@ -335,7 +343,7 @@
     background:var(--papier-2);
     border-left:2px solid var(--ardoise);
     padding:1rem 1.3rem;
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.89rem;
     line-height:1.66;
     color:var(--encre-pale);
@@ -343,7 +351,7 @@
   }
 
   #sources ol{
-    font-family:'Archivo Narrow', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.91rem;
     line-height:1.64;
     padding-left:1.4rem;
@@ -367,13 +375,54 @@
     .fiche-wrap{ grid-template-columns:1fr; }
     figure.poster{ max-width:232px; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  nav.grille{ --brume:#c9d0cf; }   /* sur #414a4f, 10 element(s) */
+  nav.grille{ --mer:#b0bbbd; }   /* sur #414a4f, 10 element(s) */
+  figure.poster, footer{ --mer:#b0bbbd; }   /* sur #23282b, 2 element(s) */
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  /* CORRECTIF du 23/07 08h52 : le bloc de provenance est peint SUR UN FOND
+     SOMBRE, et non sur le gris moyen que donnait le calcul de fond effectif
+     (celui-ci composait un rgba semi-transparent sur le corps clair, alors
+     que le bloc vit dans un conteneur sombre). Une premiere redefinition,
+     fondee sur ce fond calcule, avait rendu le texte quasi invisible.
+     Mesure sur PIXELS PEINTS : la teinte d'origine y tient a 6,75. */
+  div.provenance{ --brume:#c9d0cf; }
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="dalle">
   <div class="dalle-inner">
-    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <a class="retour lien-retour" href="../index.html">Retour aux analyses</a>
     <span class="cartel">Union soviétique — 1964 — Lenfilm</span>
     <h1>Hamlet</h1>
     <div class="titre-vo">Гамлет — <em>Gamlet</em></div>
@@ -385,6 +434,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : Claude Opus (session supervisée)</span>
+  <span class="date-pub">Publi&eacute;e le 21 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="grille">
   <div class="inner">

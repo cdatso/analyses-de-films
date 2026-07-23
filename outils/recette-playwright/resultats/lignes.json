@@ -1,0 +1,2972 @@
+[
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.river-eyebrow > span.mono",
+  "couleur": "#b98d3f",
+  "extrait": "Analyse cinématographique",
+  "page": "au-fil-de-leau.html",
+  "px": 10.88,
+  "ratio": 4.47,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.river-eyebrow > span.wave",
+  "couleur": "#997a3a",
+  "extrait": "≈≈≈",
+  "page": "au-fil-de-leau.html",
+  "px": 12,
+  "ratio": 3.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.meta-line",
+  "couleur": "#8fa39b",
+  "extrait": "États-Unis · Republic Pictures · 88 minu",
+  "page": "au-fil-de-leau.html",
+  "px": 11.52,
+  "ratio": 4.01,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. I",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. II",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. III",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. IV",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. V",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. VI",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. VII",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. VIII",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "Ch. IX",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.folio > span.num",
+  "couleur": "#b98d3f",
+  "extrait": "✦",
+  "page": "au-fil-de-leau.html",
+  "px": 17.6,
+  "ratio": 2.45,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer.colophon-final",
+  "couleur": "#8fa39b",
+  "extrait": "Analyse sourcée · rédigée le 5 juillet 2",
+  "page": "au-fil-de-leau.html",
+  "px": 10.56,
+  "ratio": 2.16,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > a.back-link.lien-retour",
+  "couleur": "#f4efe3",
+  "extrait": "Retour aux analyses",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 13.76,
+  "ratio": 3.3,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > p.subtitle",
+  "couleur": "#e0e2d7",
+  "extrait": "George Clooney, 2017 — un scénario noir ",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 16.96,
+  "ratio": 4.15,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "couleur": "#b8c7bd",
+  "extrait": "États-Unis · Paramount",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.56,
+  "ratio": 3.22,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "couleur": "#b8c7bd",
+  "extrait": "105 minutes · Couleur",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.56,
+  "ratio": 3.22,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "couleur": "#b8c7bd",
+  "extrait": "Comédie noire / satire",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.56,
+  "ratio": 3.22,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 1 · Acte de vente",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 2",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 3",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 4",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 5",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 6",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 7",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 8",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Lot 9 · Sortie du lotissement",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.panneau > span.lot",
+  "couleur": "#e0876b",
+  "extrait": "Annexes",
+  "page": "bienvenue-a-suburbicon.html",
+  "px": 10.4,
+  "ratio": 2.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > a.retour.lien-retour",
+  "couleur": "#606f6d",
+  "extrait": "Retour aux analyses",
+  "page": "hamlet.html",
+  "px": 13.76,
+  "ratio": 1.91,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.titre-vo",
+  "couleur": "#5f6e71",
+  "extrait": "Гамлет —",
+  "page": "hamlet.html",
+  "px": 16.8,
+  "ratio": 1.78,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.titre-vo > em",
+  "couleur": "#5f6e71",
+  "extrait": "Gamlet",
+  "page": "hamlet.html",
+  "px": 16.8,
+  "ratio": 1.81,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.generique",
+  "couleur": "#606f6d",
+  "extrait": "Grigori Kozintsev · d'après la traductio",
+  "page": "hamlet.html",
+  "px": 15.36,
+  "ratio": 1.77,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > p",
+  "couleur": "#241d10",
+  "extrait": "Angleterre, 1580. William, jeune précept",
+  "page": "hamnet.html",
+  "px": 17.28,
+  "ratio": 1.99,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.bobine > div.bobine-inner > div.etiquette-bande > span",
+  "couleur": "#867c6f",
+  "extrait": "Bande magnétique · Universal City · août",
+  "page": "hitchcock-truffaut.html",
+  "px": 9.92,
+  "ratio": 4.48,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.bobine > div.bobine-inner > h1 > span.barre",
+  "couleur": "#c1201d",
+  "extrait": "/",
+  "page": "hitchcock-truffaut.html",
+  "px": 46.4,
+  "ratio": 2.92,
+  "seuil": 3
+ },
+ {
+  "chemin": "section#fiche > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "1",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "2",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "3",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "4",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "5",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "6",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "7",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "8",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.tete-section > span.piste-num",
+  "couleur": "#d9b98f",
+  "extrait": "9",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.09,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.tete-section > span.piste-num",
+  "couleur": "#15120f",
+  "extrait": "S",
+  "page": "hitchcock-truffaut.html",
+  "px": 13.6,
+  "ratio": 1.0,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.couverture > div.couverture-inner > div.auteur",
+  "couleur": "#c98a77",
+  "extrait": "Joachim Trier",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.88,
+  "ratio": 4.01,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.couverture > div.couverture-inner > div.meta-line",
+  "couleur": "#8d939e",
+  "extrait": "Norvège / France / Suède / Danemark · 12",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.28,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Prologue",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 1",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 2",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 3",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 4",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 5",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 6",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Ch. 7",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Épilogue",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.matiere > ol > li > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Notes",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.56,
+  "ratio": 2.84,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Prologue",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Réalisation",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Scénario",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Photographie",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Interprètes",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Production",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Tournage",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Première",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.pagedegarde > div > div.label",
+  "couleur": "#8d939e",
+  "extrait": "Distinctions",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.6,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 1",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 2",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 3",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 4",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 5",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 6",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Chapitre 7",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > blockquote > span.attrib",
+  "couleur": "#8d939e",
+  "extrait": "Consensus Rotten Tomatoes, cité par Wiki",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.92,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Épilogue",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.chapitre-tete > span.no",
+  "couleur": "#c98a77",
+  "extrait": "Notes",
+  "page": "julie-en-12-chapitres.html",
+  "px": 10.24,
+  "ratio": 2.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer.acheve",
+  "couleur": "#8d939e",
+  "extrait": "Analyse sourcée · rédigée le 6 juillet 2",
+  "page": "julie-en-12-chapitres.html",
+  "px": 9.92,
+  "ratio": 2.76,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div > span.compagnie",
+  "couleur": "#a63d2f",
+  "extrait": "Overland Stage Line · Territoire de l'Ar",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.56,
+  "ratio": 2.55,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "couleur": "#a63d2f",
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.24,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "couleur": "#a63d2f",
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.24,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "couleur": "#a63d2f",
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.24,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "couleur": "#a63d2f",
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.24,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.meta-line",
+  "couleur": "#877b68",
+  "extrait": "États-Unis · United Artists · 96 minutes",
+  "page": "la-chevauchee-fantastique.html",
+  "px": 10.08,
+  "ratio": 4.06,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > span.cartel",
+  "couleur": "#896619",
+  "extrait": "Italie — 1982 — Toscane, août 1944",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "px": 11.84,
+  "ratio": 2.64,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > div.titre-vo",
+  "couleur": "#566d93",
+  "extrait": "La notte di San Lorenzo",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "px": 18.88,
+  "ratio": 2.74,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > div.generique",
+  "couleur": "#566d93",
+  "extrait": "Paolo et Vittorio Taviani · Photographie",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "px": 15.2,
+  "ratio": 2.8,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.storm-eyebrow > span.mono",
+  "couleur": "#9c7b45",
+  "extrait": "Analyse cinématographique",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.52,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > p.title-orig",
+  "couleur": "#8d867b",
+  "extrait": "A torinói ló",
+  "page": "le-cheval-de-turin.html",
+  "px": 17.6,
+  "ratio": 3.59,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "couleur": "#8d867b",
+  "extrait": "Jour I",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "couleur": "#8d867b",
+  "extrait": "Jour II",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "couleur": "#8d867b",
+  "extrait": "Jour III",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.17,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "couleur": "#8d867b",
+  "extrait": "Jour IV",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "couleur": "#8d867b",
+  "extrait": "Jour V",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 3.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span.jour-vi",
+  "couleur": "#9c7b45",
+  "extrait": "Jour VI — obscurité",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.56,
+  "ratio": 2.9,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > blockquote > span.attrib",
+  "couleur": "#8d867b",
+  "extrait": "A. O. Scott, New York Times, cité par Wi",
+  "page": "le-cheval-de-turin.html",
+  "px": 10.24,
+  "ratio": 2.43,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > a.back-link.lien-retour",
+  "couleur": "#76612f",
+  "extrait": "Retour aux analyses",
+  "page": "le-golem.html",
+  "px": 13.76,
+  "ratio": 2.29,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > div > span.sceau",
+  "couleur": "#7c5f1f",
+  "extrait": "Prague · règne de Rodolphe II · d'après ",
+  "page": "le-golem.html",
+  "px": 10.24,
+  "ratio": 2.63,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > h1.title",
+  "couleur": "#76612f",
+  "extrait": "Le Golem",
+  "page": "le-golem.html",
+  "px": 80,
+  "ratio": 2.69,
+  "seuil": 3
+ },
+ {
+  "chemin": "html > body > header.quai.carrelage > div.quai-inner > div.direction > span",
+  "couleur": "#566069",
+  "extrait": "terminus",
+  "page": "le-samourai.html",
+  "px": 11.2,
+  "ratio": 4.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.quai.carrelage > div.quai-inner > div.direction > span",
+  "couleur": "#566069",
+  "extrait": "film noir · yakuza eiga · polar",
+  "page": "le-samourai.html",
+  "px": 11.2,
+  "ratio": 4.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.quai.carrelage > div.quai-inner > div.direction > span",
+  "couleur": "#566069",
+  "extrait": "analyse en 9 stations",
+  "page": "le-samourai.html",
+  "px": 11.2,
+  "ratio": 4.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche > figure.poster > figcaption",
+  "couleur": "#566069",
+  "extrait": "Affiche d'exploitation — le chapeau, l'i",
+  "page": "le-samourai.html",
+  "px": 9.6,
+  "ratio": 4.04,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.14,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.59,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.59,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "11",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.59,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "10",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.14,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "12",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.56,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.corr > a",
+  "couleur": "#fbfcfa",
+  "extrait": "13",
+  "page": "le-samourai.html",
+  "px": 9.92,
+  "ratio": 1.18,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "1er mouvement · Partition",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Réalisation",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Scénario",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Photographie",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Musique",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Montage",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Interprètes",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Sortie",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Budget / recettes",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.partition > div > div.label",
+  "couleur": "#6a7079",
+  "extrait": "Distinctions",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "2e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "3e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[2]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "4e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "5e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[2]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[2]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "6e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[3]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[4]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "7e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[4]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "8e mouvement",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[5]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[3]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[4]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.fn > a",
+  "couleur": "#6a7079",
+  "extrait": "[1]",
+  "page": "manhattan.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "9e mouvement · Coda",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.mouvement > span.num",
+  "couleur": "#6a7079",
+  "extrait": "Notes de programme",
+  "page": "manhattan.html",
+  "px": 10.4,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer.file-attente",
+  "couleur": "#9aa0a4",
+  "extrait": "Analyse sourcée · rédigée le 6 juillet 2",
+  "page": "moi-daniel-blake.html",
+  "px": 9.76,
+  "ratio": 2.21,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > span.eyebrow.cartel",
+  "couleur": "#2f7d80",
+  "extrait": "Royaume-Uni — 1951 — Technicolor · Contr",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.provenance > a",
+  "couleur": "#2f7d80",
+  "extrait": "→ Voir aussi le champ : analyse du pipel",
+  "page": "pandora-contrechamp.html",
+  "px": 12.16,
+  "ratio": 2.6,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.content-warning",
+  "couleur": "#2f333b",
+  "extrait": "Le film comporte un suicide par empoison",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 3.99,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > div.mobilier-wrap > p.variante > a",
+  "couleur": "#2f7d80",
+  "extrait": "Pandora — Champ — Critique",
+  "page": "pandora-contrechamp.html",
+  "px": 13.76,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.programme > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Sommaire",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "I",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "II",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "III",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "IV",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "V",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "VI",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "VII",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "VIII",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "IX",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#2f7d80",
+  "extrait": "·",
+  "page": "pandora-contrechamp.html",
+  "px": 12.8,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile I",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Titre original",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Réalisation",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Scénario",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Production",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "div.fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "2",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 3.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Photographie",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Musique",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Décors",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Costumes",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Interprétation",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Durée",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "div.fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "2",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 3.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Datation",
+  "page": "pandora-contrechamp.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "div.fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "2",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 3.34,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > figure.poster > figcaption",
+  "couleur": "#8d8677",
+  "extrait": "Affiche d'exploitation — collection de r",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile II",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile III",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "3",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "2",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile IV",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "2",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "8",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile V",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "7",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "3",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "3",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "11",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VI",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "5",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VII",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "8",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "7",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "6",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VIII",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "8",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "12",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > p > sup.ref > a",
+  "couleur": "#2f7d80",
+  "extrait": "10",
+  "page": "pandora-contrechamp.html",
+  "px": 9.92,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile IX",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Inventaire",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-1 > a",
+  "couleur": "#2f7d80",
+  "extrait": "catalog.afi.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-2 > a",
+  "couleur": "#2f7d80",
+  "extrait": "bfi.org.uk",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-3 > a",
+  "couleur": "#2f7d80",
+  "extrait": "tcm.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-4 > a",
+  "couleur": "#2f7d80",
+  "extrait": "tcm.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-5 > a",
+  "couleur": "#2f7d80",
+  "extrait": "dvdclassik.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-6 > a",
+  "couleur": "#2f7d80",
+  "extrait": "critikat.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-7 > a",
+  "couleur": "#2f7d80",
+  "extrait": "journals.openedition.org",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-8 > a",
+  "couleur": "#2f7d80",
+  "extrait": "bfidatadigipres.github.io",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-9 > a",
+  "couleur": "#2f7d80",
+  "extrait": "arte.tv",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-10 > a",
+  "couleur": "#2f7d80",
+  "extrait": "timeout.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-11 > a",
+  "couleur": "#2f7d80",
+  "extrait": "jonathanrosenbaum.net",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "li#src-12 > a",
+  "couleur": "#2f7d80",
+  "extrait": "film-foundation.org",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > p > a",
+  "couleur": "#2f7d80",
+  "extrait": "cineclubdecaen.com",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > p > a",
+  "couleur": "#2f7d80",
+  "extrait": "cinematheque.fr",
+  "page": "pandora-contrechamp.html",
+  "px": 14.4,
+  "ratio": 4.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Analyse déléguée OpenAI GPT-5.5, reprise",
+  "page": "pandora-contrechamp.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.content-warning",
+  "couleur": "#e2d6bd",
+  "extrait": "Le film comporte un suicide par empoison",
+  "page": "pandora.html",
+  "px": 14.4,
+  "ratio": 3.27,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > nav.programme > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Sommaire",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "I",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "II",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "III",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "IV",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "V",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "VI",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "VII",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "VIII",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "IX",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#c9a97a",
+  "extrait": "·",
+  "page": "pandora.html",
+  "px": 12.8,
+  "ratio": 1.86,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile I",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Titre original",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Réalisation",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Scénario",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Photographie",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Musique",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Montage",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Interprétation",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Production",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Tournage",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Budget",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Durée",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > div.fiche > dl > dt",
+  "couleur": "#8d8677",
+  "extrait": "Sortie",
+  "page": "pandora.html",
+  "px": 10.24,
+  "ratio": 2.51,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-wrap > figure.poster > figcaption",
+  "couleur": "#8d8677",
+  "extrait": "Affiche d'exploitation — collection de r",
+  "page": "pandora.html",
+  "px": 9.92,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile II",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#production > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile III",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile IV",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#mise-en-scene > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile V",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VI",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VII",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile VIII",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Toile IX",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.toile > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Inventaire",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer > span.cartel",
+  "couleur": "#8d8677",
+  "extrait": "Analyse rédigée à partir des sources ci-",
+  "page": "pandora.html",
+  "px": 10.56,
+  "ratio": 3.02,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.cast-grid > div.cast-card > span.role",
+  "couleur": "#676762",
+  "extrait": "Bibi Andersson",
+  "page": "persona.html",
+  "px": 11.52,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.cast-grid > div.cast-card > span.role",
+  "couleur": "#676762",
+  "extrait": "Liv Ullmann",
+  "page": "persona.html",
+  "px": 11.52,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.cast-grid > div.cast-card > span.role",
+  "couleur": "#676762",
+  "extrait": "Margaretha Krook",
+  "page": "persona.html",
+  "px": 11.52,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.cast-grid > div.cast-card > span.role",
+  "couleur": "#676762",
+  "extrait": "Gunnar Björnstrand",
+  "page": "persona.html",
+  "px": 11.52,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.cast-grid > div.cast-card > span.role",
+  "couleur": "#676762",
+  "extrait": "Jörgen Lindström",
+  "page": "persona.html",
+  "px": 11.52,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > blockquote > span.attrib",
+  "couleur": "#615c53",
+  "extrait": "Martin Scorsese, cité par Cinephilia & B",
+  "page": "raging-bull.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.nuit > div.nuit-inner > div.meta-line",
+  "couleur": "#676e76",
+  "extrait": "France / Allemagne / Belgique / Qatar / ",
+  "page": "retour-a-seoul.html",
+  "px": 10.4,
+  "ratio": 3.21,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.id-card > div.id-top > span",
+  "couleur": "#5f5d52",
+  "extrait": "DOSSIER N° 94/1999",
+  "page": "rosetta.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.id-card > div.id-top > span",
+  "couleur": "#5f5d52",
+  "extrait": "SERAING · BE",
+  "page": "rosetta.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.id-card > div.id-body > div.id-fields > div > b",
+  "couleur": "#5f5d52",
+  "extrait": "NOM",
+  "page": "rosetta.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.id-card > div.id-body > div.id-fields > div > b",
+  "couleur": "#5f5d52",
+  "extrait": "ÂGE",
+  "page": "rosetta.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.id-card > div.id-body > div.id-fields > div > b",
+  "couleur": "#5f5d52",
+  "extrait": "DOMICILE",
+  "page": "rosetta.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.id-card > div.id-body > div.id-fields > div > b",
+  "couleur": "#5f5d52",
+  "extrait": "STATUT",
+  "page": "rosetta.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.id-card > div.id-body > div.id-fields > div > b",
+  "couleur": "#5f5d52",
+  "extrait": "OBJECTIF",
+  "page": "rosetta.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.id-card > div.stamp",
+  "couleur": "#e97332",
+  "extrait": "PRÉCARITÉ",
+  "page": "rosetta.html",
+  "px": 18.4,
+  "ratio": 1.54,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-frame > h1 > span.r",
+  "couleur": "#9a2020",
+  "extrait": "Rouges",
+  "page": "rouges-et-blancs.html",
+  "px": 70.4,
+  "ratio": 2.38,
+  "seuil": 3
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "01",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "02",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "03",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "04",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "05",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "06",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "07",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "08",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "09",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "body > nav.programme > ol > li > a > span.num",
+  "couleur": "#9a2020",
+  "extrait": "10",
+  "page": "rouges-et-blancs.html",
+  "px": 11.84,
+  "ratio": 2.53,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.menu > div.menu-inner > span.mono",
+  "couleur": "#866d30",
+  "extrait": "Analyse cinématographique · M/Y Christin",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 2.96,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.menu > div.menu-inner > div.meta-line",
+  "couleur": "#848f98",
+  "extrait": "Suède / int. · 147 minutes · Couleur · C",
+  "page": "sans-filtre.html",
+  "px": 10.08,
+  "ratio": 4.44,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Premier service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Réalisation & scénario",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Interprètes",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Tournage",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Post-production",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Première",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Budget / recettes",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Distinctions",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.embarquement > div > div.label",
+  "couleur": "#866d30",
+  "extrait": "Durée",
+  "page": "sans-filtre.html",
+  "px": 9.6,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Deuxième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Troisième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Quatrième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Cinquième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Sixième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Septième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Huitième service",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "Neuvième service · L'addition",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.service > span.num",
+  "couleur": "#866d30",
+  "extrait": "L'office",
+  "page": "sans-filtre.html",
+  "px": 10.24,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > footer.addition",
+  "couleur": "#866d30",
+  "extrait": "Analyse sourcée · rédigée le 6 juillet 2",
+  "page": "sans-filtre.html",
+  "px": 9.92,
+  "ratio": 4.5,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.folder-tab",
+  "couleur": "#332b12",
+  "extrait": "Ashecliffe Hospital — Service des dossie",
+  "page": "shutter-island.html",
+  "px": 11.52,
+  "ratio": 4.41,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.lighttable > span.lighttable-label",
+  "couleur": "#69655b",
+  "extrait": "Table lumineuse — chiffres à l'appui",
+  "page": "soudain-lete-dernier.html",
+  "px": 9.92,
+  "ratio": 4.49,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+  "couleur": "#d29a3c",
+  "extrait": "Scénario",
+  "page": "soy-cuba.html",
+  "px": 9.92,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+  "couleur": "#d29a3c",
+  "extrait": "Production",
+  "page": "soy-cuba.html",
+  "px": 9.92,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "header.cover > div.cover-inner > div.cover-media > dl.colophon-card > div > dt",
+  "couleur": "#d29a3c",
+  "extrait": "Musique",
+  "page": "soy-cuba.html",
+  "px": 9.92,
+  "ratio": 2.65,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > main > p.content-note > span.eyebrow",
+  "couleur": "#9a4e36",
+  "extrait": "Avis — contenu sensible",
+  "page": "sud.html",
+  "px": 10.56,
+  "ratio": 4.49,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#miseenscene > div.road-diagram > span.eyebrow",
+  "couleur": "#938b7b",
+  "extrait": "Le plan final — env. 7 minutes, sans cou",
+  "page": "sud.html",
+  "px": 10.56,
+  "ratio": 4.49,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "html > body > header.carte-titre > div.carte-titre-inner > div > span.date-bataille",
+  "couleur": "#ad8736",
+  "extrait": "Plateau de Mont-Saint-Jean · 18 juin 181",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.33,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°1 · État des forces",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 3.61,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Réalisation",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Production",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Photographie",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Musique",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Interprètes",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Tournage",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Budget",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.47,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#fiche > div.fiche-layout > div.etat-forces > div > div.label",
+  "couleur": "#695221",
+  "extrait": "Sortie",
+  "page": "waterloo.html",
+  "px": 9.6,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#synopsis > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°2",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 3.61,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#contexte > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°3",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#structure > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°4",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#technique > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°5",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 3.61,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#personnages > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°6",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#themes > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°7",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#reception > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°8",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 3.61,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#conclusion > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Ordre n°9 · Le soir de la bataille",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 4.46,
+  "seuil": 4.5
+ },
+ {
+  "chemin": "section#sources > div.ordre > span.ref",
+  "couleur": "#695221",
+  "extrait": "Dépêches",
+  "page": "waterloo.html",
+  "px": 10.24,
+  "ratio": 3.61,
+  "seuil": 4.5
+ }
+]

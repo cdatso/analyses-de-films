@@ -1,0 +1,3836 @@
+{
+ "comment-ca-marche.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 3314,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 236670,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 3314,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/comment-ca-marche.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "critiques.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 10228,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 198108,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 10228,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/critiques.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 22222,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/films-data.js"
+   },
+   {
+    "octets": 18178,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/corpus.js"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "demander-une-analyse.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 5679,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 239035,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 5679,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/demander-une-analyse.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "etudes.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 3577,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 191457,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 3577,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/etudes.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 22222,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/films-data.js"
+   },
+   {
+    "octets": 18178,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/corpus.js"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/annie-hall.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/annie-hall-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/annie-hall-2.jpg",
+     404
+    ]
+   ],
+   "octets": 274296,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/annie-hall-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/annie-hall-2.jpg",
+     404
+    ]
+   ],
+   "octets": 492560,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 13941,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/annie-hall.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 211625,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/annie-hall.jpg"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/annie-hall-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/annie-hall-2.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/au-fil-de-leau.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 240455,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 489219,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 27150,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/au-fil-de-leau.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 213305,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/au-fil-de-leau.jpg"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/bienvenue-a-suburbicon.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 322787,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 571551,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 24753,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/bienvenue-a-suburbicon.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 298034,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/bienvenue-a-suburbicon.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/hamlet.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 204995,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 453759,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 50390,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/hamlet.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 35325,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/hamlet.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48272,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-cyrillic-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/hamnet.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/hamnet-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/hamnet-2.jpg",
+     404
+    ]
+   ],
+   "octets": 253267,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 13,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/hamnet-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/hamnet-2.jpg",
+     404
+    ]
+   ],
+   "octets": 573039,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 39699,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/hamnet.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/hamnet-1.jpg"
+   },
+   {
+    "octets": 212898,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/hamnet.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/hamnet-2.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/hitchcock-truffaut.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 294997,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 558853,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 42258,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/hitchcock-truffaut.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 252739,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/hitchcock-truffaut.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/julie-en-12-chapitres.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 298766,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 547530,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25505,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/julie-en-12-chapitres.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 273261,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/julie-en-12-chapitres.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/la-chevauchee-fantastique.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 315893,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 579749,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 28262,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/la-chevauchee-fantastique.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 287631,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/la-chevauchee-fantastique.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/la-mariee-etait-en-noir.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 176592,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 425356,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 24192,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/la-mariee-etait-en-noir.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 152400,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/la-mariee-etait-en-noir.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/la-nuit-de-san-lorenzo.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 145628,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 394392,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 45142,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/la-nuit-de-san-lorenzo.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 100486,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/la-nuit-de-san-lorenzo.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/le-cheval-de-turin.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 152863,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 472635,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25378,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/le-cheval-de-turin.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 127485,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/le-cheval-de-turin.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/le-doulos.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 269095,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 532951,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 32364,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/le-doulos.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 236731,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/le-doulos.jpg"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/le-golem.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 209538,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 529310,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25964,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/le-golem.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 183574,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/le-golem.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/le-samourai.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 336633,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 600489,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 43682,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/le-samourai.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 292951,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/le-samourai.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/les-deux-orphelines.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 328309,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 577073,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 37887,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/les-deux-orphelines.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 290422,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/les-deux-orphelines.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/manhattan.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 192994,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 441758,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 26958,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/manhattan.html"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 166036,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/manhattan.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/moi-daniel-blake.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 274097,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 522861,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25389,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/moi-daniel-blake.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 248708,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/moi-daniel-blake.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/nouvelle-vague.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 274900,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 523664,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25297,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/nouvelle-vague.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 249603,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/nouvelle-vague.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/pandora-contrechamp.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 327995,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 576759,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 36619,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/pandora-contrechamp.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 291376,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/pandora.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/pandora.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 37682,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 577822,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 37682,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/pandora.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 291376,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/pandora.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/persona.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 62055,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 325911,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 34210,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/persona.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 27845,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/persona.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/raging-bull.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 316351,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 565115,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 26940,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/raging-bull.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 289411,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/raging-bull.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/retour-a-seoul.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 224583,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 473347,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 24571,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/retour-a-seoul.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 200012,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/retour-a-seoul.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/rosetta.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 244614,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 508470,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 35384,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/rosetta.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 209230,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/rosetta.jpg"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/rouges-et-blancs.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 84345,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 404117,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 33517,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/rouges-et-blancs.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 37276,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/rouges-et-blancs.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   },
+   {
+    "octets": 13552,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/sans-filtre.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 241057,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 560829,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 26012,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/sans-filtre.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 215045,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/sans-filtre.jpg"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 71008,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-ext-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/shutter-island.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/shutter-island-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/shutter-island-2.jpg",
+     404
+    ]
+   ],
+   "octets": 253211,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 14,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/shutter-island-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/shutter-island-2.jpg",
+     404
+    ]
+   ],
+   "octets": 517067,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 46679,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/shutter-island.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 205862,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/shutter-island.jpg"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/shutter-island-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/shutter-island-2.jpg"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/soudain-lete-dernier.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-2.jpg",
+     404
+    ]
+   ],
+   "octets": 339154,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 14,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-2.jpg",
+     404
+    ]
+   ],
+   "octets": 603010,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 44529,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/soudain-lete-dernier.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 293955,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/soudain-lete-dernier.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/soudain-lete-dernier-2.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/soy-cuba.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/soy-cuba-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/soy-cuba-2.jpg",
+     404
+    ]
+   ],
+   "octets": 315860,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 14,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/soy-cuba-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/soy-cuba-2.jpg",
+     404
+    ]
+   ],
+   "octets": 627988,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 41650,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/soy-cuba.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 273540,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/soy-cuba.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/soy-cuba-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/soy-cuba-2.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 48272,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-cyrillic-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/sud.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/sud-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/sud-2.jpg",
+     404
+    ]
+   ],
+   "octets": 65642,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 14,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/sud-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/sud-2.jpg",
+     404
+    ]
+   ],
+   "octets": 329498,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 11,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 36624,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/sud.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 28348,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/sud.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/sud-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/sud-2.jpg"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/sur-la-route-domaha.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 223532,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 487388,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 9,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 34272,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/sur-la-route-domaha.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 189260,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/sur-la-route-domaha.jpg"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/the-old-oak.html": {
+  "chaud": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/the-old-oak-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/the-old-oak-2.jpg",
+     404
+    ]
+   ],
+   "octets": 200381,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 14,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [
+    [
+     "http://127.0.0.1:8791/assets/stills/the-old-oak-1.jpg",
+     404
+    ],
+    [
+     "http://127.0.0.1:8791/assets/stills/the-old-oak-2.jpg",
+     404
+    ]
+   ],
+   "octets": 449145,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 37556,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/the-old-oak.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 162155,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/the-old-oak.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/the-old-oak-1.jpg"
+   },
+   {
+    "octets": 335,
+    "statut": 404,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/stills/the-old-oak-2.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "films/waterloo.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 175231,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "ibmplexmono-latin-ext-400-normal.woff2",
+    "literata-cyrillic-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2",
+    "literata-latin-ext-400-normal.woff2"
+   ],
+   "requetes": 12,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 423995,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "literata-latin-400-italic.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 25462,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/films/waterloo.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 149769,
+    "statut": 200,
+    "tiers": false,
+    "type": "image",
+    "url": "http://127.0.0.1:8791/assets/posters/waterloo.jpg"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 48060,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-italic.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "index.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 0,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 285926,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 10,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 12170,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/index.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 22222,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/films-data.js"
+   },
+   {
+    "octets": 18178,
+    "statut": 200,
+    "tiers": false,
+    "type": "script",
+    "url": "http://127.0.0.1:8791/assets/corpus.js"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ },
+ "qui-sommes-nous.html": {
+  "chaud": {
+   "non_200": [],
+   "octets": 2683,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "froid": {
+   "non_200": [],
+   "octets": 236039,
+   "polices": [
+    "ibmplexmono-latin-400-normal.woff2",
+    "ibmplexmono-latin-500-normal.woff2",
+    "literata-latin-400-normal.woff2",
+    "literata-latin-600-normal.woff2"
+   ],
+   "requetes": 8,
+   "tiers": []
+  },
+  "journal_froid": [
+   {
+    "octets": 2683,
+    "statut": 200,
+    "tiers": false,
+    "type": "document",
+    "url": "http://127.0.0.1:8791/qui-sommes-nous.html"
+   },
+   {
+    "octets": 5763,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/fonts.css"
+   },
+   {
+    "octets": 8277,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/mobilier.css"
+   },
+   {
+    "octets": 17560,
+    "statut": 200,
+    "tiers": false,
+    "type": "stylesheet",
+    "url": "http://127.0.0.1:8791/assets/style.css"
+   },
+   {
+    "octets": 15092,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-500-normal.woff2"
+   },
+   {
+    "octets": 14912,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/ibmplexmono-latin-400-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-600-normal.woff2"
+   },
+   {
+    "octets": 85876,
+    "statut": 200,
+    "tiers": false,
+    "type": "font",
+    "url": "http://127.0.0.1:8791/assets/fonts/literata-latin-400-normal.woff2"
+   }
+  ],
+  "statut": 200
+ }
+}

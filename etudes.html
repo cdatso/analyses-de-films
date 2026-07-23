@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Études — Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/mobilier.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="proto-note">
+  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  Même composant que « Critiques » et que l'accueil (P-07), filtre différent.
+  Le corpus ne compte à ce jour <b>qu'une seule Étude</b> — déséquilibre
+  structurel assumé (§3.3). Bandeau <b>PROVISOIRE</b>.
+</div>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html">Critiques</a>
+      <a href="etudes.html" aria-current="page">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="corpus">
+  <div class="wrap">
+    <div class="barre">
+      <h2>Études</h2>
+      <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
+             aria-label="Rechercher dans les Études" hidden>
+    </div>
+    <p class="appui" style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);max-width:44rem;">
+      Analyses passées par une révision éditoriale humaine et convoquant un
+      appareil théorique. Leur signature est double : le modèle du premier jet,
+      et la validation humaine. Elles sont peu nombreuses par construction — le
+      cycle de révision est coûteux.
+    </p>
+    <div class="facettes" id="facettes" hidden></div>
+    <noscript>
+      <p class="vide">La liste complète des Études est affichée ci-dessous.
+      Sans JavaScript, seuls la recherche et les filtres sont indisponibles.</p>
+    </noscript>
+    <div class="compte" id="compte" role="status"></div>
+    <!-- Option (b), gate AH du 22/07 08h24 — bloc généré par
+         outils/genere-liste-statique.py, ne pas éditer à la main. -->
+    <ol class="liste" id="liste">
+<!-- LISTE-STATIQUE:DEBUT (genere par outils/genere-liste-statique.py) -->
+      <li><a class="entree" href="films/pandora-contrechamp.html" data-volet="etude"><span class="t">Pandora — Contrechamp<span class="marq">&Eacute;tude</span><span class="neuf">derni&egrave;re publi&eacute;e</span></span><span class="a">1951</span><span class="d">Albert Lewin &mdash; M&eacute;lodrame</span></a></li>
+    <!-- LISTE-STATIQUE:FIN -->
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+</div></footer>
+
+<script src="assets/films-data.js"></script>
+<script src="assets/corpus.js"></script>
+<script>
+  Corpus.monte({
+    films: FILMS,
+    volet: 'etude',
+    liste: 'liste',
+    compte: 'compte',
+    recherche: 'q',
+    facettes: 'facettes'
+  });
+</script>
+
+</body>
+</html>

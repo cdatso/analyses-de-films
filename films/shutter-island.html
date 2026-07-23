@@ -4,24 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dossier confidentiel — Shutter Island</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (689 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:46.3rem;
+
     --manila:#c9b384;
     --manila-deep:#a88f61;
     --manila-dark:#5c4d34;
     --paper:#ece3ca;
+    --paper-texte:#ece3ca;
     --paper-deep:#e0d4b2;
     --ink:#211d16;
     --ink-soft:#4a4130;
     --ink-faint:#7d7050;
+    --ink-faint-texte:#665b41;
     --redact:#161310;
     --stamp-red:#9c2b23;
+    --stamp-red-texte:#85251e;
     --stamp-red-deep:#7a2019;
     --federal:#333f40;
     --federal-deep:#232c2d;
     --warn-amber:#a9791f;
+    --warn-amber-texte:#bd8723;
     --line: rgba(33,29,22,0.22);
     --line-soft: rgba(33,29,22,0.11);
   }
@@ -36,7 +46,7 @@
       radial-gradient(ellipse at 90% 100%, rgba(51,63,64,0.06), transparent 45%),
       var(--paper);
     color:var(--ink);
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:1.02rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -45,18 +55,18 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .stamp-label{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-weight:600;
     font-size:0.7rem;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
   }
 
   .back-link{
     display:inline-block;
-    color:var(--ink-faint);
-    font-family:'Oswald', sans-serif;
+    color:var(--ink-faint-texte);
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -64,7 +74,7 @@
     text-decoration:none;
     margin-bottom:1rem;
   }
-  .back-link:hover{ color:var(--stamp-red); }
+  .back-link:hover{ color:var(--stamp-red-texte); }
 
   /* ---------- RING HOLES (marge de classeur) ---------- */
   .ring-margin{
@@ -103,12 +113,12 @@
     border:1px solid var(--manila-dark);
     border-bottom:none;
     padding:0.55rem 1.3rem 0.4rem;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:0.72rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--paper);
+    color:var(--paper-texte);
     clip-path: polygon(6% 0, 94% 0, 100% 100%, 0% 100%);
     position:relative;
     top:1px;
@@ -130,8 +140,8 @@
     position:absolute;
     top:1.6rem; right:1.4rem;
     border:3px solid var(--stamp-red);
-    color:var(--stamp-red);
-    font-family:'Oswald', sans-serif;
+    color:var(--stamp-red-texte);
+    font-family:var(--sans);
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -146,17 +156,17 @@
   .stamp-diag small{ display:block; font-size:0.58rem; letter-spacing:0.1em; }
 
   .case-number{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.72rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     margin-bottom:1.6rem;
   }
   .case-number b{ color:var(--ink); }
 
   h1.title{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.1rem, 6.4vw, 3.4rem);
     line-height:1.08;
@@ -165,7 +175,7 @@
     color:var(--ink);
   }
   .subtitle{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     color:var(--ink-soft);
     font-size:0.98rem;
@@ -195,11 +205,11 @@
     gap:1rem 1.6rem;
   }
   .intake-form dt{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     margin-bottom:0.28rem;
   }
   .intake-form dd{
@@ -218,10 +228,10 @@
     display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
   }
   nav.toc a{
-    color:var(--paper);
+    color:var(--paper-texte);
     opacity:0.72;
     text-decoration:none;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -240,7 +250,7 @@
     padding:1.1rem 1.3rem;
     border:1.5px solid var(--stamp-red);
     background:rgba(156,43,35,0.06);
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:0.82rem;
     color:var(--ink-soft);
     line-height:1.6;
@@ -259,17 +269,17 @@
     padding-bottom:0.7rem;
   }
   .rapport-num{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.68rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:block;
     margin-bottom:0.15rem;
   }
   h2{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.55rem;
     margin:0 0 0.15rem;
@@ -277,14 +287,14 @@
     letter-spacing:-0.005em;
   }
   .frame-jargon{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:0.72rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   h3{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:1rem;
     text-transform:uppercase;
@@ -296,18 +306,18 @@
   p:last-child{ margin-bottom:0; }
 
   a.foot{
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     text-decoration:none;
     border-bottom:1px dotted var(--stamp-red);
     font-size:0.85em;
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
   }
 
   .caution{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:0.82rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     border-left:2px solid var(--warn-amber);
     padding-left:0.9rem;
     margin:1.1rem 0;
@@ -355,7 +365,7 @@
     opacity:0.6;
   }
   .cast-card .name{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.02rem;
     display:block;
@@ -363,12 +373,12 @@
     color:var(--ink);
   }
   .cast-card .role{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:block;
     margin-bottom:0.55rem;
   }
@@ -393,7 +403,7 @@
     box-shadow:0 2px 3px rgba(0,0,0,0.35);
   }
   .pinned p{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-style:italic;
     font-size:1rem;
     color:var(--ink);
@@ -401,22 +411,22 @@
   }
   .pinned cite{
     font-style:normal;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
   .theme-item .theme-tag{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.09em;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     display:inline-block;
     margin-bottom:0.3rem;
     border-bottom:1px solid var(--stamp-red);
@@ -427,7 +437,7 @@
   .telex{
     margin:1.6rem 0 1.7rem;
     background:var(--federal-deep);
-    color:var(--paper);
+    color:var(--paper-texte);
     border:1px solid var(--ink);
     padding:0;
   }
@@ -437,12 +447,12 @@
   }
   .telex-inner{ padding:1.2rem 1.4rem 1.35rem; }
   .telex-label{
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.13em;
-    color:var(--warn-amber);
+    color:var(--warn-amber-texte);
     margin-bottom:0.8rem;
     display:block;
   }
@@ -452,14 +462,14 @@
     gap:1rem;
   }
   .telex .stat .num{
-    font-family:'Special Elite', cursive;
+    font-family:var(--serif);
     font-size:1.4rem;
-    color:var(--paper);
+    color:var(--paper-texte);
     display:block;
     line-height:1.15;
   }
   .telex .stat .cap{
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     letter-spacing:0.03em;
     color:#b9c4c2;
@@ -468,7 +478,7 @@
 
   section.sources{ background:var(--manila); padding:3.2rem 1.6rem 4.2rem; border-top:4px solid var(--manila-dark); }
   section.sources .sources-inner{ max-width:740px; margin:0 auto; }
-  section.sources h2{ color:var(--ink); font-family:'Special Elite', cursive; font-weight:400; font-size:1.4rem; margin:0; }
+  section.sources h2{ color:var(--ink); font-family:var(--serif); font-weight:400; font-size:1.4rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -481,33 +491,33 @@
     color:var(--ink-soft);
     border-bottom:1px dashed var(--manila-dark);
     padding-bottom:0.6rem;
-    font-family:'Courier Prime', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: "PJ-" counter(src);
     position:absolute; left:0; top:0;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
-    color:var(--stamp-red);
+    color:var(--stamp-red-texte);
     font-size:0.66rem;
     letter-spacing:0.03em;
   }
   ol.source-list a{ color:var(--ink); word-break:break-all; }
-  ol.source-list a:hover{ color:var(--stamp-red); }
+  ol.source-list a:hover{ color:var(--stamp-red-texte); }
 
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'Oswald', sans-serif;
+    font-family:var(--sans);
     font-size:0.64rem;
     font-weight:600;
     letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     background:var(--paper);
   }
-  footer.endnote a{ color:var(--ink-faint); }
-  footer.endnote a:hover{ color:var(--stamp-red); }
+  footer.endnote a{ color:var(--ink-faint-texte); }
+  footer.endnote a:hover{ color:var(--stamp-red-texte); }
 
   @media (max-width:600px){
     .cover-inner{ padding:0 1.1rem; }
@@ -516,9 +526,36 @@
     section.block{ padding:2.2rem 0; }
     .stamp-diag{ position:static; display:inline-block; margin-bottom:1.2rem; transform:rotate(-4deg); }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.folder-tab{ --paper-texte:#332b12; }   /* sur #a88f61, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 <script>
   function hideBrokenImg(img, groupId) {
     img.remove();
@@ -533,7 +570,7 @@
   <div class="cover-inner">
     <div class="folder-tab">Ashecliffe Hospital — Service des dossiers</div>
     <div class="case-sheet">
-      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
       <div class="stamp-diag">Confidentiel<small>Eyes only</small></div>
       <div class="case-number">Dossier n<sup>o</sup> <b>67</b> — Ouvert le 3 juillet 2026</div>
       <h1 class="title">Shutter Island</h1>
@@ -557,6 +594,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 3 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="toc" aria-label="Sommaire">
   <div class="toc-inner">
@@ -827,7 +874,7 @@
 
 <footer class="endnote">
   Dossier compilé à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 <script>

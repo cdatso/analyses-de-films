@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critiques — Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/mobilier.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="proto-note">
+  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  Cette page rend <b>le même composant</b> que l'accueil et que « Études »
+  (P-07) : seul le filtre change. Bandeau <b>PROVISOIRE</b>.
+</div>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html" aria-current="page">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="corpus">
+  <div class="wrap">
+    <div class="barre">
+      <h2>Critiques</h2>
+      <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
+             aria-label="Rechercher dans les Critiques" hidden>
+    </div>
+    <p class="appui" style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);max-width:44rem;">
+      Analyses produites par la machine seule, au niveau d'exigence d'une presse
+      sérieuse. Chaque page dit quel modèle l'a produite. Le régime n'est pas un
+      jugement de valeur : une Étude n'est pas « meilleure » qu'une Critique, elle
+      est produite autrement.
+    </p>
+    <div class="facettes" id="facettes" hidden></div>
+    <noscript>
+      <p class="vide">La liste complète des Critiques est affichée ci-dessous.
+      Sans JavaScript, seuls la recherche et les filtres sont indisponibles.</p>
+    </noscript>
+    <div class="compte" id="compte" role="status"></div>
+    <!-- Option (b), gate AH du 22/07 08h24 — bloc généré par
+         outils/genere-liste-statique.py, ne pas éditer à la main. -->
+    <ol class="liste" id="liste">
+<!-- LISTE-STATIQUE:DEBUT (genere par outils/genere-liste-statique.py) -->
+      <li><a class="entree" href="films/annie-hall.html" data-volet="critique"><span class="t">Annie Hall</span><span class="a">1977</span><span class="d">Woody Allen &mdash; Comédie dramatique romantique</span></a></li>
+      <li><a class="entree" href="films/au-fil-de-leau.html" data-volet="critique"><span class="t">Au fil de l'eau</span><span class="a">1950</span><span class="d">Fritz Lang &mdash; Film noir gothique</span></a></li>
+      <li><a class="entree" href="films/bienvenue-a-suburbicon.html" data-volet="critique"><span class="t">Bienvenue à Suburbicon</span><span class="a">2017</span><span class="d">George Clooney &mdash; Comédie noire</span></a></li>
+      <li><a class="entree" href="films/hamlet.html" data-volet="critique"><span class="t">Hamlet</span><span class="a">1964</span><span class="d">Grigori Kozintsev &mdash; Tragédie shakespearienne (N&amp;B)</span></a></li>
+      <li><a class="entree" href="films/hamnet.html" data-volet="critique"><span class="t">Hamnet</span><span class="a">2025</span><span class="d">Chloé Zhao &mdash; Drame historique</span></a></li>
+      <li><a class="entree" href="films/hitchcock-truffaut.html" data-volet="critique"><span class="t">Hitchcock/Truffaut</span><span class="a">2015</span><span class="d">Kent Jones &mdash; Documentaire</span></a></li>
+      <li><a class="entree" href="films/julie-en-12-chapitres.html" data-volet="critique"><span class="t">Julie (en 12 chapitres)</span><span class="a">2021</span><span class="d">Joachim Trier &mdash; Comédie dramatique</span></a></li>
+      <li><a class="entree" href="films/la-chevauchee-fantastique.html" data-volet="critique"><span class="t">La Chevauchée fantastique</span><span class="a">1939</span><span class="d">John Ford &mdash; Western</span></a></li>
+      <li><a class="entree" href="films/la-mariee-etait-en-noir.html" data-volet="critique"><span class="t">La mariée était en noir</span><span class="a">1968</span><span class="d">François Truffaut &mdash; Thriller</span></a></li>
+      <li><a class="entree" href="films/la-nuit-de-san-lorenzo.html" data-volet="critique"><span class="t">La Nuit de San Lorenzo</span><span class="a">1982</span><span class="d">Paolo et Vittorio Taviani &mdash; Drame de guerre</span></a></li>
+      <li><a class="entree" href="films/le-cheval-de-turin.html" data-volet="critique"><span class="t">Le Cheval de Turin</span><span class="a">2011</span><span class="d">Béla Tarr &mdash; Drame contemplatif</span></a></li>
+      <li><a class="entree" href="films/le-doulos.html" data-volet="critique"><span class="t">Le Doulos</span><span class="a">1962</span><span class="d">Jean-Pierre Melville &mdash; Film noir</span></a></li>
+      <li><a class="entree" href="films/le-golem.html" data-volet="critique"><span class="t">Le Golem</span><span class="a">1936</span><span class="d">Julien Duvivier &mdash; Fantastique</span></a></li>
+      <li><a class="entree" href="films/le-samourai.html" data-volet="critique"><span class="t">Le Samouraï</span><span class="a">1967</span><span class="d">Jean-Pierre Melville &mdash; Polar / film noir</span></a></li>
+      <li><a class="entree" href="films/les-deux-orphelines.html" data-volet="critique"><span class="t">Les Deux Orphelines</span><span class="a">1921</span><span class="d">D. W. Griffith &mdash; Mélodrame historique (muet)</span></a></li>
+      <li><a class="entree" href="films/manhattan.html" data-volet="critique"><span class="t">Manhattan</span><span class="a">1979</span><span class="d">Woody Allen &mdash; Comédie dramatique</span></a></li>
+      <li><a class="entree" href="films/moi-daniel-blake.html" data-volet="critique"><span class="t">Moi, Daniel Blake</span><span class="a">2016</span><span class="d">Ken Loach &mdash; Drame social</span></a></li>
+      <li><a class="entree" href="films/nouvelle-vague.html" data-volet="critique"><span class="t">Nouvelle Vague</span><span class="a">2025</span><span class="d">Richard Linklater &mdash; Comédie dramatique</span></a></li>
+      <li><a class="entree" href="films/pandora.html" data-volet="critique"><span class="t">Pandora — Champ</span><span class="a">1951</span><span class="d">Albert Lewin &mdash; M&eacute;lodrame</span></a></li>
+      <li><a class="entree" href="films/persona.html" data-volet="critique"><span class="t">Persona</span><span class="a">1966</span><span class="d">Ingmar Bergman &mdash; Drame psychologique</span></a></li>
+      <li><a class="entree" href="films/raging-bull.html" data-volet="critique"><span class="t">Raging Bull</span><span class="a">1980</span><span class="d">Martin Scorsese &mdash; Drame biographique</span></a></li>
+      <li><a class="entree" href="films/retour-a-seoul.html" data-volet="critique"><span class="t">Retour à Séoul</span><span class="a">2022</span><span class="d">Davy Chou &mdash; Drame</span></a></li>
+      <li><a class="entree" href="films/rosetta.html" data-volet="critique"><span class="t">Rosetta</span><span class="a">1999</span><span class="d">Jean-Pierre &amp; Luc Dardenne &mdash; Drame social</span></a></li>
+      <li><a class="entree" href="films/rouges-et-blancs.html" data-volet="critique"><span class="t">Rouges et Blancs</span><span class="a">1967</span><span class="d">Miklós Jancsó &mdash; Drame</span></a></li>
+      <li><a class="entree" href="films/sans-filtre.html" data-volet="critique"><span class="t">Sans Filtre</span><span class="a">2022</span><span class="d">Ruben Östlund &mdash; Comédie satirique</span></a></li>
+      <li><a class="entree" href="films/shutter-island.html" data-volet="critique"><span class="t">Shutter Island</span><span class="a">2010</span><span class="d">Martin Scorsese &mdash; Thriller psychologique</span></a></li>
+      <li><a class="entree" href="films/soudain-lete-dernier.html" data-volet="critique"><span class="t">Soudain l'été dernier</span><span class="a">1959</span><span class="d">Joseph L. Mankiewicz &mdash; Mélodrame gothique</span></a></li>
+      <li><a class="entree" href="films/soy-cuba.html" data-volet="critique"><span class="t">Soy Cuba</span><span class="a">1964</span><span class="d">Mikhaïl Kalatozov &mdash; Drame de propagande</span></a></li>
+      <li><a class="entree" href="films/sud.html" data-volet="critique"><span class="t">Sud</span><span class="a">1999</span><span class="d">Chantal Akerman &mdash; Documentaire</span></a></li>
+      <li><a class="entree" href="films/sur-la-route-domaha.html" data-volet="critique"><span class="t">Sur la route d'Omaha</span><span class="a">2025</span><span class="d">Cole Webley &mdash; Drame</span></a></li>
+      <li><a class="entree" href="films/the-old-oak.html" data-volet="critique"><span class="t">The Old Oak</span><span class="a">2023</span><span class="d">Ken Loach &mdash; Drame social</span></a></li>
+      <li><a class="entree" href="films/waterloo.html" data-volet="critique"><span class="t">Waterloo</span><span class="a">1970</span><span class="d">Sergueï Bondartchouk &mdash; Fresque historique</span></a></li>
+    <!-- LISTE-STATIQUE:FIN -->
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+</div></footer>
+
+<script src="assets/films-data.js"></script>
+<script src="assets/corpus.js"></script>
+<script>
+  Corpus.monte({
+    films: FILMS,
+    volet: 'critique',
+    liste: 'liste',
+    compte: 'compte',
+    recherche: 'q',
+    facettes: 'facettes'
+  });
+</script>
+
+</body>
+</html>

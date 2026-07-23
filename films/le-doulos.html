@@ -4,16 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avis mortuaire — Le Doulos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (689 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:46.3rem;
+
     --paper:#ece5d5;
     --paper-deep:#e1d7bf;
     --paper-shadow: rgba(20,18,13,0.16);
     --ink:#17140f;
     --ink-soft:#39332a;
     --ink-faint:#79715f;
+    --ink-faint-texte:#645e4f;
     --rule:#17140f;
     --nuit:#3d5566;
     --nuit-deep:#26394a;
@@ -31,7 +38,7 @@
       radial-gradient(ellipse at 95% 100%, rgba(23,20,15,0.05), transparent 45%),
       var(--paper);
     color:var(--ink);
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-size:1.02rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -40,7 +47,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .meta-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.13em;
     font-weight:500;
@@ -50,8 +57,8 @@
 
   .back-link{
     display:inline-block;
-    color:var(--ink-faint);
-    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-faint-texte);
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -74,7 +81,7 @@
   }
   .edition-line{
     text-align:center;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -112,7 +119,7 @@
     top:1.5rem; right:1.4rem;
     border:2.5px solid var(--nuit);
     color:var(--nuit);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -120,7 +127,11 @@
     padding:0.4rem 0.65rem;
     border-radius:50%;
     transform:rotate(-11deg);
-    opacity:0.85;
+    /* AA lot 5 (retrofit 065-5) : 0.85 composait un bleu-gris a 4,45 sur le
+       creme du dossier -- sous le seuil de 5 centiemes. L'encre du cachet est
+       un effet voulu : on ne change pas sa teinte, on rend 1 centieme
+       d'opacite. Le tampon reste use, le texte passe a 4,52. */
+    opacity:0.86;
     mix-blend-mode:multiply;
     text-align:center;
     line-height:1.25;
@@ -129,18 +140,18 @@
   }
 
   .avis-number{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.72rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     margin-bottom:1.5rem;
     max-width:75%;
   }
   .avis-number b{ color:var(--ink); }
 
   h1.title{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:900;
     font-style:italic;
     font-size:clamp(2.2rem, 6.6vw, 3.5rem);
@@ -150,7 +161,7 @@
     color:var(--ink);
   }
   .subtitle{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     color:var(--ink-soft);
     font-size:1rem;
@@ -181,7 +192,7 @@
     gap:1rem 1.6rem;
   }
   .identite dt{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -207,7 +218,7 @@
     color:var(--paper);
     opacity:0.72;
     text-decoration:none;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:500;
     text-transform:uppercase;
@@ -231,7 +242,7 @@
     padding:0.6rem 0 0.7rem;
   }
   .colonne-num{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     font-weight:600;
     text-transform:uppercase;
@@ -241,7 +252,7 @@
     margin-bottom:0.2rem;
   }
   h2{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.6rem;
@@ -250,14 +261,14 @@
     letter-spacing:-0.005em;
   }
   .colonne-sous{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:0.78rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   h3{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     font-size:0.92rem;
     text-transform:uppercase;
@@ -273,14 +284,14 @@
     text-decoration:none;
     border-bottom:1px dotted var(--nuit);
     font-size:0.8em;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
 
   .discretion{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.8rem;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     border-left:2px solid var(--nuit);
     padding-left:0.9rem;
     margin:1.1rem 0;
@@ -307,7 +318,7 @@
     background:var(--rule);
   }
   .portrait-card .name{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.05rem;
@@ -316,7 +327,7 @@
     color:var(--ink);
   }
   .portrait-card .role{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -337,7 +348,7 @@
     transform:rotate(-0.4deg);
   }
   .coupure p{
-    font-family:'Lora', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1rem;
     color:var(--ink);
@@ -345,17 +356,17 @@
   }
   .coupure cite{
     font-style:normal;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
   }
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
   .theme-item .theme-tag{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     font-weight:600;
     text-transform:uppercase;
@@ -376,7 +387,7 @@
   }
   .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
   .bulletin-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:600;
     text-transform:uppercase;
@@ -391,7 +402,7 @@
     gap:1rem;
   }
   .bulletin .stat .num{
-    font-family:'Playfair Display', serif;
+    font-family:var(--serif);
     font-weight:700;
     font-style:italic;
     font-size:1.35rem;
@@ -400,7 +411,7 @@
     line-height:1.15;
   }
   .bulletin .stat .cap{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.03em;
     color:#b8c4cc;
@@ -409,7 +420,7 @@
 
   section.sources{ background:var(--ink); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
   section.sources .sources-inner{ max-width:740px; margin:0 auto; }
-  section.sources h2{ color:var(--paper); font-family:'Playfair Display', serif; font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
+  section.sources h2{ color:var(--paper); font-family:var(--serif); font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -422,12 +433,12 @@
     color:var(--paper-deep);
     border-bottom:1px dashed rgba(236,229,213,0.25);
     padding-bottom:0.6rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
   }
   ol.source-list li::before{
     content: "Réf. " counter(src);
     position:absolute; left:0; top:0;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:600;
     color:#8fa8b6;
     font-size:0.66rem;
@@ -439,15 +450,15 @@
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.2rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     font-weight:500;
     letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--ink-faint);
+    color:var(--ink-faint-texte);
     background:var(--paper);
   }
-  footer.endnote a{ color:var(--ink-faint); }
+  footer.endnote a{ color:var(--ink-faint-texte); }
   footer.endnote a:hover{ color:var(--nuit); }
 
   @media (max-width:600px){
@@ -456,15 +467,36 @@
     section.block{ padding:2.2rem 0; }
     .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="avis-cover">
   <div class="edition-line">Rubrique nécrologique — édition du soir</div>
   <div class="cover-inner">
     <div class="avis-sheet">
-      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
       <svg class="hat-icon" width="46" height="30" viewBox="0 0 46 30" aria-hidden="true">
         <ellipse cx="23" cy="24" rx="22" ry="4.4" fill="none" stroke="#17140f" stroke-width="2"/>
         <path d="M12 24 C12 12, 17 5, 23 5 C29 5, 34 12, 34 24" fill="none" stroke="#17140f" stroke-width="2"/>
@@ -493,6 +525,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 7 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="toc" aria-label="Sommaire">
   <div class="toc-inner">
@@ -689,7 +731,7 @@
 
 <footer class="endnote">
   Avis compilé à partir de sources publiques consultées le 6 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 <script>

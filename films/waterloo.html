@@ -4,20 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Waterloo (1970) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@300;400;600&family=Oxygen+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA CARTE D'ÉTAT-MAJOR =====
      Papier bistre de 1815, hachures cartographiques, flèches de troupes :
      bleu français contre rouge anglais sur le plateau de Mont-Saint-Jean. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (672 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:45.2rem;
+
     --bistre:#e9dfc6;
     --bistre-fonce:#ddd1b2;
     --sepia:#2e2517;
     --sepia-doux:#4a3d2a;
     --bleu:#1f3a68;
     --rouge:#992d20;
-    --laiton:#a07d33;
+    --laiton:#695221;
     --hachure:rgba(46,37,23,0.12);
     --ligne:rgba(46,37,23,0.2);
   }
@@ -30,7 +36,7 @@
       repeating-linear-gradient(90deg, transparent 0 34px, var(--hachure) 34px 35px),
       var(--bistre);
     color:var(--sepia-doux);
-    font-family:'Archivo', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -38,14 +44,14 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.64rem;
   }
 
   /* ---------- CARTOUCHE DE LA CARTE (EN-TÊTE) ---------- */
-  header.cartouche{
+  header.carte-titre{
     background:
       radial-gradient(120% 100% at 50% -20%, rgba(160,125,51,0.15), transparent 60%),
       var(--sepia);
@@ -53,16 +59,16 @@
     padding:4.6rem 1.5rem 3.8rem;
     position:relative;
   }
-  header.cartouche::after{
+  header.carte-titre::after{
     content:"";
     position:absolute; left:0; right:0; bottom:0; height:4px;
     background:linear-gradient(90deg, var(--bleu) 0 50%, var(--rouge) 50% 100%);
   }
-  .cartouche-inner{ max-width:760px; margin:0 auto; }
+  .carte-titre-inner{ max-width:760px; margin:0 auto; }
   .back-link{
     display:inline-block;
     color:rgba(233,223,198,0.55);
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -74,7 +80,7 @@
     display:inline-block;
     border:1px solid rgba(160,125,51,0.6);
     color:var(--laiton);
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -82,7 +88,7 @@
     margin-bottom:1.7rem;
   }
   h1.title{
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-weight:800;
     font-size:clamp(2.8rem, 8vw, 4.8rem);
     line-height:1.02;
@@ -100,7 +106,7 @@
   }
   .forces{
     display:flex; flex-wrap:wrap; gap:0.5rem 2rem;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -109,7 +115,9 @@
   }
   .forces .fr{ color:#8fa8d4; }
   .forces .uk{ color:#d49088; }
-  .forces .neutre{ color:rgba(233,223,198,0.55); }
+  /* AA lot 5 (retrofit 065-5) : 0.55 composait 4,02 sur la terre du bandeau.
+     La couleur ne bouge pas ; 6 centiemes d'alpha suffisent a passer a 4,53. */
+  .forces .neutre{ color:rgba(233,223,198,0.61); }
 
   /* ---------- SOMMAIRE : LÉGENDE ---------- */
   nav.legende{
@@ -136,7 +144,7 @@
   section{ margin-top:3.5rem; }
   .ordre{ margin-bottom:1.4rem; }
   .ordre .ref{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -145,7 +153,7 @@
     margin-bottom:0.25rem;
   }
   .ordre h2{
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-weight:600;
     font-size:1.7rem;
     color:var(--sepia);
@@ -173,7 +181,7 @@
     border:1px solid var(--ligne);
     border-left:5px solid var(--rouge);
     background:var(--bistre-fonce);
-    font-family:'Vollkorn', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.08rem;
     color:var(--sepia);
@@ -181,7 +189,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
@@ -191,7 +199,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--bleu);
     text-decoration:none;
@@ -222,7 +230,7 @@
   }
   @media (max-width:480px){ .etat-forces{ grid-template-columns:1fr; } }
   .etat-forces .label{
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -242,19 +250,46 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Oxygen Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--sepia-doux);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  header.carte-titre{ --laiton:#ad8736; }   /* sur #2e2517, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
 
-<header class="cartouche">
-  <div class="cartouche-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+
+<header class="carte-titre">
+  <div class="carte-titre-inner">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div><span class="date-bataille">Plateau de Mont-Saint-Jean · 18 juin 1815</span></div>
     <h1 class="title">Waterloo</h1>
     <p class="subtitle">Sergueï Bondartchouk, 1970 — vingt mille soldats soviétiques, un
@@ -267,6 +302,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 5 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="legende" aria-label="Sommaire">
   <span class="mono">Légende de la carte</span>

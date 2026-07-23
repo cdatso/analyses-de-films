@@ -4,20 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Golem (1936) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Gelasio:ital,wght@0,400;0,600;1,400&family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== L'ARGILE ET LA LETTRE =====
      Prague expressionniste, 1936 : terre cuite du ghetto, ombres portées,
      or de la Kabbale — et sur le front de la créature, le mot Vérité. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (672 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:45.2rem;
+
     --parchemin:#e9dfc8;
+    --parchemin-texte:#856d35;
     --parchemin-ombre:#ddd1b4;
     --argile:#a35c35;
     --argile-sombre:#7c4326;
+    --argile-sombre-texte:#7c4326;
     --ombre:#171310;
     --ombre-douce:#332a22;
     --kabbale:#b78c2e;
+    --kabbale-texte:#7c5f1f;
     --ligne:rgba(23,19,16,0.18);
     --ligne-claire:rgba(233,223,200,0.18);
   }
@@ -27,7 +36,7 @@
     margin:0;
     background:var(--parchemin);
     color:var(--ombre-douce);
-    font-family:'Gelasio', serif;
+    font-family:var(--serif);
     font-size:1.0rem;
     line-height:1.73;
   }
@@ -35,7 +44,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.66rem;
@@ -46,7 +55,7 @@
     background:
       radial-gradient(80% 90% at 20% 0%, rgba(163,92,53,0.3), transparent 55%),
       linear-gradient(160deg, var(--ombre) 0%, #241d16 70%, var(--ombre-douce) 100%);
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     padding:4.8rem 1.5rem 4rem;
     position:relative;
     overflow:hidden;
@@ -71,19 +80,19 @@
   .back-link{
     display:inline-block;
     color:rgba(233,223,200,0.5);
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
     text-decoration:none;
     margin-bottom:2.4rem;
   }
-  .back-link:hover{ color:var(--kabbale); }
+  .back-link:hover{ color:var(--kabbale-texte); }
   .sceau{
     display:inline-block;
     border:1px solid rgba(183,140,46,0.55);
-    color:var(--kabbale);
-    font-family:'Anonymous Pro', monospace;
+    color:var(--kabbale-texte);
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -91,12 +100,12 @@
     margin-bottom:1.8rem;
   }
   h1.title{
-    font-family:'Yeseva One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.8rem, 8.5vw, 5rem);
     line-height:1.02;
     margin:0 0 0.9rem;
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     text-shadow:4px 5px 0 rgba(163,92,53,0.35);
   }
   .subtitle{
@@ -106,7 +115,7 @@
     margin:0 0 1.9rem;
   }
   .meta-line{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -124,7 +133,7 @@
     border-top:4px solid var(--argile);
     background:var(--parchemin-ombre);
   }
-  nav.grimoire .mono{ color:var(--argile-sombre); display:block; margin-bottom:0.8rem; }
+  nav.grimoire .mono{ color:var(--argile-sombre-texte); display:block; margin-bottom:0.8rem; }
   nav.grimoire ol{
     margin:0; padding:0 0 0 1.4rem;
     columns:2; column-gap:2.6rem;
@@ -133,23 +142,23 @@
   @media (max-width:600px){ nav.grimoire ol{ columns:1; } }
   nav.grimoire li{ margin-bottom:0.35rem; }
   nav.grimoire a{ color:var(--ombre); text-decoration:none; border-bottom:1px solid var(--ligne); }
-  nav.grimoire a:hover{ color:var(--argile-sombre); border-color:var(--argile-sombre); }
+  nav.grimoire a:hover{ color:var(--argile-sombre-texte); border-color:var(--argile-sombre); }
 
   /* ---------- CORPS ---------- */
   main{ max-width:720px; margin:0 auto; padding:1rem 1.5rem 4rem; }
   section{ margin-top:3.5rem; }
   .signe{ margin-bottom:1.4rem; }
   .signe .ref{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
-    color:var(--kabbale);
+    color:var(--kabbale-texte);
     display:block;
     margin-bottom:0.25rem;
   }
   .signe h2{
-    font-family:'Yeseva One', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.65rem;
     color:var(--ombre);
@@ -167,7 +176,7 @@
     margin:1.7rem 0;
     padding:1rem 1.4rem;
     background:var(--ombre);
-    color:var(--parchemin);
+    color:var(--parchemin-texte);
     font-style:italic;
     font-size:1.04rem;
     border-left:5px solid var(--kabbale);
@@ -175,23 +184,23 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.13em;
-    color:var(--kabbale);
+    color:var(--kabbale-texte);
   }
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
-    color:var(--argile-sombre);
+    color:var(--argile-sombre-texte);
     text-decoration:none;
     padding:0 0.1rem;
   }
-  sup.fn a:hover{ color:var(--kabbale); }
+  sup.fn a:hover{ color:var(--kabbale-texte); }
 
   /* ---------- FICHE ---------- */
   .fiche-layout{
@@ -216,11 +225,11 @@
   }
   @media (max-width:480px){ .tablette{ grid-template-columns:1fr; } }
   .tablette .label{
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--argile-sombre);
+    color:var(--argile-sombre-texte);
     margin-bottom:0.15rem;
   }
   .tablette .value{ font-size:0.93rem; color:var(--ombre); }
@@ -228,27 +237,62 @@
   /* ---------- SOURCES ---------- */
   section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
   section.sources li{ margin-bottom:0.55rem; }
-  section.sources a{ color:var(--argile-sombre); word-break:break-all; }
-  section.sources a:hover{ color:var(--kabbale); }
+  section.sources a{ color:var(--argile-sombre-texte); word-break:break-all; }
+  section.sources a:hover{ color:var(--kabbale-texte); }
 
   footer.poussiere{
     background:var(--ombre);
     margin-top:3.5rem;
     padding:1.6rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Anonymous Pro', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
-    color:rgba(233,223,200,0.5);
+    /* AA lot 5 (retrofit 065-5) : 0.5 composait 4,28 sur l'ombre du pied de
+       page. La teinte de poussiere est conservee au caractere pres ; seuls
+       2 centiemes d'alpha sont rendus, et le colophon passe a 4,52. */
+    color:rgba(233,223,200,0.52);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  blockquote{ --parchemin-texte:#e9dfc8; }   /* sur #171310, 1 element(s) */
+  blockquote{ --kabbale-texte:#9d7827; }   /* sur #171310, 1 element(s) */
+  blockquote{ --argile-sombre-texte:#bd663a; }   /* sur #171310, 1 element(s) */
+
+  /* Contraste AA -- lot 4, revue visuelle validee par AH le 23/07 */
+  span.sceau{ color:#a37d29; }
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="grenier">
   <div class="grenier-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div><span class="sceau">Prague · règne de Rodolphe II · d'après la légende du Maharal</span></div>
     <h1 class="title">Le Golem</h1>
     <p class="subtitle">Julien Duvivier, 1936 — dans le ghetto de Prague écrasé par un
@@ -258,6 +302,16 @@
     <div class="meta-line">France / Tchécoslovaquie · Studios Barrandov · 100 minutes · N&amp;B · Fantastique</div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 6 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="grimoire" aria-label="Sommaire">
   <span class="mono">Grimoire</span>

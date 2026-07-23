@@ -4,18 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Négatif argentique — Soudain l'été dernier</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (672 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:45.2rem;
+
     --dark:#0a0a09;
     --dark-elev:#141311;
     --dark-card:#1a1916;
     --negative:#e8e2d2;
     --negative-dim:#b8b2a2;
     --safelight:#b23a2e;
+    --safelight-texte:#d25c50;
     --safelight-deep:#8a2c22;
     --silver:#7a756a;
+    --silver-texte:#7d786d;
     --line: rgba(232,226,210,0.13);
     --line-soft: rgba(232,226,210,0.07);
   }
@@ -27,7 +35,7 @@
     margin:0;
     background:var(--dark);
     color:var(--negative);
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     line-height:1.68;
     -webkit-font-smoothing:antialiased;
   }
@@ -35,7 +43,7 @@
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   .label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.66rem;
@@ -45,14 +53,14 @@
     display:inline-block;
     color:var(--negative-dim);
     opacity:0.7;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
     text-decoration:none;
     margin-bottom:1.4rem;
   }
-  .back-link:hover{ opacity:1; color:var(--safelight); }
+  .back-link:hover{ opacity:1; color:var(--safelight-texte); }
 
   .sprockets{
     height:14px;
@@ -64,11 +72,11 @@
     opacity:0.55;
   }
   .edge-code{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.58rem;
     letter-spacing:0.35em;
     text-transform:uppercase;
-    color:var(--silver);
+    color:var(--silver-texte);
     white-space:nowrap;
     overflow:hidden;
     padding:0.35rem 0;
@@ -98,8 +106,8 @@
   .frame-border::before, .frame-border::after{
     content:"+";
     position:absolute;
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--silver);
+    font-family:var(--mono);
+    color:var(--silver-texte);
     font-size:0.9rem;
   }
   .frame-border::before{ top:-9px; left:-7px; }
@@ -109,7 +117,7 @@
     display:flex;
     align-items:center;
     gap:0.7rem;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     margin-bottom:1.9rem;
   }
   .cover-eyebrow .rule{ height:1px; width:32px; background:var(--safelight); }
@@ -118,14 +126,14 @@
     position:absolute;
     top:2.6rem;
     right:2rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     letter-spacing:0.08em;
   }
 
   h1.title{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:clamp(2.3rem, 6.6vw, 3.7rem);
     line-height:1.04;
@@ -134,7 +142,7 @@
     color:var(--negative);
   }
   .subtitle{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-weight:400;
     color:var(--negative-dim);
     font-size:0.95rem;
@@ -176,11 +184,11 @@
     gap:1.1rem 1.5rem;
   }
   .filecard dt{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.11em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     margin-bottom:0.3rem;
   }
   .filecard dd{ margin:0; font-size:0.9rem; color:var(--negative); }
@@ -195,13 +203,13 @@
     color:var(--negative-dim);
     opacity:0.68;
     text-decoration:none;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
     transition:opacity 0.15s ease, color 0.15s ease;
   }
-  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; color:var(--safelight); }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; color:var(--safelight-texte); }
 
   /* ---------- MAIN ---------- */
   main{ max-width:720px; margin:0 auto; padding:0 1.5rem; }
@@ -211,7 +219,7 @@
     padding:1rem 1.3rem;
     border-left:2px solid var(--safelight);
     background:rgba(178,58,46,0.07);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.74rem;
     color:var(--negative-dim);
     line-height:1.55;
@@ -229,16 +237,16 @@
   .grease-mark{ width:38px; height:38px; flex-shrink:0; }
   .frame-heading-text{ flex:1; }
   .frame-num-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.68rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:block;
     margin-bottom:0.15rem;
   }
   h2{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:1.65rem;
     margin:0 0 0.2rem;
@@ -246,15 +254,15 @@
     letter-spacing:-0.005em;
   }
   .frame-jargon{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.72rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     text-transform:lowercase;
   }
 
   h3{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-weight:600;
     font-size:1.1rem;
     margin:1.7rem 0 0.55rem;
@@ -264,16 +272,16 @@
   p:last-child{ margin-bottom:0; }
 
   a.foot{
-    color:var(--safelight);
+    color:var(--safelight-texte);
     text-decoration:none;
     border-bottom:1px dotted var(--safelight);
     font-size:0.85em;
   }
 
   .caution{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.76rem;
-    color:var(--silver);
+    color:var(--silver-texte);
     border-left:2px solid var(--silver);
     padding-left:0.8rem;
     margin:1rem 0;
@@ -308,7 +316,7 @@
     border-right:1.5px solid var(--safelight);
   }
   .cast-card .name{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-weight:700;
     font-size:1.02rem;
     display:block;
@@ -316,11 +324,11 @@
     color:var(--negative);
   }
   .cast-card .role{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:block;
     margin-bottom:0.5rem;
   }
@@ -344,7 +352,7 @@
     background:var(--dark);
   }
   .pinned p{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-style:italic;
     font-size:1.05rem;
     color:var(--negative);
@@ -352,20 +360,20 @@
   }
   .pinned cite{
     font-style:normal;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--silver);
+    color:var(--silver-texte);
   }
 
   .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
   .theme-item .theme-tag{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:var(--safelight);
+    color:var(--safelight-texte);
     display:inline-block;
     margin-bottom:0.3rem;
   }
@@ -382,7 +390,7 @@
     border:1px solid var(--negative-dim);
   }
   .lighttable .stat .num{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:var(--sans);
     font-size:1.5rem;
     font-weight:700;
     color:var(--safelight-deep);
@@ -390,25 +398,25 @@
     line-height:1.1;
   }
   .lighttable .stat .cap{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.58rem;
     text-transform:uppercase;
     letter-spacing:0.07em;
     color:#3a352a;
   }
   .lighttable-label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
-    color:var(--silver);
+    color:var(--silver-texte);
     margin-bottom:0.6rem;
     display:block;
   }
 
   section.sources{ background:var(--dark-elev); padding:3.3rem 1.5rem 4.3rem; }
   section.sources .sources-inner{ max-width:720px; margin:0 auto; }
-  section.sources h2{ color:var(--negative); font-family:'IBM Plex Sans', sans-serif; font-weight:700; font-size:1.5rem; margin:0; }
+  section.sources h2{ color:var(--negative); font-family:var(--sans); font-weight:700; font-size:1.5rem; margin:0; }
   ol.source-list{
     list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
     display:grid; gap:0.6rem;
@@ -425,25 +433,25 @@
   ol.source-list li::before{
     content: counter(src);
     position:absolute; left:0; top:0;
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--safelight);
+    font-family:var(--mono);
+    color:var(--safelight-texte);
     font-size:0.76rem;
   }
   ol.source-list a{ color:var(--negative); word-break:break-all; }
-  ol.source-list a:hover{ color:var(--safelight); }
+  ol.source-list a:hover{ color:var(--safelight-texte); }
 
   footer.endnote{
     text-align:center;
     padding:2.2rem 1.5rem 3.3rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--silver);
+    color:var(--silver-texte);
     background:var(--dark);
   }
-  footer.endnote a{ color:var(--silver); }
-  footer.endnote a:hover{ color:var(--safelight); }
+  footer.endnote a{ color:var(--silver-texte); }
+  footer.endnote a:hover{ color:var(--safelight-texte); }
 
   @media (max-width:600px){
     .cover-inner{ padding:3rem 1.1rem 0; }
@@ -451,9 +459,38 @@
     .frame-num{ position:static; display:block; margin-bottom:1rem; }
     section.block{ padding:2.2rem 0; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  div.edge-code{ --silver-texte:#827d71; }   /* sur #141311, 9 element(s) */
+  div.pinned{ --silver-texte:#868175; }   /* sur #1a1916, 1 element(s) */
+  div.lighttable{ --silver-texte:#69655b; }   /* sur #e8e2d2, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 <script>
   function hideBrokenImg(img, groupId) {
     img.remove();
@@ -471,7 +508,7 @@
   <div class="cover-inner">
     <div class="frame-border">
       <span class="frame-num">Bobine 01 · 35 mm</span>
-      <a class="back-link" href="../index.html">← Retour aux analyses</a>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
       <div class="cover-eyebrow">
         <span class="rule"></span>
         <span class="label">Planche contact — mélodrame gothique</span>
@@ -498,6 +535,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 3 juillet 2026</span>
+</div>
+</div>
+
 
 <div class="sprockets" aria-hidden="true"></div>
 
@@ -758,7 +805,7 @@
 
 <section class="sources" id="sources">
   <div class="sources-inner">
-    <span class="label" style="color:var(--safelight)">Sources consultées</span>
+    <span class="label" style="color:var(--safelight-texte)">Sources consultées</span>
     <h2 style="margin-top:0.6rem;">Références</h2>
     <ol class="source-list">
       <li id="src-1">Wikipédia (EN), « Suddenly, Last Summer (film) » — <a href="https://en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Suddenly,_Last_Summer_(film)</a></li>
@@ -787,7 +834,7 @@
 
 <footer class="endnote">
   Planche compilée à partir de sources publiques consultées le 3 juillet 2026 — usage éditorial non commercial
-  <br><a href="../index.html">← Retour aux analyses</a>
+  <br><a href="../index.html">Retour aux analyses</a>
 </footer>
 
 </body>

@@ -4,18 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bienvenue à Suburbicon (2017) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA BROCHURE DU LOTISSEMENT =====
      Prospectus immobilier 1959 : pastels publicitaires, crème et turquoise,
      lots numérotés — et le rouge qui affleure sous le vernis. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (672 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:45.2rem;
+
     --creme:#f4efe3;
     --creme-sombre:#eae3d2;
     --turquoise:#3e8f8a;
     --turquoise-deep:#2a6360;
     --saumon:#e0876b;
+    --saumon-texte:#b84927;
     --encre:#232019;
     --encre-douce:#3d382e;
     --pastel-line:rgba(35,32,25,0.16);
@@ -27,7 +34,7 @@
     margin:0;
     background:var(--creme);
     color:var(--encre-douce);
-    font-family:'Karla', sans-serif;
+    font-family:var(--sans);
     font-size:1.01rem;
     line-height:1.7;
   }
@@ -35,7 +42,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.15em;
     font-size:0.65rem;
@@ -62,19 +69,19 @@
   .back-link{
     display:inline-block;
     color:rgba(244,239,227,0.65);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
     text-decoration:none;
     margin-bottom:2.2rem;
   }
-  .back-link:hover{ color:var(--saumon); }
+  .back-link:hover{ color:var(--saumon-texte); }
   .slogan{
     display:inline-block;
     background:var(--creme);
     color:var(--turquoise-deep);
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     text-transform:uppercase;
     letter-spacing:0.18em;
@@ -82,7 +89,7 @@
     margin-bottom:1.8rem;
   }
   h1.title{
-    font-family:'Abril Fatface', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.5rem, 7vw, 4.3rem);
     line-height:1.04;
@@ -99,7 +106,7 @@
   }
   .brochure-meta{
     display:flex; flex-wrap:wrap; gap:0.5rem 1.6rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -140,9 +147,9 @@
   nav.plan li::before{
     content:"Lot " counter(lot) " · ";
     counter-increment:lot;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
-    color:var(--saumon);
+    color:var(--saumon-texte);
   }
   nav.plan a{ color:var(--encre); text-decoration:none; border-bottom:1px solid var(--pastel-line); }
   nav.plan a:hover{ color:var(--turquoise-deep); border-color:var(--turquoise-deep); }
@@ -152,16 +159,16 @@
   section{ margin-top:3.5rem; }
   .panneau{ margin-bottom:1.4rem; }
   .panneau .lot{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.65rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
-    color:var(--saumon);
+    color:var(--saumon-texte);
     display:block;
     margin-bottom:0.25rem;
   }
   .panneau h2{
-    font-family:'Abril Fatface', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.75rem;
     color:var(--turquoise-deep);
@@ -187,7 +194,7 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.63rem;
     text-transform:uppercase;
@@ -197,7 +204,7 @@
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     color:var(--turquoise-deep);
     text-decoration:none;
@@ -228,7 +235,7 @@
   }
   @media (max-width:480px){ .acte{ grid-template-columns:1fr; } }
   .acte .label{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
@@ -248,19 +255,40 @@
     margin-top:3.5rem;
     padding:1.4rem 1.5rem 2.5rem;
     text-align:center;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.15em;
     text-transform:uppercase;
     color:var(--turquoise-deep);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="brochure">
   <div class="brochure-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div><span class="slogan">Des maisons pour des familles heureuses — depuis 1947</span></div>
     <h1 class="title">Bienvenue à Suburbicon</h1>
     <p class="subtitle">George Clooney, 2017 — un scénario noir des frères Coen greffé sur un
@@ -273,6 +301,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 5 juillet 2026</span>
+</div>
+</div>
+
 
 <div class="avert">
   <span class="mono">Avertissement</span> — Le film contient des violences criminelles et

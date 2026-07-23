@@ -4,18 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La mariée était en noir (1968) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LE FAIRE-PART =====
      Deuil chic 1968 : blanc cassé, noir profond, voile gris —
      et la liste des cinq noms que l'on barre, un à un. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (652 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:44.0rem;
+
     --ivoire:#f1efe9;
     --ivoire-sombre:#e6e3da;
     --noir:#0e0d0c;
     --noir-doux:#2e2c29;
     --voile:#a5a19a;
+    --voile-texte:#716c64;
     --lys:#ffffff;
     --sang-seche:#6e2f2a;
     --ligne:rgba(14,13,12,0.16);
@@ -27,7 +34,7 @@
     margin:0;
     background:var(--ivoire);
     color:var(--noir-doux);
-    font-family:'Jost', sans-serif;
+    font-family:var(--sans);
     font-weight:400;
     font-size:1.01rem;
     line-height:1.72;
@@ -36,7 +43,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.64rem;
@@ -58,8 +65,8 @@
   .fairepart-inner{ max-width:720px; margin:0 auto; }
   .back-link{
     display:inline-block;
-    color:var(--voile);
-    font-family:'Overpass Mono', monospace;
+    color:var(--voile-texte);
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
@@ -71,9 +78,9 @@
     width:64px; height:1px; background:var(--voile);
     margin:0 auto 2.2rem;
   }
-  .fairepart .mono{ color:var(--voile); }
+  .fairepart .mono{ color:var(--voile-texte); }
   h1.title{
-    font-family:'DM Serif Display', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.5rem, 6.5vw, 4rem);
     line-height:1.08;
@@ -90,22 +97,22 @@
   .les-cinq{
     display:flex; flex-wrap:wrap; justify-content:center;
     gap:0.4rem 1.6rem;
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
     border-top:1px solid var(--ligne-claire);
     padding-top:1.3rem;
   }
   .les-cinq .raye{ text-decoration:line-through; text-decoration-color:var(--sang-seche); text-decoration-thickness:2px; }
   .meta-line{
     margin-top:1.4rem;
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
 
   /* ---------- SOMMAIRE ---------- */
@@ -132,7 +139,7 @@
   section{ margin-top:3.5rem; }
   .tete{ text-align:left; margin-bottom:1.4rem; }
   .tete .num{
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     letter-spacing:0.2em;
     color:var(--sang-seche);
@@ -140,7 +147,7 @@
     margin-bottom:0.25rem;
   }
   .tete h2{
-    font-family:'DM Serif Display', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.7rem;
     color:var(--noir);
@@ -162,7 +169,7 @@
     margin:1.7rem 0;
     padding:0 1.5rem;
     text-align:center;
-    font-family:'DM Serif Display', serif;
+    font-family:var(--serif);
     font-style:italic;
     font-size:1.15rem;
     color:var(--noir);
@@ -170,17 +177,17 @@
   blockquote .attrib{
     display:block;
     margin-top:0.6rem;
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--sang-seche);
     text-decoration:none;
@@ -211,11 +218,11 @@
   }
   @media (max-width:480px){ .etat-civil{ grid-template-columns:1fr; } }
   .etat-civil .label{
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--voile);
+    color:var(--voile-texte);
     margin-bottom:0.15rem;
   }
   .etat-civil .value{ font-size:0.93rem; color:var(--noir); }
@@ -231,19 +238,46 @@
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'Overpass Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--voile);
+    color:var(--voile-texte);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  header.fairepart{ --voile-texte:#a5a19a; }   /* sur #0e0d0c, 7 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="fairepart">
   <div class="fairepart-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div class="liseret"></div>
     <span class="mono">Analyse cinématographique</span>
     <h1 class="title">La mariée était en noir</h1>
@@ -259,6 +293,16 @@
     <div class="meta-line">France / Italie · 107 minutes · Eastmancolor · Thriller</div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 5 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="registre" aria-label="Sommaire">
   <span class="mono">Registre</span>

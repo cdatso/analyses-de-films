@@ -1,13 +1,22 @@
+/* Feuille partagée du site v2 — ossature et mobilier (SPEC-SITE-V2 §2.1).
+   Prototype BKL-065-3, branche v2-proto.
+   Le système typographique est déclaré dans fonts.css, lié séparément :
+   ses @font-face sont recopiés VERBATIM du spécimen validé le 20/07,
+   pour qu'aucun unicode-range ne dépende d'une saisie. */
+
 :root {
   --ink: #1a1a18;
   --ink-soft: #4a4a46;
-  --ink-muted: #7a7a74;
+  --ink-muted: #6c6c67;
   --paper: #faf8f4;
   --paper-alt: #f1ede4;
   --line: #d8d3c6;
   --accent: #7a3b2e;
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  /* Le système typographique et la variable de rôle --volet sont déclarés
+     dans mobilier.css, la seule feuille que TOUTES les pages partagent.
+     Ici, on ne fait qu'accorder les tons du mobilier à la palette du chrome. */
+  --mobilier-filet: #d8d3c6;
+  --mobilier-attenue: #6c6c67;
 }
 
 * { box-sizing: border-box; }
@@ -356,9 +365,20 @@ form.request-form input {
   color: var(--ink);
 }
 
+/* ÉCART P-40 de la recette 065-4, corrigé au rétrofit 065-5.
+   Cette règle déclarait `outline: none` au focus des 3 champs du formulaire.
+   Plus spécifique que le `input:focus-visible` de mobilier.css et chargée
+   après lui, elle le neutralisait : le seul repère restant au clavier était
+   un changement de COULEUR de bordure — exactement ce que P-22 proscrit
+   ailleurs sur le site. Le focus au pointeur n'a pas besoin d'anneau ; le
+   focus au CLAVIER, si. `:focus-visible` fait la distinction, `:focus` non. */
 form.request-form input:focus {
-  outline: none;
   border-color: var(--accent);
+}
+
+form.request-form input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 form.request-form button {
@@ -448,4 +468,198 @@ footer {
 @media (max-width: 600px) {
   nav.toc ol { columns: 1; }
   header.hero { padding: 3.5rem 1.2rem 2.5rem; }
+}
+
+/* ==========================================================================
+   CHROME DES 6 PAGES DU MENU — ajouté par le prototype BKL-065-3
+   Ce qui suit ne concerne QUE les pages d'accueil, de vues filtrées et
+   éditoriales. Le mobilier commun aux 33 pages d'analyse vit dans
+   mobilier.css. L'identité bespoke des analyses reste dans les pages.
+   ========================================================================== */
+
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.6rem; }
+
+header.chrome { background: var(--paper); }
+nav.menu a:hover { color: var(--accent); }
+a.lien-retour:hover { color: var(--accent); }
+.proto-note { background: var(--paper-alt); color: var(--ink-soft); }
+.proto-note b { color: var(--accent); }
+footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
+
+/* --- Le seuil (§3.1) ------------------------------------------------------ */
+.seuil { padding: 4.2rem 0 3rem; border-bottom: 1px solid var(--line); }
+.seuil .seuil-in { max-width: 40rem; }
+
+.seuil h1 {
+  font-family: var(--serif); font-optical-sizing: auto; font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.14; color: var(--ink);
+  margin: 0 0 1.1rem; letter-spacing: -0.015em;
+}
+
+.seuil p { font-size: 1.06rem; margin: 0 0 1rem; }
+
+.seuil .appui {
+  font-family: var(--sans); font-size: 0.9rem; color: var(--ink-muted);
+  border-left: 2px solid var(--line); padding-left: 0.9rem; margin-top: 1.6rem;
+}
+
+/* Emplacement réservé à un texte d'auteur d'AH (§2.4) — jamais rédigé ici. */
+.reserve-auteur {
+  font-family: var(--sans); font-size: 0.9rem; color: var(--ink-muted);
+  border: 1px dashed var(--line); padding: 1.2rem 1.4rem; margin: 0 0 1.4rem;
+  background: var(--paper-alt);
+}
+
+.reserve-auteur .etiquette {
+  font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 0.5rem;
+}
+
+/* --- L'objet en une (§3.2, P-06 et P-51) --------------------------------- */
+.une { padding: 3.2rem 0 1rem; }
+
+.une .cartel {
+  font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--accent); margin-bottom: 1rem;
+}
+
+/* Une seule carte occupe toute la largeur (P-51, arbitrage Q-1) ;
+   un couple champ/contrechamp se partage la grille en deux. */
+.bloc-une {
+  display: grid; grid-template-columns: 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+
+.bloc-une.couple { grid-template-columns: 1fr 1fr; }
+
+.carte-une {
+  background: var(--paper); padding: 1.8rem 1.9rem;
+  display: flex; flex-direction: column;
+  /* ÉCART P-38 corrigé au rétrofit 065-5 : élément de grille, la carte porte
+     un `min-width: auto` implicite qui l'empêche de descendre sous la largeur
+     de son contenu — elle débordait de 25 px à 320 px. */
+  min-width: 0;
+}
+
+.carte-une[data-volet="etude"] { background: var(--paper-alt); }
+
+.carte-une .pastille {
+  font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase;
+  letter-spacing: 0.14em; padding: 0.2rem 0 0.3rem; align-self: flex-start;
+  color: var(--accent); margin-bottom: 0.9rem;
+  border-bottom: var(--volet);
+}
+
+.carte-une h3 {
+  font-family: var(--serif); font-weight: 600; font-size: 1.5rem;
+  color: var(--ink); margin: 0 0 0.3rem; line-height: 1.2;
+}
+
+.carte-une .meta {
+  font-family: var(--sans); font-size: 0.78rem; color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+}
+
+.carte-une p { font-size: 0.96rem; flex-grow: 1; margin: 0 0 1rem; }
+
+.carte-une .lien {
+  font-family: var(--sans); font-size: 0.86rem; text-decoration: none;
+  align-self: flex-start;
+}
+
+.une .liaison {
+  text-align: center; font-family: var(--mono); font-size: 0.68rem;
+  color: var(--ink-muted); letter-spacing: 0.1em; padding: 0.9rem 0 0;
+}
+
+/* --- Le corpus : liste unique et recherche (§3.1, §4) --------------------- */
+.corpus { padding: 3.4rem 0 5rem; }
+
+.corpus .barre {
+  display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;
+  padding-bottom: 1.1rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--line);
+}
+
+.corpus .barre h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 1.3rem;
+  color: var(--ink); margin: 0; margin-right: auto; border: none; padding: 0;
+}
+
+.corpus input[type=search] {
+  font-family: var(--sans); font-size: 0.9rem; padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line); background: #fff; color: var(--ink); min-width: 15rem;
+}
+
+/* Facettes : n'apparaissent que si elles discriminent (P-13), le volet étant
+   exempté (P-52). Le masquage est décidé par le script, jamais par le CSS. */
+.facettes { display: flex; gap: 1.4rem; flex-wrap: wrap; padding: 0.9rem 0 0; }
+
+.facette { display: flex; gap: 0.4rem; align-items: baseline; flex-wrap: wrap; }
+
+.facette .titre-facette {
+  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--ink-muted);
+}
+
+button.filtre {
+  font-family: var(--sans); font-size: 0.78rem; padding: 0.32rem 0.7rem;
+  border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+  cursor: pointer;
+}
+
+button.filtre[aria-pressed=true] {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+}
+
+.compte {
+  font-family: var(--mono); font-size: 0.7rem; color: var(--ink-muted);
+  padding: 0.9rem 0 0.2rem;
+}
+
+ol.liste { list-style: none; margin: 0; padding: 0; }
+ol.liste li { border-bottom: 1px solid var(--line); margin: 0; }
+
+ol.liste a.entree {
+  display: grid; grid-template-columns: 1fr auto; gap: 0.35rem 1.4rem;
+  padding: 0.95rem 0.2rem; text-decoration: none; color: inherit; align-items: baseline;
+}
+
+ol.liste a.entree:hover { background: var(--paper-alt); }
+
+ol.liste .t {
+  font-family: var(--serif); font-weight: 600; font-size: 1.06rem; color: var(--ink);
+}
+
+/* Marqueur de volet dans l'index : même filet que le cartouche (P-21).
+   La mention « Étude » en toutes lettres reste le marqueur infaillible (P-22) :
+   le filet ne porte jamais seul la distinction. */
+ol.liste .marq {
+  font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--ink-soft);
+  padding: 0 0 0.18rem; margin-left: 0.55rem; vertical-align: 0.12em;
+  border-bottom: var(--volet);
+}
+
+ol.liste .neuf {
+  font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent); margin-left: 0.55rem; vertical-align: 0.12em;
+}
+
+ol.liste .d {
+  font-family: var(--sans); font-size: 0.82rem; color: var(--ink-muted); grid-column: 1;
+}
+
+ol.liste .a {
+  font-family: var(--mono); font-size: 0.76rem; color: var(--ink-muted);
+  grid-row: 1/3; align-self: center;
+}
+
+.vide {
+  font-family: var(--sans); color: var(--ink-muted); padding: 2rem 0; text-align: center;
+}
+
+@media (max-width: 640px) {
+  .bloc-une.couple { grid-template-columns: 1fr; }
+  ol.liste a.entree { grid-template-columns: 1fr; }
+  ol.liste .a { grid-row: auto; }
 }

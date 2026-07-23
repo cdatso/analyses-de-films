@@ -1,0 +1,16 @@
+[
+ {
+  "balise": "span",
+  "chemin": "html > body > header.river > div.river-inner > div.river-eyebrow > span.wave",
+  "classe": "wave",
+  "couleur_declaree": "rgb(185, 141, 63)",
+  "extrait": "≈≈≈",
+  "fond": "#415343",
+  "fond_effectif": "#ece7da",
+  "opacite_effective": 0.8,
+  "opacite_element": 0.8,
+  "page": "au-fil-de-leau.html",
+  "px": 12,
+  "texte_rendu": "#c39f5e"
+ }
+]

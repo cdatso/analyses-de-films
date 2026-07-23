@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Nuit de San Lorenzo (1982) — Paolo et Vittorio Taviani | Analyses de films</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@400;500;700&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* =========================================================
      IDENTITÉ BESPOKE — « Le ciel du 10 août »
@@ -19,13 +19,21 @@
      ========================================================= */
 
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (732 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:49.0rem;
+
     --nuit:#0b1526;
     --nuit-2:#152541;
     --nuit-3:#1e3457;
     --etoile:#f6ecd2;
-    --etoile-dim:#b9c4d6;
+    --etoile-dim:#7e92b3;
     --ble:#c08a2c;
+    --ble-texte:#825d1e;
     --ble-clair:#e6c374;
+    --ble-clair-texte:#896619;
     --lin:#f4ede1;
     --lin-2:#eae0cd;
     --encre:#241f19;
@@ -43,7 +51,7 @@
     margin:0;
     background:var(--lin);
     color:var(--encre);
-    font-family:'Alegreya', Georgia, 'Times New Roman', serif;
+    font-family:var(--serif);
     font-size:1.06rem;
     line-height:1.72;
     -webkit-font-smoothing:antialiased;
@@ -96,7 +104,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.82rem;
     letter-spacing:0.09em;
     text-transform:uppercase;
@@ -106,20 +114,20 @@
     padding-bottom:2px;
     margin-bottom:2.6rem;
   }
-  .retour:hover{ color:var(--ble-clair); border-color:var(--ble-clair); }
+  .retour:hover{ color:var(--ble-clair-texte); border-color:var(--ble-clair); }
 
   .cartel{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.74rem;
     font-weight:500;
     letter-spacing:0.19em;
     text-transform:uppercase;
   }
 
-  header.ciel .cartel{ color:var(--ble-clair); display:block; margin-bottom:1rem; }
+  header.ciel .cartel{ color:var(--ble-clair-texte); display:block; margin-bottom:1rem; }
 
   header.ciel h1{
-    font-family:'Alegreya SC', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(2.3rem, 6.4vw, 3.5rem);
     line-height:1.08;
@@ -141,7 +149,7 @@
   }
 
   .generique{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.95rem;
     color:var(--etoile-dim);
     letter-spacing:0.015em;
@@ -152,7 +160,7 @@
     padding:0.85rem 1.15rem;
     background:rgba(30,52,87,0.42);
     border-left:2px solid var(--ble);
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.79rem;
     line-height:1.6;
     letter-spacing:0.02em;
@@ -165,7 +173,7 @@
     padding:0.85rem 1.15rem;
     background:rgba(140,49,34,0.22);
     border-left:2px solid var(--sang);
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.83rem;
     line-height:1.62;
     color:#f0d9d2;
@@ -180,7 +188,7 @@
     color:var(--etoile-dim);
   }
   nav.veillee .inner{ max-width:780px; margin:0 auto; }
-  nav.veillee .cartel{ color:var(--ble-clair); display:block; margin-bottom:1.1rem; }
+  nav.veillee .cartel{ color:var(--ble-clair-texte); display:block; margin-bottom:1.1rem; }
   nav.veillee ol{
     list-style:none;
     margin:0; padding:0;
@@ -196,12 +204,12 @@
     font-size:0.99rem;
     border-bottom:1px solid rgba(185,196,214,0.12);
   }
-  nav.veillee a:hover{ color:var(--ble-clair); }
+  nav.veillee a:hover{ color:var(--ble-clair-texte); }
   nav.veillee .num{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.74rem;
     letter-spacing:0.12em;
-    color:var(--ble);
+    color:var(--ble-texte);
     margin-right:0.75rem;
   }
 
@@ -232,7 +240,7 @@
   }
 
   h2{
-    font-family:'Alegreya SC', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:clamp(1.55rem, 3.6vw, 1.95rem);
     line-height:1.2;
@@ -248,7 +256,7 @@
   }
 
   h3{
-    font-family:'Alegreya SC', Georgia, serif;
+    font-family:var(--serif);
     font-weight:500;
     font-size:1.16rem;
     letter-spacing:0.02em;
@@ -265,8 +273,8 @@
   sup.ref{ font-size:0.7em; line-height:0; }
   sup.ref a{
     text-decoration:none;
-    color:var(--ble);
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    color:var(--ble-texte);
+    font-family:var(--sans);
     font-weight:500;
     padding:0 0.09em;
   }
@@ -294,7 +302,7 @@
 
   .fiche dl{ margin:0; }
   .fiche dt{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.72rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -315,7 +323,7 @@
   }
   figure.poster img{ display:block; width:100%; height:auto; }
   figure.poster figcaption{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.7rem;
     line-height:1.5;
     letter-spacing:0.05em;
@@ -341,7 +349,7 @@
     background:var(--lin-2);
     border-left:2px solid var(--terre);
     padding:1rem 1.3rem;
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.88rem;
     line-height:1.65;
     color:var(--encre-pale);
@@ -349,7 +357,7 @@
   }
 
   #sources ol{
-    font-family:'Alegreya Sans', system-ui, sans-serif;
+    font-family:var(--sans);
     font-size:0.9rem;
     line-height:1.62;
     padding-left:1.4rem;
@@ -374,13 +382,54 @@
     figure.poster{ max-width:232px; }
     header.ciel::after{ width:120px; right:4%; }
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  nav.veillee{ --ble-clair-texte:#e6c374; }   /* sur #1e3457, 1 element(s) */
+  nav.veillee{ --etoile-dim:#b9c4d6; }   /* sur #1e3457, 10 element(s) */
+  figure.poster, footer{ --etoile-dim:#b9c4d6; }   /* sur #0b1526, 2 element(s) */
+  nav.veillee{ --ble-texte:#ca912f; }   /* sur #1e3457, 10 element(s) */
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  /* CORRECTIF du 23/07 08h52 : meme cas qu'a hamlet. Le bloc de provenance
+     est peint SUR UN FOND SOMBRE, non sur le gris moyen que donnait le calcul
+     de fond effectif. La redefinition precedente, fondee sur ce fond calcule,
+     avait rendu le texte quasi invisible (ratio 1,20 sur pixels reels).
+     Mesure sur PIXELS PEINTS : la teinte d'origine y tient a 8,17. */
+  div.provenance{ --etoile-dim:#b9c4d6; }
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="ciel">
   <div class="ciel-inner">
-    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <a class="retour lien-retour" href="../index.html">Retour aux analyses</a>
     <span class="cartel">Italie — 1982 — Toscane, août 1944</span>
     <h1>La Nuit de San Lorenzo</h1>
     <div class="titre-vo">La notte di San Lorenzo</div>
@@ -396,6 +445,16 @@
     </div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : Claude Opus (session supervisée)</span>
+  <span class="date-pub">Publi&eacute;e le 21 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="veillee">
   <div class="inner">

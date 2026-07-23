@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La bande et le livre — Hitchcock/Truffaut (2015)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (835 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:55.4rem;
+
     --noir:#15120f;
+    --noir-texte:#d3cac1;
     --noir-doux:#241e19;
     --oxyde:#7a4a24;
     --oxyde-clair:#b07b45;
@@ -18,10 +24,11 @@
     --papier-creux:#e5ddcc;
     --papier-ombre:rgba(33,28,24,0.10);
     --rouge:#c1201d;
+    --rouge-texte:#c1201d;
     --rouge-sombre:#8e1512;
     --encre:#211c18;
     --encre-douce:#4c433a;
-    --gris:#8b8073;
+    --gris:#736a5f;
     --blanc:#fbf8f2;
   }
 
@@ -32,7 +39,7 @@
     margin:0;
     background:var(--papier);
     color:var(--encre);
-    font-family:'Crimson Pro', Georgia, serif;
+    font-family:var(--serif);
     font-size:1.09rem;
     font-weight:400;
     line-height:1.72;
@@ -67,7 +74,7 @@
 
   .retour{
     display:inline-block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     font-weight:400;
     letter-spacing:0.16em;
@@ -77,13 +84,13 @@
     border-bottom:1px solid transparent;
     margin-bottom:2.2rem;
   }
-  .retour:hover{ color:var(--rouge); border-bottom-color:var(--rouge); }
+  .retour:hover{ color:var(--rouge-texte); border-bottom-color:var(--rouge); }
 
   .etiquette-bande{
     display:flex;
     align-items:center;
     gap:0.9rem;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     font-weight:400;
     letter-spacing:0.2em;
@@ -105,16 +112,16 @@
   }
 
   header h1{
-    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-family:var(--sans);
     font-size:clamp(1.5rem, 5.4vw, 2.9rem);
     line-height:1.16;
     letter-spacing:-0.01em;
     margin:0 0 0.15rem;
     text-transform:uppercase;
   }
-  header h1 .barre{ color:var(--rouge); }
+  header h1 .barre{ color:var(--rouge-texte); }
   header .millesime{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -129,7 +136,7 @@
     margin:1.8rem 0 0.4rem;
   }
   .compteur span{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     font-weight:500;
     background:var(--noir-doux);
@@ -138,7 +145,7 @@
     padding:0.18rem 0.42rem;
     border-radius:2px;
   }
-  .compteur .rouge{ color:var(--rouge); border-color:rgba(193,32,29,0.5); }
+  .compteur .rouge{ color:var(--rouge-texte); border-color:rgba(193,32,29,0.5); }
 
   .accroche{
     max-width:660px;
@@ -174,7 +181,7 @@
     background:var(--noir);
     color:var(--oxyde-pale);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.85rem;
     font-weight:500;
     position:relative;
@@ -187,7 +194,7 @@
     background:var(--papier);
   }
   .tete-section .libelle{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
@@ -196,7 +203,7 @@
     margin-bottom:0.25rem;
   }
   .tete-section h2{
-    font-family:'Michroma', 'Trebuchet MS', sans-serif;
+    font-family:var(--sans);
     font-size:clamp(0.95rem, 2.7vw, 1.18rem);
     line-height:1.35;
     margin:0;
@@ -205,7 +212,7 @@
   }
 
   h3{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.78rem;
     font-weight:500;
     letter-spacing:0.11em;
@@ -213,7 +220,7 @@
     color:var(--oxyde);
     margin:2.1rem 0 0.6rem;
   }
-  h3::before{ content:"▮ "; color:var(--rouge); }
+  h3::before{ content:"▮ "; color:var(--rouge-texte); }
 
   p{ margin:0 0 1.05rem; }
   em{ font-style:italic; }
@@ -222,8 +229,8 @@
   /* renvois de sources */
   sup.piste{ font-size:0.62em; line-height:0; }
   sup.piste a{
-    font-family:'Azeret Mono', monospace;
-    color:var(--rouge);
+    font-family:var(--mono);
+    color:var(--rouge-texte);
     text-decoration:none;
     padding:0 0.1em;
     border-bottom:1px dotted rgba(193,32,29,0.45);
@@ -261,7 +268,7 @@
     dl.credits > div{ grid-template-columns:1fr; gap:0.1rem; }
   }
   dl.credits dt{
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.13em;
     text-transform:uppercase;
@@ -279,12 +286,12 @@
   }
   .transcription .voix{
     display:block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     font-weight:500;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--rouge);
+    color:var(--rouge-texte);
     margin-bottom:0.3rem;
   }
   .transcription p{
@@ -304,7 +311,7 @@
   }
   .verif .titre{
     display:block;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -315,7 +322,7 @@
 
   ul.liste{ margin:0 0 1.1rem; padding-left:1.1rem; }
   ul.liste li{ margin-bottom:0.5rem; }
-  ul.liste li::marker{ color:var(--rouge); }
+  ul.liste li::marker{ color:var(--rouge-texte); }
 
   /* ---------- SOURCES ---------- */
   section.sources{
@@ -325,7 +332,7 @@
     padding:2.2rem 1.5rem 2.4rem;
   }
   section.sources .tete-section{ border-bottom-color:rgba(217,185,143,0.22); }
-  section.sources .piste-num{ background:var(--oxyde); color:var(--noir); }
+  section.sources .piste-num{ background:var(--oxyde); color:var(--noir-texte); }
   section.sources .piste-num::after{ background:var(--noir); }
   section.sources h2{ color:var(--blanc); }
   section.sources .libelle{ color:var(--oxyde-pale); }
@@ -335,7 +342,7 @@
     line-height:1.62;
   }
   section.sources li{ margin-bottom:0.65rem; }
-  section.sources li::marker{ font-family:'Azeret Mono', monospace; color:var(--rouge); }
+  section.sources li::marker{ font-family:var(--mono); color:var(--rouge-texte); }
   section.sources a{ color:var(--oxyde-pale); }
   section.sources em{ color:var(--blanc); }
   section.sources .note{
@@ -348,19 +355,48 @@
   footer{
     text-align:center;
     padding:2rem 1.4rem 2.6rem;
-    font-family:'Azeret Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--gris);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Palette contextuelle (AA, retrofit 065-5) */
+  /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
+     valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
+     de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
+  section.sources, header.bobine{ --gris:#867c6f; }   /* sur #15120f, 3 element(s) */
+  div.transcription{ --rouge-texte:#bf201d; }   /* sur #e5ddcc, 2 element(s) */
+  span.rouge{ --rouge-texte:#e55553; }   /* sur #241e19, 1 element(s) */
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="bobine">
   <div class="bobine-inner">
-    <a class="retour" href="../index.html">← Retour aux analyses</a>
+    <a class="retour lien-retour" href="../index.html">Retour aux analyses</a>
 
     <div class="etiquette-bande">
       <span class="disque"></span>
@@ -381,6 +417,16 @@
     et, sans le vouloir tout à fait, sur les limites d'un panthéon.</p>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : Claude (pipeline, routine nocturne)</span>
+  <span class="date-pub">Publi&eacute;e le 21 juillet 2026</span>
+</div>
+</div>
+
 
 <div class="ruban"></div>
 

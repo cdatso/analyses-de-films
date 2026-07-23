@@ -1,0 +1,173 @@
+{
+ "comment-ca-marche.html": {
+  "atteints": 8,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 8,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "critiques.html": {
+  "atteints": 81,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 81,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "demander-une-analyse.html": {
+  "atteints": 12,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 12,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "etudes.html": {
+  "atteints": 9,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 9,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "films/pandora-contrechamp.html": {
+  "atteints": 52,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(47, 51, 59)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(47, 125, 128)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 52,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "films/pandora.html": {
+  "atteints": 95,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(63, 69, 80)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(163, 48, 42)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 95,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "films/rouges-et-blancs.html": {
+  "atteints": 81,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(239, 236, 227)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(154, 32, 32)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 81,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "index.html": {
+  "atteints": 87,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 87,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ },
+ "qui-sommes-nous.html": {
+  "atteints": 8,
+  "exemple": {
+   "balise": "a",
+   "bordure_focus": "rgb(26, 26, 24)",
+   "boxShadow": "none",
+   "chemin": "html > body > header.chrome > div.chrome-in > a.marque",
+   "fond_focus": "rgba(0, 0, 0, 0)",
+   "idx": 0,
+   "outlineColor": "rgb(26, 26, 24)",
+   "outlineStyle": "solid",
+   "outlineWidth": "2px",
+   "visible": true
+  },
+  "focalisables": 8,
+  "hors_inventaire": 0,
+  "manques": [],
+  "sans_indicateur": []
+ }
+}

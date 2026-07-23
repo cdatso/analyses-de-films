@@ -4,18 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sans Filtre (Triangle of Sadness, 2022) — Analyse cinématographique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
 <style>
   /* ===== LA CARTE DU DÎNER DE GALA =====
      Menu de croisière de luxe : blanc nappe, bleu marine, or champagne —
      et un vert nausée qui monte avec la houle. */
   :root{
+    /* Largeur du mobilier partage (cartouche, bandeau de
+       variante), calee sur la colonne editoriale MESUREE de
+       cette page (652 px au rendu). Arbitrage AH du 22/07/2026,
+       option B : le mobilier suit le texte, pas le menu. */
+    --mobilier-largeur:44.0rem;
+
     --nappe:#f6f4ee;
     --nappe-ombre:#ebe8de;
     --marine:#122a41;
     --marine-doux:#1d3d5c;
     --or:#b2903f;
+    --or-texte:#866d30;
     --nausee:#7a8c4f;
     --encre:#20242a;
     --ligne:rgba(18,42,65,0.16);
@@ -27,7 +34,7 @@
     margin:0;
     background:var(--nappe);
     color:var(--encre);
-    font-family:'Figtree', sans-serif;
+    font-family:var(--sans);
     font-size:1.0rem;
     line-height:1.72;
   }
@@ -35,7 +42,7 @@
     *{animation:none !important; transition:none !important;}
   }
   .mono{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:0.64rem;
@@ -65,14 +72,14 @@
   .back-link{
     display:inline-block;
     color:rgba(246,244,238,0.55);
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.66rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
     text-decoration:none;
     margin-bottom:2.4rem;
   }
-  .back-link:hover{ color:var(--or); }
+  .back-link:hover{ color:var(--or-texte); }
   .filet-or{
     width:130px; height:1px; background:var(--or);
     margin:0 auto 1.2rem;
@@ -80,11 +87,11 @@
   }
   .filet-or::after{
     content:"◆"; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
-    color:var(--or); font-size:0.6rem;
+    color:var(--or-texte); font-size:0.6rem;
   }
-  .menu .mono{ color:var(--or); }
+  .menu .mono{ color:var(--or-texte); }
   h1.title{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:clamp(2.6rem, 7vw, 4.2rem);
     line-height:1.05;
@@ -92,7 +99,7 @@
     color:var(--nappe);
   }
   .title-orig{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-size:1.1rem;
     letter-spacing:0.12em;
     color:rgba(246,244,238,0.6);
@@ -108,7 +115,7 @@
   .trois-services{
     display:flex; flex-wrap:wrap; justify-content:center;
     gap:0.4rem 2rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -118,7 +125,7 @@
   }
   .meta-line{
     margin-top:1.2rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.63rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -151,16 +158,16 @@
   section{ margin-top:3.5rem; }
   .service{ text-align:center; margin-bottom:1.5rem; }
   .service .num{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.64rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
-    color:var(--or);
+    color:var(--or-texte);
     display:block;
     margin-bottom:0.3rem;
   }
   .service h2{
-    font-family:'Marcellus', serif;
+    font-family:var(--serif);
     font-weight:400;
     font-size:1.7rem;
     color:var(--marine);
@@ -173,7 +180,7 @@
   }
   .service .filet::after{
     content:"◆"; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
-    color:var(--or); font-size:0.5rem;
+    color:var(--or-texte); font-size:0.5rem;
   }
   p{ margin:0 0 1.1rem; }
   strong{ color:var(--marine); font-weight:600; }
@@ -191,23 +198,23 @@
   blockquote .attrib{
     display:block;
     margin-top:0.5rem;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-style:normal;
     font-size:0.62rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--or);
+    color:var(--or-texte);
   }
 
   sup.fn{ line-height:0; }
   sup.fn a{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     color:var(--marine-doux);
     text-decoration:none;
     padding:0 0.1rem;
   }
-  sup.fn a:hover{ color:var(--or); }
+  sup.fn a:hover{ color:var(--or-texte); }
 
   /* ---------- FICHE : CARTE D'EMBARQUEMENT ---------- */
   .fiche-layout{
@@ -232,11 +239,11 @@
   }
   @media (max-width:480px){ .embarquement{ grid-template-columns:1fr; } }
   .embarquement .label{
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.6rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--or);
+    color:var(--or-texte);
     margin-bottom:0.15rem;
   }
   .embarquement .value{ font-size:0.93rem; color:var(--encre); }
@@ -246,26 +253,50 @@
   section.sources ol{ padding-left:1.5rem; font-size:0.88rem; }
   section.sources li{ margin-bottom:0.55rem; }
   section.sources a{ color:var(--marine-doux); word-break:break-all; }
-  section.sources a:hover{ color:var(--or); }
+  section.sources a:hover{ color:var(--or-texte); }
 
   footer.addition{
     border-top:1px solid var(--ligne-or);
     margin-top:3.5rem;
     padding:1.5rem 1.5rem 2.6rem;
     text-align:center;
-    font-family:'DM Mono', monospace;
+    font-family:var(--mono);
     font-size:0.62rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--or);
+    color:var(--or-texte);
   }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et
+     texte courant sur la meme famille. Palette, couverture et
+     ossature de la page restent intactes. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+
+  /* Contraste AA -- lot 4, revue visuelle validee par AH le 23/07 */
+  span.mono{ color:#ac8c3d; }
 </style>
 </head>
-<body>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
 
 <header class="menu">
   <div class="menu-inner">
-    <a class="back-link" href="../index.html">← Retour aux analyses</a>
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
     <div class="filet-or"></div>
     <span class="mono">Analyse cinématographique · M/Y Christina O</span>
     <h1 class="title">Sans Filtre</h1>
@@ -281,6 +312,16 @@
     <div class="meta-line">Suède / int. · 147 minutes · Couleur · Comédie satirique · Palme d'or 2022</div>
   </div>
 </header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R1 &mdash; Critique publi&eacute;e avant le site v2</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (mod&egrave;le non sp&eacute;cifi&eacute;, supervision humaine).</span>
+  <span class="signature">Mod&egrave;le producteur : non sp&eacute;cifi&eacute;</span>
+  <span class="date-pub">Publi&eacute;e le 5 juillet 2026</span>
+</div>
+</div>
+
 
 <nav class="carte" aria-label="Sommaire">
   <span class="mono">— La carte —</span>
