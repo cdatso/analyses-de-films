@@ -1,0 +1,632 @@
+[
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.river-eyebrow > span.mono",
+  "conforme_au_reel": true,
+  "extrait": "Analyse cinématographique",
+  "page": "au-fil-de-leau.html",
+  "ratio_peint": 4.79,
+  "ratio_theorique": 2.73,
+  "seuil": 4.5,
+  "texte": "#b98d3f"
+ },
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.river-eyebrow > span.wave",
+  "conforme_au_reel": true,
+  "extrait": "≈≈≈",
+  "page": "au-fil-de-leau.html",
+  "ratio_peint": 5.43,
+  "ratio_theorique": 3.32,
+  "seuil": 4.5,
+  "texte": "#c39f5e"
+ },
+ {
+  "chemin": "html > body > header.river > div.river-inner > p.title-orig",
+  "conforme_au_reel": true,
+  "extrait": "House by the River",
+  "page": "au-fil-de-leau.html",
+  "ratio_peint": 5.03,
+  "ratio_theorique": 3.1,
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "chemin": "html > body > header.river > div.river-inner > div.meta-line",
+  "conforme_au_reel": false,
+  "extrait": "États-Unis · Republic Pictures · 88 minu",
+  "page": "au-fil-de-leau.html",
+  "ratio_peint": 4.01,
+  "ratio_theorique": 3.1,
+  "seuil": 4.5,
+  "texte": "#8fa39b"
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > a.back-link.lien-retour",
+  "conforme_au_reel": false,
+  "extrait": "Retour aux analyses",
+  "page": "bienvenue-a-suburbicon.html",
+  "ratio_peint": 3.44,
+  "ratio_theorique": 3.33,
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > p.subtitle",
+  "conforme_au_reel": true,
+  "extrait": "George Clooney, 2017 — un scénario noir ",
+  "page": "bienvenue-a-suburbicon.html",
+  "ratio_peint": 4.73,
+  "ratio_theorique": 3.33,
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "conforme_au_reel": true,
+  "extrait": "États-Unis · Paramount",
+  "page": "bienvenue-a-suburbicon.html",
+  "ratio_peint": 5.26,
+  "ratio_theorique": 3.33,
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "conforme_au_reel": true,
+  "extrait": "105 minutes · Couleur",
+  "page": "bienvenue-a-suburbicon.html",
+  "ratio_peint": 5.19,
+  "ratio_theorique": 3.33,
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "chemin": "html > body > header.brochure > div.brochure-inner > div.brochure-meta > span",
+  "conforme_au_reel": true,
+  "extrait": "Comédie noire / satire",
+  "page": "bienvenue-a-suburbicon.html",
+  "ratio_peint": 5.19,
+  "ratio_theorique": 3.33,
+  "seuil": 4.5,
+  "texte": "#f4efe3"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > a.retour.lien-retour",
+  "conforme_au_reel": false,
+  "extrait": "Retour aux analyses",
+  "page": "hamlet.html",
+  "ratio_peint": 2.13,
+  "ratio_theorique": 1.69,
+  "seuil": 4.5,
+  "texte": "#606f6d"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > span.cartel",
+  "conforme_au_reel": true,
+  "extrait": "Union soviétique — 1964 — Lenfilm",
+  "page": "hamlet.html",
+  "ratio_peint": 6.06,
+  "ratio_theorique": 4.45,
+  "seuil": 4.5,
+  "texte": "#d5b18c"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.titre-vo",
+  "conforme_au_reel": false,
+  "extrait": "Гамлет —",
+  "page": "hamlet.html",
+  "ratio_peint": 2.11,
+  "ratio_theorique": 1.68,
+  "seuil": 4.5,
+  "texte": "#5f6e71"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.titre-vo > em",
+  "conforme_au_reel": false,
+  "extrait": "Gamlet",
+  "page": "hamlet.html",
+  "ratio_peint": 1.83,
+  "ratio_theorique": 1.68,
+  "seuil": 4.5,
+  "texte": "#5f6e71"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.generique",
+  "conforme_au_reel": false,
+  "extrait": "Grigori Kozintsev · d'après la traductio",
+  "page": "hamlet.html",
+  "ratio_peint": 1.98,
+  "ratio_theorique": 1.69,
+  "seuil": 4.5,
+  "texte": "#606f6d"
+ },
+ {
+  "chemin": "html > body > header.dalle > div.dalle-inner > div.provenance",
+  "conforme_au_reel": false,
+  "extrait": "Analyse — Claude Opus, session supervisé",
+  "page": "hamlet.html",
+  "ratio_peint": 1.0,
+  "ratio_theorique": 1.04,
+  "seuil": 4.5,
+  "texte": "#2e3534"
+ },
+ {
+  "chemin": "html > body > header.bobine > div.bobine-inner > div.etiquette-bande > span",
+  "conforme_au_reel": false,
+  "extrait": "Bande magnétique · Universal City · août",
+  "page": "hitchcock-truffaut.html",
+  "ratio_peint": 4.48,
+  "ratio_theorique": 4.31,
+  "seuil": 4.5,
+  "texte": "#867c6f"
+ },
+ {
+  "chemin": "html > body > header.bobine > div.bobine-inner > h1 > span.barre",
+  "conforme_au_reel": false,
+  "extrait": "/",
+  "page": "hitchcock-truffaut.html",
+  "ratio_peint": 1.07,
+  "ratio_theorique": 2.94,
+  "seuil": 3,
+  "texte": "#c1201d"
+ },
+ {
+  "chemin": "html > body > header.couverture > div.couverture-inner > div.auteur",
+  "conforme_au_reel": false,
+  "extrait": "Joachim Trier",
+  "page": "julie-en-12-chapitres.html",
+  "ratio_peint": 4.07,
+  "ratio_theorique": 1.74,
+  "seuil": 4.5,
+  "texte": "#c98a77"
+ },
+ {
+  "chemin": "html > body > header.couverture > div.couverture-inner > p.subtitle",
+  "conforme_au_reel": true,
+  "extrait": "2021 — quatre ans de la vie d'une femme ",
+  "page": "julie-en-12-chapitres.html",
+  "ratio_peint": 8.91,
+  "ratio_theorique": 4.43,
+  "seuil": 4.5,
+  "texte": "#f5f2ec"
+ },
+ {
+  "chemin": "html > body > header.couverture > div.couverture-inner > div.meta-line",
+  "conforme_au_reel": false,
+  "extrait": "Norvège / France / Suède / Danemark · 12",
+  "page": "julie-en-12-chapitres.html",
+  "ratio_peint": 2.31,
+  "ratio_theorique": 1.6,
+  "seuil": 4.5,
+  "texte": "#8d939e"
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div > span.compagnie",
+  "conforme_au_reel": false,
+  "extrait": "Overland Stage Line · Territoire de l'Ar",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 2.5,
+  "ratio_theorique": 1.79,
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "conforme_au_reel": false,
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 2.65,
+  "ratio_theorique": 1.79,
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "conforme_au_reel": false,
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 2.65,
+  "ratio_theorique": 1.79,
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "conforme_au_reel": false,
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 2.65,
+  "ratio_theorique": 1.79,
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "chemin": "html > body > header.ligne > div.ligne-inner > div.itineraire > span.fleche",
+  "conforme_au_reel": false,
+  "extrait": "→",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 2.65,
+  "ratio_theorique": 1.79,
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "chemin": "body > header.ligne > div.ligne-inner > div.itineraire > span > strong",
+  "conforme_au_reel": false,
+  "extrait": "Lordsburg",
+  "page": "la-chevauchee-fantastique.html",
+  "ratio_peint": 1.0,
+  "ratio_theorique": 1,
+  "seuil": 4.5,
+  "texte": "#241a12"
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > span.cartel",
+  "conforme_au_reel": false,
+  "extrait": "Italie — 1982 — Toscane, août 1944",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "ratio_peint": 2.65,
+  "ratio_theorique": 2.36,
+  "seuil": 4.5,
+  "texte": "#896619"
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > div.titre-vo",
+  "conforme_au_reel": false,
+  "extrait": "La notte di San Lorenzo",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "ratio_peint": 2.77,
+  "ratio_theorique": 2.38,
+  "seuil": 4.5,
+  "texte": "#566d93"
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > div.generique",
+  "conforme_au_reel": false,
+  "extrait": "Paolo et Vittorio Taviani · Photographie",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "ratio_peint": 2.8,
+  "ratio_theorique": 2.38,
+  "seuil": 4.5,
+  "texte": "#566d93"
+ },
+ {
+  "chemin": "html > body > header.ciel > div.ciel-inner > div.provenance",
+  "conforme_au_reel": false,
+  "extrait": "Analyse — Claude Opus, session supervisé",
+  "page": "la-nuit-de-san-lorenzo.html",
+  "ratio_peint": 1.2,
+  "ratio_theorique": 1.04,
+  "seuil": 4.5,
+  "texte": "#2b374a"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.storm-eyebrow > span.mono",
+  "conforme_au_reel": false,
+  "extrait": "Analyse cinématographique",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.79,
+  "ratio_theorique": 2.77,
+  "seuil": 4.5,
+  "texte": "#9c7b45"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > p.title-orig",
+  "conforme_au_reel": false,
+  "extrait": "A torinói ló",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 4.02,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "conforme_au_reel": false,
+  "extrait": "Jour I",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.14,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "conforme_au_reel": false,
+  "extrait": "Jour II",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.15,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "conforme_au_reel": false,
+  "extrait": "Jour III",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.15,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "conforme_au_reel": false,
+  "extrait": "Jour IV",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.18,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span",
+  "conforme_au_reel": false,
+  "extrait": "Jour V",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.15,
+  "ratio_theorique": 3.03,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > header.storm > div.storm-inner > div.ephemeride > span.jour-vi",
+  "conforme_au_reel": false,
+  "extrait": "Jour VI — obscurité",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 3.09,
+  "ratio_theorique": 2.77,
+  "seuil": 4.5,
+  "texte": "#9c7b45"
+ },
+ {
+  "chemin": "section#reception > blockquote > span.attrib",
+  "conforme_au_reel": false,
+  "extrait": "A. O. Scott, New York Times, cité par Wi",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 2.46,
+  "ratio_theorique": 2.25,
+  "seuil": 4.5,
+  "texte": "#8d867b"
+ },
+ {
+  "chemin": "html > body > footer.extinction",
+  "conforme_au_reel": false,
+  "extrait": "Analyse sourcée · rédigée le 5 juillet 2",
+  "page": "le-cheval-de-turin.html",
+  "ratio_peint": 1.0,
+  "ratio_theorique": 1,
+  "seuil": 4.5,
+  "texte": "#d9d6cf"
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > a.back-link.lien-retour",
+  "conforme_au_reel": false,
+  "extrait": "Retour aux analyses",
+  "page": "le-golem.html",
+  "ratio_peint": 2.38,
+  "ratio_theorique": 1.76,
+  "seuil": 4.5,
+  "texte": "#76612f"
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > div > span.sceau",
+  "conforme_au_reel": false,
+  "extrait": "Prague · règne de Rodolphe II · d'après ",
+  "page": "le-golem.html",
+  "ratio_peint": 2.6,
+  "ratio_theorique": 1.75,
+  "seuil": 4.5,
+  "texte": "#7c5f1f"
+ },
+ {
+  "chemin": "html > body > header.grenier > div.grenier-inner > h1.title",
+  "conforme_au_reel": false,
+  "extrait": "Le Golem",
+  "page": "le-golem.html",
+  "ratio_peint": 2.78,
+  "ratio_theorique": 1.76,
+  "seuil": 3,
+  "texte": "#76612f"
+ },
+ {
+  "chemin": "html > body > header.mur > div.mur-inner > div.meta-line",
+  "conforme_au_reel": true,
+  "extrait": "Royaume-Uni / France · 100 minutes · Cou",
+  "page": "moi-daniel-blake.html",
+  "ratio_peint": 5.38,
+  "ratio_theorique": 4.1,
+  "seuil": 4.5,
+  "texte": "#9aa0a4"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > span.eyebrow.cartel",
+  "conforme_au_reel": false,
+  "extrait": "Royaume-Uni — 1951 — Technicolor · Contr",
+  "page": "pandora-contrechamp.html",
+  "ratio_peint": 3.54,
+  "ratio_theorique": 1.72,
+  "seuil": 4.5,
+  "texte": "#2f7d80"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.provenance > a",
+  "conforme_au_reel": false,
+  "extrait": "→ Voir aussi le champ : analyse du pipel",
+  "page": "pandora-contrechamp.html",
+  "ratio_peint": 2.04,
+  "ratio_theorique": 1.72,
+  "seuil": 4.5,
+  "texte": "#2f7d80"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > a.back-link.lien-retour",
+  "conforme_au_reel": true,
+  "extrait": "Retour aux analyses",
+  "page": "pandora.html",
+  "ratio_peint": 12.02,
+  "ratio_theorique": 1.86,
+  "seuil": 4.5,
+  "texte": "#f2ead9"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > span.eyebrow.cartel",
+  "conforme_au_reel": true,
+  "extrait": "Royaume-Uni — 1951 — Technicolor",
+  "page": "pandora.html",
+  "ratio_peint": 6.04,
+  "ratio_theorique": 1,
+  "seuil": 4.5,
+  "texte": "#c9a97a"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > h1",
+  "conforme_au_reel": true,
+  "extrait": "Pandora",
+  "page": "pandora.html",
+  "ratio_peint": 10.02,
+  "ratio_theorique": 1.86,
+  "seuil": 3,
+  "texte": "#f2ead9"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.orig-title",
+  "conforme_au_reel": true,
+  "extrait": "Pandora and the Flying Dutchman",
+  "page": "pandora.html",
+  "ratio_peint": 7.74,
+  "ratio_theorique": 1.55,
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.meta-line",
+  "conforme_au_reel": true,
+  "extrait": "Albert Lewin · Romulus Films · Photograp",
+  "page": "pandora.html",
+  "ratio_peint": 6.01,
+  "ratio_theorique": 1.55,
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.note",
+  "conforme_au_reel": false,
+  "extrait": "Analyse du pipeline — Claude (routine no",
+  "page": "pandora.html",
+  "ratio_peint": 4.38,
+  "ratio_theorique": 1.55,
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.note > strong",
+  "conforme_au_reel": true,
+  "extrait": "Provenance.",
+  "page": "pandora.html",
+  "ratio_peint": 6.29,
+  "ratio_theorique": 1.86,
+  "seuil": 4.5,
+  "texte": "#f2ead9"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.note > a",
+  "conforme_au_reel": true,
+  "extrait": "→ Voir aussi le contrechamp : analyse dé",
+  "page": "pandora.html",
+  "ratio_peint": 4.51,
+  "ratio_theorique": 1.55,
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.content-warning",
+  "conforme_au_reel": false,
+  "extrait": "Le film comporte un suicide par empoison",
+  "page": "pandora.html",
+  "ratio_peint": 1.6,
+  "ratio_theorique": 1.55,
+  "seuil": 4.5,
+  "texte": "#e2d6bd"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-inner > div.content-warning > strong",
+  "conforme_au_reel": false,
+  "extrait": "Avertissement.",
+  "page": "pandora.html",
+  "ratio_peint": 3.01,
+  "ratio_theorique": 1.86,
+  "seuil": 4.5,
+  "texte": "#f2ead9"
+ },
+ {
+  "chemin": "html > body > header.nuit > div.nuit-inner > div.meta-line",
+  "conforme_au_reel": false,
+  "extrait": "France / Allemagne / Belgique / Qatar / ",
+  "page": "retour-a-seoul.html",
+  "ratio_peint": 3.21,
+  "ratio_theorique": 2.58,
+  "seuil": 4.5,
+  "texte": "#676e76"
+ },
+ {
+  "chemin": "html > body > header.cover > div.cover-frame > h1 > span.r",
+  "conforme_au_reel": false,
+  "extrait": "Rouges",
+  "page": "rouges-et-blancs.html",
+  "ratio_peint": 2.38,
+  "ratio_theorique": 1.9,
+  "seuil": 3,
+  "texte": "#9a2020"
+ },
+ {
+  "chemin": "section#mise-en-scene > div.wrap > div.geometry > div.geo-field > svg > text",
+  "conforme_au_reel": false,
+  "extrait": "MONASTÈRE",
+  "page": "rouges-et-blancs.html",
+  "ratio_peint": 1.17,
+  "ratio_theorique": 1.11,
+  "seuil": 4.5,
+  "texte": "#0c0c0b"
+ },
+ {
+  "chemin": "section#mise-en-scene > div.wrap > div.geometry > div.geo-field > svg > text",
+  "conforme_au_reel": false,
+  "extrait": "HÔPITAL",
+  "page": "rouges-et-blancs.html",
+  "ratio_peint": 1.11,
+  "ratio_theorique": 1.11,
+  "seuil": 4.5,
+  "texte": "#0c0c0b"
+ },
+ {
+  "chemin": "html > body > header.menu > div.menu-inner > span.mono",
+  "conforme_au_reel": false,
+  "extrait": "Analyse cinématographique · M/Y Christin",
+  "page": "sans-filtre.html",
+  "ratio_peint": 2.96,
+  "ratio_theorique": 2.26,
+  "seuil": 4.5,
+  "texte": "#866d30"
+ },
+ {
+  "chemin": "html > body > header.carte-titre > div.carte-titre-inner > div > span.date-bataille",
+  "conforme_au_reel": false,
+  "extrait": "Plateau de Mont-Saint-Jean · 18 juin 181",
+  "page": "waterloo.html",
+  "ratio_peint": 4.33,
+  "ratio_theorique": 3.74,
+  "seuil": 4.5,
+  "texte": "#ad8736"
+ },
+ {
+  "chemin": "html > body > header.carte-titre > div.carte-titre-inner > div.forces > span.neutre",
+  "conforme_au_reel": true,
+  "extrait": "Italie / URSS · 134 min · Couleur",
+  "page": "waterloo.html",
+  "ratio_peint": 5.15,
+  "ratio_theorique": 4.26,
+  "seuil": 4.5,
+  "texte": "#a09682"
+ }
+]

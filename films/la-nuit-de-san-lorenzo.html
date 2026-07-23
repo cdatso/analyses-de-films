@@ -402,7 +402,12 @@
   /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
      valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
      de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
-  div.provenance{ --etoile-dim:#2b374a; }   /* sur #9a9fa7, 1 element(s) */
+  /* CORRECTIF du 23/07 08h52 : meme cas qu'a hamlet. Le bloc de provenance
+     est peint SUR UN FOND SOMBRE, non sur le gris moyen que donnait le calcul
+     de fond effectif. La redefinition precedente, fondee sur ce fond calcule,
+     avait rendu le texte quasi invisible (ratio 1,20 sur pixels reels).
+     Mesure sur PIXELS PEINTS : la teinte d'origine y tient a 8,17. */
+  div.provenance{ --etoile-dim:#b9c4d6; }
 </style>
 </head>
 <body data-volet="critique">

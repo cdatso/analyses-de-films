@@ -394,7 +394,13 @@
   /* Ces variables colorent du texte sur DEUX fonds inconciliables : aucune
      valeur unique ne tient les deux (voir sonde-double-contexte.py). La valeur
      de :root sert le contexte majoritaire ; ici, le contexte minoritaire. */
-  div.provenance{ --brume:#2e3534; }   /* sur #979c9d, 1 element(s) */
+  /* CORRECTIF du 23/07 08h52 : le bloc de provenance est peint SUR UN FOND
+     SOMBRE, et non sur le gris moyen que donnait le calcul de fond effectif
+     (celui-ci composait un rgba semi-transparent sur le corps clair, alors
+     que le bloc vit dans un conteneur sombre). Une premiere redefinition,
+     fondee sur ce fond calcule, avait rendu le texte quasi invisible.
+     Mesure sur PIXELS PEINTS : la teinte d'origine y tient a 6,75. */
+  div.provenance{ --brume:#c9d0cf; }
 </style>
 </head>
 <body data-volet="critique">
