@@ -24,6 +24,7 @@
     --filet-clair:rgba(32,36,44,0.20);
     --sang:#a3302a;
     --mer:#2f7d80;
+    --mer-texte:#276669;
 
     /* Largeur du mobilier partagé (cartouche, bandeau de variante) : calée sur
        la colonne éditoriale de cette page. Sans ce réglage, le filet défensif
@@ -59,7 +60,7 @@
     letter-spacing:0.02em;
   }
 
-  a{ color:var(--mer); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a{ color:var(--mer-texte); text-decoration-thickness:1px; text-underline-offset:2px; }
   a:focus-visible{ outline:2px solid var(--mer); outline-offset:3px; }
 
   .cartel{
@@ -131,7 +132,7 @@
 
   .eyebrow{
     display:block;
-    color:var(--mer);
+    color:var(--mer-texte);
     margin-bottom:1.4rem;
   }
 
@@ -215,8 +216,8 @@
     text-decoration:none;
     border-bottom:1px solid var(--filet);
   }
-  .programme a:hover{ color:var(--mer); }
-  .programme .num{ color:var(--mer); margin-right:0.7rem; }
+  .programme a:hover{ color:var(--mer-texte); }
+  .programme .num{ color:var(--mer-texte); margin-right:0.7rem; }
 
   /* ---------- Corps ---------- */
 
@@ -250,7 +251,7 @@
   }
   h3::before{
     content:"— ";
-    color:var(--mer);
+    color:var(--mer-texte);
   }
 
   /* éclairage théorique deleuzien : sous-section marquée */
@@ -271,7 +272,7 @@
   }
   sup.ref a{
     text-decoration:none;
-    color:var(--mer);
+    color:var(--mer-texte);
     padding:0 0.08em;
   }
   sup.ref a:hover{ text-decoration:underline; }
@@ -360,7 +361,7 @@
   .sources li{ margin-bottom:0.6rem; }
   .sources li::marker{
     font-family:var(--mono);
-    color:var(--mer);
+    color:var(--mer-texte);
   }
 
   footer{

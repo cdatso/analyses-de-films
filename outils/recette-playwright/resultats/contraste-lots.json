@@ -1,7 +1,7 @@
 [
  {
   "deplacement_clarte": 0.592,
-  "elements": 5,
+  "elements": 4,
   "extraits": [
    "Pandora and the Flying Dutchman",
    "Albert Lewin · Romulus Films · Photographie d",
@@ -11,7 +11,7 @@
   "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
-   "pandora.html": 5
+   "pandora.html": 4
   },
   "pire_ratio": 1.55,
   "propose": "#4f4023",
@@ -113,94 +113,58 @@
   "texte": "#8fa39b"
  },
  {
-  "deplacement_clarte": 0.308,
-  "elements": 2,
-  "extraits": [
-   "Гамлет —",
-   "Gamlet"
-  ],
-  "fond": "#434b50",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "hamlet.html": 2
-  },
-  "pire_ratio": 1.68,
-  "propose": "#b0bbbd",
-  "seuil": 4.5,
-  "texte": "#5f6e71"
- },
- {
-  "deplacement_clarte": 0.306,
+  "deplacement_clarte": 0.1,
   "elements": 2,
   "extraits": [
    "Retour aux analyses",
    "Grigori Kozintsev · d'après la traduction de "
   ],
   "fond": "#434b50",
-  "nature": "degrade",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "hamlet.html": 2
   },
-  "pire_ratio": 1.69,
+  "pire_ratio": 3.4,
   "propose": "#b0bbb9",
   "seuil": 4.5,
-  "texte": "#606f6d"
+  "texte": "#95a3a1"
  },
  {
-  "deplacement_clarte": 0.278,
+  "deplacement_clarte": 0.094,
   "elements": 2,
   "extraits": [
-   "Overland Stage Line · Territoire de l'Arizona",
-   "→"
+   "Гамлет —",
+   "Gamlet"
   ],
-  "fond": "#363b41",
-  "nature": "degrade",
+  "fond": "#434b50",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
-   "la-chevauchee-fantastique.html": 2
+   "hamlet.html": 2
   },
-  "pire_ratio": 1.79,
-  "propose": "#dd9086",
+  "pire_ratio": 3.46,
+  "propose": "#b0bbbd",
   "seuil": 4.5,
-  "texte": "#a63d2f"
+  "texte": "#96a4a7"
  },
  {
-  "deplacement_clarte": 0.18,
+  "deplacement_clarte": 0.04,
   "elements": 2,
   "extraits": [
    "La notte di San Lorenzo",
    "Paolo et Vittorio Taviani · Photographie de F"
   ],
   "fond": "#1f3456",
-  "nature": "degrade",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "la-nuit-de-san-lorenzo.html": 2
   },
-  "pire_ratio": 2.38,
-  "propose": "#8a9cbb",
+  "pire_ratio": 3.95,
+  "propose": "#8b9dbb",
   "seuil": 4.5,
-  "texte": "#566d93"
- },
- {
-  "deplacement_clarte": 0.158,
-  "elements": 2,
-  "extraits": [
-   "Analyse cinématographique",
-   "Jour VI — obscurité"
-  ],
-  "fond": "#413c35",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "le-cheval-de-turin.html": 2
-  },
-  "pire_ratio": 2.77,
-  "propose": "#c0a271",
-  "seuil": 4.5,
-  "texte": "#9c7b45"
+  "texte": "#7e92b3"
  },
  {
   "deplacement_clarte": 0.128,
@@ -221,40 +185,40 @@
   "texte": "#8d867b"
  },
  {
-  "deplacement_clarte": 0.19,
+  "deplacement_clarte": 0.06,
+  "elements": 2,
+  "extraits": [
+   "Analyse cinématographique",
+   "Jour VI — obscurité"
+  ],
+  "fond": "#413c35",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "le-cheval-de-turin.html": 2
+  },
+  "pire_ratio": 3.85,
+  "propose": "#c0a271",
+  "seuil": 4.5,
+  "texte": "#b7945c"
+ },
+ {
+  "deplacement_clarte": 0.128,
   "elements": 2,
   "extraits": [
    "Royaume-Uni — 1951 — Technicolor · Contrecham",
    "→ Voir aussi le champ : analyse du pipeline ("
   ],
   "fond": "#b8955f",
-  "nature": "degrade",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "pandora-contrechamp.html": 2
   },
-  "pire_ratio": 1.72,
+  "pire_ratio": 2.35,
   "propose": "#153839",
   "seuil": 4.5,
-  "texte": "#2f7d80"
- },
- {
-  "deplacement_clarte": 0.024,
-  "elements": 2,
-  "extraits": [
-   "Pandora — Champ — Critique",
-   "I"
-  ],
-  "fond": "#f2ead9",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "pandora-contrechamp.html": 2
-  },
-  "pire_ratio": 4.02,
-  "propose": "#2c7477",
-  "seuil": 4.5,
-  "texte": "#2f7d80"
+  "texte": "#276669"
  },
  {
   "deplacement_clarte": 0.688,
@@ -378,23 +342,6 @@
   "texte": "#d5b18c"
  },
  {
-  "deplacement_clarte": 1.0,
-  "elements": 1,
-  "extraits": [
-   "S"
-  ],
-  "fond": "#7a4a24",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "hitchcock-truffaut.html": 1
-  },
-  "pire_ratio": 2.52,
-  "propose": "#ffffff",
-  "seuil": 4.5,
-  "texte": "#15120f"
- },
- {
   "deplacement_clarte": 0.006,
   "elements": 1,
   "extraits": [
@@ -514,6 +461,40 @@
   "texte": "#f5f2ec"
  },
  {
+  "deplacement_clarte": 0.278,
+  "elements": 1,
+  "extraits": [
+   "→"
+  ],
+  "fond": "#363b41",
+  "nature": "degrade",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 1.79,
+  "propose": "#dd9086",
+  "seuil": 4.5,
+  "texte": "#a63d2f"
+ },
+ {
+  "deplacement_clarte": 0.104,
+  "elements": 1,
+  "extraits": [
+   "Overland Stage Line · Territoire de l'Arizona"
+  ],
+  "fond": "#363b41",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "la-chevauchee-fantastique.html": 1
+  },
+  "pire_ratio": 3.19,
+  "propose": "#dd9086",
+  "seuil": 4.5,
+  "texte": "#d16a5d"
+ },
+ {
   "deplacement_clarte": 0.14,
   "elements": 1,
   "extraits": [
@@ -565,24 +546,7 @@
   "texte": "#8d867b"
  },
  {
-  "deplacement_clarte": 0.232,
-  "elements": 1,
-  "extraits": [
-   "Prague · règne de Rodolphe II · d'après la lé"
-  ],
-  "fond": "#553928",
-  "nature": "degrade",
-  "opacite": 1,
-  "pages": {
-   "le-golem.html": 1
-  },
-  "pire_ratio": 1.75,
-  "propose": "#d0a342",
-  "seuil": 4.5,
-  "texte": "#7c5f1f"
- },
- {
-  "deplacement_clarte": 0.258,
+  "deplacement_clarte": 0.218,
   "elements": 1,
   "extraits": [
    "Retour aux analyses"
@@ -593,13 +557,13 @@
   "pages": {
    "le-golem.html": 1
   },
-  "pire_ratio": 1.76,
-  "propose": "#c2a766",
+  "pire_ratio": 2.12,
+  "propose": "#c2a767",
   "seuil": 4.5,
-  "texte": "#76612f"
+  "texte": "#856d35"
  },
  {
-  "deplacement_clarte": 0.122,
+  "deplacement_clarte": 0.082,
   "elements": 1,
   "extraits": [
    "Le Golem"
@@ -610,27 +574,27 @@
   "pages": {
    "le-golem.html": 1
   },
-  "pire_ratio": 1.76,
-  "propose": "#a28641",
+  "pire_ratio": 2.12,
+  "propose": "#a38641",
   "seuil": 3,
-  "texte": "#76612f"
+  "texte": "#856d35"
  },
  {
-  "deplacement_clarte": 0.208,
+  "deplacement_clarte": 0.138,
   "elements": 1,
   "extraits": [
-   "Analyse sourcée · rédigée le 6 juillet 2026 ·"
+   "Prague · règne de Rodolphe II · d'après la lé"
   ],
-  "fond": "#ebebe8",
-  "nature": "texte courant",
+  "fond": "#553928",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
-   "moi-daniel-blake.html": 1
+   "le-golem.html": 1
   },
-  "pire_ratio": 2.21,
-  "propose": "#646b6f",
+  "pire_ratio": 2.76,
+  "propose": "#d0a443",
   "seuil": 4.5,
-  "texte": "#9aa0a4"
+  "texte": "#a37d29"
  },
  {
   "deplacement_clarte": 0.032,
@@ -648,23 +612,6 @@
   "propose": "#a3a8ac",
   "seuil": 4.5,
   "texte": "#9aa0a4"
- },
- {
-  "deplacement_clarte": 0.06,
-  "elements": 1,
-  "extraits": [
-   "2"
-  ],
-  "fond": "#e2d6bd",
-  "nature": "texte courant",
-  "opacite": 1,
-  "pages": {
-   "pandora-contrechamp.html": 1
-  },
-  "pire_ratio": 3.34,
-  "propose": "#27676a",
-  "seuil": 4.5,
-  "texte": "#2f7d80"
  },
  {
   "deplacement_clarte": 0.406,
@@ -718,6 +665,23 @@
   "texte": "#c9a97a"
  },
  {
+  "deplacement_clarte": 0.768,
+  "elements": 1,
+  "extraits": [
+   "Le film comporte un suicide par empoisonnemen"
+  ],
+  "fond": "#c9a97a",
+  "nature": "degrade partiel",
+  "opacite": 1,
+  "pages": {
+   "pandora.html": 1
+  },
+  "pire_ratio": 2.15,
+  "propose": "#4c4120",
+  "seuil": 4.5,
+  "texte": "#fcfbf8"
+ },
+ {
   "deplacement_clarte": 0.002,
   "elements": 1,
   "extraits": [
@@ -735,21 +699,21 @@
   "texte": "#615c53"
  },
  {
-  "deplacement_clarte": 0.162,
+  "deplacement_clarte": 0.062,
   "elements": 1,
   "extraits": [
    "France / Allemagne / Belgique / Qatar / Cambo"
   ],
   "fond": "#452634",
-  "nature": "degrade",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "retour-a-seoul.html": 1
   },
-  "pire_ratio": 2.58,
+  "pire_ratio": 3.66,
   "propose": "#91979f",
   "seuil": 4.5,
-  "texte": "#676e76"
+  "texte": "#808790"
  },
  {
   "deplacement_clarte": 0.22,
@@ -786,24 +750,24 @@
   "texte": "#0c0c0b"
  },
  {
-  "deplacement_clarte": 0.132,
+  "deplacement_clarte": 0.062,
   "elements": 1,
   "extraits": [
    "Rouges"
   ],
   "fond": "#26251f",
-  "nature": "degrade",
+  "nature": "degrade partiel",
   "opacite": 1,
   "pages": {
    "rouges-et-blancs.html": 1
   },
-  "pire_ratio": 1.9,
-  "propose": "#d22c2c",
+  "pire_ratio": 2.43,
+  "propose": "#d12b2b",
   "seuil": 3,
-  "texte": "#9a2020"
+  "texte": "#b72626"
  },
  {
-  "deplacement_clarte": 0.178,
+  "deplacement_clarte": 0.11,
   "elements": 1,
   "extraits": [
    "01"
@@ -814,10 +778,10 @@
   "pages": {
    "rouges-et-blancs.html": 1
   },
-  "pire_ratio": 2.53,
+  "pire_ratio": 3.22,
   "propose": "#d73e3e",
   "seuil": 4.5,
-  "texte": "#9a2020"
+  "texte": "#b72626"
  },
  {
   "deplacement_clarte": 0.182,
