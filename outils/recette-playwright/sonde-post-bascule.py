@@ -69,15 +69,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--public", action="store_true",
                     help="interroge le site EN LIGNE")
+    ap.add_argument("--avant", action="store_true",
+                    help="AVANT la bascule : les 5 pages du menu v2 "
+                         "n'existent pas encore et ne sont pas attendues")
     ap.add_argument("--base", default=None)
     args = ap.parse_args()
 
     base = args.base or (BASE_PUBLIQUE if args.public else harnais.BASE)
     base = base.rstrip("/")
     urls = urls_de_annexe_a()
-    print("base      : %s" % base)
-    print("checklist : %d URLs (annexe A) + %d pages du menu v2"
-          % (len(urls), len(PAGES_MENU_V2)))
+    # Le mode --avant existe parce que la sonde, jouee sur le site EN LIGNE
+    # avant la bascule, signale legitimement 5 manquants : les pages du menu
+    # v2 ne sont pas encore publiees. Un outil qui crie au fallback dans une
+    # situation normale apprend a ignorer ses propres alarmes.
+    menu = [] if args.avant else PAGES_MENU_V2
+    print("base      : %s%s" % (base, "   [AVANT BASCULE]" if args.avant
+                                else ""))
+    print("checklist : %d URLs (annexe A)%s"
+          % (len(urls), " + %d pages du menu v2" % len(menu) if menu else ""))
     print("")
 
     depart = time.time()
@@ -90,7 +99,7 @@ def main():
         page = ctx.new_page()
 
         # --- 1 et 2 : les documents repondent-ils ?
-        for chemin in urls + PAGES_MENU_V2:
+        for chemin in urls + menu:
             cible = base + "/" + chemin.lstrip("/")
             try:
                 r = page.goto(cible, wait_until="domcontentloaded",
@@ -103,11 +112,11 @@ def main():
                 fallback.append("%s -> %s" % (chemin, code or "pas de reponse"))
                 print("  ECHEC  %-42s %s" % (chemin, code or "injoignable"))
         print("  documents en echec : %d / %d"
-              % (len(fallback), len(urls) + len(PAGES_MENU_V2)))
+              % (len(fallback), len(urls) + len(menu)))
 
         # --- 3 et 4 : les feuilles et les fontes sont-elles SERVIES ?
         print("")
-        for chemin in TEMOINS:
+        for chemin in ([] if args.avant else TEMOINS):
             page.goto(base + "/" + chemin, wait_until="load", timeout=25000)
             page.wait_for_timeout(600)
             s = page.evaluate(JS_STRUCTURE)
