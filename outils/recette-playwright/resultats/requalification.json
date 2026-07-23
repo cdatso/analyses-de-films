@@ -1,0 +1,2693 @@
+[
+ {
+  "detail": [
+   {
+    "chemin": " header.river > div.river-inner > p.title-orig",
+    "extrait": "House by the River",
+    "fonds_dominants": [
+     "#1c312a",
+     "#1d322b",
+     "#1c312b"
+    ],
+    "ratio_reel": 5.11,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "header.river > div.river-inner > div.meta-line",
+    "extrait": "États-Unis · Republic Pictures · 88 minutes ",
+    "fonds_dominants": [
+     "#28413a",
+     "#27403a"
+    ],
+    "ratio_reel": 4.13,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.colophon-final",
+    "extrait": "Analyse sourcée · rédigée le 5 juillet 2026 ",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.16,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 3,
+  "page": "au-fil-de-leau.html",
+  "propose": "#596c64",
+  "ratio_annonce": 2.16,
+  "ratio_reel": 2.16,
+  "seuil": 4.5,
+  "valeur": "#8fa39b",
+  "variable": "--mist",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "iv.river-inner > div.river-eyebrow > span.mono",
+    "extrait": "Analyse cinématographique",
+    "fonds_dominants": [
+     "#192b25",
+     "#1a2c26",
+     "#1a2b25"
+    ],
+    "ratio_reel": 4.85,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "iv.river-inner > div.river-eyebrow > span.wave",
+    "extrait": "≈≈≈",
+    "fonds_dominants": [
+     "#192b25",
+     "#1a2c26",
+     "#1a2b25"
+    ],
+    "ratio_reel": 4.85,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#fiche > div.folio > span.num",
+    "extrait": "Ch. I",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.folio > span.num",
+    "extrait": "Ch. II",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#contexte > div.folio > span.num",
+    "extrait": "Ch. III",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.folio > span.num",
+    "extrait": "Ch. IV",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#technique > div.folio > span.num",
+    "extrait": "Ch. V",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#personnages > div.folio > span.num",
+    "extrait": "Ch. VI",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.folio > span.num",
+    "extrait": "Ch. VII",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.folio > span.num",
+    "extrait": "Ch. VIII",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#conclusion > div.folio > span.num",
+    "extrait": "Ch. IX",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > div.folio > span.num",
+    "extrait": "✦",
+    "fonds_dominants": [
+     "#ece7da"
+    ],
+    "ratio_reel": 2.45,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "au-fil-de-leau.html",
+  "propose": "#d8bc8b",
+  "ratio_annonce": 2.45,
+  "ratio_reel": 2.45,
+  "seuil": 4.5,
+  "valeur": "#b98d3f",
+  "variable": "--gaslight",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "> div.brochure-inner > a.back-link.lien-retour",
+    "extrait": "Retour aux analyses",
+    "fonds_dominants": [
+     "#3b8883",
+     "#3b8984",
+     "#3b8884"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "eader.brochure > div.brochure-inner > h1.title",
+    "extrait": "Bienvenue à Suburbicon",
+    "fonds_dominants": [
+     "#357b77"
+    ],
+    "ratio_reel": 4.31,
+    "seuil": 3
+   },
+   {
+    "chemin": "der.brochure > div.brochure-inner > p.subtitle",
+    "extrait": "George Clooney, 2017 — un scénario noir des ",
+    "fonds_dominants": [
+     "#31736f"
+    ],
+    "ratio_reel": 4.8,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " div.brochure-inner > div.brochure-meta > span",
+    "extrait": "États-Unis · Paramount",
+    "fonds_dominants": [
+     "#2c6865",
+     "#2d6966",
+     "#2d6965"
+    ],
+    "ratio_reel": 5.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " div.brochure-inner > div.brochure-meta > span",
+    "extrait": "105 minutes · Couleur",
+    "fonds_dominants": [
+     "#2c6865",
+     "#2d6966",
+     "#2d6965"
+    ],
+    "ratio_reel": 5.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " div.brochure-inner > div.brochure-meta > span",
+    "extrait": "Comédie noire / satire",
+    "fonds_dominants": [
+     "#2c6865",
+     "#2d6966",
+     "#2d6965"
+    ],
+    "ratio_reel": 5.51,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 3,
+  "page": "bienvenue-a-suburbicon.html",
+  "propose": "#201a0d",
+  "ratio_annonce": 3.33,
+  "ratio_reel": 3.59,
+  "seuil": 3,
+  "valeur": "#f4efe3",
+  "variable": "--creme",
+  "verdict": "CONFORME"
+ },
+ {
+  "detail": [
+   {
+    "chemin": " header.dalle > div.dalle-inner > div.titre-vo",
+    "extrait": "Гамлет —",
+    "fonds_dominants": [
+     "#31383c",
+     "#30373b",
+     "#32393d"
+    ],
+    "ratio_reel": 2.21,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "er.dalle > div.dalle-inner > div.titre-vo > em",
+    "extrait": "Gamlet",
+    "fonds_dominants": [
+     "#30373b",
+     "#2f363a"
+    ],
+    "ratio_reel": 2.28,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "hamlet.html",
+  "propose": "#b0bbbd",
+  "ratio_annonce": 1.68,
+  "ratio_reel": 2.21,
+  "seuil": 4.5,
+  "valeur": "#5f6e71",
+  "variable": "--mer",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "dalle > div.dalle-inner > a.retour.lien-retour",
+    "extrait": "Retour aux analyses",
+    "fonds_dominants": [
+     "#2d3337"
+    ],
+    "ratio_reel": 2.43,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "header.dalle > div.dalle-inner > div.generique",
+    "extrait": "Grigori Kozintsev · d'après la traduction de",
+    "fonds_dominants": [
+     "#31383c",
+     "#30373b"
+    ],
+    "ratio_reel": 2.27,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "hamlet.html",
+  "propose": "#b0bbb9",
+  "ratio_annonce": 1.69,
+  "ratio_reel": 2.27,
+  "seuil": 4.5,
+  "valeur": "#606f6d",
+  "variable": "--brume",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "verture > div.couverture-inner > div.meta-line",
+    "extrait": "Norvège / France / Suède / Danemark · 128 mi",
+    "fonds_dominants": [
+     "#565567"
+    ],
+    "ratio_reel": 2.35,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Réalisation",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Scénario",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Photographie",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Interprètes",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Production",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Tournage",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Première",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "che-layout > div.pagedegarde > div > div.label",
+    "extrait": "Distinctions",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > blockquote > span.attrib",
+    "extrait": "Consensus Rotten Tomatoes, cité par Wikipédi",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.acheve",
+    "extrait": "Analyse sourcée · rédigée le 6 juillet 2026 ",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.76,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 4,
+  "page": "julie-en-12-chapitres.html",
+  "propose": "#f4f4f5",
+  "ratio_annonce": 1.6,
+  "ratio_reel": 2.35,
+  "seuil": 4.5,
+  "valeur": "#8d939e",
+  "variable": "--gris-fjord",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "couverture > div.couverture-inner > div.auteur",
+    "extrait": "Joachim Trier",
+    "fonds_dominants": [
+     "#2b3953",
+     "#2b3a53",
+     "#2a3953"
+    ],
+    "ratio_reel": 4.03,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Prologue",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 1",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 2",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 3",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 4",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 5",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 6",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Ch. 7",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Épilogue",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > nav.matiere > ol > li > span.no",
+    "extrait": "Notes",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 2.84,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#fiche > div.chapitre-tete > span.no",
+    "extrait": "Prologue",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 1",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#contexte > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 2",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ection#structure > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 3",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ection#technique > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 4",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "tion#personnages > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 5",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 6",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ection#reception > div.chapitre-tete > span.no",
+    "extrait": "Chapitre 7",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ction#conclusion > div.chapitre-tete > span.no",
+    "extrait": "Épilogue",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > div.chapitre-tete > span.no",
+    "extrait": "Notes",
+    "fonds_dominants": [
+     "#f5f2ec"
+    ],
+    "ratio_reel": 2.54,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 3,
+  "page": "julie-en-12-chapitres.html",
+  "propose": "#f9f3f1",
+  "ratio_annonce": 1.74,
+  "ratio_reel": 2.54,
+  "seuil": 4.5,
+  "valeur": "#c98a77",
+  "variable": "--aube",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "ligne > div.ligne-inner > div > span.compagnie",
+    "extrait": "Overland Stage Line · Territoire de l'Arizon",
+    "fonds_dominants": [
+     "#291e16",
+     "#291f17",
+     "#2a1f17"
+    ],
+    "ratio_reel": 2.55,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "div.ligne-inner > div.itineraire > span.fleche",
+    "extrait": "→",
+    "fonds_dominants": [
+     "#251b13",
+     "#261b13"
+    ],
+    "ratio_reel": 2.67,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "div.ligne-inner > div.itineraire > span.fleche",
+    "extrait": "→",
+    "fonds_dominants": [
+     "#251b13",
+     "#261b13"
+    ],
+    "ratio_reel": 2.67,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "div.ligne-inner > div.itineraire > span.fleche",
+    "extrait": "→",
+    "fonds_dominants": [
+     "#251b13",
+     "#261b13"
+    ],
+    "ratio_reel": 2.67,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "div.ligne-inner > div.itineraire > span.fleche",
+    "extrait": "→",
+    "fonds_dominants": [
+     "#251b13",
+     "#261b13"
+    ],
+    "ratio_reel": 2.67,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#fiche > div.relais > span.halte",
+    "extrait": "Départ · Tonto",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.relais > span.halte",
+    "extrait": "Relais n°1",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#contexte > div.relais > span.halte",
+    "extrait": "Relais n°2 · Dry Fork",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.relais > span.halte",
+    "extrait": "Relais n°3 · Apache Wells",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#technique > div.relais > span.halte",
+    "extrait": "Relais n°4",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#personnages > div.relais > span.halte",
+    "extrait": "Relais n°5 · Lee's Ferry",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.relais > span.halte",
+    "extrait": "Relais n°6",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.relais > span.halte",
+    "extrait": "Relais n°7",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#conclusion > div.relais > span.halte",
+    "extrait": "Terminus · Lordsburg",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > div.relais > span.halte",
+    "extrait": "Registre de la compagnie",
+    "fonds_dominants": [
+     "#e9dbbd"
+    ],
+    "ratio_reel": 4.6,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "la-chevauchee-fantastique.html",
+  "propose": "#dd9086",
+  "ratio_annonce": 1.79,
+  "ratio_reel": 2.55,
+  "seuil": 4.5,
+  "valeur": "#a63d2f",
+  "variable": "--mesa",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": " > header.ciel > div.ciel-inner > div.titre-vo",
+    "extrait": "La notte di San Lorenzo",
+    "fonds_dominants": [
+     "#172946",
+     "#182a47",
+     "#172846"
+    ],
+    "ratio_reel": 2.74,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "> header.ciel > div.ciel-inner > div.generique",
+    "extrait": "Paolo et Vittorio Taviani · Photographie de ",
+    "fonds_dominants": [
+     "#172845"
+    ],
+    "ratio_reel": 2.81,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "la-nuit-de-san-lorenzo.html",
+  "propose": "#8a9cbb",
+  "ratio_annonce": 2.38,
+  "ratio_reel": 2.74,
+  "seuil": 4.5,
+  "valeur": "#566d93",
+  "variable": "--etoile-dim",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": " header.storm > div.storm-inner > p.title-orig",
+    "extrait": "A torinói ló",
+    "fonds_dominants": [
+     "#2b2824",
+     "#2b2823",
+     "#2a2823"
+    ],
+    "ratio_reel": 4.07,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "torm > div.storm-inner > div.ephemeride > span",
+    "extrait": "Jour I",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "torm > div.storm-inner > div.ephemeride > span",
+    "extrait": "Jour II",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "torm > div.storm-inner > div.ephemeride > span",
+    "extrait": "Jour III",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "torm > div.storm-inner > div.ephemeride > span",
+    "extrait": "Jour IV",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "torm > div.storm-inner > div.ephemeride > span",
+    "extrait": "Jour V",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.59,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > blockquote > span.attrib",
+    "extrait": "A. O. Scott, New York Times, cité par Wikipé",
+    "fonds_dominants": [
+     "#d9d6cf"
+    ],
+    "ratio_reel": 2.48,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 3,
+  "page": "le-cheval-de-turin.html",
+  "propose": "#5b564f",
+  "ratio_annonce": 2.25,
+  "ratio_reel": 2.48,
+  "seuil": 4.5,
+  "valeur": "#8d867b",
+  "variable": "--dust",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "iv.storm-inner > div.storm-eyebrow > span.mono",
+    "extrait": "Analyse cinématographique",
+    "fonds_dominants": [
+     "#262420",
+     "#262320",
+     "#272420"
+    ],
+    "ratio_reel": 3.92,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "iv.storm-inner > div.ephemeride > span.jour-vi",
+    "extrait": "Jour VI — obscurité",
+    "fonds_dominants": [
+     "#35312b",
+     "#34302a",
+     "#35302a"
+    ],
+    "ratio_reel": 3.28,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "le-cheval-de-turin.html",
+  "propose": "#c0a271",
+  "ratio_annonce": 2.77,
+  "ratio_reel": 3.28,
+  "seuil": 4.5,
+  "valeur": "#9c7b45",
+  "variable": "--lamp",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "rm > div.storm-inner > a.back-link.lien-retour",
+    "extrait": "Retour aux analyses",
+    "fonds_dominants": [
+     "#24221e",
+     "#24221f",
+     "#25221f"
+    ],
+    "ratio_reel": 10.9,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "dy > header.storm > div.storm-inner > h1.title",
+    "extrait": "Le Cheval de Turin",
+    "fonds_dominants": [
+     "#2a2723",
+     "#292622",
+     "#282521"
+    ],
+    "ratio_reel": 10.24,
+    "seuil": 3
+   },
+   {
+    "chemin": " > header.storm > div.storm-inner > p.subtitle",
+    "extrait": "Béla Tarr, 2011 — six jours de vent, un puit",
+    "fonds_dominants": [
+     "#2d2a25",
+     "#2e2b26"
+    ],
+    "ratio_reel": 9.71,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.extinction",
+    "extrait": "Analyse sourcée · rédigée le 5 juillet 2026 ",
+    "fonds_dominants": [
+     "#45413c"
+    ],
+    "ratio_reel": 6.98,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 1,
+  "page": "le-cheval-de-turin.html",
+  "propose": "#635d4e",
+  "ratio_annonce": 1,
+  "ratio_reel": 6.98,
+  "seuil": 3,
+  "valeur": "#d9d6cf",
+  "variable": "--storm",
+  "verdict": "CONFORME"
+ },
+ {
+  "detail": [
+   {
+    "chemin": " > div.grenier-inner > a.back-link.lien-retour",
+    "extrait": "Retour aux analyses",
+    "fonds_dominants": [
+     "#322218"
+    ],
+    "ratio_reel": 2.56,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " header.grenier > div.grenier-inner > h1.title",
+    "extrait": "Le Golem",
+    "fonds_dominants": [
+     "#1f1914",
+     "#201a14"
+    ],
+    "ratio_reel": 2.89,
+    "seuil": 3
+   }
+  ],
+  "elements": 2,
+  "page": "le-golem.html",
+  "propose": "#c2a766",
+  "ratio_annonce": 1.76,
+  "ratio_reel": 2.56,
+  "seuil": 3,
+  "valeur": "#76612f",
+  "variable": "--parchemin-texte",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "grenier > div.grenier-inner > div > span.sceau",
+    "extrait": "Prague · règne de Rodolphe II · d'après la l",
+    "fonds_dominants": [
+     "#1f1914"
+    ],
+    "ratio_reel": 2.91,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#fiche > div.signe > span.ref",
+    "extrait": "Signe I",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.signe > span.ref",
+    "extrait": "Signe II",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#contexte > div.signe > span.ref",
+    "extrait": "Signe III",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.signe > span.ref",
+    "extrait": "Signe IV",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#technique > div.signe > span.ref",
+    "extrait": "Signe V",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#personnages > div.signe > span.ref",
+    "extrait": "Signe VI",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.signe > span.ref",
+    "extrait": "Signe VII",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.signe > span.ref",
+    "extrait": "Signe VIII",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#conclusion > div.signe > span.ref",
+    "extrait": "Signe IX · Le mot effacé",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > div.signe > span.ref",
+    "extrait": "Colophon",
+    "fonds_dominants": [
+     "#e9dfc8"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 1,
+  "page": "le-golem.html",
+  "propose": "#d0a342",
+  "ratio_annonce": 1.75,
+  "ratio_reel": 2.91,
+  "seuil": 4.5,
+  "valeur": "#7c5f1f",
+  "variable": "--kabbale-texte",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "y > header.mur > div.mur-inner > div.meta-line",
+    "extrait": "Royaume-Uni / France · 100 minutes · Couleur",
+    "fonds_dominants": [
+     "#23282c",
+     "#23272c",
+     "#24282d"
+    ],
+    "ratio_reel": 5.6,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.file-attente",
+    "extrait": "Analyse sourcée · rédigée le 6 juillet 2026 ",
+    "fonds_dominants": [
+     "#ebebe8"
+    ],
+    "ratio_reel": 2.21,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "moi-daniel-blake.html",
+  "propose": "#646b6f",
+  "ratio_annonce": 2.21,
+  "ratio_reel": 2.21,
+  "seuil": 4.5,
+  "valeur": "#9aa0a4",
+  "variable": "--gris",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": ".cover > div.cover-inner > span.eyebrow.cartel",
+    "extrait": "Royaume-Uni — 1951 — Technicolor · Contrecha",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "r.cover > div.cover-inner > div.provenance > a",
+    "extrait": "→ Voir aussi le champ : analyse du pipeline ",
+    "fonds_dominants": [
+     "#e3e1d2"
+    ],
+    "ratio_reel": 3.66,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ml > body > div.mobilier-wrap > p.variante > a",
+    "extrait": "Pandora — Champ — Critique",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "I",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "II",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "III",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "IV",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "V",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VI",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VII",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VIII",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "IX",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "·",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+    "extrait": "2",
+    "fonds_dominants": [
+     "#e2d6bd"
+    ],
+    "ratio_reel": 3.34,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+    "extrait": "2",
+    "fonds_dominants": [
+     "#e2d6bd"
+    ],
+    "ratio_reel": 3.34,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "fiche-wrap > div.fiche > dl > dd > sup.ref > a",
+    "extrait": "2",
+    "fonds_dominants": [
+     "#e2d6bd"
+    ],
+    "ratio_reel": 3.34,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#production > p > sup.ref > a",
+    "extrait": "3",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#production > p > sup.ref > a",
+    "extrait": "2",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > p > sup.ref > a",
+    "extrait": "2",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > p > sup.ref > a",
+    "extrait": "8",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#mise-en-scene > p > sup.ref > a",
+    "extrait": "7",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#mise-en-scene > p > sup.ref > a",
+    "extrait": "3",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#mise-en-scene > p > sup.ref > a",
+    "extrait": "3",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#mise-en-scene > p > sup.ref > a",
+    "extrait": "11",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#personnages > p > sup.ref > a",
+    "extrait": "5",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > p > sup.ref > a",
+    "extrait": "8",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > p > sup.ref > a",
+    "extrait": "7",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > p > sup.ref > a",
+    "extrait": "6",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > p > sup.ref > a",
+    "extrait": "8",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > p > sup.ref > a",
+    "extrait": "12",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > p > sup.ref > a",
+    "extrait": "10",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-1 > a",
+    "extrait": "catalog.afi.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-2 > a",
+    "extrait": "bfi.org.uk",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-3 > a",
+    "extrait": "tcm.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-4 > a",
+    "extrait": "tcm.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-5 > a",
+    "extrait": "dvdclassik.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-6 > a",
+    "extrait": "critikat.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-7 > a",
+    "extrait": "journals.openedition.org",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-8 > a",
+    "extrait": "bfidatadigipres.github.io",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-9 > a",
+    "extrait": "arte.tv",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-10 > a",
+    "extrait": "timeout.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-11 > a",
+    "extrait": "jonathanrosenbaum.net",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "li#src-12 > a",
+    "extrait": "film-foundation.org",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > p > a",
+    "extrait": "cineclubdecaen.com",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > p > a",
+    "extrait": "cinematheque.fr",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 4.02,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 5,
+  "page": "pandora-contrechamp.html",
+  "propose": "#153839",
+  "ratio_annonce": 1.72,
+  "ratio_reel": 3.34,
+  "seuil": 4.5,
+  "valeur": "#2f7d80",
+  "variable": "--mer",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "eader.cover > div.cover-inner > div.orig-title",
+    "extrait": "Pandora and the Flying Dutchman",
+    "fonds_dominants": [
+     "#1b3b5c",
+     "#1b3a5b",
+     "#1a3a5a"
+    ],
+    "ratio_reel": 7.99,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "header.cover > div.cover-inner > div.meta-line",
+    "extrait": "Albert Lewin · Romulus Films · Photographie ",
+    "fonds_dominants": [
+     "#284a6c",
+     "#294b6d",
+     "#27496b"
+    ],
+    "ratio_reel": 6.19,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "dy > header.cover > div.cover-inner > div.note",
+    "extrait": "Analyse du pipeline — Claude (routine noctur",
+    "fonds_dominants": [
+     "#244260",
+     "#254361",
+     "#254360"
+    ],
+    "ratio_reel": 7.1,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " header.cover > div.cover-inner > div.note > a",
+    "extrait": "→ Voir aussi le contrechamp : analyse délégu",
+    "fonds_dominants": [
+     "#274563",
+     "#274663",
+     "#274664"
+    ],
+    "ratio_reel": 6.68,
+    "seuil": 4.5
+   },
+   {
+    "chemin": ".cover > div.cover-inner > div.content-warning",
+    "extrait": "Le film comporte un suicide par empoisonneme",
+    "fonds_dominants": [
+     "#7e725b"
+    ],
+    "ratio_reel": 3.28,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 5,
+  "page": "pandora.html",
+  "propose": "#4f4023",
+  "ratio_annonce": 1.55,
+  "ratio_reel": 3.28,
+  "seuil": 4.5,
+  "valeur": "#e2d6bd",
+  "variable": "--platre-dim",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "er > div.cover-inner > a.back-link.lien-retour",
+    "extrait": "Retour aux analyses",
+    "fonds_dominants": [
+     "#122943",
+     "#122a44",
+     "#122944"
+    ],
+    "ratio_reel": 12.17,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "l > body > header.cover > div.cover-inner > h1",
+    "extrait": "Pandora",
+    "fonds_dominants": [
+     "#173351"
+    ],
+    "ratio_reel": 10.77,
+    "seuil": 3
+   },
+   {
+    "chemin": "er.cover > div.cover-inner > div.note > strong",
+    "extrait": "Provenance.",
+    "fonds_dominants": [
+     "#23415e",
+     "#24415f",
+     "#244260"
+    ],
+    "ratio_reel": 8.67,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "div.cover-inner > div.content-warning > strong",
+    "extrait": "Avertissement.",
+    "fonds_dominants": [
+     "#605d53"
+    ],
+    "ratio_reel": 5.5,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 3,
+  "page": "pandora.html",
+  "propose": "#51401c",
+  "ratio_annonce": 1.86,
+  "ratio_reel": 5.5,
+  "seuil": 3,
+  "valeur": "#f2ead9",
+  "variable": "--platre",
+  "verdict": "CONFORME"
+ },
+ {
+  "detail": [
+   {
+    "chemin": ".cover > div.cover-inner > span.eyebrow.cartel",
+    "extrait": "Royaume-Uni — 1951 — Technicolor",
+    "fonds_dominants": [
+     "#152f4b",
+     "#152f4c"
+    ],
+    "ratio_reel": 6.12,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "I",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "II",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "III",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "IV",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "V",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VI",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VII",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "VIII",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "IX",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "·",
+    "fonds_dominants": [
+     "#f2ead9"
+    ],
+    "ratio_reel": 1.86,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "pandora.html",
+  "propose": "#523f21",
+  "ratio_annonce": 1,
+  "ratio_reel": 1.86,
+  "seuil": 4.5,
+  "valeur": "#c9a97a",
+  "variable": "--sable",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "> header.nuit > div.nuit-inner > div.meta-line",
+    "extrait": "France / Allemagne / Belgique / Qatar / Camb",
+    "fonds_dominants": [
+     "#1b1f26",
+     "#1b1f25",
+     "#1a1e25"
+    ],
+    "ratio_reel": 3.2,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.classement",
+    "extrait": "Analyse sourcée · rédigée le 6 juillet 2026 ",
+    "fonds_dominants": [
+     "#eef0ef"
+    ],
+    "ratio_reel": 4.51,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 1,
+  "page": "retour-a-seoul.html",
+  "propose": "#91979f",
+  "ratio_annonce": 2.58,
+  "ratio_reel": 3.2,
+  "seuil": 4.5,
+  "valeur": "#676e76",
+  "variable": "--gris-texte",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "> header.cover > div.cover-frame > h1 > span.r",
+    "extrait": "Rouges",
+    "fonds_dominants": [
+     "#0d0d0b",
+     "#0e0d0b",
+     "#0c0c0a"
+    ],
+    "ratio_reel": 2.41,
+    "seuil": 3
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "01",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "02",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "03",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "04",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "05",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "06",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "07",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "08",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "09",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "body > nav.programme > ol > li > a > span.num",
+    "extrait": "10",
+    "fonds_dominants": [
+     "#050504"
+    ],
+    "ratio_reel": 2.53,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 2,
+  "page": "rouges-et-blancs.html",
+  "propose": "#d73e3e",
+  "ratio_annonce": 1.9,
+  "ratio_reel": 2.41,
+  "seuil": 3,
+  "valeur": "#9a2020",
+  "variable": "--red",
+  "verdict": "ECART"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "ction#fiche > div.wrap > div.section-head > h2",
+    "extrait": "Fiche technique",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Csillagosok, katonák (« Étoiles, soldats »)",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Rouges et Blancs",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Miklós Jancsó",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Miklós Jancsó, Gyula Hernádi, Giorgi Mdivani",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Tamás Somló",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Tamás Banovich, Éva Martin",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Mafilm Studio n°4 (Hongrie), Mosfilm (URSS)",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "András Kozák, Krystyna Mikołajewska, József ",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Bords de la Volga, URSS",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "7 novembre 1967 (URSS, version remontée) ; 2",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Festival de Cannes 1968 (festival interrompu",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "87 à 90 min selon les versions et restaurati",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Hongrie, URSS",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Drame de guerre, noir et blanc, scope anamor",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he > div.wrap > div.fiche-wrap > dl.fiche > dd",
+    "extrait": "Meilleur film étranger 1969, Syndicat frança",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "on#synopsis > div.wrap > div.section-head > h2",
+    "extrait": "Synopsis",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#synopsis > div.wrap > p",
+    "extrait": "Russie, 1919. Au cœur de la guerre civile qu",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.wrap > p",
+    "extrait": "Aux massacres commis par les uns répondent c",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "#production > div.wrap > div.section-head > h2",
+    "extrait": "Contexte de production",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#production > div.wrap > p",
+    "extrait": "est une commande officielle : une coproducti",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#production > div.wrap > p > em",
+    "extrait": "Rouges et Blancs",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#production > div.wrap > p",
+    "extrait": "Le résultat déplut fortement à ses commandit",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#production > div.wrap > p",
+    "extrait": "Le critique hongrois Robert Bán rapporte que",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "n#structure > div.wrap > div.section-head > h2",
+    "extrait": "Structure narrative",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#structure > div.wrap > p",
+    "extrait": "Le film renonce délibérément à toute intrigu",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.wrap > p",
+    "extrait": "Les critiques Liehm rapprochent cette constr",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.wrap > p > em",
+    "extrait": "La Chartreuse de Parme",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "se-en-scene > div.wrap > div.section-head > h2",
+    "extrait": "Mise en scène et procédés techniques",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#mise-en-scene > div.wrap > p",
+    "extrait": "La mise en scène de Jancsó repose sur de trè",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#mise-en-scene > div.wrap > p",
+    "extrait": "Le motif le plus insistant du film reste le ",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "personnages > div.wrap > div.section-head > h2",
+    "extrait": "Personnages principaux",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": " > div.cast-grid > div.cast-card.red-side > h3",
+    "extrait": "László",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "p > div.cast-grid > div.cast-card.red-side > p",
+    "extrait": "Internationaliste hongrois venu combattre au",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "p > div.cast-grid > div.cast-card.neutral > h3",
+    "extrait": "Olga",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "ap > div.cast-grid > div.cast-card.neutral > p",
+    "extrait": "Infirmière en chef de l'hôpital de campagne,",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " > div.cast-grid > div.cast-card.red-side > h3",
+    "extrait": "Le commandant hongrois",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "p > div.cast-grid > div.cast-card.red-side > p",
+    "extrait": "Chef des volontaires hongrois engagés aux cô",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": " div.cast-grid > div.cast-card.white-side > h3",
+    "extrait": "Un officier blanc",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "> div.cast-grid > div.cast-card.white-side > p",
+    "extrait": "Rôle tenu par le futur cinéaste russe, alors",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 19.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "tion#themes > div.wrap > div.section-head > h2",
+    "extrait": "Thèmes",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#themes > div.wrap > ul.theme-list > li",
+    "extrait": "Le pouvoir\n        change constamment de mai",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.wrap > ul.theme-list > li",
+    "extrait": "Déshabiller de force,\n        hommes comme f",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.wrap > ul.theme-list > li",
+    "extrait": "L'immensité de la steppe et\n        les plan",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.wrap > ul.theme-list > li",
+    "extrait": "Là où la commande soviétique\n        attenda",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.wrap > ul.theme-list > li",
+    "extrait": "Les infirmières,\n        et la tentative d'O",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "n#reception > div.wrap > div.section-head > h2",
+    "extrait": "Réception et postérité",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#reception > div.wrap > p",
+    "extrait": "Conçu comme un hommage officiel,  devient, à",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > p > em",
+    "extrait": "Rouges et Blancs",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > p",
+    "extrait": "Sélectionné pour la compétition du Festival ",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > blockquote",
+    "extrait": "« Jancsó est un génie. Avant lui, le cinéma ",
+    "fonds_dominants": [
+     "#c9c4b4"
+    ],
+    "ratio_reel": 11.22,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > p",
+    "extrait": "Le film s'impose rétrospectivement comme un ",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > p > em",
+    "extrait": "Psaume rouge",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.wrap > p > em",
+    "extrait": "Je suis Cuba",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "#conclusion > div.wrap > div.section-head > h2",
+    "extrait": "Conclusion",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 3
+   },
+   {
+    "chemin": "section#conclusion > div.wrap > p",
+    "extrait": "retourne contre ses commanditaires l'instrum",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#conclusion > div.wrap > p > em",
+    "extrait": "Rouges et Blancs",
+    "fonds_dominants": [
+     "#efece3"
+    ],
+    "ratio_reel": 16.57,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 1,
+  "page": "rouges-et-blancs.html",
+  "propose": "#ffffff",
+  "ratio_annonce": 1.11,
+  "ratio_reel": 11.22,
+  "seuil": 3,
+  "valeur": "#0c0c0b",
+  "variable": "--black",
+  "verdict": "CONFORME"
+ },
+ {
+  "detail": [
+   {
+    "chemin": "ody > header.menu > div.menu-inner > span.mono",
+    "extrait": "Analyse cinématographique · M/Y Christina O",
+    "fonds_dominants": [
+     "#122a41"
+    ],
+    "ratio_reel": 2.96,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#fiche > div.service > span.num",
+    "extrait": "Premier service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Réalisation & scénario",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Interprètes",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Tournage",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Post-production",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Première",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Budget / recettes",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Distinctions",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "he-layout > div.embarquement > div > div.label",
+    "extrait": "Durée",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#synopsis > div.service > span.num",
+    "extrait": "Deuxième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#contexte > div.service > span.num",
+    "extrait": "Troisième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#structure > div.service > span.num",
+    "extrait": "Quatrième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#technique > div.service > span.num",
+    "extrait": "Cinquième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#personnages > div.service > span.num",
+    "extrait": "Sixième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#themes > div.service > span.num",
+    "extrait": "Septième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > div.service > span.num",
+    "extrait": "Huitième service",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#reception > blockquote > span.attrib",
+    "extrait": "Titre de la critique cannoise de Bulles de C",
+    "fonds_dominants": [
+     "#ffffff"
+    ],
+    "ratio_reel": 4.95,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#conclusion > div.service > span.num",
+    "extrait": "Neuvième service · L'addition",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "section#sources > div.service > span.num",
+    "extrait": "L'office",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   },
+   {
+    "chemin": "html > body > footer.addition",
+    "extrait": "Analyse sourcée · rédigée le 6 juillet 2026 ",
+    "fonds_dominants": [
+     "#f6f4ee"
+    ],
+    "ratio_reel": 4.5,
+    "seuil": 4.5
+   }
+  ],
+  "elements": 4,
+  "page": "sans-filtre.html",
+  "propose": "#c1a152",
+  "ratio_annonce": 2.26,
+  "ratio_reel": 2.96,
+  "seuil": 4.5,
+  "valeur": "#866d30",
+  "variable": "--or-texte",
+  "verdict": "ECART"
+ }
+]
