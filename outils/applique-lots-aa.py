@@ -162,13 +162,21 @@ def lot3(simuler):
                 lambda m: m.group(1) + "\n    " + soeur + ":" + x["propose"]
                 + ";", t, count=1)
             # 2. basculer les seules declarations `color:`.
+            # `\bcolor` ne suffit PAS : le tiret de `border-color` est un
+            # caractere non-mot, donc `\b` s'y place et le motif mordait sur
+            # `border-color`, `border-bottom-color`, `text-decoration-color`.
+            # Quatre filets ont bascule sur la soeur avant que le controle du
+            # double contexte ne le revele. Il faut exiger un DEBUT de
+            # declaration : accolade, point-virgule ou debut de ligne.
             motif_usage = re.compile(
-                r"(\bcolor\s*:\s*)var\(\s*" + re.escape(var) + r"\s*\)")
+                r"(^|[{;]\s*)(color\s*:\s*)var\(\s*" + re.escape(var)
+                + r"\s*\)", re.M)
             n = len(motif_usage.findall(t))
             if n == 0:
                 sautes.append((nom_page, var, "aucun usage color: var()"))
                 continue
-            t = motif_usage.sub(lambda m: m.group(1) + "var(" + soeur + ")", t)
+            t = motif_usage.sub(
+                lambda m: m.group(1) + m.group(2) + "var(" + soeur + ")", t)
             faits += 1
             print("  %-26s %-16s %s -> %s  (%d usage color:)"
                   % (nom_page[:-5], soeur, x["valeur"], x["propose"], n))
