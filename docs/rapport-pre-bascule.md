@@ -108,11 +108,15 @@ que le gate se prononce en les connaissant, non pour le retarder.*
 
 ## 5. La commande de fallback — prête à coller
 
-**Ne pas composer une commande d'urgence en situation d'urgence.** Le SHA du
-merge sera relevé au moment du merge et inscrit ici avant le push.
+**Ne pas composer une commande d'urgence en situation d'urgence.**
+
+> **SHA DU MERGE DE BASCULE, relevé le 23/07/2026 à 12h14, AVANT le push :**
+> **`33183e9095a03e683061258e93b6076334242523`**
+> *(court : `33183e9`) — contrôle fait au moment du relevé : l'arbre de `main`
+> après merge est identique à celui de `v2-proto`, 0 fichier de différence.*
 
 ```bash
-git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" revert -m 1 <SHA-DU-MERGE> --no-edit
+git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" revert -m 1 33183e9095a03e683061258e93b6076334242523 --no-edit
 git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" push origin main
 ```
 
