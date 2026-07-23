@@ -60,8 +60,14 @@ JS_CANDIDATS = r"""
     if (opacite === 0) continue;
 
     const fond = window.__fondEffectif(el);
-    const brut = window.__lireRgba(st.color);
-    if (!brut) continue;
+    // DANS UN SVG, LA COULEUR DU TEXTE EST `fill`, PAS `color`. Lire `color`
+    // y renvoie une valeur heritee du document qui n'est JAMAIS peinte : les
+    // cartels de `rouges-et-blancs`, remplis en #c9c4b4 clair sur un champ
+    // sombre (ratio reel 10,09), etaient ainsi comptes a 1,11 et declares
+    // illisibles. Un faux positif qui aurait fait "corriger" un texte sain.
+    const estSVG = el.ownerSVGElement || el.tagName === 'svg';
+    const brut = window.__lireRgba(estSVG ? st.fill : st.color);
+    if (!brut || brut.a === 0) continue;
     const alpha = brut.a * opacite;
     const texte = alpha >= 0.999 ? brut
                 : window.__composer({r: brut.r, g: brut.g, b: brut.b, a: alpha}, fond);

@@ -63,7 +63,10 @@ déclaré ; seul le rendu dit ce qui est vu.*
 
 ---
 
-## 3. Trois textes RÉELLEMENT INVISIBLES — et ils sont en ligne aujourd'hui
+## 3. DEUX textes réellement invisibles — et ils sont en ligne aujourd'hui
+
+*(Trois étaient annoncés ; le troisième s'est révélé un faux positif de ma
+sonde à la vérification — voir §3.3.)*
 
 Vérifiés au pixel, et **antérieurs à tout mon travail** : les valeurs sont
 identiques sur `main`, donc **publiées à cette heure sur le site**.
@@ -93,17 +96,30 @@ reprend la couleur de son contexte. Une ligne, aucun effet ailleurs.
 **Correctif proposé** : une variable-sœur de texte assombrie pour le pied de
 page, sur le modèle du lot 3.
 
-### 3.3 `rouges-et-blancs` — les cartels du schéma SVG
+### 3.3 `rouges-et-blancs` — les cartels du schéma SVG : **FAUX POSITIF**
 
-| | |
-|---|---|
-| Éléments | `svg > text` : « HÔPITAL », « MONASTÈRE » |
-| Texte | `#0c0c0b` (`--black`) · ratio **1,11** |
+> **ERRATUM du 23/07 09h12 (charte règle 5).** Ce cas était annoncé ci-dessus
+> comme un troisième texte invisible. **Il ne l'est pas.** Vérification faite
+> avant toute correction : les cartels sont parfaitement lisibles.
 
-**Cas particulier** : à l'intérieur d'un SVG, la couleur du texte se déclare
-en `fill` et non en `color`. Ni mon lot 3 ni la passe de dédoublement ne
-pouvaient l'atteindre — ils ne regardent que `color:`. **C'est un angle mort
-de tout mon outillage, et il est nommé ici.**
+| | Ce que ma sonde lisait | Ce qui est réellement peint |
+|---|---|---|
+| Propriété | `color` héritée : `#0c0c0b` | **`fill="#c9c4b4"`** (écrit dans le balisage) |
+| Ratio sur le champ `#1a1914` | 1,11 → « illisible » | **10,09 → largement conforme** |
+
+**Dans un SVG, la couleur du texte se déclare en `fill`, pas en `color`.** La
+valeur de `color` y est héritée du document et **n'est jamais peinte**. Ma
+sonde la lisait quand même : elle a donc compté comme invisible un texte
+clair sur fond sombre.
+
+**Sans cette vérification, j'aurais « corrigé » un texte sain** — et abîmé un
+schéma qui allait très bien. Le correctif porte sur l'outil, pas sur la page :
+`sonde-fond-peint.py` lit désormais `fill` dès que l'élément appartient à un
+SVG.
+
+*Ce qui reste vrai de mon constat initial : `color:` est bien l'angle mort de
+`applique-lots-aa.py` et de `dedouble-contexte.py`, qui ne savent pas
+atteindre un `fill`. Simplement, ici, il n'y avait rien à atteindre.*
 
 ---
 

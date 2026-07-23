@@ -196,6 +196,13 @@
   }
   p{ margin:0 0 1.1rem; }
   strong{ color:var(--brule); font-weight:600; }
+  /* DEFAUT DE LISIBILITE corrige au retrofit 065-5, mesure sur pixels peints.
+     La regle generique ci-dessus s'appliquait AUSSI dans l'en-tete, dont le
+     fond descend precisement jusqu'a --brule : le mot « Lordsburg » -- le
+     terme du voyage, seul mot en gras de l'itineraire -- s'y rendait au ratio
+     1,00, c'est-a-dire invisible. Le gras y reprend la couleur de son
+     contexte ; ailleurs dans la page, la regle generique est inchangee. */
+  header.ligne strong{ color:inherit; }
   em{ font-style:italic; }
 
   blockquote{

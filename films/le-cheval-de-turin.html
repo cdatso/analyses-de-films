@@ -229,7 +229,14 @@
 
   footer.extinction{
     margin-top:3.5rem;
-    padding:1.6rem 1.5rem 2.6rem;
+    /* DEFAUT DE LISIBILITE corrige au retrofit 065-5, mesure sur pixels
+       peints. Le degrade du pied part de --storm -- la couleur MEME de son
+       texte -- pour s'eteindre en noir : le pied emerge du fond de la page
+       avant de disparaitre, et c'est l'intention. Le texte, lui, se posait
+       dans le haut du fondu, au ratio 1,00 : invisible. On ne touche pas au
+       degrade ; on fait DESCENDRE le texte dans la zone sombre, ou sa
+       couleur claire se lit. L'extinction reste entiere. */
+    padding:3.6rem 1.5rem 2.6rem;
     text-align:center;
     font-family:var(--mono);
     font-size:0.64rem;
