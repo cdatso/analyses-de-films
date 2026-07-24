@@ -33,33 +33,54 @@
 
   <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 1.6rem;line-height:1.2;">Comment ce site fonctionne</h1>
 
-  <div class="reserve-auteur">
-    <span class="etiquette">Emplacement réservé — texte d'auteur</span>
-    La méthode, ses limites et le journal d'erreurs sont un <strong>texte d'AH</strong>
-    (§2.4). Le prototype pose l'ossature et les ancres ; il n'écrit pas la page.
-  </div>
+  <p>Sur ce que ce site croit et pourquoi une IA y écrit sous cette forme : voir le
+  <a href="manifeste.html">manifeste</a>. Sur qui compose l'équipe qui le tient : voir
+  <a href="qui-sommes-nous.html">qui sommes-nous</a>. Cette page décrit le mécanisme
+  concret — comment un texte passe d'une idée à une page publiée, ce qui est contrôlé,
+  et ce qui échoue parfois.</p>
 
-  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">
-    Trois régimes de signature existent et sont déjà portés par le gabarit v2 —
-    ils sont décrits ici pour mémoire, non comme texte définitif :
-  </p>
+  <h2>Le cycle : mandat → gates → exécution → audit → consignation</h2>
+  <p>Chaque unité de travail suit le même cycle de vie. Une session reçoit un mandat
+  écrit : son objet, ses livrables, les points où elle doit s'arrêter et attendre une
+  décision, et ce qu'elle n'a pas le droit de toucher. Elle propose un plan et attend le
+  feu vert avant d'agir. Toute décision qui engage le site — publier, modifier une
+  méthode, changer une règle — appartient à Christo Datso seul : une session IA ne la
+  prend jamais à sa place, même quand une direction semble aller de soi. Chaque
+  changement de statut est consigné par un commit daté ; les décisions structurantes
+  portent une marque distincte dans l'historique technique, ce qui permet de vérifier
+  après coup, sans avoir à faire confiance sur parole, que chaque décision publiée a
+  bien été prise par un humain. Des sessions distinctes de celle qui a produit un texte
+  l'auditent ensuite sur pièces — la séparation entre qui produit et qui certifie est
+  recherchée délibérément. Une fenêtre de travail se referme toujours par un bilan
+  honnête, y compris des erreurs commises, avant de rendre la main.</p>
 
-  <table>
-    <caption>Les trois régimes de provenance (SPEC-SITE-V2 §5.2)</caption>
-    <thead>
-      <tr><th>Régime</th><th>Cas</th><th>Ce que la signature dit</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>R1</td><td>Critique publiée avant le site v2</td><td>modèle non spécifié, supervision humaine</td></tr>
-      <tr><td>R2</td><td>Critique publiée à partir du site v2</td><td>modèle nommé</td></tr>
-      <tr><td>R3</td><td>Étude</td><td>signature double : modèle du premier jet + révision éditoriale humaine</td></tr>
-    </tbody>
-  </table>
+  <h2>Les registres</h2>
+  <p>Le travail de l'équipe s'appuie sur des registres tenus à jour : un suivi des
+  tâches en cours, une chronologie datée des décisions et incidents, un inventaire des
+  risques connus et de leurs parades, un journal des erreurs et de leurs corrections. Ce
+  ne sont pas des vitrines : ce sont des documents de travail qui s'amendent quand un
+  raisonnement s'avère faux, plutôt que de se réécrire en silence — l'historique d'une
+  erreur fait partie de la mémoire du projet autant que sa correction.</p>
 
-  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">
-    Matière disponible pour la rédaction : <code>docs/journal_erreurs.md</code> et
-    <code>docs/journal_analyses_films.md</code>, déjà dans le dépôt.
-  </p>
+  <h2>Le pipeline des analyses</h2>
+  <p>Une analyse commence par une proposition de film, mise en file d'attente. Sa
+  rédaction suit un gabarit versionné : recherche documentaire sourcée, structuration en
+  neuf sections avec bibliographie numérotée, identité visuelle propre au film, mise à
+  jour du registre du site et du journal interne, publication par un commit. Une partie
+  de cette chaîne peut tourner sans intervention humaine directe la nuit ; sa reprise
+  après une interruption reste toutefois une décision explicite, jamais automatique. La
+  publication elle-même — le basculement d'un texte de l'atelier vers le site public —
+  est un geste que seul Christo Datso autorise.</p>
+
+  <h2>Les limites, et le journal d'erreurs</h2>
+  <p>Écrire une analyse suppose de consulter une critique déjà existante ; certaines
+  sources s'y refusent — blocages automatiques, contenus payants, pages retirées. Quand
+  une source pertinente reste hors d'atteinte, ce n'est pas passé sous silence : elle
+  est consignée, avec ce qui a été tenté et par quoi elle a été remplacée, pour qu'un
+  lecteur — ou une session future — puisse la retrouver ou juger de ce qui manque. Le
+  même principe vaut pour les incidents techniques du pipeline : chacun est documenté
+  avec sa cause et sa correction, plutôt que corrigé en silence. Cette transparence sur
+  ce qui n'a pas fonctionné est une règle du projet, pas une exception qu'on tolère.</p>
 
   <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
 
