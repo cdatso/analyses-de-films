@@ -62,6 +62,7 @@ const VOCABULAIRES = {
     'France',
     'Hongrie',
     'Italie',
+    'Japon',
     'Norvege',
     'Royaume-Uni',
     'Suede',
