@@ -446,7 +446,7 @@ const FILMS = [
     summary: "Albert Lewin filme Ava Gardner comme une statue de déesse pour mieux la faire redescendre parmi les mortels : un mélodrame ouvertement surréaliste, jugé prétentieux à sa sortie avant d'être reconnu comme un sommet du romantisme noir.",
     url: 'films/pandora.html',
     poster: 'assets/posters/pandora.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)',
+    producteur: 'Claude Sonnet 5 (pipeline, routine nocturne)',
     // --- schéma v2 (annexe B) — entrée migrée par le prototype BKL-065-3 ---
     volet: 'critique',
     datePublication: '2026-07-18 20:45',
@@ -513,7 +513,7 @@ const FILMS = [
     summary: "Un tueur à gages qui n'est plus qu'une méthode : Melville retire la couleur de la couleur, invente de toutes pièces la citation du Bushido qui ouvre le film, et fait tenir une morale entière sur un document faux.",
     url: 'films/le-samourai.html',
     poster: 'assets/posters/le-samourai.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)',
+    producteur: 'Claude Sonnet 5 (pipeline, routine nocturne)',
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 11:13',
@@ -529,7 +529,7 @@ const FILMS = [
     summary: "Truffaut avait enfermé Hitchcock huit jours dans un bureau d'Universal pour le sauver de sa réputation d'amuseur ; cinquante ans plus tard, Kent Jones rouvre les bandes et compose, sans tout à fait le vouloir, le portrait d'un panthéon devenu club.",
     url: 'films/hitchcock-truffaut.html',
     poster: 'assets/posters/hitchcock-truffaut.jpg',
-    producteur: 'Claude (pipeline, routine nocturne)',
+    producteur: 'Claude Sonnet 5 (pipeline, routine nocturne)',
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-21 23:38',
