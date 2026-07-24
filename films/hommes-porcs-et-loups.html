@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tôle et craie — Hommes, porcs et loups</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de
+       cette page : main a 740 px moins 2 x 1,6rem de padding = 689 px
+       de colonne ; (689 + 51,2) / 16 = 46,3rem. Geometrie identique au
+       patron films/le-doulos.html (colonne mesuree a 689 px). */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette bespoke : la tole du bidonville. Suie, zinc, craie,
+       un seul accent d'oxyde. Contrastes AA vises a la composition. */
+    --suie:#121317;
+    --tole:#22242a;
+    --zinc:#d9d7d0;
+    --zinc-creux:#c8c5bc;
+    --craie:#f2f0e9;
+    --craie-douce:#b3b0a7;
+    --encre:#15161a;
+    --encre-douce:#2f3138;
+    --encre-faible:#4a4c53;
+    --rouille:#8f2d18;
+    --rouille-clair:#cd7a58;
+    --filet:rgba(21,22,26,0.24);
+    --filet-fin:rgba(21,22,26,0.12);
+    --filet-clair:rgba(242,240,233,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--zinc);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.66rem;
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-faible);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.1rem;
+  }
+  .back-link:hover{ color:var(--rouille); }
+
+  /* ---------- COUVERTURE : mur de tole ---------- */
+  header.mur{
+    position:relative;
+    background-color:var(--suie);
+    background-image:
+      repeating-linear-gradient(90deg,
+        rgba(242,240,233,0.055) 0 1px,
+        rgba(0,0,0,0) 1px 9px,
+        rgba(0,0,0,0.35) 9px 10px,
+        rgba(0,0,0,0) 10px 18px);
+    color:var(--craie);
+    padding:1.2rem 0 2.6rem;
+    border-bottom:4px solid var(--rouille);
+  }
+  .mur-ligne{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    letter-spacing:0.17em;
+    text-transform:uppercase;
+    color:var(--craie-douce);
+    padding-bottom:1rem;
+    border-bottom:1px solid var(--filet-clair);
+    margin:0 1.6rem;
+  }
+  .mur-in{ max-width:760px; margin:0 auto; padding:0 1.6rem; }
+
+  /* Rangee de rivets : dessinee, jamais un glyphe. */
+  .rivets{
+    height:10px;
+    background-image:radial-gradient(circle at 5px 5px,
+      var(--encre-faible) 0 2px, rgba(0,0,0,0) 2.2px);
+    background-size:22px 10px;
+    background-repeat:repeat-x;
+    opacity:0.85;
+  }
+
+  .plaque{
+    background:var(--zinc);
+    color:var(--encre);
+    border:1px solid var(--encre-faible);
+    padding:2.2rem 2rem 1.9rem;
+    margin:1.7rem 0 0;
+    box-shadow:0 16px 34px rgba(0,0,0,0.34);
+  }
+  .plaque .rivets{ margin:-1.1rem -0.7rem 1.4rem; }
+
+  .matricule{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--encre-faible);
+    margin-bottom:1.1rem;
+  }
+  .matricule b{ color:var(--rouille); font-weight:600; }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.1rem, 6.4vw, 3.3rem);
+    line-height:1.06;
+    letter-spacing:-0.015em;
+    margin:0 0 0.2rem;
+    color:var(--encre);
+  }
+  .titre-vo{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--encre-faible);
+    margin:0 0 1.1rem;
+  }
+  .accroche{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--encre-douce);
+    max-width:48ch;
+    margin:0 0 1.9rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.7rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px solid var(--filet);
+    padding-top:1.4rem;
+  }
+  .cover-media .poster{ flex:0 0 148px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--encre-faible);
+    filter:grayscale(0.2);
+  }
+  .cover-media .identite{ flex:1; min-width:230px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(165px,1fr));
+    gap:0.95rem 1.5rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--encre-faible);
+    margin-bottom:0.25rem;
+  }
+  .identite dd{
+    margin:0;
+    font-size:0.87rem;
+    color:var(--encre);
+    border-bottom:1px dotted var(--filet);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.4rem;
+    padding:0.8rem 1.05rem;
+    background:var(--zinc-creux);
+    border-left:3px solid var(--rouille);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    line-height:1.62;
+    color:var(--encre-douce);
+  }
+  .provenance strong{ color:var(--encre); font-weight:600; }
+
+  /* ---------- AVERTISSEMENT ---------- */
+  .avert{
+    max-width:740px;
+    margin:0 auto 2.2rem;
+    padding:0.85rem 1.1rem;
+    background:var(--zinc-creux);
+    border:1px solid var(--rouille);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    line-height:1.6;
+    color:var(--encre-douce);
+  }
+  .avert b{ color:var(--rouille); font-weight:600; }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.som{
+    background:var(--tole);
+    border-top:1px solid var(--filet-clair);
+    border-bottom:3px solid var(--suie);
+  }
+  nav.som .som-in{
+    max-width:760px; margin:0 auto; padding:0.75rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.25rem 0.15rem;
+  }
+  nav.som a{
+    color:var(--craie-douce);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:0.3rem 0.6rem;
+    border:1px solid rgba(0,0,0,0);
+  }
+  nav.som a:hover, nav.som a:focus-visible{ color:var(--craie); border-color:var(--craie-douce); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.bloc{ padding:2.9rem 0; border-bottom:1px solid var(--filet-fin); }
+  section.bloc:last-of-type{ border-bottom:none; }
+
+  .tete{
+    margin-bottom:1.3rem;
+    border-top:2px solid var(--encre);
+    padding:0.7rem 0 0.6rem;
+    border-bottom:1px solid var(--filet);
+  }
+  .tete .num{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--rouille);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.55rem;
+    line-height:1.2;
+    margin:0;
+    color:var(--encre);
+    letter-spacing:-0.008em;
+  }
+  .tete .sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.8rem;
+    color:var(--encre-faible);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.88rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin:1.6rem 0 0.55rem;
+    color:var(--encre);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--encre-douce); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--rouille);
+    text-decoration:none;
+    border-bottom:1px dotted var(--rouille);
+    font-size:0.78em;
+    font-family:var(--mono);
+  }
+
+  .note{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    line-height:1.65;
+    color:var(--encre-faible);
+    border-left:3px solid var(--filet);
+    padding-left:0.95rem;
+    margin:1.2rem 0;
+  }
+
+  /* ---------- FICHES DE PERSONNAGES ---------- */
+  .grille{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px,1fr));
+    gap:1.05rem;
+    margin-top:0.7rem;
+  }
+  .fiche{
+    position:relative;
+    background:var(--zinc-creux);
+    border:1px solid var(--encre-faible);
+    padding:1.15rem 1.15rem 1.1rem;
+  }
+  .fiche .bete{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--rouille);
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  .fiche .nom{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.06rem;
+    display:block;
+    margin:0 0 0.1rem;
+    color:var(--encre);
+  }
+  .fiche .acteur{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--encre-faible);
+    display:block;
+    margin-bottom:0.6rem;
+  }
+  .fiche p{ font-size:0.86rem; margin:0; color:var(--encre-douce); }
+
+  /* ---------- CITATION ---------- */
+  .pancarte{
+    background:var(--suie);
+    color:var(--craie);
+    border-left:4px solid var(--rouille);
+    padding:1.25rem 1.4rem 1.3rem;
+    margin:1.6rem 0;
+  }
+  .pancarte p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--craie);
+    margin:0 0 0.55rem;
+  }
+  .pancarte cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--craie-douce);
+  }
+
+  /* ---------- THEMES ---------- */
+  .themes{ display:grid; gap:1.4rem; margin-top:0.6rem; }
+  .themes .etiquette{
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--rouille);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--rouille);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- RELEVE CHIFFRE ---------- */
+  .releve{
+    margin:1.6rem 0 1.5rem;
+    background:var(--suie);
+    color:var(--craie);
+    border:1px solid var(--encre);
+  }
+  .releve-in{ padding:1.15rem 1.35rem 1.3rem; }
+  .releve-label{
+    font-family:var(--mono);
+    font-size:0.61rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--craie-douce);
+    margin-bottom:0.85rem;
+    display:block;
+  }
+  .releve-grille{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(145px,1fr));
+    gap:1rem;
+  }
+  .releve .chiffre{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.3rem;
+    color:var(--craie);
+    display:block;
+    line-height:1.18;
+  }
+  .releve .quoi{
+    font-family:var(--mono);
+    font-size:0.63rem;
+    letter-spacing:0.04em;
+    color:var(--craie-douce);
+    text-transform:uppercase;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{
+    background:var(--suie);
+    color:var(--craie);
+    padding:3rem 1.6rem 4rem;
+    border-top:4px solid var(--rouille);
+  }
+  section.sources .sources-in{ max-width:740px; margin:0 auto; }
+  section.sources .meta{ color:var(--craie-douce); }
+  section.sources h2{
+    color:var(--craie);
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.4rem;
+    margin:0.6rem 0 0;
+  }
+  ol.liste-sources{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.liste-sources li{
+    counter-increment:src;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    padding-left:3rem;
+    position:relative;
+    color:var(--craie-douce);
+    border-bottom:1px solid var(--filet-clair);
+    padding-bottom:0.6rem;
+  }
+  ol.liste-sources li::before{
+    content:"Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--rouille-clair);
+    font-size:0.65rem;
+    letter-spacing:0.04em;
+  }
+  ol.liste-sources a{ color:var(--craie); word-break:break-all; }
+  ol.liste-sources a:hover{ color:var(--rouille-clair); }
+
+  footer.pied{
+    text-align:center;
+    padding:2.1rem 1.5rem 3rem;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--encre-faible);
+    background:var(--zinc);
+  }
+  footer.pied a{ color:var(--encre-faible); }
+  footer.pied a:hover{ color:var(--rouille); }
+
+  @media (max-width:600px){
+    .mur-in{ padding:0 1.1rem; }
+    .plaque{ padding:1.8rem 1.2rem 1.5rem; }
+    section.bloc{ padding:2.1rem 0; }
+    .cover-media .poster{ flex:0 0 120px; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="mur">
+  <div class="mur-ligne">Tōei Tokyo &mdash; 26 août 1964 &mdash; noir et blanc, 2,35:1</div>
+  <div class="mur-in">
+    <div class="plaque">
+      <div class="rivets" aria-hidden="true"></div>
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+      <div class="matricule">Plaque de tôle n<sup>o</sup> <b>1</b> &mdash; sur ce mur-là, on écrit à la craie les dettes, les noms et les morts.</div>
+      <h1 class="titre">Hommes, porcs et loups</h1>
+      <p class="titre-vo">Ōkami to buta to ningen &mdash; « Loups, porcs et hommes »</p>
+      <p class="accroche">Trois frères d'un bidonville de Tokyo, quarante millions de yens volés à leur propre clan, et un huis clos qui descend l'échelle des espèces jusqu'à voir ce qu'il reste d'humain au fond.</p>
+
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/hommes-porcs-et-loups.jpg"
+               alt="Affiche du film Hommes, porcs et loups"
+               onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Kinji Fukasaku</dd></div>
+          <div><dt>Scénario</dt><dd>Kinji Fukasaku, Jun'ya Satō</dd></div>
+          <div><dt>Année</dt><dd>1964</dd></div>
+          <div><dt>Durée</dt><dd>95 minutes</dd></div>
+          <div><dt>Production</dt><dd>Tōei &mdash; Tatsu Yoshida, Seiichi Yoshino</dd></div>
+          <div><dt>Photographie</dt><dd>Ichirō Hoshijima</dd></div>
+          <div><dt>Musique</dt><dd>Isao Tomita</dd></div>
+          <div><dt>Montage</dt><dd>Osamu Tanaka</dd></div>
+        </dl>
+      </div>
+
+      <div class="provenance">
+        <strong>Provenance.</strong> Analyse produite en r&eacute;gime R2 (critique nouvelle) par IAGen Claude d'Anthropic &mdash; mod&egrave;le <strong>Claude Opus 5</strong>, session supervis&eacute;e du 25 juillet 2026, sous supervision humaine. Recherche, r&eacute;daction et identit&eacute; visuelle produites dans cette session ; sources consult&eacute;es list&eacute;es en fin de page.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 25 juillet 2026</span>
+</div>
+</div>
+
+<div class="avert">
+  <b>Avertissement.</b> Le film et cette analyse traitent de violences graves : torture, viol, meurtres. Les scènes concernées ne sont pas décrites en détail ici, mais elles sont au cœur du récit et de son propos.
+</div>
+
+<nav class="som" aria-label="Sommaire">
+  <div class="som-in">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="bloc" id="fiche">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 01</span>
+      <h2>Fiche technique <span class="sous">— état civil du film</span></h2>
+    </div>
+    <p>
+      <em>Hommes, porcs et loups</em> (<em>Ōkami to buta to ningen</em> — littéralement « Loups, porcs et hommes ») est un film policier japonais en noir et blanc réalisé par Kinji Fukasaku, sorti au Japon le 26 août 1964<a class="renvoi" href="#src-1">[1]</a>. Produit par la Tōei à Tokyo, il dure 95 minutes et est tourné au format large 2,35:1<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      Le scénario est signé Fukasaku et Jun'ya Satō — futur artisan reconnu du polar réaliste japonais<a class="renvoi" href="#src-5">[5]</a>. La photographie revient à Ichirō Hoshijima, le montage à Osamu Tanaka, la musique à Isao Tomita ; la production est assurée par Tatsu Yoshida et Seiichi Yoshino<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      À l'écran : Rentarō Mikuni (Kuroki, l'aîné), Ken Takakura (Jirō), Kin'ya Kitaōji (Sabu), Shinjirō Ehara (Mizuhara), Sanae Nakahara (Kyōko) et, dans l'un de ses premiers rôles, Renji Ishibashi (Hiroshi)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-5">[5]</a>. Aucune récompense ne lui est attribuée à sa sortie.
+    </p>
+    <p>
+      Le film n'a pas de sortie commerciale française répertoriée<a class="renvoi" href="#src-8">[8]</a> : il s'est vu en France à la Cinémathèque française, les 16 et 25 juillet 2014, dans le cadre d'une rétrospective Fukasaku<a class="renvoi" href="#src-2">[2]</a>. Une restauration numérique l'a fait ressortir soixante ans plus tard — chez Film Movement en Amérique du Nord le 27 septembre 2024, et chez Eureka (collection Masters of Cinema) au Royaume-Uni<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+  </section>
+
+  <section class="bloc" id="synopsis">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 02</span>
+      <h2>Synopsis <span class="sous">— ce qui peut se dire</span></h2>
+    </div>
+    <p>
+      Trois frères naissent dans un bidonville de Tokyo, du côté d'Edogawa<a class="renvoi" href="#src-6">[6]</a>. L'aîné, Kuroki, en sort par le haut : il entre au service du clan Iwasaki et gagne l'appartement, le costume et les clubs<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-5">[5]</a>. Le cadet, Jirō, a voulu le même chemin et l'a payé de la prison ; à sa sortie, il apprend que leur mère est morte<a class="renvoi" href="#src-1">[1]</a>. Le benjamin, Sabu, n'a jamais quitté la ferraille et traîne avec une bande d'adolescents.
+    </p>
+    <p>
+      Jirō monte alors un coup contre ses propres employeurs : détourner quarante millions de yens du clan, avec Sabu, sa bande et un complice, Mizuhara. Le vol réussit, à la gare de Shibuya. Mais le butin disparaît entre les mains du plus jeune, et le film se referme sur un hangar, où le clan cherche son argent pendant que les frères se cherchent entre eux<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p class="note">La seconde moitié du film et son dénouement ne sont pas détaillés ici. Une divergence de sources est à signaler sur un chiffre : la somme volée est donnée à quarante millions de yens par la fiche du film et par la critique de <em>Frame Rated</em><a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a>, à vingt millions par <em>Asian Movie Pulse</em><a class="renvoi" href="#src-5">[5]</a> ; c'est la première valeur, majoritaire, qui est retenue ici.</p>
+  </section>
+
+  <section class="bloc" id="production">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 03</span>
+      <h2>Contexte de production <span class="sous">— l'atelier Tōei et ce qu'un homme de 1930 a vu</span></h2>
+    </div>
+    <p>
+      Kinji Fukasaku naît le 3 juillet 1930 à Mito. À quinze ans, sa classe entière est réquisitionnée dans une usine d'armement ; lors d'un bombardement de juillet 1945, les enfants, ne pouvant fuir, se jettent les uns sous les autres pour survivre, et les rescapés doivent ensuite évacuer les corps de leurs camarades<a class="renvoi" href="#src-9">[9]</a>. Il en gardera une défiance durable envers les adultes et une conviction sur laquelle repose tout son cinéma.
+    </p>
+    <div class="pancarte">
+      <p>« Les adultes nous apprenaient à mourir, mais ils ne nous apprenaient pas à vivre. »</p>
+      <cite>Kinji Fukasaku, cité par Unseen Japan<a class="renvoi" href="#src-10">[10]</a></cite>
+    </div>
+    <p>
+      Diplômé en 1953, il entre à la Tōei comme assistant réalisateur en juin 1954 et passe à la réalisation en 1961<a class="renvoi" href="#src-9">[9]</a>. En 1964, il a donc trois ans de métier — et déjà huit films selon <em>Asian Movie Pulse</em>, dix selon DVDClassik, les décomptes variant selon le traitement des moyens métrages de ses débuts<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      Le studio, à cette date, s'est fait une spécialité du <em>ninkyō eiga</em> : la chronique chevaleresque d'un yakuza d'honneur, situé dans un Japon d'avant-guerre idéalisé, qui affronte des rivaux cupides et meurt ou va en prison pour son clan — un genre qui, au passage, ne dérange jamais l'ordre social<a class="renvoi" href="#src-10">[10]</a>. C'est le registre qui a fait de Ken Takakura une vedette. Fukasaku et Satō écrivent contre lui : ni honneur ancien, ni fresque nostalgique, mais l'argent d'aujourd'hui et ce qu'il fait aux corps. Le réalisateur formulera son intérêt autrement que par la défaite du mal — ce qui l'occupe, dira-t-il, c'est de savoir jusqu'où le désir peut aller<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <p>
+      Deux faits de tournage, enfin. Le film souffre de grèves syndicales pendant sa fabrication, ce qui pèsera sur sa carrière commerciale<a class="renvoi" href="#src-5">[5]</a>. Et c'est sur ce plateau que Fukasaku rencontre l'actrice Sanae Nakahara, qui joue Kyōko : ils se marient après trois mois<a class="renvoi" href="#src-9">[9]</a>. La musique, elle, est confiée à Isao Tomita, alors compositeur de télévision et de cinéma — dix ans avant l'album <em>Snowflakes Are Dancing</em> (1974) qui fera de lui un pionnier mondial du synthétiseur<a class="renvoi" href="#src-11">[11]</a>.
+    </p>
+  </section>
+
+  <section class="bloc" id="structure">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 04</span>
+      <h2>Structure narrative <span class="sous">— deux blocs, trois trajets</span></h2>
+    </div>
+    <p>
+      Le récit tient en deux mouvements de tailles inégales, et le passage de l'un à l'autre est le vrai sujet du film. Le premier est un film de casse : présentation des trois trajets, retour de prison, montage de l'équipe, préparation, exécution du vol à la gare. Le second se referme en huis clos dans un hangar, où le film cesse d'être un récit d'action pour devenir une guerre psychologique entre générations — les hommes du clan d'un côté, les adolescents de Sabu de l'autre, et entre les deux un frère qui torture pour retrouver son argent<a class="renvoi" href="#src-4">[4]</a>.
+    </p>
+    <p>
+      Pour tenir l'exposition de trois destins parallèles sans ralentir, Fukasaku emploie ici pour la première fois un procédé qu'il gardera : la narration par plans figés commentés de textes<a class="renvoi" href="#src-4">[4]</a>. Le générique donne le ton dès la première minute — zooms, arrêts sur image, jazz<a class="renvoi" href="#src-5">[5]</a>. Le montage n'est pas là pour lier, mais pour heurter.
+    </p>
+    <p>
+      Le dispositif le plus remarquable est pourtant une soustraction : les trois frères ne sont jamais réunis dans un même plan, ce qui les fait fonctionner moins comme trois personnages que comme un seul être démembré<a class="renvoi" href="#src-4">[4]</a>. Le film peut ainsi raconter une fratrie sans jamais filmer une famille.
+    </p>
+  </section>
+
+  <section class="bloc" id="miseenscene">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 05</span>
+      <h2>Mise en scène et procédés techniques <span class="sous">— le geste Fukasaku, à l'état naissant</span></h2>
+    </div>
+    <p>
+      Le noir et blanc d'Ichirō Hoshijima fait deux choses à la fois : il compose en clair-obscur un décor de polar, et il donne au bidonville une texture presque post-apocalyptique alors que le film se déroule au présent<a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-5">[5]</a>. Le format large, plutôt que d'ouvrir l'espace, sert surtout à l'encombrer : ferraille, tôles, poutres, corps.
+    </p>
+    <p>
+      La séquence du vol à la gare de Shibuya est le morceau où le style se cristallise. Fukasaku y filme, selon <em>Frame Rated</em>, en « théâtre invisible » — la scène est tournée dans la gare en service, et une partie des réactions visibles à l'écran sont celles de vrais voyageurs<a class="renvoi" href="#src-6">[6]</a>. Caméra portée, angles inventifs, cadres en diagonale : ce que DVDClassik décrit comme la signature à venir du cinéaste, à savoir rendre le chaos lisible sans le calmer<a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      Le reste suit la même logique. Montage saccadé, presque épileptique ; décadrages brutaux ; profondeur de champ employée pour serrer l'espace plutôt que pour l'aérer<a class="renvoi" href="#src-8">[8]</a>. L'héritage est double et assumé : la liberté formelle de la Nouvelle Vague française et l'attention aux pauvres du néoréalisme italien, greffées sur la charpente du film noir américain<a class="renvoi" href="#src-6">[6]</a>. La partition jazz de Tomita achève de dater le film de son époque exacte, et de le décoller du Japon intemporel des <em>ninkyō eiga</em><a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+  </section>
+
+  <section class="bloc" id="personnages">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 06</span>
+      <h2>Personnages principaux <span class="sous">— l'échelle des espèces, du haut vers le bas</span></h2>
+    </div>
+    <div class="grille">
+      <div class="fiche">
+        <span class="bete">Le porc</span>
+        <span class="nom">Kuroki</span>
+        <span class="acteur">Rentarō Mikuni</span>
+        <p>L'aîné, qui a réussi : il a la voiture et l'appartement, mais il appartient au clan. Loup par procuration, il exécute des ordres qu'il ne donne pas<a class="renvoi" href="#src-7">[7]</a>. Mikuni le joue en retenue jusqu'à un dernier mouvement de rage<a class="renvoi" href="#src-5">[5]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="bete">Le loup</span>
+        <span class="nom">Jirō</span>
+        <span class="acteur">Ken Takakura</span>
+        <p>Le cadet, prédateur solitaire qui veut l'argent et le large. Contre-emploi radical pour la vedette du film chevaleresque : Takakura y est instable, et par moments franchement effrayant<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="bete">L'homme, peut-être</span>
+        <span class="nom">Sabu</span>
+        <span class="acteur">Kin'ya Kitaōji</span>
+        <p>Le benjamin, tiraillé entre s'en sortir seul et ne pas lâcher les siens. C'est sur lui que le film place son pari : il lui reste quelque chose d'humain parce que rien, chez lui, ne s'achète encore<a class="renvoi" href="#src-7">[7]</a><a class="renvoi" href="#src-5">[5]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="bete">Hors bestiaire</span>
+        <span class="nom">Kyōko</span>
+        <span class="acteur">Sanae Nakahara</span>
+        <p>Dans un genre saturé de masculinité, les figures féminines du film ne sont pas décoratives : elles portent une part du regard et de la lucidité<a class="renvoi" href="#src-8">[8]</a>. L'actrice épousera le réalisateur peu après le tournage<a class="renvoi" href="#src-9">[9]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" id="themes">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 07</span>
+      <h2>Thèmes <span class="sous">— quatre relevés sur la tôle</span></h2>
+    </div>
+    <div class="themes">
+      <div>
+        <span class="etiquette">Le titre comme échelle morale</span>
+        <p>Le titre japonais énumère : loups <em>et</em> porcs <em>et</em> hommes — les traductions occidentales en inversent l'ordre et lui font perdre sa progression<a class="renvoi" href="#src-4">[4]</a>. Fukasaku y a décrit une évolution : du loup mû par l'appât du gain, au porc qui viole et torture, jusqu'à un retour possible vers l'homme qui combat aux côtés des siens<a class="renvoi" href="#src-4">[4]</a>. <em>Frame Rated</em> en propose une lecture par personnage : Jirō le loup solitaire, Kuroki le porc engraissé par ses maîtres, Sabu celui qui doit encore prouver qu'il est un homme<a class="renvoi" href="#src-6">[6]</a>. Les deux lectures se rejoignent sur l'essentiel : le film ne classe pas des individus, il décrit une pente.</p>
+      </div>
+      <div>
+        <span class="etiquette">L'envers du miracle</span>
+        <p>1964 est l'année des Jeux olympiques de Tokyo et de la vitrine du miracle économique japonais ; le film sort en août, quelques semaines avant la cérémonie<a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>. Son bidonville fonctionne comme le contrepoint exact de l'image que le pays donnait alors au monde : Fukasaku filme ceux que la croissance a repoussés en marge de la ville<a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>. L'Ouvreuse y lit en plus une allégorie politique de l'après-1960 — l'année de la révision du traité de sécurité nippo-américain et de la répression des manifestations étudiantes —, les trois frères valant pour un gouvernement vassal, une génération enrichie par la reconstruction et un peuple exploité<a class="renvoi" href="#src-8">[8]</a>.</p>
+      </div>
+      <div>
+        <span class="etiquette">La fratrie comme corps démembré</span>
+        <p>Jamais réunis dans le même cadre, les trois frères ne forment pas une famille mais un seul homme coupé en trois, dont chaque morceau dévore les autres — « l'homme est un loup pour l'homme » pris au pied de la lettre et à l'échelle d'une même mère<a class="renvoi" href="#src-4">[4]</a>. La mort de celle-ci, au début, ne déclenche pas un deuil : elle libère une créance. C'est le geste le plus dur du film — remplacer le lien du sang par une comptabilité.</p>
+      </div>
+      <div>
+        <span class="etiquette">Le nihilisme comme dernière arme</span>
+        <p>« De toute façon, le monde appartient à qui survit » : la réplique de Jirō rapportée par <em>Asian Movie Pulse</em> tient lieu de morale au premier degré<a class="renvoi" href="#src-5">[5]</a>. Mais la brutalité du film n'est pas une complaisance ; <em>Frame Rated</em> propose d'y voir une résistance morale — la seule arme qui reste à qui n'a aucun pouvoir<a class="renvoi" href="#src-6">[6]</a>. Et <em>easternkicks</em> tire le fil jusqu'au bout : ce que le film accuse n'est pas la nature humaine mais un système qui convertit tout désir en appétit d'acquisition<a class="renvoi" href="#src-7">[7]</a>. La dignité, chez Fukasaku, reste du côté des plus misérables ; la corruption, du côté des puissants — une position qu'il ne quittera plus jusqu'à la fin des années 1970<a class="renvoi" href="#src-3">[3]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" id="reception">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 08</span>
+      <h2>Réception critique et postérité <span class="sous">— salles vides, longue traîne</span></h2>
+    </div>
+    <p>
+      L'accueil est un échec. Sorti en août 1964, le film joue devant des salles à peu près désertes, la nation ayant la tête aux Jeux olympiques qui s'ouvrent quelques semaines plus tard<a class="renvoi" href="#src-6">[6]</a> ; <em>Asian Movie Pulse</em> ajoute au dossier les grèves qui ont perturbé la production<a class="renvoi" href="#src-5">[5]</a>. Son impact initial est inférieur à celui des films précédents de son auteur<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+
+    <div class="releve">
+      <div class="releve-in">
+        <span class="releve-label">Relevé — ce que la fiche retient</span>
+        <div class="releve-grille">
+          <div><span class="chiffre">26 août 1964</span><span class="quoi">Sortie japonaise</span></div>
+          <div><span class="chiffre">95 min</span><span class="quoi">Durée</span></div>
+          <div><span class="chiffre">40 000 000 ¥</span><span class="quoi">Le butin</span></div>
+          <div><span class="chiffre">2024</span><span class="quoi">Restauration et ressortie</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      La réévaluation, elle, est venue. Marc Walkow y voit un film qui a brisé le moule du genre en soudant les procédés des premiers Fukasaku à une critique de la bascule du Japon vers la puissance économique<a class="renvoi" href="#src-1">[1]</a> ; le spécialiste Jasper Sharp le range, avec <em>Gang vs. G-Men</em>, parmi les matrices du polar japonais contemporain — violence réaliste, milieux populaires<a class="renvoi" href="#src-1">[1]</a>. La critique française qui l'a vu en rétrospective ne dit pas autre chose : une œuvre à ranger sans hésiter à côté des grands Fukasaku des années 1970<a class="renvoi" href="#src-8">[8]</a>, un film où se fixent déjà l'esthétique et la morale de tout ce qui suivra<a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      Car ce qui suit porte un nom : le <em>jitsuroku eiga</em>, le « récit véridique », qui balaiera le film chevaleresque au début des années 1970 et dont <em>Combat sans code d'honneur</em> (1973) sera le monument<a class="renvoi" href="#src-10">[10]</a><a class="renvoi" href="#src-9">[9]</a>. <em>Hommes, porcs et loups</em> en est le prototype, neuf ans plus tôt<a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-3">[3]</a>. La postérité du réalisateur, elle, a pris un chemin plus large encore : le grand public le connaît aujourd'hui d'abord pour <em>Battle Royale</em> (2000)<a class="renvoi" href="#src-6">[6]</a>. Le film, longtemps difficile à voir hors du Japon, a été restauré et réédité en 2024 des deux côtés de l'Atlantique<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+  </section>
+
+  <section class="bloc" id="conclusion">
+    <div class="tete">
+      <span class="num">Plaque n<sup>o</sup> 09</span>
+      <h2>Conclusion <span class="sous">— ce que la tôle a retenu</span></h2>
+    </div>
+    <p>
+      Il y a des films de jeunesse qu'on visite par curiosité documentaire, pour y repérer les germes d'une œuvre à venir. Celui-ci n'en est pas. À trente-quatre ans, après trois ans de métier passés à livrer des commandes de studio, Fukasaku trouve d'un coup, dans la gare de Shibuya et dans un hangar de ferraille, la forme qui lui manquait : une caméra qui ne stabilise rien, un montage qui heurte, et une conviction — la dignité en bas, la corruption en haut — qu'il n'a plus lâchée pendant quinze ans<a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      Sa réussite tient pourtant moins au style qu'à un choix de construction. En refusant de réunir ses trois frères dans un seul plan, le film transforme une fratrie en un homme découpé, et son titre en une échelle qu'on descend puis qu'on tente de remonter. Le pari est risqué : il oblige le spectateur à traverser la partie porcine — le viol, la torture, l'avilissement méthodique — sans lui garantir qu'un homme en ressortira. C'est ce refus de garantie qui donne au dernier tiers sa violence morale, bien plus que le sang.
+    </p>
+    <p>
+      Reste l'ironie de sa date. Pendant que le Japon repeignait sa façade pour le monde entier, un réalisateur de la Tōei tournait le contrechamp exact de la carte postale, et personne n'est venu le voir. Soixante ans plus tard, l'échec commercial d'août 1964 ressemble à une simple erreur de calendrier : le film n'était pas en retard sur son époque, il était en avance sur ce qu'elle accepterait d'admettre.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-in">
+    <span class="meta">Sources consultées le 25 juillet 2026</span>
+    <h2>Registre des références</h2>
+    <ol class="liste-sources">
+      <li id="src-1">Wikipedia (EN), « Wolves, Pigs and Men » — <a href="https://en.wikipedia.org/wiki/Wolves,_Pigs_and_Men" target="_blank" rel="noopener">en.wikipedia.org/wiki/Wolves,_Pigs_and_Men</a></li>
+      <li id="src-2">La Cinémathèque française, fiche du film « Hommes, porcs et loups » — <a href="https://www.cinematheque.fr/film/98243.html" target="_blank" rel="noopener">cinematheque.fr/film/98243.html</a></li>
+      <li id="src-3">DVDClassik, « Hommes, porcs et loups de Kinji Fukasaku (1964) — analyse et critique du film » — <a href="https://www.dvdclassik.com/critique/hommes-porcs-et-loups-fukasaku" target="_blank" rel="noopener">dvdclassik.com — Hommes, porcs et loups</a></li>
+      <li id="src-4">Sancho does Asia, « Hommes, porcs et loups » — <a href="https://www.sancho-asia.com/articles/hommes-porcs-et-loups" target="_blank" rel="noopener">sancho-asia.com/articles/hommes-porcs-et-loups</a></li>
+      <li id="src-5">Asian Movie Pulse, « Film Review: Wolves, Pigs and Men (1964) by Kinji Fukasaku » (2024) — <a href="https://asianmoviepulse.com/2024/09/film-review-wolves-pigs-and-men-1964-by-kinji-fukasaku/" target="_blank" rel="noopener">asianmoviepulse.com — Wolves, Pigs and Men</a></li>
+      <li id="src-6">Frame Rated, « Wolves, Pigs, and Men (1964) » — <a href="https://www.framerated.co.uk/wolves-pigs-men-1964/" target="_blank" rel="noopener">framerated.co.uk/wolves-pigs-men-1964</a></li>
+      <li id="src-7">easternKicks, « Wolves, Pigs and Men » — <a href="https://www.easternkicks.com/reviews/wolves-pigs-and-men-alt/" target="_blank" rel="noopener">easternkicks.com — Wolves, Pigs and Men</a></li>
+      <li id="src-8">L'Ouvreuse, « Hommes, Porcs Et Loups » — <a href="http://louvreuse.net/retroprojection/homme-porcs-et-loups.html" target="_blank" rel="noopener">louvreuse.net — Hommes, Porcs Et Loups</a></li>
+      <li id="src-9">Wikipedia (EN), « Kinji Fukasaku » — <a href="https://en.wikipedia.org/wiki/Kinji_Fukasaku" target="_blank" rel="noopener">en.wikipedia.org/wiki/Kinji_Fukasaku</a></li>
+      <li id="src-10">Unseen Japan, « Society Without Honor And Humanity: Japan's 1970s Yakuza Films » — <a href="https://unseen-japan.com/kinji-fukasaku-1970s-yakuza-films/" target="_blank" rel="noopener">unseen-japan.com — Japan's 1970s Yakuza Films</a></li>
+      <li id="src-11">Wikipedia (EN), « Isao Tomita » — <a href="https://en.wikipedia.org/wiki/Isao_Tomita" target="_blank" rel="noopener">en.wikipedia.org/wiki/Isao_Tomita</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="pied">
+  Analyse compilée à partir de sources publiques consultées le 25 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
