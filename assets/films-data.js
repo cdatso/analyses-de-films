@@ -417,7 +417,7 @@ const FILMS = [
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
     datePublication: '2026-07-07 06:38',
-    producteur: 'non spécifié',
+    producteur: 'Claude Sonnet 5 (pipeline, routine nocturne)',
     pays: ['France', 'Italie'],
     technique: ['n&b'],
     genreBase: 'polar'
