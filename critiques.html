@@ -11,9 +11,9 @@
 <body>
 
 <div class="proto-note">
-  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  <b>PROTOTYPE v2 — branche <code>main</code>, BKL-065-3.</b>
   Cette page rend <b>le même composant</b> que l'accueil et que « Études »
-  (P-07) : seul le filtre change. Bandeau <b>PROVISOIRE</b>.
+  (P-07) : seul le filtre change.
 </div>
 
 <header class="chrome">
@@ -39,6 +39,8 @@
       <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
              aria-label="Rechercher dans les Critiques" hidden>
     </div>
+    <p class="compteur-corpus" id="compteur-corpus"
+       style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);margin:0 0 0.5rem;"></p>
     <p class="appui" style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);max-width:44rem;">
       Analyses produites par la machine seule, au niveau d'exigence d'une presse
       sérieuse. Chaque page dit quel modèle l'a produite. Le régime n'est pas un
@@ -111,6 +113,9 @@
     recherche: 'q',
     facettes: 'facettes'
   });
+  document.getElementById('compteur-corpus').textContent =
+    'Nombre de critiques publiées : '
+    + FILMS.filter(function (f) { return Corpus.volet(f) === 'critique'; }).length;
 </script>
 
 </body>
