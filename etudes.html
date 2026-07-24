@@ -11,10 +11,10 @@
 <body>
 
 <div class="proto-note">
-  <b>PROTOTYPE v2 — branche <code>v2-proto</code>, BKL-065-3.</b>
+  <b>PROTOTYPE v2 — branche <code>main</code>, BKL-065-3.</b>
   Même composant que « Critiques » et que l'accueil (P-07), filtre différent.
   Le corpus ne compte à ce jour <b>qu'une seule Étude</b> — déséquilibre
-  structurel assumé (§3.3). Bandeau <b>PROVISOIRE</b>.
+  structurel assumé (§3.3).
 </div>
 
 <header class="chrome">
@@ -40,6 +40,8 @@
       <input type="search" id="q" placeholder="Titre, réalisateur, année, genre…"
              aria-label="Rechercher dans les Études" hidden>
     </div>
+    <p class="compteur-corpus" id="compteur-corpus"
+       style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);margin:0 0 0.5rem;"></p>
     <p class="appui" style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);max-width:44rem;">
       Analyses passées par une révision éditoriale humaine et convoquant un
       appareil théorique. Leur signature est double : le modèle du premier jet,
@@ -81,6 +83,9 @@
     recherche: 'q',
     facettes: 'facettes'
   });
+  document.getElementById('compteur-corpus').textContent =
+    'Nombre d\'études publiées : '
+    + FILMS.filter(function (f) { return Corpus.volet(f) === 'etude'; }).length;
 </script>
 
 </body>
