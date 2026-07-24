@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" role="img">
+  <title>Logo Squad Montage Parallèle</title>
+  <desc>Deux bobines de film côte à côte reliées par des amorces de coupe dorées — des actions parallèles, un seul récit.</desc>
+  <style>
+    .strip { stroke:#26242a; } .word { fill:#26242a; } .tag { fill:#6b6560; }
+    @media (prefers-color-scheme: dark) {
+      .strip { stroke:#e8e2d4; } .word { fill:#e8e2d4; } .tag { fill:#a39d94; }
+    }
+    .perf { fill:#b28d3f; } .flow { fill:#b28d3f; }
+  </style>
+  <circle cx="262" cy="120" r="70" fill="none" class="strip" stroke-width="20"/>
+  <circle cx="418" cy="120" r="70" fill="none" class="strip" stroke-width="20"/>
+  <g>
+    <g transform="rotate(0 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(30 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(60 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(90 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(150 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(180 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(210 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(240 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(270 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(330 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+  </g>
+  <g>
+    <g transform="rotate(0 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(30 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(90 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(120 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(150 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(180 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(210 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(270 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(300 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+    <g transform="rotate(330 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+  </g>
+  <rect x="330" y="110" width="20" height="4" rx="1" class="flow"/>
+  <rect x="330" y="126" width="20" height="4" rx="1" class="flow"/>
+  <path d="M186 105 L174 120 L186 135 Z" class="flow"/>
+  <path d="M494 135 L506 120 L494 105 Z" class="flow"/>
+  <text x="340" y="243" text-anchor="middle" class="word" style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:25px;font-weight:500;letter-spacing:0.12em;">Squad Montage Parallèle</text>
+  <text x="340" y="270" text-anchor="middle" class="tag" style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;letter-spacing:0.08em;">des actions parallèles · un seul récit — conception · dev · test · prod</text>
+</svg>

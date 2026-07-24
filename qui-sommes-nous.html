@@ -7,6 +7,17 @@
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/mobilier.css">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* Style propre à cette page (mandat BKL-038 §6 : le logo s'il exige du
+   style vit DANS la page, jamais dans la feuille partagée). Aucune
+   famille typographique nouvelle : réutilise --sans et --ink-muted. */
+.logo-squad { text-align: center; margin: 0 0 0.7rem; }
+.logo-squad svg { width: 200px; max-width: 100%; height: auto; }
+.logo-squad-legende {
+  font-family: var(--sans); font-size: 0.78rem; color: var(--ink-muted);
+  text-align: center; margin: 0 0 2.2rem;
+}
+</style>
 </head>
 <body>
 
@@ -33,19 +44,116 @@
 
   <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 1.6rem;line-height:1.2;">Qui sommes-nous</h1>
 
-  <div class="reserve-auteur">
-    <span class="etiquette">Emplacement réservé — texte d'auteur</span>
-    Le manifeste est un <strong>texte d'AH</strong> : il relève de <strong>BKL-038</strong>,
-    explicitement <em>exclu</em> de l'absorption des items 017/018 (SPEC-SITE-V2 §11.4)
-    et hors de la plume de cette spec comme de ce prototype (§2.4).
-    Matière disponible : <code>MANIFESTE-PISTES.md</code>, pistes 1 à 5, et la position
-    d'« honnêteté radicale » de la piste 3.
+  <div class="logo-squad">
+    <svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" role="img">
+      <title>Logo Squad Montage Parallèle</title>
+      <desc>Deux bobines de film côte à côte reliées par des amorces de coupe dorées — des actions parallèles, un seul récit.</desc>
+      <style>
+        .strip { stroke:#26242a; } .word { fill:#26242a; } .tag { fill:#6b6560; }
+        @media (prefers-color-scheme: dark) {
+          .strip { stroke:#e8e2d4; } .word { fill:#e8e2d4; } .tag { fill:#a39d94; }
+        }
+        .perf { fill:#b28d3f; } .flow { fill:#b28d3f; }
+      </style>
+      <circle cx="262" cy="120" r="70" fill="none" class="strip" stroke-width="20"/>
+      <circle cx="418" cy="120" r="70" fill="none" class="strip" stroke-width="20"/>
+      <g>
+        <g transform="rotate(0 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(30 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(60 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(90 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(150 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(180 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(210 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(240 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(270 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(330 262 120)"><rect x="259" y="47" width="6" height="6" rx="1" class="perf"/></g>
+      </g>
+      <g>
+        <g transform="rotate(0 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(30 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(90 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(120 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(150 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(180 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(210 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(270 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(300 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+        <g transform="rotate(330 418 120)"><rect x="415" y="47" width="6" height="6" rx="1" class="perf"/></g>
+      </g>
+      <rect x="330" y="110" width="20" height="4" rx="1" class="flow"/>
+      <rect x="330" y="126" width="20" height="4" rx="1" class="flow"/>
+      <path d="M186 105 L174 120 L186 135 Z" class="flow"/>
+      <path d="M494 135 L506 120 L494 105 Z" class="flow"/>
+      <text x="340" y="243" text-anchor="middle" class="word" style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:25px;font-weight:500;letter-spacing:0.12em;">Squad Montage Parallèle</text>
+      <text x="340" y="270" text-anchor="middle" class="tag" style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;letter-spacing:0.08em;">des actions parallèles · un seul récit — conception · dev · test · prod</text>
+    </svg>
   </div>
+  <p class="logo-squad-legende">Deux bobines de film reliées par des amorces de coupe : des actions parallèles, un seul récit.</p>
 
-  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">
-    Structure suggérée par la spec, à confirmer par l'auteur : qui écrit, avec quoi,
-    pourquoi ce genre — et ce que le site ne prétend pas être.
-  </p>
+  <h2>Qui écrit</h2>
+  <p>Ce site est tenu par une squad que nous avons baptisée <strong>« Montage
+  Parallèle »</strong> — plusieurs lignes d'action menées de front, un seul récit
+  à l'arrivée. Le nom n'est pas qu'une image : le mode de travail s'inspire
+  directement du modèle de travail <strong>DevOps</strong> au sein d'une
+  <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_agile">méthodologie Agile</a> —
+  un humain et des agents outillés se répartissent des rôles précis, avancent
+  par cycles courts, et se remettent des livrables cadrés plutôt que de
+  travailler à l'aveugle.</p>
+
+  <p>La squad compte :</p>
+  <ul>
+    <li><strong>Christo Datso</strong> — seul décideur. Il arbitre, valide chaque
+    texte, et effectue lui-même tout geste sensible (publication, suppression).
+    Rien ne se publie sans lui.</li>
+    <li><strong>Claude, d'Anthropic</strong>, décliné en plusieurs « calibres »
+    selon la tâche à accomplir :
+      <ul>
+        <li><strong>Fable</strong> supervise l'ensemble, audite le travail des
+        autres calibres et tient les registres du projet ;</li>
+        <li><strong>Opus</strong> prend en charge les exécutions les plus
+        lourdes — la refonte de ce site, par exemple ;</li>
+        <li><strong>Sonnet</strong> exécute des tâches cadrées et bien
+        délimitées — la rédaction de cette page en fait partie ;</li>
+        <li><strong>Haiku</strong> est cantonnée aux scripts de développement
+        et de test, et n'intervient jamais sur une tâche qui touche le site
+        publié.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Chaque session reçoit un mandat écrit, agit dans les limites qu'il fixe,
+  et rend compte de ce qu'elle a fait — ou non fait — avant de se clore.</p>
+
+  <h2>Avec quoi</h2>
+  <p>Il faut le dire simplement : ces IA n'ont pas vu les films. Une analyse
+  n'est pas un témoignage de spectateur — c'est une synthèse construite à
+  partir de la critique existante, consultée et citée. Nous revendiquons ce
+  genre pour ce qu'il est : une synthèse sourcée à façon, qui cartographie et
+  met en dialogue une critique déjà écrite, sans prétendre s'y substituer.
+  Chaque page porte ses sources, numérotées, jusqu'à la dernière.</p>
+
+  <h2>Pourquoi ce genre</h2>
+  <p>Parce que sa valeur n'est pas l'expérience de la salle, mais la méthode :
+  la traçabilité de chaque affirmation, la mise en réseau rapide d'une critique
+  dispersée, un accès organisé à ce qui a déjà été pensé sur un film. C'est un
+  outil de lecture, pas un substitut au regard.</p>
+
+  <h2>Ce que ce site ne prétend pas être</h2>
+  <p>Il ne prétend pas remplacer la critique qu'il synthétise, ni parler à la
+  place d'un œil qui aurait vu le film. Deux régimes s'y côtoient, et le site
+  le dit à chaque page : les <strong>Critiques</strong>, rédigées par l'IA
+  seule ; les <strong>Études</strong>, où un premier jet de l'IA est repris,
+  vérifié et validé ligne à ligne par Christo Datso. Aucun des deux régimes
+  n'est présenté comme supérieur à l'autre — ils sont produits autrement, et
+  la page dit toujours laquelle.</p>
+
+  <h2>Pour aller plus loin</h2>
+  <p>Ce site emploie Claude, développé par Anthropic. Pour comprendre ce
+  qu'est ce modèle et ses grandes lignes de fonctionnement :</p>
+  <ul>
+    <li><a href="https://claude.com/product/overview">Claude, par Anthropic</a> — présentation du produit</li>
+    <li><a href="https://www.anthropic.com/">Anthropic</a> — l'entreprise qui développe Claude</li>
+  </ul>
 
   <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
 
