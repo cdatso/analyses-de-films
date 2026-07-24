@@ -38,5 +38,8 @@ Tous droits réservés.
 
 Une partie des contenus de ce site est générée par une intelligence
 artificielle, sous supervision humaine. La protection revendiquée
-ci-dessus porte sur l'apport éditorial humain ; la provenance de chaque
-analyse est affichée page par page (cartouche de provenance).
+ci-dessus porte sur l'apport éditorial humain, dont la responsabilité
+s'étend à l'ensemble du site. Le fait qu'une analyse soit liée à un
+calibre (modèle) donné est une information de provenance ; elle ne
+remplace pas la responsabilité humaine, et l'analyse elle-même reste
+couverte par cette protection.
