@@ -536,5 +536,21 @@ const FILMS = [
     genreBase: 'documentaire',
     pays: ['Etats-Unis', 'France'],
     technique: ['couleur']
+  },
+  {
+    slug: 'hommes-porcs-et-loups',
+    title: 'Hommes, porcs et loups',
+    director: 'Kinji Fukasaku',
+    year: 1964,
+    summary: "Trois frères d'un bidonville de Tokyo, quarante millions de yens volés à leur propre clan : le film où Kinji Fukasaku a trouvé sa violence, sorti dans des salles vides à quelques semaines des Jeux olympiques.",
+    url: 'films/hommes-porcs-et-loups.html',
+    poster: 'assets/posters/hommes-porcs-et-loups.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-25 01:09',
+    genreBase: 'polar',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Japon'],
+    technique: ['n&b']
   }
 ];
