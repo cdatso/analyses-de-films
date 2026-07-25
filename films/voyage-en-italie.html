@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voyage en Italie — Étude — Analyse cinématographique</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Palette « cendre et golfe » : noir et blanc napolitain, tuf volcanique,
+       golfe de Naples en accent, braise du Vésuve en signal. Bespoke à l'œuvre. */
+    --tuf:#e9e3d5;
+    --tuf-dim:#dcd4c1;
+    --cendre:#bdb4a4;
+    --lave:#2a2521;
+    --encre:#1d1a16;
+    --encre-douce:#2c2823;
+    --gris:#6b655a;
+    --ombre:#6f5137;
+    --ombre-longue:rgba(29,26,22,0.22);
+    --golfe:#2f6f74;
+    --golfe-texte:#265c60;
+    --braise:#a5402a;
+    --filet:rgba(29,26,22,0.16);
+    --filet-clair:rgba(29,26,22,0.20);
+
+    /* Largeur du mobilier partagé (cartouche, bandeau de variante), calée sur
+       la colonne éditoriale, comme sur le contrechamp Pandora (arbitrage AH
+       du 22/07, option B). */
+    --mobilier-largeur:52.2rem;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--tuf);
+    color:var(--encre-douce);
+    font-family:var(--serif);
+    font-weight:300;
+    line-height:1.78;
+    font-size:1.02rem;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:400;
+    margin:0;
+    color:var(--encre);
+    letter-spacing:0.02em;
+  }
+
+  a{ color:var(--golfe-texte); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:focus-visible{ outline:2px solid var(--golfe); outline-offset:3px; }
+
+  .cartel{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.66rem;
+    color:var(--gris);
+  }
+
+  /* ---------- Couverture : tuf pâle, stratifié de cendre, liseré golfe ---------- */
+
+  .cover{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(178deg, var(--tuf) 0%, var(--tuf) 72%, var(--cendre) 72.4%, #9a9184 100%);
+    color:var(--encre);
+    padding:5.5rem 1.5rem 4.2rem;
+    border-bottom:3px solid var(--golfe);
+  }
+
+  /* silhouette basse du Vésuve, à droite, en clip-path pur CSS */
+  .cover::before{
+    content:"";
+    position:absolute;
+    right:-2%;
+    bottom:24%;
+    width:52%;
+    height:42%;
+    background:linear-gradient(180deg, var(--cendre), var(--tuf-dim));
+    clip-path:polygon(0% 100%, 45% 10%, 55% 10%, 100% 100%);
+    opacity:0.55;
+    pointer-events:none;
+  }
+
+  /* ombre longue oblique jetée sur le sol de cendre, comme une figure hors champ */
+  .cover::after{
+    content:"";
+    position:absolute;
+    left:12%;
+    bottom:0;
+    width:34%;
+    height:26%;
+    background:linear-gradient(100deg, rgba(29,26,22,0.16), rgba(29,26,22,0));
+    transform:skewX(-38deg);
+    pointer-events:none;
+  }
+
+  .cover-inner{
+    position:relative;
+    z-index:2;
+    max-width:52rem;
+    margin:0 auto;
+  }
+
+  .back-link{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:0.74rem;
+    letter-spacing:0.08em;
+    color:var(--encre-douce);
+    text-decoration:none;
+    border-bottom:1px solid var(--filet-clair);
+    padding-bottom:2px;
+    margin-bottom:3rem;
+  }
+  .back-link:hover{ color:var(--encre); border-color:var(--encre); }
+
+  .eyebrow{
+    display:block;
+    color:var(--golfe-texte);
+    margin-bottom:1.4rem;
+  }
+
+  .cover h1{
+    font-size:clamp(3rem, 11vw, 5.6rem);
+    line-height:0.94;
+    color:var(--encre);
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    text-shadow:0.16em 0.10em 0 rgba(233,227,213,0.9), 0.17em 0.11em 0 rgba(29,26,22,0.16);
+  }
+
+  .orig-title{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--encre-douce);
+    margin-top:1.5rem;
+  }
+
+  .horizon{
+    height:1px;
+    background:linear-gradient(90deg, var(--golfe), rgba(47,111,116,0.15));
+    margin:2.2rem 0 1.4rem;
+  }
+
+  .meta-line{
+    font-family:var(--mono);
+    font-size:0.76rem;
+    letter-spacing:0.10em;
+    color:var(--encre-douce);
+    text-transform:uppercase;
+  }
+
+  .provenance{
+    margin-top:1.6rem;
+    padding:0.9rem 1.2rem;
+    border-left:3px solid var(--golfe);
+    background:rgba(47,111,116,0.08);
+    font-family:var(--mono);
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--encre-douce);
+    text-transform:none;
+  }
+  .provenance strong{ color:var(--encre); }
+
+  /* ---------- Sommaire ---------- */
+
+  .programme{
+    max-width:52rem;
+    margin:0 auto;
+    padding:2.8rem 1.5rem 0;
+  }
+  .programme ol{
+    list-style:none;
+    margin:1rem 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
+    gap:0.15rem 1.6rem;
+  }
+  .programme a{
+    display:block;
+    padding:0.42rem 0;
+    font-family:var(--mono);
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    color:var(--encre-douce);
+    text-decoration:none;
+    border-bottom:1px solid var(--filet);
+  }
+  .programme a:hover{ color:var(--golfe-texte); }
+  .programme .num{ color:var(--golfe-texte); margin-right:0.7rem; }
+
+  /* ---------- Corps ---------- */
+
+  main{
+    max-width:52rem;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+
+  section{ margin-top:3.6rem; }
+
+  .toile{
+    border-top:2px solid var(--golfe);
+    padding-top:0.9rem;
+    margin-bottom:1.8rem;
+  }
+  .toile .cartel{ display:block; margin-bottom:0.35rem; }
+  .toile h2{
+    font-size:clamp(1.5rem, 4vw, 2.05rem);
+    line-height:1.14;
+  }
+
+  p{ margin:0 0 1.15rem; }
+
+  h3{
+    font-size:1.12rem;
+    margin:2.1rem 0 0.6rem;
+    color:var(--ombre);
+    font-style:normal;
+  }
+  h3::before{
+    content:"— ";
+    color:var(--golfe-texte);
+  }
+
+  /* éclairage théorique deleuzien : sous-section marquée */
+  .deleuze{
+    margin:1.8rem 0;
+    padding:1.1rem 1.3rem;
+    background:var(--tuf-dim);
+    border-left:3px solid var(--lave);
+  }
+  .deleuze h3{ margin-top:0; }
+  .deleuze h3::before{ content:"◆ "; color:var(--lave); }
+
+  sup.ref{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.02em;
+  }
+  sup.ref a{
+    text-decoration:none;
+    color:var(--golfe-texte);
+    padding:0 0.08em;
+  }
+  sup.ref a:hover{ text-decoration:underline; }
+
+  blockquote{
+    margin:1.6rem 0;
+    padding:0.2rem 0 0.2rem 1.4rem;
+    border-left:2px solid var(--golfe);
+    font-style:italic;
+    color:var(--encre);
+    font-size:1.04rem;
+  }
+  blockquote cite{
+    display:block;
+    margin-top:0.5rem;
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--gris);
+  }
+
+  /* ---------- Fiche technique : cartel + affiche ---------- */
+
+  .fiche-wrap{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:2rem;
+  }
+  @media (min-width:44rem){
+    .fiche-wrap{ grid-template-columns:1fr minmax(13rem, 17rem); }
+  }
+
+  .fiche{
+    background:var(--tuf-dim);
+    border:1px solid var(--filet);
+    padding:1.5rem 1.6rem;
+  }
+  .fiche dl{
+    margin:0;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0.42rem 1.2rem;
+    font-size:0.95rem;
+  }
+  .fiche dt{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--gris);
+    padding-top:0.28rem;
+    white-space:nowrap;
+  }
+  .fiche dd{ margin:0; color:var(--encre); }
+
+  figure.poster{
+    margin:0;
+    align-self:start;
+  }
+  figure.poster img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--filet);
+    box-shadow:0.5rem 0.5rem 0 rgba(47,111,116,0.18);
+  }
+  figure.poster figcaption{
+    margin-top:0.8rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--gris);
+    line-height:1.6;
+  }
+
+  /* ---------- Sources ---------- */
+
+  .sources ol{
+    padding-left:1.4rem;
+    font-size:0.9rem;
+    line-height:1.7;
+  }
+  .sources li{ margin-bottom:0.6rem; }
+  .sources li::marker{
+    font-family:var(--mono);
+    color:var(--golfe-texte);
+  }
+
+  footer{
+    max-width:52rem;
+    margin:0 auto;
+    padding:2rem 1.5rem 4rem;
+    border-top:1px solid var(--filet);
+  }
+
+  .note{
+    background:var(--tuf-dim);
+    border-left:3px solid var(--golfe);
+    padding:0.9rem 1.2rem;
+    font-size:0.92rem;
+    margin:1.6rem 0;
+  }
+
+  /* Substitution typographique v2 (P-20, P-26) : titrage et texte courant sur
+     la même famille. Palette, couverture et ossature restent bespoke. */
+  body{font-family:var(--serif);}
+  h1,h2,h3{font-family:var(--serif);}
+</style>
+</head>
+<body data-volet="etude">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html">Critiques</a>
+      <a href="../etudes.html" aria-current="page">Études</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+
+<header class="cover">
+  <div class="cover-inner">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <span class="eyebrow cartel">Italie / France — 1954 — Noir et blanc · Étude</span>
+    <h1>Voyage en Italie</h1>
+    <div class="orig-title">Viaggio in Italia</div>
+    <div class="horizon"></div>
+    <div class="meta-line">Roberto Rossellini · Ingrid Bergman &amp; George Sanders · Photographie d'Enzo Serafin</div>
+    <div class="provenance">
+      <strong>Provenance.</strong> Étude du régime B (supervision éditoriale humaine) : premier jet produit par IAGen Claude d'Anthropic (modèle Opus 4.8), révision éditoriale et validation par Christo Datso. Appareil théorique adossé à Gilles Deleuze (renvois paginés), André Bazin et Jacques Rivette, lus sur leurs textes.
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R3 — Étude</span>
+  <span class="signature">Étude — premier jet produit par IAGen Claude d'Anthropic (modèle Opus 4.8), révision éditoriale et validation par Christo Datso.</span>
+  <span class="signature">Modèle producteur : IAGen Claude d'Anthropic (Opus 4.8)</span>
+  <span class="date-pub">Publiée le 25 juillet 2026</span>
+</div>
+</div>
+
+
+<nav class="programme">
+  <span class="cartel">Sommaire</span>
+  <ol>
+    <li><a href="#fiche"><span class="num">I</span> Fiche technique</a></li>
+    <li><a href="#synopsis"><span class="num">II</span> Synopsis</a></li>
+    <li><a href="#production"><span class="num">III</span> Contexte de production</a></li>
+    <li><a href="#structure"><span class="num">IV</span> Structure narrative</a></li>
+    <li><a href="#mise-en-scene"><span class="num">V</span> Mise en scène</a></li>
+    <li><a href="#personnages"><span class="num">VI</span> Personnages</a></li>
+    <li><a href="#themes"><span class="num">VII</span> Thèmes</a></li>
+    <li><a href="#reception"><span class="num">VIII</span> Réception et postérité</a></li>
+    <li><a href="#conclusion"><span class="num">IX</span> Conclusion</a></li>
+    <li><a href="#sources"><span class="num">·</span> Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="fiche">
+  <div class="toile">
+    <span class="cartel">Toile I</span>
+    <h2>Fiche technique</h2>
+  </div>
+
+  <div class="fiche-wrap">
+    <div class="fiche">
+      <dl>
+        <dt>Titre original</dt><dd>Viaggio in Italia</dd>
+        <dt>Réalisation</dt><dd>Roberto Rossellini</dd>
+        <dt>Scénario</dt><dd>Vitaliano Brancati, Roberto Rossellini (Antonio Pietrangeli au générique BFI)<sup class="ref"><a href="#src-3">3</a></sup></dd>
+        <dt>Photographie</dt><dd>Enzo Serafin</dd>
+        <dt>Musique</dt><dd>Renzo Rossellini</dd>
+        <dt>Montage</dt><dd>Jolanda Benvenuti</dd>
+        <dt>Production</dt><dd>Adolfo Fossataro, Alfredo Guarini, Roberto Rossellini</dd>
+        <dt>Interprétation</dt><dd>Ingrid Bergman (Katherine Joyce), George Sanders (Alexander Joyce), Maria Mauban (Marie), Anna Proclemer, Paul Muller<sup class="ref"><a href="#src-18">18</a></sup></dd>
+        <dt>Pays</dt><dd>France, Italie</dd>
+        <dt>Format</dt><dd>35 mm, noir et blanc, 1.37:1, son monophonique</dd>
+        <dt>Durée</dt><dd>de 79 à 106 min selon les sources ; <strong>85 min</strong> pour la version restaurée de référence (Criterion, Spine #675)<sup class="ref"><a href="#src-18">18</a></sup></dd>
+        <dt>Sortie</dt><dd>Italie, 7 septembre 1954 ; France, 15 avril 1955</dd>
+        <dt>Datation</dt><dd>1954 (première exploitation) ; 1953 retenu par la Cinémathèque française et par G. Bourgois (fabrication)<sup class="ref"><a href="#src-4">4</a></sup></dd>
+      </dl>
+    </div>
+
+    <figure class="poster">
+      <img src="../assets/posters/voyage-en-italie.jpg"
+           alt="Affiche du film Voyage en Italie"
+           onerror="this.closest('.poster').remove()">
+      <figcaption>Affiche d'exploitation — collection de référence du projet</figcaption>
+    </figure>
+  </div>
+
+  <div class="note">
+    <strong>Deux divergences documentaires, posées plutôt que lissées.</strong>
+    L'<em>année</em> : la Cinémathèque française et G. Bourgois datent le film de 1953 (tournage commencé le 5 février 1953), le BFI et l'usage courant de 1954 (sortie italienne) — nous retenons 1954, date de première exploitation, en signalant l'autre usage.
+    La <em>durée</em> : de 79 min à 106 min selon les catalogues ; un film tourné sans scénario ferme, monté puis remonté, exporté en plusieurs langues, n'a pas <em>une</em> durée — les 85 min de l'édition Criterion restaurée en 4K font figure de longueur de référence pour la version anglaise disponible.<sup class="ref"><a href="#src-5">5</a></sup><sup class="ref"><a href="#src-18">18</a></sup>
+  </div>
+</section>
+
+<section id="synopsis">
+  <div class="toile">
+    <span class="cartel">Toile II</span>
+    <h2>Synopsis</h2>
+  </div>
+
+  <p>Alexander et Katherine Joyce, couple anglais aisé, roulent vers Naples pour liquider la succession de l'oncle Homer, dont ils ont hérité une villa. Le voyage est leur premier temps de solitude à deux depuis des années de mariage ; il révèle immédiatement ce que la vie sociale de Londres masquait — l'ennui, l'irritation, l'absence de désir.</p>
+
+  <p>Sur place, le couple se sépare de fait. Katherine visite seule les lieux : le Musée archéologique national, les champs Phlégréens et la Solfatare de Pouzzoles, les Cumes et l'antre de la Sibylle, les catacombes. Alexander part pour Capri, où il tente sans conviction une aventure et fréquente une société mondaine qui l'ennuie autant que sa femme. Les excursions de l'une et les échappées de l'autre ne produisent aucun événement dramatique : elles approfondissent une séparation déjà là.</p>
+
+  <p>Le divorce est prononcé entre eux, sans éclat, comme une décision administrative. Puis vient la visite des fouilles de Pompéi : sous leurs yeux, les archéologues coulent le plâtre dans la cavité laissée par deux corps ensevelis, et font apparaître un couple mort enlacé depuis deux mille ans. Katherine s'effondre. Sur la route du retour, la voiture est prise dans la procession de la fête de San Gennaro ; la foule les sépare, un miracle se produit — un infirme se lève et marche —, Katherine appelle Alexander, ils se rejoignent et se disent qu'ils s'aiment. La foule, elle, continue de passer.</p>
+</section>
+
+<section id="production">
+  <div class="toile">
+    <span class="cartel">Toile III</span>
+    <h2>Contexte de production</h2>
+  </div>
+
+  <p>Le film naît d'un accident. Rossellini avait prévu d'adapter <em>Duo</em> de Colette ; les droits se révèlent indisponibles, alors que les contrats des interprètes sont déjà signés. Plutôt que d'abandonner, il improvise un autre récit et écrit les scènes au jour le jour pendant le tournage, commencé le 5 février 1953. Les studios sont ceux de Titanus, mais l'essentiel se tourne en Campanie : Naples, Capri, Cumes, Pompéi, Pouzzoles, Amalfi, Maiori.<sup class="ref"><a href="#src-11">11</a></sup></p>
+
+  <p>Cette contrainte devient la méthode. Rivette, dans sa « Lettre sur Rossellini », place le regard du cinéaste non du côté de la transfiguration, mais de la <strong>« capture »</strong> : « une chasse de chaque instant », « un mouvement incessant de prise et de poursuite… l'accent même de la conquête ». La caméra y gagne une fluidité inconnue des films néoréalistes antérieurs. Ce n'est pas un renoncement à la rigueur : c'est le déplacement de la rigueur, du scénario vers le regard.<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p>Le film appartient au cycle des cinq longs métrages tournés par Rossellini avec Ingrid Bergman, dont <em>Stromboli</em> (1950) et <em>Europe 51</em> (1952) sont les deux grands précédents. Critikat lit les trois films comme une trilogie de la grâce obtenue par l'abaissement terrestre ; c'est aussi, hors écran, le moment où le couple Rossellini-Bergman est l'un des plus commentés d'Europe, ce qui pèse sur la réception d'un film qui, précisément, filme un couple qui se défait.<sup class="ref"><a href="#src-9">9</a></sup></p>
+
+  <p>Il faut enfin situer le film dans la trajectoire de son auteur. Le BFI le décrit comme un tournant « entre l'expérience néoréaliste, la collaboration avec Ingrid Bergman, et la nature avant-gardiste qui guidera le grand cinéaste romain tout au long de sa carrière ». Ce sont ces trois lignes qui se croisent en 1953-1954, et le désarroi de la critique de l'époque tient largement à ce croisement : on attendait un néoréaliste, on trouve un moderne.<sup class="ref"><a href="#src-3">3</a></sup></p>
+</section>
+
+<section id="structure">
+  <div class="toile">
+    <span class="cartel">Toile IV</span>
+    <h2>Structure narrative</h2>
+  </div>
+
+  <p><em>Voyage en Italie</em> n'a pas d'intrigue au sens classique : il a un calendrier. Le Ciné-club de Caen propose de lire le film sur sept jours et autour de cinq à six lieux — l'hôtel et Naples, le Musée archéologique, la Solfatare et les champs Phlégréens, les catacombes, Pompéi, la procession finale. La structure est celle d'une série de visites, non d'une chaîne de causes.<sup class="ref"><a href="#src-10">10</a></sup></p>
+
+  <p>Cette juxtaposition est le geste décisif. Dans un film classique, chaque séquence est motivée par la précédente et prépare la suivante ; ici, rien ne découle de rien. Katherine visite un musée parce qu'elle est à Naples et qu'elle n'a rien d'autre à faire. Alexander va à Capri pour la même raison. Le récit ne progresse pas : il <strong>dure</strong>. Rivette avait fixé la distinction dès 1955 : il y a « les films qui commencent et qui finissent… Hawks, Hitchcock, Murnau, Ray, Griffith », et il y a « les films qui n'ont rien de cela, et <strong>retournent au temps comme les fleuves à la mer</strong> » — « il y a Renoir et Rossellini ». On ne peut jamais désigner la scène où le mariage a basculé, parce qu'il n'y en a pas.<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p>Le Ciné-club de Caen résume ce mouvement par une triade — quête, attente, révélation — qu'il rattache à Rivette. La formule est commode, mais la précision s'impose : cette triade nette est une synthèse du Ciné-club, non une phrase de Rivette. Le texte de 1955 porte bien les trois termes, mais disjoints — « une <strong>quête</strong> corporelle (et donc spirituelle) », « l'angoisse de l'<strong>attente</strong>, l'idée fixe de ce qui doit venir après », et le film « de voyant » où affleure la <strong>révélation</strong>. La nuance n'est pas oiseuse : elle distingue ce que Rivette a écrit de ce que la tradition critique en a tiré.<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p>Ce que Rivette nomme, au fond, c'est un déplacement de régime. <em>Voyage en Italie</em> « offre enfin au cinéma, jusqu'alors obligé au récit, la possibilité de l'<strong>essai</strong> » — et l'essai, ajoute-t-il, « est la langue même de l'art moderne ». Le calendrier plutôt que l'intrigue, la liste plutôt que la chaîne causale : c'est la forme de l'essai portée à l'écran. D'où la difficulté que le film a longtemps posée, et qui est aussi sa définition : on ne peut pas le raconter. Le résumer, c'est en donner les étapes, c'est-à-dire précisément ce qui n'y compte pas.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="toile">
+    <span class="cartel">Toile V</span>
+    <h2>Mise en scène et procédés</h2>
+  </div>
+
+  <p><strong>La voiture.</strong> Le film commence dans une automobile en marche et s'achève dans une automobile immobilisée. Entre les deux, l'habitacle est le seul lieu où les Joyce sont ensemble : espace clos, orienté dans le même sens, où l'on parle sans se regarder. La mise en scène en tire l'essentiel de son ironie — deux êtres côte à côte, face à la même route, et qui ne voient pas la même chose. Brad Stevens souligne que la séquence finale commence par <strong>les faire sortir</strong> de cette carrosserie protectrice : la foule ne les atteint qu'une fois la portière ouverte.<sup class="ref"><a href="#src-2">2</a></sup></p>
+
+  <p><strong>La déambulation.</strong> Le Ciné-club de Caen note que Rossellini privilégie le cadre mobile et le déplacement physique des corps dans les lieux, plutôt que l'introspection psychologique : la caméra suit Bergman qui marche, et c'est la marche qui produit le sens. Bazin dit la même chose en termes d'ontologie du geste : chez Rossellini, « le geste, le changement, le mouvement physique constituent l'essence même du réel humain » ; ses personnages sont « hantés par le démon de la mobilité ». Au Musée archéologique, la statuaire antique n'illustre pas un état d'âme — elle le provoque, dans le temps réel d'un parcours de salles.<sup class="ref"><a href="#src-13">13</a></sup></p>
+
+  <p><strong>Le paysage comme personnage — et comme conscience.</strong> La Cinémathèque française résume le film comme « le flot d'une vie conjugale, rythmée par l'ennui et le manque de désir », où la culture et les paysages italiens deviennent des personnages à part entière. Bazin va plus loin, et donne à ce constat sa formule théorique : la Naples du film, dit-il, est « <strong>filtrée</strong> par la conscience de l'héroïne », « un <strong>paysage mental</strong> à la fois objectif comme une pure photographie et subjectif comme une pure conscience ». Si le paysage y est « pauvre et limité », c'est que la conscience qui le filtre — celle d'une « bourgeoise médiocre » — est elle-même, écrit-il, « d'une rare pauvreté spirituelle ».<sup class="ref"><a href="#src-13">13</a></sup></p>
+
+  <p><strong>Le cliché retourné.</strong> C'est peut-être le procédé le plus profond du film, et Guillaume Bourgois en a donné l'analyse la plus précise à partir du motif de la <strong>carte postale</strong>. Le Vésuve, emblème touristique de Naples, y fonctionne simultanément comme « décor merveilleux » et « décor tragique » ; le regard du guide et les stéréotypes des personnages sur l'Italie constituent le point de départ, mais le montage et le hors-champ libèrent l'image de son statut passif d'image toute faite, et lui rendent la capacité de <strong>regarder</strong> à son tour — Bourgois convoque ici Didi-Huberman et son idée de l'image qui nous regarde. Rossellini ne dénonce pas le cliché : il le filme jusqu'à ce qu'il cède.<sup class="ref"><a href="#src-7">7</a></sup></p>
+
+  <p><strong>Les corps de Pompéi.</strong> La séquence est le sommet technique et moral du film. Le procédé de moulage — verser le plâtre dans le vide laissé par un corps disparu — est montré dans sa durée documentaire, sans musique appuyée ni montage démonstratif. Ce qui apparaît est littéralement une image obtenue d'une absence. Critikat y voit le point où la réalité matérielle traverse enfin les défenses affectives de Katherine : le « jaillissement des larmes » n'est pas provoqué par un dialogue, mais par un objet.<sup class="ref"><a href="#src-9">9</a></sup></p>
+
+  <p>Or ce moulage est aussi, pour qui lit Bazin, une <strong>mise en abyme de l'image cinématographique elle-même</strong>. Dans sa « Défense de Rossellini », Bazin définit la photographie comme « une véritable empreinte du réel, une sorte de <strong>moulage lumineux</strong> où la couleur n'apparaît pas », et pose une « <strong>identité ontologique entre l'objet et sa photographie</strong> ». La scène de Pompéi ne fait rien d'autre, au premier degré, que ce que Bazin dit de tout plan : elle prend l'empreinte d'un corps absent. Le film met en scène, à son sommet, la théorie même par laquelle son plus grand défenseur le justifiait.<sup class="ref"><a href="#src-13">13</a></sup></p>
+
+  <p><strong>La composition décentrée.</strong> Rivette rapproche cette écriture de celle de <strong>Matisse</strong> : « ce goût des larges surfaces blanches, juste rehaussées d'un trait net », et surtout « l'asymétrisme de Matisse, la "fausseté" magistrale de la composition, calmement décentrée, qui choque… et ne révèle qu'ensuite son équilibre secret ». La rime est frappante : Bazin, indépendamment, conclut sa lettre sur la même comparaison (voir l'encadré ci-dessous). Deux textes fondateurs de 1954-1955 vont chercher, pour dire Rossellini, le même peintre.<sup class="ref"><a href="#src-12">12</a></sup></p>
+</section>
+
+<section id="personnages">
+  <div class="toile">
+    <span class="cartel">Toile VI</span>
+    <h2>Personnages principaux</h2>
+  </div>
+
+  <p><strong>Katherine Joyce</strong> (Ingrid Bergman) est le centre de perception du film. Elle est celle qui regarde, qui visite, qui se laisse atteindre. <em>Senses of Cinema</em> relève que c'est la première fois que Bergman joue face à un partenaire qui lui tient techniquement tête, et que le mariage à l'écran mijote « dans un ragoût de ressentiments mutuels ». Deux lectures du personnage se croisent, et il vaut mieux les tenir ensemble que choisir. Rivette la sauve : une femme « égarée, perdue au royaume de la grâce », dont les regards répétés forment de « larges accords » musicaux. Bazin la juge : « bourgeoise médiocre » d'une « rare pauvreté spirituelle », dont l'étroitesse est précisément ce que le film donne à voir. La tension entre les deux — grâce chez l'un, médiocrité chez l'autre — n'est pas à résoudre : elle est le personnage.<sup class="ref"><a href="#src-6">6</a></sup><sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p><strong>Alexander Joyce</strong> (George Sanders) est son exact contraire, et la réussite du film tient à ce que cette opposition ne soit jamais une caricature. Sanders y apporte une morgue élégante, une cruauté désœuvrée, une incapacité à l'émerveillement. Il ne visite pas : il s'absente. Rivette lit d'ailleurs dans son visage autre chose qu'un personnage : « <em>Voyage en Italie</em> offre une fable transparente, et <strong>George Sanders un visage qui ne dissimule guère celui même du cinéaste</strong> ». Le film serait alors, en partie, un autoportrait déguisé du couple Rossellini — lecture séduisante, à manier avec prudence, car Rivette interprète autant qu'il décrit.<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p><strong>Le couple</strong> est, au fond, le seul personnage. La Cinémathèque française en donne la formule la plus juste : ils « se fuient mais continuent à s'aimer ». Rien dans le film n'explique pourquoi ils restent ensemble, et rien n'explique pourquoi ils se retrouvent à la fin. C'est délibéré : l'explication appartiendrait à la psychologie, et le film a choisi l'incarnation.<sup class="ref"><a href="#src-4">4</a></sup></p>
+
+  <p><strong>Les Italiens</strong> — le guide du musée, l'employé des fouilles, la foule de la procession, les femmes enceintes des catacombes — ne sont pas des figurants au sens ordinaire. Stevens montre que Rossellini leur accorde, à la fin, une importance <strong>égale</strong> à celle de ses vedettes : là où un autre cinéaste ferait converger la foule vers le couple, Rossellini laisse les musiciens de la fanfare parfaitement indifférents à ce qui se joue entre Bergman et Sanders. Cette indifférence est une position esthétique.<sup class="ref"><a href="#src-2">2</a></sup></p>
+</section>
+
+<section id="themes">
+  <div class="toile">
+    <span class="cartel">Toile VII</span>
+    <h2>Thèmes</h2>
+  </div>
+
+  <p><strong>Le couple et l'incommunicabilité.</strong> Le film est l'un des premiers à faire de l'usure conjugale un sujet suffisant, sans crime, sans adultère consommé, sans ruine. La Cinémathèque française parle d'un « drame intime sur l'incommunicabilité et la force de l'attachement ». On mesure la nouveauté à ce qui manque : ni scène de rupture, ni confrontation cathartique, ni coupable.<sup class="ref"><a href="#src-4">4</a></sup></p>
+
+  <p><strong>Les morts.</strong> <em>Voyage en Italie</em> est traversé de morts qui ne sont jamais lugubres : l'oncle Homer dont on liquide la maison, les statues du musée, les crânes des catacombes, les moulages de Pompéi. Critikat décrit le parcours de Katherine comme « un cheminement vers les profondeurs telluriques ». Ces morts ne menacent pas les vivants — ils les instruisent. Le couple de Pompéi est enlacé ; c'est ce que les Joyce ne parviennent plus à être.<sup class="ref"><a href="#src-9">9</a></sup></p>
+
+  <p><strong>L'Italie comme épreuve.</strong> Patrick Werly, dont l'ouvrage sur Rossellini et la conversion est recensé par <em>Acta fabula</em>, lit la rencontre des Joyce avec Naples comme la confrontation de deux cultures : une mentalité « cousue » — anglaise, tournée vers l'action et l'efficacité — et une civilisation « drapée », méditerranéenne. Le voyage n'est pas un dépaysement, c'est une mise en défaut.<sup class="ref"><a href="#src-8">8</a></sup></p>
+
+  <p><strong>La grâce, et le miracle indécidable.</strong> C'est le thème le plus discuté, parce qu'il est le plus exposé. Rivette y voit l'incarnation cinématographique d'un mystère catholique, et pousse le film jusqu'à « la grande allégorie chrétienne » : « ces statues, ces amants, ces femmes grosses… ces gisants, ces crânes, ces bannières… cette procession d'un culte presque barbare. Tout rayonne… la beauté, l'amour, la maternité, la mort, Dieu. » Critikat y lit une élévation par l'abaissement, et souligne que le « je t'aime » final fonctionne comme une <strong>rupture dans le récit lui-même</strong>.<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p>Mais la lecture la plus dessillée du miracle est, dès 1954, celle de <strong>Bazin</strong> — et elle précède de près d'un demi-siècle celle de Stevens. Le miracle de <em>Voyage en Italie</em>, écrit Bazin, est « <strong>invisible aux deux héros, presque invisible même de la caméra, au demeurant ambigu</strong> » — « car Rossellini ne prétend pas que ce soit un miracle, seulement l'ensemble de cris et de bousculades qu'on nomme tel » —, mais son « heurt contre la conscience des personnages provoque inopinément la précipitation de leur amour ». Le film <strong>donne un miracle sans jamais dire s'il en est un</strong>. Bazin en tire une définition de tout le cinéma de Rossellini : « un univers d'actes purs, insignifiants en eux-mêmes, mais préparant comme à l'insu même de Dieu la révélation soudain éblouissante de leur sens ».<sup class="ref"><a href="#src-13">13</a></sup></p>
+
+  <p>Ces deux lectures — la grâce (Rivette) et l'ambiguïté (Bazin) — ne s'annulent pas. Le film tient précisément dans leur indécidabilité.</p>
+
+  <div class="note">
+    <strong>La convergence Matisse (1954-1955).</strong> Il vaut la peine de noter que les deux textes fondateurs de la défense du film, écrits presque en même temps et sans se concerter sur ce point, vont chercher <strong>le même peintre</strong>. Bazin : « L'art de Rossellini est comme linéaire et mélodique… le trait indique plus qu'il ne peint… Peut-être Rossellini est-il, en effet, davantage <strong>dessinateur que peintre</strong>… Autant le reprocher à Matisse. » Rivette : « le sens commun de l'ébauche… l'esquisse plus vraie… que le détail ». La rime n'est pas une coïncidence de goût : elle nomme une même intuition — que le réalisme de Rossellini est un art du trait juste, non de l'accumulation.
+  </div>
+
+  <div class="deleuze">
+    <h3>Éclairage deleuzien 1 — le catalogue des clichés (<em>L'Image-Mouvement</em>, 286)</h3>
+    <p>Gilles Deleuze cite <em>Voyage en Italie</em> une fois dans <em>Cinéma 1. L'Image-Mouvement</em> (Minuit, 1983), au chapitre XII, « La crise de l'image-action », <strong>page 286</strong> — aux toutes dernières pages du volume, là où l'édifice de l'image-mouvement se fissure. Le passage est bref et décisif : dans <em>Voyage en Italie</em>, <strong>Rossellini fait le catalogue des clichés de la pure italianité</strong> (IM 286).<sup class="ref"><a href="#src-14">14</a></sup></p>
+    <p>La position de cette citation dans le livre importe autant que son contenu. Les pages 285-286 forment une constellation : Deleuze y convoque coup sur coup <em>Païsa</em>, <em>Rome ville ouverte</em>, <em>Le Général della Rovere</em> — dont il note qu'il « tire le cliché de la fabrication d'un héros » —, mais aussi <em>Le Voleur de bicyclette</em> et <em>Umberto D</em> de De Sica, <em>Le Cheikh blanc</em>, <em>Les Vitelloni</em> et <em>Une agence matrimoniale</em> de Fellini. Trois concepts gouvernent ce moment : l'origine de la crise (néoréalisme italien et nouvelle vague française), la conscience critique du cliché, et le passage vers un au-delà de l'image-mouvement. Dès la page suivante (IM 287), Deleuze bascule vers Godard, Truffaut, Rivette, Chabrol, Rohmer, Rosi.</p>
+    <p>Ce que cette position dit du film est simple et fort. Pour Deleuze, l'échec du schéma sensori-moteur — cette mécanique où une situation appelle une action qui la modifie — ne se produit pas par une révolution formelle, mais par une <strong>saturation</strong>. Le monde devient un stock d'images toutes faites ; le personnage ne peut plus réagir, il ne peut plus que constater. Or c'est exactement la position de Katherine Joyce : elle ne fait rien de ce qu'elle voit. Elle visite. Le tourisme est ici la forme sociale de l'impuissance à agir, et c'est pourquoi Deleuze retient précisément le mot <em>catalogue</em> — un catalogue n'est pas un récit, c'est une liste. Cet éclairage rejoint, par un autre chemin, l'analyse du motif de la carte postale menée par Bourgois : ce que Deleuze nomme la conscience critique du cliché, Bourgois le décrit comme le retournement de l'image touristique en image qui regarde.</p>
+  </div>
+
+  <div class="deleuze">
+    <h3>Éclairage deleuzien 2 — le cinéma de voyant (<em>L'Image-Temps</em>, 9)</h3>
+    <p><em>Voyage en Italie</em> reparaît chez Deleuze <strong>au seuil du second volume</strong> : <em>Cinéma 2. L'Image-Temps</em> (Minuit, 1985), chapitre 1, « Au-delà de l'image-mouvement », <strong>page 9</strong>. C'est la seule occurrence du film dans tout le volume — mais elle en commande l'ouverture. Deleuze y écrit que <em>Voyage en Italie</em> « accompagne une touriste <strong>atteinte en plein cœur</strong> » par un déroulement de clichés où elle découvre quelque chose d'insupportable ; et le paragraphe se referme sur la formule qui gouverne tout le livre : <strong>« C'est un cinéma de voyant, non plus d'action. »</strong> (IT 9)<sup class="ref"><a href="#src-15">15</a></sup></p>
+    <p>Le film est ainsi placé, par Deleuze lui-même, <strong>de part et d'autre de la charnière entre ses deux tomes</strong> : dernier exemple de la <em>crise</em> de l'image-action (IM 286), premier exemple de l'<em>image-temps</em> qui lui succède (IT 9). C'est un fait de pagination, mais il redouble un fait de forme : le film est littéralement le pivot où l'action cède à la vision. La « touriste atteinte en plein cœur » est le nom deleuzien de ce que les sections IV et VI décrivaient — Katherine qui ne peut plus agir, seulement voir.</p>
+    <p>Le cadre théorique de cette bascule, Deleuze l'a résumé dans la préface à l'édition américaine de <em>L'Image-Temps</em> (1988) : après-guerre surgit « une nouvelle race de personnages… ils voyaient plutôt qu'ils n'agissaient, c'étaient des <strong>Voyants</strong> », dans des « espaces quelconques » où « le schème sensori-moteur… tend à s'effondrer », laissant monter « un peu de temps à l'état pur ». Cette préface fournit le cadre conceptuel, non une occurrence du film : elle nomme en exemple une <em>trilogie</em> — <em>Europe 51</em>, <em>Stromboli</em>, <em>Allemagne année zéro</em> — sans citer <em>Voyage en Italie</em>, qui n'apparaît que dans le corps du volume, folio 9. Le commentateur Jean Darriulat glose exactement ce passage : chez Rossellini, « le personnage est devenu une sorte de spectateur », dans « un monde en lequel nous sommes condamnés à errer mais non appelés à agir ».<sup class="ref"><a href="#src-16">16</a></sup><sup class="ref"><a href="#src-17">17</a></sup></p>
+    <p><strong>Une tension féconde à laisser ouverte.</strong> Bazin (1954) et Deleuze (1985) lisent le même film à l'envers l'un de l'autre. Bazin défend <em>Voyage en Italie</em> comme l'<strong>accomplissement</strong> du néoréalisme — sa continuité, sa perfection. Deleuze en fait le point de <strong>rupture</strong> — la crise, puis le dépassement, de l'image-action. Même objet, deux récits : pour l'un le film couronne une école, pour l'autre il en ouvre une autre. Cette tension n'est pas à trancher ; elle mesure la place-charnière du film dans l'histoire des formes.</p>
+    <p class="cartel" style="text-transform:none;letter-spacing:0.02em;color:var(--gris);font-size:0.82rem;">Note de périmètre — Les deux occurrences nommées du film chez Deleuze (IM 286, IT 9) suffisent à cette analyse. L'index exhaustif de <em>L'Image-Temps</em> (les folios où Rossellini est discuté sans que le film y soit cité) n'est délibérément pas intégré ici ; une version élargie reste possible ultérieurement.</p>
+  </div>
+</section>
+
+<section id="reception">
+  <div class="toile">
+    <span class="cartel">Toile VIII</span>
+    <h2>Réception et postérité</h2>
+  </div>
+
+  <p><strong>L'échec initial.</strong> Le film déçoit à sa sortie. On reproche à Rossellini de tourner le dos au néoréalisme qu'il avait lui-même inauguré dix ans plus tôt ; le public ne trouve ni l'intrigue ni la ferveur attendues. Geoff Andrew rappelle que le film fut d'abord rejeté comme une aberration au sein du mouvement, avant de trouver ses défenseurs.<sup class="ref"><a href="#src-1">1</a></sup></p>
+
+  <p><strong>La bataille critique, sur pièces.</strong> Cette querelle n'est pas une reconstruction rétrospective : elle a ses textes, et nous en disposons des deux côtés. Du côté du procès, la critique italienne de gauche autour de Guido Aristarco et de <em>Cinema Nuovo</em> voit dans le film une « involution » du néoréalisme, « catastrophique avec <em>Europe 51</em> et <em>Voyage en Italie</em> » — c'est Bazin lui-même qui rapporte et cite cette position pour la combattre. Du côté de la défense, deux textes fondateurs :</p>
+
+  <p>— <strong>André Bazin, « Défense de Rossellini »</strong> (lettre à Aristarco, 1955) soutient que <em>Voyage en Italie</em> est <strong>néoréaliste</strong>, et « bien davantage » que d'autres films admis comme tels : le néoréalisme, pour Bazin, « est une description globale de la réalité par une conscience globale », et Rossellini est celui « qui… a poussé le plus loin » cette esthétique. Sa métaphore décisive : l'art classique « construit les œuvres comme on construit les maisons, avec des briques » — la maison « est déjà dans la brique » —, tandis que le film néoréaliste procède comme des « blocs de rochers éparpillés dans un gué » dont le sens ne vient qu'« a posteriori », quand une conscience saute de l'un à l'autre.<sup class="ref"><a href="#src-13">13</a></sup></p>
+
+  <p>— <strong>Jacques Rivette, « Lettre sur Rossellini »</strong> (<em>Cahiers du cinéma</em> n° 46, avril 1955), adressée — selon la republication de 2022 — à François Truffaut, qui n'aimait pas le film. Rivette y tient Rossellini pour « le cinéaste le plus moderne », affirme que le film « ouvre une brèche, et que le cinéma tout entier y doit passer sous peine de mort », et lance la formule restée célèbre : <strong>« Par l'apparition de <em>Voyage en Italie</em>, tous les films ont soudain vieilli de dix ans. »</strong> Sa thèse tient dans une opposition : Rossellini « ne démontre pas, il montre » ; et le réalisme « n'est pas une technique… ni un style de mise en scène, mais un <strong>état d'esprit</strong> ».<sup class="ref"><a href="#src-12">12</a></sup></p>
+
+  <p><strong>La reconnaissance longue.</strong> Geoff Andrew soutient que le film transcende le néoréalisme en portant l'attention des drames sociaux extérieurs vers les « nuances subtiles des pensées et des sentiments », et qu'il fut, plus que tout autre, l'instrument du passage « des formes traditionnelles du récit cinématographique vers quelque chose de plus reconnaissablement moderne ». Le BFI signale que le film figure au <strong>72<sup>e</sup> rang</strong> du classement des plus grands films de tous les temps établi par le sondage critique <em>Sight and Sound</em> de 2022.<sup class="ref"><a href="#src-1">1</a></sup></p>
+
+  <p><strong>La consécration patrimoniale.</strong> La Criterion Collection édite le film (Spine #675, 2013) dans une restauration numérique <strong>4K</strong>, au sein d'un coffret des <em>trois films de Rossellini avec Bergman</em> (<em>Stromboli</em>, <em>Europe 51</em>, <em>Voyage en Italie</em>) que Criterion présente comme une trilogie « toute de crises spirituelles… congédiée à sa sortie, aujourd'hui largement saluée ». L'appareil critique de l'édition est en soi un précipité de l'histoire de réception du film : commentaire de la théoricienne Laura Mulvey, essais visuels de Tag Gallagher (<em>Living and Departed</em>) et de James Quandt (<em>Surprised by Death</em>), entretiens d'Adriano Aprà et de Martin Scorsese. On notera que l'édition canonise ainsi la lecture de Gallagher — celle-là même que Brad Stevens conteste sur la scène finale : la querelle du miracle se poursuit à l'intérieur du disque. Criterion, enfin, appareille le film à <em>L'avventura</em> d'Antonioni dans ses « films liés », confirmant d'un geste éditorial la filiation que la critique lui prête.<sup class="ref"><a href="#src-18">18</a></sup></p>
+
+  <p><strong>La descendance.</strong> Elle est explicite et documentée. Godard installe dans <em>Le Mépris</em> (1963) le couple en crise de <em>Voyage en Italie</em>, dont une projection est même figurée dans un cinéma romain, et Bourgois montre que le motif rossellinien de la carte postale traverse aussi <em>Les Carabiniers</em> la même année. Martin Scorsese consacre au film un développement de son documentaire <em>Mon voyage en Italie</em> (1999). Pedro Almodóvar reprend la séquence de Pompéi dans <em>Étreintes brisées</em>. Sophie Letourneur en tire le titre de ses <em>Voyages en Italie</em>. Et au-delà des citations, la filiation nommée par la critique est celle d'Antonioni, dont le cinéma de l'incommunicabilité paraît sortir de là — Deleuze lui-même, dans la préface citée plus haut, fait du corps « qui témoigne du temps par ses fatigues et ses attentes » une définition d'Antonioni.<sup class="ref"><a href="#src-7">7</a></sup></p>
+</section>
+
+<section id="conclusion">
+  <div class="toile">
+    <span class="cartel">Toile IX</span>
+    <h2>Conclusion</h2>
+  </div>
+
+  <p><em>Voyage en Italie</em> est un film qui a été fait par défaut — droits perdus, scénario improvisé, tournage au jour le jour — et qui a inauguré une manière. Ce paradoxe n'est pas une anecdote de production : il est le sujet du film. Rossellini y filme deux personnes qui ne savent plus quoi faire, dans un pays qu'elles ne savent pas voir, et il découvre en route qu'un cinéma peut tenir entièrement sur cette double impuissance, à condition de lui donner du temps.</p>
+
+  <p>C'est en cela que le film occupe, chez Deleuze, une place unique : nommé à la dernière page de <em>L'Image-Mouvement</em> comme <em>catalogue des clichés</em>, il reparaît à la neuvième page de <em>L'Image-Temps</em> comme <em>cinéma de voyant</em>. Il est littéralement la charnière entre les deux tomes, entre l'action qui échoue et la vision qui commence. Quand le monde est devenu un catalogue de clichés, le personnage cesse d'être un agent et devient un voyant — une « touriste atteinte en plein cœur ».</p>
+
+  <p>Reste que le film ne se laisse pas réduire à sa fonction historique. Ce qu'il a de plus durable est peut-être ce qui a le plus dérangé en 1954 : sa fin. Un miracle a lieu, un couple se retrouve, et la fanfare passe sans les voir. Bazin l'avait dit le premier : le film ne prétend pas que ce soit un miracle. Il montre. Il ne démontre pas.</p>
+</section>
+
+<section id="sources" class="sources">
+  <div class="toile">
+    <span class="cartel">Inventaire</span>
+    <h2>Sources</h2>
+  </div>
+
+  <div class="note">
+    Étude du régime B : premier jet produit par IAGen Claude d'Anthropic (Opus 4.8), révision éditoriale et validation par Christo Datso. Appareil théorique adossé à des sources primaires lues sur leurs textes (Deleuze, Bazin, Rivette), avec pagination pour les renvois deleuziens. Citations courtes uniquement.
+  </div>
+
+  <h3>Références citées dans le texte</h3>
+  <ol>
+    <li id="src-1">BFI — Geoff Andrew, « Realer than realism: <em>Journey to Italy</em> » — <a href="https://www.bfi.org.uk/features/realer-realism-journey-italy">bfi.org.uk</a></li>
+    <li id="src-2">BFI / <em>Sight and Sound</em> — Brad Stevens, « Faces in the crowd: the ending of <em>Journey to Italy</em> » — <a href="https://www.bfi.org.uk/sight-and-sound/features/faces-crowd-ending-journey-italy">bfi.org.uk</a></li>
+    <li id="src-3">BFI — fiche institutionnelle du film — <a href="https://www.bfi.org.uk/film/e494631b-84a3-5fdb-96c2-7cb1b1f7c29d/journey-to-italy">bfi.org.uk</a></li>
+    <li id="src-4">La Cinémathèque française — fiche du film — <a href="https://www.cinematheque.fr/film/42673.html">cinematheque.fr</a></li>
+    <li id="src-5">Il Cinema Ritrovato / Cineteca di Bologna — fiche de la restauration 2012 — <a href="https://ilcinemaritrovato.it/viaggio-in-italia">ilcinemaritrovato.it</a></li>
+    <li id="src-6"><em>Senses of Cinema</em> — « Three Films by Roberto Rossellini Starring Ingrid Bergman » — <a href="https://www.sensesofcinema.com/2013/feature-articles/three-films-by-roberto-rossellini-starring-ingrid-bergman-the-criterion-edition-of-stromboli-europe-51-and-journey-to-italy/">sensesofcinema.com</a></li>
+    <li id="src-7">Guillaume Bourgois, « Ceci n'est pas une carte postale : <em>Voyage en Italie</em> dans l'optique de Jean-Luc Godard », dans <em>Itinéraires de Roberto Rossellini</em>, UGA Éditions, 2014 — <a href="https://books.openedition.org/ugaeditions/1098?lang=en">books.openedition.org</a></li>
+    <li id="src-8"><em>Acta fabula</em> — compte rendu de l'ouvrage de Patrick Werly, <em>Roberto Rossellini &amp; la conversion</em> — <a href="https://www.fabula.org/acta/document6094.php">fabula.org</a></li>
+    <li id="src-9">Critikat — Estelle Bayon, critique de <em>Voyage en Italie</em> — <a href="https://www.critikat.com/actualite-cine/critique/voyage-en-italie/">critikat.com</a></li>
+    <li id="src-10">Ciné-club de Caen — analyse du film — <a href="https://www.cineclubdecaen.com/realisateur/rossellini/voyageenitalie.htm">cineclubdecaen.com</a></li>
+    <li id="src-11">Wikipédia — fiche technique, genèse et postérité (source de recoupement) — <a href="https://fr.wikipedia.org/wiki/Voyage_en_Italie">fr.wikipedia.org</a></li>
+  </ol>
+
+  <h3>Sources primaires (textes critiques et théoriques)</h3>
+  <ol start="12">
+    <li id="src-12"><strong>Jacques Rivette, « Lettre sur Rossellini »</strong>, <em>Cahiers du cinéma</em> n° 46, avril 1955. Consultée non dans l'édition originale de 1955, mais dans sa republication intégrale par cahiersducinema.com (13/01/2022, C. Garson) ; une phrase du § 14 est perdue dans la source et n'est pas citée. Présentation : <a href="https://www.cineclubdecaen.com/analyse/livres/rivettelettresurrossellini.htm">cineclubdecaen.com</a></li>
+    <li id="src-13"><strong>André Bazin, « Défense de Rossellini. Lettre à Aristarco »</strong>, dans <em>Qu'est-ce que le cinéma ?</em>, ch. XXVI, p. 347-357. Source du fonds documentaire local, relue image/texte (copie de travail privée ; citations courtes uniquement).</li>
+    <li id="src-14"><strong>Gilles Deleuze, <em>Cinéma 1. L'Image-Mouvement</em></strong>, Minuit, 1983 — ch. XII, « La crise de l'image-action », <strong>p. 286</strong> (« catalogue des clichés de la pure italianité ») ; constellation p. 285-286.</li>
+    <li id="src-15"><strong>Gilles Deleuze, <em>Cinéma 2. L'Image-Temps</em></strong>, Minuit, 1985 — ch. 1, « Au-delà de l'image-mouvement », <strong>p. 9</strong> (« une touriste atteinte en plein cœur » ; « cinéma de voyant, non plus d'action »). OCR du volume dégradé — citations en repères courts, à revérifier sur le livre pour tout point décisif.</li>
+    <li id="src-16"><strong>Gilles Deleuze, « Préface pour l'édition américaine de <em>L'Image-Temps</em> »</strong> (juillet 1988), dans <em>Deux régimes de fous. Textes et entretiens 1975-1995</em>, p. 329-331. Fournit le cadre théorique (les « Voyants ») ; ne nomme pas <em>Voyage en Italie</em>.</li>
+    <li id="src-17"><strong>Jean Darriulat, <em>Résumé de « L'Image-Temps »</em></strong> — commentaire de Deleuze (jdarriulat.net), non Deleuze ; glose l'occurrence IT 9.</li>
+    <li id="src-18"><strong>The Criterion Collection — fiche de l'édition de <em>Journey to Italy</em></strong> (Spine #675). Consultée via l'extrait imprimé (PDF) fourni par C. Datso, la page ayant renvoyé un HTTP 403 à l'accès direct — <a href="https://www.criterion.com/films/28081-journey-to-italy">criterion.com</a></li>
+  </ol>
+
+  <h3>Périmètre assumé de cette version</h3>
+  <p style="font-size:0.9rem;">L'index exhaustif de <em>L'Image-Temps</em> (les folios où Rossellini est discuté au-delà d'IT 9 : « croyance en ce monde », « pédagogie » de l'œuvre finale) n'est délibérément pas intégré : l'analyse du film repose sur ses deux seules occurrences nommées (IM 286, IT 9). Une version élargie reste possible ultérieurement.</p>
+</section>
+
+</main>
+
+<footer>
+  <span class="cartel">Étude — régime B (supervision éditoriale humaine) · premier jet IAGen Claude (Opus 4.8), révision et validation Christo Datso — 25 juillet 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

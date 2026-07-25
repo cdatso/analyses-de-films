@@ -552,5 +552,21 @@ const FILMS = [
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Japon'],
     technique: ['n&b']
+  },
+  {
+    slug: 'voyage-en-italie',
+    title: 'Voyage en Italie',
+    director: 'Roberto Rossellini',
+    year: 1954,
+    summary: "Un couple anglais se défait au fil d'un séjour à Naples : salué par les Cahiers du cinéma comme le premier « film moderne », le film est aussi, chez Deleuze, la charnière entre l'image-mouvement et l'image-temps — étude à double éclairage deleuzien (IM 286, IT 9), première Étude produite par le processus Scholar.",
+    url: 'films/voyage-en-italie.html',
+    poster: 'assets/posters/voyage-en-italie.jpg',
+    producteur: 'Claude Opus 4.8 (session supervisée)',
+    // --- schema v2 (annexe B) — Étude régime B, pilote BKL-065-4 ---
+    volet: 'etude',
+    datePublication: '2026-07-25 11:02',
+    pays: ['Italie', 'France'],
+    genreBase: 'drame',
+    technique: ['n&b']
   }
 ];
