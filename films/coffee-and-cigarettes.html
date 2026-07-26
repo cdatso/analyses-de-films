@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Addition — Coffee and Cigarettes</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de
+       cette page (740px + 51,2) / 16 = 49,45rem. */
+    --mobilier-largeur:49.45rem;
+
+    /* Palette bespoke -- ticket de comptoir, chit de diner americain.
+       Papier thermique creme, encre quasi noire, accent unique "tache
+       de cafe" reserve au decor (jamais au texte courant). Contrastes
+       AA verifies par outils/controle-contraste.py avant publication. */
+    --paper:#f3ede0;
+    --paper-deep:#e7ddc4;
+    --paper-shadow: rgba(27,23,18,0.16);
+    --ink:#1b1712;
+    --ink-soft:#3c352b;
+    --ink-faint:#7d7461;
+    --ink-faint-texte:#5c5344;
+    --rule:#1b1712;
+    --stain:#9a5f2e;
+    --stain-deep:#6b4220;
+    --line: rgba(27,23,18,0.2);
+    --line-soft: rgba(27,23,18,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 6% 0%, rgba(154,95,46,0.08), transparent 42%),
+      radial-gradient(ellipse at 96% 100%, rgba(27,23,18,0.05), transparent 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--stain-deep);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint-texte);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--stain-deep); }
+
+  /* ---------- COUVERTURE (ticket de caisse) ---------- */
+  header.addition-cover{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    padding:1.3rem 0 0;
+    border-bottom:6px double var(--rule);
+  }
+  .edition-line{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--paper-deep);
+    opacity:0.85;
+    padding-bottom:1.1rem;
+    border-bottom:1px solid rgba(243,237,224,0.25);
+    margin:0 1.6rem;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+  }
+  .ticket-sheet{
+    background:var(--paper);
+    color:var(--ink);
+    border:3px solid var(--rule);
+    padding:2.6rem 2.2rem 2.2rem;
+    margin:1.8rem 0 0;
+    position:relative;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent, transparent 27px,
+      var(--line-soft) 27px, var(--line-soft) 28px
+    );
+    background-position: 0 6.6rem;
+  }
+  .ticket-sheet::before, .ticket-sheet::after{
+    content:"";
+    position:absolute; left:14px; right:14px;
+    height:1px; background:var(--line);
+  }
+  .ticket-sheet::before{ top:8px; }
+  .ticket-sheet::after{ bottom:8px; }
+
+  .cachet{
+    position:absolute;
+    top:1.5rem; right:1.4rem;
+    border:2.5px solid var(--stain-deep);
+    color:var(--stain-deep);
+    font-family:var(--mono);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    font-size:0.66rem;
+    padding:0.4rem 0.6rem;
+    border-radius:50%;
+    transform:rotate(-9deg);
+    opacity:0.9;
+    mix-blend-mode:multiply;
+    text-align:center;
+    line-height:1.25;
+    width:84px; height:84px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .ticket-number{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint-texte);
+    margin-bottom:1.5rem;
+    max-width:78%;
+  }
+  .ticket-number b{ color:var(--ink); }
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:900;
+    font-style:italic;
+    font-size:clamp(2.2rem, 6.6vw, 3.5rem);
+    line-height:1.05;
+    margin:0 0 0.7rem;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:48ch;
+    margin:0 0 2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--ink-faint);
+    padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+    filter:grayscale(0.4) contrast(1.05);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stain-deep);
+    margin-bottom:0.28rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--ink);
+    border-bottom:1px dotted var(--ink-faint);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.3rem;
+    padding:0.75rem 1.05rem;
+    background:rgba(27,23,18,0.05);
+    border-left:2px solid var(--stain-deep);
+    font-family:var(--mono);
+    font-size:0.74rem;
+    letter-spacing:0.02em;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+  .provenance strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    background:var(--stain-deep);
+    border-bottom:3px solid var(--rule);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--paper);
+    opacity:0.78;
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--paper); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.block{ padding:3rem 0; border-bottom:1px dashed var(--line); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .poste-head{
+    margin-bottom:1.4rem;
+    border-top:3px double var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:0.6rem 0 0.7rem;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .poste-num{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stain-deep);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.6rem;
+    margin:0 0 0.15rem;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .poste-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--ink-faint-texte);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.92rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--ink);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--stain-deep);
+    text-decoration:none;
+    border-bottom:1px dotted var(--stain-deep);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+
+  .discretion{
+    font-family:var(--mono);
+    font-style:normal;
+    font-size:0.8rem;
+    color:var(--ink-faint-texte);
+    border-left:2px solid var(--stain-deep);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* ---------- cartes des duos (personnages) ---------- */
+  .portrait-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .portrait-card{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--rule);
+  }
+  .portrait-card .name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.05rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+  }
+  .portrait-card .role{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--stain-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .portrait-card p{ font-size:0.87rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- coupure de presse (citation) ---------- */
+  .coupure{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.4deg);
+  }
+  .coupure p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .coupure cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint-texte);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--stain-deep);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--stain-deep);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- addition (recapitulatif chiffre) ---------- */
+  .addition{
+    margin:1.6rem 0 1.7rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:1px solid var(--rule);
+  }
+  .addition-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .addition-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--paper-deep);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .addition-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+  }
+  .addition .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--paper);
+    display:block;
+    line-height:1.15;
+  }
+  .addition .stat .cap{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+    color:#d9b48c;
+    text-transform:uppercase;
+  }
+
+  section.sources{ background:var(--ink); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--paper); font-family:var(--serif); font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--paper-deep);
+    border-bottom:1px dashed rgba(243,237,224,0.25);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+  }
+  ol.source-list li::before{
+    content: "Poste " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:#d9b48c;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--paper); word-break:break-all; }
+  ol.source-list a:hover{ color:#d9b48c; }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint-texte);
+    background:var(--paper);
+  }
+  footer.endnote a{ color:var(--ink-faint-texte); }
+  footer.endnote a:hover{ color:var(--stain-deep); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    .ticket-sheet{ padding:2rem 1.3rem; }
+    section.block{ padding:2.2rem 0; }
+    .cachet{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="addition-cover">
+  <div class="edition-line">Ticket de comptoir — table pour deux, onze fois</div>
+  <div class="cover-inner">
+    <div class="ticket-sheet">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+      <div class="cachet">14 MAI<br>2004</div>
+      <div class="ticket-number">Addition n<sup>o</sup> <b>11</b> — onze tables, un seul comptoir, dix-sept ans d'écart entre la première commande et la dernière.</div>
+      <h1 class="title">Coffee and Cigarettes</h1>
+      <p class="subtitle">Onze conversations filmées sur près de vingt ans, où Jim Jarmusch fait l'addition de son propre temps de cinéaste — café et cigarettes en guise de monnaie d'échange.</p>
+
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/coffee-and-cigarettes.jpg" alt="Affiche du film Coffee and Cigarettes" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Jim Jarmusch</dd></div>
+          <div><dt>Scénario</dt><dd>Jim Jarmusch</dd></div>
+          <div><dt>Année</dt><dd>2003 (tourné 1986-2003)</dd></div>
+          <div><dt>Durée</dt><dd>96 minutes</dd></div>
+          <div><dt>Distribution (sortie)</dt><dd>MGM Distribution Co.</dd></div>
+          <div><dt>Photographie</dt><dd>Frederick Elmes, Ellen Kuras, Robby Müller, Tom DiCillo</dd></div>
+        </dl>
+      </div>
+      <div class="provenance">
+        <strong>Provenance.</strong> Analyse produite en session supervisée par Claude Opus 5, le 26 juillet 2026.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 26 juillet 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Duos</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 01</span>
+      <h2>Fiche technique <span class="poste-sous">— état civil du film</span></h2>
+    </div>
+    <p>
+      <em>Coffee and Cigarettes</em> est un long métrage américain en noir et blanc écrit et réalisé par Jim Jarmusch, présenté hors compétition à la Mostra de Venise le 5 septembre 2003 avant une sortie en salles américaines le 14 mai 2004 par MGM Distribution Co.<a class="renvoi" href="#src-1" id="ref-1">[1]</a> D'une durée de 96 minutes, le film totalise onze segments tournés entre 1986 et 2003, photographiés tour à tour par Frederick Elmes, Ellen Kuras, Robby Müller et Tom DiCillo<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>. Il a rapporté environ 7,9 millions de dollars au box-office nord-américain<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>.
+    </p>
+    <p>
+      Le troisième segment, <em>Somewhere in California</em> (avec Iggy Pop et Tom Waits), avait été distingué en 1993 par la Palme d'or du court métrage au Festival de Cannes, des années avant d'être intégré au montage final de 2003<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 02</span>
+      <h2>Synopsis <span class="poste-sous">— la carte du jour</span></h2>
+    </div>
+    <p>
+      Le film n'a pas d'intrigue continue : il aligne onze scènes autonomes, chacune réunissant deux ou trois personnages — souvent des acteurs ou musiciens jouant leur propre rôle — autour d'une table de café, d'un percolateur ou d'un distributeur, café et cigarette en main<a class="renvoi" href="#src-2" id="ref-2">[2]</a>. Un comédien flegmatique face à un acteur hyperactif, deux cousines dont l'une est devenue célèbre, deux musiciens de rock qui n'arrivent pas à avoir une conversation neutre, un serveur qui interrompt une pause : chaque table rejoue, sous une forme différente, la même situation de base — la conversation contrainte par le rituel du comptoir<a class="renvoi" href="#src-2" id="ref-2b">[2]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p class="discretion">Les scènes sont présentées ici dans l'ordre de leur montage final ; leur ordre de tournage réel, échelonné sur dix-sept ans, est traité au poste nº 03.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 03</span>
+      <h2>Contexte de production <span class="poste-sous">— dix-sept ans d'additions</span></h2>
+    </div>
+    <p>
+      Le premier segment, <em>Strange to Meet You</em> (Roberto Benigni face à Steven Wright), a été tourné en 1986 pour l'émission <em>Saturday Night Live</em><a class="renvoi" href="#src-6" id="ref-6">[6]</a><a class="renvoi" href="#src-5" id="ref-5">[5]</a>. Jarmusch a ensuite tourné deux autres courts en 1989 et 1993 — respectivement avec Cinqué Lee, Joie Lee et Steve Buscemi, puis avec Iggy Pop et Tom Waits — avant de revenir à l'exercice pour composer, entre 2002 et 2003, les huit segments restants et assembler le tout en long métrage<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>. Chris Cooling, dans sa thèse consacrée au cinéma indépendant américain, situe précisément cette genèse : le film est « comprised of eleven short films Jarmusch periodically shot, in between and at times during his feature work, since the mid-1980s »<a class="renvoi" href="#src-7" id="ref-7">[7]</a> — une fabrication par intermittence qui n'a rien d'un projet conçu d'un bloc.
+    </p>
+    <p>
+      Le lien entre les segments et le reste de la filmographie de Jarmusch n'est jamais explicite mais reste traçable : Cooling relève que le segment avec Benigni coïncide avec le tournage de <em>Down by Law</em>, que le duo Lee/Buscemi renvoie à <em>Mystery Train</em>, que le segment d'Isaach de Bankolé évoque <em>Night on Earth</em>, et que l'épisode du Wu-Tang Clan avec Bill Murray fait écho à la partition que RZA avait composée pour <em>Ghost Dog</em><a class="renvoi" href="#src-7" id="ref-7b">[7]</a>. Le film fonctionne ainsi, selon lui, comme un « indexical evidence » discret de la carrière entière du cinéaste plutôt que comme une œuvre isolée<a class="renvoi" href="#src-7" id="ref-7c">[7]</a>.
+    </p>
+    <p>
+      Cette pratique de tournage par intermittence s'inscrit dans une collaboration plus ancienne : Louis Armand rappelle que Jarmusch a commencé à travailler avec le directeur de la photographie Robby Müller — qui signe une partie des segments du film — au début des années 1980, dans le sillage de son compagnonnage avec Wim Wenders, et que les deux hommes partagent un rejet du storyboard rigide au profit de l'adaptation à la lumière du jour telle qu'elle se présente sur place<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 04</span>
+      <h2>Structure narrative <span class="poste-sous">— onze postes, une seule addition</span></h2>
+    </div>
+    <p>
+      Jonathan Rosenbaum a proposé la description la plus précise de l'architecture du film : loin d'être une anthologie disparate, <em>Coffee and Cigarettes</em> reproduit d'un segment à l'autre des motifs formels récurrents — plans zénithaux sur les tasses, damiers du carrelage, dialogues qui se répètent presque mot pour mot — organisés autour d'une figure du doublement : jumeaux, cousins, frères déclarés<a class="renvoi" href="#src-5" id="ref-5c">[5]</a>. Il rapproche cette cohérence de celle d'un recueil de nouvelles organique — il cite <em>Dubliners</em> et <em>Winesburg, Ohio</em> — plutôt que d'une compilation de sketches indépendants<a class="renvoi" href="#src-5" id="ref-5d">[5]</a>.
+    </p>
+    <p>
+      Cooling va dans le même sens depuis un autre point de vue : le spectateur, écrit-il, devient « gradually aware » d'une trajectoire narrative qui n'existe dans aucun segment pris isolément, mais seulement dans leur accumulation — chaque table ajoutant sa preuve à un compte qui ne se solde qu'à la dernière image<a class="renvoi" href="#src-7" id="ref-7d">[7]</a>. C'est cette structure additive, plus que la continuité, qui tient lieu de récit.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 05</span>
+      <h2>Mise en scène et procédés techniques <span class="poste-sous">— le comptoir, la table, la caméra fixe</span></h2>
+    </div>
+    <p>
+      Le noir et blanc, constant sur les vingt années de tournage, gomme les écarts de texture entre pellicule et vidéo, entre les studios successifs et les différents chefs opérateurs<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>. Armand relie ce choix à une pratique plus large chez Jarmusch et ses maîtres : le noir et blanc retranche l'information chromatique jugée superflue au récit et produit un effet d'a-historicité qui rend les lieux interchangeables<a class="renvoi" href="#src-6" id="ref-6c">[6]</a> — un choix particulièrement fonctionnel ici, puisqu'il aide à unifier visuellement des segments tournés à quinze ans d'écart.
+    </p>
+    <p>
+      L'essai du Campus Writing Program de l'université du Missouri propose une lecture rapprochée du premier long segment tourné, <em>Somewhere in California</em> : le motif du damier au sol, les plans en grue et les faux raccords de regard installent une distance entre Iggy Pop et Tom Waits que le texte du dialogue contredit ouvertement, alors même que les deux hommes tentent une conversation neutre qui vire à l'aigre<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. L'essai s'appuie sur les travaux de Rudolf Gaudio consacrés à la « casualness » comme pratique sociale codifiée, matérialisée — entre autres — par la parole, l'habillement et la consommation de café ou de cigarette<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>.
+    </p>
+    <div class="coupure">
+      <p>« We are the coffee and cigarettes generation. »</p>
+      <cite>Réplique de Tom Waits, segment <em>Somewhere in California</em>, citée par le Campus Writing Program de l'université du Missouri<a class="renvoi" href="#src-2" id="ref-2e">[2]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 06</span>
+      <h2>Les duos <span class="poste-sous">— pas de personnages, des tables</span></h2>
+    </div>
+    <p>
+      Le film n'a pas de personnages au sens habituel du terme : onze tables, onze duos ou trios sans continuité entre eux. La section qui suit isole les quatre postes que la critique s'accorde à retenir comme les plus significatifs de l'ensemble, plutôt qu'une évolution de figures centrales qu'un film d'anthologie ne comporte pas.
+    </p>
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <span class="name">Cousins</span>
+        <span class="role">Cate Blanchett (double rôle)</span>
+        <p>Blanchett y interprète à la fois elle-même, star hollywoodienne, et sa cousine anonyme et jalouse — performance technique que Rosenbaum retient comme l'un des sommets du film<a class="renvoi" href="#src-5" id="ref-5e">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Cousins?</span>
+        <span class="role">Alfred Molina, Steve Coogan</span>
+        <p>Coogan, méprisant, découvre que Molina — qu'il snobait — lui est en réalité apparenté ; Ventura et Rosenbaum s'accordent, malgré des jugements opposés sur le reste du film, pour saluer la tension dramatique réelle de ce segment<a class="renvoi" href="#src-3" id="ref-3b">[3]</a><a class="renvoi" href="#src-5" id="ref-5f">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Delirium</span>
+        <span class="role">GZA, RZA, Bill Murray</span>
+        <p>Deux membres du Wu-Tang Clan mettent en garde un Bill Murray jouant son propre rôle contre les effets du café et de la cigarette, dans un segment que Cooling relie au segment Waits/Pop par un écho de dialogue presque littéral<a class="renvoi" href="#src-7" id="ref-7e">[7]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Champagne</span>
+        <span class="role">William Rice, Taylor Mead</span>
+        <p>Segment de clôture : deux acteurs âgés du théâtre expérimental new-yorkais trinquent, avec leurs tasses de café, au « Paris des années 1920 » puis au « New York des années 1970 » — geste que Cooling lit comme la clé de voûte de la dimension nostalgique du film<a class="renvoi" href="#src-7" id="ref-7f">[7]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 07</span>
+      <h2>Thèmes <span class="poste-sous">— quatre lignes du ticket</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">La répétition comme méthode, non comme défaut</span>
+        <p>Ce que Ventura reproche au film — des scènes qui « recyclent » sans cesse la même situation — Rosenbaum le décrit au contraire comme une architecture délibérée de rimes formelles (doublons, cousinages, répliques dédoublées) : le désaccord entre les deux lectures porte moins sur les faits du montage que sur l'intention qu'on leur prête<a class="renvoi" href="#src-3" id="ref-3c">[3]</a><a class="renvoi" href="#src-5" id="ref-5g">[5]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le film comme capsule temporelle du cinéma indépendant américain</span>
+        <p>Cooling avance que le film, précisément parce qu'il s'étend sur dix-sept ans de tournage, documente de l'intérieur le passage du cinéma « indie » américain du statut de mouvement vivant à celui d'objet de nostalgie déjà refermé sur lui-même<a class="renvoi" href="#src-7" id="ref-7g">[7]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'ambivalence de la célébrité</span>
+        <p>Rosenbaum identifie l'éthique de la célébrité comme l'un des trois axes structurants du film : la plupart des duos placent des acteurs ou musiciens connus dans une position d'inconfort — envers un fan, un cousin obscur, un serveur — qui expose autant qu'elle flatte leur statut<a class="renvoi" href="#src-5" id="ref-5h">[5]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le rituel comme frein à la conversation</span>
+        <p>Selon la lecture du Campus Writing Program appuyée sur les travaux de Gaudio, le partage du café et de la cigarette, loin de faciliter l'échange, en révèle la gêne sociale et la superficialité — un rituel qui occupe les mains sans jamais vraiment ouvrir le dialogue<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 08</span>
+      <h2>Réception critique et postérité <span class="poste-sous">— comptes qui ne s'accordent pas</span></h2>
+    </div>
+    <p>
+      L'accueil critique reste net partagé. Pour Elbert Ventura sur Reverse Shot, le film n'est qu'un « divertissement urbain sophistiqué » dont seuls les segments <em>Cousins</em> et <em>Cousins?</em> possèdent une tension dramatique réelle, le reste relevant de « griffonnages sans vie »<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>. À l'inverse, Jonathan Rosenbaum, dans le <em>Chicago Reader</em>, loue une cohérence organique comparable à celle d'un recueil de nouvelles, et ne juge « sous-alimenté » qu'un seul des onze segments<a class="renvoi" href="#src-5" id="ref-5i">[5]</a>. Conall McManus, dans une rétrospective publiée sur Medium, retient pour sa part la constance stylistique du film malgré dix-sept ans d'écart entre les premiers et les derniers tournages<a class="renvoi" href="#src-4" id="ref-4">[4]</a>.
+    </p>
+    <div class="addition">
+      <div class="addition-inner">
+        <span class="addition-label">L'addition — chiffres à l'appui</span>
+        <div class="addition-grid">
+          <div class="stat"><span class="num">11</span><span class="cap">Segments</span></div>
+          <div class="stat"><span class="num">1986-2003</span><span class="cap">Années de tournage</span></div>
+          <div class="stat"><span class="num">96 min</span><span class="cap">Durée</span></div>
+          <div class="stat"><span class="num">7,9 M$</span><span class="cap">Recette nord-américaine</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="discretion">Recette et durée selon la fiche Wikipedia du film ; l'agrégateur qui y est cité situe l'accueil global autour de 63-65 % d'avis favorables, un score médian cohérent avec le partage constaté ci-dessus.</p>
+    <p>
+      Le troisième segment, distingué dès 1993 par la Palme d'or du court métrage, avait anticipé de dix ans la reconnaissance du projet dans son ensemble<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. Rosenbaum note, dans une préface ajoutée en 2024 à la republication de sa critique, que le film est devenu un succès commercial inattendu dans la carrière de Jarmusch, plus populaire que prévu sans atteindre le public de <em>Broken Flowers</em> qui suivra<a class="renvoi" href="#src-5" id="ref-5j">[5]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="poste-head">
+      <span class="poste-num">Poste nº 09</span>
+      <h2>Conclusion <span class="poste-sous">— solder le compte</span></h2>
+    </div>
+    <p>
+      <em>Coffee and Cigarettes</em> ne se laisse pas résumer par l'une de ses onze tables : sa vraie unité tient à l'addition qu'elles forment ensemble, une fois posées bout à bout. Chaque segment, pris seul, est un exercice mineur — une conversation qui ne débouche sur rien, un désaccord qui ne se règle pas, une rencontre qui n'aura pas de suite. C'est précisément ce que lui reproche Ventura, et c'est précisément ce qu'y retrouve Rosenbaum sous une autre lecture : le film ne prouve rien scène par scène, il ne prouve quelque chose qu'une fois totalisé.
+    </p>
+    <p>
+      Ce désaccord de la critique n'est pas un défaut d'interprétation à trancher, mais la conséquence logique du pari formel du film : en assemblant, sur dix-sept ans, des fragments filmés sans plan d'ensemble déclaré, Jarmusch fait de la répétition elle-même son sujet — non pas ce dont on parle à table, mais le fait de revenir, encore et encore, à la même table. Que cette accumulation révèle un motif (Rosenbaum) ou une absence de motif (Ventura), les deux lectures s'accordent sur un point que Cooling formule le plus nettement : le film fonctionne comme une capsule temporelle, un relevé de compte du cinéma indépendant américain au moment précis où celui-ci commence à se retourner sur son propre passé. L'addition, ici, ne se règle jamais tout à fait — elle reste ouverte, comme la tasse froide qu'on n'a pas fini de boire.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#d9b48c;">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipedia (EN), « Coffee and Cigarettes » — <a href="https://en.wikipedia.org/wiki/Coffee_and_Cigarettes" target="_blank" rel="noopener">en.wikipedia.org/wiki/Coffee_and_Cigarettes</a></li>
+      <li id="src-2">Campus Writing Program (Université du Missouri), « A Close Reading of Jarmusch's Coffee and Cigarettes » (19 juillet 2012) — <a href="https://cwp.missouri.edu/2012/a-close-reading-of-jarmusch%C2%92s-coffee-and-cigarettes/" target="_blank" rel="noopener">cwp.missouri.edu — close reading</a></li>
+      <li id="src-3">Elbert Ventura, « Coffee and Cigarettes », Reverse Shot (8 août 2005) — <a href="https://reverseshot.org/archive/entry/684/coffee_and_cigarettes" target="_blank" rel="noopener">reverseshot.org/archive/entry/684</a></li>
+      <li id="src-4">Conall McManus, « A Jim Jarmusch Retrospective — Coffee and Cigarettes (2003) », Medium (30 août 2023) — <a href="https://medium.com/@conallmcman/a-jim-jarmusch-retrospective-coffee-and-cigarettes-2003-e81aeeac7e41" target="_blank" rel="noopener">medium.com/@conallmcman</a></li>
+      <li id="src-5">Jonathan Rosenbaum, « Short Cuts », publié dans le <em>Chicago Reader</em> du 28 mai 2004, republié le 8 mars 2024 — <a href="https://jonathanrosenbaum.net/2024/03/short-cuts/" target="_blank" rel="noopener">jonathanrosenbaum.net/2024/03/short-cuts</a></li>
+      <li id="src-6">Louis Armand, « Der amerikanische Freund: Petit, Wenders, Jarmusch », 3:AM Magazine — <a href="https://www.3ammagazine.com/3am/der-amerikanische-freund-petitwendersjarmusch/" target="_blank" rel="noopener">3ammagazine.com — der-amerikanische-freund</a></li>
+      <li id="src-7">Chris Cooling, <em>Declarations of Independence: Film and the American Mythology</em>, thèse de doctorat (Cinema-Television, Critical Studies), University of Southern California, mai 2007 — extraits pp. 134-140 fournis par l'utilisateur ; <strong>n'a pas été entièrement consultée</strong> — <a href="https://www.academia.edu/71033382/Declarations_of_Independence_Film_and_the_American_Mythology" target="_blank" rel="noopener">academia.edu/71033382</a></li>
+      <li id="src-8">IMP Awards, affiche du film (édition 2004, MGM) — <a href="http://www.impawards.com/2004/coffee_and_cigarettes.html" target="_blank" rel="noopener">impawards.com/2004/coffee_and_cigarettes</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 26 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
