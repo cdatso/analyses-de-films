@@ -482,8 +482,6 @@ footer {
 header.chrome { background: var(--paper); }
 nav.menu a:hover { color: var(--accent); }
 a.lien-retour:hover { color: var(--accent); }
-.proto-note { background: var(--paper-alt); color: var(--ink-soft); }
-.proto-note b { color: var(--accent); }
 footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
 
 /* --- Le seuil (§3.1) ------------------------------------------------------ */
@@ -542,6 +540,11 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
 }
 
 .carte-une[data-volet="etude"] { background: var(--paper-alt); }
+
+.carte-une .affiche {
+  width: 100%; max-width: 100%; height: auto; display: block;
+  margin: 0 0 0.9rem; border: 1px solid var(--line);
+}
 
 .carte-une .pastille {
   font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase;
