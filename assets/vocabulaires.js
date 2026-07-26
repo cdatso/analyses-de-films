@@ -53,7 +53,6 @@ const VOCABULAIRES = {
     'fantastique',
     'fresque',
     'melodrame',
-    'neo-noir',
     'polar',
     'science-fiction',
     'thriller',
@@ -87,8 +86,13 @@ const VOCABULAIRES = {
     'Union sovietique'
   ],
 
-  /* Enrichissement éditorial, facultatif et non bloquant (§4.2). */
+  /* Enrichissement éditorial, facultatif et non bloquant (§4.2).
+     BASCULE DU 26/07/2026 (GATE AH « go neo-noir vers courant », fiche 20) :
+     `neo-noir` quitte `genreBase` (0 usage au registre, vérifié) pour cet
+     axe — c'est un registre stylistique, pas un genre de base ; constat
+     porté par la note de fin de la session Blade Runner. */
   courant: [
+    'neo-noir',
     'romantisme noir',
     'surrealisme'
   ]
