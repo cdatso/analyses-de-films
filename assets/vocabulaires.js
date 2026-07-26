@@ -21,6 +21,19 @@
  *     fondre dans « Drame » ou « Policier » serait un arbitrage éditorial,
  *     qui n'appartient pas à un prototype.
  *
+ * AJOUT DU 26/07/2026 (GATE AH « ajoute science-fiction, neo-noir et Hong Kong
+ * au vocabulaire ») — escalade P-12 ouverte par la session one-shot Blade
+ * Runner : aucune des dix valeurs de `genreBase` ne nommait le film, et la
+ * coproduction hongkongaise (Shaw Brothers) n'avait pas son pays. Trois
+ * termes inscrits, dans un commit propre distinct de la publication de la
+ * fiche, conformement a P-12 :
+ *   — `genreBase` : 'science-fiction', 'neo-noir' ;
+ *   — `pays`      : 'Hong Kong'.
+ * Orthographe NORMALISEE en ASCII non accentue, comme les 26 valeurs deja
+ * presentes ('comedie', 'melodrame', 'Coree du Sud', 'Norvege') : le controle
+ * P-10 est litteral. Le gate porte sur les TERMES, pas sur la fixation de la
+ * liste, qui reste due a BKL-065-5.
+ *
  * `pays` et `courant` ne sont pas dérivables (le pays n'est nulle part un champ,
  * diagnostic D-3) : la liste s'ouvre ici sur les seules valeurs des 3 entrées
  * migrées, renseignées par travail de modèle et DUES À LA RELECTURE D'AH
@@ -40,7 +53,9 @@ const VOCABULAIRES = {
     'fantastique',
     'fresque',
     'melodrame',
+    'neo-noir',
     'polar',
+    'science-fiction',
     'thriller',
     'tragedie',
     'western'
@@ -60,6 +75,7 @@ const VOCABULAIRES = {
     'Danemark',
     'Etats-Unis',
     'France',
+    'Hong Kong',
     'Hongrie',
     'Italie',
     'Japon',

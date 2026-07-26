@@ -568,5 +568,21 @@ const FILMS = [
     pays: ['Italie', 'France'],
     genreBase: 'drame',
     technique: ['n&b']
+  },
+  {
+    slug: 'blade-runner',
+    title: 'Blade Runner',
+    director: 'Ridley Scott',
+    year: 1982,
+    summary: "Un film où l'identité ne se prouve ni par le souvenir ni par la sincérité, mais par un appareil, une photographie et un témoin.",
+    url: 'films/blade-runner.html',
+    poster: 'assets/posters/blade-runner.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-26 14:29',
+    genreBase: 'science-fiction',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Etats-Unis', 'Hong Kong', 'Royaume-Uni'],
+    technique: ['couleur']
   }
 ];
