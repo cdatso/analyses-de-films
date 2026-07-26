@@ -156,6 +156,8 @@
   function carteUne(f) {
     if (!f) { return ''; }
     return '<article class="carte-une" data-volet="' + volet(f) + '">'
+      + (f.poster ? '<img class="affiche" src="' + echappe(f.poster) + '"'
+          + ' alt="Affiche du film ' + echappe(f.title) + '" loading="lazy">' : '')
       + '<span class="pastille">' + (estEtude(f) ? 'Étude' : 'Critique') + '</span>'
       + '<h3>' + echappe(f.title) + '</h3>'
       + '<div class="meta">' + echappe(f.director)

@@ -543,6 +543,11 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
 
 .carte-une[data-volet="etude"] { background: var(--paper-alt); }
 
+.carte-une .affiche {
+  width: 100%; max-width: 100%; height: auto; display: block;
+  margin: 0 0 0.9rem; border: 1px solid var(--line);
+}
+
 .carte-une .pastille {
   font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase;
   letter-spacing: 0.14em; padding: 0.2rem 0 0.3rem; align-self: flex-start;
