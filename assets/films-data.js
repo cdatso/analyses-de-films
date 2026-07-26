@@ -584,5 +584,21 @@ const FILMS = [
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Etats-Unis', 'Hong Kong', 'Royaume-Uni'],
     technique: ['couleur']
+  },
+  {
+    slug: 'coffee-and-cigarettes',
+    title: 'Coffee and Cigarettes',
+    director: 'Jim Jarmusch',
+    year: 2003,
+    summary: "Onze conversations tournées sur vingt ans que Jarmusch présente comme un passe-temps sans dessein — jusqu'à ce qu'un acteur, dans un aveu de vulnérabilité que rien n'annonçait, vienne démentir la nonchalance de façade.",
+    url: 'films/coffee-and-cigarettes.html',
+    poster: 'assets/posters/coffee-and-cigarettes.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-26 23:09',
+    genreBase: 'comedie',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Etats-Unis'],
+    technique: ['n&b']
   }
 ];
