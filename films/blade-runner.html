@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relevé d'examen — Blade Runner</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de cette
+       page. Ossature identique au patron `le-doulos.html` (main 740px,
+       padding 2 x 1,6rem) : colonne mesuree 689 px au rendu du 22/07/2026,
+       soit (689 + 51,2) / 16 = 46,3rem. Valeur reprise d'une mesure, non
+       devinee ; la sonde n'a pas ete rejouee (declare au rapport). */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette bespoke : poste d'examen de nuit. Ecran phosphore ambre,
+       moniteur froid, pluie sur verre. Contrastes AA verifies. */
+    --nuit:#0d1216;
+    --nuit-2:#141c22;
+    --nuit-3:#1b262e;
+    --os:#e9e4d9;
+    --os-2:#cdc7ba;
+    --os-3:#a7aeb3;
+    --ambre:#f2a93b;
+    --cyan:#6fc7d8;
+    --papier:#ded7c7;
+    --papier-2:#cec6b3;
+    --encre:#12171b;
+    --encre-2:#3f464c;
+    --filet:rgba(233,228,217,0.22);
+    --filet-doux:rgba(233,228,217,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 12% -5%, rgba(242,169,59,0.09), transparent 45%),
+      radial-gradient(ellipse at 92% 8%, rgba(111,199,216,0.07), transparent 40%),
+      var(--nuit);
+    color:var(--os-2);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--ambre);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--os-3);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1.1rem;
+  }
+  .back-link:hover{ color:var(--ambre); }
+
+  /* ---------- COUVERTURE : le poste d'examen ---------- */
+  header.poste{
+    position:relative;
+    background:
+      repeating-linear-gradient(to bottom,
+        rgba(233,228,217,0.035) 0px, rgba(233,228,217,0.035) 1px,
+        transparent 1px, transparent 4px),
+      linear-gradient(180deg, var(--nuit-3), var(--nuit));
+    border-bottom:1px solid var(--filet);
+    padding:1.2rem 0 0;
+  }
+  .bandeau-poste{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    letter-spacing:0.19em;
+    text-transform:uppercase;
+    color:var(--ambre);
+    padding-bottom:1rem;
+    border-bottom:1px solid var(--filet-doux);
+    margin:0 1.6rem;
+  }
+  .poste-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem 2.6rem;
+  }
+
+  .fiche-sujet{
+    background:var(--nuit-2);
+    border:1px solid var(--filet);
+    border-top:3px solid var(--ambre);
+    padding:2.3rem 2.1rem 2rem;
+    margin-top:2rem;
+    position:relative;
+    box-shadow:0 18px 38px rgba(0,0,0,0.45);
+  }
+
+  .iris{ display:block; margin:0 auto 1.2rem; }
+
+  .ligne-dossier{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--os-3);
+    margin-bottom:1.4rem;
+  }
+  .ligne-dossier b{ color:var(--ambre); font-weight:600; }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.3rem, 7.2vw, 3.8rem);
+    line-height:1.02;
+    letter-spacing:-0.015em;
+    margin:0 0 0.75rem;
+    color:var(--os);
+  }
+  .sous-titre{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--os-2);
+    font-size:1.02rem;
+    max-width:48ch;
+    margin:0 0 2rem;
+  }
+
+  .bloc-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px solid var(--filet-doux);
+    padding-top:1.4rem;
+  }
+  .bloc-media .poster{ flex:0 0 148px; margin:0; }
+  .bloc-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--filet);
+  }
+  .bloc-media .identite{ flex:1; min-width:230px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(168px,1fr));
+    gap:0.95rem 1.6rem;
+    margin:0;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.61rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--cyan);
+    margin-bottom:0.26rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--os);
+    border-bottom:1px dotted var(--filet);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.4rem;
+    padding:0.8rem 1.1rem;
+    background:rgba(242,169,59,0.07);
+    border-left:2px solid var(--ambre);
+    font-family:var(--mono);
+    font-size:0.74rem;
+    line-height:1.62;
+    color:var(--os-2);
+  }
+  .provenance strong{ color:var(--os); font-weight:600; }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.sommaire{
+    background:var(--nuit-3);
+    border-bottom:1px solid var(--filet);
+  }
+  nav.sommaire .sommaire-in{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.sommaire a{
+    color:var(--os-2);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.sommaire a:hover, nav.sommaire a:focus-visible{ color:var(--ambre); border-color:var(--filet); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.releve{ padding:3rem 0; border-bottom:1px solid var(--filet-doux); }
+  section.releve:last-of-type{ border-bottom:none; }
+
+  .releve-head{
+    margin-bottom:1.5rem;
+    border-top:1px solid var(--ambre);
+    padding:0.65rem 0 0.7rem;
+    border-bottom:1px solid var(--filet-doux);
+  }
+  .releve-num{
+    font-family:var(--mono);
+    font-size:0.67rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--ambre);
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.6rem;
+    margin:0 0 0.15rem;
+    color:var(--os);
+    letter-spacing:-0.005em;
+  }
+  .releve-sous{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--cyan);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin:1.8rem 0 0.6rem;
+    color:var(--os);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--os-2); }
+  p:last-child{ margin-bottom:0; }
+  em{ color:var(--os); }
+
+  a.renvoi{
+    color:var(--cyan);
+    text-decoration:none;
+    border-bottom:1px dotted var(--cyan);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+  a.renvoi:hover{ color:var(--ambre); border-bottom-color:var(--ambre); }
+
+  .reserve{
+    font-family:var(--mono);
+    font-size:0.79rem;
+    color:var(--os-3);
+    border-left:2px solid var(--cyan);
+    padding-left:0.95rem;
+    margin:1.2rem 0;
+  }
+
+  /* ---------- ENCART « DOCUMENT » (fond clair) ---------- */
+  .document{
+    background:var(--papier);
+    color:var(--encre);
+    border:1px solid var(--papier-2);
+    padding:1.25rem 1.45rem 1.3rem;
+    margin:1.7rem 0;
+  }
+  .document .doc-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--encre-2);
+    display:block;
+    margin-bottom:0.6rem;
+    border-bottom:1px solid var(--papier-2);
+    padding-bottom:0.4rem;
+  }
+  .document p{ color:var(--encre); font-size:0.94rem; margin-bottom:0.5rem; }
+  .document p:last-child{ margin-bottom:0; }
+  .document cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--encre-2);
+  }
+  .document a.renvoi{ color:#1f4a57; border-bottom-color:#1f4a57; }
+  .document a.renvoi:hover{ color:var(--encre); border-bottom-color:var(--encre); }
+
+  /* ---------- SUJETS EXAMINES ---------- */
+  .grille-sujets{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(212px,1fr));
+    gap:1.1rem;
+    margin-top:0.7rem;
+  }
+  .carte-sujet{
+    position:relative;
+    background:var(--nuit-2);
+    border:1px solid var(--filet);
+    border-left:2px solid var(--cyan);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .carte-sujet .nom{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.06rem;
+    display:block;
+    margin:0 0 0.1rem;
+    color:var(--os);
+  }
+  .carte-sujet .interprete{
+    font-family:var(--mono);
+    font-size:0.61rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ambre);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .carte-sujet p{ font-size:0.87rem; margin:0; color:var(--os-2); }
+
+  /* ---------- QUESTIONS D'EXAMEN (themes) ---------- */
+  .liste-questions{ display:grid; gap:1.5rem; margin-top:0.6rem; }
+  .question .q-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--ambre);
+    display:inline-block;
+    margin-bottom:0.35rem;
+    border-bottom:1px solid var(--ambre);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- RELEVE CHIFFRE ---------- */
+  .compteurs{
+    margin:1.7rem 0 1.8rem;
+    background:var(--nuit-3);
+    border:1px solid var(--filet);
+  }
+  .compteurs-in{ padding:1.2rem 1.4rem 1.35rem; }
+  .compteurs-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--cyan);
+    margin-bottom:0.85rem;
+    display:block;
+  }
+  .compteurs-grille{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
+    gap:1rem;
+  }
+  .compteurs .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--ambre);
+    display:block;
+    line-height:1.18;
+  }
+  .compteurs .stat .cap{
+    font-family:var(--mono);
+    font-size:0.65rem;
+    letter-spacing:0.03em;
+    color:var(--os-2);
+    text-transform:uppercase;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{
+    background:var(--nuit-2);
+    padding:3.2rem 1.6rem 4rem;
+    border-top:1px solid var(--ambre);
+  }
+  section.sources .sources-in{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--os); font-size:1.4rem; margin:0; }
+  ol.liste-sources{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.liste-sources li{
+    counter-increment:src;
+    font-size:0.79rem;
+    padding-left:3.2rem;
+    position:relative;
+    color:var(--os-2);
+    border-bottom:1px solid var(--filet-doux);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+    line-height:1.6;
+  }
+  ol.liste-sources li::before{
+    content:"Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--ambre);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.liste-sources a{ color:var(--os); word-break:break-word; }
+  ol.liste-sources a:hover{ color:var(--ambre); }
+
+  footer.pied{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--os-3);
+    background:var(--nuit);
+  }
+  footer.pied a{ color:var(--os-3); }
+  footer.pied a:hover{ color:var(--ambre); }
+
+  @media (max-width:600px){
+    .poste-inner{ padding:0 1.1rem 2rem; }
+    .fiche-sujet{ padding:1.8rem 1.25rem 1.6rem; }
+    section.releve{ padding:2.3rem 0; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="poste">
+  <div class="bandeau-poste">Poste d'examen &mdash; relevé d'une procédure de qualification</div>
+  <div class="poste-inner">
+    <div class="fiche-sujet">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+
+      <svg class="iris" width="86" height="86" viewBox="0 0 86 86" aria-hidden="true">
+        <circle cx="43" cy="43" r="41" fill="none" stroke="#6fc7d8" stroke-width="1" opacity="0.5"/>
+        <circle cx="43" cy="43" r="32" fill="none" stroke="#f2a93b" stroke-width="1.4"/>
+        <circle cx="43" cy="43" r="13" fill="#0d1216" stroke="#f2a93b" stroke-width="2"/>
+        <g stroke="#f2a93b" stroke-width="1" opacity="0.75">
+          <line x1="43" y1="11" x2="43" y2="19"/>
+          <line x1="43" y1="67" x2="43" y2="75"/>
+          <line x1="11" y1="43" x2="19" y2="43"/>
+          <line x1="67" y1="43" x2="75" y2="43"/>
+        </g>
+        <g stroke="#6fc7d8" stroke-width="0.8" opacity="0.55">
+          <line x1="20" y1="20" x2="26" y2="26"/>
+          <line x1="66" y1="20" x2="60" y2="26"/>
+          <line x1="20" y1="66" x2="26" y2="60"/>
+          <line x1="66" y1="66" x2="60" y2="60"/>
+        </g>
+        <circle cx="38" cy="38" r="3" fill="#f2a93b" opacity="0.85"/>
+      </svg>
+
+      <div class="ligne-dossier">Sujet examiné &mdash; <b>Blade Runner</b> &mdash; Ridley Scott &mdash; 1982 &mdash; version analysée : <b>The Final Cut</b> (2007)</div>
+      <h1 class="titre">Blade Runner</h1>
+      <p class="sous-titre">Un film où l'on ne peut établir ce qu'un être est en l'interrogeant sur ce qu'il ressent &mdash; et où il faut donc, à chaque fois, une machine, une photographie ou un témoin.</p>
+
+      <div class="bloc-media">
+        <figure class="poster">
+          <img src="../assets/posters/blade-runner.jpg"
+               alt="Affiche du film Blade Runner"
+               onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Ridley Scott</dd></div>
+          <div><dt>Scénario</dt><dd>Hampton Fancher, David Webb Peoples</dd></div>
+          <div><dt>D'après</dt><dd>Philip K. Dick (1968)</dd></div>
+          <div><dt>Année</dt><dd>1982</dd></div>
+          <div><dt>Durée</dt><dd>117 minutes (Final Cut)</dd></div>
+          <div><dt>Photographie</dt><dd>Jordan Cronenweth</dd></div>
+          <div><dt>Musique</dt><dd>Vangelis</dd></div>
+          <div><dt>Décors</dt><dd>Lawrence G. Paull</dd></div>
+          <div><dt>Design futuriste</dt><dd>Syd Mead</dd></div>
+          <div><dt>Effets photographiques</dt><dd>Douglas Trumbull, Richard Yuricich</dd></div>
+        </dl>
+      </div>
+
+      <div class="provenance">
+        <strong>Provenance.</strong> Critique nouvelle du pipeline &mdash; premier jet et r&eacute;daction par IAGen Claude d'Anthropic, mod&egrave;le <strong>Claude Opus 5</strong>, en session supervis&eacute;e &mdash; recherche et r&eacute;daction du 26 juillet 2026, sous supervision humaine.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervis&eacute;e, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 26 juillet 2026</span>
+</div>
+</div>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <div class="sommaire-in">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="releve" id="fiche">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 01</span>
+      <h2>Fiche technique <span class="releve-sous">— état civil du film</span></h2>
+    </div>
+    <p>
+      <em>Blade Runner</em> est un film de science-fiction réalisé par Ridley Scott, sorti aux États-Unis le 25 juin 1982 et en France le 15 septembre de la même année. Il est librement adapté du roman de Philip K. Dick <em>Do Androids Dream of Electric Sheep?</em> (1968), traduit en français sous le titre <em>Les androïdes rêvent-ils de moutons électriques&nbsp;?</em>, sur un scénario de Hampton Fancher et David Webb Peoples<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. La production réunit The Ladd Company, Warner Bros., la Blade Runner Partnership et la Shaw Brothers — d'où une coproduction déclarée entre les États-Unis, Hong Kong et le Royaume-Uni<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>.
+    </p>
+    <p>
+      La photographie est signée Jordan Cronenweth, qui obtient pour ce film le BAFTA de la meilleure photographie ; la musique est de Vangelis, nommé au BAFTA et au Golden Globe ; les décors sont de Lawrence G. Paull, la direction artistique de David Snyder, le design des véhicules et de l'environnement urbain du « futuriste visuel » Syd Mead, et les effets photographiques spéciaux de Douglas Trumbull et Richard Yuricich, également nommés à l'Oscar<a class="renvoi" href="#src-9" id="ref-9">[9]</a><a class="renvoi" href="#src-10" id="ref-10">[10]</a>. Le film réunit Harrison Ford (Rick Deckard), Rutger Hauer (Roy Batty), Sean Young (Rachael), Edward James Olmos (Gaff), Daryl Hannah (Pris), William Sanderson (J. F. Sebastian), Joe Turkel (Eldon Tyrell), Brion James (Leon Kowalski), Joanna Cassidy (Zhora) et James Hong (Hannibal Chew)<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>.
+    </p>
+
+    <h3>Version analysée</h3>
+    <p>
+      La présente analyse porte sur <em>The Final Cut</em> (2007, 117 minutes), seule version sur laquelle Ridley Scott ait exercé un contrôle artistique complet, restaurée sous la supervision de Charles de Lauzirika<a class="renvoi" href="#src-2" id="ref-2">[2]</a>. Cette précision n'est pas une coquetterie d'archiviste : sept versions du film ont circulé, et elles ne posent pas la même question au spectateur<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+    <div class="document">
+      <span class="doc-label">Pièce jointe — les sept états connus du film</span>
+      <p>Copie de travail (1982, 113&nbsp;min, projetée en test à Denver et Dallas) ; avant-première de San Diego (mai 1982, 115&nbsp;min, trois scènes jamais reprises depuis) ; sortie américaine (1982, avec treize interventions de voix off et une fin d'échappée au soleil couchant) ; <em>International Cut</em> (1982, 117&nbsp;min, trois séquences de violence supplémentaires) ; un montage pour la télévision américaine ; le <em>Director's Cut</em> (1992, 116&nbsp;min : voix off supprimée, fin retirée, rêve de la licorne introduit) ; enfin <em>The Final Cut</em> (2007, 117&nbsp;min)<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. La version longue sort à Paris le 23 décembre 1992<a class="renvoi" href="#src-8" id="ref-8">[8]</a>.</p>
+    </div>
+    <p>
+      Deux de ces écarts engagent directement la lecture du film. La voix off de 1982 <em>commentait</em> ce que l'image montrait : elle qualifiait pour le spectateur ce que celui-ci voyait. Son retrait, en 1992 puis en 2007, prive le public de ce commentaire autorisé. Et le rêve de la licorne, présent en entier dans le <em>Final Cut</em>, installe au cœur du récit un indice — non une preuve. Le film passe ainsi de l'explication à l'indice : c'est très exactement le déplacement dont il parle.
+    </p>
+  </section>
+
+  <section class="releve" id="synopsis">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 02</span>
+      <h2>Synopsis <span class="releve-sous">— exposé des faits</span></h2>
+    </div>
+    <p>
+      Los Angeles, novembre 2019. Une police spéciale, les « blade runners », est chargée de traquer les réplicants — des êtres artificiels d'apparence humaine, fabriqués par la Tyrell Corporation pour le travail des colonies extérieures, et interdits de séjour sur Terre. Quatre d'entre eux, d'un modèle avancé, se sont évadés et sont revenus. Rick Deckard, ancien blade runner, est rappelé pour les « retirer »<a class="renvoi" href="#src-8" id="ref-8b">[8]</a>.
+    </p>
+    <p>
+      Son enquête commence à la Tyrell Corporation, où il soumet au test de dépistage une jeune femme, Rachael, qui ignore ce qu'elle est. La traque des quatre fugitifs le conduit d'une chambre d'hôtel à un laboratoire d'yeux artificiels, d'une loge de cabaret à l'appartement en ruine d'un ingénieur génétique, tandis que Roy Batty, le chef du groupe, remonte quant à lui vers son propre fabricant<a class="renvoi" href="#src-8" id="ref-8c">[8]</a>.
+    </p>
+    <p class="reserve">Le dénouement, la nature exacte de Deckard et la teneur de la dernière séquence ne sont pas détaillés ici : le film fait de ces incertitudes son objet même, et les résoudre d'avance reviendrait à le désamorcer.</p>
+  </section>
+
+  <section class="releve" id="production">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 03</span>
+      <h2>Contexte de production <span class="releve-sous">— antécédents du dossier</span></h2>
+    </div>
+    <p>
+      Le film s'écarte largement de son modèle littéraire : le scénario de Hampton Fancher, retravaillé par David Webb Peoples, ne conserve du roman de Philip K. Dick qu'une armature et quelques motifs<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>. Dick, à qui furent montrées des séquences d'effets spéciaux avant sa mort, y reconnut pourtant le monde qu'il avait imaginé, et jugea le scénario final en accord profond avec son livre<a class="renvoi" href="#src-9" id="ref-9b">[9]</a>.
+    </p>
+    <p>
+      Le tournage et surtout la post-production furent conflictuels. Ridley Scott ne disposait pas du montage final : le studio imposa en post-production la voix off de Deckard et une fin d'échappée, deux ajouts que les montages ultérieurs supprimeront<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. Le budget est estimé à 28 millions de dollars par le <em>British Film Institute</em>, à 30 millions par les sources encyclopédiques anglophones ; le film ne rentre pas dans ses frais lors de son exploitation initiale, et n'atteindra les 41,8 millions de recettes cumulées qu'au fil des reprises<a class="renvoi" href="#src-10" id="ref-10b">[10]</a><a class="renvoi" href="#src-9" id="ref-9c">[9]</a>.
+    </p>
+    <p>
+      Un épisode de tournage est devenu, à lui seul, une pièce du dossier. Le monologue final de Roy Batty avait été écrit, plus long, par David Peoples. Rutger Hauer, jugeant le texte trop rhétorique, en retrancha environ deux cents mots la veille du tournage, sans en avertir le réalisateur, et y ajouta une phrase de son cru — celle-là même qui est restée<a class="renvoi" href="#src-6" id="ref-6">[6]</a>. La séquence la plus citée du film sur la mémoire et la disparition est donc, littéralement, un texte dont l'auteur déclaré n'est pas l'auteur réel : la question de l'attribution, que le film pose à ses personnages, se rejoue dans sa propre fabrication.
+    </p>
+  </section>
+
+  <section class="releve" id="structure">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 04</span>
+      <h2>Structure narrative <span class="releve-sous">— déroulé de la procédure</span></h2>
+    </div>
+    <p>
+      <em>Blade Runner</em> ne commence pas par un crime : il commence par un <strong>examen</strong>. La première scène de dialogue est un interrogatoire réglé, mené par un examinateur muni d'un appareil, sur un sujet dont il s'agit d'établir la nature. Giuliana Bruno le relève dès l'ouverture de son étude : le film s'ouvre sur un test psychologique administré à Leon, un réplicant qui cherche à dissimuler son identité, et le test achoppe sur une question portant sur la mère du sujet — que celui-ci ne peut traiter et à laquelle il répond en tuant son examinateur<a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      Le récit alterne ensuite deux procédures, et deux seulement. La première <strong>qualifie</strong> : c'est le test, appliqué à Leon, puis à Rachael. La seconde <strong>identifie</strong> : c'est l'exploitation des traces — les photographies retrouvées dans la chambre de Leon, passées à l'analyseur, puis les fichiers de la Tyrell Corporation. Deckard ne progresse jamais par intuition ni par aveu ; il progresse par documents. Chaque avancée de l'intrigue est un acte d'instruction.
+    </p>
+    <p>
+      À cette ossature d'enquête répond une contre-enquête symétrique : Roy Batty mène la sienne, remontant la chaîne de fabrication de son propre corps jusqu'à son concepteur. Les réplicants, écrit Bruno, cherchent une histoire et se battent pour elle ; ils cherchent leurs origines, ce temps qui les précède<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>. Deux enquêtes se font donc face — l'une sur l'identité d'autrui, l'autre sur la sienne propre — et elles emploient les mêmes moyens.
+    </p>
+    <p>
+      Le retrait de la voix off, en 1992 puis en 2007, achève cette architecture. Tant qu'un narrateur commentait l'image, le spectateur disposait d'une instance de qualification : quelqu'un lui disait ce qu'il fallait conclure. Privé de ce relais, il se retrouve dans la position de Deckard devant la photographie de Leon — devant des signes qu'il doit lui-même instruire<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>.
+    </p>
+  </section>
+
+  <section class="releve" id="miseenscene">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 05</span>
+      <h2>Mise en scène et procédés techniques <span class="releve-sous">— instruments et appareils</span></h2>
+    </div>
+    <p>
+      Le film s'ouvre sur un œil en très gros plan, où se reflètent les torchères de la ville. C'est l'organe de l'observation qui est donné d'abord — et c'est précisément l'œil que l'appareil de dépistage viendra scruter, puisque le test mesure des réactions physiologiques involontaires, dilatation de la pupille comprise, plutôt que le contenu des réponses<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Le dispositif visuel du film est ainsi posé en une image : voir n'est pas savoir, il faut un instrument.
+    </p>
+    <p>
+      Jordan Cronenweth compose une image de contre-jours, de faisceaux traversant la fumée et de néons diffractés par la pluie, qui lui vaut le BAFTA de la photographie<a class="renvoi" href="#src-9" id="ref-9d">[9]</a>. Giuliana Bruno décrit cette pluie persistante comme une pluie corrosive, qui voile le paysage urbain et use les choses<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>. Le décor lui-même procède par citation : pyramide d'inspiration égyptienne pour le siège de la Tyrell Corporation, dragons chinois en néon, appartement de Deckard aux murs de palais maya. Bruno y voit un urbanisme de pastiche, où la ville n'est pas une géographie réelle mais, selon sa formule, « une synthèse d'architectures mentales »<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>.
+    </p>
+    <p>
+      Cette ville a été fabriquée sans image de synthèse : maquettes de table, peintures sur cache, prises multiples en caméra à mouvement contrôlé — un « rétro-futurisme » que le <em>BFI</em> qualifie de pré-numérique, et dont Syd Mead, Lawrence G. Paull et Douglas Trumbull sont les auteurs<a class="renvoi" href="#src-10" id="ref-10c">[10]</a><a class="renvoi" href="#src-9" id="ref-9e">[9]</a>. La partition de Vangelis y ajoute, selon Stephen Dalton, une électronique analogique stridente mêlée de saxophones solitaires et d'échos venus du passé<a class="renvoi" href="#src-10" id="ref-10d">[10]</a> : une musique de futur déjà daté, cohérente avec un décor fait de restes.
+    </p>
+
+    <h3>La séquence de l'analyseur d'images</h3>
+    <p>
+      La scène la plus révélatrice du film est aussi la moins spectaculaire. Deckard place une photographie prise chez Leon dans un appareil d'analyse et lui dicte des ordres de déplacement et d'agrandissement, jusqu'à faire apparaître, dans un reflet, un détail invisible à l'œil nu. Kanjing He souligne que la machine doit changer d'angle pour diriger l'attention vers ce que la composition dissimulait, ce qui manifeste l'incapacité de la photographie à livrer d'elle-même une information complète<a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Bruno décrit la même opération comme une décomposition et une restructuration de l'image, dont la sérialisation produit un récit — le procédé même de <em>Blow-Up</em>, dont le film hérite ouvertement<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>.
+    </p>
+    <p>
+      Ce n'est pas une trouvaille de science-fiction : c'est la représentation cinématographique d'une <strong>procédure d'exploitation documentaire</strong>. L'image ne parle que si on l'interroge, et elle ne répond qu'à des questions posées dans un certain ordre.
+    </p>
+  </section>
+
+  <section class="releve" id="personnages">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 06</span>
+      <h2>Personnages principaux <span class="releve-sous">— sujets du dossier</span></h2>
+    </div>
+    <div class="grille-sujets">
+      <div class="carte-sujet">
+        <span class="nom">Rick Deckard</span>
+        <span class="interprete">Harrison Ford</span>
+        <p>L'examinateur dont le statut n'est pas établi. Ridley Scott a soutenu qu'il était un réplicant ; Hampton Fancher affirme ne pas l'avoir écrit ainsi ; Harrison Ford a longtemps défendu l'hypothèse humaine avant de nuancer son propos<a class="renvoi" href="#src-11" id="ref-11">[11]</a>.</p>
+      </div>
+      <div class="carte-sujet">
+        <span class="nom">Rachael</span>
+        <span class="interprete">Sean Young</span>
+        <p>Le cas critique de la procédure. Ses souvenirs proviennent de la nièce de Tyrell ; elle se croit humaine, et cette croyance même la rend, selon Bruno, la plus accomplie des réplicantes<a class="renvoi" href="#src-3" id="ref-3g">[3]</a><a class="renvoi" href="#src-5" id="ref-5">[5]</a>.</p>
+      </div>
+      <div class="carte-sujet">
+        <span class="nom">Roy Batty</span>
+        <span class="interprete">Rutger Hauer</span>
+        <p>Le sujet qui refuse d'être qualifié par un autre et remonte vers son fabricant. David C. Ryan lui attribue une mémoire d'ordre poétique, là où les autres réplicants n'ont qu'images ou récits empruntés<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.</p>
+      </div>
+      <div class="carte-sujet">
+        <span class="nom">Leon Kowalski</span>
+        <span class="interprete">Brion James</span>
+        <p>Le sujet qui échoue au test dès la première scène. Sa mémoire tient tout entière dans des photographies qu'il conserve et auxquelles il s'accroche, sans pouvoir en faire un récit<a class="renvoi" href="#src-5" id="ref-5c">[5]</a><a class="renvoi" href="#src-3" id="ref-3h">[3]</a>.</p>
+      </div>
+      <div class="carte-sujet">
+        <span class="nom">Gaff</span>
+        <span class="interprete">Edward James Olmos</span>
+        <p>Le témoin latéral, qui plie des origamis et paraît savoir de Deckard ce que Deckard ignore de lui-même — la figure qui, dans le <em>Final Cut</em>, transforme un rêve en indice<a class="renvoi" href="#src-5" id="ref-5d">[5]</a>.</p>
+      </div>
+      <div class="carte-sujet">
+        <span class="nom">Eldon Tyrell</span>
+        <span class="interprete">Joe Turkel</span>
+        <p>Le détenteur de l'archive. C'est chez lui que se trouvent les registres, les dates de fabrication et les durées de vie : celui qui possède les fichiers possède l'identité des autres.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="releve" id="themes">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 07</span>
+      <h2>Thèmes <span class="releve-sous">— questions d'examen</span></h2>
+    </div>
+    <p>
+      L'hypothèse qui organise ce qui suit est simple : <em>Blade Runner</em> déplace la question de l'identité du registre psychologique vers celui de la <strong>vérification</strong>. L'expérience vécue n'y est jamais une preuve suffisante de soi — le souvenir peut être fabriqué, le témoignage sincère et faux, la conscience ignorante de sa propre condition. L'identité y apparaît comme le résultat d'une procédure, non comme une évidence subjective.
+    </p>
+
+    <div class="liste-questions">
+      <div class="question">
+        <span class="q-tag">1. Une mémoire dont on ignore l'origine</span>
+        <p>
+          Rachael croit ses souvenirs authentiques jusqu'à ce qu'on lui démontre qu'ils ont été implantés — et qu'ils appartiennent à la nièce de Tyrell. Le cas est plus retors qu'une simple falsification : ces souvenirs sont <em>vrais</em>, quelqu'un les a vécus, mais ils ne sont pas les siens. La vérité factuelle d'un souvenir et son authenticité existentielle se dissocient. Kanjing He montre que la photographie censée les attester fonctionne comme une preuve fausse : une image fixe, incomplète, et désormais fabricable, ne peut plus établir ni l'identité ni l'authenticité d'une mémoire<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. Le film pose alors une question qu'aucune introspection ne tranche : que vaut un souvenir dont je ne peux pas remonter la provenance&nbsp;?
+        </p>
+      </div>
+
+      <div class="question">
+        <span class="q-tag">2. Le test comme procédure de qualification</span>
+        <p>
+          Le test de dépistage mesure des réactions physiologiques involontaires à des scénarios chargés d'affect ; il ne demande pas au sujet ce qu'il est, il l'observe pendant qu'il répond. C'est un aveu de méthode : si la qualification exigeait seulement une déclaration, elle serait immédiate, et il n'y aurait pas de film. Mais l'appareil n'est pas infaillible. Bruno rappelle que le roman dont le film est tiré fait naître de ce test une question morale — la possibilité que des humains soient « retirés » par erreur, un certain type de sujets humains répondant à l'examen exactement comme des réplicants<a class="renvoi" href="#src-3" id="ref-3i">[3]</a>. Le faux positif est donc inscrit dans le dispositif.
+        </p>
+        <p>
+          Rachael est le cas critique par l'autre bord : elle est le faux négatif que la procédure met un temps anormal à qualifier. David C. Ryan observe qu'elle peut, grâce à des souvenirs d'origine humaine, tenir tête à l'examinateur et lui rendre coup pour coup, ses réponses ouvrant même des aperçus abstraits sur la famille et la culture<a class="renvoi" href="#src-5" id="ref-5e">[5]</a>. Autrement dit : plus le sujet est bien documenté, plus la procédure peine — non parce qu'elle est mauvaise, mais parce qu'un test ne qualifie jamais qu'un écart mesurable, et qu'un dossier bien constitué en supprime l'écart.
+        </p>
+      </div>
+
+      <div class="question">
+        <span class="q-tag">3. Documents, dossiers et traces</span>
+        <p>
+          Le film est plein de papiers. Leon conserve précieusement des photographies dont Deckard, en les découvrant, comprend qu'elles ne servent à rien d'autre qu'à documenter l'existence de leur propriétaire. Rachael produit, pour se défendre, une photographie d'elle enfant avec sa mère : une pièce justificative. C'est là que Bruno voit le nœud du film. Reprenant Roland Barthes, elle note que le réplicant qui possède un document possède le fondement d'une histoire, et que les réplicants doivent être éliminés précisément parce qu'ils n'en ont pas<a class="renvoi" href="#src-3" id="ref-3j">[3]</a>.
+        </p>
+        <p>
+          Elle convoque alors Michel Foucault, pour qui l'histoire est ce qui transforme les documents en monuments, et fait de la scène de l'analyseur d'images l'équivalent exact de l'opération de l'historien sur sa source : décomposer, ordonner, sérier, distinguer le pertinent de l'accessoire<a class="renvoi" href="#src-3" id="ref-3k">[3]</a>. La mémoire vécue et la mémoire archivée entrent ici en tension frontale : les personnages qui n'ont que du vécu meurent, et ceux qui ont un dossier survivent — le temps que quelqu'un vienne le contester.
+        </p>
+      </div>
+
+      <div class="question">
+        <span class="q-tag">4. Deckard et le problème de l'observateur</span>
+        <p>
+          Le film confie l'instruction à un enquêteur dont la nature n'est pas établie. La question n'est pas seulement « Deckard est-il un réplicant&nbsp;? » — elle est : <em>de quels moyens dispose-t-il pour le savoir&nbsp;?</em> Aucun, précisément. Il ne possède ni appareil braqué sur lui-même, ni photographie qu'un autre viendrait démonter, ni fichier de fabrication. Il possède un rêve, et un témoin qui semble le connaître. Ryan soutient d'ailleurs que la déshumanisation de Deckard importe davantage que son statut, et que l'ambiguïté sert mieux le propos du film qu'une réponse<a class="renvoi" href="#src-5" id="ref-5f">[5]</a>.
+        </p>
+        <p>
+          Le spectateur, lui, n'a pas de point de vue privilégié : le <em>Final Cut</em> lui a retiré le narrateur qui, en 1982, tranchait à sa place<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>. Il est donc placé exactement là où le film veut qu'il soit — en position d'observateur qui doit qualifier sans instrument. Que Scott, Fancher et Ford ne soient jamais parvenus à s'accorder sur la réponse<a class="renvoi" href="#src-11" id="ref-11b">[11]</a> n'est pas un défaut de fabrication&nbsp;: c'est la démonstration que même les auteurs d'un sujet ne disposent pas, sur sa nature, d'un accès qui dispenserait de la procédure.
+        </p>
+      </div>
+
+      <div class="question">
+        <span class="q-tag">5. Finitude, transmission et disparition</span>
+        <p>
+          Les réplicants du modèle avancé ont une durée de vie limitée, et le savent. Bruno décrit leur condition temporelle comme un présent perpétuel, sans passé assignable ni avenir concevable, et note qu'ils se représentent eux-mêmes comme une flamme qui brûle plus vite et plus fort<a class="renvoi" href="#src-3" id="ref-3l">[3]</a>. Toute la dernière séquence du film tient dans cette arithmétique : ce qu'un être a vu disparaît avec lui, à moins qu'un dispositif ne l'ait recueilli.
+        </p>
+        <p>
+          Roy Batty, mourant, énumère ce qu'il a vu et constate que ces moments se perdront, selon la formule qu'il emploie, « comme des larmes dans la pluie ». La phrase est celle que Rutger Hauer a ajoutée de sa main<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. Sa force, souligne la critique, tient à ce qu'elle porte témoignage d'une expérience vouée à l'oubli : quand la conscience s'éteint, s'éteint aussi tout enregistrement de ce qu'elle a perçu — Mark Rowlands y voit le plus émouvant monologue de mort du cinéma<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>.
+        </p>
+        <p>
+          C'est le dernier retournement du film, et le plus discret. Batty ne demande pas qu'on le croie : il déclare devant témoin, et il choisit son témoin. La scène ne compense pas la mort par le souvenir — elle la compense par la <strong>transmission</strong>, c'est-à-dire par le seul dispositif que le film reconnaisse comme opposable : une déclaration faite à quelqu'un d'autre. Les réplicants meurent parce qu'ils n'ont pas d'archives. Le seul qui laisse quelque chose est celui qui a parlé.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="releve" id="reception">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 08</span>
+      <h2>Réception critique et postérité <span class="releve-sous">— suites du dossier</span></h2>
+    </div>
+    <p>
+      La critique française de 1982 est nettement partagée. Dans <em>Télérama</em>, Gilbert Salachas juge que « plastiquement <em>Blade Runner</em> est une réussite totale » ; dans les <em>Cahiers du cinéma</em>, Alain Philippon concède que le film « se laisse voir avec plaisir » ; dans <em>Libération</em>, Philippe Garnier avoue avoir trouvé « ça génial » contre son propre préjugé sur la science-fiction<a class="renvoi" href="#src-7" id="ref-7">[7]</a>. À l'inverse, Alain Garsault, dans <em>Positif</em>, reproche à Scott une indifférence au sujet même de Philip K. Dick et à ses implications, et Jean Rochereau, dans <em>La Croix</em>, parle d'un film « horriblement fatiguant » qui n'éclaire à peu près rien de la richesse de son scénario<a class="renvoi" href="#src-7" id="ref-7b">[7]</a>. La moyenne de presse recensée s'établit aujourd'hui à 3,8 sur 5<a class="renvoi" href="#src-7" id="ref-7c">[7]</a>.
+    </p>
+    <p>
+      Aux États-Unis, l'accueil est mitigé : Pauline Kael salue une vision de science-fiction singulière mais reproche au film de ne pas développer sa matière en termes humains<a class="renvoi" href="#src-9" id="ref-9f">[9]</a>. Le <em>BFI</em> résume l'épisode d'une formule : des critiques mêlées, des salles tièdes, et un budget que le film ne récupère pas<a class="renvoi" href="#src-10" id="ref-10e">[10]</a>.
+    </p>
+
+    <div class="compteurs">
+      <div class="compteurs-in">
+        <span class="compteurs-label">Relevé chiffré</span>
+        <div class="compteurs-grille">
+          <div class="stat"><span class="num">28 à 30 M$</span><span class="cap">Budget selon les sources</span></div>
+          <div class="stat"><span class="num">41,8 M$</span><span class="cap">Recettes cumulées</span></div>
+          <div class="stat"><span class="num">7</span><span class="cap">Versions ayant circulé</span></div>
+          <div class="stat"><span class="num">117 min</span><span class="cap">Durée du Final Cut</span></div>
+          <div class="stat"><span class="num">1993</span><span class="cap">National Film Registry</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="reserve">Le budget est donné à 28 millions de dollars par le BFI et à 30 millions par les sources encyclopédiques anglophones ; l'écart n'est pas arbitré ici. Les 41,8 millions correspondent à un cumul postérieur à l'exploitation initiale, non à la recette de 1982<a class="renvoi" href="#src-10" id="ref-10f">[10]</a><a class="renvoi" href="#src-9" id="ref-9g">[9]</a>.</p>
+
+    <p>
+      La réévaluation est venue par la vidéo domestique, puis par les remontages. Le film obtient deux nominations à l'Oscar — direction artistique et effets visuels —, le BAFTA de la photographie pour Cronenweth, et il est retenu en 1993 par la Bibliothèque du Congrès au <em>National Film Registry</em><a class="renvoi" href="#src-9" id="ref-9h">[9]</a><a class="renvoi" href="#src-1" id="ref-1e">[1]</a>. Sa réputation se consolide ensuite par des consultations d'un genre inhabituel : premier d'un classement établi en 2004 par soixante scientifiques, premier également d'un sondage de lecteurs du <em>New Scientist</em> en 2008<a class="renvoi" href="#src-9" id="ref-9i">[9]</a>.
+    </p>
+    <p>
+      Son influence, juge le <em>BFI</em>, est difficile à surestimer : elle ouvre la voie aux adaptations de Philip K. Dick et fournit au cyberpunk son répertoire visuel, de <em>Brazil</em> à <em>Dark City</em> et <em>Matrix</em><a class="renvoi" href="#src-10" id="ref-10g">[10]</a>. Il faut noter la trajectoire complète : un film accusé en 1982 de négliger le sujet de Dick est devenu le principal véhicule de ce sujet.
+    </p>
+  </section>
+
+  <section class="releve" id="conclusion">
+    <div class="releve-head">
+      <span class="releve-num">Relevé nº 09</span>
+      <h2>Conclusion <span class="releve-sous">— conclusions de l'examen</span></h2>
+    </div>
+    <p>
+      On a beaucoup lu <em>Blade Runner</em> comme une fable sur ce qui fait l'humain. C'est possible, mais le film s'occupe d'autre chose, et de plus difficile : il ne demande pas <em>ce qu'est</em> un sujet, il demande <em>comment on l'établit</em>. Or il n'offre, pour cela, que des moyens externes — un appareil qui mesure une réaction involontaire, une photographie qu'il faut décomposer pour qu'elle parle, un fichier de fabrication détenu par un tiers, un témoin qui sait ce que vous rêvez. Aucun personnage n'accède à sa propre nature par la seule inspection de son expérience intérieure. Rachael se croyait humaine ; Leon collectionnait des preuves sans pouvoir les lire ; Deckard enquête sur l'identité d'autrui pendant que la sienne reste indéterminée.
+    </p>
+    <p>
+      C'est ce qui donne à la scène de l'analyseur d'images sa place centrale, et non décorative : elle montre une identité en train d'être établie, non par confession, mais par exploitation d'une trace. Et c'est ce qui rend le monologue final cohérent avec tout ce qui précède, plutôt que touchant par accident. Un témoin y déclare ce qu'il a vu, sachant que rien ne le conservera — sauf le fait même d'avoir parlé à quelqu'un. Que ces mots aient été écrits par l'acteur plutôt que par le scénariste crédité ajoute au film une ironie qu'il n'avait pas prévue : le texte le plus célèbre sur la mémoire y a lui-même une provenance contestée, et il a fallu des documents, plus tard, pour l'établir.
+    </p>
+    <p>
+      Quarante ans après un échec commercial et une réception française divisée, le film tient donc sur une proposition qui n'a rien vieilli. Ce qu'un sujet croit être ne suffit pas à établir ce qu'il est : entre l'expérience et la vérité, il s'interpose toujours une procédure, une trace ou un témoin. Là où la mémoire s'efface, l'archive prend le relais ; là où l'expérience s'éteint, il reste ce qui a été transmis. <em>Blade Runner</em> n'est pas un film sur des machines qui voudraient devenir humaines. C'est un film sur des êtres — tous les êtres qu'il met en scène — qui ne peuvent se connaître qu'en étant vérifiés.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-in">
+    <span class="meta-label">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <ol class="liste-sources">
+      <li id="src-1">Wikipédia (FR), « Blade Runner (film) » — fiche technique, distribution, sorties, versions — <a href="https://fr.wikipedia.org/wiki/Blade_Runner_(film)" target="_blank" rel="noopener">fr.wikipedia.org — Blade Runner (film)</a></li>
+      <li id="src-2">Wikipedia (EN), « Versions of Blade Runner » — les sept états du film, durées, voix off, rêve de la licorne, restauration du Final Cut — <a href="https://en.wikipedia.org/wiki/Versions_of_Blade_Runner" target="_blank" rel="noopener">en.wikipedia.org — Versions of Blade Runner</a></li>
+      <li id="src-3">Giuliana Bruno, « Ramble City: Postmodernism and <em>Blade Runner</em> », <em>October</em>, vol. 41, été 1987, p. 61-74 (The MIT Press) — <a href="https://badspaceusao.wordpress.com/wp-content/uploads/2018/12/bruno-ramble-city.pdf" target="_blank" rel="noopener">copie PDF consultée</a></li>
+      <li id="src-4">Kanjing He, « Photography, Film and Storytelling of Posthuman Crises in <em>Blade Runner</em> », <em>European Review</em>, vol. 31, suppl. S1, octobre 2023, p. S77-S89, DOI 10.1017/S1062798723000406 — <a href="https://www.cambridge.org/core/journals/european-review/article/photography-film-and-storytelling-of-posthuman-crises-in-blade-runner/FAAD89262BF762B10587174223B01B5F" target="_blank" rel="noopener">cambridge.org — European Review</a></li>
+      <li id="src-5">David C. Ryan, « Dreams of Postmodernism and Thoughts of Mortality: A Twenty-Fifth Anniversary Retrospective of <em>Blade Runner</em> », <em>Senses of Cinema</em>, 2007 — <a href="https://www.sensesofcinema.com/2007/feature-articles/blade-runner/" target="_blank" rel="noopener">sensesofcinema.com — Blade Runner</a></li>
+      <li id="src-6">Wikipedia (EN), « Tears in rain monologue » — genèse du texte, coupes et ajout de Rutger Hauer, commentaires critiques — <a href="https://en.wikipedia.org/wiki/Tears_in_rain_monologue" target="_blank" rel="noopener">en.wikipedia.org — Tears in rain monologue</a></li>
+      <li id="src-7">AlloCiné, revue de presse du film (Télérama, Cahiers du cinéma, Positif, Libération, La Croix — septembre-novembre 1982) — <a href="https://www.allocine.fr/film/fichefilm-1975/critiques/presse/" target="_blank" rel="noopener">allocine.fr — critiques presse</a></li>
+      <li id="src-8">Transmettre le cinéma, fiche pédagogique « Blade Runner » — <a href="https://transmettrelecinema.com/film/blade-runner/" target="_blank" rel="noopener">transmettrelecinema.com — Blade Runner</a></li>
+      <li id="src-9">Wikipedia (EN), « Blade Runner » — budget et recettes, réception initiale, récompenses, National Film Registry, réévaluations — <a href="https://en.wikipedia.org/wiki/Blade_Runner" target="_blank" rel="noopener">en.wikipedia.org — Blade Runner</a></li>
+      <li id="src-10">Stephen Dalton, « Blade Runner: anatomy of a classic », <em>British Film Institute</em> — <a href="https://www.bfi.org.uk/features/blade-runner" target="_blank" rel="noopener">bfi.org.uk — Blade Runner</a></li>
+      <li id="src-11">Screen Rant, « Ridley Scott &amp; Harrison Ford Disagree on Major Blade Runner Debate » — positions de Scott, Ford et Fancher sur la nature de Deckard — <a href="https://screenrant.com/blade-runner-deckard-replicant-scott-ford/" target="_blank" rel="noopener">screenrant.com — Deckard replicant debate</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="pied">
+  Relevé compilé à partir de sources publiques consultées le 26 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
