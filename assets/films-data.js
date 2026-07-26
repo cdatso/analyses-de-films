@@ -590,7 +590,7 @@ const FILMS = [
     title: 'Coffee and Cigarettes',
     director: 'Jim Jarmusch',
     year: 2003,
-    summary: "Onze conversations filmées sur près de vingt ans, où Jim Jarmusch fait l'addition de son propre temps de cinéaste — café et cigarettes en guise de monnaie d'échange.",
+    summary: "Onze conversations tournées sur vingt ans que Jarmusch présente comme un passe-temps sans dessein — jusqu'à ce qu'un acteur, dans un aveu de vulnérabilité que rien n'annonçait, vienne démentir la nonchalance de façade.",
     url: 'films/coffee-and-cigarettes.html',
     poster: 'assets/posters/coffee-and-cigarettes.jpg',
     // --- schema v2 (annexe B) ---
