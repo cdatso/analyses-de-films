@@ -178,13 +178,6 @@ a.lien-retour::before {
   letter-spacing: 0.13em; color: var(--mobilier-attenue); margin-right: 0.6rem;
 }
 
-/* --- Bandeau de prototype — PROVISOIRE, retiré à la bascule (065-5) ------- */
-.proto-note {
-  font-family: var(--mono); font-size: 0.7rem; line-height: 1.6;
-  border-bottom: 1px solid var(--mobilier-filet);
-  padding: 0.7rem 1.6rem;
-}
-
 /* --- Pied de page --------------------------------------------------------- */
 footer .f-in {
   max-width: 62rem; margin: 0 auto; padding: 0 1.6rem;
