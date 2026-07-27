@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le plan à la craie — Dogville</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de cette
+       page : colonne de 740 px, padding lateral 1.6rem -> contenu 688,8 px ;
+       (688,8 + 51,2) / 16 = 46,25 -> 46.3rem, comme le patron le-doulos.
+       Compose par la formule, verifie par sonde locale avant publication
+       (ordre v2.1). */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette bespoke : le plateau noir et la craie.
+       Contrastes AA vises des la composition (P-39) :
+       craie/stage ~15,5:1 ; texte/stage ~12:1 ; faint/stage ~5,5:1 ;
+       ambre/stage ~8:1. */
+    --stage:#141412;        /* plancher du plateau */
+    --stage-deep:#0c0c0b;   /* fosse, hors-champ */
+    --parcelle:#1c1c19;     /* parcelle legerement eclairee */
+    --craie:#eceade;        /* trait de craie frais */
+    --texte:#d6d3c4;        /* craie estompee : texte courant */
+    --faint:#94917f;        /* craie effacee : etiquettes */
+    --ambre:#d9a441;        /* la lumiere qui change, les phares */
+    --trait: rgba(236,234,222,0.32);
+    --trait-doux: rgba(236,234,222,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(236,234,222,0.05), transparent 55%),
+      radial-gradient(ellipse at 85% 110%, rgba(217,164,65,0.05), transparent 45%),
+      var(--stage);
+    color:var(--texte);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .back-link{
+    display:inline-block;
+    color:var(--faint);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+  .back-link:hover{ color:var(--craie); }
+
+  /* ---------- COUVERTURE : vue zenithale du plateau ---------- */
+  header.plateau{
+    position:relative;
+    background:var(--stage-deep);
+    border-bottom:1px solid var(--trait);
+    padding:1.4rem 0 2.4rem;
+  }
+  .plateau-inner{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 1.6rem;
+  }
+  .tournage-line{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--faint);
+    padding-bottom:1.1rem;
+    border-bottom:1px dashed var(--trait-doux);
+    margin-bottom:1.6rem;
+  }
+
+  /* Le plan de la ville, trace a la craie */
+  .plan{
+    position:relative;
+    height:300px;
+    border:1.5px solid var(--trait);
+    background:
+      linear-gradient(rgba(236,234,222,0.02), transparent 30%),
+      var(--stage);
+    overflow:hidden;
+    margin-bottom:2rem;
+  }
+  .lot{
+    position:absolute;
+    border:1.5px dashed var(--trait);
+    display:flex;
+    align-items:flex-end;
+    padding:0.35rem 0.45rem;
+  }
+  .lot span, .rue span, .lot-rond span{
+    font-family:var(--mono);
+    font-size:0.56rem;
+    font-weight:600;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    line-height:1.3;
+  }
+  .rue{
+    position:absolute;
+    left:0; right:0;
+    top:43%; height:15%;
+    border-top:1.5px solid var(--trait);
+    border-bottom:1.5px solid var(--trait);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .rue span{ font-size:0.66rem; letter-spacing:0.42em; color:var(--craie); }
+  .canyon{
+    position:absolute;
+    left:2.2%; top:0; bottom:0;
+    border-right:1.5px dashed var(--trait-doux);
+    display:flex;
+    align-items:center;
+  }
+  .canyon span{
+    writing-mode:vertical-rl;
+    font-family:var(--mono);
+    font-size:0.54rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--faint);
+    padding-left:0.25rem;
+  }
+  .lot-rond{
+    position:absolute;
+    right:6%; bottom:7%;
+    width:54px; height:54px;
+    border:1.5px dashed var(--ambre);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .lot-rond span{ color:var(--ambre); font-size:0.52rem; }
+  .plan-titre{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-58%);
+    text-align:center;
+    pointer-events:none;
+    width:100%;
+  }
+  h1.title{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.6rem, 8vw, 4.6rem);
+    line-height:1;
+    margin:0;
+    letter-spacing:0.05em;
+    color:var(--craie);
+    text-shadow:0 0 24px rgba(236,234,222,0.18);
+  }
+  .plan-titre .soustitre-plan{
+    display:block;
+    margin-top:0.5rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--ambre);
+  }
+
+  .parcelle-num{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:0 0 1.1rem;
+  }
+  .parcelle-num b{ color:var(--craie); font-weight:600; }
+
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--texte);
+    font-size:1.04rem;
+    max-width:56ch;
+    margin:0 0 2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--trait-doux);
+    padding-top:1.5rem;
+  }
+  .cover-media .poster{ flex:0 0 150px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--trait);
+    filter:grayscale(0.15) contrast(1.02);
+  }
+  .cover-media .identite{ flex:1; min-width:230px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ambre);
+    margin-bottom:0.28rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--texte);
+    border-bottom:1px dotted var(--trait-doux);
+    padding-bottom:0.22rem;
+  }
+
+  .provenance{
+    margin-top:1.4rem;
+    padding:0.75rem 1.05rem;
+    background:rgba(236,234,222,0.045);
+    border-left:2px solid var(--ambre);
+    font-family:var(--mono);
+    font-size:0.74rem;
+    letter-spacing:0.02em;
+    line-height:1.6;
+    color:var(--texte);
+  }
+  .provenance strong{ color:var(--craie); font-weight:600; }
+
+  .avertissement{
+    margin-top:1rem;
+    padding:0.6rem 1.05rem;
+    border:1px dashed var(--trait);
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+    line-height:1.55;
+    color:var(--faint);
+  }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.toc{
+    background:var(--stage-deep);
+    border-bottom:1px solid var(--trait);
+  }
+  nav.toc .toc-inner{
+    max-width:820px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--texte);
+    opacity:0.78;
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px dashed transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--trait); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.chapitre{ padding:3rem 0; border-bottom:1px dashed var(--trait-doux); }
+  section.chapitre:last-of-type{ border-bottom:none; }
+
+  .chap-head{
+    margin-bottom:1.5rem;
+    border-top:1.5px solid var(--trait);
+    padding-top:0.7rem;
+  }
+  .chap-num{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    color:var(--ambre);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.62rem;
+    margin:0 0 0.2rem;
+    color:var(--craie);
+    letter-spacing:-0.005em;
+  }
+  .chap-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.82rem;
+    color:var(--faint);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--craie);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--texte); }
+  p:last-child{ margin-bottom:0; }
+  em{ color:var(--craie); }
+
+  a.renvoi{
+    color:var(--ambre);
+    text-decoration:none;
+    border-bottom:1px dotted var(--ambre);
+    font-size:0.78em;
+    font-family:var(--mono);
+  }
+
+  .discretion{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--faint);
+    border-left:2px solid var(--ambre);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+    line-height:1.6;
+  }
+
+  /* citation a la craie */
+  .craie-cite{
+    position:relative;
+    border:1.5px dashed var(--trait);
+    padding:1.25rem 1.5rem 1.15rem;
+    margin:1.6rem 0;
+    background:rgba(236,234,222,0.03);
+  }
+  .craie-cite p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--craie);
+    margin-bottom:0.55rem;
+  }
+  .craie-cite cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--faint);
+  }
+
+  /* ---------- parcelles (personnages) ---------- */
+  .parcelle-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .parcelle-card{
+    position:relative;
+    background:var(--parcelle);
+    border:1.5px dashed var(--trait);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .parcelle-card .cadastre{
+    font-family:var(--mono);
+    font-size:0.54rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    display:block;
+  }
+  .parcelle-card .name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.08rem;
+    display:block;
+    margin:0.45rem 0 0.05rem;
+    color:var(--craie);
+  }
+  .parcelle-card .role{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ambre);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .parcelle-card p{ font-size:0.87rem; margin:0; color:var(--texte); }
+
+  .theme-list{ display:grid; gap:1.5rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--ambre);
+    display:inline-block;
+    margin-bottom:0.35rem;
+    border-bottom:1.5px dashed var(--ambre);
+    padding-bottom:0.18rem;
+  }
+
+  /* ---------- releve chiffre ---------- */
+  .releve{
+    margin:1.7rem 0;
+    background:var(--stage-deep);
+    border:1.5px dashed var(--trait);
+  }
+  .releve-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .releve-label{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--faint);
+    margin-bottom:0.85rem;
+    display:block;
+  }
+  .releve-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+  }
+  .releve .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--ambre);
+    display:block;
+    line-height:1.2;
+  }
+  .releve .stat .cap{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+    color:var(--texte);
+    text-transform:uppercase;
+  }
+
+  /* ---------- sources ---------- */
+  section.sources{
+    background:var(--stage-deep);
+    color:var(--texte);
+    padding:3.2rem 1.6rem 4.2rem;
+    border-top:1.5px solid var(--trait);
+  }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  .sources-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.66rem;
+    color:var(--ambre);
+  }
+  section.sources h2{ color:var(--craie); margin-top:0.6rem; font-size:1.4rem; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.78rem;
+    padding-left:3.4rem;
+    position:relative;
+    color:var(--texte);
+    border-bottom:1px dashed var(--trait-doux);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+    line-height:1.6;
+  }
+  ol.source-list li::before{
+    content:"Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--ambre);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--craie); word-break:break-all; }
+  ol.source-list a:hover{ color:var(--ambre); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    background:var(--stage);
+  }
+  footer.endnote a{ color:var(--faint); }
+  footer.endnote a:hover{ color:var(--craie); }
+
+  @media (max-width:600px){
+    .plateau-inner{ padding:0 1.1rem; }
+    .plan{ height:230px; }
+    .lot span, .lot-rond span, .canyon span{ font-size:0.46rem; }
+    .rue span{ font-size:0.56rem; letter-spacing:0.28em; }
+    section.chapitre{ padding:2.2rem 0; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="plateau">
+  <div class="plateau-inner">
+    <div class="tournage-line">Plateau unique — Trollhättan, Suède — vue zénithale</div>
+
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+
+    <div class="plan" aria-hidden="true">
+      <div class="canyon"><span>Canyon Road</span></div>
+      <div class="lot" style="left:8%; top:6%; width:19%; height:30%;"><span>Maison Edison</span></div>
+      <div class="lot" style="left:31%; top:9%; width:17%; height:24%;"><span>&Eacute;picerie de Ma&nbsp;Ginger</span></div>
+      <div class="lot" style="left:74%; top:5%; width:20%; height:33%;"><span>La vieille filature</span></div>
+      <div class="rue"><span>Elm Street</span></div>
+      <div class="lot" style="left:12%; top:66%; width:20%; height:27%;"><span>Chuck &amp; Vera — 7 enfants</span></div>
+      <div class="lot" style="left:38%; top:69%; width:15%; height:22%;"><span>Maison de Tom</span></div>
+      <div class="lot" style="left:58%; top:64%; width:16%; height:24%; border-style:dotted;"><span>Les groseilliers</span></div>
+      <div class="lot-rond"><span>Moses</span></div>
+      <div class="plan-titre">
+        <h1 class="title">DOGVILLE</h1>
+        <span class="soustitre-plan">Un film en neuf chapitres et un prologue</span>
+      </div>
+    </div>
+
+    <div class="parcelle-num">Parcelle n<sup>o</sup> <b>38</b> du registre — une ville entière tient dans sept traits de craie&nbsp;; ses murs n'ont jamais existé, et pourtant personne n'a rien vu.</div>
+    <p class="subtitle">Sur un plateau nu où les maisons ne sont que des lignes tracées au sol, Lars von Trier transforme une parabole de la charité en procès de toute communauté — et l'Amérique en idée pure, jugée par une étrangère trop bonne pour être innocente.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/dogville.jpg" alt="Affiche du film Dogville" onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="identite">
+        <div><dt>Réalisation &amp; scénario</dt><dd>Lars von Trier</dd></div>
+        <div><dt>Année</dt><dd>2003</dd></div>
+        <div><dt>Durée</dt><dd>178 minutes</dd></div>
+        <div><dt>Photographie</dt><dd>Anthony Dod Mantle</dd></div>
+        <div><dt>Production</dt><dd>Vibeke Windeløv — Zentropa</dd></div>
+        <div><dt>Narrateur</dt><dd>John Hurt</dd></div>
+        <div><dt>Musique</dt><dd>Vivaldi, Albinoni, Pergolesi — arr. Joachim Holbek</dd></div>
+        <div><dt>Première</dt><dd>Cannes, 19 mai 2003 (compétition)</dd></div>
+      </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite en session supervisée &mdash; Claude Fable 5, premier jet du 27/07/2026 &mdash; régime R2, Critique nouvelle.
+    </div>
+    <div class="avertissement">
+      Avertissement — le film, et donc certaines sections de cette page, évoquent des violences sexuelles, des humiliations et une violence de masse.
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Fable 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 27 juillet 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="chapitre" id="fiche">
+    <div class="chap-head">
+      <span class="chap-num">Prologue</span>
+      <h2>Fiche technique <span class="chap-sous">— qui présente le film, ses artisans et son chantier</span></h2>
+    </div>
+    <p>
+      <em>Dogville</em> est écrit et réalisé par Lars von Trier, dont il ouvre la trilogie américaine annoncée sous le titre <em>USA — Land of Opportunities</em>, poursuivie par <em>Manderlay</em> (2005) et restée inachevée, le troisième volet projeté, <em>Washington</em>, n'ayant jamais été tourné<a class="renvoi" href="#src-13" id="ref-13">[13]</a>. La production est menée par Zentropa, la société de von Trier, sous la conduite de la productrice Vibeke Windeløv ; la coproduction principale associe le Danemark, la Suède, le Royaume-Uni, la France et l'Allemagne<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. Le montage financier réel est plus tentaculaire encore : la fiche française du film élargit la liste à neuf pays, y ajoutant notamment les Pays-Bas, la Finlande, la Norvège et l'Italie — le périmètre exact varie selon les sources, signe d'un financement européen en patchwork typique des productions Zentropa de l'époque<a class="renvoi" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      Le tournage s'est tenu entièrement en studio à Trollhättan, en Suède, sur les plateaux de Film i Väst, en vidéo haute définition (caméras Sony HDW-F900), sous la direction photo d'Anthony Dod Mantle<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>. Le film dure 178 minutes — 177 selon certaines fiches<a class="renvoi" href="#src-2" id="ref-2b">[2]</a> —, a été présenté en compétition au Festival de Cannes le 19 mai 2003, puis est sorti en France, en Belgique et en Suisse dès le 21 mai, et au Danemark le 4 juin<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. Son budget est estimé à 10 millions de dollars, pour environ 16,7 millions de recettes mondiales<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>.
+    </p>
+    <p>
+      La distribution réunit Nicole Kidman (Grace Margaret Mulligan), Paul Bettany (Tom Edison Jr.), Lauren Bacall (Ma Ginger), Stellan Skarsgård (Chuck), Patricia Clarkson (Vera), Ben Gazzara (Jack McKay), James Caan (le père de Grace), Chloë Sevigny (Liz), Jeremy Davies (Bill), Philip Baker Hall (Tom Edison Sr.), Željko Ivanek (Ben), Udo Kier et Harriet Andersson (Gloria) ; John Hurt prête sa voix au narrateur<a class="renvoi" href="#src-1" id="ref-1d">[1]</a><a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. La musique n'est pas composée mais empruntée : des pages baroques de Vivaldi, Albinoni et Pergolesi, arrangées par Joachim Holbek<a class="renvoi" href="#src-14" id="ref-14">[14]</a>. Reparti bredouille de Cannes, le film a été primé ailleurs : Prix européens du cinéma 2003 du meilleur réalisateur et de la meilleure photographie, Bodil du meilleur film danois, Robert du meilleur scénario, David di Donatello du meilleur film européen — et, ironie cannoise, la Palm Dog pour Moses, un chien qui n'apparaît à l'écran que dessiné à la craie<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+  </section>
+
+  <section class="chapitre" id="synopsis">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre un</span>
+      <h2>Synopsis <span class="chap-sous">— où Tom entend des coups de feu et rencontre Grace</span></h2>
+    </div>
+    <p>
+      Années 1930, montagnes Rocheuses. Dogville est un hameau accroché au bout d'une route de mine abandonnée : une quinzaine d'adultes, sept enfants, une épicerie, une vieille filature désaffectée, des groseilliers. Tom Edison Jr., écrivain qui n'a jamais rien écrit, y anime des réunions de « réarmement moral » où il entend démontrer à ses voisins que l'Amérique a un problème d'accueil<a class="renvoi" href="#src-11" id="ref-11">[11]</a>. Une nuit, des coups de feu montent du canyon et une jeune femme surgit sur le plateau : Grace, fugitive traquée par des gangsters. Tom tient là l'« illustration » dont sa démonstration avait besoin ; il convainc la communauté d'accorder à l'étrangère un délai d'essai de deux semaines<a class="renvoi" href="#src-11" id="ref-11b">[11]</a>.
+    </p>
+    <p>
+      Pour se rendre acceptable, Grace propose son aide : une heure par jour chez chacun, de menus travaux dont personne n'a réellement besoin. La ville l'adopte ; on la paie un peu, on l'aime beaucoup — jusqu'au 4 juillet, apogée de l'idylle. Puis un avis de recherche remplace l'avis de disparition : héberger Grace devient un risque, et le risque, à Dogville, se facture. Les journées de travail s'allongent, les salaires baissent, les protections tombent une à une, et ce que la ville s'autorise envers sa protégée franchit, degré par degré, tout ce qu'une communauté décente croit impossible chez elle<a class="renvoi" href="#src-6" id="ref-6">[6]</a>.
+    </p>
+    <p class="discretion">
+      Le dernier chapitre du film — la « visite tant attendue » — n'est pas résumé ici : son retournement est le cœur de l'œuvre. Il est en revanche analysé plus loin (chapitres trois, six et huit de cette page), car aucune lecture sérieuse du film ne peut l'éviter. Lecteur averti.
+    </p>
+  </section>
+
+  <section class="chapitre" id="production">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre deux</span>
+      <h2>Contexte de production <span class="chap-sous">— où l'on apprend qu'une chanson a suffi à bâtir une ville</span></h2>
+    </div>
+    <p>
+      La genèse tient en une chanson. Von Trier a désigné comme inspiration première la ballade « Seeräuber-Jenny » (« Jenny-des-Corsaires ») de <em>L'Opéra de quat'sous</em> de Bertolt Brecht et Kurt Weill : une serveuse humiliée y rêve qu'un navire pirate rase la ville et qu'on lui demande, à elle, qui doit mourir<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. <em>Dogville</em> est la mise à exécution de ce rêve : là où Jenny fantasme sa vengeance, Grace finira par l'ordonner réellement. Le film prend ainsi racine dans le théâtre épique brechtien à double titre — par sa fable, et par son dispositif de distanciation que von Trier revendique : « J'ai pensé au travail de Brecht — ce n'est pas exactement la même chose, mais cela exige des décors stylisés », expliquait-il à la journaliste Jennifer Merin<a class="renvoi" href="#src-8" id="ref-8">[8]</a>.
+    </p>
+    <p>
+      L'autre racine est un paradoxe assumé : von Trier, qui ne prend pas l'avion, n'a jamais mis les pieds aux États-Unis. Piqué par les critiques américains qui le lui reprochaient depuis <em>Dancer in the Dark</em>, il a fait de ce manque la matière même du film, en invoquant un précédent littéraire : « J'aime beaucoup cette idée que Kafka ne soit jamais allé en Amérique » — l'auteur pragois ayant écrit <em>Amerika</em> sans avoir traversé l'Atlantique<a class="renvoi" href="#src-8" id="ref-8b">[8]</a>. Et d'ajouter : « Je suis un grand admirateur de Steinbeck — et, pour moi, l'Amérique est davantage une atmosphère et un sentiment qu'un lieu réel »<a class="renvoi" href="#src-8" id="ref-8c">[8]</a>. En conférence de presse à Cannes, il désamorçait et rechargeait la polémique dans le même geste : « Je me sens américain, en fait. Un peu comme : "Ich bin ein American" », avant de préciser que « le film n'est pas un commentaire sur l'Amérique telle qu'elle est. C'est seulement un commentaire sur l'Amérique telle qu'elle est dans ma tête »<a class="renvoi" href="#src-7" id="ref-7">[7]</a>.
+    </p>
+    <p>
+      Restait à bâtir la ville — ou plutôt à refuser de la bâtir. Sur un plateau de Trollhättan, le décor entier fut réduit à un sol noir portant le plan des maisons tracé en lignes blanches, quelques meubles, des étiquettes peintes nommant ce qui n'existe pas — jusqu'aux « buissons de groseilliers »<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. Devant ce vide, une troupe de comédiens de premier plan — de Lauren Bacall à Harriet Andersson, l'actrice fétiche de Bergman — joua trois heures durant dans un espace où chacun voit tout le monde en permanence. Von Trier, qui tenait lui-même la caméra HD, résumait sa confiance dans ce dépouillement par une image restée célèbre : « un dragon est plus effrayant tant qu'on ne le voit pas »<a class="renvoi" href="#src-8" id="ref-8d">[8]</a>.
+    </p>
+  </section>
+
+  <section class="chapitre" id="structure">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre trois</span>
+      <h2>Structure narrative <span class="chap-sous">— où un narrateur trop poli raconte neuf chapitres et un prologue</span></h2>
+    </div>
+    <p>
+      Le film s'annonce dès son carton-titre comme un objet littéraire : « un film en neuf chapitres et un prologue ». Chaque chapitre s'ouvre sur un intertitre au style de roman moral ancien, qui résume par avance ce qu'on va voir — « <em>Chapter ONE, in which Tom hears gunfire and meets Grace</em> » (chapitre un, où Tom entend des coups de feu et rencontre Grace), jusqu'au dernier : « <em>in which Dogville receives the long-awaited visit and the film ends</em> » (où Dogville reçoit la visite tant attendue et où le film prend fin)<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. Cette annonce systématique du contenu est un geste brechtien de manuel : tuer le suspense de l'intrigue pour déplacer l'attention vers le <em>comment</em> — et vers le jugement.
+    </p>
+    <p>
+      Sur cette ossature, la voix de John Hurt déroule une narration omnisciente d'une courtoisie exquise et vénéneuse, qui enrobe chaque bassesse du village d'euphémismes compréhensifs. L'ironie du narrateur est le second dispositif de distanciation du film : elle mime la bonne conscience de Dogville elle-même, cette façon de toujours trouver au pire une formulation acceptable. La construction obéit par ailleurs à une logique de théorème. David Denny la résume en deux mouvements : le premier montre comment la méfiance envers l'étrangère se mue en acceptation, puis en jouissance de sa présence, à mesure que son inclusion se paie d'une dette insoluble ; le second observe ce qu'il advient de cet « objet » une fois qu'il cesse de se laisser posséder<a class="renvoi" href="#src-11" id="ref-11c">[11]</a>.
+    </p>
+    <p>
+      La répétition structure tout : les tournées quotidiennes de Grace, refaites chapitre après chapitre, mesurent objectivement la dégradation — mêmes gestes, mêmes maisons, conditions chaque fois pires. Les saisons passent en ellipses abstraites, la lumière bascule sans transition du jour à la nuit, et le seul événement extérieur — la voiture noire qui remonte Canyon Road — revient trois fois, comme dans un conte. Quand elle s'arrête pour de bon, le récit exécute son renversement : le conte moral se retourne en jugement dernier, et la question posée au prologue — Dogville est-elle une ville accueillante ? — reçoit sa réponse définitive.
+    </p>
+  </section>
+
+  <section class="chapitre" id="miseenscene">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre quatre</span>
+      <h2>Mise en scène et procédés <span class="chap-sous">— où l'on voit tout, précisément parce qu'il n'y a rien à voir</span></h2>
+    </div>
+    <p>
+      Le dispositif scénographique de <em>Dogville</em> est l'un des plus radicaux jamais tentés dans un long métrage de cette ampleur : pas de murs, pas de portes, pas de rues — des lignes de craie et des inscriptions au sol sur un plancher noir, un fond qui passe du noir au blanc selon l'heure, quelques accessoires réels<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>. Les acteurs miment l'ouverture des portes, que la bande-son fait exister par leurs grincements. Ce théâtre filmé assumé n'appauvrit pas le récit : il le concentre. Comme le note Denny, des scènes qui, ornées d'effets et de musique hollywoodiens, auraient été « trop ridicules pour être avalées » deviennent palpables précisément parce que la forme s'est retirée<a class="renvoi" href="#src-11" id="ref-11d">[11]</a> — le dragon de von Trier, jamais montré, n'en est que plus effrayant<a class="renvoi" href="#src-8" id="ref-8e">[8]</a>.
+    </p>
+    <p>
+      Surtout, l'absence de murs est un argument moral autant que plastique. Puisque rien ne sépare les maisons, tout ce qui arrive à Grace arrive <em>sous les yeux</em> de la ville entière : à l'image, les habitants vaquent à leurs occupations, indifférents, pendant que l'irréparable se commet à quelques mètres — l'hypocrisie communautaire n'est plus une idée, elle est littéralement <em>visible dans le cadre</em>. La caméra HD portée à l'épaule, avec ses zooms brusques et ses raccords sautés hérités des années Dogme, fouille cet espace panoptique comme un documentaire tourné dans une maquette ; les rares plans zénithaux, eux, regardent la ville comme un plan cadastral peuplé — le point de vue d'un dieu géomètre, ou d'un joueur au-dessus de son plateau.
+    </p>
+    <p>
+      La musique travaille au même contrepoint : les pages de Vivaldi, Albinoni et Pergolesi, arrangées par Joachim Holbek, posent sur ce laboratoire de cruauté une sérénité de concert sacré<a class="renvoi" href="#src-14" id="ref-14b">[14]</a> — jusqu'au générique de fin, où le baroque cède brutalement la place au « Young Americans » de David Bowie, plaqué sur des photographies documentaires de la pauvreté américaine. Ce montage final, on le verra, est à lui seul un manifeste<a class="renvoi" href="#src-9" id="ref-9">[9]</a>.
+    </p>
+  </section>
+
+  <section class="chapitre" id="personnages">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre cinq</span>
+      <h2>Personnages principaux <span class="chap-sous">— relevé cadastral des âmes</span></h2>
+    </div>
+    <div class="parcelle-grid">
+      <div class="parcelle-card">
+        <span class="cadastre">Parcelle — arrivée par Canyon Road</span>
+        <span class="name">Grace Mulligan</span>
+        <span class="role">Nicole Kidman</span>
+        <p>La grâce au sens propre : le don qui ne demande rien en retour. Fugitive au secret bien gardé, elle absorbe l'escalade des abus avec un pardon systématique — jusqu'à l'entretien final où ce pardon est requalifié, terme à terme, en arrogance. Kidman tient les deux versants du rôle : la douceur et le verdict<a class="renvoi" href="#src-4" id="ref-4">[4]</a>.</p>
+      </div>
+      <div class="parcelle-card">
+        <span class="cadastre">Parcelle — maison Edison</span>
+        <span class="name">Tom Edison Jr.</span>
+        <span class="role">Paul Bettany</span>
+        <p>Écrivain sans œuvre et moraliste de réunion publique, il « accueille » Grace comme pièce à conviction de sa démonstration philosophique. Seul habitant à ne jamais la payer ni la toucher, il est peut-être le plus retors des exploiteurs : il la consomme en idée<a class="renvoi" href="#src-11" id="ref-11e">[11]</a>.</p>
+      </div>
+      <div class="parcelle-card">
+        <span class="cadastre">Parcelle — les pommiers</span>
+        <span class="name">Chuck</span>
+        <span class="role">Stellan Skarsgård</span>
+        <p>Le cynique du village, ancien citadin détrompé, qui répète que Dogville est pourrie sous ses manières — et qui sera le premier à prouver qu'il dit vrai, en inaugurant le pire. Sa femme Vera (Patricia Clarkson), mère de sept enfants et amie des « doctrines antiques », administre quant à elle la cruauté sous forme de leçon de stoïcisme.</p>
+      </div>
+      <div class="parcelle-card">
+        <span class="cadastre">Parcelle — Elm Street</span>
+        <span class="name">La communauté</span>
+        <span class="role">Bacall, Gazzara, Ivanek, Sevigny…</span>
+        <p>Ma Ginger et ses groseilliers, Jack McKay qui cache sa cécité en discourant sur la lumière, Ben et son transport « facturé », Liz et sa jalousie : autant de médiocrités ordinaires dont l'addition, sans qu'aucune se pense méchante, compose une machine d'asservissement<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>.</p>
+      </div>
+      <div class="parcelle-card">
+        <span class="cadastre">Hors plan — la voiture noire</span>
+        <span class="name">Le père de Grace</span>
+        <span class="role">James Caan</span>
+        <p>Gangster et théologien de l'arrogance, il n'apparaît qu'aux deux bouts du film pour tenir avec sa fille le seul vrai débat d'idées de l'œuvre : pardonner l'inexcusable, est-ce de la bonté — ou le mépris suprême envers ceux qu'on dispense d'être responsables ?<a class="renvoi" href="#src-11" id="ref-11f">[11]</a></p>
+      </div>
+      <div class="parcelle-card">
+        <span class="cadastre">Parcelle — la niche</span>
+        <span class="name">Moses</span>
+        <span class="role">Un aboiement, un trait de craie</span>
+        <p>Le chien du titre, dessiné au sol, qui aboie sans être vu. Seul habitant de Dogville à n'avoir jamais rien feint — il a mordu Grace le premier jour, honnêtement —, il sera seul épargné, et seul à devenir réel à l'image au dernier plan<a class="renvoi" href="#src-1" id="ref-1i">[1]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapitre" id="themes">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre six</span>
+      <h2>Thèmes <span class="chap-sous">— où l'on inventorie ce que la craie délimite vraiment</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">01 — L'hospitalité tarifée, ou la charité comme prédation</span>
+        <p>Le film est une expérience de laboratoire sur le don. L'accueil de Grace n'est jamais gratuit : il s'échange d'abord contre du travail symbolique, puis contre du travail réel, puis contre le corps même de l'accueillie, à mesure que le « risque » encouru par la ville sert de justification comptable à chaque tour de vis. David Denny décrit ce mécanisme comme une dette structurellement insoluble : une fois l'étrangère incluse, sa présence devient un objet de jouissance que la communauté s'autorise précisément parce que la dette ne peut jamais être soldée<a class="renvoi" href="#src-11" id="ref-11g">[11]</a>. Olivier Bachelard en tire le constat le plus sec de la critique française : « Chez Lars von Trier, personne n'est blanc, tout le monde est infiniment noir »<a class="renvoi" href="#src-5" id="ref-5">[5]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">02 — La soumission qui aiguise le pouvoir</span>
+        <p>L'escalade des abus ne vient pas d'une méchanceté préalable mais de l'occasion offerte : c'est l'obéissance de Grace qui enseigne à Dogville ce qu'il est possible de lui faire. Geneviève Praplan le formule en une maxime : « Plus on se soumet, plus on aiguise le pouvoir »<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>. Le film matérialise cette pédagogie de la domination dans un objet : la chaîne et la cloche fixées au cou de la fugitive — un châtiment que la ville n'aurait jamais conçu au chapitre un, et qu'elle trouve raisonnable au chapitre sept, chaque palier ayant rendu le suivant pensable.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">03 — La grâce, la loi et le châtiment</span>
+        <p>J. Hoberman a résumé le soubassement théologique du film : une « allégorie austère de la charité chrétienne mise en échec, et du talion de l'Ancien Testament »<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>. Grace incarne le pardon sans condition jusqu'à ce que son père, dans le face-à-face final, en renverse le sens : pardonner à autrui ce qu'on ne se pardonnerait pas à soi-même, c'est le tenir pour moins qu'humain — l'arrogance ultime. La question que le dénouement laisse au spectateur est celle que pose Denny : le geste final de Grace est-il une simple vengeance, ou un « acte » au sens fort — destructeur, effroyable, et pourtant le seul qui rende à Dogville sa responsabilité ?<a class="renvoi" href="#src-11" id="ref-11h">[11]</a></p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">04 — L'Amérique comme idée — et comme générique</span>
+        <p>Ville de conte plus que territoire réel, Dogville est l'Amérique « telle qu'elle est dans la tête » de son auteur<a class="renvoi" href="#src-7" id="ref-7b">[7]</a>, sur le modèle du Kafka d'<em>Amerika</em><a class="renvoi" href="#src-8" id="ref-8f">[8]</a>. Le générique de fin déplace pourtant la fable vers le document : sur « Young Americans » de Bowie défilent des photographies de la Grande Dépression dues aux photographes de la Farm Security Administration — Dorothea Lange, Arthur Rothstein, Ben Shahn — mêlées aux images de la misère contemporaine du photographe danois Jacob Holdt<a class="renvoi" href="#src-1" id="ref-1k">[1]</a><a class="renvoi" href="#src-9" id="ref-9b">[9]</a>. Holger Römers a montré ce que ce montage a de délibérément scandaleux : arrachées à leur mission d'origine — attester la dignité des photographiés —, ces images célèbres se voient recontextualisées par « les monstruosités du récit filmique qui précède », si bien que la fiction contamine rétroactivement l'archive<a class="renvoi" href="#src-9" id="ref-9c">[9]</a>. Le procès en « anti-américanisme » s'est joué, pour l'essentiel, sur ces trois minutes.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">05 — Après Brecht : le mal sans politique</span>
+        <p>La comparaison avec Brecht, revendiquée par le film, a aussi servi à le penser contre lui-même. Pour Jacques Rancière, <em>Sainte Jeanne des abattoirs</em> opposait « deux violences » et deux droits — c'était la politique même ; dans <em>Dogville</em>, au contraire, « le mal rencontré par Grace ne renvoie à aucune cause autre que lui-même » : plus d'exploiteurs et d'exploités identifiables, seulement une communauté dont la méchanceté se reproduit sans raison assignable<a class="renvoi" href="#src-10" id="ref-10">[10]</a>. Le film devient ainsi, chez Rancière, le symptôme d'un « tournant éthique » où le jugement moral absorbe le conflit politique. C'est la lecture la plus exigeante du malaise que <em>Dogville</em> provoque : sa distanciation brechtienne fonctionne à plein régime, mais ce qu'elle donne à voir n'est plus un rapport de forces transformable — c'est une nature humaine, et on ne fait pas la révolution contre une nature.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapitre" id="reception">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre sept</span>
+      <h2>Réception critique et postérité <span class="chap-sous">— où Dogville reçoit la visite tant attendue de la presse</span></h2>
+    </div>
+    <p>
+      À Cannes, où il faisait figure de favori, le film divise violemment et repart sans prix — la Palme de 2003 ira à <em>Elephant</em> de Gus Van Sant<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. La presse américaine mène la charge : Todd McCarthy, dans <em>Variety</em>, juge « vulgaire » le générique final et prédit des volumes entiers de réactions indignées contre un cinéaste parlant d'un pays qu'il ne connaît pas<a class="renvoi" href="#src-12" id="ref-12">[12]</a> ; Roger Ebert ne voit dans le film que « la démonstration de la façon dont une bonne idée peut mal tourner »<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>. En face, J. Hoberman le tient pour « le film le plus fort de von Trier — un chef-d'œuvre, en fait »<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Vingt ans plus tard, Chris Feil rappellera le contexte de ce procès : dans l'Amérique de 2003, en pleine guerre au terrorisme, l'étiquette « anti-américain » était moins une analyse que le « sous-produit d'un moment où questionner les motifs du pays était culturellement interdit »<a class="renvoi" href="#src-12" id="ref-12b">[12]</a>.
+    </p>
+    <p>
+      La critique francophone, elle, accueille le film avec une faveur nette mais lucide. Dès Cannes, Clément Graminiès note dans <em>Critikat</em> l'audace du dispositif tout en désignant von Trier comme « un manipulateur de premier ordre », dont le film fonctionne en trompe-l'œil : sous la transparence totale du plateau, une machine à imposer sa conclusion<a class="renvoi" href="#src-3" id="ref-3">[3]</a>. Gérard Crespo salue un cinéaste réunissant « le talent et l'audace » des plus grands<a class="renvoi" href="#src-4" id="ref-4b">[4]</a> ; Geneviève Praplan, une « œuvre troublante, d'une belle sobriété »<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>.
+    </p>
+    <div class="releve">
+      <div class="releve-inner">
+        <span class="releve-label">Relevé — chiffres au cadastre</span>
+        <div class="releve-grid">
+          <div class="stat"><span class="num">178 min</span><span class="cap">Durée</span></div>
+          <div class="stat"><span class="num">10 M$</span><span class="cap">Budget estimé</span></div>
+          <div class="stat"><span class="num">16,7 M$</span><span class="cap">Recettes mondiales</span></div>
+          <div class="stat"><span class="num">2</span><span class="cap">Prix européens du cinéma</span></div>
+        </div>
+      </div>
+    </div>
+    <p>
+      Le temps a tranché en faveur du film. Régulièrement cité parmi les sommets de sa décennie, il figure en 2019 au 37<sup>e</sup> rang des 100 meilleurs films du XXI<sup>e</sup> siècle selon <em>The Guardian</em>, puis au 60<sup>e</sup> rang du classement équivalent de <em>Rolling Stone</em> en 2025 ; Quentin Tarantino le compte parmi ses films préférés de l'ère contemporaine, allant jusqu'à affirmer que si von Trier l'avait écrit pour la scène, il aurait valu à son auteur un prix Pulitzer<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. Sa descendance est double : <em>Manderlay</em> (2005) en prolonge la fable avec un retentissement moindre<a class="renvoi" href="#src-13" id="ref-13b">[13]</a>, tandis que le dispositif scénographique — jouer une ville sur un plateau nu cartographié — est devenu une référence que théâtre et cinéma citent désormais comme un précédent classique<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>.
+    </p>
+  </section>
+
+  <section class="chapitre" id="conclusion">
+    <div class="chap-head">
+      <span class="chap-num">Chapitre huit</span>
+      <h2>Conclusion <span class="chap-sous">— où le film se retourne contre son spectateur, et où la page prend fin</span></h2>
+    </div>
+    <p>
+      Le plateau nu de <em>Dogville</em> n'est pas une trouvaille de scénographe : c'est la thèse du film. Une ville sans murs est une ville sans alibi — chacun y voit tout, donc chacun savait ; et le seul témoin à qui rien n'échappe jamais, c'est le spectateur, installé trois heures durant dans la position du dieu géomètre au-dessus du plan. Von Trier retourne ainsi la distanciation brechtienne contre sa propre promesse : l'artifice ne nous éveille pas à une conscience politique, il nous enferme dans une lucidité sans issue — Rancière a raison sur ce point, et c'est précisément ce déplacement qui fait du film un document sur son époque autant qu'une fable intemporelle<a class="renvoi" href="#src-10" id="ref-10b">[10]</a>. Quant au dénouement, sa vraie cruauté n'est pas à l'écran : elle est dans le soulagement du spectateur, qui s'aperçoit — trop tard — qu'il désirait ce châtiment, et que le film l'avait patiemment conduit à le désirer<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+    <p>
+      Il faut faire droit à l'objection, car elle est sérieuse : l'expérience est truquée. Von Trier distribue les cartes, prive Dogville de toute chance de rachat, et la démonstration avance vers sa conclusion comme un théorème — le « manipulateur de premier ordre » de Graminiès n'est pas une formule<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Mais la probité singulière du film est d'inclure son auteur dans l'acte d'accusation : Tom, l'écrivain qui « illustre » ses thèses avec la souffrance d'autrui, est un autoportrait à peine voilé du cinéaste démonstrateur — et c'est lui que le dernier chapitre exécute en dernier, nommément, pour fraude intellectuelle. Un pamphlet se serait épargné ; <em>Dogville</em> se condamne avec le reste, et l'« anti-américanisme » qu'on lui a tant reproché apparaît aujourd'hui pour ce qu'il était : un cadre de projection. La carte à la craie n'a pas de pays — elle a exactement la forme de n'importe quelle communauté qui se croit bonne.
+    </p>
+    <p>
+      Reste le dernier plan, le seul où le film cède à l'image : Moses, le chien de craie, se dresse soudain en chien réel et aboie. Après trois heures d'abstraction, cette irruption du vivant sonne comme une signature — à Dogville, la seule créature qui n'ait jamais menti sur sa nature est aussi la seule à mériter de devenir chair. Vingt ans de recul l'ont confirmé : ce dispositif que l'on disait ne pouvoir « tenir que dix minutes » tient trois heures, et il tient toujours. <em>Dogville</em> est le pari formel le plus radical du cinéma européen des années 2000, et l'un des rares films dont la méchanceté soit, de bout en bout, une forme d'exactitude.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="sources-label">Sources consultées</span>
+    <h2>Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (EN), « Dogville » — <a href="https://en.wikipedia.org/wiki/Dogville" target="_blank" rel="noopener">en.wikipedia.org/wiki/Dogville</a></li>
+      <li id="src-2">Wikipédia (FR), « Dogville » — <a href="https://fr.wikipedia.org/wiki/Dogville" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Dogville</a></li>
+      <li id="src-3">Clément Graminiès, « Dogville », <em>Critikat</em>, 20 mai 2003 — <a href="https://www.critikat.com/actualite-cine/critique/dogville/" target="_blank" rel="noopener">critikat.com — Dogville</a></li>
+      <li id="src-4">Gérard Crespo, « Dogville — Lars von Trier — critique », <em>aVoir-aLire</em> — <a href="https://www.avoir-alire.com/dogville-lars-von-trier-critique" target="_blank" rel="noopener">avoir-alire.com — Dogville</a></li>
+      <li id="src-5">Olivier Bachelard, « Dogville », <em>Abus de Ciné</em> — <a href="https://www.abusdecine.com/critique/dogville/" target="_blank" rel="noopener">abusdecine.com — Dogville</a></li>
+      <li id="src-6">Geneviève Praplan, « Dogville », <em>Ciné-Feuilles</em> — <a href="https://www.cine-feuilles.ch/film/1186-dogville" target="_blank" rel="noopener">cine-feuilles.ch — Dogville</a></li>
+      <li id="src-7">« 2003: "Dogville" No Walk In Park », <em>CBS News</em>, 21 mai 2003 (conférence de presse de Cannes) — <a href="https://www.cbsnews.com/news/2003-dogville-no-walk-in-park/" target="_blank" rel="noopener">cbsnews.com — Dogville à Cannes</a></li>
+      <li id="src-8">Jennifer Merin, « Lars von Trier Talks About America and Cinema Style », entretien (New York Press, 2006), repris par l'AWFJ, 2014 — <a href="https://awfj.org/cinema-citizen/2014/04/10/lars-von-trier-talks-about-america-and-cinema-style-jennifer-merin-interviews/" target="_blank" rel="noopener">awfj.org — entretien Lars von Trier</a></li>
+      <li id="src-9">Holger Römers, « "Colorado Death Trip": The Surrealist Recontextualisation of Farm Security Administration Photos in Dogville », <em>Senses of Cinema</em>, n° 34, février 2005 — <a href="https://www.sensesofcinema.com/2005/feature-articles/dogville_farm_admin_photos/" target="_blank" rel="noopener">sensesofcinema.com — Dogville et les photos FSA</a></li>
+      <li id="src-10">Jacques Rancière, « Le tournant éthique de l'esthétique et de la politique » (conférence, 2004 ; repris dans <em>Malaise dans l'esthétique</em>, Galilée, 2004) — version en ligne consultée — <a href="http://www.caute.lautre.net/Le-tournant-ethique-de-l-esthetique-et-de-la-politique-par-Jacques-Ranciere" target="_blank" rel="noopener">caute.lautre.net — Rancière, le tournant éthique</a></li>
+      <li id="src-11">David Denny, « Signifying Grace: a reading of Lars von Trier's Dogville », <em>International Journal of Žižek Studies</em>, vol. 1, n° 3, 2007 — <a href="https://zizekstudies.org/index.php/IJZS/article/view/54" target="_blank" rel="noopener">zizekstudies.org — Signifying Grace</a></li>
+      <li id="src-12">Chris Feil, « "Dogville" Turns 20: The Most Misunderstood Cannes Movie Ever », <em>The Daily Beast</em>, mai 2023 — <a href="https://www.thedailybeast.com/obsessed/dogville-turns-20-the-most-misunderstood-cannes-movie-ever/" target="_blank" rel="noopener">thedailybeast.com — Dogville Turns 20</a></li>
+      <li id="src-13">Wikipédia (EN), « USA: Land of Opportunities » (la trilogie) — <a href="https://en.wikipedia.org/wiki/USA:_Land_of_Opportunities" target="_blank" rel="noopener">en.wikipedia.org — USA: Land of Opportunities</a></li>
+      <li id="src-14">« Manderlay and Dogville », bande originale (arr. Joachim Holbek), notice discographique, Bibliothèques de la Ville de Paris — <a href="https://bibliotheques.paris.fr/cinema/doc/SYRACUSE/381327/manderlay-dogville" target="_blank" rel="noopener">bibliotheques.paris.fr — Manderlay &amp; Dogville</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 27 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
