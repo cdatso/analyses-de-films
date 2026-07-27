@@ -289,18 +289,6 @@
     margin:1.1rem 0;
   }
 
-  .stills-row{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:1rem;
-    margin:1.6rem 0;
-  }
-  .stills-row img{
-    width:100%;
-    display:block;
-    border:1px solid var(--line);
-  }
-
   .cast-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(215px,1fr));
@@ -493,14 +481,6 @@
   </div>
 </header>
 
-<script>
-  function hideBrokenImg(img, groupId) {
-    img.remove();
-    const group = document.getElementById(groupId);
-    if (group && group.children.length === 0) group.hidden = true;
-  }
-</script>
-
 <header class="cover">
   <div class="cover-inner">
     <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
@@ -620,10 +600,6 @@
     <div class="frame-head">
       <span class="frame-num-label">Folio V</span>
       <h2>Mise en scène et procédés techniques <span class="frame-jargon">— facture</span></h2>
-    </div>
-    <div class="stills-row" id="stills-row">
-      <img src="../assets/stills/hamnet-1.jpg" alt="Photo de scène — Hamnet, Agnes dans la forêt" onerror="hideBrokenImg(this, 'stills-row')">
-      <img src="../assets/stills/hamnet-2.jpg" alt="Photo de scène — Hamnet, la représentation finale de la pièce" onerror="hideBrokenImg(this, 'stills-row')">
     </div>
     <p>
       La photographie de Łukasz Żal prolonge la veine naturaliste qui a fait la réputation de Chloé Zhao depuis <em>The Rider</em> et <em>Nomadland</em> : plans amples, lumière naturelle, attachement constant au corps d'Agnes dans son rapport à la forêt et aux éléments, dès la scène d'ouverture où on la découvre nichée dans le creux d'un arbre<a class="foot" href="#src-17" id="ref-17b">[17]</a>. La mise en scène ménage un contraste marqué entre les extérieurs lumineux de la campagne anglaise et des intérieurs plus sombres, aux cadrages parfois presque frontaux et suspendus, qu'un critique associe au regard d'une présence fantomatique surplombant les personnages<a class="foot" href="#src-17" id="ref-17c">[17]</a>.

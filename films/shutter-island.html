@@ -331,18 +331,6 @@
     user-select:none;
   }
 
-  .stills-row{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:1rem;
-    margin:1.6rem 0;
-  }
-  .stills-row img{
-    width:100%;
-    display:block;
-    border:1px solid var(--ink-faint);
-  }
-
   /* ---------- fiches signalétiques ---------- */
   .cast-grid{
     display:grid;
@@ -556,14 +544,6 @@
   </div>
 </header>
 
-<script>
-  function hideBrokenImg(img, groupId) {
-    img.remove();
-    const group = document.getElementById(groupId);
-    if (group && group.children.length === 0) group.hidden = true;
-  }
-</script>
-
 <div class="ring-margin" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
 <header class="cover">
@@ -705,10 +685,6 @@
         <span class="rapport-num">Rapport nº 05</span>
         <h2>Mise en scène et procédés techniques <span class="frame-jargon">— relevé du lieu</span></h2>
       </div>
-    </div>
-    <div class="stills-row" id="stills-row">
-      <img src="../assets/stills/shutter-island-1.jpg" alt="Photo de scène — Shutter Island, l'arrivée en bateau" onerror="hideBrokenImg(this, 'stills-row')">
-      <img src="../assets/stills/shutter-island-2.jpg" alt="Photo de scène — Shutter Island, l'hôpital Ashecliffe" onerror="hideBrokenImg(this, 'stills-row')">
     </div>
     <p>
       La photographie de Robert Richardson assume un hommage revendiqué au cinéma d'Alfred Hitchcock : Scorsese a projeté <em>Vertigo</em> à son équipe pendant le tournage, et plusieurs séquences de falaises et de vertige en reprennent directement l'imaginaire<a class="foot" href="#src-13" id="ref-13">[13]</a>. La scène d'ouverture, filmée en partie par rétroprojection délibérément datée pour la traversée en bateau, cultive une « hyper-irréalité » assumée, écho conscient des artifices techniques du cinéma hollywoodien des années 1950<a class="foot" href="#src-14" id="ref-14">[14]</a>.

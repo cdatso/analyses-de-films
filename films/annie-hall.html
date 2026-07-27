@@ -24,14 +24,6 @@
   </div>
 </header>
 
-<script>
-  function hideBrokenImg(img, groupId) {
-    img.remove();
-    const group = document.getElementById(groupId);
-    if (group && group.children.length === 0) group.hidden = true;
-  }
-</script>
-
 <header class="hero">
   <div class="eyebrow">Analyse cinématographique</div>
   <h1>Annie Hall</h1>
@@ -113,10 +105,6 @@
     <div class="num">05</div>
     <h2>Mise en scène et procédés</h2>
     <p>Allen multiplie les ruptures avec le langage cinématographique conventionnel, faisant du film une sorte de manifeste formel sur les limites du récit romantique classique.</p>
-    <div class="stills-row" id="stills-row">
-      <img src="../assets/stills/annie-hall-1.jpg" alt="Photo de scène — Annie Hall, scène du split screen" onerror="hideBrokenImg(this, 'stills-row')">
-      <img src="../assets/stills/annie-hall-2.jpg" alt="Photo de scène — Annie Hall, séquence animée" onerror="hideBrokenImg(this, 'stills-row')">
-    </div>
     <h3>L'adresse directe au spectateur</h3>
     <p>Alvy s'adresse régulièrement à la caméra, commente l'action en train de se dérouler, va jusqu'à interpeller les passants dans la rue pour leur demander leur avis sur son couple. Ce dispositif, hérité de la tradition du stand-up, transforme le spectateur en confident et en témoin, tout en maintenant une distance ironique vis-à-vis du récit.</p>
     <h3>Le split screen et la simultanéité</h3>

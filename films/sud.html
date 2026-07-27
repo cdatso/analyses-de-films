@@ -245,18 +245,6 @@
     margin:1.3rem 0;
   }
 
-  .stills-row{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:1rem;
-    margin:1.8rem 0;
-  }
-  .stills-row img{
-    width:100%;
-    display:block;
-    border:1px solid var(--line);
-  }
-
   /* ---------- la route (signature) ---------- */
   .road-diagram{
     margin:2rem 0 2.2rem;
@@ -455,14 +443,6 @@
   </div>
 </header>
 
-<script>
-  function hideBrokenImg(img, groupId) {
-    img.remove();
-    const group = document.getElementById(groupId);
-    if (group && group.children.length === 0) group.hidden = true;
-  }
-</script>
-
 <header class="cover">
   <div class="cover-inner">
     <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
@@ -581,10 +561,6 @@
       <span class="chapter-num">V</span>
       <h2>Mise en scène et procédés techniques</h2>
       <span class="frame-jargon">filmer sans démontrer</span>
-    </div>
-    <div class="stills-row" id="stills-row">
-      <img src="../assets/stills/sud-1.jpg" alt="Photo de scène — Sud, séquence des balançoires" onerror="hideBrokenImg(this, 'stills-row')">
-      <img src="../assets/stills/sud-2.jpg" alt="Photo de scène — Sud, plan-séquence final" onerror="hideBrokenImg(this, 'stills-row')">
     </div>
     <p>
       Le film alterne plans fixes tenus dans la durée — qu'un critique décrit comme le geste d'« une faucheuse contemplative » — et de longs travellings, signature stylistique du cinéma d'Akerman depuis ses tout premiers documentaires<a class="foot" href="#src-11" id="ref-11">[11]</a>. Une séquence emblématique montre une rangée de balançoires filmées de loin devant une église, désertées une à une par des fillettes qui laissent les sièges vides flotter dans le silence — plan cité comme représentatif de la rigueur distanciée de l'ensemble<a class="foot" href="#src-12" id="ref-12c">[12]</a>.

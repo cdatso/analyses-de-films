@@ -247,18 +247,6 @@
     margin:1.1rem 0;
   }
 
-  .stills-row{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:1rem;
-    margin:1.6rem 0;
-  }
-  .stills-row img{
-    width:100%;
-    display:block;
-    border:1px solid var(--line);
-  }
-
   /* ---------- trajectoire de caméra (signature) ---------- */
   .camera-path{
     margin:1.8rem 0 2rem;
@@ -510,14 +498,6 @@
   </div>
 </header>
 
-<script>
-  function hideBrokenImg(img, groupId) {
-    img.remove();
-    const group = document.getElementById(groupId);
-    if (group && group.children.length === 0) group.hidden = true;
-  }
-</script>
-
 <header class="cover">
   <div class="cover-inner">
     <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
@@ -647,10 +627,6 @@
         <span class="segment-num">Repère 05</span>
         <h2>Mise en scène et procédés techniques <span class="frame-jargon">— la caméra démiurge</span></h2>
       </div>
-    </div>
-    <div class="stills-row" id="stills-row">
-      <img src="../assets/stills/soy-cuba-1.jpg" alt="Photo de scène — Soy Cuba, plan-séquence de l'hôtel Capri" onerror="hideBrokenImg(this, 'stills-row')">
-      <img src="../assets/stills/soy-cuba-2.jpg" alt="Photo de scène — Soy Cuba, séquence funéraire" onerror="hideBrokenImg(this, 'stills-row')">
     </div>
     <p>
       La réputation de <em>Soy Cuba</em> tient avant tout aux plans-séquences d'Ouroussevski, qui inventa pour l'occasion les premiers rails circulaires pour caméra travelling et sut faire de son objectif un corps acrobatique, capable de traverser murs et éléments sans qu'aucune coupe ne vienne rompre l'illusion<a class="foot" href="#src-1" id="ref-1g">[1]</a>. Le plan le plus commenté descend du toit de l'hôtel Capri jusqu'au fond d'une piscine, en plus de trois minutes sans montage — une prouesse dont s'inspireront plus tard Paul Thomas Anderson pour <em>Boogie Nights</em> et Alfonso Cuarón pour <em>Les Fils de l'homme</em> et <em>Gravity</em><a class="foot" href="#src-6" id="ref-6d">[6]</a>.
