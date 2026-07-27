@@ -19,12 +19,29 @@ GARDE-FOU : tout fichier illisible rend sa famille ECHEC, jamais OK.
 (Correctif du 20/07 : la 1re version affichait OK alors que les 52 fichiers
 avaient echoue a se lire -- un garde-fou doit avoir un mode d'echec visible.)
 """
-import os, re, sys, collections, urllib.request
+import os, re, sys, collections, urllib.request, tempfile
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
+# CORRECTIF 27/07/2026 (gate AH « go correctif glyphes ») : tout argument
+# (--help compris) affiche l'usage et SORT sans rien executer ni ecrire.
+# L'ancienne version executait sa routine complete (telechargement de 15
+# fichiers WOFF) meme en --help -- elucidation du 27/07 au soir : c'est ainsi
+# qu'un simple appel d'aide de l'auditeur Opus a pollue l'arbre git.
+if len(sys.argv) > 1:
+    print(__doc__)
+    print("Usage : python controle-glyphes.py   (sans argument)")
+    print("Etude de couverture de glyphes des fontes CANDIDATES (BKL-065-1).")
+    print("NE controle PAS les pages du site. Telecharge ses fontes de")
+    print("controle dans le repertoire temporaire systeme (hors depot git).")
+    sys.exit(0)
+
 from fontTools.ttLib import TTFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TDIR = os.path.join(HERE, "woff-controle")
+# CORRECTIF 27/07/2026 (meme gate) : repertoire de travail HORS depot --
+# l'ancien chemin code en dur (outils/woff-controle) ecrivait dans l'arbre
+# git au premier appel venu.
+TDIR = os.path.join(tempfile.gettempdir(), "woff-controle")
 
 # User-Agent Firefox 20 => Google Fonts repond en .woff (et non .woff2).
 # WOFF est compresse en zlib (bibliotheque standard), donc lisible par
