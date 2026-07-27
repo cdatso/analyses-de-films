@@ -621,5 +621,26 @@ const FILMS = [
     // facette rétrofittée — l'omission initiale de la routine était la bonne
     // conduite (terme absent, jamais inventé, jamais rabattu sur 'surrealisme').
     courant: ['realisme magique']
+  },
+  {
+    slug: 'dogville',
+    title: 'Dogville',
+    director: 'Lars von Trier',
+    year: 2003,
+    summary: "Sur un plateau nu où les maisons ne sont que des traits de craie, Lars von Trier piège la charité chrétienne dans une expérience de laboratoire — et le spectateur avec elle.",
+    url: 'films/dogville.html',
+    poster: 'assets/posters/dogville.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-27 18:14',
+    genreBase: 'drame',
+    producteur: 'Claude Fable 5 (session supervisée)',
+    // Coproduction au périmètre divergent selon les sources (5 pays selon
+    // Wikipédia EN ; 9 selon Wikipédia FR, dont Pays-Bas et Finlande, absents
+    // du vocabulaire fermé) : les 5 principaux retenus, divergence déclarée
+    // dans la page (prologue) et au rapport de session — jamais tranchée en
+    // silence (skill v2.1, étape 1).
+    pays: ['Danemark', 'Suede', 'Royaume-Uni', 'France', 'Allemagne'],
+    technique: ['couleur']
   }
 ];
