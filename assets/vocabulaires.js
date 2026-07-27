@@ -93,9 +93,16 @@ const VOCABULAIRES = {
      porté par la note de fin de la session Blade Runner. */
   courant: [
     'neo-noir',
+    'neorealisme',
     'romantisme noir',
     'surrealisme'
   ]
+  /* AJOUT DU 27/07/2026 (GATE AH « go vocab neorealisme avec rétrofit
+     Rossellini », fiche 19) : `neorealisme` entre au vocabulaire — c'était
+     l'escalade P-12 du pilote Scholar (25/07 : terme absent, facette OMISE
+     de la page plutôt qu'inventée) ; rétrofit appliqué à l'entrée
+     voyage-en-italie (seule page Rossellini du site — la fiche disait
+     « 2 pages », le réel fait foi). */
 };
 
 /* Axes dont une valeur inconnue BLOQUE la publication (P-10).

@@ -567,7 +567,8 @@ const FILMS = [
     datePublication: '2026-07-25 11:02',
     pays: ['Italie', 'France'],
     genreBase: 'drame',
-    technique: ['n&b']
+    technique: ['n&b'],
+    courant: ['neorealisme']
   },
   {
     slug: 'blade-runner',
