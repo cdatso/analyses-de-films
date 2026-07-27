@@ -94,6 +94,7 @@ const VOCABULAIRES = {
   courant: [
     'neo-noir',
     'neorealisme',
+    'realisme magique',
     'romantisme noir',
     'surrealisme'
   ]
@@ -103,6 +104,11 @@ const VOCABULAIRES = {
      de la page plutôt qu'inventée) ; rétrofit appliqué à l'entrée
      voyage-en-italie (seule page Rossellini du site — la fiche disait
      « 2 pages », le réel fait foi). */
+  /* AJOUT DU 27/07/2026 soir (GATE AH « go vocab réalisme magique ») :
+     `realisme magique` entre au vocabulaire — escalade P-12 de la routine
+     nocturne (run de certification, L'Homme au crâne rasé : courant flamand,
+     facette OMISE plutôt qu'inventée, non rabattue sur 'surrealisme') ;
+     rétrofit appliqué à l'entrée lhomme-au-crane-rase (seule page Delvaux). */
 };
 
 /* Axes dont une valeur inconnue BLOQUE la publication (P-10).

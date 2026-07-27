@@ -616,9 +616,10 @@ const FILMS = [
     genreBase: 'drame',
     producteur: 'Claude Opus 5 (pipeline, routine nocturne)',
     pays: ['Belgique'],
-    technique: ['n&b']
-    // `courant` OMIS volontairement : le « réalisme magique » (flamand) n'existe
-    // pas au vocabulaire fermé. Escalade P-12 ouverte à AH — ne pas rabattre sur
-    // 'surrealisme', qui n'est pas le même courant (précédent du pilote Scholar).
+    technique: ['n&b'],
+    // P-12 soldée (gate AH 27/07 soir) : `realisme magique` entré au vocabulaire,
+    // facette rétrofittée — l'omission initiale de la routine était la bonne
+    // conduite (terme absent, jamais inventé, jamais rabattu sur 'surrealisme').
+    courant: ['realisme magique']
   }
 ];
