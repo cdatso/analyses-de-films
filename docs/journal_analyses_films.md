@@ -14,6 +14,18 @@ Conventions de ce journal (réconciliées le 5 juillet 2026) :
   on ne devine jamais la provenance).
 - **Lien publié** : dérivé mécaniquement du slug —
   `https://cdatso.github.io/analyses-de-films/films/<slug>.html`.
+- **Régime de production** *(convention ajoutée le 27 juillet 2026 — GATE-AH
+  « go taxonomie », consignation INTERNE sans affichage public)* : le régime
+  de la taxonomie de référence
+  (`claude-config\mandats\NOTE-2026-07-27-TAXONOMIE-REGIMES-ANALYSE.md` —
+  **Critique** · **Critique augmentée par AH** · **Critique Avancé** ·
+  **Étude/Scholar**) se consigne dans la colonne « Date d'analyse » de chaque
+  ligne. Le régime **Critique standard est le défaut implicite** (les lignes
+  antérieures sans mention le sont toutes) ; tout régime SOUS CONTRAINTE se
+  nomme explicitement — pratique déjà en vigueur (Blade Runner : augmentée ;
+  Coffee and Cigarettes : Avancé ; Voyage en Italie : Étude), désormais
+  règle. La page publiée, elle, ne porte que la signature (P-17) — jamais le
+  régime.
 
 *Dernière mise à jour : 27 juillet 2026*
 
