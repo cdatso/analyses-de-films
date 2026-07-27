@@ -601,5 +601,24 @@ const FILMS = [
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Etats-Unis'],
     technique: ['n&b']
+  },
+  {
+    slug: 'lhomme-au-crane-rase',
+    title: "L'Homme au crâne rasé",
+    director: 'André Delvaux',
+    year: 1965,
+    summary: "Le film fondateur du cinéma belge moderne : un professeur glisse de l'amour tu à l'internement, sans que le spectateur puisse jamais dire où la réalité s'est arrêtée.",
+    url: 'films/lhomme-au-crane-rase.html',
+    poster: 'assets/posters/lhomme-au-crane-rase.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-27 17:34',
+    genreBase: 'drame',
+    producteur: 'Claude Opus 5 (pipeline, routine nocturne)',
+    pays: ['Belgique'],
+    technique: ['n&b']
+    // `courant` OMIS volontairement : le « réalisme magique » (flamand) n'existe
+    // pas au vocabulaire fermé. Escalade P-12 ouverte à AH — ne pas rabattre sur
+    // 'surrealisme', qui n'est pas le même courant (précédent du pilote Scholar).
   }
 ];

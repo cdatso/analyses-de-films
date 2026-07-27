@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le miroir du barbier — L'Homme au crâne rasé</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de
+       cette page : main max-width 740px moins 2 x 1,6rem de padding,
+       soit 689 px ; (689 + 51,2) / 16 = 46,3rem. Compose par la
+       formule (skill v2.1, etape 3.1), verifie par sonde locale. */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette : faience de salon de coiffure, nickel des instruments,
+       noir et blanc argentique de Ghislain Cloquet, un seul rouge
+       sourd (le bâton du barbier, le sang hors champ de l'autopsie).
+       Contrastes AA verifies a la composition (P-39). */
+    --email:#eceae4;
+    --email-deep:#dcd8cf;
+    --encre:#14161a;
+    --encre-soft:#33383f;
+    --encre-faint:#5f646d;
+    --nickel:#4c5c66;
+    --nickel-deep:#3c4a52;
+    --nickel-clair:#8fa3ad;
+    --lame:#8a2f27;
+    --glace:#b9c0c7;
+    --trait: rgba(20,22,26,0.18);
+    --trait-fin: rgba(20,22,26,0.09);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(76,92,102,0.05), transparent 30%),
+      var(--email);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--nickel-deep);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--glace);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ color:var(--email); }
+
+  /* ---------- COUVERTURE : la glace du salon ---------- */
+  header.glace-cover{
+    position:relative;
+    background:var(--encre);
+    color:var(--email);
+    padding:1.4rem 0 2.6rem;
+    border-bottom:1px solid var(--nickel);
+  }
+  /* L'axe vertical : la jointure de la glace, qui court sur toute la
+     couverture et partage la page en deux moities symetriques. */
+  header.glace-cover::after{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:50%;
+    width:1px;
+    background:linear-gradient(180deg, transparent, rgba(143,163,173,0.28) 22%, rgba(143,163,173,0.28) 78%, transparent);
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+    z-index:1;
+  }
+  .enseigne{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--nickel-clair);
+    text-align:center;
+    padding-bottom:1.5rem;
+  }
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2rem, 6.2vw, 3.3rem);
+    line-height:1.06;
+    margin:0;
+    letter-spacing:-0.012em;
+    color:var(--email);
+  }
+  /* Le reflet : ornement pur, retire de l'arbre d'accessibilite.
+     Ce n'est pas du texte a lire, c'est la glace qui renvoie. */
+  .reflet{
+    display:block;
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2rem, 6.2vw, 3.3rem);
+    line-height:1.06;
+    letter-spacing:-0.012em;
+    color:var(--nickel-clair);
+    opacity:0.17;
+    transform:scaleY(-1);
+    transform-origin:top;
+    margin-bottom:-0.5em;
+    -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0.85), transparent 72%);
+    mask-image:linear-gradient(180deg, rgba(0,0,0,0.85), transparent 72%);
+    user-select:none;
+  }
+  .vo{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    color:var(--nickel-clair);
+    margin:1.5rem 0 0.9rem;
+  }
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--glace);
+    font-size:1.02rem;
+    max-width:47ch;
+    margin:0 0 2.1rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px solid rgba(143,163,173,0.3);
+    padding-top:1.5rem;
+  }
+  .cover-media .poster{ flex:0 0 146px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--nickel);
+    filter:grayscale(0.4);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(168px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--nickel-clair);
+    margin-bottom:0.26rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--email);
+    border-bottom:1px solid rgba(143,163,173,0.22);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.5rem;
+    padding:0.78rem 1.05rem;
+    /* Couleur OPAQUE et non composee : le bloc vit sur la couverture
+       sombre, et une rgba se laisserait composer sur le mauvais fond
+       par le controle de contraste (P-39). Valeur = ce que donnait
+       rgba(143,163,173,0.08) sur --encre. Couple mesure : 8,8:1. */
+    background:#1e2126;
+    border-left:2px solid var(--nickel-clair);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    letter-spacing:0.02em;
+    line-height:1.6;
+    color:var(--glace);
+  }
+  .provenance strong{ color:var(--email); font-weight:600; }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.toc{
+    background:var(--email-deep);
+    border-bottom:1px solid var(--trait);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--nickel-deep);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ color:var(--encre); border-color:var(--nickel); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.block{ padding:2.9rem 0; border-bottom:1px solid var(--trait-fin); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .plaque-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.9rem;
+    margin-bottom:1.35rem;
+    padding-bottom:0.7rem;
+    border-bottom:1px solid var(--nickel);
+  }
+  /* Le numero de section en carreau de faience : le carrelage du salon. */
+  .plaque-num{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    color:var(--nickel-deep);
+    background:var(--email-deep);
+    border:1px solid var(--trait);
+    padding:0.28rem 0.5rem;
+    line-height:1;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.55rem;
+    margin:0;
+    color:var(--encre);
+    letter-spacing:-0.006em;
+  }
+  .plaque-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.78rem;
+    font-weight:400;
+    color:var(--encre-faint);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--encre);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--encre-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--nickel);
+    text-decoration:none;
+    border-bottom:1px dotted var(--nickel);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+  a.renvoi:hover{ color:var(--lame); border-bottom-color:var(--lame); }
+
+  .discretion{
+    font-family:var(--mono);
+    font-size:0.79rem;
+    color:var(--encre-faint);
+    border-left:2px solid var(--nickel);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* Avertissement de contenu : la seule zone ou le rouge de la lame
+     porte du texte. */
+  .avertissement{
+    border:1px solid var(--lame);
+    border-left-width:4px;
+    background:rgba(138,47,39,0.05);
+    padding:0.85rem 1.1rem;
+    margin:1.3rem 0 0;
+    font-size:0.87rem;
+    color:var(--encre-soft);
+  }
+  .avertissement .mention{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--lame);
+    margin-bottom:0.35rem;
+  }
+
+  /* ---------- fiches de personnages : les places devant la glace ---------- */
+  .portrait-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(212px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .portrait-card{
+    position:relative;
+    background:var(--email-deep);
+    border:1px solid var(--trait);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:2px;
+    background:var(--nickel);
+  }
+  .portrait-card .name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.05rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--encre);
+  }
+  .portrait-card .role{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--nickel-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .portrait-card p{ font-size:0.87rem; margin:0; color:var(--encre-soft); }
+
+  /* ---------- citation : ce que la glace renvoie ---------- */
+  .renvoi-glace{
+    position:relative;
+    background:var(--email-deep);
+    border:1px solid var(--trait);
+    border-top:2px solid var(--nickel);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+  }
+  .renvoi-glace p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--encre);
+    margin-bottom:0.5rem;
+  }
+  .renvoi-glace cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--encre-faint);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--nickel-deep);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--nickel);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- releve chiffre ---------- */
+  .releve{
+    margin:1.6rem 0 1.7rem;
+    background:var(--encre);
+    color:var(--email);
+    border:1px solid var(--nickel-deep);
+  }
+  .releve-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .releve-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--nickel-clair);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .releve-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
+    gap:1rem;
+  }
+  .releve .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--email);
+    display:block;
+    line-height:1.15;
+  }
+  .releve .stat .cap{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+    color:var(--glace);
+    text-transform:uppercase;
+  }
+
+  section.sources{
+    background:var(--encre);
+    color:var(--email);
+    padding:3.2rem 1.6rem 4.2rem;
+    border-top:1px solid var(--nickel);
+  }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--email); font-family:var(--serif); font-weight:700; font-size:1.4rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--glace);
+    border-bottom:1px solid rgba(143,163,173,0.22);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+  }
+  ol.source-list li::before{
+    content: "Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--nickel-clair);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--email); word-break:break-word; }
+  ol.source-list a:hover{ color:var(--nickel-clair); }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--encre-faint);
+    background:var(--email);
+  }
+  footer.endnote a{ color:var(--encre-faint); }
+  footer.endnote a:hover{ color:var(--nickel); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    header.glace-cover::after{ display:none; }
+    section.block{ padding:2.2rem 0; }
+    .plaque-head{ flex-wrap:wrap; gap:0.5rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="glace-cover">
+  <div class="enseigne">Salon — devant la glace</div>
+  <div class="cover-inner">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+
+    <h1 class="title">L'Homme au crâne rasé</h1>
+    <span class="reflet" aria-hidden="true">L'Homme au crâne rasé</span>
+    <p class="vo">De man die zijn haar kort liet knippen — André Delvaux, 1965</p>
+    <p class="subtitle">Un professeur se fait couper les cheveux, aime en silence, assiste à une autopsie — et le film ne dira jamais lequel de ces gestes a réellement eu lieu.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/lhomme-au-crane-rase.jpg"
+             alt="Affiche du film L'Homme au crâne rasé"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="identite">
+        <div><dt>Réalisation</dt><dd>André Delvaux</dd></div>
+        <div><dt>Scénario</dt><dd>André Delvaux, d'après Johan Daisne</dd></div>
+        <div><dt>Année</dt><dd>1965 (télévision) — 1966 (salles)</dd></div>
+        <div><dt>Durée</dt><dd>98 minutes</dd></div>
+        <div><dt>Production</dt><dd>BRT (Belgische Radio en Televisie)</dd></div>
+        <div><dt>Photographie</dt><dd>Ghislain Cloquet</dd></div>
+        <div><dt>Musique</dt><dd>Frédéric Devreese</dd></div>
+        <div><dt>Montage</dt><dd>Suzanne Baron</dd></div>
+      </dl>
+    </div>
+    <div class="provenance">
+      <strong>Provenance.</strong> Critique nouvelle produite par le pipeline <em>analyse-films-cinema</em> (v2.1) &mdash; Claude Opus 5, routine nocturne du 27 juillet 2026, r&eacute;gime staging sous gate humain.
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, pipeline routine nocturne, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 27 juillet 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="plaque-head">
+      <span class="plaque-num">01</span>
+      <h2>Fiche technique <span class="plaque-sous">— état civil</span></h2>
+    </div>
+    <p>
+      <em>L'Homme au crâne rasé</em> est le premier long métrage d'André Delvaux (1926-2002), adapté du roman homonyme de l'écrivain flamand Johan Daisne, paru en 1947 et dont le cinéaste porte le projet depuis la fin des années 1940<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Le film est produit par la BRT, la radiotélévision publique flamande, avec le soutien du ministère de l'Éducation nationale et de la Culture — un montage qui dit assez l'état du cinéma belge d'alors, où la télévision constituait le principal débouché de création<a class="renvoi" href="#src-1" id="ref-1b">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      La photographie est signée Ghislain Cloquet, le montage confié à Suzanne Baron et la musique à Frédéric Devreese, qui deviendra le collaborateur régulier de Delvaux<a class="renvoi" href="#src-1" id="ref-1c">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a><a class="renvoi" href="#src-5" id="ref-5">[5]</a>. Senne Rouffaer incarne Govert Miereveld et Beata Tyszkiewicz le rôle de Fran, aux côtés d'Hector Camerlynck<a class="renvoi" href="#src-2" id="ref-2b">[2]</a><a class="renvoi" href="#src-6" id="ref-6">[6]</a>. Le film est tourné en noir et blanc, en 35 mm<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+    <p>
+      Deux données varient d'une source à l'autre, et cette analyse ne les tranche pas. <strong>L'année</strong> : le film est d'abord diffusé à la télévision en 1965, puis sort en salles en 1966 — la Cinémathèque française, Cinergie et CINEMATEK le datent de 1965, DVDClassik le présente comme un film de 1966<a class="renvoi" href="#src-1" id="ref-1d">[1]</a><a class="renvoi" href="#src-2" id="ref-2d">[2]</a><a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. <strong>La durée</strong> : 98 minutes selon la Cinémathèque française et Wikipédia, 94 minutes et 34 secondes selon Cinergie<a class="renvoi" href="#src-2" id="ref-2e">[2]</a><a class="renvoi" href="#src-3" id="ref-3b">[3]</a><a class="renvoi" href="#src-6" id="ref-6c">[6]</a> — écart vraisemblablement lié à la coexistence d'une version télévisée et d'une version de salle.
+    </p>
+    <p>
+      Le film a été restauré en 2021 en 2K par la Cinémathèque royale de Belgique — CINEMATEK, à partir du négatif original et du son magnétique d'origine<a class="renvoi" href="#src-4" id="ref-4b">[4]</a><a class="renvoi" href="#src-6" id="ref-6d">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="plaque-head">
+      <span class="plaque-num">02</span>
+      <h2>Synopsis <span class="plaque-sous">— ce qui est rapporté</span></h2>
+    </div>
+    <p>
+      Govert Miereveld est avocat et enseigne dans une école de jeunes filles d'une ville de province. Il voue à l'une de ses élèves, Fran, un amour tu, jamais déclaré, qui survit à la fin de ses études<a class="renvoi" href="#src-1" id="ref-1e">[1]</a><a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Des années plus tard, son métier le conduit à assister à une autopsie ; peu après, il revoit Fran, et la nuit qu'ils passent ensemble le fait basculer<a class="renvoi" href="#src-2" id="ref-2f">[2]</a><a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.
+    </p>
+    <p>
+      Le récit se referme dans un établissement psychiatrique, où Govert ne sait plus lui-même s'il a tué la femme qu'il aimait<a class="renvoi" href="#src-2" id="ref-2g">[2]</a><a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+    <p class="discretion">La construction du film reposant entièrement sur ce que le spectateur peut ou non tenir pour arrivé, le détail du dénouement n'est pas exposé davantage ici.</p>
+    <div class="avertissement">
+      <span class="mention">Avertissement de contenu</span>
+      Le film met en scène une scène d'autopsie (hors champ mais sonorisée), l'effondrement psychique d'un homme et son internement, ainsi que le désir d'un enseignant pour une élève — traité comme un symptôme, jamais comme un romanesque.
+    </div>
+  </section>
+
+  <section class="block" id="production">
+    <div class="plaque-head">
+      <span class="plaque-num">03</span>
+      <h2>Contexte de production <span class="plaque-sous">— l'atelier</span></h2>
+    </div>
+    <p>
+      Delvaux a trente-neuf ans quand il tourne ce premier long métrage, dans un pays où la fiction cinématographique n'existe quasiment pas<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. Sa stratégie est celle d'un débutant lucide : entourer son inexpérience de professionnels chevronnés. Ghislain Cloquet, chef opérateur passé par <em>Le Feu follet</em> et <em>Mouchette</em>, la monteuse Suzanne Baron et le compositeur Frédéric Devreese offrent aux producteurs la garantie que le premier film d'un inconnu ne se perdra pas<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. Beata Tyszkiewicz, épouse d'Andrzej Wajda, apporte au projet une visibilité internationale<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>.
+    </p>
+    <p>
+      Formé au conservatoire de Bruxelles, Delvaux est musicien avant d'être cinéaste, ce qui éclaire la place exacte que la partition de Devreese occupera dans le film : non pas une atmosphère, mais un élément de sens<a class="renvoi" href="#src-5" id="ref-5c">[5]</a>. Quant au roman de Daisne, il ne s'agit pas d'un matériau choisi par commodité : le sujet, dit le cinéaste, a mûri en lui pendant des années, et faire le film lui a peut-être permis de poser les questions qui l'occupaient<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>.
+    </p>
+    <div class="renvoi-glace">
+      <p>« Poser des questions : c'était la chose principale du film. »</p>
+      <cite>André Delvaux, cité par Cinea<a class="renvoi" href="#src-5" id="ref-5d">[5]</a></cite>
+    </div>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="plaque-head">
+      <span class="plaque-num">04</span>
+      <h2>Structure narrative <span class="plaque-sous">— trois passages devant la glace</span></h2>
+    </div>
+    <p>
+      Le récit s'organise autour de trois moments : une déclaration d'amour manquée lors d'une cérémonie scolaire, une autopsie à laquelle Govert assiste par obligation professionnelle, et une confrontation nocturne à l'hôtel<a class="renvoi" href="#src-5" id="ref-5e">[5]</a>. Ces trois scènes ne s'enchaînent pas selon une causalité classique : elles se contaminent. L'histoire énigmatique que Fran raconte à l'hôtel — un juge, un père disparu — décrit un homme dont le signalement correspond au cadavre de l'autopsie<a class="renvoi" href="#src-5" id="ref-5f">[5]</a>.
+    </p>
+    <p>
+      Le dispositif narratif installe Govert comme un narrateur apparemment fiable : voix off, plans subjectifs, cadrages par-dessus l'épaule<a class="renvoi" href="#src-5" id="ref-5g">[5]</a>. Ce n'est qu'au dénouement, lorsque le récit se révèle proféré depuis l'asile, que sa validité entière se trouve remise en cause rétroactivement. Les indices étaient là dès le générique, où Govert rêve de Fran ; le film les avait donnés sans les souligner<a class="renvoi" href="#src-5" id="ref-5h">[5]</a>. La toute première scène — un homme qui s'éveille, traverse son appartement et bascule de l'autre côté du miroir — pose la règle du jeu avant qu'on ait compris qu'il y en avait une<a class="renvoi" href="#src-1" id="ref-1i">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="plaque-head">
+      <span class="plaque-num">05</span>
+      <h2>Mise en scène et procédés <span class="plaque-sous">— le geste et la lame</span></h2>
+    </div>
+    <p>
+      Cloquet baigne le film dans un noir et blanc aux contrastes marqués, qui intensifie sa dimension introspective<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>. Delvaux, pour un premier film, explore la grammaire cinématographique avec une audace remarquée : travellings virtuoses, alternance de longs plans-séquences et de montage cut rapide, sens aigu du cadre dans l'usage du format large en intérieur<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>.
+    </p>
+    <h3>La scène du coiffeur</h3>
+    <p>
+      C'est la séquence qui donne son titre au film, et Delvaux y prend un parti frappant : il filme les mains du coiffeur plutôt que le visage de Govert. Le geste professionnel, apaisant, occupe tout le champ ; le contact physique est celui d'un rituel, non d'une intimité<a class="renvoi" href="#src-5" id="ref-5i">[5]</a>. Le traitement, d'une attention quasi bressonienne au détail matériel, fait de chaque bruit d'outil un événement<a class="renvoi" href="#src-5" id="ref-5j">[5]</a>.
+    </p>
+    <h3>L'autopsie</h3>
+    <p>
+      La scène symétrique inverse exactement les termes. Les médecins restent visibles, mais le cadavre demeure hors champ : c'est le son des instruments qui devient envahissant, contraint le spectateur à imaginer ce qu'on lui refuse, et fait naître une horreur d'autant plus efficace qu'elle n'est jamais montrée<a class="renvoi" href="#src-1" id="ref-1l">[1]</a><a class="renvoi" href="#src-5" id="ref-5k">[5]</a>. Des bruits ruraux — oiseaux, vent, cloches — s'y superposent en contrepoint, et intensifient le malaise au lieu de l'apaiser<a class="renvoi" href="#src-5" id="ref-5l">[5]</a>.
+    </p>
+    <h3>La musique comme commentaire</h3>
+    <p>
+      La partition de Devreese ne se contente pas d'accompagner la descente du personnage<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>. La ballade que chante Fran, où il est question de trois rois, commente les trois hommes qui comptent dans sa vie — et souligne, par ce compte, la place que Govert n'y occupe pas<a class="renvoi" href="#src-5" id="ref-5m">[5]</a>.
+    </p>
+    <h3>Une trahison fidèle</h3>
+    <p>
+      DVDClassik résume d'une formule le rapport de Delvaux au roman de Daisne : une trahison fidèle, qui transforme chaque paragraphe en plan et chaque mot en scène tout en préservant l'essence du texte<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="plaque-head">
+      <span class="plaque-num">06</span>
+      <h2>Personnages <span class="plaque-sous">— les visages du miroir</span></h2>
+    </div>
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <span class="name">Govert Miereveld</span>
+        <span class="role">Senne Rouffaer</span>
+        <p>Avocat et enseignant, il traverse des années de dépression larvée avant de croire reconnaître celle qu'il aime<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. Sa perception est le seul accès du spectateur au récit — et c'est précisément cet accès que le film finit par disqualifier<a class="renvoi" href="#src-5" id="ref-5n">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Fran</span>
+        <span class="role">Beata Tyszkiewicz</span>
+        <p>Ancienne élève devenue figure publique, elle existe moins comme personne que comme image — une image dont elle avertit elle-même Govert qu'elle est trompeuse et qu'il ne faut pas chercher plus loin<a class="renvoi" href="#src-5" id="ref-5o">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Le coiffeur</span>
+        <span class="role">Figure du rituel</span>
+        <p>Personnage sans épaisseur psychologique, réduit à ses mains et à ses gestes, il offre au film son unique moment de contact humain apaisé — et son titre<a class="renvoi" href="#src-5" id="ref-5p">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Le mort de l'autopsie</span>
+        <span class="role">Présence hors champ</span>
+        <p>Jamais montré, il est pourtant le pivot du film : le récit de Fran fait de lui le père disparu, et donc du hasard professionnel de Govert une coïncidence impossible<a class="renvoi" href="#src-5" id="ref-5q">[5]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="plaque-head">
+      <span class="plaque-num">07</span>
+      <h2>Thèmes <span class="plaque-sous">— ce que la glace renvoie</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le réalisme magique, sans démarcation</span>
+        <p>Delvaux appelle réalisme magique cette fusion imperceptible du monde objectif et du monde subjectif<a class="renvoi" href="#src-5" id="ref-5r">[5]</a>. La comparaison que fait Cinea avec <em>Le Cabinet du docteur Caligari</em> (1920) est éclairante : le film de Wiene sépare nettement folie et réalité, celui de Delvaux les entrelace sans jamais tracer la ligne<a class="renvoi" href="#src-5" id="ref-5s">[5]</a>. Cette manière de faire affleurer la poésie dans le quotidien rattache l'œuvre au réalisme magique flamand, lui-même apparenté au surréalisme<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le micro-événement grossi</span>
+        <p>Le cinéaste met au premier plan des événements minuscules, dilatés par un mode de perception qui les grossit imperceptiblement et, ce faisant, obscurcit le réel : le concret et son interprétation, l'objectif et le subjectif se rencontrent et se mêlent<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'image comme tromperie</span>
+        <p>« Mon image est une tromperie », dit Fran à Govert, l'invitant à ne pas chercher plus loin<a class="renvoi" href="#src-5" id="ref-5t">[5]</a>. La phrase vaut pour le personnage comme pour le film : elle décrit exactement ce que le spectateur est en train de faire, et l'échec auquel il se destine.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le doute érigé en méthode</span>
+        <p>Le refus de trancher n'est pas une coquetterie de fin : c'est le programme déclaré du film. Delvaux ne donne au spectateur aucune certitude, précisément parce qu'il n'en accorde aucune à son personnage<a class="renvoi" href="#src-5" id="ref-5u">[5]</a>. La dernière séquence — Govert regardant un journal filmé où Fran apparaît vivante et célèbre — pose une question de plus au lieu de fournir la réponse attendue<a class="renvoi" href="#src-5" id="ref-5v">[5]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="plaque-head">
+      <span class="plaque-num">08</span>
+      <h2>Réception et postérité <span class="plaque-sous">— après la coupe</span></h2>
+    </div>
+    <p>
+      L'accueil belge est froid : à sa diffusion, les critiques du pays restent sceptiques<a class="renvoi" href="#src-2" id="ref-2h">[2]</a><a class="renvoi" href="#src-4" id="ref-4d">[4]</a>. La reconnaissance vient de France, et vite. Michel Cournot, dans <em>Le Nouvel Observateur</em>, y voit un chef-d'œuvre incontestable et le premier long métrage qui parvienne de Belgique, allant jusqu'à situer la rupture au niveau de celle qu'avait ouverte <em>Citizen Kane</em><a class="renvoi" href="#src-1" id="ref-1p">[1]</a><a class="renvoi" href="#src-4" id="ref-4e">[4]</a>.
+    </p>
+    <p>
+      Toutes les voix ne sont pas unanimes, et l'une des plus justes est peut-être la plus ambivalente : la revue <em>7<sup>e</sup> Art</em>, en 1967, y voit « un film interminable et ennuyeux, mais extraordinairement impressionnant », qui parle de l'amour et de la mort avec une insistance féroce<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>.
+    </p>
+
+    <div class="releve">
+      <div class="releve-inner">
+        <span class="releve-label">Relevé</span>
+        <div class="releve-grid">
+          <div class="stat"><span class="num">1<sup>er</sup></span><span class="cap">long métrage de Delvaux</span></div>
+          <div class="stat"><span class="num">1947</span><span class="cap">roman de Johan Daisne</span></div>
+          <div class="stat"><span class="num">98 min</span><span class="cap">durée (98 / 94 min selon les sources)</span></div>
+          <div class="stat"><span class="num">2021</span><span class="cap">restauration 2K CINEMATEK</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Le renversement est aujourd'hui complet : le film est couramment présenté comme le film fondateur du cinéma belge moderne, une rupture comparable à celle qu'ouvrirent en France les premiers films de la Nouvelle Vague<a class="renvoi" href="#src-1" id="ref-1r">[1]</a><a class="renvoi" href="#src-2" id="ref-2i">[2]</a><a class="renvoi" href="#src-6" id="ref-6e">[6]</a>. Il est aussi le film où Delvaux définit le style qu'on lui associera durablement — le réalisme magique, dont il devient d'emblée le maître<a class="renvoi" href="#src-3" id="ref-3g">[3]</a><a class="renvoi" href="#src-5" id="ref-5w">[5]</a>. La restauration menée par CINEMATEK en 2021 a inscrit cette reconnaissance dans le patrimoine institutionnel<a class="renvoi" href="#src-4" id="ref-4f">[4]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="plaque-head">
+      <span class="plaque-num">09</span>
+      <h2>Conclusion <span class="plaque-sous">— reflet final</span></h2>
+    </div>
+    <p>
+      Il y a quelque chose de juste à ce que le cinéma belge moderne commence par un film qui refuse de dire ce qui s'est passé. <em>L'Homme au crâne rasé</em> ne propose pas une énigme à résoudre : il installe un régime de perception où la question « est-ce arrivé ? » cesse d'avoir un sens séparé de celle-ci — « qu'est-ce que percevoir ? ». Le fondu entre l'objectif et le subjectif que Delvaux appelle réalisme magique n'est pas un effet de style greffé sur un récit psychologique ; c'est le récit lui-même.
+    </p>
+    <p>
+      La force du film tient à sa dissymétrie sonore autant qu'à sa construction. Deux scènes de contact physique s'y répondent : chez le coiffeur, des mains, des gestes, un apaisement ; à l'autopsie, des instruments, un corps refusé au regard, une angoisse. Entre les deux, le même dispositif — le son au premier plan, l'essentiel hors champ. C'est là que le film travaille : il fait entendre ce qu'il ne montre pas, et l'imagination du spectateur devient, à son insu, coupable de ce qu'elle produit. Le titre le dit à sa manière, sans métaphore : un homme s'est fait couper les cheveux, et c'est le seul fait dont personne ne doute.
+    </p>
+    <p>
+      Soixante ans après, l'ironie de la réception — froide en Belgique, brûlante en France — n'a plus d'importance : ce que le film a fondé, c'est la possibilité même d'un cinéma d'auteur dans un pays qui n'en avait pas. Reste, intact, ce que Delvaux disait avoir cherché : poser des questions. Il n'a pas prétendu y répondre, et son film n'a pas vieilli d'un jour pour cette raison précise.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#8fa3ad;">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">DVDClassik, « L'Homme au crâne rasé de André Delvaux — analyse et critique du film » — <a href="https://www.dvdclassik.com/critique/l-homme-au-crane-rase-delvaux" target="_blank" rel="noopener">dvdclassik.com — L'Homme au crâne rasé</a></li>
+      <li id="src-2">Wikipédia (FR), « L'Homme au crâne rasé (film) » — <a href="https://fr.wikipedia.org/wiki/L%27Homme_au_cr%C3%A2ne_ras%C3%A9_(film)" target="_blank" rel="noopener">fr.wikipedia.org — L'Homme au crâne rasé (film)</a></li>
+      <li id="src-3">Cinergie.be, fiche du film « L'Homme au crâne rasé » — <a href="https://www.cinergie.be/film/homme-au-crane-rase-l" target="_blank" rel="noopener">cinergie.be/film/homme-au-crane-rase-l</a></li>
+      <li id="src-4">CINEMATEK (Cinémathèque royale de Belgique), notice de restauration « De man die zijn haar kort liet knippen » — <a href="https://cinematek.be/nl/restorations/2026/de-man-die-zijn-haar-kort-liet-knippen" target="_blank" rel="noopener">cinematek.be — restauration</a></li>
+      <li id="src-5">Cinea, « Anatomie van de film — De man die zijn haar kort liet knippen (1965) » — <a href="https://cinea.be/anatomie-van-de-film/de-man-die-zijn-haar-kort-liet-knippen-1965/" target="_blank" rel="noopener">cinea.be — anatomie van de film</a></li>
+      <li id="src-6">La Cinémathèque française, fiche du film « L'Homme au crâne rasé » — <a href="https://www.cinematheque.fr/film/45795.html" target="_blank" rel="noopener">cinematheque.fr/film/45795.html</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 27 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
