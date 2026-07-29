@@ -674,12 +674,10 @@ const FILMS = [
     // --- schema v2 (annexe B) ---
     volet: 'critique',
     datePublication: '2026-07-29 23:52',
-    // ESCALADE P-12 OUVERTE (routine nocturne du 29/07) : aucune valeur de
-    // `genreBase` ne nomme le PÉPLUM. 'fresque' est la plus proche sans être
-    // un rabattage arbitraire (grande composition historique à grand
-    // spectacle) ; le terme 'peplum' est proposé à AH pour arbitrage, dans un
-    // commit propre distinct de cette publication si le gate est prononcé.
-    genreBase: 'fresque',
+    // ESCALADE P-12 SOLDÉE (gate AH 30/07 00h1x, formule pré-remplie par la
+    // routine) : 'peplum' inscrit au vocabulaire, entrée rétrofittée
+    // fresque → peplum dans le même commit distinct de la publication.
+    genreBase: 'peplum',
     producteur: 'Claude Opus 5 (pipeline, routine nocturne)',
     pays: ['Italie', 'France'],
     technique: ['couleur']

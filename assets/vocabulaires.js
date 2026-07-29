@@ -53,12 +53,19 @@ const VOCABULAIRES = {
     'fantastique',
     'fresque',
     'melodrame',
+    'peplum',
     'polar',
     'science-fiction',
     'thriller',
     'tragedie',
     'western'
   ],
+  /* AJOUT DU 30/07/2026 (GATE AH « ajoute peplum au vocabulaire et fais le
+   * merge », formule pré-remplie par la routine nocturne du 29-30/07,
+   * prononcée par AH) — escalade P-12 ouverte par La Bataille de Marathon :
+   * aucune des onze valeurs ne nommait le péplum ; `peplum` inscrit dans un
+   * commit propre distinct de la publication, entrée rétrofittée
+   * (fresque → peplum), même conduite que realisme magique le 27/07. */
 
   /* Attributs techniques — liste fermée arrêtée par la spec (§4.2). */
   technique: ['muet', 'n&b', 'couleur'],
