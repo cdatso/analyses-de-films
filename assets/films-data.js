@@ -681,5 +681,38 @@ const FILMS = [
     producteur: 'Claude Opus 5 (pipeline, routine nocturne)',
     pays: ['Italie', 'France'],
     technique: ['couleur']
+  },
+  {
+    slug: 'lolita',
+    title: 'Lolita',
+    director: 'Stanley Kubrick',
+    year: 1962,
+    summary: "Pour obtenir le droit de filmer l'infilmable, Kubrick a tout déplacé hors du cadre — et les archives montrent où ça a atterri : sur l'affiche.",
+    url: 'films/lolita.html',
+    poster: 'assets/posters/lolita.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    // Provisoire : datePublication = date du MERGE (point ferme nº 6 du
+    // mandat du 30/07). Valeur posée à l'heure instrumentale de rédaction,
+    // à actualiser par le greffe au geste de statut post-merge.
+    datePublication: '2026-07-30 00:45',
+    // ESCALADE P-12 EN PROPOSITION — NON CONSIGNÉE, NON APPLIQUÉE.
+    // Valeur retenue : 'comedie', valeur existante la plus juste (le film
+    // choisit la comédie ; c'est la lecture dominante des sources 1, 2 et 3
+    // de la page, et celle de l'analyse elle-même). Elle aplatit toutefois
+    // le registre réel : le terme juste serait `comedie noire`, absent du
+    // vocabulaire. Candidat au rétrofit si le terme entre : l'entrée
+    // `bienvenue-a-suburbicon` (aujourd'hui 'comedie').
+    // Formule de gate PRÉ-REMPLIE pour AH, à prononcer ou à écarter —
+    // aucune écriture au vocabulaire sans elle (P-12, charte règle 9) :
+    //   « ajoute comedie noire au vocabulaire genreBase »
+    // (+ éventuellement « et rétrofitte suburbicon »). Le commit d'ajout
+    // reste distinct de la publication de cette fiche.
+    genreBase: 'comedie',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Royaume-Uni', 'Etats-Unis'],
+    technique: ['n&b']
+    // `courant` OMIS plutôt qu'inventé (axe non bloquant) : aucune des cinq
+    // valeurs du vocabulaire ne nomme le registre satirique de ce film.
   }
 ];
