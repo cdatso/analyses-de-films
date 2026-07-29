@@ -662,5 +662,26 @@ const FILMS = [
     // priorité 1 dans la base locale D: (239 Ko < seuil P-36), la session
     // claude.ai productrice n'y avait pas accès — règle des deux gestes de
     // l'étape 8.2 respectée (fichier + champ ajoutés ensemble).
+  },
+  {
+    slug: 'la-bataille-de-marathon',
+    title: 'La Bataille de Marathon',
+    director: 'Jacques Tourneur, Mario Bava et Bruno Vailati',
+    year: 1959,
+    summary: "Un péplum signé par un maître de l'ombre, terminé par son chef opérateur non crédité — et c'est ce dernier que la postérité est venue chercher.",
+    url: 'films/la-bataille-de-marathon.html',
+    poster: 'assets/posters/la-bataille-de-marathon.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-29 23:52',
+    // ESCALADE P-12 OUVERTE (routine nocturne du 29/07) : aucune valeur de
+    // `genreBase` ne nomme le PÉPLUM. 'fresque' est la plus proche sans être
+    // un rabattage arbitraire (grande composition historique à grand
+    // spectacle) ; le terme 'peplum' est proposé à AH pour arbitrage, dans un
+    // commit propre distinct de cette publication si le gate est prononcé.
+    genreBase: 'fresque',
+    producteur: 'Claude Opus 5 (pipeline, routine nocturne)',
+    pays: ['Italie', 'France'],
+    technique: ['couleur']
   }
 ];

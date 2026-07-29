@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qui a fait, qui a peint — La Bataille de Marathon</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de
+       cette page : main max-width 740px moins 2 x 1,6rem de padding,
+       soit 689 px ; (689 + 51,2) / 16 = 46,3rem. Compose par la
+       formule (skill v2.1, etape 3.1), verifie par sonde locale au
+       rendu reel avant publication. */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette : la ceramique attique a figures noires, contemporaine
+       exacte de la bataille (490 av. J.-C.) — argile cuite, vernis
+       noir, rehauts de blanc de craie et de rouge sigille. Aucun
+       Eastmancolor ici : le film est en couleurs, mais l'objet qu'il
+       raconte ne connaissait que ces trois-la.
+       Contrastes AA verifies a la composition (P-39) — couples
+       mesures a la main, l'outil de controle n'etant pas disponible
+       dans cette session (voir note de provenance). */
+    --argile:#e3cdae;
+    --argile-deep:#d4b894;
+    --argile-pale:#eeddc4;
+    --vernis:#181310;
+    --vernis-soft:#33291f;
+    --vernis-faint:#6b4a2a;
+    --sigillee:#8c3a1d;
+    --craie:#f4ece0;
+    --terre-clair:#c49a6c;
+    --terre-mid:#a8825c;
+    --trait: rgba(24,19,16,0.22);
+    --trait-fin: rgba(24,19,16,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--argile);
+    color:var(--vernis);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--vernis-faint);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--terre-clair);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1.4rem;
+  }
+  .back-link:hover{ color:var(--craie); }
+
+  /* ---------- LA FRISE : creneaux du meandre grec, en CSS pur.
+       Aucun caractere d'ornement, aucune image : deux filets et une
+       bande de creneaux (P-29, P-30 — rien a replier). ---------- */
+  .frise{
+    height:11px;
+    background:
+      repeating-linear-gradient(90deg,
+        var(--terre-mid) 0 9px,
+        transparent 9px 13px,
+        var(--terre-mid) 13px 15px,
+        transparent 15px 24px);
+    border-top:1px solid var(--terre-mid);
+    border-bottom:1px solid var(--terre-mid);
+    opacity:0.75;
+  }
+
+  /* ---------- COUVERTURE : la panse du vase ---------- */
+  header.vase-cover{
+    position:relative;
+    background:var(--vernis);
+    color:var(--craie);
+    padding:1.4rem 0 0;
+    overflow:hidden;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem 2.4rem;
+    position:relative;
+    z-index:1;
+  }
+  .cartel-haut{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--terre-clair);
+    text-align:center;
+    padding-bottom:1.5rem;
+  }
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2rem, 6.2vw, 3.35rem);
+    line-height:1.05;
+    margin:0;
+    letter-spacing:-0.012em;
+    color:var(--craie);
+  }
+  /* Les deux signatures du vase attique : le potier declarait « a
+     fait », le peintre « a peint ». Ornement pur, hors arbre
+     d'accessibilite — le texte de la page le dit en clair plus bas. */
+  .deux-mains{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem 1.4rem;
+    margin:1.25rem 0 0;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    color:var(--terre-mid);
+  }
+  .deux-mains span{ border-bottom:1px solid rgba(196,154,108,0.4); padding-bottom:0.2rem; }
+
+  .vo{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    color:var(--terre-clair);
+    margin:1.4rem 0 0.9rem;
+  }
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--argile-deep);
+    font-size:1.02rem;
+    max-width:48ch;
+    margin:0 0 2.1rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px solid rgba(196,154,108,0.35);
+    padding-top:1.5rem;
+  }
+  .cover-media .poster{ flex:0 0 146px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--terre-mid);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(168px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--terre-clair);
+    margin-bottom:0.26rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--craie);
+    border-bottom:1px solid rgba(196,154,108,0.25);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.5rem;
+    padding:0.78rem 1.05rem;
+    /* Couleur OPAQUE et non composee, comme le patron de reference :
+       une rgba se laisserait composer sur le mauvais fond par le
+       controle de contraste (P-39). */
+    background:#241c16;
+    border-left:2px solid var(--terre-mid);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    letter-spacing:0.02em;
+    line-height:1.6;
+    color:var(--argile-deep);
+  }
+  .provenance strong{ color:var(--craie); font-weight:600; }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.toc{
+    background:var(--argile-deep);
+    border-bottom:1px solid var(--trait);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--vernis-soft);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ color:var(--vernis); border-color:var(--vernis-faint); }
+
+  /* ---------- CORPS : les registres de la frise ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.registre{ padding:2.9rem 0; border-bottom:1px solid var(--trait-fin); }
+  section.registre:last-of-type{ border-bottom:none; }
+
+  .registre-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.9rem;
+    margin-bottom:1.35rem;
+    padding-bottom:0.7rem;
+    border-bottom:1px solid var(--vernis-faint);
+  }
+  /* Le numero de registre en medaillon : le tondo de la coupe. */
+  .tondo{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    color:var(--craie);
+    background:var(--vernis);
+    border-radius:50%;
+    width:2rem; height:2rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.55rem;
+    margin:0;
+    color:var(--vernis);
+    letter-spacing:-0.006em;
+  }
+  .registre-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.78rem;
+    font-weight:400;
+    color:var(--vernis-faint);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--vernis);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--vernis-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--sigillee);
+    text-decoration:none;
+    border-bottom:1px dotted var(--sigillee);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+  a.renvoi:hover{ color:var(--vernis); border-bottom-color:var(--vernis); }
+
+  .discretion{
+    font-family:var(--mono);
+    font-size:0.79rem;
+    color:var(--vernis-faint);
+    border-left:2px solid var(--terre-mid);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  .avertissement{
+    border:1px solid var(--sigillee);
+    border-left-width:4px;
+    background:rgba(140,58,29,0.06);
+    padding:0.85rem 1.1rem;
+    margin:1.3rem 0 0;
+    font-size:0.87rem;
+    color:var(--vernis-soft);
+  }
+  .avertissement .mention{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--sigillee);
+    margin-bottom:0.35rem;
+  }
+
+  /* ---------- les figures en reserve : fiches de personnages ---------- */
+  .figure-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(212px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .figure-card{
+    position:relative;
+    background:var(--argile-pale);
+    border:1px solid var(--trait);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .figure-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--vernis);
+  }
+  .figure-card .name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.05rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--vernis);
+  }
+  .figure-card .role{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--vernis-faint);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .figure-card p{ font-size:0.87rem; margin:0; color:var(--vernis-soft); }
+
+  /* ---------- citation : l'inscription peinte le long de la figure ---------- */
+  .inscription{
+    position:relative;
+    background:var(--argile-pale);
+    border:1px solid var(--trait);
+    border-top:3px solid var(--vernis);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+  }
+  .inscription p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--vernis);
+    margin-bottom:0.5rem;
+  }
+  .inscription cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--vernis-faint);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--vernis-faint);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--vernis-faint);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- releve chiffre : le cartel du musee ---------- */
+  .releve{
+    margin:1.6rem 0 1.7rem;
+    background:var(--vernis);
+    color:var(--craie);
+    border:1px solid var(--vernis-faint);
+  }
+  .releve-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .releve-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--terre-clair);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .releve-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
+    gap:1rem;
+  }
+  .releve .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--craie);
+    display:block;
+    line-height:1.15;
+  }
+  .releve .stat .cap{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+    color:var(--argile-deep);
+    text-transform:uppercase;
+  }
+
+  /* ---------- tableau des trois mains ---------- */
+  .attribution{
+    margin:1.5rem 0 0.4rem;
+    overflow-x:auto;
+  }
+  .attribution table{
+    border-collapse:collapse;
+    width:100%;
+    min-width:420px;
+    font-size:0.88rem;
+  }
+  .attribution th{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--craie);
+    background:var(--vernis);
+    text-align:left;
+    padding:0.5rem 0.75rem;
+  }
+  .attribution td{
+    padding:0.6rem 0.75rem;
+    border-bottom:1px solid var(--trait-fin);
+    color:var(--vernis-soft);
+    vertical-align:top;
+  }
+  .attribution tbody tr:nth-child(odd){ background:var(--argile-pale); }
+  .attribution td strong{ color:var(--vernis); font-weight:700; }
+
+  section.sources{
+    background:var(--vernis);
+    color:var(--craie);
+    padding:3.2rem 1.6rem 4.2rem;
+    border-top:1px solid var(--vernis-faint);
+  }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--craie); font-family:var(--serif); font-weight:700; font-size:1.4rem; margin:0; }
+  section.sources h3{ color:var(--terre-clair); margin-top:2.2rem; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--argile-deep);
+    border-bottom:1px solid rgba(196,154,108,0.25);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+    word-break:break-word;
+  }
+  ol.source-list li::before{
+    content: "Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--terre-clair);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list.suite{ counter-reset:src 6; }
+  ol.source-list a{ color:var(--craie); word-break:break-word; }
+  ol.source-list a:hover{ color:var(--terre-clair); }
+  .note-biblio{
+    font-family:var(--mono);
+    font-size:0.73rem;
+    line-height:1.6;
+    color:var(--argile-deep);
+    border-left:2px solid var(--terre-mid);
+    padding-left:0.9rem;
+    margin:1.2rem 0 0;
+  }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--vernis-faint);
+    background:var(--argile);
+  }
+  footer.endnote a{ color:var(--vernis-faint); }
+  footer.endnote a:hover{ color:var(--sigillee); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem 2rem; }
+    section.registre{ padding:2.2rem 0; }
+    .registre-head{ flex-wrap:wrap; gap:0.5rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="vase-cover">
+  <div class="cartel-haut">Céramique attique — 490 avant notre ère</div>
+  <div class="cover-inner">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+
+    <h1 class="title">La Bataille de Marathon</h1>
+    <div class="deux-mains" aria-hidden="true">
+      <span>Tourneur — les dialogues</span>
+      <span>Vailati — la mer</span>
+      <span>Bava — tout le reste</span>
+    </div>
+    <p class="vo">La battaglia di Maratona — Jacques Tourneur, Mario Bava, Bruno Vailati, 1959</p>
+    <p class="subtitle">Un péplum signé par un maître de l'ombre, terminé par son chef opérateur non crédité — et c'est ce dernier que la postérité est venue chercher.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/la-bataille-de-marathon.jpg"
+             alt="Affiche du film La Bataille de Marathon"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="identite">
+        <div><dt>Réalisation</dt><dd>Jacques Tourneur, Mario Bava (non crédité), Bruno Vailati</dd></div>
+        <div><dt>Scénario</dt><dd>Ennio De Concini, Augusto Frassineti, Bruno Vailati</dd></div>
+        <div><dt>Année</dt><dd>1959 (Italie) — 1960 (France, États-Unis)</dd></div>
+        <div><dt>Durée</dt><dd>82 minutes (87 selon d'autres sources)</dd></div>
+        <div><dt>Production</dt><dd>Galatea Film, Titanus / Lyre, Lux (France)</dd></div>
+        <div><dt>Photographie</dt><dd>Mario Bava — Eastmancolor, Dyaliscope</dd></div>
+        <div><dt>Musique</dt><dd>Roberto Nicolosi</dd></div>
+        <div><dt>Montage</dt><dd>Mario Serandrei</dd></div>
+      </dl>
+    </div>
+    <div class="provenance">
+      <strong>Provenance.</strong> Critique nouvelle produite par le pipeline <em>analyse-films-cinema</em> (v2.1) &mdash; Claude Opus 5, routine nocturne du 29 juillet 2026, r&eacute;gime staging sous gate humain. Deux contr&ocirc;les m&eacute;caniques de l'&eacute;tape 10 (vocabulaires ferm&eacute;s, contraste automatis&eacute;) n'ont pas pu &ecirc;tre ex&eacute;cut&eacute;s dans cette session et ont &eacute;t&eacute; remplac&eacute;s par une v&eacute;rification manuelle, d&eacute;clar&eacute;e au rapport de nuit.
+    </div>
+  </div>
+  <div class="frise" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, pipeline routine nocturne, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 29 juillet 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="registre" id="fiche">
+    <div class="registre-head">
+      <span class="tondo">01</span>
+      <h2>Fiche technique <span class="registre-sous">— le cartel</span></h2>
+    </div>
+    <p>
+      <em>La Bataille de Marathon</em> est une coproduction italo-française de 1959, tournée en Eastmancolor et en Dyaliscope (format large 2,35:1), produite par Bruno Vailati pour Galatea Film et Titanus côté italien, la Société cinématographique Lyre et la Compagnie cinématographique Lux côté français<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a>. La distribution américaine est assurée par la Metro-Goldwyn-Mayer, sous le titre <em>The Giant of Marathon</em><a class="renvoi" href="#src-1" id="ref-1b">[1]</a>.
+    </p>
+    <p>
+      Le générique porte le nom de Jacques Tourneur à la réalisation ; le film a en réalité été achevé par deux autres hommes, dont l'un n'est pas crédité — c'est l'objet de cette analyse, et la section 3 y revient en détail<a class="renvoi" href="#src-1" id="ref-1c">[1]</a><a class="renvoi" href="#src-2" id="ref-2b">[2]</a>. Le scénario est signé Ennio De Concini, Augusto Frassineti et Bruno Vailati, d'après une idée d'Alberto Barsanti et Raffaello Pacini<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>. La photographie et les effets spéciaux sont de Mario Bava, le montage de Mario Serandrei, la musique de Roberto Nicolosi, les décors de Massimo Tavazzi et les costumes de Pier Luigi Pizzi<a class="renvoi" href="#src-1" id="ref-1e">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+    <p>
+      À l'écran : Steve Reeves (Philippidès), Mylène Demongeot (Andromède), Sergio Fantoni (Théocrite), Daniela Rocca (Karis), Alberto Lupo (Miltiade) et Daniele Vargas (Darius I<sup>er</sup>)<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. Le film sort en Italie le 3 décembre 1959, aux États-Unis en mai 1960 — avant-première à Brooklyn et Long Island le 11 mai, Los Angeles le 20, New York le 25 — et en France le 9 septembre 1960<a class="renvoi" href="#src-1" id="ref-1f">[1]</a><a class="renvoi" href="#src-2" id="ref-2e">[2]</a>.
+    </p>
+    <p>
+      Trois données divergent selon les sources, et cette analyse ne les tranche pas. <strong>La durée</strong> : 82 minutes selon Wikipédia en français, 87 selon <em>Time Out</em><a class="renvoi" href="#src-2" id="ref-2f">[2]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a> — écart courant entre montage italien et version d'exportation. <strong>La durée du contrat de Tourneur</strong> : huit semaines de tournage prévues selon l'une, dix selon l'autre<a class="renvoi" href="#src-2" id="ref-2g">[2]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>. <strong>Les recettes américaines</strong> : 1 335 000 dollars aux États-Unis et au Canada d'après les registres de la MGM, contre 2,9 millions avancés ailleurs<a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-2" id="ref-2h">[2]</a>.
+    </p>
+  </section>
+
+  <section class="registre" id="synopsis">
+    <div class="registre-head">
+      <span class="tondo">02</span>
+      <h2>Synopsis <span class="registre-sous">— la figure au centre</span></h2>
+    </div>
+    <p>
+      490 avant notre ère, au temps des guerres médiques : les armées perses balaient le monde antique<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>. Philippidès rentre à Athènes couronné de la victoire olympique, et cette gloire sportive lui vaut le commandement de la Garde sacrée, corps chargé de défendre la liberté de la cité<a class="renvoi" href="#src-1" id="ref-1i">[1]</a><a class="renvoi" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+    <p>
+      La menace n'est pourtant pas seulement extérieure. Théocrite, aristocrate athénien, travaille à livrer la ville à l'envahisseur, et se sert d'Andromède pour approcher le nouveau chef de la Garde<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Le récit conduit à la plaine de Marathon, où Philippidès affronte les troupes de Darius, puis à une bataille livrée sur l'eau<a class="renvoi" href="#src-1" id="ref-1j">[1]</a><a class="renvoi" href="#src-2" id="ref-2i">[2]</a>.
+    </p>
+    <p class="discretion">Le film prend avec l'histoire les libertés de son genre : le Philippidès des sources antiques est le coureur qui porte un message, non un athlète devenu général. L'écart n'est pas une maladresse, c'est le programme du péplum — la section 7 y revient.</p>
+  </section>
+
+  <section class="registre" id="production">
+    <div class="registre-head">
+      <span class="tondo">03</span>
+      <h2>Contexte de production <span class="registre-sous">— l'atelier et ses trois mains</span></h2>
+    </div>
+    <p>
+      Un an plus tôt, <em>Les Travaux d'Hercule</em> de Pietro Francisci avait fait de Steve Reeves, culturiste américain sacré Mister Univers, une vedette mondiale : près de 5,84 millions d'entrées en Italie, un rachat des droits américains par Joseph E. Levine pour 120 000 dollars et un million investi en promotion — technique de saturation qui deviendra la norme<a class="renvoi" href="#src-6" id="ref-6">[6]</a>. Le cycle du péplum était lancé, et il produira jusqu'au milieu des années 1960 une masse de films bâtis sur le même principe : un héros de l'Antiquité, un corps de culturiste, un budget serré<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. <em>La Bataille de Marathon</em> naît dans ce flux, avec l'atout que le genre s'achète le plus cher : Reeves lui-même.
+    </p>
+    <p>
+      Ce qui rend le film singulier n'est pas son sujet, c'est le nom qu'on met à sa tête. Jacques Tourneur, soixante ans passés à peine, est alors l'auteur de <em>La Féline</em> et de <em>Vaudou</em>, cinéaste dont toute la réputation tient à ce qu'il ne montre pas : la suggestion, l'ombre, le hors-champ. Engager un tel homme sur un film dont l'argument commercial est un torse nu en plein soleil relève du contresens — et le tournage le confirme.
+    </p>
+    <p>
+      Le film part en Yougoslavie, aux studios Centralni Filmski Studio Kosutnjak<a class="renvoi" href="#src-2" id="ref-2j">[2]</a>. Tourneur, qui n'avait guère d'enthousiasme pour le projet, dépasse les délais : à l'échéance de son contrat, seules les séquences dialoguées sont prêtes, et les plans de foule tournés sur place se révèlent inutilisables<a class="renvoi" href="#src-2" id="ref-2k">[2]</a><a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. Il refuse de prolonger, et rentre<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>. Le film est achevé à Rome, aux studios Titanus et dans la réserve naturelle de Tor Caldara<a class="renvoi" href="#src-2" id="ref-2l">[2]</a>.
+    </p>
+    <h3>Qui a fait quoi</h3>
+    <div class="attribution">
+      <table>
+        <thead>
+          <tr><th scope="col">Main</th><th scope="col">Part du film</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Jacques Tourneur</strong><br>crédité seul comme réalisateur</td><td>l'essentiel des séquences dialoguées, tournées en Yougoslavie<a class="renvoi" href="#src-2" id="ref-2m">[2]</a><a class="renvoi" href="#src-4" id="ref-4d">[4]</a></td></tr>
+          <tr><td><strong>Mario Bava</strong><br>chef opérateur, non crédité à la réalisation</td><td>la photographie de tout le film, les effets spéciaux, la reprise de la plupart des scènes de bataille et les séquences sous-marines<a class="renvoi" href="#src-1" id="ref-1k">[1]</a><a class="renvoi" href="#src-2" id="ref-2n">[2]</a></td></tr>
+          <tr><td><strong>Bruno Vailati</strong><br>producteur et coscénariste</td><td>la fuite du héros et la bataille navale<a class="renvoi" href="#src-2" id="ref-2o">[2]</a><a class="renvoi" href="#src-4" id="ref-4e">[4]</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Un détail de calendrier dit assez le régime de fabrication : dix jours avant la première, Bava dut retourner des extérieurs parce que plusieurs figurants avaient été filmés cigarette à la main<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. Ce n'est pas une anecdote de tournage, c'est un portrait de la production italienne de ces années-là — un cinéma d'artisans où l'on répare vite, et où l'homme qui répare finit par faire le film.
+    </p>
+    <p>
+      Le sauvetage aura une conséquence considérable pour l'histoire du cinéma. Nello Santi, le producteur de la Galatea, en garde une dette envers Bava, et lui offre en retour de réaliser le film de son choix<a class="renvoi" href="#src-2" id="ref-2p">[2]</a>. Ce sera <em>Le Masque du démon</em> (1960), premier film officiel de Bava, et l'un des actes de naissance du fantastique italien<a class="renvoi" href="#src-2" id="ref-2q">[2]</a>.
+    </p>
+  </section>
+
+  <section class="registre" id="structure">
+    <div class="registre-head">
+      <span class="tondo">04</span>
+      <h2>Structure narrative <span class="registre-sous">— trois registres mal raccordés</span></h2>
+    </div>
+    <p>
+      Le film se lit comme une frise en trois bandes, et l'on voit les joints. Une première partie de conjuration et de trahison, presque entièrement dialoguée, installe le complot de Théocrite ; elle est de Tourneur, et la critique s'accorde à la trouver la plus longue à passer, malgré la qualité de sa photographie<a class="renvoi" href="#src-4" id="ref-4f">[4]</a>. Une deuxième partie donne la bataille terrestre, refaite à Rome par Bava. La troisième déplace le combat sur l'eau, et culmine dans un affrontement sous-marin.
+    </p>
+    <p>
+      Le manque de cohérence est le premier constat de toute lecture sérieuse du film : l'intervention de trois réalisateurs se voit à l'écran<a class="renvoi" href="#src-4" id="ref-4g">[4]</a>. <em>Time Out</em> décrit une intrigue « bien construite, d'une manière rudimentaire », menée avec entrain — un compliment mesuré qui reconnaît la mécanique sans lui prêter d'ambition<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+    <p>
+      Il faut pourtant se garder de lire cette hétérogénéité comme un pur accident. Le péplum est un cinéma d'attractions : on y vient pour des morceaux — l'épreuve de force, le siège, la bataille — reliés par le minimum narratif nécessaire. Que trois mains différentes aient exécuté ces morceaux ne défait pas le genre ; cela rend simplement visible ce que le genre organise d'ordinaire en silence. Ce film est un objet d'atelier où chaque bande porte la trace de son exécutant.
+    </p>
+  </section>
+
+  <section class="registre" id="miseenscene">
+    <div class="registre-head">
+      <span class="tondo">05</span>
+      <h2>Mise en scène et procédés <span class="registre-sous">— le vernis et la lumière</span></h2>
+    </div>
+    <p>
+      Il y a un point sur lequel toutes les sources convergent, y compris les plus sévères : la photographie est remarquable de bout en bout<a class="renvoi" href="#src-3" id="ref-3e">[3]</a><a class="renvoi" href="#src-4" id="ref-4h">[4]</a>. C'est le paradoxe du film : ce qui reste tient à l'homme qui n'est pas au générique de la réalisation. Bava éclaire en peintre — il travaille la couleur saturée, les fonds, les contrastes, cette manière de faire tenir un décor pauvre par la seule lumière qui deviendra sa signature au long des années 1960.
+    </p>
+    <h3>Le combat sous l'eau</h3>
+    <p>
+      C'est la séquence que la postérité a retenue, et la seule que les critiques les plus dédaigneuses sauvent sans réserve : des scènes sous-marines « inventives et brutales », d'une facture technique étonnante pour l'époque et le budget<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>. On y a vu, plus tard, une qualité hallucinatoire — c'est-à-dire tout autre chose qu'un morceau d'action : un espace de rêve où les corps combattent au ralenti, dans le silence relatif du milieu liquide. Le rapprochement avec le fantastique que Bava tournera l'année suivante s'impose de lui-même, sans qu'il faille le forcer.
+    </p>
+    <h3>La bataille navale et les terres</h3>
+    <p>
+      La bataille maritime finale, réalisée par Vailati, offre selon la critique française « quelques beaux moments kitsch », tandis que les affrontements terrestres restent inégaux<a class="renvoi" href="#src-4" id="ref-4i">[4]</a>. L'inégalité n'étonne pas : ce sont les plans refaits en hâte, à Rome, avec les moyens d'une reprise, pour remplacer une matière yougoslave perdue<a class="renvoi" href="#src-2" id="ref-2r">[2]</a>.
+    </p>
+    <h3>Ce que Tourneur n'a pas pu faire</h3>
+    <p>
+      Reste une hypothèse que le film ne permet pas de vérifier, et qu'il faut donc poser comme telle. Tourneur est le cinéaste de l'invisible : dans <em>La Féline</em>, la panthère est une ombre sur un mur ; dans <em>Vaudou</em>, la terreur tient à un vent dans les cannes à sucre. Le péplum, lui, est un cinéma de l'exhibition — du corps, du nombre, du décor. Les séquences que Tourneur a effectivement tournées sont les scènes de parole, celles où l'on complote autour d'une table ; les scènes de spectacle sont d'autres mains. Le film offre ainsi, involontairement, un cas d'école : un metteur en scène employé exactement là où son art ne peut pas se déployer, et remplacé pour la part qui faisait l'objet du contrat.
+    </p>
+    <div class="inscription">
+      <p>« Assez ordinaire, pour ne pas dire ridicule — mais avec quelques séquences sous-marines inventives et brutales. »</p>
+      <cite>Time Out, sur La Bataille de Marathon<a class="renvoi" href="#src-3" id="ref-3g">[3]</a></cite>
+    </div>
+  </section>
+
+  <section class="registre" id="personnages">
+    <div class="registre-head">
+      <span class="tondo">06</span>
+      <h2>Personnages <span class="registre-sous">— les figures en réserve</span></h2>
+    </div>
+    <div class="figure-grid">
+      <div class="figure-card">
+        <span class="name">Philippidès</span>
+        <span class="role">Steve Reeves</span>
+        <p>Vainqueur olympique promu chef de la Garde sacrée<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>. Le personnage n'a pas d'intériorité et n'en demande pas : il est une silhouette, au sens exact que ce mot a sur un vase — une forme reconnaissable à sa pose. Le rôle vaudra à Reeves un contrat américain<a class="renvoi" href="#src-2" id="ref-2s">[2]</a>.</p>
+      </div>
+      <div class="figure-card">
+        <span class="name">Théocrite</span>
+        <span class="role">Sergio Fantoni</span>
+        <p>Aristocrate athénien prêt à livrer sa cité aux Perses, décrit par <em>Time Out</em> comme un tueur de femmes sans cœur<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>. Le traître de l'intérieur : la vraie menace du film n'est pas l'armée de Darius, c'est la trahison civique.</p>
+      </div>
+      <div class="figure-card">
+        <span class="name">Andromède</span>
+        <span class="role">Mylène Demongeot</span>
+        <p>Instrument du complot devenue enjeu sentimental<a class="renvoi" href="#src-2" id="ref-2t">[2]</a><a class="renvoi" href="#src-3" id="ref-3i">[3]</a>. Sa présence signe aussi la part française de la coproduction : une vedette de Paris dans une Athènes tournée à Belgrade et à Rome.</p>
+      </div>
+      <div class="figure-card">
+        <span class="name">Miltiade</span>
+        <span class="role">Alberto Lupo</span>
+        <p>Le stratège historique de Marathon, ramené ici au rang de second<a class="renvoi" href="#src-2" id="ref-2u">[2]</a>. Le déplacement est révélateur : le péplum n'a pas besoin d'un tacticien, il a besoin d'un corps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="registre" id="themes">
+    <div class="registre-head">
+      <span class="tondo">07</span>
+      <h2>Thèmes <span class="registre-sous">— ce que la frise raconte</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Le muscle comme argument</span>
+        <p>Le péplum italien de 1958-1965 place au centre de ses récits antiques des culturistes américains, Steve Reeves au premier rang<a class="renvoi" href="#src-7" id="ref-7">[7]</a>. Richard Dyer a proposé d'y lire une opération idéologique : la célébration du muscle de l'homme blanc au moment précis où l'Italie s'éloignait du travail manuel et de l'imaginaire de force hérité du fascisme<a class="renvoi" href="#src-7" id="ref-7b">[7]</a>. <em>La Bataille de Marathon</em> illustre cette logique de la manière la plus littérale possible : son héros doit son commandement militaire à une victoire sportive.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La liberté de la cité</span>
+        <p>Le film se donne un enjeu politique explicite — la Garde sacrée défend la liberté d'Athènes contre le despote perse<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Quinze ans après la guerre, dans un pays qui reconstruit ses institutions, ce partage entre cité libre et empire conquérant n'est pas un décor neutre. Le péplum a beaucoup servi à rejouer, en costumes, des questions d'actualité que le cinéma italien traitait ailleurs de front.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'Antiquité comme surface</span>
+        <p>Faire de Philippidès un général est une invention pure : la tradition antique en fait le messager de la victoire, celui dont la course a donné son nom au marathon. Le film ne s'en cache pas et n'en fait pas un enjeu ; l'Antiquité y est un répertoire de formes — casques, colonnes, tuniques — plutôt qu'un objet de connaissance. C'est en cela que le genre s'apparente à la céramique dont il tire son imagerie : une scène de bataille peinte sur un vase ne documente pas la bataille, elle en fixe la pose.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">L'auteur, la signature et la main</span>
+        <p>Sur les vases attiques, deux verbes cohabitent : le potier déclare avoir fait l'objet, le peintre avoir peint le décor — deux signatures pour une seule pièce. Ce film pose la même question, et la pose mal exprès. Un nom au générique, deux hommes au travail, et une valeur artistique qui s'est déplacée du premier vers le second. Peter Hutchings a montré comment Bava, resté obscur pendant toute sa carrière, a été constitué en auteur par la critique postérieure — mouvement dont la biographie de Tim Lucas, en 2007, est le monument<a class="renvoi" href="#src-5" id="ref-5">[5]</a><a class="renvoi" href="#src-8" id="ref-8">[8]</a>. <em>La Bataille de Marathon</em> est un cas limite de ce mouvement : on y vient aujourd'hui pour un homme que le générique ne nomme pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="registre" id="reception">
+    <div class="registre-head">
+      <span class="tondo">08</span>
+      <h2>Réception et postérité <span class="registre-sous">— après cuisson</span></h2>
+    </div>
+    <p>
+      Commercialement, le film réussit. Il attire environ 4,4 millions de spectateurs en Italie, où il se classe vingt-quatrième du box-office 1959-1960, et 1,9 million en France, trente-quatrième pour 1960<a class="renvoi" href="#src-2" id="ref-2v">[2]</a>. Les registres de la MGM font état de 1 335 000 dollars de recettes aux États-Unis et au Canada, 1,4 million ailleurs, pour un bénéfice de 429 000 dollars<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. <em>Kine Weekly</em> le classe parmi les films rentables du box-office britannique de 1960<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>.
+    </p>
+
+    <div class="releve">
+      <div class="releve-inner">
+        <span class="releve-label">Relevé</span>
+        <div class="releve-grid">
+          <div class="stat"><span class="num">4,4 M</span><span class="cap">entrées en Italie</span></div>
+          <div class="stat"><span class="num">1,9 M</span><span class="cap">entrées en France</span></div>
+          <div class="stat"><span class="num">429 000 $</span><span class="cap">bénéfice, registres MGM</span></div>
+          <div class="stat"><span class="num">3</span><span class="cap">réalisateurs, un seul crédité</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Critiquement, le verdict a toujours été rude, et il l'est resté. Le film est couramment tenu pour un péplum classique et plutôt fastidieux, dont l'intérêt principal réside dans l'éclairage de Bava<a class="renvoi" href="#src-4" id="ref-4j">[4]</a>. <em>Time Out</em> tranche : « assez ordinaire, pour ne pas dire ridicule », sauf pour ses séquences sous-marines<a class="renvoi" href="#src-3" id="ref-3j">[3]</a>. Aucune réévaluation n'est venue faire de ce film un chef-d'œuvre méconnu, et cette analyse ne le propose pas.
+    </p>
+    <p>
+      Ce qui a changé, c'est la raison pour laquelle on le regarde. En 1960, on allait voir un film de Tourneur avec Steve Reeves. Aujourd'hui, on y va pour la lumière et le combat sous-marin d'un chef opérateur devenu figure de culte — et pour la charnière qu'il représente : sans le sauvetage de <em>La Bataille de Marathon</em>, Nello Santi n'aurait pas offert à Bava le film de son choix, et <em>Le Masque du démon</em> n'aurait peut-être pas existé<a class="renvoi" href="#src-2" id="ref-2w">[2]</a>. Le film compte moins par ce qu'il est que par ce qu'il a rendu possible. Pour Reeves, le bénéfice fut immédiat : un contrat américain<a class="renvoi" href="#src-2" id="ref-2x">[2]</a>.
+    </p>
+  </section>
+
+  <section class="registre" id="conclusion">
+    <div class="registre-head">
+      <span class="tondo">09</span>
+      <h2>Conclusion <span class="registre-sous">— la seconde signature</span></h2>
+    </div>
+    <p>
+      Il serait facile, et faux, de conclure que <em>La Bataille de Marathon</em> est un film de Mario Bava. Il n'en est pas un : Bava y a photographié, réparé, refait des batailles et inventé un combat sous l'eau, mais il n'a pas conçu le film, et le film ne porte aucun projet — c'est un produit de cycle, exécuté par trois hommes dont aucun n'en avait la charge complète.
+    </p>
+    <p>
+      Ce qui en fait un objet précieux est justement là. Le cinéma se raconte volontiers par ses auteurs, et il a raison de le faire ; mais il existe des films où la fabrication reste apparente, comme les registres d'un vase où l'on distingue la main du potier de celle du peintre. Ici, tout est lisible : un cinéaste de l'ombre engagé sur un film de plein soleil, qui livre les scènes de parole et s'en va ; un producteur qui filme la mer ; un chef opérateur qui tient l'ensemble par la lumière et finit le travail sans figurer au générique. Le film ne cache pas ses coutures — et c'est ce défaut qui le rend instructif.
+    </p>
+    <p>
+      Reste une ironie que l'histoire du cinéma sert rarement aussi nettement. Tourneur, l'auteur reconnu, quitte un plateau qui ne lui convenait pas et n'en garde rien ; Bava, l'artisan invisible, y gagne le droit de faire son premier film et, quarante ans plus tard, une place dans les histoires du genre. Le générique dit qui a fait. Le film, lui, montre qui a peint.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#c49a6c;">Bibliographie</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <h3>Sources consultées</h3>
+    <ol class="source-list">
+      <li id="src-1">Wikipedia (EN), « The Giant of Marathon » — crédits complets, dates de sortie, registres de recettes MGM, <em>Kine Weekly</em>, reprise des extérieurs par Bava — <a href="https://en.wikipedia.org/wiki/The_Giant_of_Marathon" target="_blank" rel="noopener">en.wikipedia.org — The Giant of Marathon</a></li>
+      <li id="src-2">Wikipédia (FR), « La Bataille de Marathon » — fiche technique, lieux de tournage, répartition du travail entre Tourneur, Bava et Vailati, entrées Italie et France — <a href="https://fr.wikipedia.org/wiki/La_Bataille_de_Marathon" target="_blank" rel="noopener">fr.wikipedia.org — La Bataille de Marathon</a></li>
+      <li id="src-3">JPy, « The Giant of Marathon », <em>Time Out</em> (critique) — <a href="https://www.timeout.com/movies/the-giant-of-marathon" target="_blank" rel="noopener">timeout.com — The Giant of Marathon</a></li>
+      <li id="src-4">Virgile Dumez, « La bataille de Marathon : la critique du film », <em>CinéDweller</em> — <a href="https://cinedweller.com/movie/la-bataille-de-marathon-la-critique-du-film/" target="_blank" rel="noopener">cinedweller.com — La bataille de Marathon</a></li>
+      <li id="src-5">Peter Hutchings, « Bavaesque: The Making of Mario Bava as Italian Horror Auteur », dans Stefano Baschiera et Russ Hunter (dir.), <em>Italian Horror Cinema</em>, Édimbourg, Edinburgh University Press, 2016 — <a href="https://www.cambridge.org/core/books/italian-horror-cinema/bavaesque-the-making-of-mario-bava-as-italian-horror-auteur/8279DCAFB4FAC5EA289BA56921ECD60B" target="_blank" rel="noopener">notice de l'éditeur</a></li>
+      <li id="src-6">Wikipédia (FR), « Les Travaux d'Hercule (film, 1958) » — entrées italiennes, rachat et campagne de Joseph E. Levine, lancement du cycle — <a href="https://fr.wikipedia.org/wiki/Les_Travaux_d%27Hercule_(film,_1958)" target="_blank" rel="noopener">fr.wikipedia.org — Les Travaux d'Hercule</a></li>
+    </ol>
+    <h3>Références citées sans consultation directe</h3>
+    <ol class="source-list suite">
+      <li id="src-7">Richard Dyer, « The White Man's Muscles », dans <em>White: Essays on Race and Culture</em>, Londres, Routledge, 1997 — thèse restituée d'après les présentations éditoriales du chapitre, le texte intégral n'ayant pas été accessible lors de cette session</li>
+      <li id="src-8">Tim Lucas, <em>Mario Bava: All the Colors of the Dark</em>, Cincinnati, Video Watchdog, 2007 — ouvrage de référence sur Bava, cité ici comme monument de sa réévaluation critique, non consulté au texte</li>
+    </ol>
+    <p class="note-biblio">
+      Sources d'intérêt fort restées inaccessibles lors de cette session, consignées au journal des erreurs du dépôt : la note de programme du Film at Lincoln Center (HTTP 403), l'article « The hybrid star: Steve Reeves, Hercules and the politics of transnational whiteness » du <em>Journal of Italian Cinema &amp; Media Studies</em> (HTTP 403), et le chapitre de Dyer chez Duke University Press et Taylor &amp; Francis (HTTP 403). Aucune affirmation de cette page ne repose sur elles.
+    </p>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 29 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
