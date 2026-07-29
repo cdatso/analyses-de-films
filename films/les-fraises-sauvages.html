@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbier d'une seule journée — Les Fraises sauvages</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de cette
+       page : colonne de 740 px, padding lateral 1.6rem -> contenu 688,8 px ;
+       (688,8 + 51,2) / 16 = 46,25 -> 46.3rem, comme le patron le-doulos.
+       Compose par la formule (v2.1), verification par sonde locale portee
+       au rapport de fin. */
+    --mobilier-largeur:46.3rem;
+
+    /* Palette bespoke : la planche d'herbier. Papier de montage, encre
+       ferro-gallique, tige sechee, fruit sec. Contrastes AA verifies a la
+       composition (P-39), calcules avant ecriture :
+       encre/papier 13,9:1 ; douce/papier 6,7:1 ; vert/papier 7,2:1 ;
+       fraise/papier 7,6:1 ; encre/etiquette 11,0:1 ; douce/etiquette 5,3:1. */
+    --papier:#f2ece0;        /* feuille de montage */
+    --papier2:#e8dfc9;       /* papier insole, bandeaux */
+    --etiquette:#ded3ba;     /* cartel colle en bas a droite */
+    --encre:#241f18;         /* encre ferro-gallique : texte courant */
+    --douce:#5a5044;         /* encre delavee : meta, legendes */
+    --vert:#3f5232;          /* tige et feuille sechees */
+    --fraise:#8a2420;        /* le fruit, seul accent chaud */
+    --filet:rgba(36,31,24,0.30);
+    --filet-doux:rgba(36,31,24,0.13);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(36,31,24,0.030) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, rgba(36,31,24,0.030) 0 1px, transparent 1px 26px),
+      radial-gradient(ellipse at 12% 4%, rgba(138,36,32,0.045), transparent 42%),
+      var(--papier);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.76;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .col{max-width:46.3rem; margin:0 auto; padding:0 1.6rem;}
+
+  a{color:inherit;}
+  p a, li a{text-decoration-thickness:1px; text-underline-offset:2px;}
+
+  /* --- Couverture : la planche montee ------------------------------------ */
+  header.planche-couv{
+    border-bottom:1px solid var(--filet);
+    padding:1.4rem 0 2.6rem;
+    background:
+      linear-gradient(180deg, rgba(36,31,24,0.05), transparent 30%);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--douce);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.6rem;
+  }
+  .back-link:hover{color:var(--encre);}
+
+  .feuille{
+    position:relative;
+    border:1px solid var(--filet);
+    background:linear-gradient(160deg, rgba(255,255,255,0.35), transparent 60%);
+    padding:2.4rem 1.9rem 1.9rem;
+  }
+  /* Bandelettes de montage : le detail qui fait la planche. Purement
+     decoratives, donc aria-hidden au balisage. */
+  .bandelette{
+    position:absolute; width:4.6rem; height:1.05rem;
+    background:var(--papier2);
+    border:1px solid var(--filet-doux);
+  }
+  .bandelette.b1{top:-0.5rem; left:2.4rem; transform:rotate(-2.4deg);}
+  .bandelette.b2{top:-0.5rem; right:3.1rem; transform:rotate(1.8deg);}
+  .bandelette.b3{bottom:-0.5rem; left:5.6rem; transform:rotate(1.2deg);}
+
+  .taxon{
+    font-family:var(--mono);
+    font-size:0.63rem;
+    text-transform:uppercase;
+    letter-spacing:0.19em;
+    color:var(--vert);
+    margin-bottom:1.1rem;
+  }
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 6.4vw, 3.3rem);
+    line-height:1.06;
+    letter-spacing:-0.018em;
+    margin:0 0 0.5rem;
+  }
+
+  .titre-vo{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.16rem;
+    color:var(--douce);
+    margin:0 0 1.5rem;
+  }
+
+  .cote{
+    font-family:var(--mono);
+    font-size:0.71rem;
+    line-height:1.6;
+    color:var(--douce);
+    border-top:1px solid var(--filet-doux);
+    border-bottom:1px solid var(--filet-doux);
+    padding:0.7rem 0;
+    margin:0 0 1.5rem;
+  }
+
+  p.subtitle{
+    font-size:1.1rem;
+    line-height:1.62;
+    margin:0 0 1.8rem;
+    max-width:36rem;
+  }
+
+  .couv-media{
+    display:flex; gap:1.9rem; align-items:flex-start; flex-wrap:wrap;
+  }
+
+  figure.poster{
+    margin:0; flex:0 0 auto; width:11.4rem;
+    border:1px solid var(--filet);
+    background:var(--papier2);
+    padding:0.5rem;
+  }
+  figure.poster img{display:block; width:100%; height:auto;}
+
+  dl.identite{
+    flex:1 1 17rem; margin:0;
+    font-family:var(--mono); font-size:0.73rem; line-height:1.62;
+  }
+  dl.identite dt{
+    color:var(--vert); text-transform:uppercase; letter-spacing:0.1em;
+    font-size:0.6rem; margin-top:0.7rem;
+  }
+  dl.identite dt:first-child{margin-top:0;}
+  dl.identite dd{margin:0.1rem 0 0; color:var(--encre);}
+
+  .provenance{
+    font-family:var(--mono); font-size:0.68rem; line-height:1.66;
+    color:var(--douce);
+    background:var(--etiquette);
+    border:1px solid var(--filet-doux);
+    padding:0.75rem 0.9rem;
+    margin-top:1.9rem;
+  }
+
+  /* --- Sommaire ----------------------------------------------------------- */
+  nav.toc{margin:2.4rem auto 0;}
+  .toc-inner{
+    border-top:1px solid var(--filet);
+    border-bottom:1px solid var(--filet);
+    padding:1.1rem 0;
+    font-family:var(--mono); font-size:0.72rem; line-height:1.9;
+  }
+  .toc-inner ol{margin:0; padding:0; list-style:none;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr)); gap:0 1.6rem;}
+  .toc-inner a{color:var(--douce); text-decoration:none;}
+  .toc-inner a:hover{color:var(--fraise);}
+  .toc-inner .rom{color:var(--vert); display:inline-block; min-width:2.6rem;}
+
+  /* --- Planches (sections) ------------------------------------------------ */
+  section.planche{padding:2.9rem 0 0.6rem; border-top:1px solid var(--filet-doux);}
+  section.planche:first-of-type{border-top:none;}
+
+  .pl-head{margin-bottom:1.3rem;}
+  .pl-num{
+    display:block;
+    font-family:var(--mono); font-size:0.62rem;
+    text-transform:uppercase; letter-spacing:0.19em;
+    color:var(--vert); margin-bottom:0.45rem;
+  }
+  .pl-head h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.35rem, 3.5vw, 1.72rem);
+    line-height:1.25; letter-spacing:-0.012em;
+    margin:0;
+  }
+  .pl-sous{
+    display:block; font-weight:400; font-style:italic;
+    font-size:0.94rem; color:var(--douce); margin-top:0.3rem;
+  }
+
+  section.planche p{margin:0 0 1.15rem;}
+
+  h3.theme{
+    font-family:var(--mono); font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--fraise);
+    margin:2rem 0 0.7rem;
+    padding-bottom:0.35rem;
+    border-bottom:1px solid var(--filet-doux);
+  }
+
+  /* Etiquettes de specimen : les personnages */
+  .etiquettes{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(15.5rem, 1fr));
+    gap:1rem; margin:0 0 1.2rem;
+  }
+  .etiquette{
+    background:var(--etiquette);
+    border:1px solid var(--filet-doux);
+    padding:0.95rem 1.05rem;
+  }
+  .etiquette .rang{
+    display:block; font-family:var(--mono); font-size:0.58rem;
+    text-transform:uppercase; letter-spacing:0.14em; color:var(--vert);
+    margin-bottom:0.35rem;
+  }
+  .etiquette .nom{
+    display:block; font-family:var(--serif); font-weight:600;
+    font-size:1.06rem; line-height:1.25;
+  }
+  .etiquette .interprete{
+    display:block; font-family:var(--mono); font-size:0.68rem;
+    color:var(--douce); margin-bottom:0.5rem;
+  }
+  .etiquette p{margin:0; font-size:0.94rem; line-height:1.62;}
+
+  /* Note de divergence : la ou deux sources serieuses ne s'accordent pas */
+  .divergence{
+    font-family:var(--mono); font-size:0.71rem; line-height:1.66;
+    color:var(--douce);
+    border-left:2px solid var(--fraise);
+    padding:0.55rem 0 0.55rem 0.95rem;
+    margin:0 0 1.15rem;
+  }
+
+  .discretion{
+    font-family:var(--mono); font-size:0.69rem; color:var(--douce);
+    border-top:1px solid var(--filet-doux); padding-top:0.6rem;
+  }
+
+  /* Renvois de sources */
+  a.renvoi{
+    font-family:var(--mono); font-size:0.68em;
+    text-decoration:none; color:var(--fraise);
+    vertical-align:0.32em; padding:0 0.06em;
+  }
+  a.renvoi:hover{text-decoration:underline;}
+
+  /* --- Sources ------------------------------------------------------------ */
+  section.sources{padding:2.9rem 0 1rem; border-top:1px solid var(--filet);}
+  section.sources ol{
+    margin:0; padding:0 0 0 1.4rem;
+    font-size:0.9rem; line-height:1.62;
+  }
+  section.sources li{margin-bottom:0.7rem;}
+  /* Les adresses de sources vivent dans des `span`, que la regle `a, code`
+     de mobilier.css ne couvre PAS : sans cette declaration, une URL longue
+     deborde a 320 px (P-38). Constat mesure sur `persona` : 76 px de
+     debordement sur une seule adresse. */
+  section.sources .lien{
+    font-family:var(--mono); font-size:0.72rem; color:var(--douce);
+    display:block; overflow-wrap:break-word; word-break:break-word;
+  }
+
+  footer.pied{
+    border-top:1px solid var(--filet);
+    margin-top:2.4rem; padding:1.5rem 0 2.8rem;
+  }
+  footer.pied .f-in{font-family:var(--mono); font-size:0.7rem; color:var(--douce);}
+
+  @media (max-width:640px){
+    .feuille{padding:2rem 1.15rem 1.4rem;}
+    .couv-media{gap:1.3rem;}
+    figure.poster{width:9.2rem;}
+    .bandelette{display:none;}
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="planche-couv">
+  <div class="col">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+
+    <div class="feuille">
+      <span class="bandelette b1" aria-hidden="true"></span>
+      <span class="bandelette b2" aria-hidden="true"></span>
+      <span class="bandelette b3" aria-hidden="true"></span>
+
+      <div class="taxon">Fragaria vesca &middot; Su&egrave;de &middot; 1957</div>
+
+      <h1 class="title">Les Fraises sauvages</h1>
+      <p class="titre-vo">Smultronst&auml;llet &mdash; Ingmar Bergman</p>
+
+      <div class="cote">
+        Planche n<sup>o</sup> <b>78</b> de l'herbier &mdash; l'&acirc;ge que le sujet se donne lui-m&ecirc;me &agrave; la premi&egrave;re minute du film. Une seule journ&eacute;e de r&eacute;colte&nbsp;: Stockholm au matin, Lund au soir.
+      </div>
+
+      <p class="subtitle">Un vieux professeur roule vers la c&eacute;r&eacute;monie qui doit couronner cinquante ans de m&eacute;decine. En chemin, il ouvre des portes qui donnent sur son enfance &mdash; et d&eacute;couvre que la distinction r&eacute;compense un homme mort depuis longtemps.</p>
+
+      <div class="couv-media">
+        <figure class="poster">
+          <img src="../assets/posters/les-fraises-sauvages.jpg"
+               alt="Affiche du film Les Fraises sauvages"
+               onerror="this.closest('.poster').remove()">
+        </figure>
+
+        <dl class="identite">
+          <dt>R&eacute;alisation et sc&eacute;nario</dt>
+          <dd>Ingmar Bergman</dd>
+          <dt>Photographie</dt>
+          <dd>Gunnar Fischer</dd>
+          <dt>Interpr&eacute;tation</dt>
+          <dd>Victor Sj&ouml;str&ouml;m, Ingrid Thulin, Bibi Andersson, Gunnar Bj&ouml;rnstrand</dd>
+          <dt>Production</dt>
+          <dd>Svensk Filmindustri &mdash; 91 minutes, noir et blanc, 1,37:1</dd>
+          <dt>Distinction</dt>
+          <dd>Ours d'or, Berlin 1958</dd>
+        </dl>
+      </div>
+
+      <div class="provenance">
+        Provenance &mdash; texte produit le 29 juillet 2026 en session supervis&eacute;e par Claude Opus 5 (IAGen d'Anthropic), &agrave; partir d'une recherche document&eacute;e list&eacute;e en fin de page. R&eacute;daction, identit&eacute; visuelle et v&eacute;rification des sources dans la m&ecirc;me session&nbsp;; supervision humaine avant publication.
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Sommaire">
+      <div class="toc-inner">
+        <ol>
+          <li><span class="rom">I</span><a href="#fiche">Fiche technique</a></li>
+          <li><span class="rom">II</span><a href="#synopsis">Synopsis</a></li>
+          <li><span class="rom">III</span><a href="#production">Contexte de production</a></li>
+          <li><span class="rom">IV</span><a href="#structure">Structure narrative</a></li>
+          <li><span class="rom">V</span><a href="#miseenscene">Mise en sc&egrave;ne et proc&eacute;d&eacute;s</a></li>
+          <li><span class="rom">VI</span><a href="#personnages">Personnages principaux</a></li>
+          <li><span class="rom">VII</span><a href="#themes">Th&egrave;mes</a></li>
+          <li><span class="rom">VIII</span><a href="#reception">R&eacute;ception et post&eacute;rit&eacute;</a></li>
+          <li><span class="rom">IX</span><a href="#conclusion">Conclusion</a></li>
+          <li><span class="rom">&mdash;</span><a href="#sources">Sources</a></li>
+        </ol>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervis&eacute;e, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 29 juillet 2026</span>
+</div>
+</div>
+
+<main class="col">
+
+  <section class="planche" id="fiche">
+    <div class="pl-head">
+      <span class="pl-num">Planche I</span>
+      <h2>Fiche technique<span class="pl-sous">Cartel de la planche : provenance, r&eacute;colteurs, date de mise sous presse</span></h2>
+    </div>
+
+    <p><em>Smultronst&auml;llet</em> est &eacute;crit et r&eacute;alis&eacute; par Ingmar Bergman, produit par Allan Ekelund pour Svensk Filmindustri, avec Carl Anders Dymling &agrave; la t&ecirc;te de la firme<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. La photographie est de Gunnar Fischer, le montage d'Oscar Rosander, les d&eacute;cors de Gittan Gustafsson, la musique originale d'Erik Nordgren<a class="renvoi" href="#src-5" id="ref-5">[5]</a>. Le titre suédois d&eacute;signe litt&eacute;ralement un &laquo;&nbsp;coin &agrave; fraises des bois&nbsp;&raquo;&nbsp;: en su&eacute;dois, l'expression a pris le sens d'un lieu personnel, gard&eacute; secret, o&ugrave; l'on se sent chez soi<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>.</p>
+
+    <p>Le sc&eacute;nario achev&eacute; est dat&eacute; du 31 mai 1957&nbsp;; le tournage commence le 2 juillet et s'ach&egrave;ve le 27 ao&ucirc;t. Il se d&eacute;roule pour l'essentiel aux studios de Filmstaden, &agrave; R&aring;sunda, avec des extérieurs &agrave; Gamla Stan, &agrave; Slussen, &agrave; Gr&auml;nna &mdash; d&eacute;jeuner au restaurant Gyllene Uttern &mdash;, &agrave; Dalar&ouml; et &Auml;ngs&ouml; dans l'archipel de Stockholm, et sur la place de l'universit&eacute; de Lund<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>. Le film est pr&eacute;sent&eacute; simultan&eacute;ment dans sept villes su&eacute;doises le 26 d&eacute;cembre 1957, pour une longueur d'origine de 91 minutes et 2 490 m&egrave;tres de pellicule, en 1,37:1, son optique monophonique<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.</p>
+
+    <div class="divergence">
+      Divergence de sources d&eacute;clar&eacute;e &mdash; la dur&eacute;e. La fondation Bergman donne 91 minutes pour la copie d'origine<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>, chiffre repris par la fiche technique de DVDClassik<a class="renvoi" href="#src-4" id="ref-4">[4]</a>&nbsp;; la notice Larousse indique 1 h 30<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>, et certaines &eacute;ditions vid&eacute;o annoncent 92 minutes. La valeur majoritaire (91 min) est retenue, l'&eacute;cart tenant vraisemblablement aux conversions de m&eacute;trage et aux cadences de report.
+    </div>
+
+    <p>&Agrave; l'&eacute;cran&nbsp;: Victor Sj&ouml;str&ouml;m (Isak Borg), Ingrid Thulin (Marianne), Bibi Andersson (Sara, dans le souvenir comme sur la route), Gunnar Bj&ouml;rnstrand (Evald, le fils), Jullan Kindahl (mademoiselle Agda, la gouvernante), Folke Sundquist et Bj&ouml;rn Bjelfvenstam (les deux &eacute;tudiants), Naima Wifstrand (la m&egrave;re d'Isak), Gunnar Sj&ouml;berg et Gunnel Br&ouml;str&ouml;m (les &eacute;poux Alman), Gertrud Fridh (Karin, l'&eacute;pouse d&eacute;funte), Gunnel Lindblom (Charlotta) et, dans un r&ocirc;le bref, Max von Sydow en pompiste<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. Le palmar&egrave;s est le plus fourni de la carri&egrave;re de Bergman&nbsp;: Ours d'or et prix FIPRESCI &agrave; Berlin en 1958, Golden Globe du meilleur film &eacute;tranger et prix du National Board of Review, deux nominations aux BAFTA (meilleur film, meilleur acteur &eacute;tranger pour Sj&ouml;str&ouml;m), et une nomination &agrave; l'Oscar du meilleur sc&eacute;nario original en 1960<a class="renvoi" href="#src-9" id="ref-9">[9]</a><a class="renvoi" href="#src-10" id="ref-10">[10]</a>.</p>
+  </section>
+
+  <section class="planche" id="synopsis">
+    <div class="pl-head">
+      <span class="pl-num">Planche II</span>
+      <h2>Synopsis<span class="pl-sous">Le trajet d'une seule journ&eacute;e, de Stockholm &agrave; Lund</span></h2>
+    </div>
+
+    <p>Isak Borg, professeur de m&eacute;decine &agrave; la retraite, vit seul avec sa gouvernante et sa chienne. Il doit se rendre &agrave; Lund pour y recevoir le titre de docteur jubilaire, qui c&eacute;l&egrave;bre cinquante ans d'exercice. La veille du d&eacute;part, un cauchemar le met en pr&eacute;sence d'une rue vide, d'une horloge sans aiguilles et d'un corbillard sans cocher d'o&ugrave; tombe un cercueil&nbsp;: il y reconna&icirc;t son propre corps, qui lui saisit le bras<a class="renvoi" href="#src-2" id="ref-2">[2]</a>. Au r&eacute;veil, il d&eacute;cide de faire la route en voiture plut&ocirc;t qu'en avion. Sa belle-fille Marianne, qui loge chez lui apr&egrave;s une brouille avec son mari, monte avec lui<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>.</p>
+
+    <p>Le voyage se change en itin&eacute;raire int&eacute;rieur. Un d&eacute;tour par la maison d'&eacute;t&eacute; de l'enfance le fait entrer, &eacute;veill&eacute;, dans une sc&egrave;ne de 1900 qu'il n'avait pas v&eacute;cue de ce point de vue&nbsp;: la jeune Sara y cueille des fraises des bois et s'y laisse embrasser par Sigfrid, le fr&egrave;re qui la lui prendra. La voiture recueille ensuite trois &eacute;tudiants en route vers l'Italie, puis un couple d'&eacute;poux qui se d&eacute;chirent et que Marianne finit par mettre dehors. Une visite &agrave; la m&egrave;re nonag&eacute;naire d'Isak, un second r&ecirc;ve o&ugrave; il subit un examen humiliant et assiste &agrave; l'adult&egrave;re de sa femme, une conversation d&eacute;cisive avec Marianne&nbsp;: chaque &eacute;tape retire une pierre &agrave; l'&eacute;difice de sa bonne conscience<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>.</p>
+
+    <p class="discretion">La derni&egrave;re demi-heure &mdash; c&eacute;r&eacute;monie, r&eacute;conciliations, r&ecirc;ve final &mdash; est trait&eacute;e plus bas, aux planches VI et IX&nbsp;: qui n'a pas vu le film peut s'arr&ecirc;ter ici et y revenir apr&egrave;s.</p>
+  </section>
+
+  <section class="planche" id="production">
+    <div class="pl-head">
+      <span class="pl-num">Planche III</span>
+      <h2>Contexte de production<span class="pl-sous">O&ugrave; le sp&eacute;cimen est cueilli depuis une chambre d'h&ocirc;pital</span></h2>
+    </div>
+
+    <p>L'hiver 1956-1957 est une saison de surr&eacute;gime. Bergman ach&egrave;ve <em>Le Septi&egrave;me Sceau</em>, encha&icirc;ne trois mises en sc&egrave;ne au th&eacute;&acirc;tre municipal de Malm&ouml; &mdash; <em>La Chatte sur un toit br&ucirc;lant</em>, <em>&Eacute;rik XIV</em>, <em>Peer Gynt</em> &mdash; et voit sa sant&eacute; se d&eacute;grader. Au printemps, il est admis pour pr&egrave;s de deux mois &agrave; l'h&ocirc;pital universitaire Karolinska, en observation&nbsp;: c'est l&agrave; qu'il &eacute;crit le sc&eacute;nario<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. D&eacute;tail qui ne rel&egrave;ve pas de l'anecdote&nbsp;: son m&eacute;decin, Sture Helander, l'invite &agrave; suivre ses cours sur la psychosomatique, et l'&eacute;pouse de Helander, Gunnel Lindblom, jouera l'une des s&oelig;urs d'Isak<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>. Le montage financier ne pose aucun probl&egrave;me&nbsp;: le succ&egrave;s du <em>Septi&egrave;me Sceau</em> et les ventes &agrave; l'&eacute;tranger ont convaincu Svensk Filmindustri qu'elle tenait un actif<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>.</p>
+
+    <p>L'origine du dispositif est un souvenir d&eacute;plac&eacute;. Bergman a racont&eacute; qu'&agrave; l'automne 1956, sur la route de la Dalarna, il s'&eacute;tait arr&ecirc;t&eacute; &agrave; Uppsala devant la maison de sa grand-m&egrave;re et avait imagin&eacute; que la vieille cuisini&egrave;re vienne ouvrir&nbsp;; de l&agrave; l'id&eacute;e d'un homme qui pousserait une porte, entrerait dans son enfance, ressortirait dans le pr&eacute;sent, tournerait le coin de la rue et tomberait dans une autre &eacute;poque de sa vie. Plus tard, dans <em>Images</em>, il r&eacute;voque sa propre version&nbsp;: la v&eacute;rit&eacute;, corrige-t-il, est qu'il n'a jamais cess&eacute; d'habiter son enfance<a class="renvoi" href="#src-1" id="ref-1i">[1]</a>. La fondation Bergman souligne que le film est, de toute son &oelig;uvre, celui o&ugrave; les emprunts sont les plus lisibles&nbsp;: Strindberg d'abord, dont la pr&eacute;face du <em>Songe</em> pourrait servir de credo &mdash; &laquo;&nbsp;Le temps et l'espace n'existent pas&nbsp;&raquo; &mdash;, Ibsen ensuite, le <em>Peer Gynt</em> qu'il venait de monter offrant le m&ecirc;me bilan d'une vie<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>.</p>
+
+    <p>Le mod&egrave;le de la figure est explicite. Bergman a dit avoir cherch&eacute; &agrave; se mettre &agrave; la place de son p&egrave;re, dont il &eacute;tait alors brouill&eacute;, et avoir b&acirc;ti Isak comme un masque paternel recouvrant un autoportrait&nbsp;: les initiales sont les siennes, et il d&eacute;compose le nom en &laquo;&nbsp;glace&nbsp;&raquo; et &laquo;&nbsp;forteresse&nbsp;&raquo;<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>. Sur la fin du film il sera plus net encore, y voyant un appel adress&eacute; &agrave; ses parents&nbsp;: &laquo;&nbsp;voyez ce que je suis, comprenez-moi et &mdash; si c'est possible &mdash; pardonnez-moi&nbsp;&raquo;<a class="renvoi" href="#src-4" id="ref-4d">[4]</a>. Sa vie priv&eacute;e est alors en d&eacute;sordre&nbsp;: troisi&egrave;me mariage en train de se d&eacute;faire, relation difficile avec Bibi Andersson, rupture avec ses parents<a class="renvoi" href="#src-3" id="ref-3">[3]</a>.</p>
+
+    <p>Reste le casting du r&ocirc;le-titre, qui est une histoire en soi. On imaginerait Sj&ouml;str&ouml;m pr&eacute;vu de longue date, tant le film dialogue avec <em>La Charrette fant&ocirc;me</em> (1921), que Bergman disait revoir chaque &eacute;t&eacute;. Ce n'est pas le cas &mdash; et Bergman lui-m&ecirc;me a donn&eacute; deux versions&nbsp;: dans <em>Bergman par Bergman</em>, il aurait pens&eacute; &agrave; Sj&ouml;str&ouml;m une fois le sc&eacute;nario termin&eacute; et demand&eacute; &agrave; Dymling de le contacter&nbsp;; dans <em>Images</em>, il affirme n'y avoir jamais song&eacute; et attribue l'id&eacute;e au seul Dymling, ajoutant qu'il a longuement h&eacute;sit&eacute; avant d'accepter<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>.</p>
+
+    <div class="divergence">
+      Divergence de sources d&eacute;clar&eacute;e &mdash; l'&acirc;ge de Sj&ouml;str&ouml;m au tournage. La fondation Bergman parle d'un homme de 79 ans<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>, Peter Cowie de 78 ans<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. N&eacute; le 20 septembre 1879, Sj&ouml;str&ouml;m en avait 77 le jour o&ugrave; le tournage a commenc&eacute;<a class="renvoi" href="#src-8" id="ref-8">[8]</a>. Les deux valeurs publi&eacute;es viennent probablement d'un glissement avec l'&acirc;ge du personnage, qu'Isak annonce lui-m&ecirc;me &agrave; 78 ans.
+    </div>
+
+    <p>Le tournage fut plus &eacute;prouvant que promis&nbsp;: Dymling avait vendu le r&ocirc;le &agrave; Sj&ouml;str&ouml;m comme une partie de campagne o&ugrave; il n'aurait qu'&agrave; s'allonger sous un arbre et se souvenir<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Les premiers jours, l'acteur perd ses r&eacute;pliques et s'emporte&nbsp;; Bergman convient avec Ingrid Thulin qu'elle endossera la faute chaque fois qu'une prise &eacute;chouera. Les choses s'arrangent surtout quand on d&eacute;place les horaires pour que le vieil homme rentre &agrave; temps pour son whisky de fin d'apr&egrave;s-midi<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. Cowie ajoute que plusieurs sc&egrave;nes ont d&ucirc; &ecirc;tre rapatri&eacute;es en studio pour lui, Fischer expliquant sans d&eacute;tour que la m&eacute;diocre transparence des sc&egrave;nes de voiture tient &agrave; l'incertitude o&ugrave; l'&eacute;quipe &eacute;tait de le retrouver vivant le lendemain<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>.</p>
+
+    <p>Deux anecdotes de plateau &eacute;clairent la m&eacute;thode. Le corbillard sans cocher a &eacute;t&eacute; film&eacute; vers deux heures du matin dans Gamla Stan d&eacute;sert &mdash; il fait clair &agrave; cette heure-l&agrave; en juillet &agrave; Stockholm &mdash; et des f&ecirc;tards rentrant chez eux ont cess&eacute; de chanter net en le voyant arriver&nbsp;; le mannequin que Borg prend pour un passant &eacute;tait fait d'un ballon de baudruche et d'un bas de soie, et les murs de la rue avaient &eacute;t&eacute; peints en blanc pur pour obtenir l'&eacute;blouissement voulu<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. Quant &agrave; la sc&egrave;ne de l'adult&egrave;re, elle devait grouiller de serpents&nbsp;; ils se sont &eacute;chapp&eacute;s du terrarium la nuit pr&eacute;c&eacute;dente et ont gagn&eacute; le bois voisin. La fondation observe que c'est sans doute heureux, le symbole e&ucirc;t &eacute;t&eacute; freudien jusqu'&agrave; la caricature<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>.</p>
+  </section>
+
+  <section class="planche" id="structure">
+    <div class="pl-head">
+      <span class="pl-num">Planche IV</span>
+      <h2>Structure narrative<span class="pl-sous">Trois strates press&eacute;es dans la m&ecirc;me feuille : la route, le r&ecirc;ve, le souvenir</span></h2>
+    </div>
+
+    <p>Le film tient dans une unit&eacute; de temps quasi classique&nbsp;: un jour et une nuit, du cauchemar de l'aube au r&ecirc;ve d'apaisement du soir. Sur cette ligne unique, Bergman superpose trois r&eacute;gimes d'images qui ne sont jamais s&eacute;par&eacute;s par un proc&eacute;d&eacute; de d&eacute;marcation appuy&eacute; &mdash; ni fondu conventionnel, ni voile, ni flou. Le pr&eacute;sent de la route, les r&ecirc;ves nettement oniriques et les souvenirs se donnent avec le m&ecirc;me grain, la m&ecirc;me lumi&egrave;re, la m&ecirc;me &eacute;paisseur de r&eacute;el. Isak le formule lui-m&ecirc;me en voix off&nbsp;: il ne sait pas dire si ce fut un r&ecirc;ve, ou des souvenirs remont&eacute;s avec la force d'&eacute;v&eacute;nements v&eacute;cus<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>.</p>
+
+    <p>La trouvaille structurelle est ailleurs, et c'est elle que le film a l&eacute;gu&eacute;e&nbsp;: le vieil homme n'est pas ramen&eacute; en arri&egrave;re, il <em>entre</em> dans le pass&eacute; avec son corps de 1957 et son visage de vieillard. Il assiste aux sc&egrave;nes de sa jeunesse en spectateur non vu, y compris &agrave; celles auxquelles le jeune Isak n'&eacute;tait pas pr&eacute;sent&nbsp;: la d&eacute;claration de Sigfrid &agrave; Sara, plus tard la confidence o&ugrave; Sara explique pourquoi elle ne l'&eacute;pousera pas<a class="renvoi" href="#src-4" id="ref-4e">[4]</a>. Cette omniscience r&eacute;trospective n'est pas un confort de narration&nbsp;: elle est le sujet m&ecirc;me. Isak n'apprend rien de nouveau sur les faits&nbsp;; il apprend, &agrave; soixante ans de distance, ce que les autres &eacute;prouvaient pendant qu'il ne regardait pas.</p>
+
+    <p>La progression ob&eacute;it &agrave; une logique de d&eacute;molition contr&ocirc;l&eacute;e, chaque rencontre de la route pr&eacute;parant la strate int&eacute;rieure qui suit. Les trois auto-stoppeurs rejouent, en version l&eacute;g&egrave;re et sans dommage, le triangle amoureux qui a d&eacute;truit sa jeunesse&nbsp;: une Sara, deux pr&eacute;tendants, la m&ecirc;me actrice dans les deux r&ocirc;les. Le couple Alman, qui se d&eacute;chire jusqu'&agrave; sortir de la route, donne &agrave; voir un mariage de haine juste avant que le r&ecirc;ve ne lui remontre le sien. La visite &agrave; la m&egrave;re de quatre-vingt-seize ans, retranch&eacute;e derri&egrave;re des objets inutiles, fournit &agrave; Marianne le diagnostic h&eacute;r&eacute;ditaire qu'elle formulera ensuite&nbsp;: sur dix fr&egrave;res et s&oelig;urs, Isak est le seul survivant, et la froideur est la maladie de famille<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>. Le film avance donc par appariements&nbsp;: &agrave; chaque station, le monde ext&eacute;rieur fournit la pi&egrave;ce &agrave; conviction que le sommeil va instruire.</p>
+  </section>
+
+  <section class="planche" id="miseenscene">
+    <div class="pl-head">
+      <span class="pl-num">Planche V</span>
+      <h2>Mise en sc&egrave;ne et proc&eacute;d&eacute;s<span class="pl-sous">La lumi&egrave;re br&ucirc;l&eacute;e, l'essieu qui crie, le silence entre deux battements</span></h2>
+    </div>
+
+    <p>La s&eacute;quence d'ouverture est un morceau de bravoure obtenu par soustraction. Fischer a racont&eacute; que Bergman et lui cherchaient des images dures, d'o&ugrave; toute la douceur des gris serait &ocirc;t&eacute;e&nbsp;; il a pu obtenir quelques m&egrave;tres de pellicule tr&egrave;s sensible pour exp&eacute;rimenter, denr&eacute;e rare dans une production o&ugrave; l'on comptait la pellicule. Le soleil su&eacute;dois d'&eacute;t&eacute; a fait le reste &mdash; sauf qu'apr&egrave;s le d&eacute;jeuner il avait tourn&eacute;, et que l'ombre d'un bouleau tra&icirc;ne encore, par endroits, au milieu de la rue<a class="renvoi" href="#src-1" id="ref-1r">[1]</a>. Le r&eacute;sultat est une surexposition volontaire&nbsp;: rue blanche, ciel blanc, porches en trous noirs. Cowie observe que ces b&eacute;ances sombres servent &agrave; sugg&eacute;rer un n&eacute;ant hostile, et que la s&eacute;quence fonctionne comme un hommage &agrave; <em>La Charrette fant&ocirc;me</em><a class="renvoi" href="#src-2" id="ref-2f">[2]</a>.</p>
+
+    <p>Le son y fait au moins autant que l'image. La bande est vid&eacute;e jusqu'&agrave; ce qu'Isak per&ccedil;oive les battements de son propre c&oelig;ur&nbsp;; quand le corbillard heurte le r&eacute;verb&egrave;re et lib&egrave;re le cercueil, l'essieu grince d'un cri qui &eacute;voque celui d'un nouveau-n&eacute;, rapprochant en un seul bruit la naissance et la mort<a class="renvoi" href="#src-2" id="ref-2g">[2]</a>. C'est une constante de Bergman&nbsp;: chercher le petit surcro&icirc;t sonore qui donne &agrave; une sc&egrave;ne sa dimension suppl&eacute;mentaire.</p>
+
+    <p>Le motif du miroir organise le reste. Le film proc&egrave;de, selon la formule de la fondation, &laquo;&nbsp;par miroirs, et par r&ecirc;ves, qui sont le miroir de l'esprit&nbsp;&raquo;<a class="renvoi" href="#src-1" id="ref-1s">[1]</a>. La sc&egrave;ne pivot est celle o&ugrave; Sara &mdash; la Sara du souvenir, mais devenue adulte et dure &mdash; tend un miroir au vieil homme pour l'obliger &agrave; se voir, et &agrave; sourire dedans. La fondation rapproche cette image d'un &eacute;pisode racont&eacute; par Bergman peu avant le tournage&nbsp;: &agrave; Cannes, un dessinateur l'avait crayonn&eacute; de trois quarts devant une glace, produisant deux Bergman &mdash; l'un enfantin, presque niais&nbsp;; l'autre, dans le miroir, vieux et las<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>.</p>
+
+    <p>Le contraste entre les deux esth&eacute;tiques oniriques du film m&eacute;rite d'&ecirc;tre relev&eacute;, parce qu'il d&eacute;partage ce qui a vieilli de ce qui n'a pas boug&eacute;. Les r&ecirc;ves ouvertement expressionnistes &mdash; horloge sans aiguilles, examen absurde o&ugrave; le professeur est reconnu &laquo;&nbsp;coupable de culpabilit&eacute;&nbsp;&raquo; &mdash; portent leur date&nbsp;: Strindberg, Kafka, un soup&ccedil;on de surr&eacute;alisme d'&eacute;poque. Les s&eacute;quences les plus fortes sont ailleurs, l&agrave; o&ugrave; un d&eacute;cor naturel parfaitement r&eacute;aliste bascule en paysage mental par le seul fait d'&ecirc;tre un souvenir&nbsp;: le talus de fraises des bois, la table du petit-d&eacute;jeuner d'anniversaire, le ponton du dernier plan<a class="renvoi" href="#src-1" id="ref-1u">[1]</a>. Le second r&ecirc;ve renverse d'ailleurs le premier &agrave; la seule force de la lumi&egrave;re et du son&nbsp;: le m&ecirc;me talus, cette fois sous un ciel noir travers&eacute; de vols de corbeaux, oiseaux qui signalent l'angoisse chez Bergman<a class="renvoi" href="#src-4" id="ref-4f">[4]</a>.</p>
+
+    <p>La musique d'Erik Nordgren travaille par retrait. Le Fanu note que son efficacit&eacute; cro&icirc;t avec sa discr&eacute;tion et que ses touches les plus justes sont subliminales &mdash; la br&egrave;ve phrase de violoncelle derri&egrave;re les pens&eacute;es d'Isak pendant la remise du titre, les six accords ascendants de harpe qui accompagnent les images finales<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. La partition c&ocirc;toie des mat&eacute;riaux emprunt&eacute;s&nbsp;: une fugue de Bach, des marches militaires su&eacute;doises, un chant populaire sur des paroles de Zacharias Topelius<a class="renvoi" href="#src-1" id="ref-1v">[1]</a>.</p>
+  </section>
+
+  <section class="planche" id="personnages">
+    <div class="pl-head">
+      <span class="pl-num">Planche VI</span>
+      <h2>Personnages principaux<span class="pl-sous">&Eacute;tiquettes de sp&eacute;cimens : quatre plantes de la m&ecirc;me famille, dont une seule fleurit</span></h2>
+    </div>
+
+    <div class="etiquettes">
+      <div class="etiquette">
+        <span class="rang">Sujet principal &middot; pr&eacute;lev&eacute; &agrave; Stockholm</span>
+        <span class="nom">Isak Borg</span>
+        <span class="interprete">Victor Sj&ouml;str&ouml;m</span>
+        <p>P&eacute;dant qui se sait p&eacute;dant, et le dit dans sa premi&egrave;re r&eacute;plique. Sa solitude n'est pas subie&nbsp;: elle est le r&eacute;sultat m&eacute;thodique d'un retrait qu'il pr&eacute;sente comme une sagesse. Le film lui retire une &agrave; une ses excuses sans jamais le rendre odieux &mdash; Cowie note que la chaleur de Sj&ouml;str&ouml;m rend le personnage assez sympathique pour que le public prenne son parti, si accablantes que soient les charges<a class="renvoi" href="#src-2" id="ref-2h">[2]</a>.</p>
+      </div>
+      <div class="etiquette">
+        <span class="rang">Sp&eacute;cimen vivant &middot; au volant</span>
+        <span class="nom">Marianne</span>
+        <span class="interprete">Ingrid Thulin</span>
+        <p>Le personnage qui donne au film son ton, plus que son intrigue. C'est elle qui conduit, qui expulse les Alman, qui &eacute;nonce le diagnostic&nbsp;: &eacute;go&iuml;ste inv&eacute;t&eacute;r&eacute;, sous un masque de vieillard aimable. Le Fanu y voit le pivot d'un film qui, malgr&eacute; les apparences, n'est pas n&eacute;vrotique&nbsp;: la s&eacute;r&eacute;nit&eacute; de Thulin dans les champs-contrechamps porte l'humanisme de l'ensemble<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>. Enceinte et d&eacute;cid&eacute;e &agrave; garder l'enfant, elle est la seule &agrave; refuser l'h&eacute;r&eacute;dit&eacute; familiale.</p>
+      </div>
+      <div class="etiquette">
+        <span class="rang">Double &eacute;chantillon &middot; 1900 et 1957</span>
+        <span class="nom">Sara</span>
+        <span class="interprete">Bibi Andersson</span>
+        <p>Un seul visage pour deux &acirc;ges du monde. Celle de 1900 cueille les fraises, se laisse embrasser par le fr&egrave;re, et reprochera &agrave; Isak une cour trop savante pour &ecirc;tre tendre. Celle de 1957 fume la pipe, chahute ses deux pr&eacute;tendants et appelle le vieux professeur &laquo;&nbsp;p&egrave;re Isak&nbsp;&raquo;. La seconde permet la r&eacute;paration que la premi&egrave;re refuse&nbsp;: aimer sans en souffrir<a class="renvoi" href="#src-4" id="ref-4g">[4]</a>.</p>
+      </div>
+      <div class="etiquette">
+        <span class="rang">Rejet de souche &middot; &agrave; Lund</span>
+        <span class="nom">Evald</span>
+        <span class="interprete">Gunnar Bj&ouml;rnstrand</span>
+        <p>Le fils est la d&eacute;monstration que la st&eacute;rilit&eacute; se transmet. Il refuse l'enfant que porte Marianne au nom d'une conviction qu'il assène sans trembler&nbsp;: &laquo;&nbsp;Il est absurde de vivre dans ce monde&nbsp;&raquo;, et plus absurde encore d'y ajouter des victimes<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>. Il se dit lui-m&ecirc;me enfant non d&eacute;sir&eacute; d'un mariage qui imitait l'enfer&nbsp;: la phrase referme la boucle sur trois g&eacute;n&eacute;rations.</p>
+      </div>
+    </div>
+
+    <p>Deux figures secondaires m&eacute;ritent leur &eacute;tiquette. Mademoiselle Agda, la gouvernante, tient le seul rapport &eacute;galitaire de la maison&nbsp;: quarante ans de service lui donnent le droit de rembarrer son ma&icirc;tre, et c'est avec elle qu'Isak tentera, maladroitement, sa premi&egrave;re avance de r&eacute;conciliation &mdash; qu'elle repousse en riant. Les &eacute;poux Alman, eux, ne sont pas un &eacute;pisode comique&nbsp;: leur cruaut&eacute; r&eacute;ciproque, qu'ils appellent psychoth&eacute;rapie, est le miroir grossissant du mariage d'Isak, et c'est de les avoir vus &agrave; l'&oelig;uvre que Marianne trouve le courage de parler.</p>
+  </section>
+
+  <section class="planche" id="themes">
+    <div class="pl-head">
+      <span class="pl-num">Planche VII</span>
+      <h2>Th&egrave;mes<span class="pl-sous">Cl&eacute; de d&eacute;termination : quatre caract&egrave;res pour reconna&icirc;tre l'esp&egrave;ce</span></h2>
+    </div>
+
+    <p>Forme retenue&nbsp;: breakdown titr&eacute;, la forme par d&eacute;faut du gabarit. Les quatre axes ci-dessous se recoupent mais restent s&eacute;parables&nbsp;; les entrelacer en prose continue aurait dissous ce que le film distingue soigneusement, notamment la fronti&egrave;re entre la mort biologique et l'autre.</p>
+
+    <h3 class="theme">1. &Ecirc;tre mort sans le savoir</h3>
+    <p>Le film ne parle pas de la mort &agrave; venir mais d'une mort d&eacute;j&agrave; survenue. Isak l'&eacute;nonce lui-m&ecirc;me au r&eacute;veil du premier cauchemar&nbsp;: c'est comme s'il se disait, en dormant, ce qu'il refuse d'entendre &eacute;veill&eacute; &mdash; qu'il est mort quoique vivant<a class="renvoi" href="#src-1" id="ref-1w">[1]</a>. L'horloge sans aiguilles n'annonce donc pas une &eacute;ch&eacute;ance&nbsp;: elle constate un temps arr&ecirc;t&eacute;. DVDClassik souligne que le corbillard sans conducteur fait d'Isak le passager ignorant de sa propre course<a class="renvoi" href="#src-4" id="ref-4h">[4]</a>. C'est la diff&eacute;rence exacte avec <em>Le Septi&egrave;me Sceau</em>, sorti la m&ecirc;me ann&eacute;e&nbsp;: l&agrave;-bas, la Mort a un visage et l'on joue contre elle&nbsp;; ici, elle n'a ni nom ni figure, et le sursis se n&eacute;gocie avec les vivants.</p>
+
+    <h3 class="theme">2. La froideur comme maladie h&eacute;r&eacute;ditaire</h3>
+    <p>Trois g&eacute;n&eacute;rations, un m&ecirc;me sympt&ocirc;me. La m&egrave;re de quatre-vingt-seize ans, gel&eacute;e derri&egrave;re des objets d&eacute;sert&eacute;s par ceux qui leur donnaient un sens&nbsp;; Isak reclus au sommet de sa r&eacute;ussite&nbsp;; Evald refusant l'enfant qui l'ancrerait dans la vie. DVDClassik nomme cela une momification &eacute;motionnelle, et rel&egrave;ve le paradoxe&nbsp;: la famille Borg est prolifique en descendants et en travaux reconnus, st&eacute;rile en sentiments<a class="renvoi" href="#src-4" id="ref-4i">[4]</a>. C'est Marianne, seule pi&egrave;ce rapport&eacute;e, qui pose le diagnostic et refuse la contagion.</p>
+
+    <h3 class="theme">3. Le smultronst&auml;lle, ou la m&eacute;moire comme sanctuaire</h3>
+    <p>Le titre est un mot intraduisible&nbsp;: le coin &agrave; fraises des bois d&eacute;signe en su&eacute;dois un lieu de pr&eacute;dilection, un refuge que l'on ne montre pas<a class="renvoi" href="#src-1" id="ref-1x">[1]</a>. Le film en fait le lieu d'un apprentissage tardif&nbsp;: c'est parmi les fraises que le vieil homme, dit la notice de la fondation, comprend qu'il avait toujours refus&eacute; le d&eacute;sir<a class="renvoi" href="#src-1" id="ref-1y">[1]</a>. La m&eacute;moire n'y est ni consolante ni accusatrice&nbsp;: elle est un herbier &mdash; des sc&egrave;nes conserv&eacute;es intactes, mais s&egrave;ches, et qu'il faut rouvrir pour qu'elles redeviennent lisibles.</p>
+
+    <h3 class="theme">4. Le pardon comme travail, non comme gr&acirc;ce</h3>
+    <p>Le film ne se termine pas sur une r&eacute;v&eacute;lation mais sur une s&eacute;rie de gestes petits et co&ucirc;teux. Isak tente une familiarit&eacute; avec sa gouvernante, encourage prudemment le rapprochement de son fils et de sa belle-fille, se laisse embrasser au lit comme un enfant. Le Fanu voit dans ces derni&egrave;res s&eacute;quences une suite de miniatures &eacute;piphaniques qui se rel&egrave;vent l'une l'autre&nbsp;; il tient la sc&egrave;ne du po&egrave;me r&eacute;cit&eacute; &agrave; plusieurs voix sur la terrasse &mdash; les vers de Johan Olof Wallin que chacun compl&egrave;te &agrave; tour de r&ocirc;le &mdash; pour l'une des grandes &eacute;piphanies du cin&eacute;ma<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>. Il faut noter ce que Bergman refuse ici&nbsp;: aucune conversion, aucun rachat d&eacute;finitif. Rien ne garantit qu'Evald changera, et le vieil homme n'obtient pas l'absolution&nbsp;; il obtient une nuit calme.</p>
+  </section>
+
+  <section class="planche" id="reception">
+    <div class="pl-head">
+      <span class="pl-num">Planche VIII</span>
+      <h2>R&eacute;ception et post&eacute;rit&eacute;<span class="pl-sous">Bouturage : ce que la planche a essaim&eacute;</span></h2>
+    </div>
+
+    <p>L'accueil su&eacute;dois est chaleureux, &agrave; une ou deux exceptions pr&egrave;s<a class="renvoi" href="#src-1" id="ref-1z">[1]</a>. L'une de ces exceptions vaut d'&ecirc;tre cit&eacute;e, parce qu'elle attaque le film exactement l&agrave; o&ugrave; la critique posthume le loue&nbsp;: trop de r&eacute;f&eacute;rences litt&eacute;raires, pas assez d'originalit&eacute; &mdash; le vieux clich&eacute; ibs&eacute;nien du vivant d&eacute;j&agrave; mort, les chamailleries avec la servante emprunt&eacute;es &agrave; Hjalmar Bergman, du P&auml;r Lagerkvist dans les r&ecirc;ves et du Strindberg dans l'examen universitaire<a class="renvoi" href="#src-1" id="ref-1aa">[1]</a>. Le reproche n'est pas absurde&nbsp;; il suppose simplement que l'emprunt lisible soit une faiblesse.</p>
+
+    <p>L'Ours d'or de Berlin en 1958 fait basculer la carri&egrave;re internationale. Godard, qui couvre le festival pour les <em>Cahiers du cin&eacute;ma</em>, exp&eacute;die un t&eacute;l&eacute;gramme rest&eacute; c&eacute;l&egrave;bre par sa formule finale&nbsp;: multipliez Heidegger par Giraudoux, vous obtenez Bergman<a class="renvoi" href="#src-1" id="ref-1ab">[1]</a>. Les distinctions s'encha&icirc;nent &mdash; FIPRESCI &agrave; Berlin, National Board of Review, Golden Globe du meilleur film &eacute;tranger, nomination &agrave; l'Oscar du sc&eacute;nario original<a class="renvoi" href="#src-9" id="ref-9b">[9]</a> &mdash;, au point que la fondation en fait le film le plus prim&eacute; de toute la carri&egrave;re de Bergman<a class="renvoi" href="#src-1" id="ref-1ac">[1]</a>. Aux &Eacute;tats-Unis, c'est son premier succ&egrave;s commercial<a class="renvoi" href="#src-6" id="ref-6">[6]</a>, et le sc&eacute;nario est publi&eacute; d&egrave;s 1960 dans un recueil<a class="renvoi" href="#src-10" id="ref-10b">[10]</a>.</p>
+
+    <p>La post&eacute;rit&eacute; est double. C&ocirc;t&eacute; forme, Philip et Kersti French sont all&eacute;s jusqu'&agrave; y voir le v&eacute;ritable road movie originel, dont des films comme <em>Easy Rider</em> seraient les d&eacute;biteurs implicites &mdash; la fondation elle-m&ecirc;me juge la formule exag&eacute;r&eacute;e, mais la rapporte<a class="renvoi" href="#src-1" id="ref-1ad">[1]</a>. C&ocirc;t&eacute; motifs, la liste des emprunteurs va d'Almod&oacute;var &agrave; T&eacute;chin&eacute;, de Cronenberg &mdash; dont l'ouverture de <em>Spider</em> refait la rue d&eacute;serte du cauchemar &mdash; &agrave; Tim Burton<a class="renvoi" href="#src-1" id="ref-1ae">[1]</a>. Le d&eacute;biteur le plus assidu reste Woody Allen, dont trois films au moins peuvent se lire comme des appendices aux <em>Fraises sauvages</em>&nbsp;: <em>Une autre femme</em>, <em>Crimes et d&eacute;lits</em>, <em>Harry dans tous ses &eacute;tats</em><a class="renvoi" href="#src-1" id="ref-1af">[1]</a>. Kubrick, en 1963, le classait deuxi&egrave;me de ses films pr&eacute;f&eacute;r&eacute;s<a class="renvoi" href="#src-7" id="ref-7">[7]</a>.</p>
+
+    <p>Deux &eacute;pilogues, enfin, disent quelque chose que les palmar&egrave;s ne disent pas. Le p&egrave;re de Bergman &mdash; le pasteur dont Isak porte les traits, et avec qui son fils &eacute;tait alors brouill&eacute; &mdash; a &eacute;crit &agrave; Victor Sj&ouml;str&ouml;m en janvier 1958 pour le remercier de son interpr&eacute;tation et de ce qu'il avait donn&eacute; &agrave; Ingmar<a class="renvoi" href="#src-1" id="ref-1ag">[1]</a>. Et Bergman, interrog&eacute; sur la meilleure critique qu'il ait re&ccedil;ue, citait un ami d'enfance venu lui dire qu'en regardant le film, il n'avait pu s'emp&ecirc;cher de penser &agrave; une tante rest&eacute;e seule &agrave; Borl&auml;nge, et qu'il l'inviterait &agrave; P&acirc;ques<a class="renvoi" href="#src-2" id="ref-2i">[2]</a>. Sj&ouml;str&ouml;m, lui, ne tourna plus&nbsp;: il mourut le 3 janvier 1960<a class="renvoi" href="#src-8" id="ref-8b">[8]</a>.</p>
+  </section>
+
+  <section class="planche" id="conclusion">
+    <div class="pl-head">
+      <span class="pl-num">Planche IX</span>
+      <h2>Conclusion<span class="pl-sous">Ce qui reste quand la plante est s&egrave;che</span></h2>
+    </div>
+
+    <p>Il y a dans <em>Les Fraises sauvages</em> une op&eacute;ration dont on mesure mal la hardiesse parce qu'elle a &eacute;t&eacute; imit&eacute;e mille fois depuis&nbsp;: un homme de trente-huit ans &eacute;crit le r&ocirc;le d'un vieillard sur le mod&egrave;le de son p&egrave;re, en y logeant son propre autoportrait, et le confie &agrave; l'homme qui a fond&eacute; le cin&eacute;ma de son pays. Le r&eacute;sultat n'appartient plus tout &agrave; fait &agrave; l'auteur, et il l'a reconnu sans d&eacute;tour&nbsp;: le film, disait-il, n'&eacute;tait plus le sien mais celui de Victor Sj&ouml;str&ouml;m<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. Cet aveu n'est pas de la modestie de circonstance. Il d&eacute;crit une transaction r&eacute;elle&nbsp;: Bergman a fourni la structure et le grief&nbsp;; Sj&ouml;str&ouml;m a fourni le corps, la fatigue, et une chaleur que le texte seul ne contenait pas.</p>
+
+    <p>C'est pr&eacute;cis&eacute;ment cette chaleur qui d&eacute;termine ce que le film peut et ne peut pas faire. Le sc&eacute;nario est un r&eacute;quisitoire&nbsp;: il &eacute;num&egrave;re m&eacute;thodiquement les d&eacute;g&acirc;ts d'un homme qui a confondu la correction et la bont&eacute;. Mais l'interpr&eacute;tation d&eacute;place le proc&egrave;s&nbsp;; comme le note Cowie, la sympathie de l'acteur emporte le public du c&ocirc;t&eacute; de l'accus&eacute; malgr&eacute; les charges<a class="renvoi" href="#src-2" id="ref-2j">[2]</a>. On peut y voir un adoucissement, et l'objection m&eacute;rite d'&ecirc;tre pos&eacute;e&nbsp;: un film qui donne au spectateur l'&eacute;motion de la r&eacute;conciliation sans lui faire payer le prix du grief risque d'offrir le confort de la nostalgie l&agrave; o&ugrave; il annon&ccedil;ait un examen. Le Fanu retourne d'ailleurs l'observation en compliment, jugeant qu'il ne faut pas surestimer l'existentialisme du film et que sa v&eacute;ritable qualit&eacute; est une gaiet&eacute; qui gouverne bien plus de sc&egrave;nes qu'on ne le dit<a class="renvoi" href="#src-3" id="ref-3g">[3]</a>.</p>
+
+    <p>Il me semble que la question est mal pos&eacute;e des deux c&ocirc;t&eacute;s, et que le film r&eacute;pond ailleurs. Ce qu'il propose n'est ni un pardon ni une condamnation, mais une modification de la position du regard&nbsp;: Isak ne d&eacute;couvre aucun fait ignor&eacute;, il d&eacute;couvre qu'il y avait des points de vue autres que le sien sur des faits qu'il connaissait par c&oelig;ur. Le proc&eacute;d&eacute; central &mdash; entrer dans le souvenir avec son visage de vieillard, et voir des sc&egrave;nes auxquelles on n'assistait pas &mdash; est la traduction formelle exacte de cette op&eacute;ration morale. Le film ne dit pas &laquo;&nbsp;tu as mal agi&nbsp;&raquo;&nbsp;; il dit &laquo;&nbsp;les autres &eacute;taient l&agrave;, aussi&nbsp;&raquo;. C'est beaucoup moins spectaculaire qu'une r&eacute;demption, et beaucoup plus difficile &agrave; obtenir.</p>
+
+    <p>Reste le dernier plan, qui est le v&eacute;ritable enjeu du d&eacute;bat. Sara conduit le vieil homme &agrave; une clairi&egrave;re d'o&ugrave; il aper&ccedil;oit ses parents qui p&ecirc;chent, de l'autre c&ocirc;t&eacute; de l'eau, et qui lui font signe. On peut lire la sc&egrave;ne comme une consolation r&eacute;gressive &mdash; le vieillard rendu &agrave; l'enfance parce qu'il n'y a rien d'autre &agrave; lui offrir. On peut y lire aussi, avec DVDClassik, une barque de passeur, et une mort accept&eacute;e sans plus se soucier de la rive<a class="renvoi" href="#src-4" id="ref-4j">[4]</a>. Bergman, lui, y a mis autre chose encore, et l'a dit&nbsp;: un appel &agrave; ses parents vivants, une demande de reconnaissance et, si possible, de pardon<a class="renvoi" href="#src-4" id="ref-4k">[4]</a>. Ces trois lectures ne s'excluent pas&nbsp;; leur superposition est exactement ce qui emp&ecirc;che la sc&egrave;ne de tomber dans le sentimentalisme dont on l'accuse parfois. Un plan qui console, qui enterre et qui supplie en m&ecirc;me temps n'est pas une image facile.</p>
+
+    <p>Reste enfin l'&eacute;vidence pratique&nbsp;: c'est, de tout Bergman, le film le plus praticable pour qui n'y est jamais entr&eacute;. DVDClassik en fait explicitement la porte d'entr&eacute;e recommand&eacute;e, en rappelant que l'&oelig;uvre n'est pas que forteresse aust&egrave;re et dissection de l'&acirc;me &mdash; qu'on y trouve aussi de la sensualit&eacute;, de la tendresse, et m&ecirc;me de l'humour<a class="renvoi" href="#src-4" id="ref-4l">[4]</a>. La comparaison avec <em>Persona</em>, neuf ans plus tard, est instructive et Le Fanu la fait&nbsp;: l&agrave;-bas la grammaire du cin&eacute;ma sera d&eacute;mont&eacute;e, brillamment, mais peut-&ecirc;tre au prix d'une certaine coh&eacute;rence humaine&nbsp;; ici r&egrave;gne un classicisme tranquille et s&ucirc;r de lui<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>. Ce classicisme n'est pas une prudence. C'est le choix d'un cin&eacute;aste qui savait qu'un homme entrant par une porte dans sa propre enfance n'a besoin d'aucun effet suppl&eacute;mentaire pour &ecirc;tre &eacute;trange.</p>
+  </section>
+
+  <section class="sources" id="sources">
+    <div class="pl-head">
+      <span class="pl-num">Sources</span>
+      <h2>Bibliographie<span class="pl-sous">Uniquement les r&eacute;f&eacute;rences effectivement consult&eacute;es pendant la recherche</span></h2>
+    </div>
+
+    <ol>
+      <li id="src-1">Fondation Ingmar Bergman, notice de production &laquo;&nbsp;Wild Strawberries&nbsp;&raquo; (gen&egrave;se, tournage, sources d'inspiration, faits de production, post&eacute;rit&eacute;). Source principale de cette fiche.<br><span class="lien">https://www.ingmarbergman.se/en/production/wild-strawberries</span></li>
+      <li id="src-2">Peter Cowie, &laquo;&nbsp;Wild Strawberries&nbsp;&raquo;, <em>The Criterion Collection &mdash; Current</em>, 11 f&eacute;vrier 2002.<br><span class="lien">https://www.criterion.com/current/posts/186-wild-strawberries</span></li>
+      <li id="src-3">Mark Le Fanu, &laquo;&nbsp;Wild Strawberries: Where Is the Friend I Seek?&nbsp;&raquo;, <em>The Criterion Collection &mdash; Current</em>, 11 juin 2013.<br><span class="lien">https://www.criterion.com/current/posts/2795-wild-strawberries-where-is-the-friend-i-seek</span></li>
+      <li id="src-4">Jack Sullivan, &laquo;&nbsp;Les Fraises sauvages &mdash; analyse et critique du film&nbsp;&raquo;, <em>DVDClassik</em>, 5 ao&ucirc;t 2006 (comprend des citations d'<em>Images</em> de Bergman, &eacute;d. Gallimard).<br><span class="lien">https://www.dvdclassik.com/critique/les-fraises-sauvages-bergman</span></li>
+      <li id="src-5">&laquo;&nbsp;les Fraises sauvages / Smultronst&auml;llet&nbsp;&raquo;, notice extraite du <em>Dictionnaire mondial des films</em>, Larousse.<br><span class="lien">https://www.larousse.fr/encyclopedie/film/les_Fraises_sauvages/4534</span></li>
+      <li id="src-6">&laquo;&nbsp;Wild Strawberries&nbsp;&raquo;, <em>Encyclop&aelig;dia Britannica</em>.<br><span class="lien">https://www.britannica.com/topic/Wild-Strawberries</span></li>
+      <li id="src-7">&laquo;&nbsp;Wild Strawberries (film)&nbsp;&raquo;, <em>Wikipedia</em> (version anglaise) &mdash; fiche technique, r&eacute;ception, mention du classement de Kubrick.<br><span class="lien">https://en.wikipedia.org/wiki/Wild_Strawberries_(film)</span></li>
+      <li id="src-8">&laquo;&nbsp;Victor Sj&ouml;str&ouml;m&nbsp;&raquo;, <em>Wikipedia</em> (version anglaise) &mdash; dates de naissance et de mort, prix du National Board of Review 1958.<br><span class="lien">https://en.wikipedia.org/wiki/Victor_Sj%C3%B6str%C3%B6m</span></li>
+      <li id="src-9">&laquo;&nbsp;Wild Strawberries &mdash; awards and nominations&nbsp;&raquo;, <em>FilmAffinity</em> (Oscars 1960, Golden Globes 1960, BAFTA 1959, Berlin 1958).<br><span class="lien">https://www.filmaffinity.com/us/movie-awards.php?movie-id=924464</span></li>
+      <li id="src-10">&laquo;&nbsp;Wild Strawberries&nbsp;&raquo;, <em>Turner Classic Movies</em> &mdash; article de fond (succ&egrave;s en salles d'art et essai, publication du sc&eacute;nario en 1960).<br><span class="lien">https://www.tcm.com/articles/141987/wild-strawberries</span></li>
+      <li id="src-11">&laquo;&nbsp;Les Fraises sauvages d'Ingmar Bergman, introspection sensible et onirique&nbsp;&raquo;, <em>Le Mag du Cin&eacute;</em>, 16 novembre 2018 &mdash; consult&eacute; pour la construction des deux s&eacute;quences de r&ecirc;ve.<br><span class="lien">https://www.lemagducine.fr/retrospectives/les-fraises-sauvages-dingmar-bergman-introspection-sensible-et-onirique-10001694/</span></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="col">
+    <div class="f-in">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
