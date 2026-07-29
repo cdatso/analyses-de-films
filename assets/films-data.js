@@ -692,10 +692,11 @@ const FILMS = [
     poster: 'assets/posters/lolita.jpg',
     // --- schema v2 (annexe B) ---
     volet: 'critique',
-    // Provisoire : datePublication = date du MERGE (point ferme nº 6 du
-    // mandat du 30/07). Valeur posée à l'heure instrumentale de rédaction,
-    // à actualiser par le greffe au geste de statut post-merge.
-    datePublication: '2026-07-30 00:45',
+    // datePublication = date du MERGE (point ferme nº 6 du mandat du 30/07),
+    // actualisée au geste de statut post-merge : merge `1346ec3` du 30/07 à
+    // 00h55, gate AH « go pour le merge sur main » (la valeur provisoire de
+    // rédaction, 00:45, est remplacée).
+    datePublication: '2026-07-30 00:55',
     // ESCALADE P-12 EN PROPOSITION — NON CONSIGNÉE, NON APPLIQUÉE.
     // Valeur retenue : 'comedie', valeur existante la plus juste (le film
     // choisit la comédie ; c'est la lecture dominante des sources 1, 2 et 3
