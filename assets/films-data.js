@@ -642,5 +642,25 @@ const FILMS = [
     // silence (skill v2.1, étape 1).
     pays: ['Danemark', 'Suede', 'Royaume-Uni', 'France', 'Allemagne'],
     technique: ['couleur']
+  },
+  {
+    slug: 'les-fraises-sauvages',
+    title: 'Les Fraises sauvages',
+    director: 'Ingmar Bergman',
+    year: 1957,
+    summary: "Bergman confie au fondateur du cinéma suédois le rôle d'un vieillard qui apprend, en une seule journée de route, qu'il est mort depuis longtemps.",
+    poster: 'assets/posters/les-fraises-sauvages.jpg',
+    url: 'films/les-fraises-sauvages.html',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    datePublication: '2026-07-29 07:15',
+    genreBase: 'drame',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Suede'],
+    technique: ['n&b']
+    // `poster` ajouté à l'intégration (29/07, greffe) : affiche prise en
+    // priorité 1 dans la base locale D: (239 Ko < seuil P-36), la session
+    // claude.ai productrice n'y avait pas accès — règle des deux gestes de
+    // l'étape 8.2 respectée (fichier + champ ajoutés ensemble).
   }
 ];
