@@ -673,7 +673,7 @@ const FILMS = [
     poster: 'assets/posters/la-bataille-de-marathon.jpg',
     // --- schema v2 (annexe B) ---
     volet: 'critique',
-    datePublication: '2026-07-29 23:52',
+    datePublication: '2026-07-30 00:18',
     // ESCALADE P-12 SOLDÉE (gate AH 30/07 00h1x, formule pré-remplie par la
     // routine) : 'peplum' inscrit au vocabulaire, entrée rétrofittée
     // fresque → peplum dans le même commit distinct de la publication.
