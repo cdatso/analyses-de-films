@@ -653,7 +653,7 @@ const FILMS = [
     url: 'films/les-fraises-sauvages.html',
     // --- schema v2 (annexe B) ---
     volet: 'critique',
-    datePublication: '2026-07-29 07:15',
+    datePublication: '2026-07-29 10:11',
     genreBase: 'drame',
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Suede'],
