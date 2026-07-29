@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le dossier X — Lolita</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de cette
+       page : (688,8 px + 51,2) / 16 = 46,25rem. Le 51,2 est le padding
+       horizontal du mobilier (2 x 1,6rem). Composee par la formule, puis
+       verifiee par sonde locale au rendu reel (ordre v2.1). */
+    --mobilier-largeur:46.25rem;
+
+    /* Identite bespoke : la liasse de censure de 1961 -- papier pelure de
+       copie carbone, encre de machine a ecrire violacee, tampon de registre.
+       Contrastes AA calcules a la composition (P-39). */
+    --pelure:#e9e6da;
+    --pelure-clair:#f3f0e6;
+    --pelure-fonce:#dcd7c6;
+    --encre:#16131c;
+    --encre-texte:#302a3a;
+    --encre-pale:#665d70;
+    --tampon:#8c2b22;
+    --tampon-clair:#d98b7e;
+    --meta-sombre:#a99cb4;
+    --filet:rgba(22,19,28,0.22);
+    --filet-fin:rgba(22,19,28,0.09);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--pelure);
+    color:var(--encre-texte);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-weight:500;
+    font-size:0.66rem;
+    color:var(--encre-pale);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+  .back-link:hover{ color:var(--tampon); }
+
+  /* ---------- COUVERTURE : la chemise du dossier ---------- */
+  header.dossier{
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 27px, var(--filet-fin) 27px 28px),
+      var(--pelure-clair);
+    border-bottom:1px solid var(--encre);
+  }
+  .dossier-bandeau{
+    font-family:var(--mono);
+    font-size:0.63rem;
+    letter-spacing:0.17em;
+    text-transform:uppercase;
+    color:var(--encre-pale);
+    padding:0.9rem 1.6rem 0.85rem;
+    border-bottom:1px solid var(--filet);
+    max-width:820px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.2rem 1.4rem;
+    justify-content:space-between;
+  }
+  .dossier-in{
+    max-width:820px;
+    margin:0 auto;
+    padding:2.2rem 1.6rem 2.6rem;
+    /* La marge de gauche d'une lettre tapee a la machine. */
+    border-left:none;
+  }
+  .feuillet{
+    position:relative;
+    padding-left:2.2rem;
+  }
+  .feuillet::before{
+    content:"";
+    position:absolute;
+    top:0.2rem; bottom:0.2rem; left:0.75rem;
+    width:1px;
+    background:var(--tampon);
+    opacity:0.35;
+  }
+
+  /* Tampon de registre -- rectangulaire, droit, double filet. */
+  .tampon{
+    float:right;
+    margin:0.2rem 0 1rem 1.4rem;
+    border:2px solid var(--tampon);
+    outline:1px solid var(--tampon);
+    outline-offset:2px;
+    color:var(--tampon);
+    padding:0.55rem 0.85rem 0.5rem;
+    text-align:center;
+    font-family:var(--mono);
+    line-height:1.2;
+  }
+  .tampon .lettre{
+    display:block;
+    font-size:2.1rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .tampon .mention{
+    display:block;
+    font-size:0.55rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-top:0.15rem;
+  }
+
+  .cote-tete{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    color:var(--encre-pale);
+    margin-bottom:1.3rem;
+    max-width:34ch;
+  }
+  .cote-tete b{ color:var(--encre); font-weight:600; }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.3rem, 7vw, 3.7rem);
+    line-height:1.02;
+    letter-spacing:-0.015em;
+    margin:0 0 0.75rem;
+    color:var(--encre);
+  }
+  .sous-titre{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--encre-texte);
+    max-width:48ch;
+    margin:0 0 1.9rem;
+  }
+
+  /* Avertissement de contenu. */
+  .avertissement{
+    clear:both;
+    border:1px solid var(--tampon);
+    border-left-width:4px;
+    background:rgba(140,43,34,0.05);
+    padding:0.8rem 1.1rem;
+    margin:0 0 2rem;
+    font-family:var(--mono);
+    font-size:0.76rem;
+    line-height:1.62;
+    color:var(--encre-texte);
+  }
+  .avertissement strong{
+    color:var(--tampon);
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    font-size:0.68rem;
+    font-weight:600;
+    display:block;
+    margin-bottom:0.3rem;
+  }
+
+  .piece-media{
+    display:flex;
+    gap:1.9rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px solid var(--filet);
+    padding-top:1.5rem;
+  }
+  .piece-media .poster{ flex:0 0 158px; margin:0; }
+  .piece-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--encre-pale);
+  }
+  .piece-media .poster figcaption{
+    font-family:var(--mono);
+    font-size:0.58rem;
+    line-height:1.5;
+    color:var(--encre-pale);
+    margin-top:0.4rem;
+  }
+  .identite{
+    flex:1;
+    min-width:230px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(165px,1fr));
+    gap:0.95rem 1.7rem;
+    margin:0;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--encre-pale);
+    margin-bottom:0.24rem;
+  }
+  .identite dd{
+    margin:0;
+    font-size:0.88rem;
+    color:var(--encre);
+    border-bottom:1px dotted var(--encre-pale);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.6rem;
+    padding:0.8rem 1.1rem;
+    background:rgba(22,19,28,0.05);
+    border-left:2px solid var(--tampon);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    letter-spacing:0.015em;
+    line-height:1.65;
+    color:var(--encre-texte);
+  }
+  .provenance strong{ color:var(--encre); font-weight:600; }
+
+  /* ---------- BORDEREAU DES PIECES (sommaire) ---------- */
+  nav.bordereau{
+    background:var(--pelure-fonce);
+    border-bottom:1px solid var(--encre);
+  }
+  nav.bordereau .bordereau-in{
+    max-width:820px; margin:0 auto; padding:0.75rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.25rem 0.15rem;
+  }
+  nav.bordereau a{
+    color:var(--encre-texte);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:0.28rem 0.55rem;
+    border:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.bordereau a:hover, nav.bordereau a:focus-visible{ color:var(--tampon); border-color:var(--tampon); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.piece{ padding:3rem 0 2.9rem; border-bottom:1px solid var(--filet-fin); }
+  section.piece:last-of-type{ border-bottom:none; }
+
+  .piece-head{
+    display:grid;
+    grid-template-columns:7.2rem 1fr;
+    gap:0 1.4rem;
+    align-items:baseline;
+    border-top:1px solid var(--encre);
+    padding-top:0.7rem;
+    margin-bottom:1.5rem;
+  }
+  .piece-cote{
+    font-family:var(--mono);
+    font-size:0.63rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--tampon);
+    line-height:1.5;
+  }
+  .piece-cote span{
+    display:block;
+    color:var(--encre-pale);
+    font-weight:500;
+    letter-spacing:0.04em;
+    text-transform:none;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.58rem;
+    line-height:1.2;
+    margin:0;
+    color:var(--encre);
+    letter-spacing:-0.008em;
+  }
+  .piece-objet{
+    display:block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:0.8rem;
+    color:var(--encre-pale);
+    margin-top:0.2rem;
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.88rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin:1.8rem 0 0.6rem;
+    color:var(--encre);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--tampon);
+    text-decoration:none;
+    border-bottom:1px dotted var(--tampon);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+  a.renvoi:hover{ background:rgba(140,43,34,0.08); }
+
+  .note{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    line-height:1.62;
+    color:var(--encre-pale);
+    border-left:2px solid var(--encre-pale);
+    padding-left:0.95rem;
+    margin:1.15rem 0;
+  }
+
+  /* ---------- EXTRAIT DE CORRESPONDANCE ---------- */
+  .lettre{
+    margin:1.6rem 0;
+    background:var(--pelure-clair);
+    border:1px solid var(--filet);
+    border-left:3px solid var(--encre);
+    padding:1.15rem 1.3rem 1.2rem;
+  }
+  .lettre .entete{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--tampon);
+    display:block;
+    margin-bottom:0.6rem;
+  }
+  .lettre p{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    line-height:1.68;
+    color:var(--encre-texte);
+    margin-bottom:0.6rem;
+  }
+  .lettre cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--encre-pale);
+  }
+
+  /* ---------- NOTE DE DOSSIER : DIVERGENCE DE SOURCES ---------- */
+  .divergence{
+    margin:1.7rem 0;
+    border:1px solid var(--encre-pale);
+    background:var(--pelure-fonce);
+    padding:1rem 1.2rem 1.05rem;
+  }
+  .divergence .titre-note{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--encre);
+    display:inline-block;
+    border:1px solid var(--encre);
+    padding:0.16rem 0.42rem;
+    margin-bottom:0.7rem;
+  }
+  .divergence p{ font-size:0.87rem; margin-bottom:0.55rem; }
+  .divergence p:last-child{ margin-bottom:0; }
+
+  /* ---------- FICHES DE PERSONNAGES ---------- */
+  .fiches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(215px,1fr));
+    gap:1.1rem;
+    margin-top:0.7rem;
+  }
+  .fiche{
+    background:var(--pelure-clair);
+    border:1px solid var(--encre-pale);
+    padding:1rem 1.1rem 1.05rem;
+  }
+  .fiche .nom{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.04rem;
+    display:block;
+    color:var(--encre);
+    line-height:1.25;
+  }
+  .fiche .interprete{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--tampon);
+    display:block;
+    margin:0.2rem 0 0.6rem;
+    padding-bottom:0.4rem;
+    border-bottom:1px solid var(--filet);
+  }
+  .fiche p{ font-size:0.87rem; margin:0; }
+
+  /* ---------- THEMES ---------- */
+  .themes{ display:grid; gap:1.5rem; margin-top:0.6rem; }
+  .theme .etiquette{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--encre);
+    display:inline-block;
+    border-bottom:2px solid var(--tampon);
+    padding-bottom:0.16rem;
+    margin-bottom:0.45rem;
+  }
+
+  /* ---------- BORDEREAU CHIFFRE ---------- */
+  .chiffres{
+    margin:1.7rem 0;
+    background:var(--encre);
+    border:1px solid var(--encre);
+  }
+  .chiffres-in{ padding:1.2rem 1.35rem 1.4rem; }
+  .chiffres-label{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--tampon-clair);
+    display:block;
+    margin-bottom:0.85rem;
+  }
+  .chiffres-grille{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
+    gap:1rem 1.1rem;
+  }
+  .chiffres .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--pelure-clair);
+    display:block;
+    line-height:1.2;
+  }
+  .chiffres .cap{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--meta-sombre);
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{
+    background:var(--encre);
+    color:var(--pelure-fonce);
+    padding:3.2rem 1.6rem 4.2rem;
+    border-top:1px solid var(--encre);
+  }
+  section.sources .sources-in{ max-width:740px; margin:0 auto; }
+  section.sources .meta-label{ color:var(--tampon-clair); }
+  section.sources h2{ color:var(--pelure-clair); font-size:1.4rem; margin:0.55rem 0 0; }
+  ol.refs{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.65rem;
+  }
+  ol.refs li{
+    counter-increment:src;
+    font-family:var(--mono);
+    font-size:0.79rem;
+    line-height:1.6;
+    padding-left:3.4rem;
+    position:relative;
+    color:var(--pelure-fonce);
+    border-bottom:1px solid rgba(220,215,198,0.2);
+    padding-bottom:0.65rem;
+  }
+  ol.refs li::before{
+    content: "Cote " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--meta-sombre);
+    font-size:0.65rem;
+    letter-spacing:0.03em;
+  }
+  ol.refs a{ color:var(--pelure-clair); word-break:break-all; }
+  ol.refs a:hover{ color:var(--tampon-clair); }
+
+  footer.pied{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--encre-pale);
+    background:var(--pelure);
+  }
+  footer.pied a{ color:var(--encre-pale); }
+  footer.pied a:hover{ color:var(--tampon); }
+
+  @media (max-width:640px){
+    .dossier-in{ padding:1.8rem 1.1rem 2.2rem; }
+    .feuillet{ padding-left:1.3rem; }
+    .feuillet::before{ left:0.3rem; }
+    .tampon{ float:none; margin:0 0 1.2rem; display:inline-block; }
+    .piece-head{ grid-template-columns:1fr; gap:0.5rem; }
+    section.piece{ padding:2.3rem 0; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">Études</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+
+<header class="dossier">
+  <div class="dossier-bandeau">
+    <span>Dossier de censure — pièces versées 1959-1962</span>
+    <span>Copie carbone — ne pas classer</span>
+  </div>
+  <div class="dossier-in">
+    <div class="feuillet">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+      <div class="tampon">
+        <span class="lettre">X</span>
+        <span class="mention">Adultes<br>seulement</span>
+      </div>
+      <div class="cote-tete">Visa ministériel n<sup>o</sup> <b>516</b> — c'est le numéro que porte l'affiche française. En Grande-Bretagne, la même autorisation aura coûté deux ans de courrier.</div>
+      <h1 class="titre">Lolita</h1>
+      <p class="sous-titre">Kubrick a gagné le droit de filmer l'infilmable en le déplaçant hors du cadre. Les archives montrent où il avait atterri&nbsp;: sur l'affiche.</p>
+
+      <div class="avertissement">
+        <strong>Avertissement de contenu</strong>
+        Le film et cette analyse portent sur l'emprise sexuelle d'un homme adulte sur une adolescente, et sur les conditions de production réelles dans lesquelles une actrice de quatorze ans a été filmée et promue. Il en est question ici sans euphémisme ni complaisance.
+      </div>
+
+      <div class="piece-media">
+        <figure class="poster">
+          <img src="../assets/posters/lolita.jpg" alt="Affiche française du film Lolita" onerror="this.closest('.poster').remove()">
+          <figcaption>Affiche française MGM / Seven Arts, 1962. Elle est une pièce du dossier autant qu'une illustration&nbsp;: c'est cette image-là que la campagne a fabriquée<a class="renvoi" href="#src-3" id="ref-3z">[3]</a><a class="renvoi" href="#src-8" id="ref-8a">[8]</a>.</figcaption>
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Stanley Kubrick</dd></div>
+          <div><dt>Scénario</dt><dd>Vladimir Nabokov, d'après son roman</dd></div>
+          <div><dt>Production</dt><dd>James B. Harris</dd></div>
+          <div><dt>Année</dt><dd>1962</dd></div>
+          <div><dt>Photographie</dt><dd>Oswald Morris</dd></div>
+          <div><dt>Montage</dt><dd>Anthony Harvey</dd></div>
+          <div><dt>Musique</dt><dd>Nelson Riddle</dd></div>
+          <div><dt>Durée</dt><dd>152 minutes</dd></div>
+        </dl>
+      </div>
+
+      <div class="provenance">
+        <strong>Provenance.</strong> Critique nouvelle (régime R2) — Claude Opus 5, session supervisée du 30 juillet 2026, supervision humaine. Recherche sourcée&nbsp;: huit références consultées, dont un chapitre académique lu au texte intégral (cote 3) ; trois ressources restées inaccessibles sont consignées au journal des erreurs du dépôt. Les divergences de sources non tranchées sont déclarées dans le corps de la page.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 — Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publiée le 30 juillet 2026</span>
+</div>
+</div>
+
+
+<nav class="bordereau" aria-label="Sommaire">
+  <div class="bordereau-in">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="piece" id="fiche">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 01<span>État civil</span></div>
+      <h2>Fiche technique<span class="piece-objet">Ce que le dossier établit sans discussion</span></h2>
+    </div>
+    <p>
+      <em>Lolita</em> est un film britannique et américain réalisé par Stanley Kubrick, adapté du roman de Vladimir Nabokov paru en 1955, produit par James B. Harris pour Seven Arts Productions, A.A. Productions Ltd. et Anya, et distribué par Metro-Goldwyn-Mayer<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-7" id="ref-7">[7]</a>. La photographie est signée Oswald Morris, le montage Anthony Harvey, la musique Nelson Riddle sur un thème de Bob Harris, la direction artistique Bill Andrews et Sidney Cain ; le film est tourné en noir et blanc, au format 1,66:1<a class="renvoi" href="#src-1" id="ref-1b">[1]</a><a class="renvoi" href="#src-5" id="ref-5">[5]</a>.
+    </p>
+    <p>
+      La distribution réunit James Mason (Humbert Humbert), Shelley Winters (Charlotte Haze), Sue Lyon (Dolores «&nbsp;Lolita&nbsp;» Haze, dont c'est le premier rôle à l'écran) et Peter Sellers (Clare Quilty et le docteur Zempf)<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>. Le tournage commence le 28 novembre 1960 aux studios d'Elstree, en Angleterre&nbsp;; l'essentiel du film est fabriqué dans le Hertfordshire et le Buckinghamshire, l'Amérique étant obtenue par décors, extérieurs anglais et transparences tournées aux États-Unis<a class="renvoi" href="#src-7" id="ref-7b">[7]</a><a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+    <p>
+      Le film est présenté en avant-première au Loew's State de New York le 13 juin 1962, sort à Los Angeles le 21 juin<a class="renvoi" href="#src-7" id="ref-7c">[7]</a><a class="renvoi" href="#src-6" id="ref-6">[6]</a>, puis à Paris le 5 novembre 1962, la sortie nationale française suivant le 14 novembre<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>. Budget estimé entre 1,5 et 2 millions de dollars, recettes intérieures d'environ 9,25 millions<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>. Vladimir Nabokov est nommé à l'Oscar du meilleur scénario adapté&nbsp;; Sue Lyon remporte le Golden Globe du meilleur espoir féminin, tandis que Mason, Winters, Sellers et Kubrick y sont nommés, et que Kubrick concourt pour le Lion d'or à Venise<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>.
+    </p>
+
+    <div class="divergence">
+      <span class="titre-note">Note de dossier — divergence de sources</span>
+      <p><b>Durée.</b> Wikipedia anglophone et le catalogue de l'American Film Institute donnent <b>152 minutes</b><a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-7" id="ref-7d">[7]</a>&nbsp;; Wikipédia francophone donne <b>153 minutes</b><a class="renvoi" href="#src-5" id="ref-5c">[5]</a>. La valeur majoritaire est retenue dans la fiche ci-dessus, la divergence n'étant pas tranchée&nbsp;: elle peut relever d'un arrondi de report ou d'une différence entre copies d'exploitation — les versions britannique et australienne comportent une dizaine de secondes supplémentaires dans une scène précise<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>.</p>
+      <p><b>Fin de tournage.</b> Le catalogue de l'AFI fait s'achever la photographie principale en <b>avril 1961</b><a class="renvoi" href="#src-7" id="ref-7e">[7]</a>, là où James Fenwick situe la fin de la production en <b>mars 1961</b><a class="renvoi" href="#src-3" id="ref-3">[3]</a>. Les deux valeurs sont compatibles avec la chronologie de la correspondance citée plus loin&nbsp;; aucune n'est écartée ici.</p>
+    </div>
+  </section>
+
+  <section class="piece" id="synopsis">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 02<span>Exposé des faits</span></div>
+      <h2>Synopsis<span class="piece-objet">Ce que le film raconte, dans l'ordre où il le raconte</span></h2>
+    </div>
+    <p>
+      Le film s'ouvre sur sa fin&nbsp;: dans un manoir dévasté, un homme en abat un autre au revolver, au terme d'un échange où la victime ne cesse de plaisanter. Puis le récit revient en arrière. Humbert Humbert, professeur de littérature française, s'installe pour l'été à Ramsdale et loue une chambre chez une veuve, Charlotte Haze&nbsp;; il n'accepte le logement qu'après avoir aperçu la fille de sa logeuse, Dolores, quatorze ans, que tout le monde appelle Lolita<a class="renvoi" href="#src-2" id="ref-2">[2]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>.
+    </p>
+    <p>
+      Pour rester auprès de l'enfant, Humbert épouse la mère. La mort accidentelle de Charlotte le laisse seul tuteur de Lolita&nbsp;: commence alors une errance de motels à travers les États-Unis, sous les noms d'emprunt et sous la surveillance d'un homme aux visages multiples, l'auteur dramatique Clare Quilty<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+    <p class="note">Le film place son meurtre en ouverture et suspend jusqu'à la fin la question de savoir <em>pourquoi</em>&nbsp;; le dénouement n'est pas détaillé davantage ici.</p>
+  </section>
+
+  <section class="piece" id="production">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 03<span>Antécédents</span></div>
+      <h2>Contexte de production<span class="piece-objet">Quatre ans entre les droits et la première séance</span></h2>
+    </div>
+    <p>
+      Le roman est d'abord un objet de police. Refusé par quatre éditeurs américains, il paraît à Paris en 1955 chez Olympia Press, maison réputée pour une «&nbsp;pornographie crue sans prétention littéraire&nbsp;» — qui publie aussi Beckett, Burroughs et Henry Miller. Le Royaume-Uni fait saisir les exemplaires importés, et la France interdit en 1956 la vente du livre en anglais, ce qui produit le paradoxe relevé par le critique Maurice Cranston&nbsp;: «&nbsp;<em>Lolita</em> peut être importé aux États-Unis, mais pas exporté de France&nbsp;; il ne peut pas être vendu en anglais en France, mais il y sera bientôt vendu en français&nbsp;». L'édition américaine de 1958, chez G. P. Putnam's Sons, s'écoule à cent mille exemplaires en trois semaines<a class="renvoi" href="#src-3" id="ref-3b">[3]</a><a class="renvoi" href="#src-1" id="ref-1i">[1]</a>.
+    </p>
+    <p>
+      En 1958, la Harris-Kubrick Pictures Corporation achète les droits d'adaptation pour 150&nbsp;000 dollars. Plusieurs studios majeurs, dont MGM et United Artists, refusent le projet&nbsp;; c'est Seven Arts qui finance, et plusieurs acteurs de premier plan — Kirk Douglas, Laurence Olivier, David Niven — déclinent, jugeant le sujet pornographique<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Pour limiter le risque, Seven Arts impose un consultant de scénario&nbsp;: Martin Quigley, l'un des co-auteurs du Code de production hollywoodien de 1930, qui recommande des coupes dans les dialogues sensibles<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+    <p>
+      Nabokov écrit son adaptation entre mars et septembre 1960. Le premier état dépasse quatre cents pages&nbsp;; Harris résume&nbsp;: «&nbsp;On ne pouvait pas le tourner. On ne pouvait même pas le soulever&nbsp;». Très peu de ce scénario subsiste dans le film, dont Nabokov reste pourtant l'unique scénariste crédité<a class="renvoi" href="#src-1" id="ref-1j">[1]</a><a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. Avant la projection, l'écrivain pressent que le résultat pourrait ressembler aux «&nbsp;écarts d'une route panoramique tels que les perçoit le passager horizontal d'une ambulance&nbsp;»<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>.
+    </p>
+    <p>
+      Le tournage a lieu en Angleterre pour deux raisons prosaïques&nbsp;: MGM y disposait de fonds contractuellement dépensables sur place, et Kubrick venait de s'y installer<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. C'est là que se joue la partie décisive. Harris et Kubrick négocient en amont avec les deux autorités de classification — la Production Code Administration américaine et le British Board of Film Censors — dans ce que l'historien Daniel Biltereyst appelle une «&nbsp;consultation de pré-production&nbsp;», une «&nbsp;forme constructive de censure&nbsp;». Les objections initiales du secrétaire du BBFC, John Trevelyan, portaient d'ailleurs moins sur le sexe que sur le ton&nbsp;: le scénario, écrit-il, «&nbsp;différait du roman en combinant l'humour et le mauvais goût&nbsp;»<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>.
+    </p>
+    <p>
+      Sue Lyon est choisie parmi quelque huit cents candidates&nbsp;; elle vient d'avoir quatorze ans<a class="renvoi" href="#src-7" id="ref-7f">[7]</a><a class="renvoi" href="#src-3" id="ref-3f">[3]</a>. Le producteur Harris a expliqué sans détour la logique du casting&nbsp;: il fallait faire d'elle «&nbsp;un objet sexuel&nbsp;» que chacun dans la salle puisse comprendre qu'on veuille posséder<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>. Sur le plateau, Kubrick filme la plupart des scènes de Sellers avec deux ou trois caméras simultanées pour capter l'improvisation sans la casser&nbsp;; c'est Sellers qui invente la partie de ping-pong précédant le meurtre. Bernard Herrmann refuse la partition parce que Kubrick exige d'y intégrer le thème de Bob Harris&nbsp;; Nelson Riddle prend sa place<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>.
+    </p>
+
+    <div class="divergence">
+      <span class="titre-note">Note de dossier — divergence de sources</span>
+      <p><b>Âge de Sue Lyon pendant le tournage.</b> Le catalogue de l'AFI et James Fenwick s'accordent sur <b>quatorze ans</b> au moment de l'engagement<a class="renvoi" href="#src-7" id="ref-7g">[7]</a><a class="renvoi" href="#src-3" id="ref-3g">[3]</a>&nbsp;; Wikipedia anglophone écrit qu'elle avait quatorze ans au début du tournage et <b>quinze à la fin</b><a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Cette dernière mention est difficilement compatible avec les dates de tournage données par les mêmes sources (28 novembre 1960 à mars ou avril 1961)&nbsp;; la valeur de quatorze ans est retenue, la divergence est signalée plutôt que corrigée en silence. À ne pas confondre avec l'âge du <em>personnage</em>, porté de douze ans et demi dans le roman à environ quatorze dans le film<a class="renvoi" href="#src-5" id="ref-5d">[5]</a><a class="renvoi" href="#src-1" id="ref-1o">[1]</a>.</p>
+    </div>
+  </section>
+
+  <section class="piece" id="structure">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 04<span>Ordre du récit</span></div>
+      <h2>Structure narrative<span class="piece-objet">Un roman à la première personne privé de sa voix</span></h2>
+    </div>
+    <p>
+      Deux décisions de construction font tout le film. La première est un renversement&nbsp;: l'assassinat de Clare Quilty, qui clôt le roman, ouvre le film et devient sa porte d'entrée — ce qui, comme l'écrit Justin Kwedi, «&nbsp;sert désormais d'introduction pour ressentir la douleur&nbsp;» du personnage<a class="renvoi" href="#src-4" id="ref-4c">[4]</a><a class="renvoi" href="#src-5" id="ref-5e">[5]</a>. Le suspense ne porte plus sur ce qui va arriver mais sur la raison d'un geste déjà commis&nbsp;: tout le film est un rapport d'enquête sur son propre préambule.
+    </p>
+    <p>
+      La seconde est une soustraction. Kubrick supprime le long préambule européen du roman — l'enfance de Humbert, Annabel, l'appareil d'auto-explication psychiatrique — et avec lui la matière dont le narrateur se servait pour plaider sa cause<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>. Or ce roman est entièrement une confession&nbsp;: un piège rhétorique où le lecteur est capturé par le style de son coupable. En passant à l'écran, cette voix disparaît presque complètement&nbsp;; l'ironie doit alors être portée non plus par la langue mais par la mise en scène, le jeu et le montage. C'est la contrainte technique la plus lourde du film, et elle explique la plupart de ses choix de ton.
+    </p>
+    <p>
+      Le résultat est un objet en deux mouvements nettement distincts. Le premier, à Ramsdale, tient de la comédie de mœurs&nbsp;: Kubrick, note Constantine Santas, «&nbsp;peu enclin à s'attarder sur le contenu sexuel du roman, a transformé la première partie de <em>Lolita</em> en satire sociale&nbsp;»<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. Le second, sur la route, est une longue traque paranoïaque de motel en motel, où le film change de régime sans changer de sourire. Le même commentateur résume l'ensemble d'une formule&nbsp;: cette version est «&nbsp;plus anglaise qu'américaine, plus comédie que tragédie&nbsp;»<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>.
+    </p>
+  </section>
+
+  <section class="piece" id="miseenscene">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 05<span>Relevé technique</span></div>
+      <h2>Mise en scène et procédés<span class="piece-objet">L'ellipse comme méthode, et ce qu'elle coûte</span></h2>
+    </div>
+    <p>
+      Le film a été conçu sous un régime où sa propre existence n'était pas encore autorisée&nbsp;: le Code de production n'a été amendé pour permettre la représentation des «&nbsp;aberrations sexuelles&nbsp;» qu'en octobre 1962, soit quatre mois <em>après</em> la sortie du film<a class="renvoi" href="#src-7" id="ref-7h">[7]</a>. La conséquence formelle est massive et pleinement assumée&nbsp;: tout ce qui ne peut pas être montré est déplacé ailleurs — dans le dialogue, dans le fondu au noir, dans le hors-champ.
+    </p>
+    <p>
+      Le générique en donne la formule d'entrée&nbsp;: une main d'homme vernit les ongles de pied d'une adolescente, image «&nbsp;fortement suggestive&nbsp;» qui, comme le relève Sergent Pepper, n'aura pratiquement «&nbsp;aucun écho&nbsp;» dans la suite du film&nbsp;: le reste passe par les mots et les coupes<a class="renvoi" href="#src-6bis" id="ref-6bis">[6&nbsp;<i>bis</i>]</a>. L'innuendo devient le matériau principal, y compris pour dire l'indicible du récit — ainsi de la réplique par laquelle Quilty suggère en passant que Lolita est ailleurs, occupée par un autre adulte&nbsp;: «&nbsp;Elle est en train de se faire soigner une carie par oncle Ivor&nbsp;»<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>.
+    </p>
+    <p>
+      Le noir et blanc d'Oswald Morris et l'Amérique de studio vont dans le même sens. Tourné en Angleterre, le film prive le spectateur des descriptions colorées du roman<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>&nbsp;; c'est une perte, mais elle produit un effet juste, que la critique a rarement relevé&nbsp;: l'Amérique de <em>Lolita</em> est une Amérique de seconde main, faite de transparences et de décors, exactement comme celle que fantasme un Européen cultivé. Le décor mensonger et le narrateur menteur ont ici la même consistance.
+    </p>
+    <p>
+      Reste la musique, qui est le point le plus retors du dispositif. Kubrick a imposé contre Bernard Herrmann le thème de Bob Harris et confié la partition à Nelson Riddle, arrangeur de variétés<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>. Le film accompagne donc l'emprise d'un adulte sur une enfant d'une musique légère, dansante, presque publicitaire. On peut y lire une faute de goût&nbsp;; on peut aussi y entendre le cœur du procédé — la bande-son ne juge pas, elle enjolive, et c'est précisément ce que fait Humbert quand il raconte. Cette lecture est la nôtre&nbsp;: aucune des sources consultées ne l'établit, et elle est proposée comme interprétation, non comme fait.
+    </p>
+
+    <div class="divergence">
+      <span class="titre-note">Note de dossier — divergence de sources</span>
+      <p><b>Ampleur des coupes exigées par la Légion de la décence.</b> Wikipedia anglophone et James Fenwick parlent d'«&nbsp;au moins trente secondes&nbsp;» de métrage retirées pour éviter le classement «&nbsp;C&nbsp;» (condamné)<a class="renvoi" href="#src-1" id="ref-1p">[1]</a><a class="renvoi" href="#src-3" id="ref-3i">[3]</a>&nbsp;; le catalogue de l'AFI fait état de <b>plusieurs</b> coupes, dont une d'au moins <b>quarante-cinq secondes</b><a class="renvoi" href="#src-7" id="ref-7i">[7]</a>. Les deux énoncés peuvent décrire le même épisode vu par deux bouts — un minimum négocié d'un côté, un relevé de coupes de l'autre. Rien ici ne permet de trancher&nbsp;; les deux chiffres sont donnés.</p>
+    </div>
+  </section>
+
+  <section class="piece" id="personnages">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 06<span>Personnes citées</span></div>
+      <h2>Personnages principaux<span class="piece-objet">Quatre rôles, dont un qui dévore le film</span></h2>
+    </div>
+    <div class="fiches">
+      <div class="fiche">
+        <span class="nom">Humbert Humbert</span>
+        <span class="interprete">James Mason</span>
+        <p>Privé de sa voix de narrateur, le personnage doit tenir par la seule interprétation&nbsp;: Mason, écrit Justin Kwedi, se tient «&nbsp;entre réelle détresse amoureuse et dégoût&nbsp;» et y «&nbsp;offre une très grande prestation&nbsp;»<a class="renvoi" href="#src-4" id="ref-4d">[4]</a>. L'acteur a lui-même confié à ses proches qu'il aurait préféré jouer Quilty<a class="renvoi" href="#src-6" id="ref-6e">[6]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Charlotte Haze</span>
+        <span class="interprete">Shelley Winters</span>
+        <p>La mère, dont le film fait le ressort de sa première partie satirique&nbsp;: Winters «&nbsp;fait merveille en rombière faussement raffinée et en quête de mari&nbsp;»<a class="renvoi" href="#src-4" id="ref-4e">[4]</a>. Son ridicule est le prix que le film paie pour installer sa comédie&nbsp;: c'est elle qu'on rit, pas l'homme qui l'épouse par calcul.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Dolores «&nbsp;Lolita&nbsp;» Haze</span>
+        <span class="interprete">Sue Lyon</span>
+        <p>Le personnage est vieilli de douze ans et demi à environ quatorze<a class="renvoi" href="#src-5" id="ref-5f">[5]</a>&nbsp;; l'actrice en avait quatorze au moment de son engagement<a class="renvoi" href="#src-7" id="ref-7j">[7]</a>. Elle a déclaré plus tard&nbsp;: «&nbsp;Ma destruction comme personne date de ce film. <em>Lolita</em> m'a exposée à des tentations qu'aucune fille de cet âge ne devrait subir&nbsp;»<a class="renvoi" href="#src-3" id="ref-3j">[3]</a><a class="renvoi" href="#src-1" id="ref-1q">[1]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Clare Quilty</span>
+        <span class="interprete">Peter Sellers</span>
+        <p>Rival «&nbsp;distant et quasi invisible&nbsp;» chez Nabokov<a class="renvoi" href="#src-4" id="ref-4f">[4]</a>, il devient au cinéma une présence protéiforme qui «&nbsp;poursuit Humbert comme une furie&nbsp;»<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>&nbsp;: figure du «&nbsp;jouisseur pervers&nbsp;», homme de médias multipliant les déguisements, il annonce déjà le <em>Docteur Folamour</em> à venir<a class="renvoi" href="#src-6bis" id="ref-6bis-b">[6&nbsp;<i>bis</i>]</a>.</p>
+      </div>
+    </div>
+    <p class="note">Le déséquilibre est le fait critique majeur de la distribution&nbsp;: le rôle secondaire mange le premier. C'est aussi la preuve, par l'intérieur, que le film a choisi la comédie.</p>
+  </section>
+
+  <section class="piece" id="themes">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 07<span>Notes d'analyse</span></div>
+      <h2>Thèmes<span class="piece-objet">Quatre axes, tenus par une seule opération&nbsp;: le déplacement</span></h2>
+    </div>
+    <div class="themes">
+      <div class="theme">
+        <span class="etiquette">Ce que l'ellipse déplace</span>
+        <p>La lecture reçue veut que la censure ait affadi le film&nbsp;: Kubrick lui-même l'a soutenue. James Fenwick la conteste frontalement, archives en main&nbsp;: «&nbsp;contrairement à ce que certains universitaires ont suggéré et continuent de suggérer&nbsp;», écrit-il en substance, «&nbsp;le contenu comme le style de <em>Lolita</em> sont profondément problématiques et sexuellement explicites&nbsp;»<a class="renvoi" href="#src-3" id="ref-3k">[3]</a>. L'ellipse n'a pas supprimé la matière&nbsp;: elle l'a déplacée dans le sous-entendu, où elle opère sans contrôle. C'est le premier des trois déplacements que ce film accomplit.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">Le rire comme anesthésique</span>
+        <p>Le deuxième déplacement est de ton. Fenwick est catégorique&nbsp;: Harris et Kubrick transforment «&nbsp;l'obscure obsession sexuelle d'un homme en un récit convivial et d'un humour noir dans lequel le public est encouragé à rire de la relation de Humbert avec Lolita&nbsp;»<a class="renvoi" href="#src-3" id="ref-3l">[3]</a>. La formule de <em>Variety</em> en 1962 disait à sa manière la même chose sans en tirer la même conclusion&nbsp;: le film est «&nbsp;une abeille dont on a retiré le dard&nbsp;»<a class="renvoi" href="#src-1" id="ref-1r">[1]</a>. Reste à savoir si le dard a été retiré ou simplement déplacé dans le rire — et c'est le débat critique le plus vivant que ce film ait engendré.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">L'affiche contre le film</span>
+        <p>Le troisième déplacement sort du cadre. Ce que l'écran taisait, la campagne l'exhibait&nbsp;: dès 1960, Harris et Kubrick font photographier Sue Lyon par Bert Stern et fabriquent ce qu'ils appellent eux-mêmes la «&nbsp;Lolita-image&nbsp;». Karen Ritzenhoff, citée par Fenwick, résume la nature de ces images&nbsp;: la photographie promotionnelle de Stern «&nbsp;était plus représentative du pouvoir masculin que de l'émancipation féminine&nbsp;»<a class="renvoi" href="#src-3" id="ref-3m">[3]</a>. La stratégie va jusqu'à l'accroche&nbsp;: «&nbsp;Comment ont-ils jamais pu tirer un film de <em>Lolita</em>&nbsp;?&nbsp;», que l'affiche française traduit en «&nbsp;Comment a-t-on osé faire un film de LOLITA&nbsp;?&nbsp;»<a class="renvoi" href="#src-3" id="ref-3n">[3]</a><a class="renvoi" href="#src-6" id="ref-6f">[6]</a><a class="renvoi" href="#src-8" id="ref-8b">[8]</a>. Le scénario de la promotion et celui du film disent la même chose&nbsp;: le scandale se vend mieux que le sujet.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">Un film qui allégorise sa propre fabrication</span>
+        <p>De ces trois déplacements, Fenwick tire la conclusion la plus dérangeante&nbsp;: <em>Lolita</em> est, à bien des égards, «&nbsp;une allégorie de sa propre production&nbsp;»<a class="renvoi" href="#src-3" id="ref-3o">[3]</a>. Un détail suffit à le faire sentir&nbsp;: le classement X britannique, dont la publicité a fait un argument, interdisait légalement à Sue Lyon de voir le film où elle jouait, alors qu'elle en assurait les avant-premières<a class="renvoi" href="#src-3" id="ref-3p">[3]</a>. Le film pouvait être montré à tous les adultes du royaume, sauf à l'enfant qu'il avait filmée.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="piece" id="reception">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 08<span>Suites</span></div>
+      <h2>Réception et postérité<span class="piece-objet">Une campagne pour l'interdire, un succès, un reniement</span></h2>
+    </div>
+    <p>
+      Avant la moindre projection, le film a son procès. Dès le début de 1961, le chanoine Lewis John Collins, chanoine de la cathédrale Saint-Paul et président de l'organisation Christian Action — militant pacifiste, membre du parti travailliste, artisan du mouvement anti-apartheid britannique — fait campagne pour que le BBFC refuse tout visa au film<a class="renvoi" href="#src-3" id="ref-3q">[3]</a>. Les lettres, conservées aux archives de Lambeth Palace et à la Stanley Kubrick Archive, ont été exhumées par James Fenwick.
+    </p>
+
+    <div class="lettre">
+      <span class="entete">Chanoine L. J. Collins à Stanley Kubrick — 28 mars 1961</span>
+      <p>«&nbsp;Notre position est que toute version filmée de ce livre, à moins qu'elle ne s'en écarte si radicalement qu'elle en devienne méconnaissable, doit être une provocation de nature à conduire au viol, voire au meurtre.&nbsp;»</p>
+      <cite>Cité et traduit d'après Fenwick, 2023<a class="renvoi" href="#src-3" id="ref-3r">[3]</a></cite>
+    </div>
+
+    <p>
+      Kubrick répond en déplaçant la faute&nbsp;: ce qui choque Collins, rétorque-t-il, n'est pas le film — que son contradicteur n'a pas vu — mais un «&nbsp;air de sensationnalisme&nbsp;» qui, écrit-il, «&nbsp;a échappé complètement à notre contrôle&nbsp;»<a class="renvoi" href="#src-3" id="ref-3s">[3]</a>. L'argument ne résiste pas aux archives&nbsp;: trois ans plus tôt, à propos des <em>Sentiers de la gloire</em>, le même Kubrick écrivait à un distributeur qu'«&nbsp;au risque de paraître cynique, on pourrait difficilement espérer meilleure publicité pour un film&nbsp;» que la controverse<a class="renvoi" href="#src-3" id="ref-3t">[3]</a>. Le dossier de Christian Action, déposé au BBFC en mai 1961, était par ailleurs perdu d'avance&nbsp;: Trevelyan en envoyait copie à Kubrick en le rassurant — «&nbsp;rien de ce genre ne préjugera la décision du Board&nbsp;»<a class="renvoi" href="#src-3" id="ref-3u">[3]</a>. Le classement X est accordé en septembre 1961, et Kubrick déclare à la presse la campagne de Collins «&nbsp;dangereuse et stupide&nbsp;»<a class="renvoi" href="#src-3" id="ref-3v">[3]</a>.
+    </p>
+    <p>
+      L'accueil critique de juin 1962 est divisé mais loin d'être hostile. Bosley Crowther, dans le <em>New York Times</em>, reconnaît au film «&nbsp;un pouvoir rare&nbsp;»&nbsp;; Richard L. Coe, dans le <em>Washington Post</em>, parle d'un «&nbsp;film singulièrement brillant&nbsp;»&nbsp;; Arlene Croce, dans <em>Sight &amp; Sound</em>, concède que «&nbsp;<em>Lolita</em> est, à sa manière, un bon film&nbsp;» tout en jugeant «&nbsp;superficielles et mal avisées&nbsp;» ses tentatives d'érotisme. À l'opposé, <em>Harrison's Reports</em> en sort avec «&nbsp;un sentiment de répugnant dégoût&nbsp;» et Stanley Kauffmann, dans <em>The New Republic</em>, le trouve «&nbsp;exaspérant d'insatisfaction&nbsp;»<a class="renvoi" href="#src-1" id="ref-1s">[1]</a>.
+    </p>
+
+    <div class="chiffres">
+      <div class="chiffres-in">
+        <span class="chiffres-label">Bordereau — chiffres du dossier</span>
+        <div class="chiffres-grille">
+          <div><span class="num">150 000 $</span><span class="cap">Droits d'adaptation</span></div>
+          <div><span class="num">1,5 à 2 M$</span><span class="cap">Budget estimé</span></div>
+          <div><span class="num">9,25 M$</span><span class="cap">Recettes intérieures</span></div>
+          <div><span class="num">400+ pages</span><span class="cap">Scénario de Nabokov</span></div>
+          <div><span class="num">~800</span><span class="cap">Candidates au rôle</span></div>
+          <div><span class="num">152 min</span><span class="cap">Durée</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sommes exprimées en dollars de l'époque, d'après les cotes 1, 3 et 7 du registre ci-dessous.</p>
+
+    <p>
+      Commercialement, le film réussit avec peu de publicité, par le bouche-à-oreille<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>. Son auteur, lui, s'en détache. En 1969, Kubrick estime que «&nbsp;à cause de toute la pression du Code de production et de la Légion catholique de la décence à l'époque&nbsp;», il n'a «&nbsp;pas suffisamment dramatisé l'aspect érotique&nbsp;» de la relation&nbsp;; en 1972, il ajoute&nbsp;: «&nbsp;Si j'avais compris à quel point les limitations allaient être sévères, je n'aurais probablement pas fait le film&nbsp;»<a class="renvoi" href="#src-1" id="ref-1u">[1]</a><a class="renvoi" href="#src-3" id="ref-3w">[3]</a>.
+    </p>
+    <p>
+      La postérité a largement désavoué ce reniement. La critique française tient le film pour «&nbsp;la déclaration d'indépendance de Stanley Kubrick&nbsp;» et «&nbsp;sans doute l'un des films les plus pessimistes&nbsp;» de son auteur<a class="renvoi" href="#src-4" id="ref-4g">[4]</a>, tout en le jugeant «&nbsp;un peu trop muselé&nbsp;» par les interdits de son temps<a class="renvoi" href="#src-6bis" id="ref-6bis-c">[6&nbsp;<i>bis</i>]</a>. Les agrégateurs contemporains le créditent de 89&nbsp;% d'avis favorables sur Rotten Tomatoes et de 79 sur 100 sur Metacritic&nbsp;; David Lynch en fait son Kubrick préféré, Sofia Coppola et Paul Thomas Anderson le citent parmi leurs films de chevet<a class="renvoi" href="#src-1" id="ref-1v">[1]</a>.
+    </p>
+    <p>
+      Mais la relecture la plus lourde est venue des archives, et elle porte sur le plateau plutôt que sur l'écran. En 2020, la journaliste Sarah Weinman a rendu publiques des allégations de relations sexuelles entre le producteur James B. Harris et Sue Lyon, alors âgée de quatorze ans, pendant la production<a class="renvoi" href="#src-1" id="ref-1w">[1]</a>. Fenwick, qui cite ces allégations sans les trancher, établit en revanche sur pièces qu'une «&nbsp;culture de production exploiteuse&nbsp;» entourait la jeune actrice, dont la carrière et l'image étaient étroitement contrôlées par Harris et Kubrick<a class="renvoi" href="#src-3" id="ref-3x">[3]</a>.
+    </p>
+  </section>
+
+  <section class="piece" id="conclusion">
+    <div class="piece-head">
+      <div class="piece-cote">Pièce n<sup>o</sup> 09<span>Clôture</span></div>
+      <h2>Conclusion<span class="piece-objet">Le dossier ne se referme pas où le film s'arrête</span></h2>
+    </div>
+    <p>
+      Il faut rendre à ce film ce qui lui appartient. Devant un roman tenu pour infilmable, Kubrick a trouvé la seule solution formelle qui permettait de le porter à l'écran en 1962&nbsp;: renoncer à la voix du coupable, renverser l'ordre du récit pour faire du meurtre une question et non une chute, et confier à la comédie ce que l'image ne pouvait pas montrer. Le résultat est une adaptation d'une intelligence ironique considérable, où un second rôle dévore le premier parce que c'est lui qui porte la lucidité du film&nbsp;: Quilty voit tout, dit tout, et n'est cru par personne.
+    </p>
+    <p>
+      Reste que cette solution a un nom, et qu'il est le même à toutes les échelles du dossier&nbsp;: le déplacement. Ce que le cadre ne pouvait contenir est passé dans le dialogue&nbsp;; ce que le sujet interdisait de prendre au sérieux est passé dans le rire&nbsp;; et ce que le film ne pouvait pas montrer à l'écran a été montré sur les affiches et dans les magazines, où l'on fabriquait une adolescente vendable. L'histoire critique du film a longtemps pris la pudeur du cadre pour une timidité&nbsp;; les archives de Fenwick montrent qu'elle était un transfert.
+    </p>
+    <p>
+      C'est ce qui rend le personnage du chanoine Collins si instructif&nbsp;: il s'est trompé sur presque tout — sur le film qu'il n'avait pas vu, sur les viols qu'il prédisait, sur l'idée qu'une œuvre puisse fabriquer des criminels — mais il a nommé presque par accident le seul dommage avéré du dossier, quand il a objecté à l'engagement d'une actrice de quatorze ans. Il cherchait à protéger le public&nbsp;; le tort se commettait sur le plateau. Soixante ans plus tard, <em>Lolita</em> demeure ce cas rare où l'œuvre et son making-of racontent la même histoire, et où l'on ne peut plus admirer la première en ignorant le second.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-in">
+    <span class="meta-label">Sources consultées</span>
+    <h2>Registre des références</h2>
+    <ol class="refs">
+      <li id="src-1">Wikipedia (EN), «&nbsp;Lolita (1962 film)&nbsp;» — <a href="https://en.wikipedia.org/wiki/Lolita_(1962_film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Lolita_(1962_film)</a></li>
+      <li id="src-2">Constantine Santas, «&nbsp;Lolita — From Nabokov's Novel (1955) to Kubrick's Film (1962) to Lyne's (1997)&nbsp;», <i>Senses of Cinema</i>, novembre 2000 — <a href="https://www.sensesofcinema.com/2000/novel-and-film/lolita/" target="_blank" rel="noopener">sensesofcinema.com — Lolita</a></li>
+      <li id="src-3">James Fenwick, «&nbsp;Lolita, Censorship, and Controversy&nbsp;: The Archival Remains of the Dispute Between Canon L. J. Collins and Stanley Kubrick&nbsp;», dans A. Etienne, B. Halligan et C. Weedman (dir.), <i>Adult Themes&nbsp;: British Cinema and the «&nbsp;X&nbsp;» Certificate in the Long 1960s</i>, New York, Bloomsbury Academic, 2023, p. 91-110 — version acceptée, lue au texte intégral&nbsp;: <a href="https://shura.shu.ac.uk/30051/" target="_blank" rel="noopener">shura.shu.ac.uk/30051</a></li>
+      <li id="src-4">Justin Kwedi, «&nbsp;Lolita — analyse et critique du film&nbsp;», <i>DVDClassik</i>, 21 septembre 2015 — <a href="https://www.dvdclassik.com/critique/lolita-kubrick" target="_blank" rel="noopener">dvdclassik.com/critique/lolita-kubrick</a></li>
+      <li id="src-5">Wikipédia (FR), «&nbsp;Lolita (film, 1962)&nbsp;» — <a href="https://fr.wikipedia.org/wiki/Lolita_(film,_1962)" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Lolita_(film,_1962)</a></li>
+      <li id="src-6">Turner Classic Movies, «&nbsp;Behind the Camera — Lolita&nbsp;» — <a href="https://www.tcm.com/articles/220744/behind-the-camera-lolita" target="_blank" rel="noopener">tcm.com — Behind the Camera&nbsp;: Lolita</a></li>
+      <li id="src-6bis">Sergent Pepper, «&nbsp;Lolita, un film de Stanley Kubrick&nbsp;: critique&nbsp;», <i>Le Mag du Ciné</i>, 11 novembre 2014 — <a href="https://www.lemagducine.fr/cinema/films-classiques/lolita-film-stanley-kubrick-critique-22523/" target="_blank" rel="noopener">lemagducine.fr — Lolita</a></li>
+      <li id="src-7">American Film Institute, <i>AFI Catalog of Feature Films</i>, fiche «&nbsp;Lolita&nbsp;» (1962) — <a href="https://catalog.afi.com/Catalog/moviedetails/22908" target="_blank" rel="noopener">catalog.afi.com/Catalog/moviedetails/22908</a></li>
+      <li id="src-8">Affiche française du film (Metro-Goldwyn-Mayer / Seven Arts Productions, 1962), reproduite sur cette page — document consulté directement&nbsp;: accroche «&nbsp;Comment a-t-on osé faire un film de LOLITA&nbsp;?&nbsp;» et mention «&nbsp;Visa ministériel n<sup>o</sup> 516&nbsp;».</li>
+    </ol>
+  </div>
+</section>
+
+<footer class="pied">
+  Dossier compilé à partir de sources publiques consultées le 30 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
