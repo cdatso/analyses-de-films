@@ -738,9 +738,10 @@ const FILMS = [
     // --- schema v2 (annexe B) ---
     volet: 'critique',
     // datePublication = date du MERGE (point ferme du mandat du 30/07),
-    // valeur provisoire de rédaction ci-dessous, à ACTUALISER au geste de
-    // statut post-merge (étape 11.1) une fois le gate AH prononcé.
-    datePublication: '2026-07-30 10:31',
+    // actualisée au geste de statut post-merge : merge `cdd20ee` du 30/07 à
+    // 10h59, gate AH « go pour le merge » (la valeur provisoire de
+    // rédaction, 10:31, est remplacée).
+    datePublication: '2026-07-30 10:59',
     // ESCALADE P-12 SOLDÉE (GATE AH « ajoute gothique au vocabulaire
     // genreBase », prononcé à la remise de la session supervisée du
     // 30/07/2026) : 'gothique' inscrit au vocabulaire (voir vocabulaires.js),
