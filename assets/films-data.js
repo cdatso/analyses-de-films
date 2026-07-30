@@ -726,5 +726,37 @@ const FILMS = [
     technique: ['n&b']
     // `courant` OMIS plutôt qu'inventé (axe non bloquant) : aucune des cinq
     // valeurs du vocabulaire ne nomme le registre satirique de ce film.
+  },
+  {
+    slug: 'rebecca',
+    title: 'Rebecca',
+    director: 'Alfred Hitchcock',
+    year: 1940,
+    summary: "À Manderley, la première Mrs de Winter n'apparaît jamais à l'écran — il a suffi que le Code de censure hollywoodien change un meurtre en accident pour que son fantôme, lui, ne quitte jamais la maison.",
+    url: 'films/rebecca.html',
+    poster: 'assets/posters/rebecca.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    // datePublication = date du MERGE (point ferme du mandat du 30/07),
+    // valeur provisoire de rédaction ci-dessous, à ACTUALISER au geste de
+    // statut post-merge (étape 11.1) une fois le gate AH prononcé.
+    datePublication: '2026-07-30 10:31',
+    // ESCALADE P-12 SOLDÉE (GATE AH « ajoute gothique au vocabulaire
+    // genreBase », prononcé à la remise de la session supervisée du
+    // 30/07/2026) : 'gothique' inscrit au vocabulaire (voir vocabulaires.js),
+    // entrée rétrofittée thriller → gothique dans le même commit, distinct
+    // de la publication (e504c19).
+    genreBase: 'gothique',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    // pays = ['Etats-Unis', 'Royaume-Uni'] (GATE AH à la remise, 30/07/2026) :
+    // production et tournage integral Selznick International/UA en studio
+    // (Etats-Unis), mais decor, auteure du roman (Daphne du Maurier) et
+    // distribution tres majoritairement britanniques (Royaume-Uni ajoute).
+    // Les deux valeurs existaient deja au vocabulaire, aucune escalade P-12.
+    pays: ['Etats-Unis', 'Royaume-Uni'],
+    technique: ['n&b'],
+    // `courant` choisi avec confiance (aucune escalade) : le registre
+    // gothique/mélodramatique du film correspond à la valeur existante.
+    courant: 'romantisme noir'
   }
 ];
