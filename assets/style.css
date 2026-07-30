@@ -499,7 +499,8 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 0.5rem;
 }
 
-/* --- L'objet en une (§3.2, P-06 et P-51) --------------------------------- */
+/* --- L'objet en une (§3.2, P-06 ; régime deux-cartes BKL-CIN 30/07/2026,
+   proposition d'amendement de P-06/P-51 au rapport) --------------------- */
 .une { padding: 3.2rem 0 1rem; }
 
 .une .cartel {
@@ -507,8 +508,11 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   letter-spacing: 0.16em; color: var(--accent); margin-bottom: 1rem;
 }
 
-/* Une seule carte occupe toute la largeur (P-51, arbitrage Q-1) ;
-   un couple champ/contrechamp se partage la grille en deux. */
+/* Une seule carte occupe toute la largeur si le corpus n'a qu'une entrée ;
+   sinon dernière publiée + (promue OU avant-dernière) se partagent la
+   grille en deux, à poids égal (gate AH 30/07 : « Égales »). La classe
+   .couple est réutilisée telle quelle — sa mécanique de grille (§9.3.2,
+   P-38) ne change pas, seul ce qui la remplit change. */
 .bloc-une {
   display: grid; grid-template-columns: 1fr; gap: 1px;
   background: var(--line); border: 1px solid var(--line);
@@ -537,6 +541,19 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   letter-spacing: 0.14em; padding: 0.2rem 0 0.3rem; align-self: flex-start;
   color: var(--accent); margin-bottom: 0.9rem;
   border-bottom: var(--volet);
+}
+
+/* Badge de promotion (BKL-CIN accueil-deux-cartes, gate AH 30/07/2026) :
+   marque la carte que AH a choisi de pousser en une (mécanisme
+   `promotion: true`, corpus.js/rendUne). Fond --accent / texte --paper —
+   ratio ~7,9:1, largement au-dessus du seuil AA (P-39). Ne dépend d'aucune
+   couleur de palette bespoke : l'accueil n'utilise que la feuille
+   partagée style.css, jamais une identité bespoke par film. */
+.carte-une .badge-promue {
+  display: inline-block; align-self: flex-start;
+  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.12em; padding: 0.28rem 0.55rem; margin-bottom: 0.9rem;
+  background: var(--accent); color: var(--paper); border-radius: 3px;
 }
 
 .carte-une h3 {

@@ -153,9 +153,10 @@
 
   /* ---------------------------------------------------------------- une --- */
 
-  function carteUne(f) {
+  function carteUne(f, estPromue) {
     if (!f) { return ''; }
     return '<article class="carte-une" data-volet="' + volet(f) + '">'
+      + (estPromue ? '<span class="badge-promue">À la une</span>' : '')
       + (f.poster ? '<img class="affiche" src="' + echappe(f.poster) + '"'
           + ' alt="Affiche du film ' + echappe(f.title) + '" loading="lazy">' : '')
       + '<span class="pastille">' + (estEtude(f) ? 'Étude' : 'Critique') + '</span>'
@@ -169,32 +170,61 @@
       + '</article>';
   }
 
-  /* P-06 + P-51 : la dernière publiée, et SA variante s'il y en a une.
-     Jamais une entrée qui ne soit ni l'une ni l'autre : une Critique sans
-     variante occupe seule le bloc (arbitrage Q-1 du 21/07). */
+  /* Objet en une, régime deux-cartes (gate AH 30/07/2026, BKL-CIN) :
+     [dernière publiée] + [analyse promue par AH, SINON l'avant-dernière
+     publiée]. Mécanisme de promotion : champ `promotion: true` sur l'entrée
+     du registre (choix AH du 30/07, option a — colocalisé avec le film,
+     source unique de vérité).
+
+     Priorité, dans l'ordre : une promotion active et distincte de la
+     dernière publiée > l'avant-dernière publiée > carte seule si le corpus
+     n'a qu'une entrée. Le couple champ/contrechamp automatique de l'ancien
+     P-51 est RETIRÉ de ce mécanisme (gate AH 30/07, tranché contre la
+     préservation par défaut) : une variante (`variantOf`) reste accessible
+     par son lien croisé (P-03) sur la page d'analyse, mais n'apparaît plus
+     automatiquement ici. C'est un changement à faire valider comme
+     amendement de spec P-06/P-51 (proposé au rapport, non appliqué par
+     cette session).
+
+     Cas limites couverts : promue === dernière publiée → traitée comme
+     absente, repli sur l'avant-dernière (jamais une entrée en double).
+     Plusieurs entrées `promotion: true` (état invalide, analogue au « slug
+     invalide » du mandat — adapté ici puisque le mécanisme retenu ne
+     référence pas un slug mais porte le champ sur l'entrée elle-même) :
+     seule la première rencontrée dans le registre est retenue, un
+     avertissement est journalisé en console (signalement dev, jamais
+     visible du visiteur). */
   function rendUne(films, elBloc, elCartel, elLiaison) {
     if (!elBloc) { return; }
     var ordre = trie(films);
     var derniere = ordre[0];
     if (!derniere) { return; }
-    var couple = null, i;
+
+    var promues = [], i;
     for (i = 0; i < films.length; i++) {
-      if (derniere.variantOf && films[i].slug === derniere.variantOf) { couple = films[i]; }
-      if (!derniere.variantOf && films[i].variantOf === derniere.slug) { couple = films[i]; }
+      if (films[i].promotion === true && films[i].slug !== derniere.slug) {
+        promues.push(films[i]);
+      }
     }
-    elBloc.className = 'bloc-une' + (couple ? ' couple' : '');
-    elBloc.innerHTML = couple
-      ? carteUne(derniere) + carteUne(couple)
+    if (promues.length > 1 && global.console && global.console.warn) {
+      global.console.warn('Corpus.rendUne : plusieurs entrées portent '
+        + 'promotion:true (' + promues.map(function (f) { return f.slug; }).join(', ')
+        + ') — seule « ' + promues[0].slug + ' » est retenue.');
+    }
+    var promue = promues.length ? promues[0] : null;
+    var second = promue || ordre[1] || null;
+
+    elBloc.className = 'bloc-une' + (second ? ' couple' : '');
+    elBloc.innerHTML = second
+      ? carteUne(derniere) + carteUne(second, !!promue)
       : carteUne(derniere);
     if (elCartel) {
-      elCartel.textContent = couple
-        ? 'Dernière analyse publiée — et son pendant'
-        : 'Dernière analyse publiée';
+      elCartel.textContent = 'Dernière analyse publiée';
     }
     if (elLiaison) {
-      elLiaison.textContent = couple
-        ? 'Même film, deux régimes — champ et contrechamp.'
-        : '';
+      elLiaison.textContent = !second ? ''
+        : promue ? 'Et une analyse mise à la une.'
+        : 'Et l’avant-dernière analyse publiée.';
     }
   }
 

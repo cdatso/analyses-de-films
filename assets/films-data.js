@@ -3,6 +3,12 @@
 // Convention d'images : déposer l'affiche dans assets/posters/<slug>.jpg
 // (le champ poster peut être omis tant qu'aucune image n'est disponible —
 // l'absence de fichier est gérée proprement par la page).
+// Promotion de l'objet en une (accueil-deux-cartes, BKL-CIN, 30/07/2026) :
+// `promotion: true` sur UNE SEULE entrée pousse cette analyse en second
+// volet de l'accueil, à la place de l'avant-dernière publiée (repli par
+// défaut). Jamais sur la dernière publiée elle-même (Corpus.rendUne
+// l'ignore alors et replie sur l'avant-dernière). Un acte délibéré,
+// distinct de la publication d'une analyse (même doctrine que P-12).
 const FILMS = [
   {
     slug: 'annie-hall',
@@ -632,6 +638,11 @@ const FILMS = [
     poster: 'assets/posters/dogville.jpg',
     // --- schema v2 (annexe B) ---
     volet: 'critique',
+    // DÉMONSTRATION — accueil-deux-cartes (BKL-CIN, 30/07/2026) : valeur
+    // posée pour la capture « avec promue » remise à AH, PAS un choix
+    // éditorial. À retirer, garder ou déplacer sur un autre film à la
+    // relecture — le merge est le gate d'AH (mandat §5).
+    promotion: true,
     datePublication: '2026-07-27 18:14',
     genreBase: 'drame',
     producteur: 'Claude Fable 5 (session supervisée)',
