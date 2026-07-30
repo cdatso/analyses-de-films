@@ -153,10 +153,9 @@
 
   /* ---------------------------------------------------------------- une --- */
 
-  function carteUne(f, estPromue) {
+  function carteUne(f) {
     if (!f) { return ''; }
     return '<article class="carte-une" data-volet="' + volet(f) + '">'
-      + (estPromue ? '<span class="badge-promue">À la une</span>' : '')
       + (f.poster ? '<img class="affiche" src="' + echappe(f.poster) + '"'
           + ' alt="Affiche du film ' + echappe(f.title) + '" loading="lazy">' : '')
       + '<span class="pastille">' + (estEtude(f) ? 'Étude' : 'Critique') + '</span>'
@@ -216,10 +215,21 @@
 
     elBloc.className = 'bloc-une' + (second ? ' couple' : '');
     elBloc.innerHTML = second
-      ? carteUne(derniere) + carteUne(second, !!promue)
+      ? carteUne(derniere) + carteUne(second)
       : carteUne(derniere);
     if (elCartel) {
-      elCartel.textContent = 'Dernière analyse publiée';
+      /* Correction 30/07 (retour AH sur capture) : le badge de promotion
+         vit désormais dans le cartel, pas dans la carte — « Dernière
+         analyse publiée » et « À la une » lisent sur LA MÊME LIGNE,
+         miroir de la grille de #bloc-une, et les deux affiches repartent
+         au même niveau. */
+      elCartel.className = 'cartel' + (second ? ' couple' : '');
+      elCartel.innerHTML = '<span class="cartel-gauche">Dernière analyse publiée</span>'
+        + (second
+            ? '<span class="cartel-droite">'
+              + (promue ? '<span class="badge-promue">À la une</span>' : '')
+              + '</span>'
+            : '');
     }
     if (elLiaison) {
       elLiaison.textContent = !second ? ''

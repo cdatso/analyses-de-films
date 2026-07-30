@@ -508,6 +508,33 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   letter-spacing: 0.16em; color: var(--accent); margin-bottom: 1rem;
 }
 
+/* Correction 30/07/2026 (retour AH sur capture) : « Dernière analyse
+   publiée » et « À la une » doivent lire sur LA MÊME LIGNE — le badge
+   vivait dans la carte et poussait l'affiche de la carte promue plus bas
+   que celle de la dernière publiée (lignes désalignées). Le cartel devient
+   un en-tête à deux colonnes, miroir exact de la grille de .bloc-une : le
+   badge en sort, les deux affiches repartent au même niveau. */
+.une .cartel.couple {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  align-items: center;
+}
+
+.une .cartel .cartel-droite { text-align: right; }
+
+/* Badge de promotion (BKL-CIN accueil-deux-cartes, gate AH 30/07/2026) :
+   marque la colonne que AH a choisi de pousser en une (mécanisme
+   `promotion: true`, corpus.js/rendUne). Fond --accent / texte --paper —
+   ratio ~7,9:1, largement au-dessus du seuil AA (P-39). Ne dépend d'aucune
+   couleur de palette bespoke : l'accueil n'utilise que la feuille
+   partagée style.css, jamais une identité bespoke par film. Vit dans le
+   cartel (en-tête), plus dans la carte, depuis la correction du 30/07. */
+.cartel .badge-promue {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.12em; padding: 0.28rem 0.55rem;
+  background: var(--accent); color: var(--paper); border-radius: 3px;
+}
+
 /* Une seule carte occupe toute la largeur si le corpus n'a qu'une entrée ;
    sinon dernière publiée + (promue OU avant-dernière) se partagent la
    grille en deux, à poids égal (gate AH 30/07 : « Égales »). La classe
@@ -541,19 +568,6 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   letter-spacing: 0.14em; padding: 0.2rem 0 0.3rem; align-self: flex-start;
   color: var(--accent); margin-bottom: 0.9rem;
   border-bottom: var(--volet);
-}
-
-/* Badge de promotion (BKL-CIN accueil-deux-cartes, gate AH 30/07/2026) :
-   marque la carte que AH a choisi de pousser en une (mécanisme
-   `promotion: true`, corpus.js/rendUne). Fond --accent / texte --paper —
-   ratio ~7,9:1, largement au-dessus du seuil AA (P-39). Ne dépend d'aucune
-   couleur de palette bespoke : l'accueil n'utilise que la feuille
-   partagée style.css, jamais une identité bespoke par film. */
-.carte-une .badge-promue {
-  display: inline-block; align-self: flex-start;
-  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
-  letter-spacing: 0.12em; padding: 0.28rem 0.55rem; margin-bottom: 0.9rem;
-  background: var(--accent); color: var(--paper); border-radius: 3px;
 }
 
 .carte-une h3 {
@@ -666,6 +680,10 @@ ol.liste .a {
 
 @media (max-width: 640px) {
   .bloc-une.couple { grid-template-columns: 1fr; }
+  .une .cartel.couple {
+    grid-template-columns: 1fr; gap: 0.4rem; justify-items: start;
+  }
+  .une .cartel .cartel-droite { text-align: left; }
   ol.liste a.entree { grid-template-columns: 1fr; }
   ol.liste .a { grid-row: auto; }
 }
