@@ -748,7 +748,12 @@ const FILMS = [
     // de la publication (e504c19).
     genreBase: 'gothique',
     producteur: 'Claude Opus 5 (session supervisée)',
-    pays: ['Etats-Unis'],
+    // pays = ['Etats-Unis', 'Royaume-Uni'] (GATE AH à la remise, 30/07/2026) :
+    // production et tournage integral Selznick International/UA en studio
+    // (Etats-Unis), mais decor, auteure du roman (Daphne du Maurier) et
+    // distribution tres majoritairement britanniques (Royaume-Uni ajoute).
+    // Les deux valeurs existaient deja au vocabulaire, aucune escalade P-12.
+    pays: ['Etats-Unis', 'Royaume-Uni'],
     technique: ['n&b'],
     // `courant` choisi avec confiance (aucune escalade) : le registre
     // gothique/mélodramatique du film correspond à la valeur existante.
