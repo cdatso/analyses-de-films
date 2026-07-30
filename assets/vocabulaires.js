@@ -52,6 +52,7 @@ const VOCABULAIRES = {
     'drame',
     'fantastique',
     'fresque',
+    'gothique',
     'melodrame',
     'peplum',
     'polar',
@@ -66,6 +67,16 @@ const VOCABULAIRES = {
    * aucune des onze valeurs ne nommait le péplum ; `peplum` inscrit dans un
    * commit propre distinct de la publication, entrée rétrofittée
    * (fresque → peplum), même conduite que realisme magique le 27/07. */
+
+  /* AJOUT DU 30/07/2026 (GATE AH « ajoute gothique au vocabulaire
+   * genreBase », formule pré-remplie prononcée par AH à la remise de la
+   * session supervisée) — escalade P-12 ouverte par Rebecca (1940) :
+   * aucune des douze valeurs ne nommait le registre gothique du film,
+   * `thriller` retenu à la rédaction comme valeur existante la plus juste
+   * sans rabattage sur `drame` ; `gothique` inscrit dans ce commit, distinct
+   * de la publication de la fiche, entrée rétrofittée (thriller → gothique)
+   * sur l'entrée `rebecca`, seule concernée (aucune autre entrée du site
+   * n'emploie encore ce terme). */
 
   /* Attributs techniques — liste fermée arrêtée par la spec (§4.2). */
   technique: ['muet', 'n&b', 'couleur'],

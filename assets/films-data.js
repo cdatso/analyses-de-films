@@ -741,20 +741,12 @@ const FILMS = [
     // valeur provisoire de rédaction ci-dessous, à ACTUALISER au geste de
     // statut post-merge (étape 11.1) une fois le gate AH prononcé.
     datePublication: '2026-07-30 10:31',
-    // ESCALADE P-12 EN PROPOSITION — NON CONSIGNÉE, NON APPLIQUÉE (mandat du
-    // 30/07 : « ne rabats pas sur drame sans le dire »).
-    // Valeur retenue : 'thriller', valeur existante jugée la plus juste —
-    // plusieurs sources qualifient le film de « gothic thriller » (sources
-    // 1, 6 et 7 de la page), et le choix n'aplatit pas le registre sur
-    // `drame`. Elle reste néanmoins imparfaite : le terme le plus exact
-    // serait `gothique` (ou `melodrame gothique`, déjà employé en texte
-    // libre, avant dépréciation du champ `genre`, sur l'entrée
-    // `soudain-lete-dernier`), absent du vocabulaire.
-    // Formule de gate PRÉ-REMPLIE pour AH, à prononcer ou à écarter —
-    // aucune écriture au vocabulaire sans elle (P-12, charte règle 9) :
-    //   « ajoute gothique au vocabulaire genreBase »
-    // Le commit d'ajout resterait distinct de la publication de cette fiche.
-    genreBase: 'thriller',
+    // ESCALADE P-12 SOLDÉE (GATE AH « ajoute gothique au vocabulaire
+    // genreBase », prononcé à la remise de la session supervisée du
+    // 30/07/2026) : 'gothique' inscrit au vocabulaire (voir vocabulaires.js),
+    // entrée rétrofittée thriller → gothique dans le même commit, distinct
+    // de la publication (e504c19).
+    genreBase: 'gothique',
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Etats-Unis'],
     technique: ['n&b'],
