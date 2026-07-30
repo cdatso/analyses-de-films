@@ -728,6 +728,11 @@ const FILMS = [
     // valeurs du vocabulaire ne nomme le registre satirique de ce film.
   },
   {
+    // RECTIFICATIF DE PROVENANCE (GATE-AH 30/07/2026 « go rectifie provenance
+    // Rebecca ») : la session productrice a déclaré « Claude Opus 5 » de bonne
+    // foi (calibre du mandat) mais l'audit du greffe établit claude-sonnet-5
+    // sur 301/301 messages du transcript (fenêtre ouverte sans bascule /model,
+    // erreur d'ouverture confirmée par AH). R-012 : seule la mesure fait foi.
     slug: 'rebecca',
     title: 'Rebecca',
     director: 'Alfred Hitchcock',
@@ -748,7 +753,7 @@ const FILMS = [
     // entrée rétrofittée thriller → gothique dans le même commit, distinct
     // de la publication (e504c19).
     genreBase: 'gothique',
-    producteur: 'Claude Opus 5 (session supervisée)',
+    producteur: 'Claude Sonnet 5 (session supervisée)',
     // pays = ['Etats-Unis', 'Royaume-Uni'] (GATE AH à la remise, 30/07/2026) :
     // production et tournage integral Selznick International/UA en studio
     // (Etats-Unis), mais decor, auteure du roman (Daphne du Maurier) et
