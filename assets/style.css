@@ -563,6 +563,28 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   margin: 0 0 0.9rem; border: 1px solid var(--line);
 }
 
+/* Égalisation des affiches (BKL-CIN 30/07/2026, gate AH « contain, hauteur
+   commune, calée en bas ») : deux affiches à ratio naturel différent (ex.
+   carrée vs élancée) rendaient des cartes de hauteur différente et
+   décalaient les lignes CRITIQUE/titre/sous-titre. ERRATUM (même séance,
+   retour AH sur capture) : une hauteur ABSOLUE (rem) désaccordait dès que
+   la largeur fluide des cartes rétrécissait entre le stack mobile et le
+   plein desktop — grand vide au-dessus des affiches. Remplacé par
+   aspect-ratio : les deux cartes ayant TOUJOURS la même largeur (grille
+   1fr/1fr), un ratio commun donne une hauteur commune à toute largeur.
+   2/3 est calé sur le ratio de l'affiche la plus élancée du corpus actuel
+   (quasi zéro lettrebox pour elle) ; object-fit: contain (image entière,
+   aucun recadrage) ; l'affiche plus carrée se cale en bas via
+   object-position. Ne s'applique qu'en vue deux-cartes desktop : les
+   cartes empilées mobile n'ont pas besoin d'égalisation (revert au 640px
+   ci-dessous). */
+.bloc-une.couple .carte-une .affiche {
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  object-position: center bottom;
+  background: inherit;
+}
+
 .carte-une .pastille {
   font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase;
   letter-spacing: 0.14em; padding: 0.2rem 0 0.3rem; align-self: flex-start;
@@ -680,6 +702,9 @@ ol.liste .a {
 
 @media (max-width: 640px) {
   .bloc-une.couple { grid-template-columns: 1fr; }
+  .bloc-une.couple .carte-une .affiche {
+    aspect-ratio: auto; height: auto; object-fit: initial; object-position: initial; background: none;
+  }
   .une .cartel.couple {
     grid-template-columns: 1fr; gap: 0.4rem; justify-items: start;
   }
