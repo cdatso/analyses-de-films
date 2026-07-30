@@ -726,5 +726,40 @@ const FILMS = [
     technique: ['n&b']
     // `courant` OMIS plutôt qu'inventé (axe non bloquant) : aucune des cinq
     // valeurs du vocabulaire ne nomme le registre satirique de ce film.
+  },
+  {
+    slug: 'rebecca',
+    title: 'Rebecca',
+    director: 'Alfred Hitchcock',
+    year: 1940,
+    summary: "À Manderley, la première Mrs de Winter n'apparaît jamais à l'écran — il a suffi que le Code de censure hollywoodien change un meurtre en accident pour que son fantôme, lui, ne quitte jamais la maison.",
+    url: 'films/rebecca.html',
+    poster: 'assets/posters/rebecca.jpg',
+    // --- schema v2 (annexe B) ---
+    volet: 'critique',
+    // datePublication = date du MERGE (point ferme du mandat du 30/07),
+    // valeur provisoire de rédaction ci-dessous, à ACTUALISER au geste de
+    // statut post-merge (étape 11.1) une fois le gate AH prononcé.
+    datePublication: '2026-07-30 10:31',
+    // ESCALADE P-12 EN PROPOSITION — NON CONSIGNÉE, NON APPLIQUÉE (mandat du
+    // 30/07 : « ne rabats pas sur drame sans le dire »).
+    // Valeur retenue : 'thriller', valeur existante jugée la plus juste —
+    // plusieurs sources qualifient le film de « gothic thriller » (sources
+    // 1, 6 et 7 de la page), et le choix n'aplatit pas le registre sur
+    // `drame`. Elle reste néanmoins imparfaite : le terme le plus exact
+    // serait `gothique` (ou `melodrame gothique`, déjà employé en texte
+    // libre, avant dépréciation du champ `genre`, sur l'entrée
+    // `soudain-lete-dernier`), absent du vocabulaire.
+    // Formule de gate PRÉ-REMPLIE pour AH, à prononcer ou à écarter —
+    // aucune écriture au vocabulaire sans elle (P-12, charte règle 9) :
+    //   « ajoute gothique au vocabulaire genreBase »
+    // Le commit d'ajout resterait distinct de la publication de cette fiche.
+    genreBase: 'thriller',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['Etats-Unis'],
+    technique: ['n&b'],
+    // `courant` choisi avec confiance (aucune escalade) : le registre
+    // gothique/mélodramatique du film correspond à la valeur existante.
+    courant: 'romantisme noir'
   }
 ];

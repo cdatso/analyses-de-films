@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le papier à en-tête de Manderley — Rebecca</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de
+       cette page : main max-width 700px, padding 2 x 1,6rem (51,2px) ;
+       (700 + 51,2) / 16 revient à 700/16 en box-sizing:border-box.
+       Composée d'abord par la formule, à vérifier par sonde locale au
+       rendu réel avant publication (v2.1, ordre imposé). */
+    --mobilier-largeur:43.75rem;
+
+    /* Palette bespoke — papier à en-tête de Manderley. Tri-tonalité
+       papier/encre reprise à l'identique du gabarit déjà vérifié AA
+       (le-doulos.html) ; seul l'accent change de teinte (bleu-nuit ->
+       grenat de cire à cacheter), et n'est jamais employé en texte de
+       petite taille — seulement en fond ou en gros titrage (>24px). */
+    --paper:#ece5d5;
+    --paper-deep:#e1d7bf;
+    --paper-shadow: rgba(20,18,13,0.16);
+    --ink:#17140f;
+    --ink-soft:#39332a;
+    --ink-faint:#79715f;
+    --ink-faint-texte:#645e4f;
+    --rule:#17140f;
+    --grenat:#5c1f2a;
+    --grenat-deep:#3c141b;
+    --brass:#8a6a2f;
+    --spectre:#5c6b74;
+    --line: rgba(23,20,15,0.2);
+    --line-soft: rgba(23,20,15,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 6% 0%, rgba(92,107,116,0.08), transparent 42%),
+      radial-gradient(ellipse at 96% 100%, rgba(92,31,42,0.06), transparent 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--grenat-deep);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--ink-faint-texte);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--grenat); }
+
+  /* ---------- COVER (papier à en-tête) ---------- */
+  header.lettre-cover{
+    position:relative;
+    background:var(--grenat-deep);
+    color:var(--paper);
+    padding:1.3rem 0 0;
+    border-bottom:6px double var(--rule);
+  }
+  .edition-line{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--paper-deep);
+    opacity:0.85;
+    padding-bottom:1.1rem;
+    border-bottom:1px solid rgba(236,229,213,0.25);
+    margin:0 1.6rem;
+  }
+  .cover-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    position:relative;
+  }
+  .feuillet-sheet{
+    background:var(--paper);
+    color:var(--ink);
+    border:3px solid var(--rule);
+    padding:2.6rem 2.2rem 2.2rem;
+    margin:1.8rem 0 0;
+    position:relative;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+  }
+  .feuillet-sheet::before, .feuillet-sheet::after{
+    content:"";
+    position:absolute; left:14px; right:14px;
+    height:1px; background:var(--line);
+  }
+  .feuillet-sheet::before{ top:8px; }
+  .feuillet-sheet::after{ bottom:8px; }
+
+  /* Sceau de cire — monogramme R, seul motif ornemental de la page,
+     dessiné en CSS (pas de police externe, pas de glyphe hors ASCII). */
+  .sceau{
+    position:absolute;
+    top:1.5rem; right:1.4rem;
+    width:74px; height:74px;
+    border-radius:50%;
+    background:var(--grenat);
+    border:2px solid var(--grenat-deep);
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-9deg);
+    box-shadow: inset 0 0 0 3px rgba(236,229,213,0.35), 0 3px 6px rgba(0,0,0,0.35);
+  }
+  .sceau span{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:700;
+    font-size:2rem;
+    color:var(--paper);
+  }
+
+  .avis-number{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint-texte);
+    margin-bottom:1.5rem;
+    max-width:72%;
+  }
+  .avis-number b{ color:var(--ink); }
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:900;
+    font-style:italic;
+    font-size:clamp(2.2rem, 6.6vw, 3.5rem);
+    line-height:1.05;
+    margin:0 0 0.7rem;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:48ch;
+    margin:0 0 2rem;
+  }
+
+  .cover-media{
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    border-top:1px dashed var(--ink-faint);
+    padding-top:1.3rem;
+  }
+  .cover-media .poster{ flex:0 0 140px; margin:0; }
+  .cover-media .poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--ink-faint);
+    filter:sepia(0.12) contrast(1.02);
+  }
+  .cover-media .identite{ flex:1; min-width:220px; }
+
+  .identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:1rem 1.6rem;
+  }
+  .identite dt{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--grenat-deep);
+    margin-bottom:0.28rem;
+  }
+  .identite dd{
+    margin:0; font-size:0.88rem; color:var(--ink);
+    border-bottom:1px dotted var(--ink-faint);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.3rem;
+    padding:0.75rem 1.05rem;
+    background:rgba(23,20,15,0.05);
+    border-left:2px solid var(--grenat);
+    font-family:var(--mono);
+    font-size:0.74rem;
+    letter-spacing:0.02em;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+  .provenance strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    background:var(--grenat-deep);
+    border-bottom:3px solid var(--rule);
+  }
+  nav.toc .toc-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.3rem 0.2rem;
+  }
+  nav.toc a{
+    color:var(--paper);
+    opacity:0.75;
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:opacity 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{ opacity:1; border-color:var(--paper); }
+
+  /* ---------- MAIN ---------- */
+  main{ max-width:700px; margin:0 auto; padding:0 1.6rem; }
+
+  section.block{ padding:3rem 0; border-bottom:1px dashed var(--line); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .feuillet-head{
+    margin-bottom:1.4rem;
+    border-top:3px double var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:0.6rem 0 0.7rem;
+  }
+  .feuillet-num{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--grenat-deep);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.6rem;
+    margin:0 0 0.15rem;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .feuillet-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--ink-faint-texte);
+  }
+
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--grenat);
+    text-decoration:none;
+    border-bottom:1px dotted var(--grenat);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+
+  .discretion{
+    font-family:var(--mono);
+    font-style:normal;
+    font-size:0.8rem;
+    color:var(--ink-faint-texte);
+    border-left:2px solid var(--grenat);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* ---------- fiches signalétiques (personnages) ---------- */
+  .portrait-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:0.6rem;
+  }
+  .portrait-card{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.05rem 1.15rem 1.1rem;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--rule);
+  }
+  .portrait-card .name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.05rem;
+    display:block;
+    margin:0.5rem 0 0.1rem;
+    color:var(--ink);
+  }
+  .portrait-card .role{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--grenat-deep);
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .portrait-card p{ font-size:0.87rem; margin:0; color:var(--ink-soft); }
+
+  /* ---------- citation (coupure de courrier) ---------- */
+  .coupure{
+    position:relative;
+    background:var(--paper-deep);
+    border:1px solid var(--ink-faint);
+    padding:1.3rem 1.5rem 1.4rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.4deg);
+  }
+  .coupure p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .coupure cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint-texte);
+  }
+
+  .theme-list{ display:grid; gap:1.4rem; margin-top:0.5rem; }
+  .theme-item .theme-tag{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--grenat-deep);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--grenat-deep);
+    padding-bottom:0.15rem;
+  }
+
+  /* ---------- bulletin (palmarès) ---------- */
+  .bulletin{
+    margin:1.6rem 0 1.7rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:1px solid var(--rule);
+  }
+  .bulletin-inner{ padding:1.2rem 1.4rem 1.35rem; }
+  .bulletin-label{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    color:var(--paper-deep);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .bulletin-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:1rem;
+  }
+  .bulletin .stat .num{
+    font-family:var(--serif);
+    font-weight:700;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--paper);
+    display:block;
+    line-height:1.15;
+  }
+  .bulletin .stat .cap{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+    color:#d8b8bd;
+    text-transform:uppercase;
+  }
+
+  section.sources{ background:var(--ink); color:var(--paper); padding:3.2rem 1.6rem 4.2rem; border-top:6px double var(--rule); }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--paper); font-family:var(--serif); font-weight:700; font-style:italic; font-size:1.4rem; margin:0; }
+  ol.source-list{
+    list-style:none; counter-reset:src; margin:1.6rem 0 0; padding:0;
+    display:grid; gap:0.6rem;
+  }
+  ol.source-list li{
+    counter-increment:src;
+    font-size:0.8rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--paper-deep);
+    border-bottom:1px dashed rgba(236,229,213,0.25);
+    padding-bottom:0.6rem;
+    font-family:var(--mono);
+  }
+  ol.source-list li::before{
+    content: "Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:#c99aa2;
+    font-size:0.66rem;
+    letter-spacing:0.03em;
+  }
+  ol.source-list a{ color:var(--paper); word-break:break-all; }
+  ol.source-list a:hover{ color:#c99aa2; }
+
+  footer.endnote{
+    text-align:center;
+    padding:2.2rem 1.5rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint-texte);
+    background:var(--paper);
+  }
+  footer.endnote a{ color:var(--ink-faint-texte); }
+  footer.endnote a:hover{ color:var(--grenat); }
+
+  @media (max-width:600px){
+    .cover-inner{ padding:0 1.1rem; }
+    .feuillet-sheet{ padding:2rem 1.3rem; }
+    section.block{ padding:2.2rem 0; }
+    .sceau{ position:static; margin-bottom:1.2rem; transform:rotate(-4deg); }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="lettre-cover">
+  <div class="edition-line">Papier à en-tête de Manderley</div>
+  <div class="cover-inner">
+    <div class="feuillet-sheet">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+      <div class="sceau" aria-hidden="true"><span>R</span></div>
+      <div class="avis-number">Le domaine que la maîtresse de maison n'a jamais fini de quitter — même en cendres, son monogramme tient lieu de signature.</div>
+      <h1 class="title">Rebecca</h1>
+      <p class="subtitle">À Manderley, la première Mrs de Winter n'apparaît jamais à l'écran — il a suffi que le Code de censure hollywoodien change un meurtre en accident pour que son fantôme, lui, ne quitte jamais la maison.</p>
+
+      <div class="cover-media">
+        <figure class="poster">
+          <img src="../assets/posters/rebecca.jpg" alt="Affiche du film Rebecca" onerror="this.closest('.poster').remove()">
+        </figure>
+        <dl class="identite">
+          <div><dt>Réalisation</dt><dd>Alfred Hitchcock</dd></div>
+          <div><dt>Scénario</dt><dd>Robert E. Sherwood, Joan Harrison, d'après Daphne du Maurier</dd></div>
+          <div><dt>Année</dt><dd>1940</dd></div>
+          <div><dt>Durée</dt><dd>130 minutes</dd></div>
+          <div><dt>Production</dt><dd>David O. Selznick (Selznick International)</dd></div>
+          <div><dt>Photographie</dt><dd>George Barnes</dd></div>
+          <div><dt>Musique</dt><dd>Franz Waxman</dd></div>
+          <div><dt>Montage</dt><dd>Hal C. Kern, James E. Newcom</dd></div>
+        </dl>
+      </div>
+      <div class="provenance">
+        <strong>Provenance.</strong> Analyse produite par IAGen Claude d'Anthropic &mdash; Claude Opus 5, session supervis&eacute;e &mdash; film choisi par le greffe (mandat du 30/07/2026, restriction anti-cycle d'AH) &mdash; publi&eacute;e le <em>&lt;date du merge&gt;</em>.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le &lt;date du merge, en toutes lettres&gt;</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 01</span>
+      <h2>Fiche technique <span class="feuillet-sous">— état civil du film</span></h2>
+    </div>
+    <p>
+      <em>Rebecca</em> est un film américain réalisé par Alfred Hitchcock, adapté du roman éponyme de Daphne du Maurier (1938) par Robert E. Sherwood et Joan Harrison, d'après une adaptation de Philip MacDonald et Michael Hogan<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. Produit par David O. Selznick pour Selznick International Pictures et distribué par United Artists, c'est le premier film américain de Hitchcock et le premier tourné sous contrat avec Selznick, qui avait acquis les droits du roman pour 50 000 $ — la somme exacte payée pour <em>Autant en emporte le vent</em><a class="renvoi" href="#src-1" id="ref-1b">[1]</a>.
+    </p>
+    <p>
+      Tourné du 8 septembre au 20 novembre 1939 (63 jours, contre 36 prévus), le film sort en avant-première à Miami le 21 mars 1940 puis en salles aux États-Unis le 12 avril 1940, pour une durée de 130 minutes<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>. La photographie est signée George Barnes, le montage Hal C. Kern et James E. Newcom, la musique Franz Waxman, les décors Lyle R. Wheeler<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>. Le film réunit Laurence Olivier (Maxim de Winter), Joan Fontaine (la seconde Mrs de Winter), Judith Anderson (Mrs Danvers), George Sanders (Jack Favell), Gladys Cooper, C. Aubrey Smith, Reginald Denny et Florence Bates<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+    <p>
+      Sur onze nominations aux Oscars, le film n'en remporte que deux — meilleur film (Selznick devient ainsi le premier producteur à enchaîner deux victoires consécutives, après <em>Autant en emporte le vent</em>) et meilleure photographie noir et blanc (Barnes)<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. Fait resté isolé : <em>Rebecca</em> demeure le seul film sacré meilleur film depuis 1936 à n'avoir reçu aucun Oscar d'interprétation, de réalisation ou de scénario<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 02</span>
+      <h2>Synopsis <span class="feuillet-sous">— relation des faits</span></h2>
+    </div>
+    <p>
+      À Monte-Carlo, une jeune demoiselle de compagnie sans nom, employée par l'acariâtre Mrs Van Hopper, rencontre le veuf Maxim de Winter ; un mariage précipité l'installe à Manderley, le domaine ancestral de Maxim en Cornouailles<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>. Mais la gouvernante Mrs Danvers, dévouée corps et âme à la mémoire de Rebecca, la première Mrs de Winter, tourmente la nouvelle venue de rappels constants de la beauté et de l'élégance de sa devancière<a class="renvoi" href="#src-1" id="ref-1i">[1]</a>. Convaincue que Maxim aime encore Rebecca, la jeune épouse choisit sans le savoir, pour un bal costumé, la robe même que portait Rebecca à son dernier bal — provoquant chez Maxim un désarroi qu'elle ne s'explique pas<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>. Quand un naufrage au large de Manderley fait remonter des eaux le bateau englouti de Rebecca, et son corps, tout ce que la jeune épouse croyait savoir de son mari commence à vaciller<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>.
+    </p>
+    <p class="discretion">La suite — l'aveu de Maxim, l'enquête, le sort de Mrs Danvers et de Manderley — n'est volontairement pas détaillée ici.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 03</span>
+      <h2>Contexte de production <span class="feuillet-sous">— genèse et tractations</span></h2>
+    </div>
+    <p>
+      Hitchcock découvre le roman dès 1938, sur épreuves, en tournant <em>La Taverne de la Jamaïque</em> — sans les moyens d'en acheter lui-même les droits ; Selznick s'en charge<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. L'écriture du scénario devient un bras de fer sur la fidélité au roman : Selznick rejette le premier traitement de 45 pages de Hitchcock, jugé trop éloigné du livre, et le cinéaste retravaille avec sa femme Alma Reville, son assistante Joan Harrison et le scénariste Michael Hogan, avant que Selznick n'engage Robert Sherwood pour la version finale<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>. Le scénariste Charles Bennett jugera plus tard que le script définitif est « pour quatre-vingt-dix pour cent le travail de Michael Hogan, bien que Joan en ait récrit certains passages ; Sherwood, le plus connu et donc le plus crédité, y a très peu contribué, à la fin »<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Selznick tenait à ce que le film respecte, selon ses mots, « les petites choses féminines qui sont si reconnaissables » — une stratégie éditoriale qui, selon la critique Alison Light, masque en réalité un point de vue nettement plus masculin que ne le laisse croire cette intention affichée<a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      Le casting du rôle de Maxim s'annonce difficile : Ronald Colman refuse, redoutant un film « à vedette féminine » et gêné par « l'angle du meurtre » du roman<a class="renvoi" href="#src-1" id="ref-1o">[1]</a> ; Melvyn Douglas, Walter Pidgeon, Leslie Howard et William Powell sont envisagés avant que le choix ne se porte sur Laurence Olivier<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>. Le rôle de la seconde Mrs de Winter fait l'objet d'un casting disputé entre pas moins de cent vingt-six actrices<a class="renvoi" href="#src-1" id="ref-1q">[1]</a> : Selznick soutient Nova Pilbeam, que Hitchcock avait déjà dirigée dans <em>Jeune et innocent</em>, mais le cinéaste la juge « conforme au livre » sans convenir à sa propre vision du film<a class="renvoi" href="#src-1" id="ref-1r">[1]</a> ; Laurence Olivier plaide en vain pour sa compagne Vivien Leigh<a class="renvoi" href="#src-1" id="ref-1s">[1]</a> ; Joan Fontaine n'est finalement annoncée que trois jours avant le début du tournage<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>. Pour Mrs Danvers, l'actrice australienne Judith Anderson, suggérée par la directrice de casting Kay Brown, exige un bout d'essai personnellement dirigé par Hitchcock avant d'accepter<a class="renvoi" href="#src-1" id="ref-1u">[1]</a>.
+    </p>
+    <p>
+      Le tournage, du 8 septembre au 20 novembre 1939, dépasse largement le calendrier et le budget prévus, et coïncide avec l'entrée en guerre du Royaume-Uni — les comédiens britanniques craignant alors pour leurs proches restés à Londres<a class="renvoi" href="#src-1" id="ref-1v">[1]</a>. Le chef opérateur d'abord pressenti, Harry Stradling, se retire après une expérience éprouvante avec Selznick sur <em>Intermezzo</em> ; Selznick voulait Gregg Toland, mais engage finalement George Barnes, le mentor de ce dernier<a class="renvoi" href="#src-1" id="ref-1w">[1]</a>. Hitchcock tourne en montant « dans la caméra » pour limiter le contrôle de Selznick en post-production — en vain : Selznick remonte abondamment le film, supervise le placement de la partition de Waxman et ordonne reprises et retournages après une projection-test du 26 décembre 1939<a class="renvoi" href="#src-1" id="ref-1x">[1]</a>.
+    </p>
+    <p>
+      Avant même l'achat des droits, Selznick soumet le synopsis du roman au bureau du Code de production dirigé par Joseph Breen, qui condamne le dénouement du livre — Maxim y avoue avoir abattu Rebecca — comme « justifiant et cautionnant apparemment un meurtre »<a class="renvoi" href="#src-1" id="ref-1y">[1]</a>. Breen soulève trois objections : le récit « d'un meurtrier autorisé à s'en tirer indemne » ; « l'inférence tout à fait inéluctable d'une perversion sexuelle » ; et les références répétées à la liaison illégitime entre Favell et la première Mrs de Winter<a class="renvoi" href="#src-1" id="ref-1z">[1]</a>. Pour la première objection, Breen exige que la mort de Rebecca devienne accidentelle — solution proposée par Hitchcock lui-même lors d'une réunion au restaurant Victor Hugo<a class="renvoi" href="#src-1" id="ref-1aa">[1]</a>.
+    </p>
+    <div class="coupure">
+      <p>« Toute l'histoire de <em>Rebecca</em> est celle d'un homme qui a assassiné sa femme, et la voilà devenue l'histoire d'un homme qui a enterré une femme tuée accidentellement ! »</p>
+      <cite>David O. Selznick, producteur, sur l'exigence du Code de production<a class="renvoi" href="#src-1" id="ref-1ab">[1]</a></cite>
+    </div>
+    <p>
+      Sur la « perversion sexuelle », Breen vise la manière dont Mrs Danvers décrit le corps de Rebecca et manipule ses vêtements, en particulier sa chemise de nuit, exigeant qu'« il ne subsiste aucune suggestion » d'une relation perverse entre Danvers et Rebecca<a class="renvoi" href="#src-1" id="ref-1ac">[1]</a> ; l'universitaire David Boyd notera pourtant que cette attirance reste, dans le film tel qu'il sort, « d'une clarté inéluctable pour tout spectateur qui n'est pas des plus innocents »<a class="renvoi" href="#src-1" id="ref-1ad">[1]</a>. Judith Anderson niera avoir cherché à jouer une lesbienne : « nous ne pensions pas à ce genre de choses, à l'époque »<a class="renvoi" href="#src-2" id="ref-2">[2]</a> ; dans le documentaire <em>The Celluloid Closet</em> (1996), la scénariste Susie Bright avancera au contraire que Mrs Danvers « a pu nourrir des sentiments amoureux et sexuels » pour Rebecca, citant précisément cette scène de la chemise de nuit comme indice<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 04</span>
+      <h2>Structure narrative <span class="feuillet-sous">— l'écriture du souvenir</span></h2>
+    </div>
+    <p>
+      Le film s'ouvre sur la voix de la narratrice, jamais nommée : « Cette nuit, j'ai rêvé que je retournais à Manderley » — une ligne d'ouverture qui installe d'emblée une nostalgie mélancolique pour « un passé révolu, à jamais hors de portée », le refrain final (« nous ne pourrons plus jamais retourner à Manderley ») refermant symétriquement le cadre<a class="renvoi" href="#src-6" id="ref-6">[6]</a>. De ce rêve, le récit bascule en un long flash-back qui commence à Monte-Carlo, où la narratrice rencontre Maxim<a class="renvoi" href="#src-1" id="ref-1ae">[1]</a>.
+    </p>
+    <p>
+      La construction repose sur des doublements systématiques : deux Mrs de Winter, l'une morte et l'autre vivante ; deux Manderley, celui d'avant et celui d'après ; une aile est et une aile ouest du domaine, associées respectivement à la vie qui continue et à la mémoire qu'on préserve intacte<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. Le procédé le plus frappant survient lors de l'aveu de Maxim : comme il raconte les mouvements de Rebecca ce soir-là — « elle s'est levée… et a commencé à marcher vers moi » —, la caméra suit ce trajet resté vide à l'écran, faisant physiquement « sentir » au spectateur l'irruption du passé dans le présent, sans jamais montrer la femme dont il parle<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 05</span>
+      <h2>Mise en scène et procédés techniques <span class="feuillet-sous">— l'écriture de la lumière</span></h2>
+    </div>
+    <p>
+      George Barnes construit une image en clair-obscur marqué, valant au film son unique Oscar technique<a class="renvoi" href="#src-1" id="ref-1af">[1]</a> ; Hitchcock s'en sert pour laisser deviner la présence de Rebecca sans jamais la montrer, ainsi que le procédé de caméra relevé au feuillet précédent le confirme<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>. Franz Waxman, qui compose simultanément la partition de <em>Indiscrétions</em>, considérera pourtant celle de <em>Rebecca</em> comme la commande la plus exigeante de sa carrière et comme sa meilleure musique de film<a class="renvoi" href="#src-8" id="ref-8">[8]</a>.
+    </p>
+    <p>
+      L'embrasement final de Manderley referme le film sur une image délibérément privée de chaleur : la critique Phoebe Chen relève que ses flammes, contrairement aux flammes orangées d'<em>Autant en emporte le vent</em>, paraissent « presque surnaturelles de clarté », des « flammes sans couleur » — une froideur visuelle assortie à l'atmosphère gothique du film, où « les pièces caverneuses d'une maison hantée ne peuvent de toute façon se réchauffer que jusqu'à un certain point »<a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Mrs Danvers elle-même, écrit Chen, « titube devant les hautes fenêtres de l'aile ouest, engloutie par le feu qu'elle a elle-même allumé »<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 06</span>
+      <h2>Personnages principaux <span class="feuillet-sous">— état des lieux</span></h2>
+    </div>
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <span class="name">Maxim de Winter</span>
+        <span class="role">Laurence Olivier</span>
+        <p>Veuf hanté par un secret que le Code de production a réécrit de l'extérieur : le film en fait une victime des manipulations de Rebecca, quand le roman lui prêtait une capacité assumée à la violence<a class="renvoi" href="#src-5" id="ref-5">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">La seconde Mrs de Winter</span>
+        <span class="role">Joan Fontaine</span>
+        <p>Jamais nommée, de bout en bout du film ; jeune demoiselle de compagnie devenue maîtresse d'un domaine où tout, jusqu'à son propre nom de mariage, appartient déjà à sa devancière<a class="renvoi" href="#src-1" id="ref-1ag">[1]</a><a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Mrs Danvers</span>
+        <span class="role">Judith Anderson</span>
+        <p>Gouvernante vouée corps et âme à Rebecca, dont elle conserve la chambre intacte ; nommée à l'Oscar du meilleur second rôle féminin, elle devient un archétype de l'antagoniste de cinéma, classée par l'AFI parmi ses cent plus grands « vilains »<a class="renvoi" href="#src-1" id="ref-1ah">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Jack Favell</span>
+        <span class="role">George Sanders</span>
+        <p>Cousin et amant de Rebecca ; sa tentative de chantage, une fois le corps de Rebecca remonté des eaux, relance l'enquête sur les circonstances réelles de sa mort<a class="renvoi" href="#src-1" id="ref-1ai">[1]</a>.</p>
+      </div>
+      <div class="portrait-card">
+        <span class="name">Rebecca</span>
+        <span class="role">jamais à l'écran</span>
+        <p>La vraie protagoniste absente du film : jamais montrée, entièrement construite par les objets qu'elle a laissés — monogramme, écriture, robe — et par le souvenir qu'en gardent tous les autres personnages<a class="renvoi" href="#src-1" id="ref-1aj">[1]</a><a class="renvoi" href="#src-6" id="ref-6e">[6]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 07</span>
+      <h2>Thèmes <span class="feuillet-sous">— quatre pièces du dossier</span></h2>
+    </div>
+    <div class="theme-list">
+      <div class="theme-item">
+        <span class="theme-tag">Une hantise sans fantôme</span>
+        <p>Rebecca n'apparaît jamais physiquement à l'écran ; sa présence se fait sentir par les objets qu'elle a laissés — monogramme, écriture, vêtements — et par un mouvement de caméra qui épouse ses déplacements passés sans jamais la montrer, ainsi que le confirme la scène de l'aveu de Maxim<a class="renvoi" href="#src-6" id="ref-6f">[6]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Le nom volé</span>
+        <p>La narratrice n'est jamais nommée de tout le film ; elle hérite d'un nom de mariage déjà chargé du souvenir de sa devancière, et se voit peu à peu convaincue de sa propre insignifiance par le charme de Maxim et les manipulations de Mrs Danvers — une dynamique qu'on nommerait aujourd'hui « gaslighting »<a class="renvoi" href="#src-5" id="ref-5c">[5]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">La demeure complice</span>
+        <p>Manderley, personnage à part entière, dissimule puis expose les secrets du couple ; sa destruction finale par le feu, une fois le corps de Rebecca déjà rendu par la mer, la « tue » symboliquement une seconde fois — noyée, puis brûlée<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>.</p>
+      </div>
+      <div class="theme-item">
+        <span class="theme-tag">Une morale réécrite par la censure</span>
+        <p>Le déplacement du meurtre vers l'accident, imposé par le Code de production, ne modifie pas qu'un fait de scénario : il déplace toute l'architecture morale du récit. Le roman « pose les fondations de la capacité de Maxim à la violence » ; le film, lui, « le place, comme la narratrice, en victime des manipulations cruelles de Rebecca »<a class="renvoi" href="#src-5" id="ref-5d">[5]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 08</span>
+      <h2>Réception critique et postérité <span class="feuillet-sous">— revue de presse</span></h2>
+    </div>
+    <p>
+      L'accueil contemporain est enthousiaste : Frank S. Nugent, dans le <em>New York Times</em>, salue « un film tout à fait brillant, hanté, plein de suspense, élégant et joué avec élégance »<a class="renvoi" href="#src-1" id="ref-1ak">[1]</a> ; <em>Variety</em> le juge « une réussite artistique », tout en avertissant qu'il est « trop tragique et profondément psychologique pour plaire au goût du grand public »<a class="renvoi" href="#src-1" id="ref-1al">[1]</a> ; <em>Film Daily</em> loue une production « de qualité à tous les échelons » qui « révèle une nouvelle vedette en Joan Fontaine »<a class="renvoi" href="#src-1" id="ref-1am">[1]</a> ; John Mosher, dans <em>The New Yorker</em>, écrit que Hitchcock « s'est appliqué à saisir chaque nuance tragique ou inquiétante, et livre une histoire d'amour qui, je crois, est encore plus poignante que le roman »<a class="renvoi" href="#src-1" id="ref-1an">[1]</a>. Le film remporte le sondage de fin d'année du <em>Film Daily</em>, désigné meilleur film de l'année par 546 critiques américains<a class="renvoi" href="#src-1" id="ref-1ao">[1]</a>.
+    </p>
+
+    <div class="bulletin">
+      <div class="bulletin-inner">
+        <span class="bulletin-label">Bulletin — chiffres à l'appui</span>
+        <div class="bulletin-grid">
+          <div class="stat"><span class="num">11</span><span class="cap">Nominations aux Oscars</span></div>
+          <div class="stat"><span class="num">2</span><span class="cap">Oscars remportés</span></div>
+          <div class="stat"><span class="num">1,29 M$</span><span class="cap">Budget</span></div>
+          <div class="stat"><span class="num">6 M$</span><span class="cap">Recettes mondiales</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="discretion">Chiffres exprimés en dollars de l'époque, selon la source indiquée ci-dessous.</p>
+
+    <p>
+      <em>Rebecca</em> demeure à ce jour l'unique Oscar du meilleur film de toute la carrière de Hitchcock<a class="renvoi" href="#src-1" id="ref-1ap">[1]</a>. Sa réévaluation critique ne s'est jamais démentie : inscrit au National Film Registry en 2018 pour son importance « culturelle, historique ou esthétique »<a class="renvoi" href="#src-1" id="ref-1aq">[1]</a>, classé par l'AFI parmi les cent plus grands frissons du cinéma américain, tandis que Mrs Danvers figure elle-même au classement AFI des plus grands « vilains »<a class="renvoi" href="#src-1" id="ref-1ar">[1]</a>. Le jugement rétrospectif de Pauline Kael tranche pourtant avec celui du réalisateur lui-même : elle y voit un « magnifique mélo gothico-romantique, plein de l'humour et de l'inventivité d'Alfred Hitchcock »<a class="renvoi" href="#src-1" id="ref-1as">[1]</a>, quand Hitchcock, confiant plus tard à François Truffaut, qualifiera son propre film de « petit roman, en réalité », lui reprochant précisément son « manque d'humour »<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="feuillet-head">
+      <span class="feuillet-num">Feuillet nº 09</span>
+      <h2>Conclusion <span class="feuillet-sous">— clôture du dossier</span></h2>
+    </div>
+    <p>
+      <em>Rebecca</em> demeure l'unique Oscar du meilleur film de toute la carrière de Hitchcock — et, paradoxalement, le film dont il se déclarera le moins l'auteur, tant les arbitrages de Selznick (fidélité au roman, montage, choix de casting) et les exigences du Code de production en ont façonné jusqu'à la morale interne. Le déplacement du meurtre vers l'accident, imposé de l'extérieur pour préserver l'image de Maxim, produit un effet que ni Breen ni Selznick ne semblent avoir anticipé : il approfondit la logique gothique du film plutôt qu'il ne l'édulcore. Une culpabilité sans crime nommé, une hantise sans fantôme montré, une morte qu'on ne cesse de désigner par son seul monogramme et qui finit par mourir deux fois — noyée, puis brûlée — avant que Manderley elle-même ne referme, dans les flammes, le rêve par lequel le film s'était ouvert.
+    </p>
+    <p>
+      Le désaveu de Hitchcock envers sa propre œuvre — « manque d'humour », disait-il à Truffaut — et le contre-jugement de Pauline Kael, qui y voit au contraire tout l'humour et l'inventivité du cinéaste, résument assez bien ce que <em>Rebecca</em> donne à voir : un film dont la paternité reste disputée entre son producteur et son réalisateur, comme son héroïne reste disputée entre deux Mrs de Winter — l'une, morte, dont on répète sans cesse le nom ; l'autre, vivante, qu'on ne nomme jamais.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#d8b8bd;">Sources consultées</span>
+    <h2 style="margin-top:0.6rem;">Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipedia (EN), « Rebecca (1940 film) » — <a href="https://en.wikipedia.org/wiki/Rebecca_(1940_film)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Rebecca_(1940_film)</a></li>
+      <li id="src-2">Wikipedia (EN), « Mrs. Danvers » — <a href="https://en.wikipedia.org/wiki/Mrs._Danvers" target="_blank" rel="noopener">en.wikipedia.org/wiki/Mrs._Danvers</a></li>
+      <li id="src-3">Alison Light, « Love to death: Hitchcock, Du Maurier and Rebecca », BFI Sight &amp; Sound — <a href="https://www.bfi.org.uk/sight-and-sound/features/rebecca-alfred-hitchcock-1940-du-maurier-gothic-romance-feminine-angle" target="_blank" rel="noopener">bfi.org.uk — Love to death</a></li>
+      <li id="src-4">Phoebe Chen, « How to Read a Fire: On Hitchcock's Rebecca », Bright Wall/Dark Room — <a href="https://www.brightwalldarkroom.com/2018/07/20/how-to-read-a-fire-on-hitchcocks-rebecca/" target="_blank" rel="noopener">brightwalldarkroom.com — How to Read a Fire</a></li>
+      <li id="src-5">Jessica Gildersleeve, « Guide to the classics: Rebecca by Daphne du Maurier — gender, gothic haunting and gaslighting », The Conversation — <a href="https://theconversation.com/guide-to-the-classics-rebecca-by-daphne-du-maurier-gender-gothic-haunting-and-gaslighting-146573" target="_blank" rel="noopener">theconversation.com — Guide to the classics</a></li>
+      <li id="src-6">Eric Langberg, « In Rebecca (1941), Alfred Hitchcock tells a Gothic ghost story… without any ghosts », Medium — <a href="https://medium.com/everythings-interesting/in-rebecca-1941-alfred-hitchcock-tells-a-gothic-ghost-story-without-any-ghosts-5217af790962" target="_blank" rel="noopener">medium.com — a Gothic ghost story without any ghosts</a></li>
+      <li id="src-7">Manish Mathur, « Beginner's Guide to Alfred Hitchcock: Rebecca (1940) », Talk Film Society — <a href="https://talkfilmsociety.com/columns/beginners-guide-to-alfred-hitchcock-rebecca-1940" target="_blank" rel="noopener">talkfilmsociety.com — Beginner's Guide</a></li>
+      <li id="src-8">Franz Waxman, page officielle de l'ayant droit consacrée à la partition de <em>Rebecca</em> — <a href="https://franzwaxman.com/music-performance/rebecca/" target="_blank" rel="noopener">franzwaxman.com — Rebecca</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 30 juillet 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
