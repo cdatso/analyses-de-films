@@ -1,0 +1,124 @@
+#!/bin/sh
+# outils/hooks/pre-push -- batterie de controle avant push vers main (RUN-001).
+#
+# Ne bloque QUE les pushes vers refs/heads/main : les pushes vers staging (et
+# toute autre ref) sortent 0 sans rien lire ni afficher -- un hook qui
+# prompte ou echoue en headless figerait les routines nocturnes (mandat
+# RUN-001, borne 2, lecon r2).
+#
+# Contournement documente et volontaire (mandat RUN-001, point 5) : le
+# gate ne s'interdit jamais techniquement --
+#     git push --no-verify
+# reste possible. C'est un geste EXCEPTIONNEL, a CONSIGNER (CHANGELOG),
+# jamais une pratique de routine.
+#
+# Activation (geste separe, PAS ce hook) : git config core.hooksPath outils/hooks
+
+depot="$(cd "$(dirname "$0")/../.." && pwd)"
+py="python"
+
+# --- 1) Lire TOUTES les lignes stdin avant de decider (une passe globale,
+#     pas une par ref) : format pre-push = <local ref> <local sha> <remote
+#     ref> <remote sha>, une ligne par ref poussee dans la meme commande.
+cible_main=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+    [ -z "$remote_ref" ] && continue
+    if [ "$remote_ref" = "refs/heads/main" ] && \
+       [ "$local_sha" != "0000000000000000000000000000000000000000" ]; then
+        cible_main=1
+    fi
+done
+
+if [ "$cible_main" -eq 0 ]; then
+    exit 0
+fi
+
+echo "[pre-push] push vers main detecte -- batterie de controle (RUN-001)."
+
+# --- 2) python absent ou casse sur ce poste : on laisse PASSER avec un
+#     avertissement fort (arbitrage AH du 31/07/2026 -- un poste mal
+#     configure ne doit pas bloquer totalement la publication).
+if ! command -v "$py" >/dev/null 2>&1; then
+    echo "############################################################" >&2
+    echo "[pre-push] AVERTISSEMENT : commande '$py' introuvable sur ce" >&2
+    echo "  poste. AUCUN CONTROLE JOUE -- le push vers main passe SANS" >&2
+    echo "  batterie. Corrige l'environnement Python avant la prochaine" >&2
+    echo "  publication." >&2
+    echo "############################################################" >&2
+    exit 0
+fi
+
+debut=$(date +%s)
+
+# --- 3) Arbre de travail propre exige. Les scripts de la batterie lisent
+#     les fichiers du DISQUE (option --depot), pas l'objet git du commit
+#     pousse : un arbre sale controlerait autre chose que ce qui part
+#     reellement en production.
+if [ -n "$(git -C "$depot" status --porcelain)" ]; then
+    echo "[pre-push] REFUSE : arbre de travail non propre." >&2
+    echo "  Ce hook controle les fichiers tels qu'ils sont sur le disque." >&2
+    echo "  Avec des modifications non commitees, il ne prouverait rien" >&2
+    echo "  sur ce qui est reellement pousse vers main." >&2
+    echo "  -> commite ou stash d'abord, puis repousse." >&2
+    echo "  Echappatoire exceptionnelle (a consigner) : git push --no-verify" >&2
+    exit 1
+fi
+
+echec=0
+
+echo ""
+echo "[1/4] controle-vocabulaires.py --strict"
+if ! "$py" "$depot/outils/controle-vocabulaires.py" --depot "$depot" --strict; then
+    echo "[pre-push] REFUSE : controle-vocabulaires.py --strict a echoue (detail ci-dessus)." >&2
+    echec=1
+fi
+
+if [ "$echec" -eq 0 ]; then
+    echo ""
+    echo "[2/4] genere-liste-statique.py --verifier"
+    if ! "$py" "$depot/outils/genere-liste-statique.py" --depot "$depot" --verifier; then
+        echo "[pre-push] REFUSE : genere-liste-statique.py --verifier a echoue (derive, detail ci-dessus)." >&2
+        echec=1
+    fi
+fi
+
+if [ "$echec" -eq 0 ]; then
+    echo ""
+    echo "[3/4] recompresse-affiches.py --seuil 300 --simuler (P-36, lecture seule)"
+    if ! "$py" "$depot/outils/recompresse-affiches.py" --depot "$depot" --seuil 300 --simuler; then
+        echo "[pre-push] REFUSE : au moins une affiche reste au-dessus de 300 Ko meme apres simulation (P-36, detail ci-dessus)." >&2
+        echec=1
+    fi
+fi
+
+if [ "$echec" -eq 0 ]; then
+    echo ""
+    echo "[4/4] controle-contraste.py (gate sur les ecarts CERTAINS E1 uniquement)"
+    rapport="$(mktemp)"
+    if ! "$py" "$depot/outils/controle-contraste.py" --depot "$depot" > "$rapport" 2>&1; then
+        cat "$rapport"
+        echo "[pre-push] REFUSE : controle-contraste.py n'a pas pu aboutir (detail ci-dessus)." >&2
+        echec=1
+    else
+        cat "$rapport"
+        if grep -Eq "Ecarts CERTAINS \(E1\) \| [1-9][0-9]* \|" "$rapport"; then
+            echo "[pre-push] REFUSE : au moins un ECART CERTAIN (E1) de contraste WCAG releve ci-dessus." >&2
+            echo "  (les ecarts PROBABLES E2 restent affiches mais ne bloquent pas -- doctrine du script.)" >&2
+            echec=1
+        fi
+    fi
+    rm -f "$rapport"
+fi
+
+fin=$(date +%s)
+echo ""
+echo "[pre-push] batterie terminee en $((fin - debut))s."
+
+if [ "$echec" -ne 0 ]; then
+    echo "[pre-push] PUSH VERS MAIN REFUSE. Corrige le controle en echec ci-dessus, ou :" >&2
+    echo "  git push --no-verify   (geste exceptionnel, a consigner)" >&2
+    exit 1
+fi
+
+echo "[pre-push] batterie conforme -- push vers main autorise."
+exit 0
