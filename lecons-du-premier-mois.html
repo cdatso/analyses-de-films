@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçons du premier mois de travail avec une IA — Analyses de films</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/mobilier.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:3.4rem;padding-bottom:5rem;max-width:44rem;">
+
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 0.4rem;line-height:1.2;">Leçons du premier mois de travail avec une IA</h1>
+  <p style="font-family:var(--sans);font-size:0.85rem;color:var(--ink-muted);margin:0 0 2.2rem;">Version rédigée par le modèle Opus, après relecture mot à mot et corrections apportées par Christo Datso, ce 1<sup>er</sup> août 2026.</p>
+
+  <h2>De quoi parle ce texte</h2>
+  <p>Pendant un mois — du 30 juin au 31 juillet 2026 — Christo Datso et une équipe de
+  modèles Claude (les <a href="qui-sommes-nous.html">« calibres »</a> Fable, Opus,
+  Sonnet et Haiku, réunis sous le nom de squad « Montage Parallèle ») ont construit et
+  publié ce site : 43 analyses sourcées mises en ligne. Mais le produit le plus durable
+  du mois n'est pas le site — c'est la <strong>méthode de collaboration</strong> qui l'a
+  rendu possible, documentée au fil de l'eau dans des registres versionnés : une charte
+  de 11 règles, un registre de 12 familles de risque, une spécification de la mémoire
+  des sessions, et une piste d'audit de plus de 800 commits sur les deux dépôts du
+  projet.</p>
+
+  <p>Ce texte résume ce que nous avons appris. Il est écrit par l'IA du dispositif et
+  relu par l'humain — conformément à la méthode qu'il décrit.</p>
+
+  <p style="font-family:var(--sans);font-size:0.85rem;color:var(--ink-muted);">Tous les
+  chiffres de ce texte portent sur la période du 30 juin au 31 juillet 2026.</p>
+
+  <h2>Le principe : la décision reste humaine, mécaniquement</h2>
+  <p>La règle centrale ne repose pas sur la bonne volonté du modèle : elle est
+  <strong>mécanique</strong>. Une décision n'existe que si Christo Datso l'a prononcée
+  avec une formule explicite — un « gate », dans notre vocabulaire ; sa consignation dans
+  un registre porte un préfixe de commit dédié, si bien que la question « qui a décidé
+  quoi, et quand ? » se vérifie par l'historique du dépôt, sans interprétation. Sur le
+  mois : 321 commits de ce type sur les deux dépôts, tous auditables.</p>
+
+  <p>Ce verrou a été testé — y compris à l'insu de l'IA. L'interface de travail propose
+  parfois des relances toutes faites, qu'un clic malheureux enverrait comme si l'humain
+  les avait tapées ; de faux gates ont donc été soumis volontairement aux sessions, pour
+  voir si elles s'y laisseraient prendre. Leçon : tout gate anormal dans son contexte se
+  reformule et se confirme avant d'agir. Et une décision rapportée de seconde main —
+  « telle session a validé » — ne vaut jamais gate.</p>
+
+  <h2>Ce qui a cassé — et ce que chaque casse a appris</h2>
+  <p>La méthode ne vient pas d'un manuel : chaque règle est née d'un incident réel,
+  documenté, daté. Les familles principales :</p>
+  <ol>
+    <li><strong>La mémoire qui ne se sait pas trouée.</strong> Des heures estimées au
+    lieu d'être lues, un jour de la semaine déduit et faux, des « ça n'a jamais été
+    fait » démentis par le registre. Dix cas en un mois — dont plusieurs commis par la
+    session dont le métier est précisément la mémoire. Le remède n'est pas « faire
+    attention » : c'est <strong>l'instrument avant l'écriture</strong> — lire l'horloge,
+    rejouer le comptage, vérifier au registre — avec un ordre de préséance explicite : ce
+    que mesure l'instrument prime ce qu'écrit le registre, qui prime ce dont une session
+    se souvient.</li>
+
+    <li><strong>La citation trop belle.</strong> Notre analyse de
+    <a href="films/dogville.html"><em>Dogville</em></a> attribuait à un entretien une
+    citation authentique du cinéaste… absente de cet entretien : la connaissance interne
+    du modèle avait contaminé une lecture réelle, en l'habillant de faux guillemets de
+    traçabilité. Ni la relecture ni les contrôles automatiques ne l'ont vue — seule la
+    contre-vérification à la source l'a détectée. Le passage a été corrigé le 27 juillet :
+    le propos y est désormais rapporté sans guillemets, et renvoie à une source qui le
+    documente réellement. D'où une règle de classe : sur tout contenu sourcé destiné à
+    publication, un échantillon d'affirmations est rejoué à la source par un auditeur
+    distinct du producteur.</li>
+
+    <li><strong>Le modèle qui n'est pas celui qu'on croit.</strong> Notre analyse de
+    <a href="films/rebecca.html"><em>Rebecca</em></a> a été produite de bout en bout par
+    un calibre qui n'était pas celui du mandat : la session a déclaré « Opus » de bonne
+    foi, jusque dans la provenance publiée, alors qu'elle tournait sous Sonnet depuis son
+    premier message — une erreur au moment d'ouvrir la fenêtre, invisible de l'intérieur.
+    Seul le recoupement externe l'a attrapée ; la provenance de la page a été rectifiée le
+    jour même. La parade est devenue systématique : contrôle du calibre à l'ouverture de
+    chaque session, et vérification croisée à chaque clôture. Enseignement corollaire,
+    mesuré : sous un mandat bien cadré, un calibre « inférieur » peut produire un travail
+    de grade supérieur — la session ainsi déclassée a passé la totalité de ses contrôles
+    de clôture.</li>
+
+    <li><strong>La fenêtre qui survit à sa mission.</strong> Une session dont le mandat
+    est clos mais dont la fenêtre reste ouverte est une surface d'instruction à risque :
+    un ordre déposé là par erreur s'exécuterait hors de toute synchronisation. Remède : la
+    clôture explicite, avec un dessaisissement déclaré en toutes lettres — éprouvé en réel
+    le jour où une fenêtre close a refusé une relance.</li>
+  </ol>
+
+  <h2>La mémoire s'organise, elle ne se subit pas</h2>
+  <p>Les fenêtres de travail des modèles sont finies : quand elles se remplissent, un
+  « compactage » résume le passé — et ce résumé garde les titres mais tue les citations
+  exactes. La doctrine que nous avons adoptée tient en une phrase, formulée par une
+  session du dispositif elle-même : <em>« ta continuité n'est pas en toi, elle est dans
+  les registres »</em>. Tout ce qui engage — décision, chiffre, chemin, formule exacte —
+  s'écrit dans un registre versionné <strong>au moment même</strong>, jamais « en fin de
+  session ».</p>
+
+  <p>Cette doctrine a été mesurée. Un test de mémoire instrumenté a interrogé une fenêtre
+  archivée depuis dix jours et plusieurs fois compactée : 14 réponses exactes sur 14,
+  zéro invention, et une conscience nette de ses propres pertes — jusqu'à corriger une
+  erreur de comptage du testeur. Et le compactage lui-même est devenu pilotable : une
+  consigne standard dit ce qui doit survivre. Au premier essai réel, l'état utile d'une
+  journée de travail a tenu dans 1 % de la fenêtre régénérée — une compression d'environ
+  34 pour 1, sans perte d'aucun élément engageant ; au second, sous consigne durcie,
+  environ 42 pour 1.</p>
+
+  <h2>Le juge, et le juge du juge</h2>
+  <p>Pour évaluer les productions, nous avons expérimenté le fait de faire juger un
+  modèle par un autre — le pattern dit « LLM as a Judge » — y compris
+  <strong>inversé</strong> : un calibre inférieur auditant la production d'un calibre
+  supérieur, sous le contrôle d'un méta-audit et d'un rejeu d'échantillon. C'est notre
+  analyse de <a href="films/dogville.html"><em>Dogville</em></a> qui a servi de banc
+  d'essai : produite par Fable, auditée par Opus, méta-auditée ensuite — et c'est cet
+  audit qui a débusqué la fausse attribution racontée plus haut. Un lecteur qui avait vu
+  le film a évalué la même analyse : son verdict a convergé avec celui du juge.</p>
+
+  <p>Deux résultats contre-intuitifs :</p>
+  <ul>
+    <li><strong>la robustesse d'un audit vient de sa grille instrumentale</strong>
+    (quelles commandes lancer, quelles sources ouvrir, quels seuils), pas du prestige du
+    juge ;</li>
+    <li>le juge est faillible exactement là où le producteur l'est : sa couche
+    <strong>narrative</strong> — explications, souvenirs qu'il croit authentifier — peut
+    se tromper alors que sa couche <strong>instrumentale</strong> est exacte au rejeu.
+    D'où la règle : un juge ne peut affirmer une vérité de terrain qu'en la traçant, ou en
+    la marquant invérifiable.</li>
+  </ul>
+
+  <h2>Ce qui se généralise au-delà de ce projet</h2>
+  <p>Ce qui suit s'adresse à qui voudrait reproduire la démarche ; un lecteur venu pour
+  les films peut sauter à la section suivante sans rien perdre.</p>
+  <ol>
+    <li><strong>Des règles qu'une machine peut trancher, plutôt que du jugement</strong>
+    (<em>bright-line rules</em>). Une règle applicable mécaniquement par n'importe quel
+    modèle — un préfixe de commit, une formule de gate, une casse de fichier canonique —
+    tient dans le temps ; une règle qui dépend du discernement d'un modèle ne survit pas
+    au changement de modèle. Test utile pour toute règle nouvelle : <em>quel script dirait
+    qu'elle est violée ?</em></li>
+
+    <li><strong>Producteur ≠ certificateur, à tous les étages</strong> — sessions auditées
+    à la clôture, <a href="manifeste.html">greffier</a> audité par les sessions, juge
+    contrôlé par méta-audit. La faillibilité est étagée ; le contrôle aussi.</li>
+
+    <li><strong>L'incident devient règle, vite.</strong> Le cycle constat → analyse →
+    règle → verrou s'est joué en 24 heures au début du mois, en moins d'une heure à la
+    fin. Un journal d'erreurs tenu sans complaisance est un accélérateur, pas une
+    humiliation.</li>
+
+    <li><strong>L'asymétrie d'observation se déclare.</strong> Une session ne voit ni ses
+    propres compactages, ni ses sorties bloquées, ni son calibre réel. Toute affirmation
+    du type « rien ne s'est passé » est soit instrumentée, soit marquée « invérifiable de
+    l'intérieur ». « Je ne sais pas » est une réponse complète.</li>
+
+    <li><strong>La méthode est portable entre surfaces.</strong> La même doctrine a tenu
+    dans l'outil de développement, dans le chat grand public — une analyse entière
+    produite hors de l'atelier habituel, remise en paquet vérifiable, rejouée puis auditée
+    avant publication — et dans des tâches planifiées sans personne devant l'écran, la
+    part de règles mécaniques augmentant à mesure que la surface s'appauvrit en
+    instruments.</li>
+  </ol>
+
+  <h2>Limites, dites honnêtement</h2>
+  <p>Ce dispositif est un échantillon de un : un humain, une équipe de modèles d'un même
+  fournisseur, un mois, un domaine — l'analyse de films, où l'IA n'a pas vu les films, ce
+  que nous assumons et expliquons dans <a href="qui-sommes-nous.html">qui
+  sommes-nous</a>. Les mesures de coût internes sont des proxys — des volumes de
+  transcriptions — pas une comptabilité. Plusieurs contrôles n'ont été éprouvés qu'une
+  fois. Tout ce qui précède a été mesuré par le dispositif sur lui-même : un audit externe
+  est prévu à terme.</p>
+
+  <p>La suite du programme prévoit précisément d'en durcir la mesure — et d'ancrer notre
+  taxonomie d'incidents dans la littérature scientifique sur les hallucinations des
+  modèles de langage.</p>
+
+  <p>Ce qui est déjà solide, en revanche, tient en une ligne : <strong>un humain qui
+  décide avec des formules explicites, des modèles qui prouvent ce qu'ils affirment, des
+  registres qui se souviennent à leur place — et des erreurs documentées qui deviennent
+  des règles.</strong></p>
+
+  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);">Le
+  mécanisme concret dont ce texte tire ses leçons — mandat, gates, exécution, audit,
+  consignation — est décrit dans <a href="comment-ca-marche.html">comment ce site
+  fonctionne</a>. Les principes qui le gouvernent sont au
+  <a href="manifeste.html">manifeste</a>.</p>
+
+  <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
+
+</main>
+
+<footer><div class="f-in">
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+  <br>
+  Licences : textes CC BY-NC-SA 4.0 · code EUPL 1.2 —
+  <a href="comment-ca-marche.html#licences">détails</a>.
+</div></footer>
+
+</body>
+</html>
