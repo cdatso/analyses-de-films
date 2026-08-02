@@ -764,5 +764,38 @@ const FILMS = [
     // `courant` choisi avec confiance (aucune escalade) : le registre
     // gothique/mélodramatique du film correspond à la valeur existante.
     courant: 'romantisme noir'
+  },
+  {
+    slug: 'the-sweet-east',
+    title: 'The Sweet East',
+    director: 'Sean Price Williams',
+    year: 2023,
+    summary: "Une lycéenne quitte son voyage scolaire et traverse une Amérique qui n'est plus un pays mais une collection de sectes — et le film refuse obstinément d'en tirer la leçon.",
+    url: 'films/the-sweet-east.html',
+    poster: 'assets/posters/the-sweet-east.jpg',
+    volet: 'critique',
+    // Valeur PROVISOIRE de rédaction (Get-Date du 02/08/2026), à actualiser
+    // au geste de statut post-merge comme pour `rebecca` : la date de
+    // publication est celle du merge, prononcé par AH.
+    datePublication: '2026-08-02 14:26',
+    // AUCUNE escalade P-12 : les quatre axes fermés sont servis par des
+    // valeurs déjà au vocabulaire. `comedie` nomme le registre de base du
+    // film (satire picaresque) sans rabattage. Le package d'entrée
+    // proposait `comédie-dramatique`, `['16mm', 'cinéma indépendant']` et
+    // `'États-Unis'` : trois valeurs hors vocabulaire fermé (P-10), qui
+    // auraient bloqué la publication — voir la note de remise CIN-081.
+    genreBase: 'comedie',
+    // Provisoire : la provenance à deux modèles (premier jet Haïku 4.5 en
+    // session Chat, v2 par Opus 5 en session supervisée) est une forme
+    // inédite au regard de P-14/P-17 — arbitrage escaladé à AH avec la
+    // remise de la v2. La valeur ci-dessous est identique au segment de la
+    // phrase de signature de la page (P-17).
+    producteur: 'Claude Haiku 4.5 puis Claude Opus 5 (sessions supervisées)',
+    pays: ['Etats-Unis'],
+    technique: ['couleur'],
+    // `courant` : enrichissement facultatif et non bloquant, repris du
+    // descripteur encyclopédique du film (« satirical surrealist road
+    // film ») — à retirer d'un trait si AH le juge trop appuyé.
+    courant: 'surrealisme'
   }
 ];

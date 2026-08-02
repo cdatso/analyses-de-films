@@ -277,6 +277,25 @@ consignée pour l'éventuelle étape de reconstruction sourcée.
 
 ---
 
+## The Sweet East (Sean Price Williams, 2023) — 2 août 2026
+
+| Film | Source retenue | Détail |
+|---|---|---|
+| The Sweet East | **Base locale D: (priorité 1)** — `D:\documentation\Database of Movie's Pictures\1 affiches de films\2023 the_sweet_east  Sean Price Williams.png` | Affiche de la sortie française (mention « Au cinéma le 13 mars », bandeau Quinzaine des Cinéastes — Cannes 2023, artwork crédité Circe Morris). **Vérifiée visuellement avant intégration** (titre, réalisateur, distribution, sélection). Source 994×1352 PNG, 2 378 Ko. |
+
+**Gestes appliqués.** ① Aucun blocage de copie cette fois : la lecture et la copie ont été
+faites par l'API .NET/Pillow depuis l'outil PowerShell, sans passer par `Copy-Item` — le
+garde-fou v2.1 (`[System.IO.File]::Copy` avant tout repli externe) n'a donc pas eu à jouer.
+② **Conversion PNG → JPEG assumée et déclarée** : les 42 affiches du site sont des `.jpg`,
+la skill nomme la cible `assets/posters/<slug>.jpg`, et surtout `outils/recompresse-affiches.py`
+**n'inspecte que `.jpg`/`.jpeg`** — un PNG déposé tel quel aurait échappé au contrôle P-36 du
+hook pre-push comme à l'outil. La doctrine de compression appliquée est celle de l'outil, à
+l'identique (qualité d'abord, puis paliers), mais restreinte au seul fichier du mandat pour ne
+pas réécrire les 41 autres affiches (périmètre : un film). ③ Résultat : **735×1000, 271 Ko**,
+sous le seuil P-36 de 300 Ko. Les originaux de la base D: restent en place, intacts.
+
+---
+
 ## Note sur les droits
 
 Les affiches de films sont généralement protégées par le droit d'auteur du studio/distributeur, mais leur usage dans un contexte critique, éditorial et non commercial (comme tes analyses) relève généralement du fair use / droit de courte citation visuelle. Les photos Alamy/Getty affichées en aperçu basse résolution sur leurs sites sont souvent sous licence commerciale pour un usage en haute résolution — à vérifier au cas par cas si tu comptes republier ces images plutôt que simplement les visionner pour inspiration.

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Souvenir de la côte Est — The Sweet East</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : main = 740 px moins 2 x 1,6rem de padding, soit 688,8 px de
+       colonne ; (688,8 + 51,2) / 16 = 46,25rem. Composé par la formule,
+       puis vérifié par sonde locale au rendu réel (skill v2.1, étape 3.1). */
+    --mobilier-largeur:46.3rem;
+
+    /* Identité bespoke : « le dépliant de curiosités » — le prospectus
+       souvenir qu'on ramasse dans un relais de bord de route, imprimé en
+       trichromie fatiguée sur un papier bon marché. Le film est un voyage
+       à étapes le long de la côte Est ; la page est le dépliant qui en
+       vend les curiosités. Palette relevée sur l'affiche française :
+       crème d'imprimerie, rouge de drapeau passé, indigo de fond. */
+    --papier:#f2ece0;
+    --papier-creux:#e6dccb;
+    --papier-ombre:rgba(27,26,36,0.14);
+    --encre:#1b1a24;
+    --encre-douce:#33313f;
+    --encre-pale:#5f5a6c;
+    --rouge:#b0231f;
+    --rouge-profond:#8a1a17;
+    --indigo:#26286b;
+    --indigo-pale:#b9bce8;
+    --filet:rgba(27,26,36,0.22);
+    --filet-tenu:rgba(27,26,36,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 6% 0%, rgba(176,35,31,0.06), transparent 40%),
+      radial-gradient(ellipse at 94% 100%, rgba(38,40,107,0.07), transparent 44%),
+      var(--papier);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-weight:500;
+    font-size:0.66rem;
+    color:var(--indigo);
+  }
+
+  /* ---------- COUVERTURE : panneau de dépliant ---------- */
+  header.depliant{
+    position:relative;
+    background:var(--indigo);
+    color:var(--papier);
+    padding:1.2rem 0 0;
+    border-bottom:5px solid var(--rouge);
+  }
+  .bandeau-edition{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--indigo-pale);
+    padding-bottom:1rem;
+    border-bottom:1px solid rgba(233,228,216,0.24);
+    margin:0 1.6rem;
+  }
+  .depliant-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.6rem;
+  }
+  .panneau{
+    background:var(--papier);
+    color:var(--encre);
+    border:2px solid var(--encre);
+    padding:2.4rem 2.1rem 2.1rem;
+    margin:1.7rem 0 0;
+    position:relative;
+    box-shadow:0 14px 30px rgba(0,0,0,0.3);
+  }
+  /* Les deux plis du dépliant, tracés en CSS. */
+  .panneau::before,.panneau::after{
+    content:"";
+    position:absolute;
+    top:10px; bottom:10px;
+    width:1px;
+    background:repeating-linear-gradient(to bottom, var(--filet-tenu) 0 6px, transparent 6px 12px);
+  }
+  .panneau::before{ left:33.3%; }
+  .panneau::after{ left:66.6%; }
+
+  .vignette-etapes{
+    position:absolute;
+    top:1.3rem; right:1.3rem;
+    border:2px solid var(--rouge);
+    color:var(--rouge-profond);
+    font-family:var(--mono);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    font-size:0.62rem;
+    padding:0.45rem 0.6rem;
+    transform:rotate(-6deg);
+    text-align:center;
+    line-height:1.3;
+    background:var(--papier);
+  }
+
+  .numero-depliant{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--encre-pale);
+    margin-bottom:1.4rem;
+    max-width:72%;
+  }
+  .numero-depliant b{ color:var(--rouge-profond); }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.1rem, 6.4vw, 3.3rem);
+    line-height:1.06;
+    margin:0 0 0.2rem;
+    letter-spacing:-0.015em;
+    color:var(--encre);
+  }
+  .titre-film{
+    font-family:var(--mono);
+    font-size:0.76rem;
+    text-transform:uppercase;
+    letter-spacing:0.17em;
+    color:var(--rouge-profond);
+    display:block;
+    margin-bottom:1.5rem;
+  }
+  .accroche{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--encre-douce);
+    font-size:1.02rem;
+    max-width:47ch;
+    margin:0 0 1.9rem;
+  }
+
+  dl.identite{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(168px,1fr));
+    gap:0.95rem 1.5rem;
+    border-top:1px dashed var(--encre-pale);
+    padding-top:1.3rem;
+    margin:0;
+  }
+  dl.identite dt{
+    font-family:var(--mono);
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--indigo);
+    margin-bottom:0.26rem;
+  }
+  dl.identite dd{
+    margin:0; font-size:0.88rem; color:var(--encre);
+    border-bottom:1px dotted var(--encre-pale);
+    padding-bottom:0.2rem;
+  }
+
+  .provenance{
+    margin-top:1.3rem;
+    padding:0.75rem 1.05rem;
+    background:rgba(38,40,107,0.06);
+    border-left:3px solid var(--indigo);
+    font-family:var(--mono);
+    font-size:0.73rem;
+    letter-spacing:0.02em;
+    line-height:1.62;
+    color:var(--encre-douce);
+  }
+  .provenance strong{ color:var(--encre); font-weight:600; }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.1rem;
+  }
+  .back-link:hover{ color:var(--rouge-profond); }
+
+  /* ---------- SOMMAIRE : la bande des étapes ---------- */
+  nav.etapes{
+    background:var(--encre);
+    border-bottom:4px double var(--rouge);
+  }
+  nav.etapes .etapes-inner{
+    max-width:760px; margin:0 auto; padding:0.8rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.25rem 0.15rem;
+  }
+  nav.etapes a{
+    color:var(--papier-creux);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:0.3rem 0.6rem;
+    border:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.etapes a:hover, nav.etapes a:focus-visible{ color:#fff; border-color:var(--papier-creux); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:740px; margin:0 auto; padding:0 1.6rem; }
+
+  section.etape{ padding:2.9rem 0; border-bottom:1px dashed var(--filet); }
+  section.etape:last-of-type{ border-bottom:none; }
+
+  .etape-head{
+    margin-bottom:1.4rem;
+    border-top:3px double var(--encre);
+    border-bottom:1px solid var(--encre);
+    padding:0.55rem 0 0.65rem;
+  }
+  .etape-num{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--rouge-profond);
+    display:block;
+    margin-bottom:0.18rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.55rem;
+    margin:0 0 0.12rem;
+    color:var(--encre);
+    letter-spacing:-0.008em;
+  }
+  .etape-sous{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.79rem;
+    color:var(--encre-pale);
+  }
+
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:1.7rem 0 0.6rem;
+    color:var(--encre);
+  }
+  p{ margin:0 0 1.05rem; font-size:0.97rem; color:var(--encre-douce); }
+  p:last-child{ margin-bottom:0; }
+
+  a.renvoi{
+    color:var(--indigo);
+    text-decoration:none;
+    border-bottom:1px dotted var(--indigo);
+    font-size:0.8em;
+    font-family:var(--mono);
+  }
+
+  .mention{
+    font-family:var(--mono);
+    font-size:0.79rem;
+    color:var(--encre-pale);
+    border-left:3px solid var(--rouge);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* Affiche, section 1 */
+  figure.poster{
+    float:right;
+    width:200px;
+    margin:0.2rem 0 1.1rem 1.6rem;
+  }
+  figure.poster img{
+    width:100%;
+    display:block;
+    border:1px solid var(--encre);
+    box-shadow:0 6px 16px var(--papier-ombre);
+  }
+  @media (max-width:560px){
+    figure.poster{ float:none; width:min(230px,70%); margin:0 auto 1.4rem; }
+  }
+
+  /* Cartes de personnages : les curiosités du dépliant */
+  .curiosites{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(212px,1fr));
+    gap:1.05rem;
+    margin-top:0.6rem;
+  }
+  .curiosite{
+    position:relative;
+    background:var(--papier-creux);
+    border:1px solid var(--encre-pale);
+    padding:1.05rem 1.1rem 1.1rem;
+  }
+  .curiosite::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0;
+    height:3px; background:var(--rouge);
+  }
+  .curiosite .nom{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.04rem;
+    display:block;
+    margin:0.5rem 0 0.08rem;
+    color:var(--encre);
+  }
+  .curiosite .interprete{
+    font-family:var(--mono);
+    font-size:0.61rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--indigo);
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  .curiosite p{ font-size:0.87rem; margin:0; color:var(--encre-douce); }
+
+  /* Coupure : citation détachée */
+  .coupure{
+    position:relative;
+    background:var(--papier-creux);
+    border:1px solid var(--encre-pale);
+    padding:1.25rem 1.45rem 1.3rem;
+    margin:1.6rem 0;
+    transform:rotate(-0.35deg);
+  }
+  .coupure p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--encre);
+    margin-bottom:0.5rem;
+  }
+  .coupure cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.61rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--encre-pale);
+  }
+
+  .themes{ display:grid; gap:1.35rem; margin-top:0.5rem; }
+  .theme .etiquette{
+    font-family:var(--mono);
+    font-size:0.65rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:var(--rouge-profond);
+    display:inline-block;
+    margin-bottom:0.3rem;
+    border-bottom:1px solid var(--rouge);
+    padding-bottom:0.14rem;
+  }
+
+  /* Relevé chiffré */
+  .releve{
+    margin:1.6rem 0 1.7rem;
+    background:var(--indigo);
+    color:var(--papier);
+    border:1px solid var(--encre);
+  }
+  .releve-inner{ padding:1.15rem 1.35rem 1.3rem; }
+  .releve-label{
+    font-family:var(--mono);
+    font-size:0.61rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--indigo-pale);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+  .releve-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
+    gap:1rem;
+  }
+  .releve .chiffre{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.32rem;
+    color:var(--papier);
+    display:block;
+    line-height:1.15;
+  }
+  .releve .legende{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.03em;
+    color:var(--indigo-pale);
+    text-transform:uppercase;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{
+    background:var(--indigo);
+    color:var(--papier);
+    padding:3rem 1.6rem 4rem;
+    border-top:5px solid var(--rouge);
+  }
+  section.sources .sources-inner{ max-width:740px; margin:0 auto; }
+  section.sources h2{ color:var(--papier); font-weight:800; font-size:1.4rem; margin:0; }
+  ol.liste-sources{
+    list-style:none; counter-reset:src; margin:1.5rem 0 0; padding:0;
+    display:grid; gap:0.55rem;
+  }
+  ol.liste-sources li{
+    counter-increment:src;
+    font-size:0.79rem;
+    padding-left:3.1rem;
+    position:relative;
+    color:var(--papier-creux);
+    border-bottom:1px dashed rgba(233,228,216,0.24);
+    padding-bottom:0.55rem;
+    font-family:var(--mono);
+  }
+  ol.liste-sources li::before{
+    content:"Réf. " counter(src);
+    position:absolute; left:0; top:0;
+    font-family:var(--mono);
+    font-weight:600;
+    color:var(--indigo-pale);
+    font-size:0.65rem;
+    letter-spacing:0.03em;
+  }
+  ol.liste-sources a{ color:var(--papier); word-break:break-all; }
+  ol.liste-sources a:hover{ color:var(--indigo-pale); }
+
+  footer.pied{
+    text-align:center;
+    padding:2.1rem 1.5rem 3.1rem;
+    font-family:var(--mono);
+    font-size:0.63rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--encre-pale);
+    background:var(--papier);
+  }
+  footer.pied a{ color:var(--encre-pale); }
+  footer.pied a:hover{ color:var(--rouge-profond); }
+
+  @media (max-width:600px){
+    .depliant-inner{ padding:0 1.1rem; }
+    .panneau{ padding:2rem 1.25rem; }
+    .panneau::before,.panneau::after{ display:none; }
+    .vignette-etapes{ position:static; display:inline-block; margin-bottom:1.1rem; transform:rotate(-3deg); }
+    .numero-depliant{ max-width:100%; }
+    section.etape{ padding:2.2rem 0; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+
+<header class="depliant">
+  <div class="bandeau-edition">Dépliant de curiosités — côte Est des États-Unis</div>
+  <div class="depliant-inner">
+    <div class="panneau">
+      <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+      <div class="vignette-etapes">Quinzaine<br>Cannes 2023</div>
+      <div class="numero-depliant">Itinéraire n<sup>o</sup> <b>1</b> — de Washington aux bois de l'arrière-pays, neuf étapes et aucune carte.</div>
+      <h1 class="titre">Souvenir de la côte Est</h1>
+      <span class="titre-film">The Sweet East &mdash; Sean Price Williams, 2023</span>
+      <p class="accroche">Une lycéenne quitte son voyage scolaire et traverse une Amérique qui n'est plus un pays mais une collection de sectes, chacune persuadée de l'avoir enfin trouvée.</p>
+
+      <dl class="identite">
+        <div><dt>Réalisation</dt><dd>Sean Price Williams</dd></div>
+        <div><dt>Scénario</dt><dd>Nick Pinkerton</dd></div>
+        <div><dt>Photographie</dt><dd>Sean Price Williams</dd></div>
+        <div><dt>Montage</dt><dd>Stephen Gurewitz</dd></div>
+        <div><dt>Musique</dt><dd>Paul Grimstad</dd></div>
+        <div><dt>Son</dt><dd>Dean Hurley</dd></div>
+        <div><dt>Année</dt><dd>2023</dd></div>
+        <div><dt>Durée</dt><dd>104 minutes</dd></div>
+      </dl>
+
+      <div class="provenance">
+        <strong>Provenance.</strong> Premier jet produit en session Claude Chat par Claude Haiku 4.5 le 2 août 2026 ; version publiée reprise, corrigée et contre-vérifiée le même jour par Claude Opus 5 en session supervisée sur poste local. Les écarts factuels du premier jet sont documentés au journal interne du projet.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Haiku 4.5 puis Claude Opus 5, sessions supervisées, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 2 ao&ucirc;t 2026</span>
+</div>
+</div>
+
+
+<nav class="etapes" aria-label="Sommaire">
+  <div class="etapes-inner">
+    <a href="#fiche">1. Fiche technique</a>
+    <a href="#synopsis">2. Synopsis</a>
+    <a href="#production">3. Production</a>
+    <a href="#structure">4. Structure</a>
+    <a href="#miseenscene">5. Mise en scène</a>
+    <a href="#personnages">6. Personnages</a>
+    <a href="#themes">7. Thèmes</a>
+    <a href="#reception">8. Réception</a>
+    <a href="#conclusion">9. Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="etape" id="fiche">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 01</span>
+      <h2>Fiche technique <span class="etape-sous">— ce que vend le dépliant</span></h2>
+    </div>
+
+    <figure class="poster">
+      <img src="../assets/posters/the-sweet-east.jpg"
+           alt="Affiche du film The Sweet East"
+           onerror="this.closest('.poster').remove()">
+    </figure>
+
+    <p>
+      <em>The Sweet East</em> est un film américain de 2023, premier long métrage réalisé par le directeur de la photographie Sean Price Williams, sur un scénario du critique de cinéma Nick Pinkerton<a class="renvoi" href="#src-1" id="ref-1">[1]</a>. Williams en signe également l'image, tournée en 16&nbsp;mm<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>. Le montage est confié à Stephen Gurewitz, la musique originale à Paul Grimstad et la conception sonore à Dean Hurley ; le film est produit par Craig Butta, Alex Coco et Alex Ross Perry pour Marathon Street et Base&nbsp;12, dure 104 minutes et se présente au format 1,78:1<a class="renvoi" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      À l'écran : Talia Ryder (Lillian), Earl Cave (Caleb), Simon Rex (Lawrence), Jacob Elordi (Ian), Ayo Edebiri (Molly), Jeremy O. Harris (Matthew) et Rish Shah (Mohammed)<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>.
+    </p>
+    <p>
+      Présenté en première mondiale le 18 mai 2023 à la Quinzaine des Cinéastes du Festival de Cannes, le film sort aux États-Unis le 1<sup>er</sup> décembre 2023, distribué par Utopia, puis arrive sur Hulu le 17 mai 2024. Son exploitation en salles rapporte 564 192 dollars<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>.
+    </p>
+    <p class="mention">Avertissement de contenu : le film met en scène l'exploitation répétée d'une adolescente par des adultes, ainsi que deux épisodes de violence armée — dont l'un traité sur un registre ouvertement burlesque.</p>
+  </section>
+
+  <section class="etape" id="synopsis">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 02</span>
+      <h2>Synopsis <span class="etape-sous">— l'itinéraire annoncé</span></h2>
+    </div>
+    <p>
+      Lillian est lycéenne en Caroline du Sud. Un voyage scolaire l'amène à Washington ; c'est sa première vue du monde extérieur. Séparée de sa classe à la faveur d'un incident, elle ne rentre pas — elle part<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+    <p>
+      Commence alors une remontée de la côte Est qui tient du conte détraqué : un jeune anarchiste de bonne famille l'héberge dans un squat punk, un universitaire d'extrême droite l'installe chez lui, une équipe de cinéma indépendant la recrute pour un rôle, une communauté religieuse la recueille. Chaque groupe est un monde complet, avec ses rites, sa hiérarchie et sa certitude ; chacun voit en Lillian la page blanche qu'il attendait<a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p class="mention">Le film progresse par chapitres qui ne s'annoncent pas ; la fin de l'itinéraire n'est pas détaillée ici.</p>
+  </section>
+
+  <section class="etape" id="production">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 03</span>
+      <h2>Contexte de production <span class="etape-sous">— qui a payé le voyage</span></h2>
+    </div>
+    <p>
+      Sean Price Williams est, depuis vingt ans, l'un des chefs opérateurs de l'indépendance new-yorkaise. Ancien employé de longue date de Kim's Video &amp; Music, il a signé l'image de <em>Frownland</em> (2007), de <em>The Color Wheel</em> (2011), de <em>Listen Up Philip</em> (2014) et <em>Queen of Earth</em> (2015) pour Alex Ross Perry, de <em>Heaven Knows What</em> (2014) et <em>Good Time</em> (2017) pour les frères Safdie, de <em>Tesla</em> (2020) et de <em>Funny Pages</em> (2022)<a class="renvoi" href="#src-4" id="ref-4">[4]</a>. <em>The Sweet East</em> est son premier film comme réalisateur.
+    </p>
+    <p>
+      Le financement tient à deux gestes distincts, et le film ne s'en cache pas. Williams pensait que personne ne mettrait d'argent sur un premier film ; c'est Alex Ross Perry qui, par ses relations d'agence, a réuni la distribution afin de rendre le financement possible. Après lecture du scénario, le producteur exécutif Jimmy Kaltreider a complété l'apport par un fonds de dimension modeste provenant de Peter Thiel<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>. Pour un film qui promène son héroïne d'une chapelle idéologique à l'autre, l'origine de l'argent fait partie du dossier plutôt que de l'anecdote.
+    </p>
+    <p>
+      Le tournage a été découpé selon les saisons : une moitié en octobre 2021, l'autre en mai 2022, le récit se déployant sur une année entière<a class="renvoi" href="#src-1" id="ref-1g">[1]</a>. Le rôle de Jeff devait revenir à Eddie Deezen, indisponible, puis à Pete Davidson, empêché par son calendrier ; il est finalement échu à Andy Milonakis<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>. Sean Price Williams et Nick Pinkerton se connaissaient de longue date ; leur complicité s'est nouée pour de bon lors d'un jury du festival de Sarasota, au cours d'un long trajet passé à parler de Walerian Borowczyk — resté, de leur aveu, une force d'inspiration du film<a class="renvoi" href="#src-5" id="ref-5">[5]</a>.
+    </p>
+    <p>
+      Le film est vendu à l'international par The Match Factory<a class="renvoi" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+  </section>
+
+  <section class="etape" id="structure">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 04</span>
+      <h2>Structure narrative <span class="etape-sous">— le tracé, sans échelle</span></h2>
+    </div>
+    <p>
+      <em>The Sweet East</em> est un picaresque : une suite d'étapes reliées par une seule personne, non par une intrigue. Chaque séquence installe un milieu, en épuise les mœurs, puis le quitte sans conclure. La forme est ancienne — c'est celle du roman de route — et le film l'assume jusqu'à l'entêtement. Williams le formule sans détour : « Au moment précis où c'est censé finir, quand on sent que ça devrait retomber, il y a un chapitre de plus, et encore un autre »<a class="renvoi" href="#src-6" id="ref-6">[6]</a>.
+    </p>
+    <p>
+      Ce refus de la courbe est le pari du film. Un récit d'apprentissage classique ferait converger les étapes vers une leçon ; ici, elles s'additionnent sans se totaliser. Lillian ne cumule pas d'expérience d'un épisode à l'autre : elle entre dans chaque monde aussi disponible qu'elle est entrée dans le précédent. Le montage de Stephen Gurewitz ne ménage aucune transition explicative — on change de secte comme on change de page<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+    <p>
+      Le procédé a un coût, que la critique a relevé : un film qui refuse de converger risque de ne rien dire de particulier. Il a aussi un rendement, que le film exploite : l'incompatibilité des milieux traversés devient elle-même le sujet, puisque rien dans la construction ne vient les réconcilier.
+    </p>
+  </section>
+
+  <section class="etape" id="miseenscene">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 05</span>
+      <h2>Mise en scène et procédés techniques <span class="etape-sous">— le grain de l'imprimé</span></h2>
+    </div>
+    <p>
+      Le film est tourné en 16&nbsp;mm, sur une caméra Aaton XTR Prod<a class="renvoi" href="#src-1" id="ref-1i">[1]</a><a class="renvoi" href="#src-7" id="ref-7">[7]</a>. Le choix n'est pas décoratif : il inscrit le film dans la filiation documentaire dont Williams se réclame. Interrogé sur son travail d'image, il répond d'ailleurs par la négative : « Nous avons tourné en 16&nbsp;mm. C'était important, je crois. […] Visuellement, je n'avais pas de grande idée en entrant dans le film », ajoutant qu'il était « un peu plus en automatique sur la photographie »<a class="renvoi" href="#src-8" id="ref-8">[8]</a>.
+    </p>
+    <p>
+      Cette abstention est une méthode, pas un renoncement. Elle vient d'une école précise — celle des opérateurs de cinéma direct, Albert Maysles en tête, dont Williams a hérité le mouvement fluide, le zoom appuyé, la lumière prise sur place et l'exposition volontiers imparfaite<a class="renvoi" href="#src-7" id="ref-7b">[7]</a>. Il en décrit lui-même l'effet : « Pennebaker laisse le plan se dérouler ; on le sent trouver son cadre, et cela vous rend absolument présent »<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. La caméra de <em>The Sweet East</em> cherche, rattrape, arrive parfois en retard — et c'est ce retard qui donne aux scènes leur air d'avoir été surprises plutôt que composées.
+    </p>
+    <p>
+      Le film n'est pas pour autant un exercice de sobriété. Il emploie plusieurs procédés d'illusion classiques, dont le procédé Schüfftan dans un plan tardif<a class="renvoi" href="#src-1" id="ref-1j">[1]</a> — un trucage de 1927 réactivé dans un film de 2023, ce qui résume assez bien son rapport au passé du cinéma. La conception sonore de Dean Hurley et la musique de Paul Grimstad travaillent dans le même sens : elles décrochent régulièrement du réalisme de l'image sans jamais l'annuler<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. Williams revendique un catalogue de références délibérément dépareillé, où voisinent Maysles, Borowczyk, John Waters, Lindsay Anderson et D. W. Griffith<a class="renvoi" href="#src-8" id="ref-8b">[8]</a>.
+    </p>
+    <div class="coupure">
+      <p>« La photographie et la caméra de Price Williams donnent au film un aspect granuleux, intime, superbe. »</p>
+      <cite>Serena Seghedoni, Loud and Clear Reviews, 26 mai 2023<a class="renvoi" href="#src-3" id="ref-3b">[3]</a></cite>
+    </div>
+  </section>
+
+  <section class="etape" id="personnages">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 06</span>
+      <h2>Personnages principaux <span class="etape-sous">— les curiosités du parcours</span></h2>
+    </div>
+    <p>
+      Le film est construit sur une asymétrie : un personnage central sans programme, entouré de figures qui n'ont que cela. Autour de Lillian se succèdent, selon la formule de Serena Seghedoni, « des anarchistes fortunés, des nazis et des punks », puis « des fanatiques religieux amateurs de musique électronique »<a class="renvoi" href="#src-3" id="ref-3c">[3]</a>.
+    </p>
+    <div class="curiosites">
+      <div class="curiosite">
+        <span class="nom">Lillian</span>
+        <span class="interprete">Talia Ryder</span>
+        <p>Lycéenne de Caroline du Sud, à la fois moteur et surface du film. Williams la décrit comme « curieuse et intrépide », attentive à ce qui se passe autour d'elle<a class="renvoi" href="#src-8" id="ref-8c">[8]</a>. Seghedoni juge que Ryder « excelle », « exigeant notre attention dans chaque scène » et donnant « une héroïne qui semble authentique jusque dans les situations les plus improbables »<a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.</p>
+      </div>
+      <div class="curiosite">
+        <span class="nom">Caleb</span>
+        <span class="interprete">Earl Cave</span>
+        <p>Le jeune anarchiste qui recueille Lillian à Washington et l'introduit dans un squat militant. Première chapelle du parcours, et premier écart entre le discours d'un groupe et son fonctionnement réel<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>.</p>
+      </div>
+      <div class="curiosite">
+        <span class="nom">Lawrence</span>
+        <span class="interprete">Simon Rex</span>
+        <p>Décrit par la critique comme « un suprémaciste blanc d'âge mûr, affable, obsédé par Edgar Allan Poe »<a class="renvoi" href="#src-3" id="ref-3e">[3]</a>. Le personnage est le point le plus périlleux du film : sa courtoisie et sa culture ne sont pas des masques que le récit arracherait — elles cohabitent avec son idéologie sans que rien ne les départage.</p>
+      </div>
+      <div class="curiosite">
+        <span class="nom">Molly et Matthew</span>
+        <span class="interprete">Ayo Edebiri, Jeremy O. Harris</span>
+        <p>Le duo de cinéastes indépendants qui recrute Lillian. C'est l'étape où le film se retourne sur son propre milieu, et la seule où le regard satirique porte sur les gens qui l'ont fabriqué<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>.</p>
+      </div>
+      <div class="curiosite">
+        <span class="nom">Ian</span>
+        <span class="interprete">Jacob Elordi</span>
+        <p>Le jeune premier du film dans le film, figure de la célébrité en formation. Sa présence au générique — la plus notoire de la distribution — participe elle-même du financement du film<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>.</p>
+      </div>
+      <div class="curiosite">
+        <span class="nom">Mohammed</span>
+        <span class="interprete">Rish Shah</span>
+        <p>Dernière station de l'itinéraire, du côté d'une communauté religieuse — un groupe de plus, avec ses rites, sa douceur et sa prise<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="etape" id="themes">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 07</span>
+      <h2>Thèmes <span class="etape-sous">— quatre curiosités de l'arrière-pays</span></h2>
+    </div>
+    <div class="themes">
+      <div class="theme">
+        <span class="etiquette">L'Amérique comme archipel</span>
+        <p>Le film ne décrit pas une société divisée en deux camps, mais un semis de groupes clos qui ne se rencontrent jamais : anarchistes de bonne famille, militants d'extrême droite, cinéastes indépendants, communauté religieuse<a class="renvoi" href="#src-3" id="ref-3f">[3]</a>. Aucun ne connaît l'existence des autres autrement que par caricature. La satire ne consiste pas à les hiérarchiser : elle consiste à les mettre bout à bout et à laisser voir qu'aucun ne peut parler aux autres.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">La disponibilité comme méthode</span>
+        <p>Lillian ne juge pas, ne réplique pas, ne se convertit pas non plus. Cette disponibilité fait d'elle un révélateur : chaque groupe, croyant l'accueillir, se met à parler de lui-même. Seghedoni note que tous, successivement, cherchent à « l'exploiter, la façonner, la posséder »<a class="renvoi" href="#src-3" id="ref-3g">[3]</a>. Le film maintient jusqu'au bout l'ambiguïté de sa position — victime des circonstances ou passagère qui sait exactement ce qu'elle fait.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">Le grain comme profession de foi</span>
+        <p>Tourner en 16&nbsp;mm en 2023 est une prise de position sur ce qu'une image doit prouver. Le grain, l'exposition inégale, le zoom cherché à la main rattachent le film au cinéma direct et à sa promesse : ce que vous voyez a été attrapé, pas fabriqué<a class="renvoi" href="#src-7" id="ref-7c">[7]</a>. Que le film use par ailleurs d'un trucage optique de 1927<a class="renvoi" href="#src-1" id="ref-1o">[1]</a> ne contredit pas la profession de foi : cela en désigne l'objet — non pas la vérité, mais l'artisanat.</p>
+      </div>
+      <div class="theme">
+        <span class="etiquette">Le rire comme épreuve</span>
+        <p>Le comique du film est son organe le plus exposé. Williams assume l'intention première : « Le scénario a été écrit pour nous faire rire, pour faire rire nos amis »<a class="renvoi" href="#src-8" id="ref-8d">[8]</a>, et il dit de Pinkerton qu'il est « l'une des personnes les plus drôles » qu'il ait rencontrées<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>. Un film écrit pour un cercle demande au spectateur d'y entrer — et la fracture de la réception se joue exactement là.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="etape" id="reception">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 08</span>
+      <h2>Réception critique et postérité <span class="etape-sous">— le registre des visiteurs</span></h2>
+    </div>
+    <p>
+      L'accueil est favorable mais nettement partagé. Rotten Tomatoes recense 81 % d'avis positifs sur 69 critiques ; Metacritic établit une note de 62 sur 100 à partir de 20 critiques, soit un accueil « globalement favorable » dont l'écart-type est éloquent<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>.
+    </p>
+
+    <div class="releve">
+      <div class="releve-inner">
+        <span class="releve-label">Relevé — chiffres à l'appui</span>
+        <div class="releve-grid">
+          <div><span class="chiffre">81 %</span><span class="legende">Rotten Tomatoes (69 critiques)</span></div>
+          <div><span class="chiffre">62/100</span><span class="legende">Metacritic (20 critiques)</span></div>
+          <div><span class="chiffre">564 192 $</span><span class="legende">Recettes en salles</span></div>
+          <div><span class="chiffre">104 min</span><span class="legende">Durée</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="mention">Chiffres relevés sur la fiche encyclopédique du film, elle-même sourcée sur les agrégateurs ; ils sont susceptibles d'évoluer.</p>
+
+    <p>
+      Du côté favorable, la première cannoise salue un film « merveilleusement lucide sur lui-même, ironique », dont l'ironie « surprend du début à la fin » en installant « toutes sortes de situations bizarres et pourtant douloureusement vraies »<a class="renvoi" href="#src-3" id="ref-3h">[3]</a>. Du côté des réserves, les reproches convergent vers le scénario : on lui trouve un bavardage excessif, un film « qui donne des coups faciles et fait rire à l'occasion, mais ne semble jamais décider de ce qu'il veut dire », et jusqu'à des passages où il est « simplement content de lui »<a class="renvoi" href="#src-9" id="ref-9">[9]</a>.
+    </p>
+    <p>
+      Ces deux lectures visent le même dispositif, et c'est ce qui rend le désaccord intéressant : le refus de conclure est indissociablement ce que le film a de plus rigoureux et ce qu'on peut lui reprocher de plus fondé. Après Cannes, le film poursuit son parcours en festivals — dont le Festival du film de New York — avant une exploitation américaine limitée par Utopia et une mise en ligne sur Hulu en mai 2024<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>. Sa postérité immédiate tient surtout à ce qu'il a lancé : la carrière de metteur en scène de l'un des chefs opérateurs les plus identifiables du cinéma indépendant américain.
+    </p>
+  </section>
+
+  <section class="etape" id="conclusion">
+    <div class="etape-head">
+      <span class="etape-num">Étape n<sup>o</sup> 09</span>
+      <h2>Conclusion <span class="etape-sous">— fin de l'itinéraire</span></h2>
+    </div>
+    <p>
+      <em>The Sweet East</em> est un film de chef opérateur au meilleur sens : il fait confiance à ce que la caméra ramène plutôt qu'à ce que le récit démontre. Cette confiance produit sa réussite la plus nette — une Amérique filmée comme une succession de territoires étrangers les uns aux autres, sans qu'aucune voix off ne vienne les recoudre — et sa faiblesse la plus visible : à force de ne rien conclure, le film laisse au spectateur le soin de décider s'il a assisté à une satire ou à une collection de sketches.
+    </p>
+    <p>
+      La critique s'est divisée sur ce point précis, et les deux camps ont raison ensemble. Le film est bavard parce que ses personnages le sont, et ses personnages le sont parce que c'est ce qui reste quand des groupes n'ont plus personne d'extérieur à qui parler. Reste alors ce que le film a de moins discutable : le visage de Talia Ryder, tenu presque en permanence à l'image, qui accueille tout et ne valide rien. Là où un film d'apprentissage aurait fait de Lillian une conscience, celui-ci en fait une chambre d'écho — et c'est en écoutant ce qu'elle renvoie qu'on entend le mieux le pays qu'elle traverse.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#b9bce8;">Sources consultées le 2 août 2026</span>
+    <h2 style="margin-top:0.55rem;">Registre des références</h2>
+    <ol class="liste-sources">
+      <li id="src-1">Wikipedia (EN), « The Sweet East » &mdash; <a href="https://en.wikipedia.org/wiki/The_Sweet_East" target="_blank" rel="noopener">en.wikipedia.org/wiki/The_Sweet_East</a></li>
+      <li id="src-2">The Match Factory, fiche de catalogue « The Sweet East » (générique complet, ventes internationales) &mdash; <a href="https://www.the-match-factory.com/catalogue/films/the-sweet-east.html" target="_blank" rel="noopener">the-match-factory.com &mdash; The Sweet East</a></li>
+      <li id="src-3">Serena Seghedoni, « The Sweet East: Cannes Film Review », <em>Loud and Clear Reviews</em>, 26 mai 2023 &mdash; <a href="https://loudandclearreviews.com/the-sweet-east-cannes-film-review/" target="_blank" rel="noopener">loudandclearreviews.com &mdash; The Sweet East</a></li>
+      <li id="src-4">Wikipedia (EN), « Sean Price Williams » &mdash; <a href="https://en.wikipedia.org/wiki/Sean_Price_Williams" target="_blank" rel="noopener">en.wikipedia.org/wiki/Sean_Price_Williams</a></li>
+      <li id="src-5">Filmmaker Magazine, « Cannes 2023: Sean Price Williams and Nick Pinkerton on The Sweet East » &mdash; <a href="https://filmmakermagazine.com/121498-interview-sean-price-williams-nick-pinkerton-the-sweet-east/" target="_blank" rel="noopener">filmmakermagazine.com &mdash; entretien Cannes 2023</a></li>
+      <li id="src-6">The Film Stage, « Sean Price Williams on Rejecting Cynicism with The Sweet East and Making Nick Pinkerton Laugh » &mdash; <a href="https://thefilmstage.com/sean-price-williams-on-rejecting-cynicism-with-the-sweet-east-and-making-nick-pinkerton-laugh/" target="_blank" rel="noopener">thefilmstage.com &mdash; entretien Sean Price Williams</a></li>
+      <li id="src-7">Spotlight Journal, issue VIII, « The Cinematography of Sean Price Williams: An Exercise in Grit, Fluidity, and Realism » &mdash; <a href="https://www.spotlightjournal.org/issue-viii/the-cinematography-of-sean-price-williams-an-exercise-in-grit-fluidity-and-realism" target="_blank" rel="noopener">spotlightjournal.org &mdash; issue VIII</a></li>
+      <li id="src-8">FILM TALK, « Sean Price Williams on The Sweet East: “The script was written to make us laugh” », 13 mars 2024 &mdash; <a href="https://filmtalk.org/2024/03/13/sean-price-williams/" target="_blank" rel="noopener">filmtalk.org &mdash; entretien du 13 mars 2024</a></li>
+      <li id="src-9">Metacritic, « The Sweet East » &mdash; critiques de presse recensées &mdash; <a href="https://www.metacritic.com/movie/the-sweet-east/critic-reviews/" target="_blank" rel="noopener">metacritic.com &mdash; The Sweet East</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="pied">
+  Dépliant compilé à partir de sources publiques consultées le 2 août 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
