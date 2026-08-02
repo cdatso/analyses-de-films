@@ -28,33 +28,51 @@
 
   <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 1.1rem;line-height:1.2;">Demander une analyse</h1>
 
-  <p>Titre et réalisateur·rice sont obligatoires. L'année de sortie est facultative
-  mais recommandée si plusieurs versions ou remakes existent.</p>
+  <p>Écrivez-nous à <strong id="contact-address">analyses@cdatso.be</strong> —
+  précisez le titre du film, le ou la réalisateur·rice, et si possible
+  l'année de sortie (utile en cas de remake ou de plusieurs versions).
+  Aucune analyse n'est générée automatiquement : elle sera préparée puis
+  ajoutée manuellement au site.</p>
 
-  <form class="request-form" id="request-form">
-    <div class="field">
-      <label for="film-title">Titre du film <span class="req">*</span></label>
-      <input type="text" id="film-title" name="film-title" required placeholder="ex. Annie Hall">
-    </div>
-    <div class="field">
-      <label for="film-director">Réalisateur·rice <span class="req">*</span></label>
-      <input type="text" id="film-director" name="film-director" required placeholder="ex. Woody Allen">
-    </div>
-    <div class="field">
-      <label for="film-year">Année de sortie (optionnel)</label>
-      <input type="text" id="film-year" name="film-year" placeholder="ex. 1977" inputmode="numeric" pattern="[0-9]{4}">
-    </div>
-    <button type="submit">Envoyer la demande</button>
-    <p class="form-note">L'envoi tente d'ouvrir votre client mail habituel avec les informations pré-remplies. Aucune analyse n'est générée automatiquement : elle sera préparée puis ajoutée manuellement au site.</p>
-  </form>
+  <p>
+    <button type="button" id="copy-address-button">Copier l'adresse</button>
+    <span class="copy-feedback" id="copy-address-feedback" hidden>Copié !</span>
+  </p>
 
-  <div class="fallback-panel" id="fallback-panel" hidden>
-    <p class="fallback-title">Votre client mail ne s'est pas ouvert ?</p>
-    <p>Copiez ce message et collez-le manuellement dans un nouvel email à <strong>cdatso@yahoo.com</strong> :</p>
-    <pre id="fallback-text"></pre>
-    <button type="button" id="copy-button">Copier le message</button>
-    <p class="copy-feedback" id="copy-feedback" hidden>Copié !</p>
-  </div>
+  <p>Votre client mail s'ouvrira si votre poste en a un configuré : le
+  lien ci-dessous est prérempli avec le sujet et, si vous remplissez le
+  formulaire facultatif plus bas, avec le message complet. S'il ne
+  s'ouvre pas, copiez l'adresse ci-dessus et écrivez-nous directement —
+  aucune procédure ne dépend de la réussite de ce lien.</p>
+
+  <p><a id="mailto-link" href="mailto:analyses@cdatso.be?subject=Demande%20d%27analyse%20de%20film">Écrire un email à analyses@cdatso.be</a></p>
+
+  <details class="request-form-details">
+    <summary>Aide à la rédaction du message (facultatif)</summary>
+    <form class="request-form" id="request-form">
+      <div class="field">
+        <label for="film-title">Titre du film <span class="req">*</span></label>
+        <input type="text" id="film-title" name="film-title" required placeholder="ex. Annie Hall">
+      </div>
+      <div class="field">
+        <label for="film-director">Réalisateur·rice <span class="req">*</span></label>
+        <input type="text" id="film-director" name="film-director" required placeholder="ex. Woody Allen">
+      </div>
+      <div class="field">
+        <label for="film-year">Année de sortie (optionnel)</label>
+        <input type="text" id="film-year" name="film-year" placeholder="ex. 1977" inputmode="numeric" pattern="[0-9]{4}">
+      </div>
+      <button type="submit">Générer le message</button>
+      <p class="form-note">Prépare un texte prêt à coller dans votre email, et met à jour le lien ci-dessus avec le sujet et le message pré-remplis.</p>
+    </form>
+
+    <div class="fallback-panel" id="fallback-panel" hidden>
+      <p class="fallback-title">Message généré — collez-le dans votre email à <strong>analyses@cdatso.be</strong> :</p>
+      <pre id="fallback-text"></pre>
+      <button type="button" id="copy-button">Copier le message</button>
+      <p class="copy-feedback" id="copy-feedback" hidden>Copié !</p>
+    </div>
+  </details>
 
   <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
 
@@ -70,6 +88,27 @@
 </div></footer>
 
 <script>
+  const CONTACT_ADDRESS = 'analyses@cdatso.be';
+
+  function copierTexte(text, feedbackEl) {
+    if (!navigator.clipboard) {
+      feedbackEl.textContent = 'Copie automatique indisponible — sélectionnez le texte et copiez-le manuellement.';
+      feedbackEl.hidden = false;
+      return;
+    }
+    navigator.clipboard.writeText(text).then(function () {
+      feedbackEl.textContent = 'Copié !';
+      feedbackEl.hidden = false;
+    }).catch(function () {
+      feedbackEl.textContent = 'Échec de la copie — sélectionnez le texte et copiez-le manuellement.';
+      feedbackEl.hidden = false;
+    });
+  }
+
+  document.getElementById('copy-address-button').addEventListener('click', function () {
+    copierTexte(CONTACT_ADDRESS, document.getElementById('copy-address-feedback'));
+  });
+
   document.getElementById('request-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const title = document.getElementById('film-title').value.trim();
@@ -84,14 +123,12 @@
       + ' à ' + now.toLocaleTimeString('fr-BE', {hour: '2-digit', minute: '2-digit'})
       + ' via le formulaire du site]';
 
-    const mailto = 'mailto:cdatso@yahoo.com'
+    document.getElementById('mailto-link').href = 'mailto:' + CONTACT_ADDRESS
       + '?subject=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(body);
 
-    window.location.href = mailto;
-
     document.getElementById('fallback-text').textContent =
-      'À : cdatso@yahoo.com\nObjet : ' + subject + '\n\n' + body;
+      'À : ' + CONTACT_ADDRESS + '\nObjet : ' + subject + '\n\n' + body;
     document.getElementById('fallback-panel').hidden = false;
     document.getElementById('copy-feedback').hidden = true;
   });
@@ -106,14 +143,7 @@
   }
 
   copyButton.addEventListener('click', function () {
-    const text = document.getElementById('fallback-text').textContent;
-    navigator.clipboard.writeText(text).then(function () {
-      copyFeedback.textContent = 'Copié !';
-      copyFeedback.hidden = false;
-    }).catch(function () {
-      copyFeedback.textContent = 'Échec de la copie — sélectionnez le texte ci-dessus et copiez-le manuellement.';
-      copyFeedback.hidden = false;
-    });
+    copierTexte(document.getElementById('fallback-text').textContent, copyFeedback);
   });
 </script>
 
