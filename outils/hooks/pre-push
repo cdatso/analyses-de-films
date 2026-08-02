@@ -78,9 +78,27 @@ fi
 
 echec=0
 
+# NOTE ROBUSTESSE (RUN-004, Q-4i2) : chaque etape [N/4] ecrit d'abord la
+# sortie de son sous-processus python dans un FICHIER REGULIER (jamais
+# un tuyau), et lit son code de sortie REEL depuis cette redirection --
+# jamais depuis un `echo`/`cat` ulterieur. Un fichier regulier n'obtient
+# jamais EPIPE, quoi que fasse l'appelant de la sortie du hook plus loin.
+# Sans ce blindage, l'interpreteur python peut echouer au moment de
+# vider son propre stdout (heritee, donc potentiellement cassee) et
+# renvoyer un code non nul SANS RAPPORT avec le controle lui-meme --
+# cause averee et reproduite de l'anomalie CIN-080 du 01/08 (un
+# `Exception ignored ... OSError` au vidage de stdout de
+# genere-liste-statique.py faisait REFUSER un push dont le controle
+# avait reellement reussi).
+
 echo ""
 echo "[1/4] controle-vocabulaires.py --strict"
-if ! "$py" "$depot/outils/controle-vocabulaires.py" --depot "$depot" --strict; then
+sortie1="$(mktemp)"
+"$py" "$depot/outils/controle-vocabulaires.py" --depot "$depot" --strict > "$sortie1" 2>&1
+statut1=$?
+cat "$sortie1"
+rm -f "$sortie1"
+if [ "$statut1" -ne 0 ]; then
     echo "[pre-push] REFUSE : controle-vocabulaires.py --strict a echoue (detail ci-dessus)." >&2
     echec=1
 fi
@@ -88,7 +106,12 @@ fi
 if [ "$echec" -eq 0 ]; then
     echo ""
     echo "[2/4] genere-liste-statique.py --verifier"
-    if ! "$py" "$depot/outils/genere-liste-statique.py" --depot "$depot" --verifier; then
+    sortie2="$(mktemp)"
+    "$py" "$depot/outils/genere-liste-statique.py" --depot "$depot" --verifier > "$sortie2" 2>&1
+    statut2=$?
+    cat "$sortie2"
+    rm -f "$sortie2"
+    if [ "$statut2" -ne 0 ]; then
         echo "[pre-push] REFUSE : genere-liste-statique.py --verifier a echoue (derive, detail ci-dessus)." >&2
         echec=1
     fi
@@ -97,7 +120,12 @@ fi
 if [ "$echec" -eq 0 ]; then
     echo ""
     echo "[3/4] recompresse-affiches.py --seuil 300 --simuler (P-36, lecture seule)"
-    if ! "$py" "$depot/outils/recompresse-affiches.py" --depot "$depot" --seuil 300 --simuler; then
+    sortie3="$(mktemp)"
+    "$py" "$depot/outils/recompresse-affiches.py" --depot "$depot" --seuil 300 --simuler > "$sortie3" 2>&1
+    statut3=$?
+    cat "$sortie3"
+    rm -f "$sortie3"
+    if [ "$statut3" -ne 0 ]; then
         echo "[pre-push] REFUSE : au moins une affiche reste au-dessus de 300 Ko meme apres simulation (P-36, detail ci-dessus)." >&2
         echec=1
     fi
