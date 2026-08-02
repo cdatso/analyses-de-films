@@ -785,12 +785,19 @@ const FILMS = [
     // `'États-Unis'` : trois valeurs hors vocabulaire fermé (P-10), qui
     // auraient bloqué la publication — voir la note de remise CIN-081.
     genreBase: 'comedie',
-    // Provisoire : la provenance à deux modèles (premier jet Haïku 4.5 en
-    // session Chat, v2 par Opus 5 en session supervisée) est une forme
-    // inédite au regard de P-14/P-17 — arbitrage escaladé à AH avec la
-    // remise de la v2. La valeur ci-dessous est identique au segment de la
-    // phrase de signature de la page (P-17).
-    producteur: 'Claude Haiku 4.5 puis Claude Opus 5 (sessions supervisées)',
+    // ESCALADE P-14/P-17 SOLDÉE (GATE AH du 02/08/2026, élicitation du §5
+    // de la note de remise CIN-081, option « Opus 5 seul » retenue) : la
+    // page a bien deux producteurs successifs — premier jet Haïku 4.5 en
+    // session Chat, version publiée par Opus 5 en session supervisée — mais
+    // le registre ne porte que le modèle du texte publié. Deux motifs :
+    // (1) P-14 veut la formulation de signature invariante, et une valeur
+    // composée fragmente la facette `producteur` (un filtre sur « Claude
+    // Opus 5 » ne retrouverait pas cette fiche) ; (2) la double provenance
+    // est portée ailleurs, et mieux — bloc `.provenance` de la page, journal
+    // interne, et surtout l'ANNEXE PUBLIQUE `films/the-sweet-east-annexe.html`
+    // qui documente en détail ce que le premier jet contenait de faux.
+    // Valeur identique au segment de la phrase de signature (P-17).
+    producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['Etats-Unis'],
     technique: ['couleur'],
     // `courant` : enrichissement facultatif et non bloquant, repris du
