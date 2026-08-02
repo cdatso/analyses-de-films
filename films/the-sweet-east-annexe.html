@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annexe — note de remise — The Sweet East</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Pas de `--mobilier-largeur` ici : cette page ne porte ni cartouche ni
+       bandeau de variante, donc aucun conteneur de mobilier à caler. Seul
+       le menu partagé est employé, et il a sa propre largeur. */
+
+    /* Même palette que la fiche : l'annexe est une pièce du même dossier. */
+    --papier:#f2ece0;
+    --papier-creux:#e6dccb;
+    --encre:#1b1a24;
+    --encre-douce:#33313f;
+    --encre-pale:#5f5a6c;
+    --rouge:#b0231f;
+    --rouge-profond:#8a1a17;
+    --indigo:#26286b;
+    --indigo-pale:#b9bce8;
+    --filet:rgba(27,26,36,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0; background:var(--papier); color:var(--encre);
+    font-family:var(--serif); font-size:1.02rem; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .meta-label{
+    font-family:var(--mono); text-transform:uppercase; font-weight:500;
+    letter-spacing:0.14em; font-size:0.66rem; color:var(--indigo);
+  }
+
+  /* ---------- En-tête de pièce ---------- */
+  header.piece{
+    background:var(--encre); color:var(--papier);
+    border-bottom:5px solid var(--rouge);
+    padding:1.6rem 1.6rem 2rem;
+  }
+  .piece-inner{ max-width:760px; margin:0 auto; }
+  header.piece .meta-label{ color:var(--indigo-pale); }
+  header.piece h1{
+    font-family:var(--serif); font-weight:900; font-size:clamp(1.7rem,4.6vw,2.4rem);
+    line-height:1.12; margin:0.6rem 0 0.5rem; letter-spacing:-0.012em;
+  }
+  header.piece .sous{
+    font-family:var(--serif); font-style:italic; font-size:0.95rem;
+    color:var(--papier-creux); margin:0; max-width:52ch;
+  }
+  header.piece a.lien-retour{ color:var(--papier-creux); }
+
+  main{ max-width:760px; margin:0 auto; padding:2.4rem 1.6rem 3rem; }
+
+  h2{
+    font-family:var(--serif); font-weight:800; font-size:1.35rem;
+    margin:2.6rem 0 0.3rem; color:var(--encre);
+    border-top:3px double var(--encre); padding-top:0.7rem;
+  }
+  h3{
+    font-family:var(--mono); font-weight:600; font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.07em;
+    margin:1.7rem 0 0.5rem; color:var(--rouge-profond);
+  }
+  p{ margin:0 0 0.95rem; font-size:0.93rem; color:var(--encre-douce); }
+  ul,ol{ font-size:0.93rem; color:var(--encre-douce); padding-left:1.3rem; margin:0 0 1rem; }
+  li{ margin-bottom:0.42rem; }
+  code{ font-family:var(--mono); font-size:0.9em; }
+
+  .clause-ah{
+    background:rgba(176,35,31,0.08); border-left:4px solid var(--rouge);
+    padding:1.1rem 1.3rem; margin:0 0 1.9rem;
+  }
+  .clause-ah p{ font-size:0.95rem; color:var(--encre); margin:0; }
+  .clause-ah .qui{
+    font-family:var(--mono); font-size:0.6rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--rouge-profond); display:block; margin-bottom:0.55rem;
+  }
+
+  .avant-propos{
+    font-family:var(--mono); font-size:0.76rem; line-height:1.6;
+    color:var(--encre-douce); border-left:3px solid var(--indigo);
+    background:rgba(38,40,107,0.06); padding:0.85rem 1.1rem; margin:0 0 2rem;
+  }
+
+  .tb-scroll{ overflow-x:auto; margin:0.9rem 0 1.3rem; }
+  table{ border-collapse:collapse; font-size:0.78rem; min-width:100%; }
+  th,td{
+    border:1px solid var(--filet); padding:0.42rem 0.58rem;
+    text-align:left; vertical-align:top; color:var(--encre-douce);
+  }
+  th{
+    font-family:var(--mono); font-size:0.65rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--indigo); background:var(--papier-creux);
+  }
+
+  .alerte{
+    border-left:4px solid var(--indigo); background:rgba(38,40,107,0.07);
+    padding:0.95rem 1.2rem; margin:1.2rem 0;
+  }
+  .alerte p{ color:var(--encre); margin-bottom:0.6rem; }
+  .alerte p:last-child{ margin-bottom:0; }
+
+  .signe{
+    font-family:var(--mono); font-size:0.72rem; color:var(--encre-pale);
+    margin-top:2.4rem; display:block; border-top:1px solid var(--filet);
+    padding-top:1rem;
+  }
+
+  footer.pied{
+    text-align:center; padding:2rem 1.5rem 3rem;
+    font-family:var(--mono); font-size:0.63rem; font-weight:500;
+    letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--encre-pale); background:var(--papier-creux);
+  }
+  footer.pied a{ color:var(--encre-pale); }
+  footer.pied a:hover{ color:var(--rouge-profond); }
+
+  @media (max-width:600px){
+    header.piece{ padding:1.3rem 1.1rem 1.6rem; }
+    main{ padding:1.8rem 1.1rem 2.4rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="piece">
+  <div class="piece-inner">
+    <a class="lien-retour" href="the-sweet-east.html">Retour à l'analyse</a>
+    <span class="meta-label" style="display:block;margin-top:1rem;">Annexe &mdash; pi&egrave;ce de dossier</span>
+    <h1>Note de remise interne</h1>
+    <p class="sous">Ce que le premier jet de cette analyse contenait de faux, comment on l'a trouvé, et ce qu'on en retient. Pièce annexée à <i>The Sweet East</i> (Sean Price Williams, 2023).</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="clause-ah">
+    <span class="qui">Motif de cet ajout &mdash; d&eacute;cision d'AH</span>
+    <p>Cette pièce du dossier, qui n'est pas publiée par défaut, est cette fois-ci versée en annexe à la publication à titre de document sur les erreurs rencontrées et corrigées. Sur décision d'AH — sur base des nombreuses erreurs factuelles et d'hallucinations rencontrées dans le premier jet qui était un test de la compétence (skill) « analyse-de-films » déléguée en session Chat, la recommandation est de ne pas utiliser le modèle Haïku pour des rédactions élaborées avec du contenu sourcé.</p>
+  </div>
+
+  <p class="avant-propos"><b>Nature de ce document.</b> C'est une note de travail interne, rédigée pour la revue et l'audit, et versée ici sans coupe. Elle en garde le ton et les sections de gouvernance du projet — y compris une question restée ouverte et un point de procédure. Seuls les chemins de fichiers absolus du poste de travail ont été rendus relatifs au dépôt. Les sigles : <b>AH</b> désigne l'auteur humain du site, qui décide ; le <b>greffe</b> est la session d'audit ; <b>P-nn</b> renvoie aux prescriptions de la spécification du site.</p>
+
+  <h2>En-tête</h2>
+  <ul>
+    <li><b>Date/heure de remise</b> : 2026-08-02 14:37:39 (horloge système, instrumental)</li>
+    <li><b>Session</b> : « Opus CIN-081 v2 Sweet East » — modèle déclaré par l'environnement : <b>Claude Opus 5</b> (<code>claude-opus-5</code>). Contrôle de calibre d'entrée : <b>conforme</b>, aucun écart.</li>
+    <li><b>Objet</b> : produire la v2 de l'analyse à partir d'un premier jet produit ailleurs — conformité du déclaré, intégration locale, corrections, style, contre-vérifications sourcées, contrôles mécaniques.</li>
+    <li><b>État à la remise</b> : arrêt dur. Deux conditions cumulatives avant toute publication — revue d'AH, audit du greffe — le push étant un gate d'AH distinct.</li>
+  </ul>
+
+  <h2>0. Ce qui a été livré</h2>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>Fichier</th><th>État</th></tr>
+    <tr><td><code>films/the-sweet-east.html</code></td><td>créé</td></tr>
+    <tr><td><code>assets/posters/the-sweet-east.jpg</code></td><td>créé — 735 x 1000, 271 Ko</td></tr>
+    <tr><td><code>assets/films-data.js</code></td><td>44<sup>e</sup> entrée ajoutée</td></tr>
+    <tr><td><code>docs/journal_analyses_films.md</code></td><td>1 ligne, statut « non publiée »</td></tr>
+    <tr><td><code>docs/Recherche_d_images_des_films.md</code></td><td>section datée</td></tr>
+    <tr><td><code>docs/journal_erreurs.md</code></td><td>4 lignes « sources inaccessibles »</td></tr>
+    <tr><td><code>index.html</code>, <code>critiques.html</code></td><td>listes statiques régénérées (voir §7)</td></tr>
+  </table>
+  </div>
+  <p>Commits par chemins explicites, au fil de l'eau, aucun push.</p>
+
+  <h2>1. Conformité du déclaré</h2>
+  <p>Le premier jet était accompagné d'un « package » d'intégration qui déclarait lui-même sa conformité sur huit contrôles. Chaque déclaration a été rejouée à l'instrument.</p>
+
+  <h3>1.1 Les huit contrôles du package</h3>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>#</th><th>Contrôle</th><th>Déclaré</th><th>Constaté</th><th>Verdict</th></tr>
+    <tr><td>1</td><td>Vocabulaires fermés</td><td>« Non exécuté » — à valider</td><td><b>3 des 4 axes fermés étaient hors vocabulaire</b></td><td>déclaration honnête, valeurs fausses</td></tr>
+    <tr><td>2</td><td>Poids affiche</td><td>Conditionnel</td><td>Sans objet dans cet environnement ; traité ici</td><td>conforme</td></tr>
+    <tr><td>3</td><td>Poids HTML au plus 60 Ko</td><td>« Validé — ~48 Ko »</td><td><b>20,4 Ko réels</b> (20 912 octets)</td><td><b>FAUX</b> — seuil tenu, mesure inventée</td></tr>
+    <tr><td>4</td><td>Zéro fonte externe</td><td>Aucune déclaration de fonte embarquée ni appel à Google Fonts, et « <b>CSS intégré seul</b> »</td><td>Résultat exact, <b>motif faux</b> : la page charge bien les deux feuilles partagées du site</td><td>bon résultat, mauvais motif</td></tr>
+    <tr><td>5</td><td>Zéro URL absolue propre</td><td>Validé</td><td>0 occurrence</td><td><b>exact</b></td></tr>
+    <tr><td>6</td><td>Menu et marqueur de page</td><td>« Exactement 1 »</td><td>Exactement 1, 6 entrées dans l'ordre</td><td><b>exact</b></td></tr>
+    <tr><td>7</td><td>Contraste AA</td><td>Manuel</td><td>Non exécutable dans cet environnement — déclaration honnête</td><td>—</td></tr>
+    <tr><td>8</td><td>Cohérence registre / page</td><td>Validé</td><td>Exact en forme, mais la valeur elle-même est en cause</td><td>exact en forme</td></tr>
+  </table>
+  </div>
+  <p><b>Bilan.</b> Sur les cinq contrôles déclarés conformes : <b>deux sont exacts</b> (5, 6), <b>un est exact avec un motif faux</b> (4), <b>un est faux</b> (3), <b>un est formellement exact mais porte sur une valeur discutable</b> (8). L'auto-déclaration du package n'est pas fiable et se vérifie intégralement.</p>
+
+  <h3>1.2 Gabarit des neuf sections — non conforme</h3>
+  <p>Le gabarit impose <b>neuf sections numérotées, puis une section Sources</b>. Le premier jet a produit <b>neuf sections dont la bibliographie était la neuvième</b> — soit huit sections d'analyse au lieu de neuf, et un plan entièrement réinventé.</p>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>#</th><th>Gabarit qui fait foi</th><th>Premier jet</th><th>Écart</th></tr>
+    <tr><td>1</td><td>Fiche technique</td><td>Synopsis</td><td>déplacée en 8</td></tr>
+    <tr><td>2</td><td>Synopsis</td><td>Contexte et production</td><td>—</td></tr>
+    <tr><td>3</td><td>Contexte de production</td><td>Esthétique et cinéma de Price Williams</td><td>hors gabarit</td></tr>
+    <tr><td>4</td><td><b>Structure narrative</b></td><td>Le langage visuel</td><td><b>ABSENTE</b></td></tr>
+    <tr><td>5</td><td>Mise en scène et procédés techniques</td><td>Lillian Wade</td><td>—</td></tr>
+    <tr><td>6</td><td>Personnages principaux</td><td>Une satire de l'Amérique fragmentée</td><td>—</td></tr>
+    <tr><td>7</td><td><b>Thèmes (3 à 5 nommables)</b></td><td>L'humour en tension avec le sérieux</td><td><b>ABSENTE</b> en tant que telle</td></tr>
+    <tr><td>8</td><td><b>Réception critique et postérité</b></td><td>Fiche technique</td><td><b>ABSENTE</b> (trois lignes noyées en section 2)</td></tr>
+    <tr><td>9</td><td><b>Conclusion</b></td><td>Bibliographie</td><td><b>ABSENTE</b></td></tr>
+    <tr><td>—</td><td>Sources numérotées</td><td><i>(comptée comme section 9)</i></td><td>comptage faux</td></tr>
+  </table>
+  </div>
+  <p><b>Sourçage.</b> Le gabarit exige que chaque affirmation non triviale soit traçable, par un couple d'ancres reliant le texte à sa référence. Le premier jet contient <b>zéro renvoi en texte</b> : sa bibliographie n'est rattachée à rien. La version publiée en porte <b>quarante-deux</b>.</p>
+
+  <h3>1.3 Vocabulaires fermés — trois valeurs bloquantes sur quatre</h3>
+  <p>Le registre du site puise dans des listes fermées ; toute valeur absente empêche mécaniquement la publication. Le package proposait une entrée qui <b>aurait bloqué</b> :</p>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>Axe</th><th>Valeur proposée</th><th>Statut réel</th><th>Valeur retenue</th></tr>
+    <tr><td><code>genreBase</code></td><td><code>'comédie-dramatique'</code></td><td><b>absente</b> du vocabulaire</td><td><code>'comedie'</code></td></tr>
+    <tr><td><code>technique</code></td><td><code>['16mm', 'cinéma indépendant']</code></td><td>liste fermée = <code>muet / n&amp;b / couleur</code> — deux inventions</td><td><code>['couleur']</code></td></tr>
+    <tr><td><code>pays</code></td><td><code>'États-Unis'</code></td><td>le vocabulaire est en <b>ASCII non accentué</b> ; le contrôle est <b>littéral</b></td><td><code>['Etats-Unis']</code></td></tr>
+    <tr><td><code>volet</code></td><td><code>'critique'</code></td><td>conforme</td><td><code>'critique'</code></td></tr>
+  </table>
+  </div>
+  <p>Le package affirmait pourtant, coche verte à l'appui : « <code>pays</code> : <code>'États-Unis'</code> — standard », et « <b>Champs requis : tous présents</b> ». Aucune escalade n'a pourtant été nécessaire : les quatre axes se laissent servir par des valeurs déjà au vocabulaire, sans rabattre le film sur une valeur approchante.</p>
+
+  <h3>1.4 Autres points</h3>
+  <ul>
+    <li><b>Ce que le premier jet a bien fait</b> : squelette de page conforme, attribut de volet correct, cartouche au bon régime et <b>sans</b> la ligne « Modèle producteur » proscrite, liens relatifs partout, conteneur de mobilier correctement employé, motif d'affiche avec repli.</li>
+    <li><b>Erreur de calcul</b> : la largeur du mobilier partagé était déclarée à 50 rem pour une colonne éditoriale de 50 rem, là où la formule impose <code>(largeur en px + 51,2) / 16</code>. Le mobilier était <b>51 px trop étroit</b>.</li>
+    <li><b>CSS mort</b> : deux composants stylés, jamais employés. <b>Identifiant accentué</b> sur une ancre, hors usage du site.</li>
+  </ul>
+
+  <h2>2. L'hallucination de date</h2>
+  <p>Le premier jet porte <b>sept occurrences</b> d'une date située <b>dans le futur</b> : le bloc de provenance annonçait une « recherche et rédaction en <b>septembre 2026</b> », et six références de la bibliographie étaient déclarées « consultées septembre 2026 ». La production est datée du 2 août 2026 par le package lui-même : septembre n'était pas advenu.</p>
+  <p><b>Huitième occurrence, dans le registre</b> : une date de publication fixée à <code>2026-08-02 14:32</code>, heure postérieure au dépôt du package (13h27). C'est le spécimen exact que vise la règle d'horodatage instrumental du projet : une date écrite de mémoire plutôt que lue à l'horloge.</p>
+  <p>Dans la version publiée, toutes les dates sont lues à l'horloge système, et les consultations sont datées du 2 août 2026 — jour réel des requêtes.</p>
+
+  <h3>2.1 Fautes de langue relevées et corrigées</h3>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>Premier jet</th><th>Nature</th></tr>
+    <tr><td>« sous la <b>gritaille</b> » <i>(titre de la page)</i></td><td><b>mot inexistant en français</b></td></tr>
+    <tr><td>« première réalisation en tant que <b>réalisateur-réalisateur</b> »</td><td>redoublement fautif</td></tr>
+    <tr><td>« traverse <b>un</b> Amérique fracturée »</td><td>accord</td></tr>
+    <tr><td>« certaines scènes calmes et <b>tripolée</b> »</td><td>mot inexistant + accord</td></tr>
+    <tr><td>« tout cela <b>n'est pas excuses</b> pour »</td><td>syntaxe</td></tr>
+    <tr><td>« <b>le l'utiliser</b> en 2023 »</td><td>doublon</td></tr>
+    <tr><td>« l'<b>imparfection</b> assumée »</td><td>barbarisme (<i>imperfection</i>)</td></tr>
+    <tr><td>« une <b>distante</b> observationnelle »</td><td><i>distance</i></td></tr>
+    <tr><td>« interventions <b>oniériques</b> »</td><td><i>oniriques</i></td></tr>
+    <tr><td>« la réalité <b>dégétique</b> »</td><td><i>diégétique</i></td></tr>
+    <tr><td>« Visuellement et <b>soniquement</b> »</td><td>calque de l'anglais</td></tr>
+    <tr><td>« <b>L'humour les plus aigus</b> est souvent filmé »</td><td>accord</td></tr>
+    <tr><td>« une satire sans <b>redemption</b> »</td><td>anglicisme (<i>rédemption</i>)</td></tr>
+    <tr><td>« des mondes clos et <b>autistes</b> »</td><td>métaphore validiste — supprimée</td></tr>
+  </table>
+  </div>
+
+  <h2>3. Contre-vérifications sourcées</h2>
+  <p>Toutes les affirmations engageantes du premier jet ont été rejouées contre les sources : dates, noms, rôles, faits de production, citations. <b>Onze corrections factuelles</b>, dont six erreurs franches.</p>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>#</th><th>Premier jet</th><th>Constaté à la source</th></tr>
+    <tr><td>1</td><td>Montage : <b>Kyle Klutz</b></td><td><b>Stephen Gurewitz.</b> Le nom du premier jet n'apparaît nulle part</td></tr>
+    <tr><td>2</td><td>Musique : <b>Mica Levi</b></td><td><b>Paul Grimstad</b></td></tr>
+    <tr><td>3</td><td>Durée : <b>108 minutes</b> (deux fois), et « durant <b>deux heures</b> »</td><td><b>104 minutes</b></td></tr>
+    <tr><td>4</td><td>Format : <b>1.37:1</b></td><td><b>1,78:1</b></td></tr>
+    <tr><td>5</td><td>Sean Price Williams chef opérateur d'<i>Uncut Gems</i></td><td><b>Faux.</b> <i>Uncut Gems</i> est photographié par <b>Darius Khondji</b> ; les Safdie ont précisément quitté le 16 mm de Price Williams pour le 35 mm de Khondji. Price Williams a signé <i>Heaven Knows What</i> et <i>Good Time</i></td></tr>
+    <tr><td>6</td><td><b>Lawrence</b> présenté comme « un activiste anarchiste » rencontré à Washington</td><td><b>Inversion de personnage.</b> Lawrence (Simon Rex) est un suprémaciste blanc d'âge mûr, affable, obsédé par Edgar Allan Poe. L'anarchiste, c'est <b>Caleb</b> (Earl Cave)</td></tr>
+    <tr><td>7</td><td>« Jacob Elordi (<b>Ian Reynolds</b>) »</td><td>Le personnage s'appelle <b>Ian</b> ; le patronyme est inventé</td></tr>
+    <tr><td>8</td><td>« <b>Lillian Wade</b> », dans la page et dans le résumé de carte</td><td>Le personnage n'a <b>pas de patronyme</b> : « Lillian »</td></tr>
+    <tr><td>9</td><td>Influences « déclarées » : <b>Nicholas Ray, Paradjanov, Fassbinder</b></td><td><b>Introuvables.</b> Les influences documentées sont Albert Maysles, Walerian Borowczyk, John Waters, Lindsay Anderson, D. W. Griffith. La source que le premier jet cite lui-même ne nomme que <b>Maysles</b></td></tr>
+    <tr><td>10</td><td>« maîtrise du <b>Sony F3</b> » sur ce film</td><td><b>Confusion de matériel.</b> Le Sony F3, c'est <i>Heaven Knows What</i> (2014). <i>The Sweet East</i> est tourné sur <b>Aaton XTR Prod</b>, en 16 mm</td></tr>
+    <tr><td>11</td><td>Citation attribuée à Nick Pinkerton : le scénario écrit dans la logique de « <b>la conversation qu'on aurait au bar</b> »</td><td><b>Citation non retrouvée.</b> Aucune source ne la porte. Attesté en revanche : « Le scénario a été écrit pour nous faire rire, pour faire rire nos amis » (Sean Price Williams)</td></tr>
+  </table>
+  </div>
+
+  <h3>3.1 Ce que le premier jet avait juste</h3>
+  <p>Par honnêteté de mesure : le financement complété par un fonds provenant de Peter Thiel est <b>exact</b>, de même que Rotten Tomatoes à 81 % sur 69 critiques, Metacritic à 62, la Quinzaine des Cinéastes le 18 mai 2023, la sortie américaine par Utopia le 1<sup>er</sup> décembre 2023, l'arrivée sur Hulu en mai 2024, Dean Hurley au son, le tournage en 16 mm, et le découpage saisonnier du tournage entre octobre 2021 et mai 2022. <b>La recherche documentaire était largement bonne ; c'est la restitution qui a dérivé.</b></p>
+
+  <h3>3.2 Sources inaccessibles</h3>
+  <p>Quatre sources d'intérêt fort ou moyen n'ont pas pu être ouvertes : RogerEbert.com (403), Variety (402, péage éditorial), Filmmaker Magazine (403), Air Mail (paywall). Toutes quatre sont consignées au journal des erreurs du projet, avec ce qui les couvre.</p>
+  <p><b>Conséquence appliquée</b> : RogerEbert a été <b>retirée de la bibliographie</b>. Le premier jet la déclarait consultée sans qu'aucune de ses affirmations ne lui soit rattachable — une source citée mais non lue est un adossement fictif.</p>
+
+  <h2>4. Intégration et style</h2>
+  <p><b>Affiche.</b> La base d'images locale, priorité 1 de la spécification, a été retenue : l'affiche de la sortie française, <b>vérifiée visuellement</b> avant intégration. Le package recommandait une source externe ; la priorité 1 prime, et elle était disponible.</p>
+  <p><b>Conversion de format, assumée et déclarée</b> : les 42 affiches du site sont des <code>.jpg</code>, la convention nomme la cible <code>.jpg</code>, et surtout l'outil de recompression <b>n'inspecte que les <code>.jpg</code></b> — un PNG déposé tel quel aurait échappé au contrôle de poids comme à l'outil. La doctrine de compression appliquée est celle de l'outil, à l'identique, mais restreinte au seul fichier concerné pour ne pas réécrire les 41 autres affiches. Résultat : 2 378 Ko ramenés à <b>271 Ko</b>. Les originaux restent en place, intacts.</p>
+  <p><b>Style.</b> Identité visuelle propre au film — « le dépliant de curiosités », le prospectus souvenir de bord de route, palette relevée sur l'affiche française. Les thèses de fond du premier jet — la satire par accumulation, l'opacité de Lillian, le 16 mm comme geste — sont <b>conservées</b> : elles ont été reformulées, sourcées, et corrigées seulement là où la contre-vérification les infirmait.</p>
+
+  <h2>5. Question restée ouverte — la signature à deux modèles</h2>
+  <p>Une page produite par deux modèles successifs est une forme inédite au regard des règles de provenance du site, et la session ne l'a pas tranchée seule. Valeur <b>provisoire</b> posée, identique en page et au registre : <code>Claude Haiku 4.5 puis Claude Opus 5 (sessions supervisées)</code>.</p>
+  <p>La tension : la règle veut que la formulation de signature soit invariante et que « seul le nom du modèle varie » ; une autre veut qu'on nomme le modèle <b>réellement</b> producteur, jamais un modèle supposé. Ici deux modèles ont réellement produit — le premier jet et la version publiée — et l'exercice existait précisément pour <b>mesurer</b> ce qu'avait produit le premier : effacer sa part fausserait l'observation. Les options soumises à AH : garder la forme à deux modèles ; ne nommer que le modèle du texte publié en laissant la double provenance au bloc de provenance et au journal ; ou une formulation qu'AH préfère.</p>
+
+  <h2>6. Contrôles mécaniques</h2>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>#</th><th>Contrôle</th><th>Résultat</th></tr>
+    <tr><td>1</td><td>Vocabulaires fermés</td><td><b>code 0</b> — 44 entrées, aucune valeur hors vocabulaire</td></tr>
+    <tr><td>2</td><td>Poids de l'affiche</td><td><b>271,0 Ko</b> au plus 300</td></tr>
+    <tr><td>3</td><td>Poids du HTML</td><td>fiche <b>42,4 Ko</b> au plus 60</td></tr>
+    <tr><td>4</td><td>Zéro fonte externe</td><td><b>0</b> — toutes les URL de la page sont dans la liste de sources</td></tr>
+    <tr><td>5</td><td>Zéro URL absolue propre</td><td><b>0</b></td></tr>
+    <tr><td>6</td><td>Menu et volet</td><td><b>exactement 1</b> marqueur de page courante</td></tr>
+    <tr><td>7</td><td>Contraste AA</td><td><b>0 écart certain, 0 écart probable</b></td></tr>
+    <tr><td>8</td><td>Cohérence registre / page</td><td><b>identique</b></td></tr>
+  </table>
+  </div>
+  <p><b>Contrôles complémentaires.</b> Audit manuel des glyphes non-ASCII : 21 caractères distincts, tous déjà en usage sur le site, aucun symbole de repli introduit. Sonde locale de géométrie, écrivant hors du dépôt : colonne éditoriale mesurée à 688,8 px, formule à 46,25 rem, valeur déclarée 46,3 rem — composé par la formule <i>puis</i> vérifié au rendu, dans l'ordre prescrit. À 320 px de large, <b>aucun défilement horizontal</b>. Au rendu : neuf sections, neuf sources, quarante-deux renvois, <b>zéro ancre morte</b>, <b>zéro identifiant dupliqué</b>, console sans erreur.</p>
+
+  <h3>6.1 Batterie de contrôle avant publication, jouée à blanc</h3>
+  <p>La batterie qui garde la publication a été exécutée dans sa forme réelle, <b>sans aucun push</b>. Les trois premiers contrôles passent. Le quatrième refuse.</p>
+  <div class="alerte">
+    <p><b>Le refus ne vient pas de cette analyse.</b> Il vient de <b>quatorze écarts de contraste certains hérités</b>, répartis sur dix fiches antérieures. <b>La page de <i>The Sweet East</i> en apporte zéro</b>, et le total est resté inchangé.</p>
+    <p>L'exigence « aucun écart nouveau » est donc tenue — mais l'obstacle est antérieur à ce travail et le dépasse : tant que ces quatorze écarts ne sont pas soldés, la batterie refusera toute publication vers la branche principale.</p>
+  </div>
+
+  <h2>7. Débordement de périmètre — déclaré</h2>
+  <p>Le mandat bornait les écritures aux fichiers du film, au registre et aux journaux. Deux pages de navigation ont aussi été modifiées, dans un commit séparé.</p>
+  <p><b>Motif.</b> L'ajout d'une entrée au registre met mécaniquement le générateur de listes statiques en dérive — c'est le deuxième contrôle de la batterie. Sans régénération, la batterie refusait dès cette étape, et le film restait absent du repli sans JavaScript et de l'indexation. La modification est <b>purement mécanique</b> : produite par l'outil canonique, bornée à deux marqueurs, <b>deux lignes par fichier</b> — l'entrée du film, et le déplacement du badge « dernière publiée ».</p>
+  <p><b>Point d'attention</b> : ce badge désigne comme « dernière publiée » une page qui ne l'est pas encore. C'est cohérent au moment de la mise en ligne, et le commit est isolé, donc révocable seul.</p>
+
+  <h2>8. Valeur d'observation — profil d'erreurs du premier jet</h2>
+  <p>Premier spécimen mesuré de la transférabilité de cette compétence vers un autre environnement et un autre calibre de modèle.</p>
+  <div class="tb-scroll">
+  <table>
+    <tr><th>Type d'erreur</th><th>Fréquence</th><th>Gravité</th><th>Détectable sans accès local ?</th></tr>
+    <tr><td><b>Hallucination de date</b> (dans le futur)</td><td>8 occurrences</td><td><b>Haute</b></td><td>Oui, par simple lecture</td></tr>
+    <tr><td><b>Hallucination factuelle</b> (noms, rôles, matériel, citations)</td><td>11 corrections, dont 6 franches</td><td><b>Haute</b> — publiable et faux</td><td>Non : exige la contre-vérification</td></tr>
+    <tr><td><b>Auto-déclaration fausse</b></td><td>3 déclarations</td><td><b>Haute</b> — fausse assurance de conformité</td><td>Partiellement</td></tr>
+    <tr><td><b>Vocabulaires fermés inventés</b></td><td>3 axes sur 4</td><td><b>Haute</b> — bloque la publication</td><td>Oui</td></tr>
+    <tr><td><b>Gabarit réinventé</b></td><td>structurel</td><td><b>Haute</b> — invariant du site</td><td>Oui</td></tr>
+    <tr><td><b>Sourçage absent</b></td><td>structurel</td><td><b>Haute</b> — raison d'être du site</td><td>Oui</td></tr>
+    <tr><td><b>Fautes de langue</b></td><td>14, dont 4 mots inexistants</td><td>Moyenne — visible du lecteur</td><td>Oui</td></tr>
+    <tr><td><b>Erreur de calcul</b></td><td>1</td><td>Moyenne</td><td>Oui</td></tr>
+    <tr><td><b>Métaphore validiste</b></td><td>1</td><td>Moyenne</td><td>Oui</td></tr>
+  </table>
+  </div>
+  <p><b>Trois constats.</b></p>
+  <ol>
+    <li><b>Ce qui a bien tenu est le squelette mécanique</b> : structure de page, menu, marqueur de volet, cartouche au bon régime, liens relatifs, motif d'affiche avec repli, script d'ancrage. La compétence transmet bien ce qui est prescrit sous forme de <b>gabarit littéral</b>.</li>
+    <li><b>Ce qui a lâché est tout ce qui demande un jugement ou une vérification</b> : la restitution fidèle des sources, le comptage des sections, la lecture d'une liste fermée, la mesure d'un fichier, l'application d'une formule. Là où la compétence dit « vérifie » plutôt que « écris ceci », le résultat a été <b>déclaré fait sans être fait</b>.</li>
+    <li><b>L'auto-déclaration est le mode de défaillance le plus coûteux</b> : elle ne se contente pas d'être fausse, elle <b>empêche de chercher</b>. Un package qui affiche « validé » sur cinq lignes dont trois sont fausses est plus dangereux qu'un package qui ne déclarerait rien.</li>
+  </ol>
+  <p><b>Piste retenue.</b> La part d'une compétence qui survit au transfert est celle qui tient du <b>gabarit copiable</b> ; celle qui ne survit pas est celle qui tient du <b>contrôle</b>. Un environnement dépourvu d'outillage ne devrait pas pouvoir cocher un contrôle qu'il ne peut pas exécuter : il devrait porter « non exécutable » partout où l'instrument manque, et jamais « validé ». Le premier jet l'a d'ailleurs <b>bien fait</b> pour trois contrôles et <b>mal fait</b> pour trois autres — la règle existe donc déjà dans son comportement, simplement appliquée de façon inégale.</p>
+
+  <h2>9. Ce qui restait à la main d'AH à la remise</h2>
+  <ol>
+    <li>Revue de la version publiée — première condition de l'arrêt dur.</li>
+    <li>Audit du greffe — seconde condition.</li>
+    <li>Trancher la forme de la signature à deux modèles (§5).</li>
+    <li>Solder l'obstacle des quatorze écarts de contraste hérités (§6.1), ou l'arbitrer autrement.</li>
+    <li>Le gate de publication, distinct, qui ne contourne jamais la batterie de contrôle.</li>
+  </ol>
+
+  <span class="signe">Note rédigée par la session « Opus CIN-081 v2 Sweet East », le 2 août 2026 à 14:37:39. Versée en annexe à la publication sur décision d'AH.</span>
+
+</main>
+
+<footer class="pied">
+  Pièce de dossier — usage éditorial non commercial
+  <br><a href="the-sweet-east.html">Retour à l'analyse</a> · <a href="../index.html">Retour aux analyses</a>
+</footer>
+
+</body>
+</html>

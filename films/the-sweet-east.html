@@ -14,12 +14,9 @@
        puis vérifié par sonde locale au rendu réel (skill v2.1, étape 3.1). */
     --mobilier-largeur:46.3rem;
 
-    /* Identité bespoke : « le dépliant de curiosités » — le prospectus
-       souvenir qu'on ramasse dans un relais de bord de route, imprimé en
-       trichromie fatiguée sur un papier bon marché. Le film est un voyage
-       à étapes le long de la côte Est ; la page est le dépliant qui en
-       vend les curiosités. Palette relevée sur l'affiche française :
-       crème d'imprimerie, rouge de drapeau passé, indigo de fond. */
+    /* Identité bespoke « le dépliant de curiosités » : le prospectus
+       souvenir de bord de route, en trichromie fatiguée. Palette relevée
+       sur l'affiche française. */
     --papier:#f2ece0;
     --papier-creux:#e6dccb;
     --papier-ombre:rgba(27,26,36,0.14);
@@ -134,30 +131,18 @@
   .numero-depliant b{ color:var(--rouge-profond); }
 
   h1.titre{
-    font-family:var(--serif);
-    font-weight:900;
-    font-size:clamp(2.1rem, 6.4vw, 3.3rem);
-    line-height:1.06;
-    margin:0 0 0.2rem;
-    letter-spacing:-0.015em;
-    color:var(--encre);
+    font-family:var(--serif); font-weight:900; color:var(--encre);
+    font-size:clamp(2.1rem, 6.4vw, 3.3rem); line-height:1.06;
+    margin:0 0 0.2rem; letter-spacing:-0.015em;
   }
   .titre-film{
-    font-family:var(--mono);
-    font-size:0.76rem;
-    text-transform:uppercase;
-    letter-spacing:0.17em;
-    color:var(--rouge-profond);
-    display:block;
-    margin-bottom:1.5rem;
+    font-family:var(--mono); font-size:0.76rem; display:block;
+    text-transform:uppercase; letter-spacing:0.17em;
+    color:var(--rouge-profond); margin-bottom:1.5rem;
   }
   .accroche{
-    font-family:var(--serif);
-    font-style:italic;
-    color:var(--encre-douce);
-    font-size:1.02rem;
-    max-width:47ch;
-    margin:0 0 1.9rem;
+    font-family:var(--serif); font-style:italic; font-size:1.02rem;
+    color:var(--encre-douce); max-width:47ch; margin:0 0 1.9rem;
   }
 
   dl.identite{
@@ -183,28 +168,17 @@
   }
 
   .provenance{
-    margin-top:1.3rem;
-    padding:0.75rem 1.05rem;
-    background:rgba(38,40,107,0.06);
-    border-left:3px solid var(--indigo);
-    font-family:var(--mono);
-    font-size:0.73rem;
-    letter-spacing:0.02em;
-    line-height:1.62;
-    color:var(--encre-douce);
+    margin-top:1.3rem; padding:0.75rem 1.05rem;
+    background:rgba(38,40,107,0.06); border-left:3px solid var(--indigo);
+    font-family:var(--mono); font-size:0.73rem;
+    letter-spacing:0.02em; line-height:1.62; color:var(--encre-douce);
   }
   .provenance strong{ color:var(--encre); font-weight:600; }
 
   .back-link{
-    display:inline-block;
-    color:var(--encre-pale);
-    font-family:var(--mono);
-    font-size:0.66rem;
-    font-weight:500;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    text-decoration:none;
-    margin-bottom:1.1rem;
+    display:inline-block; color:var(--encre-pale); font-family:var(--mono);
+    font-size:0.66rem; font-weight:500; text-transform:uppercase;
+    letter-spacing:0.08em; text-decoration:none; margin-bottom:1.1rem;
   }
   .back-link:hover{ color:var(--rouge-profond); }
 
@@ -400,34 +374,21 @@
   }
   .releve-inner{ padding:1.15rem 1.35rem 1.3rem; }
   .releve-label{
-    font-family:var(--mono);
-    font-size:0.61rem;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:0.14em;
-    color:var(--indigo-pale);
-    margin-bottom:0.8rem;
-    display:block;
+    font-family:var(--mono); font-size:0.61rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--indigo-pale); margin-bottom:0.8rem; display:block;
   }
   .releve-grid{
-    display:grid;
+    display:grid; gap:1rem;
     grid-template-columns:repeat(auto-fit, minmax(148px,1fr));
-    gap:1rem;
   }
   .releve .chiffre{
-    font-family:var(--serif);
-    font-weight:800;
-    font-size:1.32rem;
-    color:var(--papier);
-    display:block;
-    line-height:1.15;
+    font-family:var(--serif); font-weight:800; font-size:1.32rem;
+    color:var(--papier); display:block; line-height:1.15;
   }
   .releve .legende{
-    font-family:var(--mono);
-    font-size:0.64rem;
-    letter-spacing:0.03em;
-    color:var(--indigo-pale);
-    text-transform:uppercase;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.03em;
+    color:var(--indigo-pale); text-transform:uppercase;
   }
 
   /* ---------- SOURCES ---------- */
@@ -444,40 +405,57 @@
     display:grid; gap:0.55rem;
   }
   ol.liste-sources li{
-    counter-increment:src;
-    font-size:0.79rem;
-    padding-left:3.1rem;
-    position:relative;
-    color:var(--papier-creux);
+    counter-increment:src; font-size:0.79rem; position:relative;
+    padding-left:3.1rem; padding-bottom:0.55rem;
+    color:var(--papier-creux); font-family:var(--mono);
     border-bottom:1px dashed rgba(233,228,216,0.24);
-    padding-bottom:0.55rem;
-    font-family:var(--mono);
   }
   ol.liste-sources li::before{
-    content:"Réf. " counter(src);
-    position:absolute; left:0; top:0;
-    font-family:var(--mono);
-    font-weight:600;
-    color:var(--indigo-pale);
-    font-size:0.65rem;
-    letter-spacing:0.03em;
+    content:"Réf. " counter(src); position:absolute; left:0; top:0;
+    font-family:var(--mono); font-weight:600; font-size:0.65rem;
+    color:var(--indigo-pale); letter-spacing:0.03em;
   }
   ol.liste-sources a{ color:var(--papier); word-break:break-all; }
   ol.liste-sources a:hover{ color:var(--indigo-pale); }
 
   footer.pied{
-    text-align:center;
-    padding:2.1rem 1.5rem 3.1rem;
-    font-family:var(--mono);
-    font-size:0.63rem;
-    font-weight:500;
-    letter-spacing:0.09em;
-    text-transform:uppercase;
-    color:var(--encre-pale);
-    background:var(--papier);
+    text-align:center; padding:2.1rem 1.5rem 3.1rem;
+    font-family:var(--mono); font-size:0.63rem; font-weight:500;
+    letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--encre-pale); background:var(--papier);
   }
   footer.pied a{ color:var(--encre-pale); }
   footer.pied a:hover{ color:var(--rouge-profond); }
+
+  /* ---------- ANNEXE : la pièce de dossier versée ---------- */
+  section.annexe{
+    background:var(--papier-creux);
+    border-top:5px solid var(--encre);
+    padding:2.8rem 1.6rem 3.4rem;
+  }
+  .annexe-inner{ max-width:740px; margin:0 auto; }
+  .annexe h2{ font-size:1.4rem; margin:0.5rem 0 0; }
+  .annexe p{ font-size:0.9rem; }
+  .lien-annexe{
+    font-family:var(--mono); font-size:0.72rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--indigo); text-decoration:none;
+    border-bottom:2px solid var(--rouge); padding-bottom:0.15rem;
+  }
+  .lien-annexe:hover{ color:var(--rouge-profond); }
+  .clause-ah{
+    background:rgba(176,35,31,0.07);
+    border-left:4px solid var(--rouge);
+    padding:1.05rem 1.25rem;
+    margin:1.4rem 0 1.8rem;
+  }
+  .clause-ah p{ font-size:0.92rem; margin-bottom:0.7rem; color:var(--encre); }
+  .clause-ah p:last-child{ margin-bottom:0; }
+  .clause-ah .qui{
+    font-family:var(--mono); font-size:0.6rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--rouge-profond); display:block; margin-bottom:0.5rem;
+  }
 
   @media (max-width:600px){
     .depliant-inner{ padding:0 1.1rem; }
@@ -529,7 +507,7 @@
       </dl>
 
       <div class="provenance">
-        <strong>Provenance.</strong> Premier jet produit en session Claude Chat par Claude Haiku 4.5 le 2 août 2026 ; version publiée reprise, corrigée et contre-vérifiée le même jour par Claude Opus 5 en session supervisée sur poste local. Les écarts factuels du premier jet sont documentés au journal interne du projet.
+        <strong>Provenance.</strong> Premier jet produit en session Claude Chat par Claude Haiku 4.5 le 2 août 2026 ; version publiée reprise, corrigée et contre-vérifiée le même jour par Claude Opus 5 en session supervisée. Le relevé complet des écarts du premier jet — et le motif de sa publication — sont versés <a class="renvoi" href="#annexe" id="ref-annexe">[annexe]</a> en fin de page.
       </div>
     </div>
   </div>
@@ -556,6 +534,7 @@
     <a href="#reception">8. Réception</a>
     <a href="#conclusion">9. Conclusion</a>
     <a href="#sources">Sources</a>
+    <a href="#annexe">Annexe</a>
   </div>
 </nav>
 
@@ -781,6 +760,22 @@
       <li id="src-8">FILM TALK, « Sean Price Williams on The Sweet East: “The script was written to make us laugh” », 13 mars 2024 &mdash; <a href="https://filmtalk.org/2024/03/13/sean-price-williams/" target="_blank" rel="noopener">filmtalk.org &mdash; entretien du 13 mars 2024</a></li>
       <li id="src-9">Metacritic, « The Sweet East » &mdash; critiques de presse recensées &mdash; <a href="https://www.metacritic.com/movie/the-sweet-east/critic-reviews/" target="_blank" rel="noopener">metacritic.com &mdash; The Sweet East</a></li>
     </ol>
+  </div>
+</section>
+
+<section class="annexe" id="annexe">
+  <div class="annexe-inner">
+    <span class="meta-label">Annexe &mdash; pi&egrave;ce de dossier vers&eacute;e</span>
+    <h2>Note de remise interne &mdash; le premier jet et ses erreurs</h2>
+
+    <div class="clause-ah">
+      <span class="qui">Motif de cet ajout &mdash; d&eacute;cision d'AH</span>
+      <p>Cette pièce du dossier, qui n'est pas publiée par défaut, est cette fois-ci versée en annexe à la publication à titre de document sur les erreurs rencontrées et corrigées. Sur décision d'AH — sur base des nombreuses erreurs factuelles et d'hallucinations rencontrées dans le premier jet qui était un test de la compétence (skill) « analyse-de-films » déléguée en session Chat, la recommandation est de ne pas utiliser le modèle Haïku pour des rédactions élaborées avec du contenu sourcé.</p>
+    </div>
+
+    <p>La note de remise interne de cette analyse est versée <b>intégralement</b> sur une page dédiée : tableau de conformité du package d'origine, relevé des huit dates hallucinées, onze corrections factuelles sourcées, quatorze fautes de langue, résultats des contrôles mécaniques, et profil d'erreurs complet du premier jet.</p>
+
+    <p><a class="lien-annexe" href="the-sweet-east-annexe.html">Lire la note de remise en annexe</a></p>
   </div>
 </section>
 
