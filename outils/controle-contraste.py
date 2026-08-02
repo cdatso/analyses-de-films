@@ -34,7 +34,14 @@ METHODE ET SES LIMITES -- a lire avant d'interpreter les chiffres.
 
 Usage :
     python controle-contraste.py [--depot CHEMIN] [--sortie FICHIER]
+                                  [--sortie-e1 FICHIER]
 Sortie : rapport Markdown sur stdout, et dans le fichier si demande.
+--sortie-e1 FICHIER (RUN-004, Q-4i2) : en plus du rapport Markdown
+    inchange, ecrit une ligne par ecart CERTAIN (E1) au format machine
+    "page|selecteur|texte|fond|seuil", destinee au diff de baseline du
+    hook pre-push (outils/hooks/baseline-e1.txt). N'affecte ni le
+    rapport Markdown ni le code de sortie -- ce script COMPTE, il ne
+    gate rien (le hook gate).
 Code de sortie : 0 -- le comptage a abouti (meme avec des ecarts).
                  2 -- le comptage n'a pas pu etre fait.
 """
@@ -329,6 +336,8 @@ def main():
     ap.add_argument("--depot", default=os.path.dirname(os.path.dirname(
         os.path.abspath(__file__))))
     ap.add_argument("--sortie", default=None)
+    ap.add_argument("--sortie-e1", default=None,
+                     help="ecrit les E1 au format machine page|selecteur|texte|fond|seuil (RUN-004)")
     args = ap.parse_args()
 
     depot = args.depot
@@ -428,6 +437,19 @@ def main():
     if args.sortie:
         with open(args.sortie, "w", encoding="utf-8", newline="\n") as f:
             f.write(texte + "\n")
+
+    if getattr(args, "sortie_e1", None):
+        lignes_e1 = []
+        for r in rapports:
+            for c in r["echecs"]:
+                if c["classe"] == "E1":
+                    lignes_e1.append("%s|%s|%s|%s|%.1f" % (
+                        r["page"], c["selecteur"], c["texte"], c["fond"], c["seuil"]))
+        with open(args.sortie_e1, "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(lignes_e1))
+            if lignes_e1:
+                f.write("\n")
+
     return 0
 
 

@@ -1,0 +1,42 @@
+# outils/hooks/baseline-e1.txt -- baseline des ECARTS CERTAINS (E1) herites
+# (RUN-004, Q-4i2, gate AH 02/08/2026 ~17h08).
+#
+# REGLE DE VIE -- CLIQUET DESCENDANT :
+#   - Cette baseline ne s'ELARGIT JAMAIS sans gate AH explicite.
+#   - Elle se REDUIT quand un heritage est solde : retire sa ligne ici.
+#   - Le hook pre-push (etape [4/4]) refuse tout push vers main portant
+#     un E1 HORS baseline (E1 NOUVEAU, page+couple non liste ci-dessous).
+#   - Un E1 de cette liste absent du releve courant = heritage SOLDE :
+#     signalement NON BLOQUANT (invite a reduire ce fichier), le push
+#     n'est jamais refuse pour ce motif.
+#   - Absence de ce fichier (baseline introuvable) = tolerance ZERO par
+#     defaut : tout E1 courant est alors traite comme NOUVEAU (echec
+#     ferme cote hook, jamais d'ouverture silencieuse).
+#
+# FORMAT (une ligne = un couple E1 CERTAIN ; l'identite est la LIGNE
+# ENTIERE -- page + selecteur + couple, jamais un simple decompte, pour
+# qu'un E1 nouveau ne se masque pas derriere un heritage solde sur la
+# meme page) :
+#   page|selecteur|texte|fond|seuil
+#
+# Genere/re-mesure par : python outils/controle-contraste.py --depot . --sortie-e1 <fichier>
+# (le hook diffe ce fichier trie contre la re-mesure du moment via `comm`).
+# Ne pas retoucher les couleurs a la main -- seule la SUPPRESSION d'une
+# ligne soldee est un geste legitime hors gate AH.
+#
+# Derniere re-mesure : 02/08/2026 17h1x (RUN-004, Sonnet) -- 14 E1 / 10
+# pages, identique au releve cite par le mandat (revue c6, 01/08/2026).
+hamlet.html|.provenance|#c9d0cf|#969c9d|4.5
+hamlet.html|header.dalle|#c9d0cf|#8e9495|4.5
+hamnet.html|.cast-card::before|#b08f3f|#ece0bf|4.5
+hitchcock-truffaut.html|.provenance|#d3cac1|#f2ede2|4.5
+la-nuit-de-san-lorenzo.html|.avertissement|#f0d9d2|#ddc4b7|4.5
+la-nuit-de-san-lorenzo.html|.provenance|#b9c4d6|#9a9fa7|4.5
+pandora.html|.content-warning|#e2d6bd|#9b9e9c|4.5
+persona.html|.content-warning|#d3d3ce|#e9e9e6|4.5
+rosetta.html|.section-head .tag|#da5610|#d8d5c9|4.5
+rouges-et-blancs.html|main|#77776d|#efece3|4.5
+shutter-island.html|.redact|#161310|#161310|4.5
+shutter-island.html|.telex|#332b12|#232c2d|4.5
+soudain-lete-dernier.html|.edge-code|#69655b|#141311|4.5
+soudain-lete-dernier.html|footer.endnote|#69655b|#0a0a09|4.5

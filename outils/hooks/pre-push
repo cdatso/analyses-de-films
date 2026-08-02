@@ -13,6 +13,18 @@
 # jamais une pratique de routine.
 #
 # Activation (geste separe, PAS ce hook) : git config core.hooksPath outils/hooks
+#
+# Robustesse du verdict (RUN-004, Q-4i2 -- anomalie CIN-080 du 01/08) :
+# le code de sortie de CE SCRIPT ne doit jamais dependre de ce que
+# l'appelant fait de sa sortie (pipe tronque, `| Select-Object -First
+# N`, tuyau ferme...). Une ecriture (echo/cat) vers un lecteur qui a
+# ferme son bout provoque SIGPIPE ; sans amortisseur, le shell qui recoit
+# ce signal termine LE SCRIPT LUI-MEME avant d'atteindre son `exit`
+# explicite -- le verdict deja calcule n'est alors jamais rendu. On
+# ignore donc SIGPIPE pour tout le script (les ecritures echouent en
+# silence sur pipe casse, sans jamais tuer le processus) et, plus bas,
+# chaque verdict est calcule AVANT l'affichage qui peut casser.
+trap '' PIPE
 
 depot="$(cd "$(dirname "$0")/../.." && pwd)"
 py="python"
@@ -93,21 +105,58 @@ fi
 
 if [ "$echec" -eq 0 ]; then
     echo ""
-    echo "[4/4] controle-contraste.py (gate sur les ecarts CERTAINS E1 uniquement)"
+    echo "[4/4] controle-contraste.py (gate sur les E1 NOUVEAUX -- hors baseline, RUN-004 Q-4i2)"
     rapport="$(mktemp)"
-    if ! "$py" "$depot/outils/controle-contraste.py" --depot "$depot" > "$rapport" 2>&1; then
+    e1_actuel="$(mktemp)"
+    if ! "$py" "$depot/outils/controle-contraste.py" --depot "$depot" --sortie-e1 "$e1_actuel" > "$rapport" 2>&1; then
+        # Verdict d'echec deja connu ici (code de sortie du script) --
+        # l'affichage qui suit ne peut plus changer le resultat.
+        echec=1
         cat "$rapport"
         echo "[pre-push] REFUSE : controle-contraste.py n'a pas pu aboutir (detail ci-dessus)." >&2
-        echec=1
     else
-        cat "$rapport"
-        if grep -Eq "Ecarts CERTAINS \(E1\) \| [1-9][0-9]* \|" "$rapport"; then
-            echo "[pre-push] REFUSE : au moins un ECART CERTAIN (E1) de contraste WCAG releve ci-dessus." >&2
-            echo "  (les ecarts PROBABLES E2 restent affiches mais ne bloquent pas -- doctrine du script.)" >&2
+        baseline="$depot/outils/hooks/baseline-e1.txt"
+        base_tri="$(mktemp)"
+        e1_tri="$(mktemp)"
+        if [ -f "$baseline" ]; then
+            grep -Ev '^[[:space:]]*(#|$)' "$baseline" | sort > "$base_tri"
+        else
+            : > "$base_tri"
+        fi
+        sort "$e1_actuel" > "$e1_tri"
+
+        # comm exige des fichiers TRIES : col1 = unique baseline, col2 =
+        # unique releve courant, col3 = commun. -13 => nouveaux (dans le
+        # releve, absents de la baseline) ; -23 => herites soldes (dans
+        # la baseline, absents du releve).
+        nouveaux="$(comm -13 "$base_tri" "$e1_tri")"
+        soldes="$(comm -23 "$base_tri" "$e1_tri")"
+
+        # --- Verdict calcule ICI, avant tout affichage qui peut casser
+        #     (sortie pipee/tronquee cote appelant, cf trap PIPE plus haut).
+        if [ -n "$nouveaux" ]; then
             echec=1
         fi
+
+        cat "$rapport"
+        if [ -n "$nouveaux" ]; then
+            echo "[pre-push] REFUSE : E1 NOUVEAU(X) hors baseline (outils/hooks/baseline-e1.txt) :" >&2
+            echo "$nouveaux" | while IFS='|' read -r p s t f seuil; do
+                echo "  - $p :: $s ($t sur $f, seuil $seuil:1)" >&2
+            done
+            echo "  (les E1 de la baseline restent non bloquants -- chantier esthetique lot4 hors mandat." >&2
+            echo "   les ecarts PROBABLES E2 restent affiches mais ne bloquent jamais -- doctrine du script.)" >&2
+        fi
+        if [ -n "$soldes" ]; then
+            echo ""
+            echo "[pre-push] SIGNALEMENT non bloquant -- E1 herite(s) SOLDE(S) encore dans la baseline :"
+            echo "$soldes" | while IFS='|' read -r p s t f seuil; do
+                echo "  - $p :: $s ($t sur $f, seuil $seuil:1) -- reduis outils/hooks/baseline-e1.txt"
+            done
+        fi
+        rm -f "$base_tri" "$e1_tri"
     fi
-    rm -f "$rapport"
+    rm -f "$rapport" "$e1_actuel"
 fi
 
 fin=$(date +%s)
