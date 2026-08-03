@@ -307,3 +307,7 @@ Soy Cuba et Sud) puis le 4 juillet 2026 (ajout de Les Deux Orphelines, Rosetta e
 Blancs) puis le 5 juillet 2026 (ajout de Persona) puis le 13 juillet 2026 (rattrapage de
 traçabilité des affiches 12 à 27, régime strictement factuel — BKL-048). À compléter au fur et
 à mesure des prochaines analyses.*
+
+## Memories of Murder (3 août 2026)
+
+| Memories of Murder | TMDB, https://www.themoviedb.org/movie/11423 (og:image original jcgUjx1QcupGzjntTVlnQ15lHqy.jpg) | Base locale D: sans affiche pour ce film (vérifié : motifs memories/murder/salinui/2003) ; IMP Awards 404 ; TMDB retenu en repli n°4, titre de page vérifié avant téléchargement. Recompression 976,0 → 145,8 Ko (800×1200 q=88, P-36). |

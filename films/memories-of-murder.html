@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le dossier resté ouvert — Memories of Murder</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Colonne éditoriale 688,8 px -> (688,8 + 51,2) / 16 = 46,25rem.
+       Composé par la formule, à vérifier par sonde locale avant publication. */
+    --mobilier-largeur:46.3rem;
+
+    /* Identité « procès-verbal » — papier administratif jauni, encre
+       charbon, boue des rizières, et un seul accent : le rouge de tampon,
+       écho aux vêtements rouges des victimes. Nuit de pluie en couverture. */
+    --papier:#f0e9d8;
+    --papier-ligne:#d8cdb2;
+    --encre:#292217;
+    --boue:#5f5236;
+    --sceau:#9d1f24;
+    --nuit:#181d1b;
+    --pluie:#ccd2cc;
+    --pluie-faible:#8f9a93;
+  }
+  body{margin:0;background:var(--papier);color:var(--encre);
+    font-family:var(--serif);font-size:1.05rem;line-height:1.72;}
+
+  /* --- Couverture : nuit de pluie --- */
+  header.nuit{background:var(--nuit);color:var(--pluie);
+    padding:4.2rem 1.6rem 3.4rem;position:relative;overflow:hidden;}
+  header.nuit::before{content:"";position:absolute;inset:0;opacity:.16;
+    background:repeating-linear-gradient(115deg,transparent 0 7px,var(--pluie-faible) 7px 8px);}
+  .nuit-in{max-width:43rem;margin:0 auto;position:relative;}
+  .surtitre{font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--pluie-faible);margin:0 0 1rem;}
+  h1.titre{font-weight:600;font-size:2.35rem;line-height:1.15;margin:0 0 .4rem;color:#f2f4f1;}
+  .titre-vo{font-style:italic;color:var(--pluie);font-size:1.15rem;margin:0 0 1.6rem;}
+  .provenance{font-family:var(--mono);font-size:.8rem;line-height:1.6;
+    color:var(--pluie);border-left:2px solid var(--pluie-faible);
+    padding-left:.9rem;max-width:34rem;}
+
+  /* --- Corps : le dossier --- */
+  main{max-width:43rem;margin:0 auto;padding:2.6rem 1.6rem 4rem;}
+  .avertissement{border:1px solid var(--boue);border-left:5px solid var(--sceau);
+    background:#e9e0c9;color:var(--encre);padding: .9rem 1.1rem;
+    font-size:.95rem;margin:0 0 2.2rem;}
+  nav.sommaire{border:1px solid var(--papier-ligne);padding:1.1rem 1.3rem;margin:0 0 2.6rem;
+    background:#ece4d0;}
+  nav.sommaire p{margin:0 0 .5rem;font-family:var(--mono);font-size:.78rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--boue);}
+  nav.sommaire ol{margin:0;padding-left:1.4rem;columns:2;column-gap:2.4rem;font-size:.95rem;}
+  nav.sommaire li{margin:0 0 .3rem;}
+  nav.sommaire a{color:var(--encre);text-decoration:none;border-bottom:1px dotted var(--boue);}
+  nav.sommaire a:hover{color:var(--sceau);}
+
+  section{margin:0 0 2.8rem;}
+  .piece{display:flex;align-items:baseline;gap: .8rem;border-bottom:2px solid var(--encre);
+    padding-bottom:.45rem;margin:0 0 1.2rem;}
+  .piece .no{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;
+    color:#fff;background:var(--sceau);padding:.18rem .55rem;white-space:nowrap;}
+  .piece h2{font-weight:600;font-size:1.4rem;margin:0;line-height:1.25;}
+  h3{font-weight:600;font-size:1.08rem;margin:1.6rem 0 .5rem;color:var(--boue);}
+  p{margin:0 0 1rem;}
+  .renvoi{font-family:var(--mono);font-size:.72rem;vertical-align:super;
+    text-decoration:none;color:var(--sceau);}
+  .renvoi:hover{text-decoration:underline;}
+  blockquote{margin:1.2rem 0;padding:.2rem 0 .2rem 1.1rem;
+    border-left:3px solid var(--sceau);font-style:italic;color:var(--boue);}
+
+  /* Fiche technique : formulaire administratif */
+  table.fiche{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.2rem;}
+  table.fiche td{border-bottom:1px solid var(--papier-ligne);padding:.45rem .3rem;vertical-align:top;}
+  table.fiche td:first-child{font-family:var(--mono);font-size:.78rem;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--boue);width:11.5rem;}
+  figure.poster{margin:1.6rem auto;max-width:19rem;}
+  figure.poster img{width:100%;height:auto;display:block;border:1px solid var(--papier-ligne);
+    box-shadow:4px 4px 0 var(--papier-ligne);}
+
+  /* Sources */
+  ol.sources{padding-left:1.5rem;font-size:.93rem;}
+  ol.sources li{margin:0 0 .55rem;}
+  ol.sources a{color:var(--encre);}
+  ol.sources a:hover{color:var(--sceau);}
+
+  .lien-retour-bloc{margin:3rem 0 0;}
+
+  @media (max-width:640px){
+    nav.sommaire ol{columns:1;}
+    h1.titre{font-size:1.8rem;}
+    table.fiche td:first-child{width:8rem;}
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="nuit">
+  <div class="nuit-in">
+    <p class="surtitre">Dossier n&deg; 86-10 &mdash; province de Gyeonggi &mdash; non r&eacute;solu</p>
+    <h1 class="titre">Le dossier rest&eacute; ouvert</h1>
+    <p class="titre-vo">Memories of Murder (Salinui chueok), Bong Joon-ho, 2003</p>
+    <p class="provenance"><strong>Provenance.</strong> Analyse produite le 3 ao&ucirc;t 2026 par Claude Fable 5 en session supervis&eacute;e, sur recherche documentaire sourc&eacute;e &mdash; r&eacute;gime R2 du site. Film de contr&ocirc;le du pipeline apr&egrave;s r&eacute;organisation des outils internes.</p>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Fable 5, session supervis&eacute;e, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 3 ao&ucirc;t 2026</span>
+</div>
+</div>
+
+<main>
+
+<div class="avertissement"><strong>Avertissement.</strong> Le film &mdash; et cette analyse &mdash; traitent de meurtres et de violences sexuelles inspir&eacute;s d'une affaire criminelle r&eacute;elle, ainsi que de violences polici&egrave;res.</div>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Pi&egrave;ces du dossier</p>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#mise-en-scene">Mise en sc&egrave;ne et proc&eacute;d&eacute;s</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Th&egrave;mes</a></li>
+    <li><a href="#reception">R&eacute;ception et post&eacute;rit&eacute;</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<section id="fiche">
+  <div class="piece"><span class="no">PI&Egrave;CE 1</span><h2>Fiche technique</h2></div>
+  <table class="fiche">
+    <tr><td>Titre</td><td><em>Memories of Murder</em> (<em>Salinui chueok</em> / 살인의 추억)</td></tr>
+    <tr><td>R&eacute;alisation</td><td>Bong Joon-ho</td></tr>
+    <tr><td>Sc&eacute;nario</td><td>Bong Joon-ho et Shim Sung-bo, d'apr&egrave;s la pi&egrave;ce <em>Come to See Me</em> (1996) de Kim Kwang-lim<a class="renvoi" href="#src-1">[1]</a></td></tr>
+    <tr><td>Photographie</td><td>Kim Hyung-koo (35 mm, 1.85:1)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-3">[3]</a></td></tr>
+    <tr><td>Montage</td><td>Kim Sun-min</td></tr>
+    <tr><td>Musique</td><td>Taro Iwashiro</td></tr>
+    <tr><td>Interpr&eacute;tation</td><td>Song Kang-ho (Park Doo-man), Kim Sang-kyung (Seo Tae-yoon), Kim Roi-ha, Park Hae-il, Park No-shik, Jeon Mi-seon</td></tr>
+    <tr><td>Dur&eacute;e</td><td>131 minutes</td></tr>
+    <tr><td>Sortie</td><td>2 mai 2003 (Cor&eacute;e du Sud) ; 23 juin 2004 (France)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a></td></tr>
+    <tr><td>R&eacute;compenses</td><td>Grand Bell Awards 2003 : meilleur film, meilleure r&eacute;alisation, meilleur acteur (Song Kang-ho) ; Coquille d'argent de la meilleure r&eacute;alisation, San Sebasti&aacute;n 2003<a class="renvoi" href="#src-1">[1]</a></td></tr>
+  </table>
+  <figure class="poster">
+    <img src="../assets/posters/memories-of-murder.jpg"
+         alt="Affiche du film Memories of Murder"
+         onerror="this.closest('.poster').remove()">
+  </figure>
+</section>
+
+<section id="synopsis">
+  <div class="piece"><span class="no">PI&Egrave;CE 2</span><h2>Synopsis</h2></div>
+  <p>Octobre 1986, dans une province rurale au sud de S&eacute;oul. Le corps d'une jeune femme est d&eacute;couvert dans un foss&eacute; d'irrigation, au bord des rizi&egrave;res. D'autres suivront : m&ecirc;me mode op&eacute;ratoire, m&ecirc;mes nuits de pluie. L'inspecteur local Park Doo-man, qui se vante de reconna&icirc;tre un coupable &agrave; l'&oelig;il nu, m&egrave;ne l'enqu&ecirc;te &agrave; sa mani&egrave;re &mdash; aveux extorqu&eacute;s, suspects commodes, proc&egrave;s-verbaux arrang&eacute;s &mdash; jusqu'&agrave; l'arriv&eacute;e de Seo Tae-yoon, jeune inspecteur de S&eacute;oul venu volontairement pr&ecirc;ter main-forte, qui ne croit qu'aux documents et aux faits. Autour d'eux, un commissariat d&eacute;muni, un pays sous r&eacute;gime autoritaire, et un tueur qui frappe toujours quand il pleut &mdash; apr&egrave;s qu'une m&ecirc;me chanson a &eacute;t&eacute; demand&eacute;e &agrave; la radio locale<a class="renvoi" href="#src-7">[7]</a>. L'enqu&ecirc;te s'enlise, les m&eacute;thodes des deux hommes se contaminent l'une l'autre, et le dossier &mdash; comme l'affaire r&eacute;elle qui l'inspire &mdash; reste ouvert.</p>
+</section>
+
+<section id="contexte">
+  <div class="piece"><span class="no">PI&Egrave;CE 3</span><h2>Contexte de production</h2></div>
+  <p>Le film adapte la premi&egrave;re affaire de meurtres en s&eacute;rie reconnue de Cor&eacute;e du Sud : entre octobre 1986 et avril 1991, dix femmes et jeunes filles furent viol&eacute;es et assassin&eacute;es dans la r&eacute;gion de Hwaseong, &agrave; une quarantaine de kilom&egrave;tres de S&eacute;oul<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Bong Joon-ho d&eacute;couvre l'affaire lyc&eacute;en, et dit en &ecirc;tre rest&eacute; hant&eacute; ; il en reprend la mati&egrave;re &agrave; travers la pi&egrave;ce de th&eacute;&acirc;tre <em>Come to See Me</em> de Kim Kwang-lim (1996), co-&eacute;crit le sc&eacute;nario avec Shim Sung-bo, compresse la chronologie et change les noms &mdash; mais conserve des d&eacute;tails authentiques de l'enqu&ecirc;te, jusqu'&agrave; la m&eacute;thode de ligature des victimes<a class="renvoi" href="#src-2">[2]</a>.</p>
+  <p>Deuxi&egrave;me long m&eacute;trage de Bong apr&egrave;s <em>Barking Dogs Never Bite</em> (2000), le film est produit pour un budget modeste (environ 2,8 millions de dollars)<a class="renvoi" href="#src-1">[1]</a>. Le tournage recr&eacute;e la Cor&eacute;e rurale de 1986 &mdash; celle du r&eacute;gime militaire de Chun Doo-hwan, des exercices de d&eacute;fense civile qui plongent les villes dans le noir et des brigades anti-&eacute;meute mobilis&eacute;es contre les manifestations plut&ocirc;t que pour prot&eacute;ger les habitantes<a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>. L'affaire r&eacute;elle, elle, ne sera r&eacute;solue qu'en 2019, seize ans apr&egrave;s le film : identifi&eacute; par son ADN, Lee Chun-jae, d&eacute;j&agrave; incarc&eacute;r&eacute; pour un meurtre de 1994, avouera quatorze meurtres et plus de trente viols<a class="renvoi" href="#src-2">[2]</a>. Interrog&eacute; lors de cette arrestation, Bong saluera le travail des enqu&ecirc;teurs &mdash; en refusant que son film s'en attribue le m&eacute;rite<a class="renvoi" href="#src-2">[2]</a>.</p>
+</section>
+
+<section id="structure">
+  <div class="piece"><span class="no">PI&Egrave;CE 4</span><h2>Structure narrative</h2></div>
+  <p>Le r&eacute;cit &eacute;pouse la forme du dossier d'instruction : une succession de pistes num&eacute;rot&eacute;es &mdash; trois suspects successifs, chacun plus plausible que le pr&eacute;c&eacute;dent &mdash; qui toutes s'effondrent. Cette structure par &eacute;puisement est le contraire du r&eacute;cit policier classique : au lieu de converger vers une r&eacute;v&eacute;lation, l'enqu&ecirc;te diverge, et chaque certitude d&eacute;truite co&ucirc;te davantage aux enqu&ecirc;teurs. Bong y greffe une temporalit&eacute; politique pr&eacute;cise : les meurtres surviennent quand l'&Eacute;tat regarde ailleurs &mdash; le soir d'un exercice de d&eacute;fense passive, la nuit o&ugrave; les renforts sont partis mater une manifestation<a class="renvoi" href="#src-4">[4]</a>.</p>
+  <p>Un &eacute;pilogue d&eacute;place enfin le r&eacute;cit en 2003 : Park, reconverti dans le commerce, repasse par le foss&eacute; du premier crime. Une fillette lui apprend qu'un homme &laquo; au visage ordinaire &raquo; est venu r&eacute;cemment regarder au m&ecirc;me endroit, &laquo; en souvenir de quelque chose qu'il avait fait l&agrave;, il y a longtemps &raquo;<a class="renvoi" href="#src-1">[1]</a>. Ce saut temporel transforme r&eacute;troactivement tout le film en m&eacute;moire &mdash; c'est le titre m&ecirc;me &mdash; et pr&eacute;pare l'un des derniers plans les plus comment&eacute;s du cin&eacute;ma contemporain.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="piece"><span class="no">PI&Egrave;CE 5</span><h2>Mise en sc&egrave;ne et proc&eacute;d&eacute;s techniques</h2></div>
+  <p>La photographie de Kim Hyung-koo (35 mm, 1.85:1) refuse le poli du &laquo; film noir &raquo; : lumi&egrave;re naturaliste motiv&eacute;e &mdash; n&eacute;ons blafards du commissariat, ampoule nue de la cave aux interrogatoires, jours couverts &mdash; et palette de terre, boue, ocre et gris, o&ugrave; le rouge des v&ecirc;tements des victimes reste le seul &eacute;clat<a class="renvoi" href="#src-3">[3]</a><a class="renvoi" href="#src-5">[5]</a>. La sc&egrave;ne d'ouverture condense la m&eacute;thode : un champ de riz dor&eacute;, un enfant, des sauterelles &mdash; puis le corps sous la dalle de b&eacute;ton, et la s&eacute;curit&eacute; du plan initial se retourne en menace<a class="renvoi" href="#src-5">[5]</a>.</p>
+  <p>La cam&eacute;ra alterne deux r&eacute;gimes : plans larges et fixes qui r&eacute;duisent les enqu&ecirc;teurs &agrave; de petites silhouettes impuissantes dans le paysage, et cam&eacute;ra port&eacute;e qui surgit avec le chaos &mdash; sc&egrave;nes de crime pi&eacute;tin&eacute;es par les curieux et les tracteurs, interrogatoires qui d&eacute;g&eacute;n&egrave;rent<a class="renvoi" href="#src-3">[3]</a><a class="renvoi" href="#src-5">[5]</a>. Bong tient les plans au-del&agrave; du confort, refusant la coupe qui soulagerait<a class="renvoi" href="#src-5">[5]</a> ; et il orchestre des bascules de ton devenues sa signature &mdash; burlesque, suspense et violence dans une m&ecirc;me s&eacute;quence &mdash; que la critique fran&ccedil;aise d&eacute;crira comme un art d'osciller &laquo; entre inqui&eacute;tude, incr&eacute;dulit&eacute; et d&eacute;sespoir &raquo;<a class="renvoi" href="#src-6">[6]</a>. La violence graphique, elle, est presque toujours &eacute;lud&eacute;e au profit des &laquo; violences normalis&eacute;es, l&eacute;gales &raquo; : la brutalit&eacute; des gardes &agrave; vue, la r&eacute;pression d'&Eacute;tat<a class="renvoi" href="#src-6">[6]</a>.</p>
+</section>
+
+<section id="personnages">
+  <div class="piece"><span class="no">PI&Egrave;CE 6</span><h2>Personnages principaux</h2></div>
+  <h3>Park Doo-man (Song Kang-ho)</h3>
+  <p>Flic de province qui pr&eacute;tend lire la culpabilit&eacute; dans les yeux &mdash; ses &laquo; yeux de chaman &raquo;, moqu&eacute;s par son coll&egrave;gue de S&eacute;oul<a class="renvoi" href="#src-4">[4]</a>. Fabricant de preuves, tortionnaire par routine plus que par cruaut&eacute;, il est aussi le personnage le plus humain du film : Song Kang-ho lui donne une &eacute;paisseur comique et d&eacute;sarm&eacute;e qui rend son &eacute;chec final bouleversant plut&ocirc;t que m&eacute;rit&eacute;.</p>
+  <h3>Seo Tae-yoon (Kim Sang-kyung)</h3>
+  <p>L'inspecteur venu de S&eacute;oul, m&eacute;thodique, qui &laquo; ne croit que les documents &raquo;. Son arc est le miroir invers&eacute; de celui de Park : &agrave; mesure que les pistes s'effondrent, le rationnel glisse vers l'obsession, jusqu'&agrave; la sc&egrave;ne du tunnel o&ugrave;, un rapport ADN n&eacute;gatif entre les mains, il est pr&ecirc;t &agrave; ex&eacute;cuter un suspect que rien ne confond plus. Les deux m&eacute;thodes &mdash; l'intuition et le document &mdash; &eacute;chouent ensemble : c'est le c&oelig;ur du film<a class="renvoi" href="#src-4">[4]</a>.</p>
+  <h3>Les figures du syst&egrave;me</h3>
+  <p>Autour d'eux, Bong dessine un &eacute;tat des lieux : le sergent Cho et sa jambe justici&egrave;re, dont la gangr&egrave;ne finale vaut ch&acirc;timent symbolique ; l'officier Kwon, seule femme du commissariat, cantonn&eacute;e au th&eacute; et aux proc&egrave;s-verbaux, qui d&eacute;couvre pourtant l'indice le plus s&eacute;rieux &mdash; la chanson demand&eacute;e &agrave; la radio les soirs de meurtre<a class="renvoi" href="#src-7">[7]</a> ; et les suspects sacrifi&eacute;s, dont Baek Kwang-ho, simple d'esprit &agrave; qui l'on fait r&eacute;citer des aveux appris par c&oelig;ur.</p>
+</section>
+
+<section id="themes">
+  <div class="piece"><span class="no">PI&Egrave;CE 7</span><h2>Th&egrave;mes</h2></div>
+  <h3>L'&eacute;chec comme sujet</h3>
+  <p>Le film est un polar dont le crime ne sera pas r&eacute;solu &mdash; et qui le sait. L'enqu&ecirc;te n'y est pas un chemin vers la v&eacute;rit&eacute; mais la chronique d'une impuissance : preuves d&eacute;truites par n&eacute;gligence, ADN qu'il faut envoyer analyser au Japon faute de laboratoire national<a class="renvoi" href="#src-1">[1]</a>, aveux fabriqu&eacute;s qui contaminent tout. L'&laquo; inconnaissance &raquo; est la vraie mati&egrave;re du r&eacute;cit<a class="renvoi" href="#src-4">[4]</a>.</p>
+  <h3>Le monstre et le syst&egrave;me</h3>
+  <p>1986 : l'&eacute;tat d'urgence permanent, les sir&egrave;nes, les couvre-feux. Bong sugg&egrave;re m&eacute;thodiquement que le tueur prosp&egrave;re dans les angles morts d'un &Eacute;tat polici&eacute; occup&eacute; &agrave; se prot&eacute;ger lui-m&ecirc;me plut&ocirc;t qu'&agrave; prot&eacute;ger les siens &mdash; la critique fran&ccedil;aise ira jusqu'&agrave; lire dans le monstre &laquo; un pur produit du syst&egrave;me &raquo;<a class="renvoi" href="#src-6">[6]</a>. La satire n'est jamais un &agrave;-c&ocirc;t&eacute; : elle est la condition de possibilit&eacute; des meurtres.</p>
+  <h3>La banalit&eacute; du visage</h3>
+  <p>&laquo; Un visage ordinaire &raquo; : c'est tout ce que le film conc&egrave;de de son tueur, et c'est son geste le plus radical. Ni figure, ni psychologie, ni sc&egrave;ne du crime en son point de vue &mdash; le mal reste un homme quelconque, fondu dans la population. D'o&ugrave; la force du dernier plan : Park scrutant la cam&eacute;ra, c'est-&agrave;-dire nous, foule de visages ordinaires o&ugrave; le coupable, peut-&ecirc;tre, regarde<a class="renvoi" href="#src-4">[4]</a>.</p>
+  <h3>La m&eacute;moire comme blessure</h3>
+  <p>Le titre ne promet pas des meurtres mais leur <em>souvenir</em>. L'&eacute;pilogue de 2003 fait du film un acte de m&eacute;moire nationale &mdash; garder l'affaire ouverte dans la conscience publique quand la justice l'a laiss&eacute;e prescrire. L'histoire donnera au geste une port&eacute;e inattendue : l'identification du vrai coupable en 2019 rouvrira le dossier que le film avait tenu entrouvert seize ans<a class="renvoi" href="#src-2">[2]</a>.</p>
+</section>
+
+<section id="reception">
+  <div class="piece"><span class="no">PI&Egrave;CE 8</span><h2>R&eacute;ception critique et post&eacute;rit&eacute;</h2></div>
+  <p>Triomphe public en Cor&eacute;e &mdash; plus de 5,1 millions d'entr&eacute;es, meilleur score national de 2003<a class="renvoi" href="#src-1">[1]</a> &mdash; le film rafle les Grand Bell Awards (film, r&eacute;alisation, acteur) et vaut &agrave; Bong la Coquille d'argent de la meilleure r&eacute;alisation &agrave; San Sebasti&aacute;n<a class="renvoi" href="#src-1">[1]</a>. Sorti en France le 23 juin 2004, il s'impose, aux c&ocirc;t&eacute;s d'<em>Old Boy</em> de Park Chan-wook, comme l'&eacute;tendard de la nouvelle vague sud-cor&eacute;enne<a class="renvoi" href="#src-6">[6]</a>.</p>
+  <p>Sa stature n'a fait que cro&icirc;tre : ressortie restaur&eacute;e en 4K supervis&eacute;e par Kim Hyung-koo<a class="renvoi" href="#src-5">[5]</a>, &eacute;dition Criterion, comparaisons r&eacute;currentes avec <em>Zodiac</em> de David Fincher &mdash; l'autre grand film d'enqu&ecirc;te sans r&eacute;solution &mdash; et pr&eacute;sence durable dans les listes des meilleurs films du si&egrave;cle<a class="renvoi" href="#src-1">[1]</a>. Quand <em>Parasite</em> consacre Bong en 2019-2020, la critique mondiale relit <em>Memories of Murder</em> comme la matrice de son &oelig;uvre : m&eacute;lange des tons, satire des institutions, empathie pour les perdants du syst&egrave;me.</p>
+</section>
+
+<section id="conclusion">
+  <div class="piece"><span class="no">PI&Egrave;CE 9</span><h2>Conclusion</h2></div>
+  <p><em>Memories of Murder</em> r&eacute;ussit ce que presque aucun polar n'ose : faire de l'&eacute;chec de l'enqu&ecirc;te non pas une frustration mais la r&eacute;v&eacute;lation elle-m&ecirc;me. Ce que le film &eacute;lucide, ce n'est pas l'identit&eacute; d'un tueur &mdash; c'est l'&eacute;tat d'un pays : une Cor&eacute;e de 1986 o&ugrave; la police sait torturer mais pas prot&eacute;ger, o&ugrave; les projecteurs servent aux couvre-feux plut&ocirc;t qu'aux battues, o&ugrave; la v&eacute;rit&eacute; d'un crime exige un laboratoire &eacute;tranger. La boue des rizi&egrave;res y est une mati&egrave;re morale autant que plastique : tout le monde s'y enfonce, enqu&ecirc;teurs compris.</p>
+  <p>Et puis il y a ce dernier plan &mdash; Song Kang-ho face cam&eacute;ra, les yeux qui nous fouillent. Bong a con&ccedil;u ce regard pour le jour o&ugrave;, peut-&ecirc;tre, le vrai coupable verrait le film ; le destin a voulu qu'en 2019 l'homme soit identifi&eacute; et reconnaisse avoir vu le film en d&eacute;tention. Rarement un plan de cin&eacute;ma aura si litt&eacute;ralement atteint son destinataire. C'est la mesure du film : un proc&egrave;s-verbal devenu &oelig;uvre, un dossier class&eacute; sans suite devenu m&eacute;moire collective &mdash; et, pour qui d&eacute;couvre Bong Joon-ho par <em>Parasite</em>, la preuve que tout y &eacute;tait d&eacute;j&agrave;, d&egrave;s 2003, sous la pluie.</p>
+</section>
+
+<section id="sources">
+  <div class="piece"><span class="no">ANNEXE</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li id="src-1"><a href="https://en.wikipedia.org/wiki/Memories_of_Murder" rel="noopener">Wikipedia (EN), &laquo; Memories of Murder &raquo;</a> &mdash; fiche, production, distinctions, affaire de Hwaseong. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-2"><a href="https://lwlies.com/article/memories-of-murder-bong-joon-ho-hwaseong-serial-murders" rel="noopener">Little White Lies, &laquo; The unexpected closure of Bong Joon-ho's Memories of Murder &raquo;</a> &mdash; identification de Lee Chun-jae (2019), r&eacute;action de Bong. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-3"><a href="https://shot.cafe/cinematographers/Hyung+Koo+Kim" rel="noopener">Shot.cafe, photogrammes de Kim Hyung-koo</a> &mdash; rep&eacute;rage visuel (cadres, palette). Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-4"><a href="https://www.brightwalldarkroom.com/2020/08/28/memories-of-murder-2003/" rel="noopener">Bruno Alves, &laquo; The Not Knowing &raquo;, Bright Wall/Dark Room n&deg; 86</a> &mdash; l'inconnaissance, les deux m&eacute;thodes, le regard final. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-5"><a href="https://colorculture.org/memories-of-murder-cinematography-analysis/" rel="noopener">Color Culture, &laquo; Memories of Murder (2003): Cinematography Analysis &raquo;</a> &mdash; palette, lumi&egrave;re motiv&eacute;e, r&eacute;gimes de cam&eacute;ra. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-6"><a href="https://www.culturopoing.com/cinema/sorties-dvdblu-ray/bong-joon-ho-memories-of-murder/20180913" rel="noopener">Culturopoing, &laquo; Bong Joon-ho &mdash; Memories of Murder &raquo;</a> &mdash; r&eacute;ception fran&ccedil;aise, m&eacute;lange des tons, lecture politique. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+    <li id="src-7"><a href="https://anttialanenfilmdiary.blogspot.com/2020/10/salinui-chueok-memories-of-murder.html" rel="noopener">Antti Alanen, Film Diary, notes sur la version restaur&eacute;e 2017</a> &mdash; la chanson &laquo; Sad Letter &raquo; demand&eacute;e &agrave; la radio, indice de l'officier Kwon. Consult&eacute; le 3 ao&ucirc;t 2026.</li>
+  </ol>
+  <p style="font-size:.85rem;color:var(--boue);">Source d'int&eacute;r&ecirc;t fort rest&eacute;e inaccessible (HTTP 403, consign&eacute;e au journal des erreurs du site) : l'essai Criterion &laquo; In the Killing Jar &raquo;.</p>
+</section>
+
+<div class="lien-retour-bloc">
+  <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+</div>
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

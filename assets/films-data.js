@@ -804,5 +804,23 @@ const FILMS = [
     // descripteur encyclopédique du film (« satirical surrealist road
     // film ») — à retirer d'un trait si AH le juge trop appuyé.
     courant: 'surrealisme'
+  },
+  {
+    slug: 'memories-of-murder',
+    title: 'Memories of Murder',
+    director: 'Bong Joon-ho',
+    year: 2003,
+    summary: "Dix victimes, trois suspects, aucun coupable : Bong Joon-ho retourne le polar en portrait d'un pays malade — et le dernier regard du film nous cherche encore.",
+    url: 'films/memories-of-murder.html',
+    poster: 'assets/posters/memories-of-murder.jpg',
+    volet: 'critique',
+    datePublication: '2026-08-03 09:44',
+    // genreBase : 'thriller' choisi contre 'neo-noir' (existant) — le film
+    // est un polar procédural rural et diurne, pas un noir urbain ; les
+    // deux valeurs sont au vocabulaire, le choix est éditorial (P-11).
+    genreBase: 'thriller',
+    producteur: 'Claude Fable 5 (session supervisée)',
+    pays: ['Coree du Sud'],
+    technique: ['couleur']
   }
 ];
