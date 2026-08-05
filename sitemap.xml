@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap du site analyses-de-films.
+     Genere depuis le contenu reel du depot le 05/08/2026 (BKL-CIN-085, lot L6),
+     jamais recopie a la main. AUCUN generateur ne vit dans le depot : ce fichier
+     NE SE MET PAS A JOUR TOUT SEUL et vieillira a chaque publication.
+     Sa regeneration a la publication est a router en item de backlog propre.
+     Les URL y sont ABSOLUES : seule exception admise a P-33, avec les balises
+     hreflang/alternates, nommee et bornee par P-59 (spec v1.8). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.cdatso.be/analyses-de-films/comment-ca-marche.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/critiques.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/demander-une-analyse.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/etudes.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/index.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/lecons-du-premier-mois.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/manifeste.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/qui-sommes-nous.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/annie-hall.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/au-fil-de-leau.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/bienvenue-a-suburbicon.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/blade-runner.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/coffee-and-cigarettes.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/dogville.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/hamlet.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/hamnet.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/hitchcock-truffaut.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/hommes-porcs-et-loups.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/julie-en-12-chapitres.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/la-bataille-de-marathon.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/la-chevauchee-fantastique.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/la-mariee-etait-en-noir.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/la-nuit-de-san-lorenzo.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/le-cheval-de-turin.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/le-doulos.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/le-golem.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/le-samourai.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/les-deux-orphelines.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/les-fraises-sauvages.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/lhomme-au-crane-rase.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/lolita.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/manhattan.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/memories-of-murder.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/moi-daniel-blake.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/nouvelle-vague.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/pandora-contrechamp.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/pandora.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/persona.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/raging-bull.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/rebecca.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/retour-a-seoul.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/rosetta.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/rouges-et-blancs.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/sans-filtre.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/shutter-island.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/soudain-lete-dernier.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/soy-cuba.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/sud.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/sur-la-route-domaha.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/the-old-oak.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/the-sweet-east-annexe.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/the-sweet-east.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/voyage-en-italie.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/films/waterloo.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/comment-ca-marche.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/index.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/manifeste.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/qui-sommes-nous.html</loc></url>
+</urlset>
