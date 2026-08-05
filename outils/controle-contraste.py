@@ -32,6 +32,41 @@ METHODE ET SES LIMITES -- a lire avant d'interpreter les chiffres.
   5. Grand texte (seuil 3:1) : font-size >= 24px, ou >= 18.66px en gras,
      lue dans la meme regle quand elle y figure ; sinon texte courant (4.5).
 
+PERIMETRE -- etendu aux ARBRES DE LANGUE le 05/08/2026 (BKL-CIN-085 lot L5,
+arbitrage AH Q-7 : "un arbre non balaye est pire qu'un arbre non traduit").
+Sont balayes : films/*.html, index.html, et desormais en/*.html.
+
+  IDENTITE D'UNE PAGE -- contrainte dure, a ne pas "ameliorer".
+  L'etiquette qu'une page porte dans le rapport et dans la sortie --sortie-e1
+  est la CLE de outils/hooks/baseline-e1.txt, que le hook pre-push diffe
+  ligne a ligne. Les etiquettes existantes sont donc figees :
+      films/<nom>.html  ->  <nom>.html      (nom de fichier nu, inchange)
+      index.html        ->  index.html      (inchange)
+      en/<nom>.html     ->  en/<nom>.html   (prefixe : sans lui, en/index.html
+                                             et index.html porteraient la MEME
+                                             etiquette, et un ecart de l'une
+                                             se masquerait derriere l'autre)
+  Passer tout le corpus en chemin relatif aurait ete plus propre, et aurait
+  invalide les 14 lignes heritees de la baseline d'un seul coup : le hook
+  aurait vu 14 E1 "nouveaux" et refuse tout push vers main. La baseline est
+  hors du pathspec du mandat qui ecrit ces lignes.
+
+  DEUX ANGLES MORTS CONNUS, signales et NON corriges ici (chacun ferait
+  apparaitre des E1 sur des pages jamais mesurees, donc casserait le gate du
+  hook sans pouvoir toucher a la baseline) :
+    a) index.html porte `assets/style.css?v=20260730b` ; la condition
+       litterale ci-dessous ne reconnait pas la feuille partagee avec une
+       chaine de version, et l'accueil sort donc SILENCIEUSEMENT du champ
+       (46 pages analysees = les 46 de films/ seulement, mesure du 05/08).
+       Les pages de en/ liant `../assets/style.css` sans chaine, elles, sont
+       bien analysees avec la feuille partagee.
+    b) assets/mobilier.css -- la seule feuille que TOUTES les pages
+       partagent -- n'est jamais rattachee : seul style.css l'est. Le
+       mobilier commun (menu, cartouche, chevron) n'a donc jamais ete
+       controle en contraste.
+  Les trois pages FR du dispositif (manifeste, qui-sommes-nous,
+  comment-ca-marche) restent egalement hors champ, pour le meme motif.
+
 Usage :
     python controle-contraste.py [--depot CHEMIN] [--sortie FICHIER]
                                   [--sortie-e1 FICHIER]
@@ -235,7 +270,11 @@ def fond_de_regle(decls, variables):
     return None
 
 
-def analyse_page(chemin, css_partagee=None):
+def analyse_page(chemin, css_partagee=None, etiquette=None):
+    """etiquette : identite de la page dans le rapport et dans --sortie-e1.
+    Par defaut le nom de fichier nu, comme avant l'extension aux arbres de
+    langue -- voir PERIMETRE en tete : cette valeur est la cle de la
+    baseline du hook, elle ne change jamais pour une page deja mesuree."""
     with open(chemin, "r", encoding="utf-8") as f:
         html = f.read()
     css = "\n".join(RE_STYLE.findall(html))
@@ -321,7 +360,7 @@ def analyse_page(chemin, css_partagee=None):
         })
 
     return {
-        "page": os.path.basename(chemin),
+        "page": etiquette or os.path.basename(chemin),
         "fond_page": hexa(fond_page),
         "luminance_fond": luminance(fond_page),
         "couleur_body": hexa(couleur_page) if couleur_page else "-",
@@ -352,15 +391,26 @@ def main():
         with open(chemin_partage, "r", encoding="utf-8") as f:
             css_partagee = f.read()
 
-    pages = sorted(os.path.join(dossier_films, n)
-                   for n in os.listdir(dossier_films) if n.endswith(".html"))
+    # (chemin, etiquette) -- l'etiquette est la cle de la baseline du hook :
+    # figee pour les pages deja mesurees, prefixee pour les arbres de langue.
+    pages = [(os.path.join(dossier_films, n), n)
+             for n in sorted(os.listdir(dossier_films)) if n.endswith(".html")]
     accueil = os.path.join(depot, "index.html")
     if os.path.isfile(accueil):
-        pages.append(accueil)
+        pages.append((accueil, "index.html"))
+
+    # Arbres de langue (BKL-CIN-085 lot L5). Un arbre non balaye est pire
+    # qu'un arbre non traduit : il sort du champ sans que rien ne le dise.
+    for langue in ("en",):
+        dossier = os.path.join(depot, langue)
+        if not os.path.isdir(dossier):
+            continue
+        pages.extend((os.path.join(dossier, n), "%s/%s" % (langue, n))
+                     for n in sorted(os.listdir(dossier)) if n.endswith(".html"))
 
     rapports = []
-    for p in pages:
-        r = analyse_page(p, css_partagee)
+    for chemin, etiquette in pages:
+        r = analyse_page(chemin, css_partagee, etiquette)
         if r is not None:
             rapports.append(r)
 
