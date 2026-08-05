@@ -1,0 +1,7 @@
+# Scories de bytecode Python -- jamais versionnees, jamais publiees.
+# Motif : une sonde de la session CIN-085 (importlib sur
+# compare-source-fr.py) a produit un .pyc que `git add en/` a balaye
+# dans un commit. Retire par amend avant tout push ; ce filet evite la
+# recidive. Le depot n a pas de .gitignore Python a sa racine.
+__pycache__/
+*.pyc
