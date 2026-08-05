@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Sitemap du site analyses-de-films.
-     Genere depuis le contenu reel du depot le 05/08/2026 (BKL-CIN-085, lot L6),
-     jamais recopie a la main. AUCUN generateur ne vit dans le depot : ce fichier
-     NE SE MET PAS A JOUR TOUT SEUL et vieillira a chaque publication.
-     Sa regeneration a la publication est a router en item de backlog propre.
+     Genere depuis le contenu reel du depot le 05/08/2026 (BKL-CIN-085, lot L6,
+     regenere apres l extension B+ de la page des lecons), jamais recopie a la main.
+     AUCUN generateur ne vit dans le depot : ce fichier NE SE MET PAS A JOUR TOUT
+     SEUL et vieillira a chaque publication. Sa regeneration a la publication est a
+     router en item de backlog propre.
      Les URL y sont ABSOLUES : seule exception admise a P-33, avec les balises
      hreflang/alternates, nommee et bornee par P-59 (spec v1.8). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -63,6 +64,7 @@
   <url><loc>https://www.cdatso.be/analyses-de-films/films/waterloo.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/comment-ca-marche.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/index.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/lecons-du-premier-mois.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/manifeste.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/qui-sommes-nous.html</loc></url>
 </urlset>
