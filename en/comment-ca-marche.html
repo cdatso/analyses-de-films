@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- source-fr: comment-ca-marche.html 4cb3c499841854a4edab6697b6389bc6e1538e05 -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How this site works — Analyses de films</title>
+<link rel="alternate" hreflang="fr" href="https://www.cdatso.be/analyses-de-films/comment-ca-marche.html">
+<link rel="alternate" hreflang="en" href="https://www.cdatso.be/analyses-de-films/en/comment-ca-marche.html">
+<link rel="alternate" hreflang="x-default" href="https://www.cdatso.be/analyses-de-films/comment-ca-marche.html">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="qui-sommes-nous.html">Who we are</a>
+      <a href="comment-ca-marche.html" aria-current="page">How this site works</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:3.4rem;padding-bottom:5rem;max-width:44rem;">
+
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 1.6rem;line-height:1.2;">How this site works</h1>
+
+  <p>On what this site holds to, and why an AI writes here in this form: see the
+  <a href="manifeste.html">manifesto</a>. On who makes up the team that keeps
+  it: see <a href="qui-sommes-nous.html">who we are</a>. This page describes the
+  mechanism itself — how a text travels from an idea to a published page, what
+  gets checked, and what sometimes fails. On what that mechanism taught us in a
+  month, incidents included:
+  <a href="../lecons-du-premier-mois.html" hreflang="fr">lessons from the first
+  month of working with an AI</a> (in French).</p>
+
+  <h2>The cycle: mandate, gates, execution, audit, record</h2>
+  <p>Every unit of work follows the same life cycle. A session receives a
+  written mandate: its object, its deliverables, the points at which it must
+  stop and wait for a decision, and what it is not allowed to touch. It puts
+  forward a plan and waits for the go-ahead before acting. Every decision that
+  commits the site — publishing, changing a method, changing a rule — belongs
+  to Christo Datso alone: an AI session never takes it in his place, even when
+  a direction seems obvious. Every change of status is recorded by a dated
+  commit; structuring decisions carry a distinct mark in the technical history,
+  which makes it possible to check afterwards, without having to take anyone's
+  word for it, that each published decision was indeed taken by a human.
+  Sessions other than the one that produced a text then audit it on the
+  evidence — keeping apart who produces and who certifies is deliberate. A
+  working window always closes on an honest account of itself, mistakes
+  included, before handing back.</p>
+
+  <h2>The registers</h2>
+  <p>The team's work rests on registers kept up to date: a record of tasks in
+  progress, a dated chronology of decisions and incidents, an inventory of
+  known risks and their safeguards, a log of errors and their corrections.
+  These are not shop windows: they are working documents, which are amended
+  when a line of reasoning turns out to be wrong rather than silently
+  rewritten — the history of a mistake belongs to the project's memory as much
+  as its correction does.</p>
+
+  <h2>The pipeline behind the analyses</h2>
+  <p>An analysis begins with a proposed film, put in a queue. Its writing
+  follows a versioned template: sourced documentary research, structuring into
+  nine sections with a numbered bibliography, a visual identity of its own for
+  the film, an update to the site's register and to the internal log,
+  publication by a commit. Part of that chain can run overnight without direct
+  human intervention; restarting it after an interruption remains an explicit
+  decision, never an automatic one. Publication itself — the moment a text
+  crosses from the workshop to the public site — is an act that only Christo
+  Datso authorises.</p>
+
+  <h2>The limits, and the error log</h2>
+  <p>Writing an analysis means consulting criticism that already exists; some
+  sources refuse to be consulted — automatic blocks, paywalls, pages taken
+  down. When a relevant source stays out of reach, it is not passed over in
+  silence: it is recorded, with what was attempted and what stood in for it, so
+  that a reader — or a future session — can find it again or judge what is
+  missing. The same principle holds for the pipeline's technical incidents:
+  each is documented with its cause and its correction, rather than fixed in
+  silence. This transparency about what did not work is a rule of the project,
+  not an exception we put up with.</p>
+
+  <h2 id="licences">Licences</h2>
+  <p><strong>The visuals of the works</strong> (posters, film stills) are
+  excluded from every licence regime of this site. They remain the property of
+  their respective rights holders and are reproduced here under
+  <strong>critical quotation</strong>, for analytical and teaching
+  purposes.</p>
+
+  <p>The rest of the site distinguishes four regimes:</p>
+  <ul>
+    <li><strong>Text</strong> (analyses, pages, manifesto): <strong>CC
+    BY-NC-SA 4.0</strong>.</li>
+    <li><strong>Code</strong> (HTML, CSS, JS, tooling): <strong>EUPL
+    1.2</strong>.</li>
+    <li><strong>Register data</strong> (factual metadata):
+    <strong>CC BY 4.0</strong>.</li>
+    <li><strong>The “Montage Parallèle” logo and identity</strong>: all rights
+    reserved.</li>
+  </ul>
+
+  <p>Part of the content of this site is generated by an artificial
+  intelligence, under human supervision. The protection claimed above rests on
+  the human editorial contribution, whose responsibility extends to the site as
+  a whole. That an analysis is tied to a given calibre (model) is a matter of
+  provenance; it does not stand in for human responsibility, and the analysis
+  itself remains covered by that protection.</p>
+
+  <p><a class="lien-retour" href="index.html">Back to the home page</a></p>
+
+</main>
+
+<footer><div class="f-in">
+  <a href="../comment-ca-marche.html" hreflang="fr" lang="fr">Français</a>
+  <br>
+  Analyses written as an exercise in criticism and teaching. This site loads no
+  external resource; nothing about what you read here is passed to a third
+  party.
+  <br>
+  Licences: text CC BY-NC-SA 4.0 · code EUPL 1.2 —
+  <a href="comment-ca-marche.html#licences">details</a>.
+</div></footer>
+
+</body>
+</html>
