@@ -554,6 +554,8 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
      un `min-width: auto` implicite qui l'empêche de descendre sous la largeur
      de son contenu — elle débordait de 25 px à 320 px. */
   min-width: 0;
+  /* BKL-CIN-087 (gate AH 06/08) : lien étendu — ancrage du ::after ci-dessous. */
+  position: relative;
 }
 
 .carte-une[data-volet="etude"] { background: var(--paper-alt); }
@@ -602,11 +604,28 @@ footer { border-top: 1px solid var(--line); background: var(--paper-alt); }
   margin-bottom: 0.8rem;
 }
 
-.carte-une p { font-size: 0.96rem; flex-grow: 1; margin: 0 0 1rem; }
+.carte-une p {
+  font-size: 0.96rem; flex-grow: 1; margin: 0 0 1rem;
+  /* BKL-CIN-087 : passe au-dessus du lien étendu (::after ci-dessous) pour que
+     le résumé reste sélectionnable à la souris — compromis gate AH 06/08 :
+     cliquer PRÉCISÉMENT dans ce texte ne suit plus le lien, le reste de la
+     carte oui. */
+  position: relative; z-index: 1;
+}
 
 .carte-une .lien {
   font-family: var(--sans); font-size: 0.86rem; text-decoration: none;
   align-self: flex-start;
+}
+
+/* BKL-CIN-087 (gate AH 06/08, option B) : lien étendu — l'ancre "Lire
+   l'analyse" reste l'unique lien de la carte (un seul lien annoncé au lecteur
+   d'écran), mais un ::after positionné sur toute la carte (grâce au
+   position:relative de .carte-une) en étend la cible cliquable. P-40 : le
+   focus au clavier reste porté par l'ancre elle-même, :focus-visible natif
+   intact, tab-order inchangé. */
+.carte-une .lien::after {
+  content: ""; position: absolute; inset: 0; cursor: pointer;
 }
 
 .une .liaison {
