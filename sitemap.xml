@@ -8,6 +8,7 @@
      Les URL y sont ABSOLUES : seule exception admise a P-33, avec les balises
      hreflang/alternates, nommee et bornee par P-59 (spec v1.8). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.cdatso.be/analyses-de-films/carte-des-activites.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/comment-ca-marche.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/critiques.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/demander-une-analyse.html</loc></url>
@@ -62,6 +63,7 @@
   <url><loc>https://www.cdatso.be/analyses-de-films/films/the-sweet-east.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/films/voyage-en-italie.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/films/waterloo.html</loc></url>
+  <url><loc>https://www.cdatso.be/analyses-de-films/en/carte-des-activites.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/comment-ca-marche.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/index.html</loc></url>
   <url><loc>https://www.cdatso.be/analyses-de-films/en/lecons-du-premier-mois.html</loc></url>
