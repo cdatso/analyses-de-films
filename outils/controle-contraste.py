@@ -34,7 +34,8 @@ METHODE ET SES LIMITES -- a lire avant d'interpreter les chiffres.
 
 PERIMETRE -- etendu aux ARBRES DE LANGUE le 05/08/2026 (BKL-CIN-085 lot L5,
 arbitrage AH Q-7 : "un arbre non balaye est pire qu'un arbre non traduit").
-Sont balayes : films/*.html, index.html, et desormais en/*.html.
+Sont balayes : films/*.html, index.html, carte-des-activites.html (BKL-CIN-088),
+et desormais en/*.html.
 
   IDENTITE D'UNE PAGE -- contrainte dure, a ne pas "ameliorer".
   L'etiquette qu'une page porte dans le rapport et dans la sortie --sortie-e1
@@ -51,15 +52,14 @@ Sont balayes : films/*.html, index.html, et desormais en/*.html.
   aurait vu 14 E1 "nouveaux" et refuse tout push vers main. La baseline est
   hors du pathspec du mandat qui ecrit ces lignes.
 
-  DEUX ANGLES MORTS CONNUS, signales et NON corriges ici (chacun ferait
-  apparaitre des E1 sur des pages jamais mesurees, donc casserait le gate du
+  DEUX ANGLES MORTS CONNUS AU DEPART, dont un FERME depuis (chacun aurait pu
+  faire apparaitre des E1 sur des pages jamais mesurees, cassant le gate du
   hook sans pouvoir toucher a la baseline) :
-    a) index.html porte `assets/style.css?v=20260730b` ; la condition
-       litterale ci-dessous ne reconnait pas la feuille partagee avec une
-       chaine de version, et l'accueil sort donc SILENCIEUSEMENT du champ
-       (46 pages analysees = les 46 de films/ seulement, mesure du 05/08).
-       Les pages de en/ liant `../assets/style.css` sans chaine, elles, sont
-       bien analysees avec la feuille partagee.
+    a) FERME par BKL-CIN-090 (10/08/2026) : le suffixe `?v=20260730b` qui
+       masquait `assets/style.css` sur index.html a ete retire. L'accueil
+       est desormais analyse avec la feuille partagee, comme les pages de
+       en/ l'etaient deja (releve du 10/08 : 53 pages avant le retrait,
+       54 apres, aucun E1 ni E2 nouveau).
     b) assets/mobilier.css -- la seule feuille que TOUTES les pages
        partagent -- n'est jamais rattachee : seul style.css l'est. Le
        mobilier commun (menu, cartouche, chevron) n'a donc jamais ete
