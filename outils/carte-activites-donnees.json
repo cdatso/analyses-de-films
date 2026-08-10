@@ -1,0 +1,185 @@
+{
+  "central": {
+    "surtitre_fr": "Au centre",
+    "surtitre_en": "At the centre",
+    "titre_fr": "Analyses de films",
+    "titre_en": "Analyses de films",
+    "phrase_fr": "L'activité cinéma menée avec Claude : un site public de critiques et d'études, {analyses} analyses publiées, {pages} pages publiées au total.",
+    "phrase_en": "The film activity carried out with Claude: a public site of critiques and studies, {analyses} analyses published, {pages} pages published in total.",
+    "note_fr": "GitHub Pages — dépôt analyses-de-films",
+    "note_en": "GitHub Pages — analyses-de-films repository"
+  },
+  "groupes": [
+    {
+      "id": "prg",
+      "libelle_fr": "PRG",
+      "libelle_en": "PRG",
+      "soustitre_fr": "Programmes — les cadres durables qui gouvernent le travail",
+      "soustitre_en": "Programmes — the durable frameworks that govern the work",
+      "activites": [
+        {
+          "id": "contrat-site-v2",
+          "statut": "en-vigueur-place",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Contrat du site v2",
+          "libelle_en": "Site v2 contract",
+          "description_fr": "Le contrat de prescriptions vérifiables que chaque page du site doit tenir.",
+          "description_en": "The set of verifiable requirements every page of the site must meet."
+        },
+        {
+          "id": "charte-collaboration-ia",
+          "statut": "en-vigueur-place",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Charte de collaboration IA",
+          "libelle_en": "AI collaboration charter",
+          "description_fr": "Les règles de collaboration entre la squad et ses capacités IA : mandats explicites, gates humains, horodatage instrumental.",
+          "description_en": "The rules of collaboration between the squad and its AI capabilities: explicit mandates, human gates, instrument-read timestamps."
+        },
+        {
+          "id": "provenance-signatures",
+          "statut": "en-vigueur-place",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Provenance et signatures",
+          "libelle_en": "Provenance and attribution",
+          "description_fr": "Plusieurs régimes de signature ; le modèle producteur n'est jamais deviné.",
+          "description_en": "Several signature regimes; the producing model is never guessed at."
+        },
+        {
+          "id": "vocabulaires-fermes",
+          "statut": "en-vigueur-place",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Vocabulaires fermés",
+          "libelle_en": "Closed vocabularies",
+          "description_fr": "Les axes du registre se choisissent, ne s'inventent jamais.",
+          "description_en": "The register's categories are chosen from a list, never invented."
+        },
+        {
+          "id": "volet-etudes",
+          "statut": "en-vigueur-place",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Volet Études",
+          "libelle_en": "Studies track",
+          "description_fr": "Régime distinct sous supervision éditoriale, hors du pipeline critique.",
+          "description_en": "A distinct regime under editorial supervision, outside the critique pipeline."
+        }
+      ]
+    },
+    {
+      "id": "projets",
+      "libelle_fr": "Projets",
+      "libelle_en": "Projects",
+      "soustitre_fr": "Travaux ponctuels, ouverts et clos",
+      "soustitre_en": "One-off pieces of work, open and closed",
+      "activites": [
+        {
+          "id": "bascule-site-v2",
+          "statut": "termine",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Bascule du site en v2",
+          "libelle_en": "Site v2 switch-over",
+          "description_fr": "Migration du corpus, recette complète, typographie auto-hébergée.",
+          "description_en": "Corpus migration, full acceptance testing, self-hosted typography."
+        },
+        {
+          "id": "alignement-methode-depot",
+          "statut": "termine",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Alignement méthode-dépôt",
+          "libelle_en": "Method-repository alignment",
+          "description_fr": "La méthode d'analyse remise au niveau du site (listes statiques).",
+          "description_en": "The analysis method brought up to date with the site (static lists)."
+        },
+        {
+          "id": "recherche-sources",
+          "statut": "termine",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Recherche de sources",
+          "libelle_en": "Source research",
+          "description_fr": "Dossiers de sources privés, branchés en option du pipeline.",
+          "description_en": "Private source folders, wired in as an optional pipeline step."
+        },
+        {
+          "id": "critique-augmentee",
+          "statut": "termine",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Critique augmentée",
+          "libelle_en": "Augmented critique",
+          "description_fr": "Prototype concluant, réutilisable mandat par mandat.",
+          "description_en": "A conclusive prototype, reusable from one mandate to the next."
+        },
+        {
+          "id": "site-en-anglais",
+          "statut": "termine",
+          "date_etat": "2026-08-05",
+          "libelle_fr": "Site en anglais",
+          "libelle_en": "English-language site",
+          "description_fr": "Arbre /en/ publié, appariement de langues et sitemap tenus à jour.",
+          "description_en": "The /en/ tree is published, with language pairing and the sitemap kept current."
+        },
+        {
+          "id": "certification-routine-nocturne",
+          "statut": "gele",
+          "date_etat": "2026-08-10",
+          "libelle_fr": "Certification de la routine nocturne",
+          "libelle_en": "Certification of the overnight routine",
+          "description_fr": "La chaîne planifiée attend son gate de reprise.",
+          "description_en": "The scheduled chain is waiting for its resumption gate."
+        }
+      ]
+    }
+  ],
+  "run": {
+    "id": "run",
+    "libelle_fr": "RUN",
+    "libelle_en": "RUN",
+    "soustitre_fr": "Le récurrent — ce qui tourne à chaque publication ou à intervalle régulier",
+    "soustitre_en": "The recurring — what runs with every publication or on a fixed interval",
+    "activites": [
+      {
+        "id": "analyses-au-fil-de-leau",
+        "statut": "en-cours",
+        "date_etat": "2026-08-10",
+        "libelle_fr": "Analyses au fil de l'eau",
+        "libelle_en": "Analyses as they come",
+        "description_fr": "File d'attente relevée, pipeline versionné, un film à la fois.",
+        "description_en": "A queue picked up in turn, a versioned pipeline, one film at a time."
+      },
+      {
+        "id": "controles-avant-publication",
+        "statut": "en-vigueur-place",
+        "date_etat": "2026-08-10",
+        "libelle_fr": "Contrôles avant publication",
+        "libelle_en": "Pre-publication checks",
+        "description_fr": "Batterie mécanique rejouée au push par le hook du dépôt.",
+        "description_en": "A mechanical battery of checks replayed on push by the repository hook."
+      },
+      {
+        "id": "releve-boite-lettres",
+        "statut": "en-vigueur-place",
+        "date_etat": "2026-08-10",
+        "libelle_fr": "Relève de la boîte aux lettres",
+        "libelle_en": "Mailbox pickup",
+        "description_fr": "Les demandes du miroir Dropbox transférées dans la file.",
+        "description_en": "Requests from the Dropbox mirror carried over into the queue."
+      },
+      {
+        "id": "journaux-internes",
+        "statut": "en-vigueur-place",
+        "date_etat": "2026-08-10",
+        "libelle_fr": "Journaux internes",
+        "libelle_en": "Internal logs",
+        "description_fr": "Analyses, erreurs d'accès et sources d'images consignées.",
+        "description_en": "Analyses, access errors and image sources, all logged."
+      },
+      {
+        "id": "routine-nocturne",
+        "statut": "gele",
+        "date_etat": "2026-08-10",
+        "libelle_fr": "Routine nocturne",
+        "libelle_en": "Overnight routine",
+        "description_fr": "Les lots planifiés sont suspendus jusqu'à certification.",
+        "description_en": "The scheduled batches are suspended pending certification."
+      }
+    ]
+  }
+}
