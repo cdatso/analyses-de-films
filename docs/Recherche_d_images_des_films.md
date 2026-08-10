@@ -311,3 +311,7 @@ traçabilité des affiches 12 à 27, régime strictement factuel — BKL-048). �
 ## Memories of Murder (3 août 2026)
 
 | Memories of Murder | TMDB, https://www.themoviedb.org/movie/11423 (og:image original jcgUjx1QcupGzjntTVlnQ15lHqy.jpg) | Base locale D: sans affiche pour ce film (vérifié : motifs memories/murder/salinui/2003) ; IMP Awards 404 ; TMDB retenu en repli n°4, titre de page vérifié avant téléchargement. Recompression 976,0 → 145,8 Ko (800×1200 q=88, P-36). |
+
+## Les Tontons flingueurs (10 août 2026)
+
+| Les Tontons flingueurs | Base locale D: (priorité 1), `D:\documentation\Database of Movie's Pictures\1 affiches de films\1963 les_tontons_flingueurs Georges Lautner.jpg` | Source retenue = base locale de priorité 1 ; fichier 161 204 o (157,4 Ko), sous le seuil P-36 (300 Ko) — aucune recompression nécessaire (`recompresse-affiches.py --seuil 300 --simuler` : « aucune affiche au-dessus de 300 Ko »). La session claude.ai du 10 août (régime 11.3, bac à sable cloud) n'avait accès ni à cette base locale ni aux sources réseau (TMDB, IMP Awards, Commons : échec de connexion sur les quatre domaines testés) — c'est ce fait qui explique la reprise du dépôt de l'affiche sur le poste. |

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'&eacute;tiquette du brutal &mdash; Les Tontons flingueurs</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Colonne &eacute;ditoriale : 43rem = 688 px de contenu.
+       La formule du skill &mdash; (688 + 51,2) / 16 = 46,2rem &mdash; suppose que
+       .mobilier-wrap est en box-sizing:border-box. Elle ne l'est pas : sa
+       max-width est une largeur de CONTENU, et le padding de 2 x 1,6rem
+       s'ajoute par-dessus. Valeur retenue = valeur MESUR&Eacute;E &agrave; la sonde de
+       session : &agrave; 43rem, le cartouche s'aligne au pixel sur la colonne
+       &eacute;ditoriale (1280 px) ; &agrave; 46,2rem il d&eacute;borde de 25,6 px de chaque c&ocirc;t&eacute;.
+       &Eacute;cart formule/rendu signal&eacute; &agrave; AH. Rendu v&eacute;rifi&eacute; aussi &agrave; 320 px :
+       aucun d&eacute;filement horizontal (P-38). */
+    --mobilier-largeur:43rem;
+
+    /* Identit&eacute; &laquo; l'&eacute;tiquette du brutal &raquo; &mdash; l'&eacute;tiquette de la bouteille
+       d'alcool clandestin de la sc&egrave;ne de la cuisine, et l'&eacute;tiquette au sens
+       des mani&egrave;res : un film o&ugrave; la p&egrave;gre tient un rang. Verre bouteille en
+       couverture, papier d'&eacute;tiquette au corps, ambre de whisky en accent,
+       filets doubles d'imprimerie de bouteille. */
+    --verre:#11251d;
+    --verre-clair:#1b3529;
+    --or:#d8b46a;
+    --vert-pale:#e4ece3;
+    --vert-attenue:#a9bdae;
+    --papier:#f4ecd8;
+    --papier-ligne:#d3c3a0;
+    --papier-fond:#ece2c9;
+    --encre:#221f19;
+    --ambre:#7a4708;
+    --sang:#8a1a17;
+  }
+  body{margin:0;background:var(--papier);color:var(--encre);
+    font-family:var(--serif);font-size:1.05rem;line-height:1.72;}
+
+  /* --- Couverture : le verre de la bouteille, l'&eacute;tiquette coll&eacute;e dessus --- */
+  header.verre{background:var(--verre);color:var(--vert-pale);
+    padding:3.6rem 1.6rem 3rem;position:relative;overflow:hidden;}
+  header.verre::before{content:"";position:absolute;inset:0;opacity:.5;
+    background:linear-gradient(100deg,transparent 0 14%,rgba(216,180,106,.10) 15% 17%,transparent 18% 100%);}
+  .verre-in{max-width:43rem;margin:0 auto;position:relative;}
+  .plaque{border:2px solid var(--or);padding:1.8rem 1.6rem 1.5rem;
+    position:relative;}
+  .plaque::before{content:"";position:absolute;inset:5px;
+    border:1px solid rgba(216,180,106,.55);pointer-events:none;}
+  .surtitre{font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--or);margin:0 0 .9rem;}
+  h1.titre{font-weight:600;font-size:2.3rem;line-height:1.14;margin:0 0 .35rem;
+    color:#f6f9f4;}
+  .titre-vo{font-style:italic;color:var(--vert-pale);font-size:1.12rem;margin:0 0 1.1rem;}
+  .degre{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--or);margin:0;}
+  .provenance{font-family:var(--mono);font-size:.79rem;line-height:1.6;
+    color:var(--vert-pale);border-left:2px solid var(--or);
+    padding-left:.9rem;max-width:34rem;margin:1.8rem 0 0;}
+
+  /* --- Corps : le papier de l'&eacute;tiquette --- */
+  main{max-width:43rem;margin:0 auto;padding:2.6rem 1.6rem 4rem;}
+
+  nav.sommaire{border:1px solid var(--papier-ligne);border-top:3px double var(--ambre);
+    padding:1.1rem 1.3rem;margin:0 0 2.6rem;background:var(--papier-fond);}
+  nav.sommaire p{margin:0 0 .5rem;font-family:var(--mono);font-size:.76rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);}
+  nav.sommaire ol{margin:0;padding-left:1.4rem;columns:2;column-gap:2.4rem;font-size:.95rem;}
+  nav.sommaire li{margin:0 0 .3rem;}
+  nav.sommaire a{color:var(--encre);text-decoration:none;border-bottom:1px dotted var(--ambre);}
+  nav.sommaire a:hover{color:var(--sang);}
+
+  section{margin:0 0 2.8rem;}
+  .mention{display:flex;align-items:baseline;gap:.85rem;
+    border-bottom:3px double var(--encre);padding-bottom:.45rem;margin:0 0 1.2rem;}
+  .mention .no{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--papier);background:var(--ambre);
+    padding:.2rem .55rem;white-space:nowrap;}
+  .mention h2{font-weight:600;font-size:1.4rem;margin:0;line-height:1.25;}
+  h3{font-weight:600;font-size:1.08rem;margin:1.7rem 0 .5rem;color:var(--ambre);}
+  p{margin:0 0 1rem;}
+  .renvoi{font-family:var(--mono);font-size:.72rem;vertical-align:super;
+    text-decoration:none;color:var(--sang);}
+  .renvoi:hover{text-decoration:underline;}
+  blockquote{margin:1.2rem 0;padding:.2rem 0 .2rem 1.1rem;
+    border-left:3px solid var(--ambre);font-style:italic;color:var(--ambre);}
+  .reserve{border:1px solid var(--papier-ligne);border-left:5px solid var(--sang);
+    background:var(--papier-fond);padding:.85rem 1.1rem;font-size:.95rem;margin:1.4rem 0;}
+
+  /* Fiche technique : le dos de l'&eacute;tiquette, mentions l&eacute;gales */
+  table.fiche{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.2rem;}
+  table.fiche td{border-bottom:1px solid var(--papier-ligne);padding:.45rem .3rem;vertical-align:top;}
+  table.fiche td:first-child{font-family:var(--mono);font-size:.76rem;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--ambre);width:11.5rem;}
+  figure.poster{margin:1.6rem auto;max-width:19rem;}
+  figure.poster img{width:100%;height:auto;display:block;border:1px solid var(--papier-ligne);
+    box-shadow:5px 5px 0 var(--papier-ligne);}
+
+  ol.sources{padding-left:1.5rem;font-size:.93rem;}
+  ol.sources li{margin:0 0 .55rem;}
+  ol.sources a{color:var(--encre);}
+  ol.sources a:hover{color:var(--sang);}
+
+  .lien-retour-bloc{margin:3rem 0 0;}
+
+  @media (max-width:640px){
+    nav.sommaire ol{columns:1;}
+    h1.titre{font-size:1.75rem;}
+    header.verre{padding:2.6rem 1.1rem 2.2rem;}
+    .plaque{padding:1.3rem 1.1rem 1.1rem;}
+    table.fiche td:first-child{width:7.5rem;}
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="verre">
+  <div class="verre-in">
+    <div class="plaque">
+      <p class="surtitre">Distill&eacute; sans autorisation &mdash; mise en bouteille &agrave; Rueil-Malmaison</p>
+      <h1 class="titre">L'&eacute;tiquette du brutal</h1>
+      <p class="titre-vo">Les Tontons flingueurs, Georges Lautner, 1963</p>
+      <p class="degre">Noir et blanc &mdash; 1,66:1 &mdash; 105 minutes &mdash; France, Italie, Allemagne</p>
+    </div>
+    <p class="provenance"><strong>Provenance.</strong> Analyse produite le 10 ao&ucirc;t 2026 par Claude Opus 5 en session supervis&eacute;e, sur recherche documentaire sourc&eacute;e &mdash; r&eacute;gime R2 du site. Aucune source de presse d'&eacute;poque n'a pu &ecirc;tre consult&eacute;e au texte : les jugements de 1963 cit&eacute;s ici le sont de seconde main, et le texte le signale &agrave; chaque fois.</p>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervis&eacute;e, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 10 ao&ucirc;t 2026</span>
+</div>
+</div>
+
+<main>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Mentions port&eacute;es sur l'&eacute;tiquette</p>
+  <ol>
+    <li><a href="#fiche">Fiche technique</a></li>
+    <li><a href="#synopsis">Synopsis</a></li>
+    <li><a href="#contexte">Contexte de production</a></li>
+    <li><a href="#structure">Structure narrative</a></li>
+    <li><a href="#mise-en-scene">Mise en sc&egrave;ne et proc&eacute;d&eacute;s</a></li>
+    <li><a href="#personnages">Personnages principaux</a></li>
+    <li><a href="#themes">Th&egrave;mes</a></li>
+    <li><a href="#reception">R&eacute;ception et post&eacute;rit&eacute;</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+
+<section id="fiche">
+  <div class="mention"><span class="no">Mention 1</span><h2>Fiche technique</h2></div>
+  <table class="fiche">
+    <tr><td>Titre</td><td><em>Les Tontons flingueurs</em></td></tr>
+    <tr><td>R&eacute;alisation</td><td>Georges Lautner</td></tr>
+    <tr><td>Adaptation</td><td>Albert Simonin et Georges Lautner, d'apr&egrave;s le roman <em>Grisbi or not grisbi</em> (1955) d'Albert Simonin<a class="renvoi" href="#src-1">[1]</a></td></tr>
+    <tr><td>Dialogues</td><td>Michel Audiard<a class="renvoi" href="#src-1">[1]</a></td></tr>
+    <tr><td>Photographie</td><td>Maurice Fellous &mdash; noir et blanc, 35 mm, 1,66:1<a class="renvoi" href="#src-1">[1]</a></td></tr>
+    <tr><td>Montage</td><td>Michelle David</td></tr>
+    <tr><td>D&eacute;cors</td><td>Jean Mandaroux</td></tr>
+    <tr><td>Musique</td><td>Michel Magne (orchestrations de Bernard G&eacute;rard)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-8">[8]</a></td></tr>
+    <tr><td>Production</td><td>Alain Poir&eacute; (producteur ex&eacute;cutif), Robert Sussfeld, Ir&eacute;n&eacute;e Leriche &mdash; Gaumont (SNEG), Corona Filmproduktion (Allemagne), Ultra Film et Sicilia Cinematografica (Italie)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a></td></tr>
+    <tr><td>Interpr&eacute;tation</td><td>Lino Ventura (Fernand Naudin), Bernard Blier (Raoul Volfoni), Jean Lefebvre (Paul Volfoni), Francis Blanche (M<sup>e</sup> Folace), Claude Rich (Antoine Delafoy), Sabine Sinjen (Patricia), Horst Frank (Th&eacute;o), Venantino Venantini (Pascal), Robert Dalban (M. Jean), Jacques Dumesnil (Louis &laquo; le Mexicain &raquo;), Dominique Davray (M<sup>me</sup> Mado), Mac Ronay (Bastien)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a></td></tr>
+    <tr><td>Dur&eacute;e</td><td>105 minutes</td></tr>
+    <tr><td>Sortie</td><td>4 octobre 1963 (Allemagne de l'Ouest) ; 27 novembre 1963 (France)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a></td></tr>
+    <tr><td>Entr&eacute;es France</td><td>3 353 789 selon Wikip&eacute;dia, 3 321 121 selon JP Box-Office &mdash; divergence non tranch&eacute;e, voir &sect;8<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a></td></tr>
+  </table>
+  <figure class="poster">
+    <img src="../assets/posters/les-tontons-flingueurs.jpg"
+         alt="Affiche du film Les Tontons flingueurs"
+         onerror="this.closest('.poster').remove()">
+  </figure>
+</section>
+
+<section id="synopsis">
+  <div class="mention"><span class="no">Mention 2</span><h2>Synopsis</h2></div>
+  <p>Fernand Naudin vend du mat&eacute;riel agricole &agrave; Montauban depuis quinze ans. Il a eu une autre vie, dont il ne parle plus. Un t&eacute;l&eacute;gramme le rappelle au chevet de Louis, dit &laquo; le Mexicain &raquo;, ami d'enfance et truand de haut vol, qui meurt en lui confiant deux h&eacute;ritages qu'on ne peut pas tenir ensemble : ses affaires &mdash; un bowling, une maison close, un tripot, une distillerie clandestine &mdash; et sa fille Patricia, dix-sept ans, &agrave; qui il faut cacher d'o&ugrave; vient l'argent. Fernand h&eacute;rite donc d'un empire qu'il n'a pas demand&eacute; et d'une pupille qu'il doit conduire au mariage sans qu'elle sache. Restent les associ&eacute;s du mort, Th&eacute;o et les fr&egrave;res Volfoni, qui estiment que la succession leur revenait, et qui entendent le faire savoir. Entre l'inventaire chez le notaire et la noce, il y aura des explications de cave, une nuit de cuisine et une fusillade en habit de c&eacute;r&eacute;monie.</p>
+</section>
+
+<section id="contexte">
+  <div class="mention"><span class="no">Mention 3</span><h2>Contexte de production</h2></div>
+  <p>&Agrave; l'origine, un livre noir. <em>Grisbi or not grisbi</em> (1955) cl&ocirc;t la trilogie qu'Albert Simonin consacre au truand Max le Menteur, apr&egrave;s <em>Touchez pas au grisbi</em> et <em>Le cave se rebiffe</em> &mdash; trois romans dont les adaptations, &eacute;chelonn&eacute;es de 1954 &agrave; 1963, ne forment aucune continuit&eacute; &agrave; l'&eacute;cran<a class="renvoi" href="#src-1">[1]</a>. Le geste d&eacute;cisif du film est l&agrave;, et il est sign&eacute; de l'auteur lui-m&ecirc;me : cosc&eacute;nariste de son propre roman, Simonin abandonne &laquo; le ton sombre et sanglant &raquo; du livre pour une veine comique que Michel Audiard met en dialogues<a class="renvoi" href="#src-1">[1]</a>. Le conflit avec les Volfoni, meurtrier dans le roman, devient une querelle de bureau. Max le Menteur devient Fernand Naudin. M<sup>e</sup> Folace, Patricia et Antoine n'existent pas dans le livre : ce sont des cr&eacute;ations de sc&eacute;nario<a class="renvoi" href="#src-1">[1]</a>. Le film ne trahit donc pas le polar par ignorance ; il le d&eacute;sosse en connaissance de cause, avec la complicit&eacute; de celui qui l'avait &eacute;crit.</p>
+  <p>Gaumont n'y croit pas. Seul Alain Poir&eacute; d&eacute;fend le projet, et pour diluer le risque la production s'adosse &agrave; des partenaires allemands et italiens<a class="renvoi" href="#src-1">[1]</a>. Cette clause financi&egrave;re a une cons&eacute;quence visible &agrave; l'&eacute;cran, rarement relev&eacute;e comme telle : les jeunes gens du film &mdash; Patricia l'Allemande Sabine Sinjen, Th&eacute;o l'Allemand Horst Frank, Pascal l'Italien Venantino Venantini &mdash; sont l&agrave; parce que la coproduction l'exigeait, et Sinjen est doubl&eacute;e en fran&ccedil;ais<a class="renvoi" href="#src-1">[1]</a>. Un film sur des hommes vieillissants qui ne comprennent plus la jeunesse a donc, litt&eacute;ralement, une jeunesse import&eacute;e et postsynchronis&eacute;e.</p>
+  <p>Le tournage commence le 8 avril 1963 en r&eacute;gion parisienne. Une gr&egrave;ve paralyse alors les studios : l'&eacute;quipe tourne en d&eacute;cors naturels plut&ocirc;t qu'&agrave; &Eacute;pinay<a class="renvoi" href="#src-5">[5]</a>. C'est ainsi que la villa du Mexicain devient un h&ocirc;tel particulier de Rueil-Malmaison lou&eacute; par Gaumont &mdash; quarante jours de tournage dans une maison r&eacute;elle, depuis d&eacute;molie et remplac&eacute;e par un parking<a class="renvoi" href="#src-5">[5]</a> &mdash;, que la noce se filme &agrave; l'&eacute;glise Saint-Germain de Charonne, et que d'autres int&eacute;rieurs se prennent au ch&acirc;teau de Vigny<a class="renvoi" href="#src-1">[1]</a>. Une contrainte budg&eacute;taire et syndicale fixe donc l'&eacute;chelle du film : des pi&egrave;ces aux dimensions vraies, o&ugrave; l'on ne peut pas reculer la cam&eacute;ra.</p>
+  <p>Le r&ocirc;le de Fernand, enfin, arrive &agrave; Lino Ventura apr&egrave;s le refus de Jean Gabin et de Paul Meurisse, et Ventura lui-m&ecirc;me doute d'&ecirc;tre cr&eacute;dible en comique<a class="renvoi" href="#src-1">[1]</a>. Quant au titre, Audiard tenait pour <em>Le Terminus des pr&eacute;tentieux</em>, jug&eacute; trop pompeux par ses collaborateurs ; la formule est rest&eacute;e dans le film, sous forme de r&eacute;plique<a class="renvoi" href="#src-1">[1]</a>.</p>
+</section>
+
+<section id="structure">
+  <div class="mention"><span class="no">Mention 4</span><h2>Structure narrative</h2></div>
+  <p>L'intrigue tient en une ligne &mdash; un homme h&eacute;rite &mdash; et c'est d&eacute;lib&eacute;r&eacute;. Le r&eacute;cit est un dispositif de succession : un mourant transmet, un survivant encaisse, des pr&eacute;tendants contestent. Tout ce qui, dans un polar, serait le sujet (l'argent, la m&eacute;canique du crime, le danger) est ici ramen&eacute; au rang de pr&eacute;texte administratif : on en parle chez le notaire, avec un ordre du jour. Le film s'organise en morceaux de bravoure autonomes &mdash; l'arriv&eacute;e &agrave; Paris, l'inventaire de la succession, l'explication &agrave; la distillerie, la nuit de cuisine, la noce &mdash; que la narration relie &agrave; peine.</p>
+  <p>La sc&egrave;ne la plus c&eacute;l&egrave;bre est pr&eacute;cis&eacute;ment celle qui ne sert &agrave; rien. Audiard la jugeait inutile &agrave; l'&eacute;criture et elle a failli ne pas &ecirc;tre tourn&eacute;e ; Lautner y tenait par-dessus tout, en hommage &agrave; <em>Key Largo</em> de John Huston, &laquo; film noir montrant des gangsters nostalgiques de la prohibition &raquo;<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-5">[5]</a>. Ce d&eacute;saccord est le meilleur commentaire du film sur lui-m&ecirc;me : ce qui reste, soixante ans apr&egrave;s, ce n'est pas l'intrigue, ce sont les sc&egrave;nes qui n'avan&ccedil;aient rien. La r&egrave;gle vaut pour l'ensemble &mdash; le r&eacute;cit n'est qu'un fil pour tenir des situations o&ugrave; des hommes parlent.</p>
+  <p>La convergence finale est un choix de forme et non un hasard : tout se noue &agrave; un mariage. La c&eacute;r&eacute;monie bourgeoise &mdash; &eacute;glise, habits, famille du fianc&eacute; &mdash; est le lieu o&ugrave; la p&egrave;gre vient r&eacute;gler ses comptes, et le film y trouve sa figure centrale, deux mondes qui partagent les m&ecirc;mes rites. Sur le parvis, une derni&egrave;re apparition ferme la boucle : Paul Meurisse y traverse le plan dans le r&ocirc;le du commandant Th&eacute;obald Dromard, &laquo; le Monocle &raquo;, qu'il tenait dans la s&eacute;rie d'espionnage que Lautner tournait alors en parall&egrave;le<a class="renvoi" href="#src-1">[1]</a>. Le film se termine donc sur une citation de son propre r&eacute;alisateur &mdash; fa&ccedil;on d'admettre qu'on n'a jamais quitt&eacute; le jeu.</p>
+</section>
+
+<section id="mise-en-scene">
+  <div class="mention"><span class="no">Mention 5</span><h2>Mise en sc&egrave;ne et proc&eacute;d&eacute;s techniques</h2></div>
+  <p>La photographie de Maurice Fellous &mdash; noir et blanc, 1,66:1 &mdash; ne fait aucune concession au registre comique : nuits, contre-jours, silhouettes en imperm&eacute;able, voitures noires, caves. Le film est &eacute;clair&eacute; comme un polar et &eacute;crit comme une farce, et c'est de cet &eacute;cart que na&icirc;t l'effet. Rien n'y est signal&eacute; comme dr&ocirc;le par l'image ; les hommes sont film&eacute;s avec le s&eacute;rieux qu'on doit &agrave; des professionnels, ce qui laisse au dialogue tout le travail de la com&eacute;die. La critique la plus s&eacute;v&egrave;re du film a d'ailleurs port&eacute; l&agrave; : la r&eacute;alisation &laquo; appliqu&eacute;e &raquo; de Lautner, qui joue &laquo; habilement du hors-champ et des cadrages &raquo;, ne dissimulerait pas que le style d&eacute;pend enti&egrave;rement de la parole<a class="renvoi" href="#src-3">[3]</a>.</p>
+  <p>La sc&egrave;ne de la cuisine est le cas d'&eacute;cole de ce que produit une contrainte. La pi&egrave;ce mesure environ deux m&egrave;tres sur trois ; Lautner l'a dit sans d&eacute;tour : &laquo; dans cette pi&egrave;ce, je n'avais aucun recul et j'&eacute;tais dans l'impossibilit&eacute; de faire le moindre mouvement de cam&eacute;ra &raquo;<a class="renvoi" href="#src-5">[5]</a>. Le r&eacute;sultat est une s&eacute;quence enti&egrave;rement b&acirc;tie sur des visages assis, des raccords de regard et l'attente : la com&eacute;die y na&icirc;t de l'immobilit&eacute;, &agrave; rebours de tout ce qu'une sc&egrave;ne de beuverie appelle d'ordinaire. Aucun alcool r&eacute;el ne fut bu pendant les prises ; en revanche, l'&eacute;quipe avait pr&eacute;par&eacute; pour Jean Lefebvre une mixture sans le pr&eacute;venir, dont les larmes sont authentiques<a class="renvoi" href="#src-5">[5]</a>.</p>
+  <p>La brutalit&eacute;, elle, n'est pas feinte. &Agrave; la distillerie, Ventura touche r&eacute;ellement le cascadeur Henri Cogan &mdash; &laquo; c'est pour ma jambe &raquo;, lui glisse-t-il en souriant, en souvenir d'un match de catch de 1950 o&ugrave; Cogan lui avait cass&eacute; la jambe et mis fin &agrave; sa carri&egrave;re<a class="renvoi" href="#src-1">[1]</a>. L'anecdote dit quelque chose de la m&eacute;thode : les coups sont film&eacute;s secs, sans emphase comique, et c'est cette s&eacute;cheresse qui emp&ecirc;che le film de tomber dans la farce.</p>
+  <p>La partition de Michel Magne proc&egrave;de par monoth&eacute;matisme : une ritournelle unique, d&eacute;clin&eacute;e en blues, en swing, en hully-gully, et un motif de banjo qui accompagne les bagarres<a class="renvoi" href="#src-8">[8]</a>. La musique ne soutient pas l'action, elle la commente &mdash; toujours d'un cran &agrave; c&ocirc;t&eacute; du ton de la sc&egrave;ne. Le film pousse la plaisanterie jusqu'&agrave; caricaturer son propre compositeur : Antoine Delafoy, le fianc&eacute; musicien qu'incarne Claude Rich, cherche &laquo; l'anti-accord absolu &raquo; dans un studio qui tient du laboratoire, ce qui vise assez pr&eacute;cis&eacute;ment Magne, connu pour ses concerts d'infrasons Salle Gaveau d&egrave;s 1954<a class="renvoi" href="#src-8">[8]</a>. L'avant-garde est ainsi renvoy&eacute;e &agrave; une pr&eacute;tention de jeune homme, dans un film qui ne pr&eacute;tend &agrave; rien.</p>
+</section>
+
+<section id="personnages">
+  <div class="mention"><span class="no">Mention 6</span><h2>Personnages principaux</h2></div>
+  <h3>Fernand Naudin (Lino Ventura)</h3>
+  <p>Le film repose sur un contre-emploi que l'acteur redoutait : Ventura ne se voyait pas cr&eacute;dible dans une composition comique<a class="renvoi" href="#src-1">[1]</a>. Cette r&eacute;ticence est exactement ce qui fonctionne. Fernand ne fait jamais rire volontairement ; il subit, il constate, il p&egrave;se. Sa nostalgie de Montauban &mdash; &laquo; On ne devrait jamais quitter Montauban &raquo;<a class="renvoi" href="#src-1">[1]</a> &mdash; n'est pas une plaisanterie de province : c'est la ligne de conduite d'un homme qui a quitt&eacute; un m&eacute;tier et &agrave; qui l'on redemande de l'exercer.</p>
+  <h3>Les fr&egrave;res Volfoni (Bernard Blier et Jean Lefebvre)</h3>
+  <p>Raoul parle, Paul a peur. Le premier tient les tirades de menace les plus cit&eacute;es du cin&eacute;ma fran&ccedil;ais &mdash; &laquo; aux quatre coins de Paris qu'on va l'retrouver, &eacute;parpill&eacute; par petits bouts, fa&ccedil;on puzzle &raquo;<a class="renvoi" href="#src-1">[1]</a> &mdash; mais la sc&egrave;ne de la cuisine les montre attabl&eacute;s avec ceux qu'ils venaient abattre, en train de beurrer des toasts. Les Volfoni sont la d&eacute;monstration du film : ces hommes n'ont plus que le vocabulaire de la violence.</p>
+  <h3>M<sup>e</sup> Folace (Francis Blanche)</h3>
+  <p>Le notaire du milieu, qui inventorie une succession criminelle dans la langue du droit, est la trouvaille structurelle du film : le crime y est une entreprise familiale avec ses comptes, ses actifs et son conseil juridique. C'est aussi lui qui, dans la cuisine, l&acirc;che &laquo; Touche pas au grisbi, salope ! &raquo; &mdash; le titre du premier Simonin port&eacute; &agrave; l'&eacute;cran, cit&eacute; comme une antienne<a class="renvoi" href="#src-1">[1]</a>. Le film sait de quelle lign&eacute;e il sort, et il le dit en riant.</p>
+  <h3>Patricia et Antoine (Sabine Sinjen et Claude Rich)</h3>
+  <p>La pupille et son fianc&eacute;, fils d'un vice-pr&eacute;sident du Fonds mon&eacute;taire international<a class="renvoi" href="#src-1">[1]</a>, forment le corps &eacute;tranger du r&eacute;cit : une jeunesse polie, moderne, musicale, que les tontons observent comme une esp&egrave;ce inconnue. Le d&eacute;tail de production &eacute;voqu&eacute; plus haut redouble le motif &mdash; Sinjen, actrice allemande impos&eacute;e par la coproduction, est doubl&eacute;e en fran&ccedil;ais : cette jeunesse n'a pas m&ecirc;me sa propre voix.</p>
+</section>
+
+<section id="themes">
+  <div class="mention"><span class="no">Mention 7</span><h2>Th&egrave;mes</h2></div>
+  <h3>Des gangsters qui se savent finis</h3>
+  <p>L'hommage revendiqu&eacute; &agrave; <em>Key Largo</em> donne la cl&eacute; : Lautner voulait des truands &laquo; nostalgiques de la prohibition &raquo;<a class="renvoi" href="#src-1">[1]</a>. Les Tontons ne sont pas dangereux, ils sont anciens. Leur monde &mdash; codes d'honneur, argot, hi&eacute;rarchies &mdash; a la solidit&eacute; d'un mus&eacute;e, et le film le traite comme tel : on y transmet un patrimoine, on y consulte un notaire, on y marie une h&eacute;riti&egrave;re. Cette lecture rejoint celle que la critique fran&ccedil;aise fera plus tard du &laquo; cin&eacute;ma de papa &raquo;, o&ugrave; &laquo; une g&eacute;n&eacute;ration d'hommes vieillissants &raquo; affronte un monde contemporain et une jeunesse qu'elle ne comprend plus, et oppose au changement une r&eacute;sistance d'abord esth&eacute;tique &mdash; celle du dialogue et de la mise en sc&egrave;ne th&eacute;&acirc;trale<a class="renvoi" href="#src-4">[4]</a>.</p>
+  <h3>L'argot comme dernier territoire</h3>
+  <p>Ce qu'il reste &agrave; ces hommes, c'est la langue. Audiard leur donne un fran&ccedil;ais de haute pr&eacute;cision comique, qui emprunte au droit, &agrave; la m&eacute;decine, &agrave; la strat&eacute;gie militaire, et qui traite la m&eacute;taphore comme une arme de service. Le proc&eacute;d&eacute; va jusqu'&agrave; l'emprunt savant : la r&eacute;plique la plus c&eacute;l&egrave;bre du film &mdash; &laquo; les cons, &ccedil;a ose tout, c'est m&ecirc;me &agrave; &ccedil;a qu'on les reconna&icirc;t &raquo; &mdash; est un arrangement d'une formule de Thomas d'Aquin<a class="renvoi" href="#src-1">[1]</a>. C'est aussi la limite que lui oppose la critique : le film serait &laquo; le r&eacute;ceptacle de l'inspiration volage du parolier &raquo;, o&ugrave; la r&eacute;plique prime sur le r&eacute;cit, et o&ugrave; le dialoguiste demeure &laquo; le v&eacute;ritable grand manitou de l'affaire &raquo;<a class="renvoi" href="#src-3">[3]</a>. Le reproche est juste ; il d&eacute;crit simplement, en creux, ce que le film assume.</p>
+  <h3>La p&egrave;gre et la bourgeoisie, m&ecirc;mes rites</h3>
+  <p>Le vrai sujet du film est la transmission. Un mort l&egrave;gue, un vivant administre, une jeune fille se marie : la m&eacute;canique est celle du roman bourgeois, appliqu&eacute;e &agrave; un milieu qui la parodie sans en changer une virgule. La noce finale n'est pas un d&eacute;cor commode, c'est la conclusion logique &mdash; il n'y avait pas d'autre lieu o&ugrave; faire se rencontrer les deux mondes, parce que ce sont les m&ecirc;mes.</p>
+  <h3>Ce que le film ne regarde pas</h3>
+  <p>Il faut le dire sans d&eacute;tour : l'h&eacute;ritage de Louis comprend une maison close, dont M<sup>me</sup> Mado g&egrave;re le personnel comme un service, et dont les difficult&eacute;s de recrutement fournissent une r&eacute;plique de comptoir sur &laquo; le mirage africain &raquo; qui &laquo; nous fait un tort terrible &raquo;<a class="renvoi" href="#src-1">[1]</a>. Les femmes du film sont des fonctions &mdash; la pupille, la tenanci&egrave;re, les pensionnaires &mdash; et le rire de 1963 passe par un ordre colonial et masculin que le film ne songe pas une seconde &agrave; interroger. Le signaler n'est pas le condamner ; c'est mesurer ce qui, dans une com&eacute;die devenue patrimoine, appartient d&eacute;finitivement &agrave; sa date.</p>
+</section>
+
+<section id="reception">
+  <div class="mention"><span class="no">Mention 8</span><h2>R&eacute;ception critique et post&eacute;rit&eacute;</h2></div>
+  <p>Le film sort en Allemagne de l'Ouest le 4 octobre 1963, en France le 27 novembre<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. La premi&egrave;re semaine le place deuxi&egrave;me du box-office national avec 108 829 entr&eacute;es dans quinze salles, dont 47 000 &agrave; Paris ; il passe le million en janvier 1964, les deux millions en mai<a class="renvoi" href="#src-1">[1]</a>.</p>
+  <div class="reserve"><strong>Divergence de sources signal&eacute;e.</strong> Le total France est donn&eacute; &agrave; 3 353 789 entr&eacute;es par la fiche encyclop&eacute;dique de r&eacute;f&eacute;rence<a class="renvoi" href="#src-1">[1]</a> et &agrave; 3 321 121 par la base JP Box-Office<a class="renvoi" href="#src-6">[6]</a> &mdash; un &eacute;cart d'environ 33 000 entr&eacute;es, vraisemblablement imputable au p&eacute;rim&egrave;tre retenu (ressorties comprises ou non). Aucune des deux ne pouvant &ecirc;tre &eacute;tablie comme dominante, les deux valeurs sont cit&eacute;es. De m&ecirc;me, l'expression de &laquo; relatif &eacute;chec &raquo; employ&eacute;e par un critique &agrave; propos de 1963<a class="renvoi" href="#src-3">[3]</a> ne se comprend qu'au registre critique et non commercial : sur ce point les chiffres et le commentaire ne disent pas la m&ecirc;me chose, et cette page ne les concilie pas.</p>
+  <p>Car l'accueil critique, lui, fut mauvais. On est en pleine domination de la Nouvelle Vague, et le film incarne tout ce qu'elle combat. Le jugement le plus cit&eacute; est celui d'Henry Chapier, &laquo; Vous pavoisez haut&hellip; mais vous visez bas &raquo;<a class="renvoi" href="#src-1">[1]</a> &mdash; formule qu'il faut ici rapporter de seconde main : aucune des sources consult&eacute;es pour cette page ne donne acc&egrave;s au texte original de 1963, et la v&eacute;rification en presse d'&eacute;poque reste &agrave; faire.</p>
+  <p>Le culte est venu de la t&eacute;l&eacute;vision. Les rediffusions font entrer les r&eacute;pliques dans la langue courante, puis le march&eacute; vid&eacute;o ent&eacute;rine le statut : 250 000 exemplaires du DVD restaur&eacute; en 2002, coffret anniversaire num&eacute;rot&eacute; en 2013, &eacute;dition 4K Ultra HD en 2017 &mdash; premier titre Gaumont dans ce format, restaur&eacute; &agrave; partir du n&eacute;gatif original<a class="renvoi" href="#src-1">[1]</a>. C'est cette restauration 4K, port&eacute;e par Gaumont, qui circule aujourd'hui en salles de patrimoine<a class="renvoi" href="#src-7">[7]</a>. La cons&eacute;cration a fini par devenir g&eacute;ographique et parlementaire : une rue &agrave; Nantes, un giratoire &agrave; Montauban<a class="renvoi" href="#src-1">[1]</a>, et le 22 novembre 2013, jour de la mort de Lautner, des r&eacute;pliques du film cit&eacute;es &agrave; l'Assembl&eacute;e nationale<a class="renvoi" href="#src-1">[1]</a>.</p>
+  <p>La critique, elle, a mis quarante ans &agrave; trouver quoi en faire, et l'on peut suivre ce d&eacute;placement chez un m&ecirc;me titre. En 2009, Matthieu Santelli y voit le sympt&ocirc;me de l'agonie de la Qualit&eacute; fran&ccedil;aise : un genre qui s'&eacute;puise et &agrave; qui &laquo; il ne reste plus en ultime parade que l'exag&eacute;ration &raquo;, donc une parodie involontaire, dont le culte est n&eacute; des rediffusions<a class="renvoi" href="#src-3">[3]</a>. En 2021, Thomas Grignon reprend le m&ecirc;me corpus pour en renverser la valeur : ce cin&eacute;ma d'arri&egrave;re-garde, longtemps m&eacute;pris&eacute;, se lit comme le miroir d'un d&eacute;clin industriel et social, et une r&eacute;sistance esth&eacute;tique assum&eacute;e<a class="renvoi" href="#src-4">[4]</a>. Entre les deux textes, ce n'est pas le film qui a chang&eacute;.</p>
+  <p>Lautner, lui, avait sa propre explication, donn&eacute;e en 2009 : &laquo; Quand nous avons tourn&eacute;, nous avions tous envie de rigoler. Finalement, c'est peut-&ecirc;tre &ccedil;a, l'explication : la d&eacute;connante vieillit mieux que le tragique &raquo;<a class="renvoi" href="#src-1">[1]</a>.</p>
+</section>
+
+<section id="conclusion">
+  <div class="mention"><span class="no">Mention 9</span><h2>Conclusion</h2></div>
+  <p>Il faut prendre au s&eacute;rieux ce que <em>Les Tontons flingueurs</em> fabrique en 1963 : un film noir d&eacute;mont&eacute; par ceux-l&agrave; m&ecirc;mes qui en tenaient les brevets. Simonin d&eacute;fait son propre roman, Audiard retourne l'argot du milieu en num&eacute;ro de music-hall, Lautner filme la farce avec les lumi&egrave;res du polar, et Ventura joue le tout sans sourire. Ce n'est pas une com&eacute;die qui pastiche un genre de l'ext&eacute;rieur ; c'est un genre qui se saborde de l'int&eacute;rieur, en pleine possession de ses moyens, &agrave; l'instant pr&eacute;cis o&ugrave; la Nouvelle Vague le d&eacute;clare mort. La critique d'&eacute;poque a vu la fin d'un monde et l'a m&eacute;pris&eacute;e ; elle ne s'&eacute;tait pas tromp&eacute;e sur le diagnostic, seulement sur le patient.</p>
+  <p>Ce qui a surv&eacute;cu, ce sont les sc&egrave;nes inutiles. Une cuisine de deux m&egrave;tres sur trois o&ugrave; l'on ne pouvait pas bouger la cam&eacute;ra, quatre hommes attabl&eacute;s devant un alcool imbuvable, et une conversation que le dialoguiste voulait couper : c'est de l&agrave; que le film est parti pour soixante ans de rediffusions, de citations et de ronds-points. On tient l&agrave; une le&ccedil;on assez rude sur ce qui fait durer un film &mdash; ni l'intrigue, ni l'ambition, ni m&ecirc;me l'accueil, mais le temps qu'on accepte de perdre avec ses personnages. Le brutal &eacute;tait fait maison, et l'&eacute;tiquette annon&ccedil;ait autre chose que ce qu'il y avait dans la bouteille ; c'est le principe m&ecirc;me de ce cin&eacute;ma-l&agrave;, et la raison pour laquelle on y revient.</p>
+</section>
+
+<section id="sources">
+  <div class="mention"><span class="no">Annexe</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li id="src-1"><a href="https://fr.wikipedia.org/wiki/Les_Tontons_flingueurs" rel="noopener">Wikip&eacute;dia (FR), &laquo; Les Tontons flingueurs &raquo;</a> &mdash; fiche technique, gen&egrave;se et adaptation du roman, distribution, lieux et anecdotes de tournage, box-office hebdomadaire et total, r&eacute;pliques, &eacute;ditions vid&eacute;o et post&eacute;rit&eacute;. Source encyclop&eacute;dique de synth&egrave;se : les jugements de 1963 qu'elle rapporte (Chapier) et les propos de Lautner de 2009 y sont cit&eacute;s de seconde main, et le sont ici comme tels. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-2"><a href="https://en.wikipedia.org/wiki/Les_Tontons_flingueurs" rel="noopener">Wikipedia (EN), &laquo; Les Tontons flingueurs &raquo;</a> &mdash; coproduction franco-italo-allemande, distribution, dates de sortie, place dans la trilogie Max le Menteur. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-3"><a href="https://www.critikat.com/actualite-cine/critique/les-tontons-flingueurs/" rel="noopener">Matthieu Santelli, &laquo; Les Tontons flingueurs &raquo;, Critikat, 8 septembre 2009</a> &mdash; lecture du film comme parodie involontaire d'une Qualit&eacute; fran&ccedil;aise &agrave; l'agonie, primat du dialogue sur le r&eacute;cit, culte n&eacute; des rediffusions. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-4"><a href="https://www.critikat.com/panorama/analyse/resistance-du-cinema-de-papa/" rel="noopener">Thomas Grignon, &laquo; R&eacute;sistance du cin&eacute;ma de papa &raquo;, Critikat, 7 septembre 2021</a> &mdash; r&eacute;&eacute;valuation du cin&eacute;ma populaire fran&ccedil;ais des ann&eacute;es 1960-1970, g&eacute;n&eacute;ration d'hommes vieillissants face &agrave; une jeunesse incomprise, r&eacute;sistance esth&eacute;tique par le dialogue. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-5"><a href="https://lenouveaucinephile.blogspot.com/2015/08/le-tournage-des-tontons-flingueurs-et.html" rel="noopener">&laquo; Le tournage des Tontons flingueurs et la sc&egrave;ne de la cuisine &raquo;, Le nouveau cin&eacute;phile, ao&ucirc;t 2015</a> &mdash; date de d&eacute;but de tournage, gr&egrave;ve des studios et report en d&eacute;cors naturels, h&ocirc;tel particulier de Rueil-Malmaison, dimensions de la cuisine et propos de Lautner sur l'absence de recul, conditions de la sc&egrave;ne de beuverie. Blog de cin&eacute;philie compilant des t&eacute;moignages publi&eacute;s ailleurs : source secondaire, employ&eacute;e pour des &eacute;l&eacute;ments factuels recoup&eacute;s avec [1] quand ils l'&eacute;taient. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-6"><a href="https://www.jpbox-office.com/fichfilm.php?affich=vision&amp;id=9295" rel="noopener">JP Box-Office, fiche &laquo; Les Tontons flingueurs &raquo; (1963)</a> &mdash; total France 3 321 121 entr&eacute;es, dont 1 041 486 Paris-p&eacute;riph&eacute;rie. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-7"><a href="https://adrc-asso.org/patrimoine/diffusion/films-et-cycles/les-tontons-flingueurs" rel="noopener">ADRC, fiche patrimoine &laquo; Les Tontons flingueurs &raquo;</a> &mdash; restauration 4K Gaumont et circulation actuelle en salles de patrimoine. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+    <li id="src-8"><a href="https://www.vintagemusicclub.com/michel-magne-les-tontons-flingueurs-1963/" rel="noopener">&laquo; Michel Magne : Les Tontons Flingueurs (1963) &raquo;, Vintage Music Club</a> &mdash; monoth&eacute;matisme de la partition, d&eacute;clinaisons (blues, banjo des bagarres, hully-gully, jazz-swing), concerts d'infrasons de Magne et caricature du compositeur dans le personnage d'Antoine Delafoy. Site de collection discographique : source sp&eacute;cialis&eacute;e non acad&eacute;mique. Consult&eacute; le 10 ao&ucirc;t 2026.</li>
+  </ol>
+</section>
+
+<div class="lien-retour-bloc">
+  <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+</div>
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

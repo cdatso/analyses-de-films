@@ -822,5 +822,27 @@ const FILMS = [
     producteur: 'Claude Fable 5 (session supervisée)',
     pays: ['Coree du Sud'],
     technique: ['couleur']
+  },
+  {
+    slug: 'les-tontons-flingueurs',
+    title: 'Les Tontons flingueurs',
+    director: 'Georges Lautner',
+    year: 1963,
+    summary: "Un film noir sabordé de l'intérieur par ceux-là mêmes qui l'avaient écrit — et ce qui a survécu, ce sont les scènes qui ne servaient à rien.",
+    url: 'films/les-tontons-flingueurs.html',
+    poster: 'assets/posters/les-tontons-flingueurs.jpg',
+    volet: 'critique',
+    datePublication: '2026-08-10 15:08',
+    // genreBase : 'comedie' — valeur du vocabulaire fermé. Le film est une
+    // comédie policière ; 'polar' existe aussi mais nommerait le genre
+    // sabordé, pas le registre du film (P-11, choix éditorial, pas de
+    // rabattage). Aucune escalade P-12 : les quatre axes bloquants sont
+    // servis par des valeurs déjà inscrites.
+    genreBase: 'comedie',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    // Coproduction France / Italie / Allemagne de l'Ouest (Gaumont-SNEG,
+    // Ultra Film et Sicilia Cinematografica, Corona Filmproduktion).
+    pays: ['France', 'Italie', 'Allemagne'],
+    technique: ['n&b']
   }
 ];
