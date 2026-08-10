@@ -55,11 +55,11 @@ et desormais en/*.html.
   DEUX ANGLES MORTS CONNUS AU DEPART, dont un FERME depuis (chacun aurait pu
   faire apparaitre des E1 sur des pages jamais mesurees, cassant le gate du
   hook sans pouvoir toucher a la baseline) :
-    a) FERME par BKL-CIN-090 (10/08/2026) : le suffixe `?v=20260730b` qui
-       masquait `assets/style.css` sur index.html a ete retire. L'accueil
-       est desormais analyse avec la feuille partagee, comme les pages de
-       en/ l'etaient deja (releve du 10/08 : 53 pages avant le retrait,
-       54 apres, aucun E1 ni E2 nouveau).
+    a) FERME par BKL-CIN-090 (10/08/2026) : le parametre de version (jeton
+       20260730b) qui masquait `assets/style.css` sur index.html a ete
+       retire. L'accueil est desormais analyse avec la feuille partagee,
+       comme les pages de en/ l'etaient deja (releve du 10/08 : 53 pages
+       avant le retrait, 54 apres, aucun E1 ni E2 nouveau).
     b) assets/mobilier.css -- la seule feuille que TOUTES les pages
        partagent -- n'est jamais rattachee : seul style.css l'est. Le
        mobilier commun (menu, cartouche, chevron) n'a donc jamais ete
