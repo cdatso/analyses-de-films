@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Sitemap du site analyses-de-films.
-     Genere depuis le contenu reel du depot le 05/08/2026 (BKL-CIN-085, lot L6,
-     regenere apres l extension B+ de la page des lecons), jamais recopie a la main.
-     AUCUN generateur ne vit dans le depot : ce fichier NE SE MET PAS A JOUR TOUT
-     SEUL et vieillira a chaque publication. Sa regeneration a la publication est a
-     router en item de backlog propre.
+     Genere depuis le contenu reel du depot le 10/08/2026, par
+     outils/genere-sitemap.py, qui vit dans ce depot et que la skill appelle
+     a l'etape 10.0 -- jamais recopie a la main.
      Les URL y sont ABSOLUES : seule exception admise a P-33, avec les balises
      hreflang/alternates, nommee et bornee par P-59 (spec v1.8). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
