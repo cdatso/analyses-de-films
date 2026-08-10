@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carte des activités — Analyses de films</title>
+<link rel="alternate" hreflang="fr" href="https://www.cdatso.be/analyses-de-films/carte-des-activites.html">
+<link rel="alternate" hreflang="en" href="https://www.cdatso.be/analyses-de-films/en/carte-des-activites.html">
+<link rel="alternate" hreflang="x-default" href="https://www.cdatso.be/analyses-de-films/carte-des-activites.html">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/mobilier.css">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .carte-activites .carte-legende {
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1rem;
+    margin: 0 0 2rem;
+  }
+  .carte-activites .etat {
+    display: inline-block; font-family: var(--sans); font-size: 0.72rem;
+    letter-spacing: 0.02em; padding: 0.18rem 0.55rem; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .carte-activites .etat-en-cours       { background: var(--accent); color: var(--paper); }
+  .carte-activites .etat-en-vigueur-place { background: var(--paper-alt); color: var(--ink); }
+  .carte-activites .etat-termine        { background: var(--ink); color: var(--paper); }
+  .carte-activites .etat-gele           { border: 1px solid var(--line); color: var(--ink-muted); }
+
+  .carte-activites .noeud-central {
+    background: var(--accent); color: var(--paper);
+    padding: 1.5rem 1.7rem; margin: 0 0 2rem;
+  }
+  .carte-activites .noeud-surtitre {
+    font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.85; margin-bottom: 0.5rem;
+  }
+  .carte-activites .noeud-titre {
+    font-family: var(--serif); font-weight: 600; font-size: 1.7rem;
+    line-height: 1.1; margin-bottom: 0.6rem;
+  }
+  .carte-activites .noeud-phrase { margin: 0 0 0.6rem; max-width: 42rem; color: inherit; }
+  .carte-activites .noeud-note {
+    font-family: var(--sans); font-size: 0.78rem; opacity: 0.8;
+  }
+
+  .carte-activites .grappes {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+    gap: 1.4rem; margin-bottom: 1.4rem;
+  }
+  .carte-activites .grappe { border: 1px solid var(--line); }
+  .carte-activites .grappe-entete {
+    padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line);
+  }
+  .carte-activites .grappe-entete h2 {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .grappe-entete p {
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+  }
+  .carte-activites .grappe-items { list-style: none; margin: 0; padding: 0; }
+  .carte-activites .activite {
+    padding: 0.9rem 1.1rem; border-top: 1px solid var(--line);
+  }
+  .carte-activites .grappe-items > .activite:first-child { border-top: none; }
+  .carte-activites .activite-ligne {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 0.8rem; flex-wrap: wrap;
+  }
+  .carte-activites .activite-ligne h3 {
+    font-family: var(--serif); font-size: 0.98rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .activite-description {
+    font-family: var(--sans); font-size: 0.84rem; color: var(--ink-soft);
+    line-height: 1.45; margin: 0.4rem 0 0;
+  }
+  .carte-activites .activite-date {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-muted);
+    margin: 0.4rem 0 0;
+  }
+
+  .carte-activites .run {
+    border: 1px solid var(--line); margin-bottom: 2.2rem;
+  }
+  .carte-activites .run-entete {
+    padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line);
+  }
+  .carte-activites .run-entete h2 {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .run-entete p {
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+  }
+  .carte-activites .run-grille {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11.5rem, 100%), 1fr));
+  }
+  .carte-activites .run-grille > .activite { border-top: 1px solid var(--line); }
+
+  @media (min-width: 641px) {
+    .carte-activites .run-grille > .activite:not(:first-child) {
+      border-left: 1px solid var(--line);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="critiques.html">Critiques</a>
+      <a href="etudes.html">Études</a>
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap carte-activites" style="padding-top:3.4rem;padding-bottom:5rem;">
+
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 0.4rem;line-height:1.2;">Carte des activités</h1>
+  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);margin:0 0 2rem;">Volet cinéma — programmes, projets et récurrent, sous mandat de la squad
+  « Montage Parallèle ». Sur ce que ces trois mots recouvrent : voir
+  <a href="comment-ca-marche.html">comment ce site fonctionne</a>.</p>
+
+<!-- CARTE-ACTIVITES:DEBUT (genere par outils/genere-carte-activites.py) -->
+    <div class="carte-legende" role="note" aria-label="L&eacute;gende des statuts">
+      <span class="etat etat-en-cours">En cours</span>
+      <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+      <span class="etat etat-termine">Termin&eacute;</span>
+      <span class="etat etat-gele">Gel&eacute; / en attente</span>
+    </div>
+    <div class="noeud-central">
+      <div class="noeud-surtitre">Au centre</div>
+      <div class="noeud-titre">Analyses de films</div>
+      <p class="noeud-phrase">L'activité cinéma menée avec Claude : un site public de critiques et d'études, 46 analyses publiées, 61 pages publiées au total.</p>
+      <div class="noeud-note">GitHub Pages — dépôt analyses-de-films</div>
+    </div>
+    <div class="grappes">
+      <section class="grappe">
+        <div class="grappe-entete">
+          <h2>PRG</h2>
+          <p>Programmes — les cadres durables qui gouvernent le travail</p>
+        </div>
+        <ul class="grappe-items">
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Contrat du site v2</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Le contrat de prescriptions vérifiables que chaque page du site doit tenir.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Charte de collaboration IA</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Les règles de collaboration entre la squad et ses capacités IA : mandats explicites, gates humains, horodatage instrumental.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Provenance et signatures</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Plusieurs régimes de signature ; le modèle producteur n'est jamais deviné.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Vocabulaires fermés</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Les axes du registre se choisissent, ne s'inventent jamais.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Volet Études</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Régime distinct sous supervision éditoriale, hors du pipeline critique.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        </ul>
+      </section>
+      <section class="grappe">
+        <div class="grappe-entete">
+          <h2>Projets</h2>
+          <p>Travaux ponctuels, ouverts et clos</p>
+        </div>
+        <ul class="grappe-items">
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Bascule du site en v2</h3>
+            <span class="etat etat-termine">Termin&eacute;</span>
+          </div>
+          <p class="activite-description">Migration du corpus, recette complète, typographie auto-hébergée.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Alignement méthode-dépôt</h3>
+            <span class="etat etat-termine">Termin&eacute;</span>
+          </div>
+          <p class="activite-description">La méthode d'analyse remise au niveau du site (listes statiques).</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Recherche de sources</h3>
+            <span class="etat etat-termine">Termin&eacute;</span>
+          </div>
+          <p class="activite-description">Dossiers de sources privés, branchés en option du pipeline.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Critique augmentée</h3>
+            <span class="etat etat-termine">Termin&eacute;</span>
+          </div>
+          <p class="activite-description">Prototype concluant, réutilisable mandat par mandat.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Site en anglais</h3>
+            <span class="etat etat-termine">Termin&eacute;</span>
+          </div>
+          <p class="activite-description">Arbre /en/ publié, appariement de langues et sitemap tenus à jour.</p>
+          <p class="activite-date">&Eacute;tat au 05/08/2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Certification de la routine nocturne</h3>
+            <span class="etat etat-gele">Gel&eacute; / en attente</span>
+          </div>
+          <p class="activite-description">La chaîne planifiée attend son gate de reprise.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </li>
+        </ul>
+      </section>
+    </div>
+    <section class="run">
+      <div class="run-entete">
+        <h2>RUN</h2>
+        <p>Le récurrent — ce qui tourne à chaque publication ou à intervalle régulier</p>
+      </div>
+      <div class="run-grille">
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Analyses au fil de l'eau</h3>
+            <span class="etat etat-en-cours">En cours</span>
+          </div>
+          <p class="activite-description">File d'attente relevée, pipeline versionné, un film à la fois.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Contrôles avant publication</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Batterie mécanique rejouée au push par le hook du dépôt.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Relève de la boîte aux lettres</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Les demandes du miroir Dropbox transférées dans la file.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Journaux internes</h3>
+            <span class="etat etat-en-vigueur-place">En vigueur / en place</span>
+          </div>
+          <p class="activite-description">Analyses, erreurs d'accès et sources d'images consignées.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Routine nocturne</h3>
+            <span class="etat etat-gele">Gel&eacute; / en attente</span>
+          </div>
+          <p class="activite-description">Les lots planifiés sont suspendus jusqu'à certification.</p>
+          <p class="activite-date">&Eacute;tat au 10/08/2026</p>
+        </div>
+      </div>
+    </section>
+    <!-- CARTE-ACTIVITES:FIN -->
+
+  <p><a class="lien-retour" href="index.html">Retour à l'accueil</a></p>
+
+</main>
+
+<footer><div class="f-in">
+  <a href="en/carte-des-activites.html" hreflang="en" lang="en">English</a>
+  <br>
+  Analyses rédigées à titre d'exercice critique et pédagogique. Aucune ressource
+  externe n'est chargée par ce site ; aucune donnée de lecture n'est transmise à
+  un tiers.
+  <br>
+  Licences : textes CC BY-NC-SA 4.0 · code EUPL 1.2 —
+  <a href="comment-ca-marche.html#licences">détails</a>.
+</div></footer>
+
+</body>
+</html>

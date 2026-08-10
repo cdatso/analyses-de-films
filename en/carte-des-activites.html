@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- source-fr: carte-des-activites.html -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity map — Analyses de films</title>
+<link rel="alternate" hreflang="fr" href="https://www.cdatso.be/analyses-de-films/carte-des-activites.html">
+<link rel="alternate" hreflang="en" href="https://www.cdatso.be/analyses-de-films/en/carte-des-activites.html">
+<link rel="alternate" hreflang="x-default" href="https://www.cdatso.be/analyses-de-films/carte-des-activites.html">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .carte-activites .carte-legende {
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1rem;
+    margin: 0 0 2rem;
+  }
+  .carte-activites .etat {
+    display: inline-block; font-family: var(--sans); font-size: 0.72rem;
+    letter-spacing: 0.02em; padding: 0.18rem 0.55rem; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .carte-activites .etat-en-cours       { background: var(--accent); color: var(--paper); }
+  .carte-activites .etat-en-vigueur-place { background: var(--paper-alt); color: var(--ink); }
+  .carte-activites .etat-termine        { background: var(--ink); color: var(--paper); }
+  .carte-activites .etat-gele           { border: 1px solid var(--line); color: var(--ink-muted); }
+
+  .carte-activites .noeud-central {
+    background: var(--accent); color: var(--paper);
+    padding: 1.5rem 1.7rem; margin: 0 0 2rem;
+  }
+  .carte-activites .noeud-surtitre {
+    font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.85; margin-bottom: 0.5rem;
+  }
+  .carte-activites .noeud-titre {
+    font-family: var(--serif); font-weight: 600; font-size: 1.7rem;
+    line-height: 1.1; margin-bottom: 0.6rem;
+  }
+  .carte-activites .noeud-phrase { margin: 0 0 0.6rem; max-width: 42rem; color: inherit; }
+  .carte-activites .noeud-note {
+    font-family: var(--sans); font-size: 0.78rem; opacity: 0.8;
+  }
+
+  .carte-activites .grappes {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+    gap: 1.4rem; margin-bottom: 1.4rem;
+  }
+  .carte-activites .grappe { border: 1px solid var(--line); }
+  .carte-activites .grappe-entete {
+    padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line);
+  }
+  .carte-activites .grappe-entete h2 {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .grappe-entete p {
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+  }
+  .carte-activites .grappe-items { list-style: none; margin: 0; padding: 0; }
+  .carte-activites .activite {
+    padding: 0.9rem 1.1rem; border-top: 1px solid var(--line);
+  }
+  .carte-activites .grappe-items > .activite:first-child { border-top: none; }
+  .carte-activites .activite-ligne {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 0.8rem; flex-wrap: wrap;
+  }
+  .carte-activites .activite-ligne h3 {
+    font-family: var(--serif); font-size: 0.98rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .activite-description {
+    font-family: var(--sans); font-size: 0.84rem; color: var(--ink-soft);
+    line-height: 1.45; margin: 0.4rem 0 0;
+  }
+  .carte-activites .activite-date {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-muted);
+    margin: 0.4rem 0 0;
+  }
+
+  .carte-activites .run {
+    border: 1px solid var(--line); margin-bottom: 2.2rem;
+  }
+  .carte-activites .run-entete {
+    padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line);
+  }
+  .carte-activites .run-entete h2 {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 0;
+  }
+  .carte-activites .run-entete p {
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+  }
+  .carte-activites .run-grille {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11.5rem, 100%), 1fr));
+  }
+  .carte-activites .run-grille > .activite { border-top: 1px solid var(--line); }
+
+  @media (min-width: 641px) {
+    .carte-activites .run-grille > .activite:not(:first-child) {
+      border-left: 1px solid var(--line);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="qui-sommes-nous.html">Who we are</a>
+      <a href="comment-ca-marche.html">How this site works</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap carte-activites" style="padding-top:3.4rem;padding-bottom:5rem;">
+
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:2.2rem;color:var(--ink);margin:0 0 0.4rem;line-height:1.2;">Activity map</h1>
+  <p style="font-family:var(--sans);font-size:0.9rem;color:var(--ink-muted);margin:0 0 2rem;">The film track — programmes, projects and the recurring, under the mandate
+  of the “Montage Parallèle” squad. On what these three words cover, see
+  <a href="comment-ca-marche.html">how this site works</a>.</p>
+
+<!-- CARTE-ACTIVITES:DEBUT (genere par outils/genere-carte-activites.py) -->
+    <div class="carte-legende" role="note" aria-label="Status legend">
+      <span class="etat etat-en-cours">Ongoing</span>
+      <span class="etat etat-en-vigueur-place">In force / in place</span>
+      <span class="etat etat-termine">Completed</span>
+      <span class="etat etat-gele">On hold</span>
+    </div>
+    <div class="noeud-central">
+      <div class="noeud-surtitre">At the centre</div>
+      <div class="noeud-titre">Analyses de films</div>
+      <p class="noeud-phrase">The film activity carried out with Claude: a public site of critiques and studies, 46 analyses published, 61 pages published in total.</p>
+      <div class="noeud-note">GitHub Pages — analyses-de-films repository</div>
+    </div>
+    <div class="grappes">
+      <section class="grappe">
+        <div class="grappe-entete">
+          <h2>PRG</h2>
+          <p>Programmes — the durable frameworks that govern the work</p>
+        </div>
+        <ul class="grappe-items">
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Site v2 contract</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">The set of verifiable requirements every page of the site must meet.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>AI collaboration charter</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">The rules of collaboration between the squad and its AI capabilities: explicit mandates, human gates, instrument-read timestamps.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Provenance and attribution</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">Several signature regimes; the producing model is never guessed at.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Closed vocabularies</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">The register's categories are chosen from a list, never invented.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Studies track</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">A distinct regime under editorial supervision, outside the critique pipeline.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        </ul>
+      </section>
+      <section class="grappe">
+        <div class="grappe-entete">
+          <h2>Projects</h2>
+          <p>One-off pieces of work, open and closed</p>
+        </div>
+        <ul class="grappe-items">
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Site v2 switch-over</h3>
+            <span class="etat etat-termine">Completed</span>
+          </div>
+          <p class="activite-description">Corpus migration, full acceptance testing, self-hosted typography.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Method-repository alignment</h3>
+            <span class="etat etat-termine">Completed</span>
+          </div>
+          <p class="activite-description">The analysis method brought up to date with the site (static lists).</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Source research</h3>
+            <span class="etat etat-termine">Completed</span>
+          </div>
+          <p class="activite-description">Private source folders, wired in as an optional pipeline step.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Augmented critique</h3>
+            <span class="etat etat-termine">Completed</span>
+          </div>
+          <p class="activite-description">A conclusive prototype, reusable from one mandate to the next.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>English-language site</h3>
+            <span class="etat etat-termine">Completed</span>
+          </div>
+          <p class="activite-description">The /en/ tree is published, with language pairing and the sitemap kept current.</p>
+          <p class="activite-date">As of 5 August 2026</p>
+        </li>
+        <li class="activite">
+          <div class="activite-ligne">
+            <h3>Certification of the overnight routine</h3>
+            <span class="etat etat-gele">On hold</span>
+          </div>
+          <p class="activite-description">The scheduled chain is waiting for its resumption gate.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </li>
+        </ul>
+      </section>
+    </div>
+    <section class="run">
+      <div class="run-entete">
+        <h2>RUN</h2>
+        <p>The recurring — what runs with every publication or on a fixed interval</p>
+      </div>
+      <div class="run-grille">
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Analyses as they come</h3>
+            <span class="etat etat-en-cours">Ongoing</span>
+          </div>
+          <p class="activite-description">A queue picked up in turn, a versioned pipeline, one film at a time.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Pre-publication checks</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">A mechanical battery of checks replayed on push by the repository hook.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Mailbox pickup</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">Requests from the Dropbox mirror carried over into the queue.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Internal logs</h3>
+            <span class="etat etat-en-vigueur-place">In force / in place</span>
+          </div>
+          <p class="activite-description">Analyses, access errors and image sources, all logged.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </div>
+        <div class="activite">
+          <div class="activite-ligne">
+            <h3>Overnight routine</h3>
+            <span class="etat etat-gele">On hold</span>
+          </div>
+          <p class="activite-description">The scheduled batches are suspended pending certification.</p>
+          <p class="activite-date">As of 10 August 2026</p>
+        </div>
+      </div>
+    </section>
+    <!-- CARTE-ACTIVITES:FIN -->
+
+  <p><a class="lien-retour" href="index.html">Back to the home page</a></p>
+
+</main>
+
+<footer><div class="f-in">
+  <a href="../carte-des-activites.html" hreflang="fr" lang="fr">Français</a>
+  <br>
+  Analyses written as an exercise in criticism and teaching. This site loads no
+  external resource; nothing about what you read here is passed to a third
+  party.
+  <br>
+  Licences: text CC BY-NC-SA 4.0 · code EUPL 1.2 —
+  <a href="comment-ca-marche.html#licences">details</a>.
+</div></footer>
+
+</body>
+</html>
