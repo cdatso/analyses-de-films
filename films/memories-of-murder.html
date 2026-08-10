@@ -9,8 +9,12 @@
 <style>
   :root{
     /* Colonne éditoriale 688,8 px -> (688,8 + 51,2) / 16 = 46,25rem.
-       Composé par la formule, à vérifier par sonde locale avant publication. */
-    --mobilier-largeur:46.3rem;
+       Composé par la formule, à vérifier par sonde locale avant publication.
+       Correctif du 10/08/2026 (BKL-CIN-091) : sonde locale mesurée à
+       688,8 px de colonne donne 43rem sans débordement -- la formule
+       compte deux fois le padding du mobilier (.mobilier-wrap hors
+       box-sizing:border-box), écart de -26,4 px constaté au cartouche. */
+    --mobilier-largeur:43rem;
 
     /* Identité « procès-verbal » — papier administratif jauni, encre
        charbon, boue des rizières, et un seul accent : le rouge de tampon,
