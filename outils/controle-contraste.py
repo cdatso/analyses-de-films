@@ -399,6 +399,13 @@ def main():
     if os.path.isfile(accueil):
         pages.append((accueil, "index.html"))
 
+    # Premiere page technique (BKL-CIN-088, arbitrage AH du 10/08, question 10) --
+    # meme patron que l'accueil : la page FR vit a la racine, hors du dossier
+    # films/ et hors du dossier en/, donc invisible aux deux boucles ci-dessus.
+    carte = os.path.join(depot, "carte-des-activites.html")
+    if os.path.isfile(carte):
+        pages.append((carte, "carte-des-activites.html"))
+
     # Arbres de langue (BKL-CIN-085 lot L5). Un arbre non balaye est pire
     # qu'un arbre non traduit : il sort du champ sans que rien ne le dise.
     for langue in ("en",):
