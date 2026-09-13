@@ -40,14 +40,14 @@ secondes après le push du revert n'est **pas** un échec du retour arrière.
 > pré-bascule** au moment du merge, avant même que le push ne soit fait.
 
 ```bash
-git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" revert -m 1 <SHA-DU-MERGE> --no-edit
-git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" push origin main
+git -C "C:/Users/cdats/Claude/CIN/analyses-de-films" revert -m 1 <SHA-DU-MERGE> --no-edit
+git -C "C:/Users/cdats/Claude/CIN/analyses-de-films" push origin main
 ```
 
 **Deuxième filet, indépendant du premier** — le tag `v1-finale` :
 
 ```bash
-git -C "C:/Users/cdats/Claude/Projects/analyses-de-films" push origin 0b0f47698177476e1d59501ab9a61d9906cca316:main --force-with-lease
+git -C "C:/Users/cdats/Claude/CIN/analyses-de-films" push origin 0b0f47698177476e1d59501ab9a61d9906cca316:main --force-with-lease
 ```
 
 *Le SHA est écrit en toutes lettres à dessein : c'est le commit sur lequel pointe le
