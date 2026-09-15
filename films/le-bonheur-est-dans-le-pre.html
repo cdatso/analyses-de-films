@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le cahier de recettes — Le bonheur est dans le pré</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partage, calee sur la colonne editoriale de
+       cette page : main max-width 720px, padding 2 x 1,6rem en
+       border-box -> colonne 668,8 px ; (668,8 + 51,2) / 16 = 45rem. */
+    --mobilier-largeur:45rem;
+
+    /* Palette bespoke : le cahier d'ecolier devenu cahier de recettes
+       d'une ferme du Gers. Couverture bleu ciel d'affiche, papier creme
+       a reglure Seyes, marge rouge, encre violette, vert de pre. */
+    --papier:#f7f1e2;
+    --papier-fonce:#ece3cc;
+    --kraft:#ddcba6;
+    --encre:#2a241d;
+    --encre-douce:#433a30;
+    --encre-pale:#62574a;
+    --violet:#3b2d6e;
+    --pre:#34511f;
+    --marge:#b83a2e;
+    --ciel:#23417a;
+    --ciel-nuit:#182f5c;
+    --ciel-texte:#f5efe0;
+    --ciel-pale:#c9d5ec;
+    --filet:rgba(42,36,29,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background-color:var(--papier);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.72;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ---------- COUVERTURE : le cahier bleu et son etiquette ---------- */
+  header.cahier{
+    background-color:var(--ciel);
+    color:var(--ciel-texte);
+    padding:1.2rem 1.6rem 2.6rem;
+    border-bottom:6px solid var(--ciel-nuit);
+  }
+  .cahier-in{ max-width:720px; margin:0 auto; }
+  .cahier .back-link{
+    display:inline-block;
+    color:var(--ciel-texte);
+    font-family:var(--mono);
+    font-size:0.68rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+  .cahier .back-link:hover{ text-decoration:underline; }
+  .rayon{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ciel-pale);
+    border-bottom:1px solid rgba(245,239,224,0.3);
+    padding-bottom:0.8rem;
+    margin-bottom:1.6rem;
+  }
+
+  .etiquette-cahier{
+    position:relative;
+    background-color:var(--papier);
+    color:var(--encre);
+    border:2px solid var(--ciel-nuit);
+    border-radius:10px;
+    padding:1.6rem 1.8rem 1.7rem;
+    box-shadow:0 12px 26px rgba(0,0,0,0.3);
+  }
+  .etiquette-cahier::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid var(--filet);
+    border-radius:6px;
+    pointer-events:none;
+  }
+  .gommette{
+    position:absolute;
+    top:-0.9rem; right:1.2rem;
+    background-color:var(--marge);
+    color:#fff8ec;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:0.35rem 0.7rem;
+    transform:rotate(3deg);
+  }
+  .ligne-nom{
+    font-family:var(--mono);
+    font-size:0.74rem;
+    color:var(--encre-pale);
+    margin:0 0 0.9rem;
+  }
+  .ligne-nom s{ color:var(--encre-pale); }
+  .ligne-nom b{ color:var(--violet); font-weight:600; }
+  h1.titre{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:800;
+    font-size:clamp(2.1rem, 6.4vw, 3.4rem);
+    line-height:1.05;
+    margin:0 0 0.6rem;
+    color:var(--violet);
+  }
+  .chapeau{
+    font-style:italic;
+    color:var(--encre-douce);
+    font-size:1.02rem;
+    max-width:48ch;
+    margin:0 0 1.4rem;
+  }
+  .couv-media{
+    display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start;
+    border-top:1px dashed var(--encre-pale);
+    padding-top:1.2rem;
+  }
+  .couv-media .poster{ flex:0 0 140px; margin:0; }
+  .couv-media .poster img{ width:100%; display:block; border:1px solid var(--encre-pale); }
+  .ingredients{ flex:1; min-width:200px; margin:0; }
+  .ingredients-titre{
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--pre);
+    margin:0 0 0.5rem;
+  }
+  .ingredients dl{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:0.7rem 1.3rem;
+    margin:0;
+  }
+  .ingredients dt{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--pre);
+  }
+  .ingredients dd{
+    margin:0;
+    font-size:0.88rem;
+    color:var(--encre);
+    border-bottom:1px dotted var(--encre-pale);
+    padding-bottom:0.15rem;
+  }
+  .provenance{
+    margin:1.3rem 0 0;
+    padding:0.75rem 1rem;
+    background-color:var(--papier-fonce);
+    color:var(--encre-douce);
+    border-left:3px solid var(--marge);
+    font-family:var(--mono);
+    font-size:0.74rem;
+    line-height:1.6;
+  }
+  .provenance strong{ color:var(--encre); font-weight:600; }
+
+  /* ---------- SOMMAIRE : les onglets du cahier ---------- */
+  nav.onglets{
+    background-color:var(--kraft);
+    border-bottom:1px solid var(--filet);
+  }
+  nav.onglets .onglets-in{
+    max-width:720px; margin:0 auto; padding:0.7rem 1.6rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem;
+  }
+  nav.onglets a{
+    background-color:var(--papier);
+    color:var(--encre-douce);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    padding:0.28rem 0.6rem;
+    border:1px solid var(--filet);
+    border-bottom:3px solid var(--pre);
+  }
+  nav.onglets a:hover{ border-bottom-color:var(--marge); }
+
+  /* ---------- CORPS : la page reglee, la marge rouge ---------- */
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 1.6rem;
+    background-image:linear-gradient(to right, transparent 0.55rem, rgba(184,58,46,0.55) 0.55rem, rgba(184,58,46,0.55) calc(0.55rem + 1px), transparent calc(0.55rem + 1px));
+  }
+  section.recette{
+    padding:2.8rem 0 2.6rem;
+    border-bottom:1px solid var(--filet);
+  }
+  section.recette:last-of-type{ border-bottom:none; }
+  .recette-tete{ margin-bottom:1.3rem; }
+  .recette-num{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:var(--marge);
+    margin-bottom:0.15rem;
+  }
+  h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:700;
+    font-size:1.62rem;
+    line-height:1.2;
+    margin:0;
+    color:var(--violet);
+    padding-bottom:0.35rem;
+    border-bottom:2px solid var(--violet);
+  }
+  .recette-sous{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    color:var(--encre-pale);
+    margin-top:0.35rem;
+  }
+  h3{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.08rem;
+    color:var(--pre);
+    margin:1.6rem 0 0.5rem;
+  }
+  p{ margin:0 0 1.05rem; font-size:0.98rem; color:var(--encre-douce); }
+  p:last-child{ margin-bottom:0; }
+  em{ color:var(--encre); }
+
+  a.renvoi{
+    color:var(--violet);
+    font-family:var(--mono);
+    font-size:0.74em;
+    text-decoration:none;
+    border-bottom:1px dotted var(--violet);
+    margin-left:0.1em;
+  }
+  a.renvoi:hover{ color:var(--marge); border-bottom-color:var(--marge); }
+
+  .note-marge{
+    font-family:var(--mono);
+    font-size:0.8rem;
+    color:var(--encre-pale);
+    border-left:2px solid var(--marge);
+    padding-left:0.9rem;
+    margin:1.1rem 0;
+  }
+
+  /* fiches de personnages : les cartes-recettes */
+  .fiches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:1rem;
+  }
+  .fiche{
+    background-color:#fffbf1;
+    color:var(--encre-douce);
+    border:1px solid var(--filet);
+    border-top:4px solid var(--pre);
+    padding:0.95rem 1.1rem 1.05rem;
+  }
+  .fiche .nom{
+    display:block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:700;
+    font-size:1.08rem;
+    color:var(--violet);
+  }
+  .fiche .interprete{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--pre);
+    margin-bottom:0.45rem;
+  }
+  .fiche p{ font-size:0.88rem; }
+
+  /* themes : les recettes titrees */
+  .theme{ margin-top:1.5rem; }
+  .theme:first-child{ margin-top:0.4rem; }
+  .theme .intitule{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--pre);
+    border-bottom:2px solid var(--pre);
+    margin-bottom:0.45rem;
+  }
+
+  /* le releve de caisse (chiffres) */
+  .releve{
+    margin:1.5rem 0;
+    background-color:#fffbf1;
+    color:var(--encre);
+    border:1px dashed var(--encre-pale);
+    padding:1rem 1.2rem 1.1rem;
+    font-family:var(--mono);
+  }
+  .releve-titre{
+    display:block;
+    font-size:0.64rem;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--marge);
+    margin-bottom:0.6rem;
+  }
+  .releve ul{ list-style:none; margin:0; padding:0; }
+  .releve li{
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    font-size:0.8rem;
+    border-bottom:1px dotted var(--filet);
+    padding:0.28rem 0;
+    color:var(--encre-douce);
+  }
+  .releve li b{ color:var(--encre); font-weight:600; }
+
+  .citation{
+    margin:1.4rem 0;
+    padding:0.9rem 1.2rem;
+    background-color:var(--papier-fonce);
+    color:var(--encre);
+    border-left:4px solid var(--violet);
+  }
+  .citation p{ font-style:italic; color:var(--encre); margin-bottom:0.4rem; }
+  .citation cite{
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--encre-pale);
+  }
+
+  /* ---------- SOURCES : la page de garde kraft ---------- */
+  section.sources{
+    background-color:var(--kraft);
+    color:var(--encre);
+    padding:3rem 1.6rem 3.6rem;
+    border-top:6px solid var(--ciel);
+  }
+  .sources-in{ max-width:720px; margin:0 auto; }
+  section.sources h2{ color:var(--encre); border-bottom-color:var(--encre); font-size:1.4rem; }
+  .sources-sur{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:600;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    color:var(--encre-douce);
+    margin-bottom:0.3rem;
+  }
+  ol.liste-sources{
+    list-style:none; counter-reset:src; margin:1.4rem 0 0; padding:0;
+    display:grid; gap:0.55rem;
+  }
+  ol.liste-sources li{
+    counter-increment:src;
+    position:relative;
+    padding:0 0 0.55rem 3.2rem;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--encre);
+    border-bottom:1px dashed rgba(42,36,29,0.3);
+  }
+  ol.liste-sources li::before{
+    content:"Ing. " counter(src);
+    position:absolute; left:0; top:0;
+    font-weight:600;
+    font-size:0.66rem;
+    color:var(--encre-douce);
+  }
+  ol.liste-sources a{ color:var(--encre); word-break:break-all; }
+  ol.liste-sources a:hover{ color:var(--ciel); }
+  .sources-note{
+    font-family:var(--mono);
+    font-size:0.74rem;
+    color:var(--encre-douce);
+    margin-top:1.4rem;
+  }
+
+  footer.fin{
+    background-color:var(--papier);
+    color:var(--encre-pale);
+    text-align:center;
+    padding:2rem 1.5rem 3rem;
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  footer.fin a{ color:var(--encre-pale); }
+
+  @media (max-width:600px){
+    header.cahier{ padding:1rem 1rem 2rem; }
+    .etiquette-cahier{ padding:1.4rem 1.1rem 1.3rem; }
+    main{ padding:0 1rem; background-image:none; }
+    section.recette{ padding:2.1rem 0; }
+    nav.onglets .onglets-in{ padding:0.6rem 1rem; }
+    section.sources{ padding:2.4rem 1rem 3rem; }
+    ol.liste-sources li{ padding-left:2.9rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="../qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cahier">
+  <div class="cahier-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="rayon">Cahier de recettes — ferme Thivart, Gers — 106 minutes</div>
+    <div class="etiquette-cahier">
+      <span class="gommette">Vu à la télé</span>
+      <p class="ligne-nom">Nom : <s>Francis Bergeade</s> <b>Michel Thivart</b> · Classe : de Dole (Jura) à Vic-Fezensac (Gers)</p>
+      <h1 class="titre">Le bonheur est dans le pré</h1>
+      <p class="chapeau">Un patron de province acculé emprunte le nom d'un disparu et trouve, dans une ferme gersoise, la recette d'une autre vie — une comédie dont la formule dit autant sur la France de 1995 que sur ses propres angles morts.</p>
+
+      <div class="couv-media">
+        <figure class="poster">
+          <img src="../assets/posters/le-bonheur-est-dans-le-pre.jpg" alt="Affiche du film Le bonheur est dans le pré" onerror="this.closest('.poster').remove()">
+        </figure>
+        <div class="ingredients">
+          <p class="ingredients-titre">Ingrédients — pour un film de 106 minutes</p>
+          <dl>
+            <div><dt>Réalisation</dt><dd>Étienne Chatiliez</dd></div>
+            <div><dt>Scénario</dt><dd>Florence Quentin (et Étienne Chatiliez selon une source)</dd></div>
+            <div><dt>Production</dt><dd>Charles Gassot</dd></div>
+            <div><dt>Sortie en France</dt><dd>6 décembre 1995</dd></div>
+            <div><dt>Photographie</dt><dd>Philippe Welt</dd></div>
+            <div><dt>Montage</dt><dd>Anne Lafarge</dd></div>
+            <div><dt>Musique</dt><dd>Pascal Andreacchio</dd></div>
+            <div><dt>Décors</dt><dd>Denis Barbier</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="provenance"><strong>Provenance.</strong> Analyse produite le 15 septembre 2026 par Claude Opus 5 en session supervisée, sur recherche documentaire sourcée — régime R2 du site. Aucune critique de presse parue à la sortie du film n'a pu être consultée au texte : les jugements d'époque ne sont donc pas cités, et la réception critique repose sur des lectures ultérieures, signalées comme telles.</p>
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R2 &mdash; Critique nouvelle</span>
+  <span class="signature">Analyse faite par IAGen Claude d'Anthropic (Claude Opus 5, session supervisée, supervision humaine).</span>
+  <span class="date-pub">Publi&eacute;e le 15 septembre 2026</span>
+</div>
+</div>
+
+<nav class="onglets" aria-label="Sommaire">
+  <div class="onglets-in">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="recette" id="fiche">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 01</span>
+      <h2>Fiche technique</h2>
+      <span class="recette-sous">la liste des courses</span>
+    </div>
+    <p>
+      <em>Le bonheur est dans le pré</em> est une comédie française réalisée par Étienne Chatiliez, sortie en France le 6 décembre 1995, d'une durée de 106 minutes, tournée en couleur au format 1,85:1<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>. Elle est produite par Charles Gassot pour Téléma, avec France 2 Cinéma, France 3 Cinéma, Canal+ et Les Productions du Champ Poirier, et distribuée en salles par Bac Films<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>. Le budget est donné à 10,2 millions — en euros par JP's Box-Office et Wikipédia en français, en dollars par Wikipédia en anglais ; la monnaie de 1995 étant le franc, le chiffre est de toute façon une conversion<a class="renvoi" href="#src-1" id="ref-1c">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a><a class="renvoi" href="#src-3" id="ref-3b">[3]</a>.
+    </p>
+    <p>
+      Le crédit du scénario diverge selon les sources : Wikipédia en français l'attribue à Étienne Chatiliez et Florence Quentin, tandis que Wikipédia en anglais et la nomination aux César le rattachent à la seule Florence Quentin<a class="renvoi" href="#src-1" id="ref-1d">[1]</a><a class="renvoi" href="#src-2" id="ref-2b">[2]</a><a class="renvoi" href="#src-9" id="ref-9">[9]</a>. C'est la troisième collaboration du tandem, après <em>La vie est un long fleuve tranquille</em> (1988) et <em>Tatie Danielle</em> (1990)<a class="renvoi" href="#src-13" id="ref-13">[13]</a>. L'image est signée Philippe Welt, le montage Anne Lafarge, la musique Pascal Andreacchio, les décors Denis Barbier et les costumes Édith Vesperini<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>.
+    </p>
+    <p>
+      Distribution principale : Michel Serrault (Francis Bergeade), Sabine Azéma (Nicole Bergeade), Carmen Maura (Dolores Thivart), Eddy Mitchell (Gérard), avec Alexandra London, Guilaine Londez, Virginie Darmon, François Morel, Yolande Moreau, Isabelle Nanty, Roger Gicquel, Patrick Bouchitey, Catherine Jacob, Daniel Russo et les frères Éric et Joël Cantona<a class="renvoi" href="#src-1" id="ref-1f">[1]</a>.
+    </p>
+  </section>
+
+  <section class="recette" id="synopsis">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 02</span>
+      <h2>Synopsis</h2>
+      <span class="recette-sous">la préparation, sans dévoiler la cuisson</span>
+    </div>
+    <p>
+      À Dole, Francis Bergeade dirige une petite entreprise de matériel pour W.-C. — de balayettes, précise le reportage télévisé de 1995<a class="renvoi" href="#src-4" id="ref-4">[4]</a><a class="renvoi" href="#src-6" id="ref-6">[6]</a>. Harcelé par le fisc, confronté à la grève de ses ouvrières, négligé par une épouse et une fille qui ne le voient plus, il frôle l'effondrement<a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. Une émission de télévision consacrée aux personnes disparues lui renvoie alors une image inattendue : une famille du Gers y recherche Michel Thivart, parti depuis vingt-six ans, qui lui ressemble trait pour trait<a class="renvoi" href="#src-1" id="ref-1h">[1]</a>.
+    </p>
+    <p>
+      Plutôt que de démentir, Francis endosse l'identité du disparu et part s'installer auprès de Dolores, la veuve présumée, et de ses deux filles, dans une ferme d'élevage de canards où la table, la chaleur et le temps long lui rendent un appétit de vivre<a class="renvoi" href="#src-1" id="ref-1i">[1]</a><a class="renvoi" href="#src-6" id="ref-6b">[6]</a>.
+    </p>
+    <p class="note-marge">Le film réserve à la fin une révélation qui reconfigure toute la supercherie ; elle n'est pas détaillée ici.</p>
+  </section>
+
+  <section class="recette" id="production">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 03</span>
+      <h2>Contexte de production</h2>
+      <span class="recette-sous">d'où vient la recette</span>
+    </div>
+    <p>
+      Chatiliez arrive au long métrage par la publicité : avant ses films, il a signé de nombreux spots télévisés, dont ceux d'Éram, qui lui valent plusieurs récompenses<a class="renvoi" href="#src-8" id="ref-8">[8]</a>. Ses deux premiers longs métrages ont installé une manière — la satire sociale par le choc des milieux — et un public : 4 088 239 entrées pour <em>La vie est un long fleuve tranquille</em>, 2 151 463 pour <em>Tatie Danielle</em><a class="renvoi" href="#src-8" id="ref-8b">[8]</a>. Le titre du troisième vient d'un poème de Paul Fort, « Le Bonheur », dont il reprend le premier vers<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>.
+    </p>
+    <p>
+      Le rôle principal était d'abord destiné à Jean Carmet, mort avant le tournage ; Michel Serrault le remplace<a class="renvoi" href="#src-1" id="ref-1k">[1]</a><a class="renvoi" href="#src-13" id="ref-13b">[13]</a>. Serrault et Eddy Mitchell se retrouvent onze ans après <em>À mort l'arbitre</em> (1984) et deux ans après <em>Ville à vendre</em> (1993), deux films de Jean-Pierre Mocky<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. Le film marque aussi les débuts au cinéma du footballeur Éric Cantona, qui y joue aux côtés de son frère Joël<a class="renvoi" href="#src-1" id="ref-1m">[1]</a><a class="renvoi" href="#src-5" id="ref-5">[5]</a>.
+    </p>
+    <p>
+      Pour la ferme, Chatiliez prospecte d'abord en Dordogne et dans les Landes, puis se tourne en 1994 vers le Gers, où il avait passé des vacances enfant, à Condom ; il aurait visité quelque 300 maisons avant de trouver celle qui domine la campagne, à Biran<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>. Le tournage se déroule de mai à juillet 1995 dans six départements — Gers (Vic-Fezensac, Biran, Eauze), Jura, Rhône, Ain, Loire et Pyrénées-Atlantiques — avec une séquence au restaurant Troisgros de Roanne<a class="renvoi" href="#src-1" id="ref-1o">[1]</a><a class="renvoi" href="#src-7" id="ref-7">[7]</a>. L'usine de Bergeade, elle, est une fabrique désaffectée de Tarare, près de Lyon<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.
+    </p>
+    <div class="citation">
+      <p>« Le Gers c'est une région où l'on trouve le bonheur. »</p>
+      <cite>Étienne Chatiliez, reportage Vent Sud (12-13 Midi-Pyrénées), 16 novembre 1995, archives de l'INA<a class="renvoi" href="#src-6" id="ref-6c">[6]</a></cite>
+    </div>
+  </section>
+
+  <section class="recette" id="structure">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 04</span>
+      <h2>Structure narrative</h2>
+      <span class="recette-sous">l'ordre des étapes</span>
+    </div>
+    <p>
+      Le récit tient en deux temps nettement séparés par un pivot médiatique. Le premier accumule les contrariétés de Francis à Dole — fisc, grève, famille — selon une logique d'étau ; le second, ouvert par l'émission de télévision, transporte le personnage dans le Gers et substitue à l'étau une dilatation<a class="renvoi" href="#src-1" id="ref-1p">[1]</a><a class="renvoi" href="#src-4" id="ref-4c">[4]</a>. Entre les deux, l'écran de télévision fait office de charnière : c'est lui qui fabrique la ressemblance et, avec elle, la possibilité d'une seconde vie<a class="renvoi" href="#src-10" id="ref-10">[10]</a>.
+    </p>
+    <p>
+      La construction ne referme pas pour autant les deux mondes l'un sur l'autre. Le lien avec Dole n'est pas rompu : l'argent découvert dans la nouvelle existence de Francis sert à sauver son entreprise, et la fable d'évasion se double d'un récit de sauvetage, où l'identité d'emprunt finance l'identité quittée<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>. Le film ne choisit donc pas entre les deux vies ; il les fait tenir ensemble, au prix d'un secret.
+    </p>
+  </section>
+
+  <section class="recette" id="miseenscene">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 05</span>
+      <h2>Mise en scène et procédés techniques</h2>
+      <span class="recette-sous">le tour de main</span>
+    </div>
+    <p>
+      Les sources consultées documentent peu le découpage du film ; elles documentent en revanche ses décors, qui en sont l'argument. La ferme de Biran a été choisie pour sa vue sur la campagne, au terme d'une longue prospection ; la place de la mairie et le Café des Sports de Vic-Fezensac servent au marché et au bistrot ; le viaduc et l'usine viennent de la région de Tarare<a class="renvoi" href="#src-1" id="ref-1r">[1]</a><a class="renvoi" href="#src-5" id="ref-5c">[5]</a><a class="renvoi" href="#src-7" id="ref-7b">[7]</a>. Le film oppose ainsi, par le décor avant tout, une usine désaffectée à une campagne choisie comme on choisit un plan d'ensemble : pour ce qu'elle promet au regard.
+    </p>
+    <p>
+      Deux dispositifs tiennent le reste. D'abord la parodie télévisuelle : l'émission fictive « Où es-tu ? », présentée par le personnage qu'incarne Roger Gicquel, décalque <em>Perdu de vue</em>, que TF1 diffusait depuis 1990 et qui réunissait des familles séparées devant des millions de téléspectateurs<a class="renvoi" href="#src-1" id="ref-1s">[1]</a><a class="renvoi" href="#src-10" id="ref-10b">[10]</a>. Ensuite le choc des milieux, que la critique d'Avoir-alire décrit comme une mécanique de contrastes entre stéréotypes sociaux — la manière même de Chatiliez depuis son premier film<a class="renvoi" href="#src-11" id="ref-11">[11]</a>.
+    </p>
+    <p>
+      Le tournage a laissé quelques anecdotes de fabrication : Eddy Mitchell, très myope et sans permis, conduit à l'écran un véhicule piloté par une doublure dissimulée dans le compartiment moteur ; et le panneau d'entrée de Condom, posé pour l'occasion à Vic-Fezensac, a froissé les habitants des deux communes<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>.
+    </p>
+  </section>
+
+  <section class="recette" id="personnages">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 06</span>
+      <h2>Personnages principaux</h2>
+      <span class="recette-sous">les cartes du fichier</span>
+    </div>
+    <div class="fiches">
+      <div class="fiche">
+        <span class="nom">Francis Bergeade</span>
+        <span class="interprete">Michel Serrault</span>
+        <p>Petit patron usé par ses charges, il ne s'enfuit pas : il se laisse reconnaître. Serrault reprend un rôle d'abord destiné à Jean Carmet<a class="renvoi" href="#src-1" id="ref-1u">[1]</a> ; à l'écran, le personnage semble rajeunir à mesure qu'il cesse d'être lui-même.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Nicole Bergeade</span>
+        <span class="interprete">Sabine Azéma</span>
+        <p>L'épouse citadine, que le film prend pour cible — incarnation d'une pruderie datée pour Avoir-alire, femme à humilier et à rééduquer selon la lecture de Le cinéma est politique. Le rôle vaut à Azéma une nomination au César de la meilleure actrice<a class="renvoi" href="#src-9" id="ref-9b">[9]</a><a class="renvoi" href="#src-11" id="ref-11f">[11]</a><a class="renvoi" href="#src-12" id="ref-12">[12]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Gérard</span>
+        <span class="interprete">Eddy Mitchell</span>
+        <p>Concessionnaire automobile et ami fidèle de Francis. Le rôle vaut à Mitchell le César du meilleur acteur dans un second rôle en 1996<a class="renvoi" href="#src-1" id="ref-1v">[1]</a><a class="renvoi" href="#src-9" id="ref-9c">[9]</a>.</p>
+      </div>
+      <div class="fiche">
+        <span class="nom">Dolores Thivart</span>
+        <span class="interprete">Carmen Maura</span>
+        <p>La veuve gersoise qui accueille le revenant. Figure d'abnégation pour Le cinéma est politique, compagne idéale conforme au fantasme masculin pour Avoir-alire ; Maura est nommée au César du second rôle<a class="renvoi" href="#src-9" id="ref-9d">[9]</a><a class="renvoi" href="#src-11" id="ref-11b">[11]</a><a class="renvoi" href="#src-12" id="ref-12b">[12]</a>.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.2rem;">
+      Autour d'eux, une troupe de seconds rôles qui fait beaucoup pour le film : François Morel en comptable, Yolande Moreau en ouvrière, Catherine Jacob, Daniel Russo, et les deux filles Thivart jouées par Guilaine Londez et Virginie Darmon<a class="renvoi" href="#src-1" id="ref-1w">[1]</a>.
+    </p>
+  </section>
+
+  <section class="recette" id="themes">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 07</span>
+      <h2>Thèmes</h2>
+      <span class="recette-sous">quatre recettes titrées</span>
+    </div>
+
+    <div class="theme">
+      <span class="intitule">Le bonheur comme recette</span>
+      <p>Le titre est un vers de comptine, et le film prend l'injonction à la lettre : le bonheur y est un lieu, un repas, une saison. Dans le reportage de 1995, Florence Quentin et Sabine Azéma parlent de petits bonheurs posés côte à côte et d'un tournage heureux<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>. Mais le mot « recette » a un double fond : c'est aussi la formule de Chatiliez, ce choc des stéréotypes que la critique d'Avoir-alire trouve, en 2020, devenue trop visible<a class="renvoi" href="#src-11" id="ref-11c">[11]</a>.</p>
+    </div>
+
+    <div class="theme">
+      <span class="intitule">L'identité d'emprunt, fabriquée par l'écran</span>
+      <p>Francis ne ment pas d'abord : la télévision le désigne. En décalquant <em>Perdu de vue</em>, émission de réconciliation familiale à très forte audience, le film fait du petit écran l'instance qui distribue les identités et les retrouvailles<a class="renvoi" href="#src-10" id="ref-10c">[10]</a>. L'imposture devient une seconde chance que la société du spectacle offre, par erreur, à qui sait la saisir.</p>
+    </div>
+
+    <div class="theme">
+      <span class="intitule">Deux France en regard</span>
+      <p>D'un côté, la ville industrielle du Jura, ses dettes, sa grève et sa famille bourgeoise ; de l'autre, la ferme du Gers, sa table et ses canards. Le cinéma est politique lit cette opposition comme la mise en scène d'une campagne où se rétablirait un ordre « naturel », face à une modernité urbaine corruptrice ; Selenie y voit plutôt une satire mordante de la société de son temps<a class="renvoi" href="#src-12" id="ref-12c">[12]</a><a class="renvoi" href="#src-13" id="ref-13e">[13]</a>. Le film tient les deux lectures ensemble, et c'est là son ambiguïté.</p>
+    </div>
+
+    <div class="theme">
+      <span class="intitule">Les femmes dans la fable</span>
+      <p>C'est le point sur lequel les relectures sont les plus sévères. Le cinéma est politique décrit une représentation « très conservatrice » des rapports entre les sexes, où les ouvrières en grève sont montrées sans revendications et où la violence conjugale est présentée comme salvatrice ; Avoir-alire relève une camaraderie masculine de vestiaire et un rôle féminin façonné par le fantasme<a class="renvoi" href="#src-11" id="ref-11d">[11]</a><a class="renvoi" href="#src-12" id="ref-12d">[12]</a>. La fable du bonheur retrouvé est d'abord celle d'un homme.</p>
+    </div>
+  </section>
+
+  <section class="recette" id="reception">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 08</span>
+      <h2>Réception critique et postérité</h2>
+      <span class="recette-sous">les recettes, et ce qu'on en a dit</span>
+    </div>
+    <p>
+      Le succès public est considérable. JP's Box-Office compte 4 931 618 entrées en France, dont 542 639 en première semaine et 1 124 633 à Paris et en périphérie ; le site Le cinéma est politique avance 4 931 227, écart de quelques centaines d'entrées que cette page ne tranche pas<a class="renvoi" href="#src-3" id="ref-3c">[3]</a><a class="renvoi" href="#src-12" id="ref-12e">[12]</a>. C'est le plus grand succès de Chatiliez à cette date, devant <em>La vie est un long fleuve tranquille</em><a class="renvoi" href="#src-8" id="ref-8c">[8]</a><a class="renvoi" href="#src-13" id="ref-13f">[13]</a>.
+    </p>
+
+    <div class="releve">
+      <span class="releve-titre">Relevé de caisse — France</span>
+      <ul>
+        <li><span>Entrées totales</span><b>4 931 618</b></li>
+        <li><span>Première semaine</span><b>542 639</b></li>
+        <li><span>Paris et périphérie</span><b>1 124 633</b></li>
+        <li><span>Sortie</span><b>6 décembre 1995</b></li>
+      </ul>
+    </div>
+    <p class="note-marge">Chiffres de JP's Box-Office, source [3].</p>
+
+    <p>
+      À la 21<sup>e</sup> cérémonie des César, le 2 mars 1996, Eddy Mitchell remporte le César du meilleur acteur dans un second rôle, face notamment à Jean-Pierre Cassel et Michael Lonsdale<a class="renvoi" href="#src-9" id="ref-9e">[9]</a>. La page de la cérémonie recense sept nominations pour le film — meilleur film, réalisation, scénario, actrice (Sabine Azéma), second rôle féminin (Carmen Maura), second rôle masculin et producteur —, quand la fiche du film et d'autres sources en comptent six, sans la nomination du producteur<a class="renvoi" href="#src-1" id="ref-1x">[1]</a><a class="renvoi" href="#src-9" id="ref-9f">[9]</a><a class="renvoi" href="#src-12" id="ref-12f">[12]</a>. L'année est celle de <em>La Haine</em>, qui emporte le César du meilleur film<a class="renvoi" href="#src-9" id="ref-9g">[9]</a>.
+    </p>
+    <p>
+      La presse de 1995 n'a pas pu être consultée au texte pour cette analyse. Les lectures accessibles sont postérieures et partagées : Selenie, en 2018, salue une comédie satirique aux personnages bien dessinés mais parfois caricaturaux et lui accorde 14/20 ; Jérémy Gallet, pour Avoir-alire en 2020, parle de « situations outrées » et d'un humour « aux accents poujadistes » ; Le cinéma est politique, en 2013, en fait une charge contre sa vision des femmes<a class="renvoi" href="#src-11" id="ref-11e">[11]</a><a class="renvoi" href="#src-12" id="ref-12g">[12]</a><a class="renvoi" href="#src-13" id="ref-13g">[13]</a>.
+    </p>
+    <p>
+      La postérité du film est pourtant solide : Wikipédia le décrit comme rapidement devenu culte, et son titre a inspiré celui de l'émission de téléréalité <em>L'amour est dans le pré</em><a class="renvoi" href="#src-1" id="ref-1y">[1]</a>. À l'étranger, la sortie est tardive — Royaume-Uni en novembre 1996, États-Unis en janvier 1997 — et modeste<a class="renvoi" href="#src-1" id="ref-1z">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+  </section>
+
+  <section class="recette" id="conclusion">
+    <div class="recette-tete">
+      <span class="recette-num">Recette nº 09</span>
+      <h2>Conclusion</h2>
+      <span class="recette-sous">le goût qui reste</span>
+    </div>
+    <p>
+      <em>Le bonheur est dans le pré</em> est un film de publicitaire au meilleur et au pire sens du terme. Au meilleur, parce que Chatiliez sait condenser une société en une image lisible — le patron écrasé, la télévision qui réconcilie, la ferme qui nourrit — et qu'il donne à une troupe d'acteurs exceptionnelle de quoi jouer juste dans l'excès. Au pire, parce que cette lisibilité a un prix : pour que la campagne soit un bonheur, il faut qu'elle soit un décor, et pour que la fable fonctionne, il faut que les femmes y tiennent leur place.
+    </p>
+    <p>
+      Trente ans après, ce qui frappe est moins la satire que le désir qu'elle abrite. Le film attaque la bourgeoisie de province et la télévision des bons sentiments, mais il leur emprunte leur rêve le plus partagé : changer de nom, changer de vie, et que quelqu'un vous attende à table. Près de cinq millions de spectateurs l'ont reconnu. Les relectures récentes ont raison de pointer ce que ce rêve laisse de côté ; elles n'expliquent pas tout à fait pourquoi on continue d'y revenir. La recette tient à ce double mouvement — une comédie qui se moque de la France en lui servant exactement le plat qu'elle attendait.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-in">
+    <span class="sources-sur">Sources consultées</span>
+    <h2>Provenance des ingrédients</h2>
+    <ol class="liste-sources">
+      <li id="src-1">Wikipédia (FR), « Le bonheur est dans le pré » — <a href="https://fr.wikipedia.org/wiki/Le_bonheur_est_dans_le_pr%C3%A9" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Le_bonheur_est_dans_le_pré</a></li>
+      <li id="src-2">Wikipedia (EN), « Happiness Is in the Field » — <a href="https://en.wikipedia.org/wiki/Happiness_Is_in_the_Field" target="_blank" rel="noopener">en.wikipedia.org/wiki/Happiness_Is_in_the_Field</a></li>
+      <li id="src-3">JP's Box-Office, fiche « Le Bonheur est dans le pré » — <a href="https://www.jpbox-office.com/mobile/fichfilm.php?id=3973" target="_blank" rel="noopener">jpbox-office.com/mobile/fichfilm.php?id=3973</a></li>
+      <li id="src-4">AlloCiné, fiche du film (synopsis) — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=13565.html" target="_blank" rel="noopener">allocine.fr/film/fichefilm_gen_cfilm=13565.html</a></li>
+      <li id="src-5">AlloCiné, « Secrets de tournage » — <a href="https://www.allocine.fr/film/fichefilm-13565/secrets-tournage/" target="_blank" rel="noopener">allocine.fr/film/fichefilm-13565/secrets-tournage/</a></li>
+      <li id="src-6">INA, « 1995, le bonheur selon le film Le bonheur est dans le pré » (reportage Vent Sud, 12-13 Midi-Pyrénées, 16 novembre 1995 ; article du 19 juin 2020) — <a href="https://www.ina.fr/ina-eclaire-actu/1995-le-bonheur-selon-le-film-le-bonheur-est-dans-le-pre" target="_blank" rel="noopener">ina.fr/ina-eclaire-actu/1995-le-bonheur-selon-le-film-le-bonheur-est-dans-le-pre</a></li>
+      <li id="src-7">Film France (CNC), « Le Bonheur est dans le pré », lieux de tournage — <a href="https://www.filmfrance.net/en/once-upon-a-time/le-bonheur-est-dans-le-pre-2/" target="_blank" rel="noopener">filmfrance.net/en/once-upon-a-time/le-bonheur-est-dans-le-pre-2/</a></li>
+      <li id="src-8">Wikipédia (FR), « Étienne Chatiliez » — <a href="https://fr.wikipedia.org/wiki/%C3%89tienne_Chatiliez" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Étienne_Chatiliez</a></li>
+      <li id="src-9">Wikipédia (FR), « 21e cérémonie des César » — <a href="https://fr.wikipedia.org/wiki/21e_c%C3%A9r%C3%A9monie_des_C%C3%A9sar" target="_blank" rel="noopener">fr.wikipedia.org/wiki/21e_cérémonie_des_César</a></li>
+      <li id="src-10">Wikipédia (FR), « Perdu de vue » — <a href="https://fr.wikipedia.org/wiki/Perdu_de_vue" target="_blank" rel="noopener">fr.wikipedia.org/wiki/Perdu_de_vue</a></li>
+      <li id="src-11">Jérémy Gallet, « Le bonheur est dans le pré — Étienne Chatiliez — critique », Avoir-alire, 10 décembre 2020 — <a href="https://www.avoir-alire.com/le-bonheur-est-dans-le-pre-etienne-chatiliez-critique" target="_blank" rel="noopener">avoir-alire.com/le-bonheur-est-dans-le-pre-etienne-chatiliez-critique</a></li>
+      <li id="src-12">« Le(ur) bonheur est dans le pré (1995) », Le cinéma est politique, 16 octobre 2013 — <a href="https://www.lecinemaestpolitique.fr/leur-bonheur-est-dans-le-pre-1995/" target="_blank" rel="noopener">lecinemaestpolitique.fr/leur-bonheur-est-dans-le-pre-1995/</a></li>
+      <li id="src-13">Selenie, « Le Bonheur est dans le Pré (1995) », 22 mai 2018 — <a href="https://www.selenie.fr/2018/04/le-bonheur-est-dans-le-pre-1995-de-etienne-chatliez.html" target="_blank" rel="noopener">selenie.fr/2018/04/le-bonheur-est-dans-le-pre-1995-de-etienne-chatliez.html</a></li>
+    </ol>
+    <p class="sources-note">Deux références jugées utiles n'ont pas pu être consultées et ne sont pas citées : la fiche UniFrance du film (accès refusé) et la critique de <em>Variety</em> parue à la sortie (accès payant).</p>
+  </div>
+</section>
+
+<footer class="fin">
+  Cahier compilé à partir de sources publiques consultées le 15 septembre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
