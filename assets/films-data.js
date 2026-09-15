@@ -844,5 +844,22 @@ const FILMS = [
     // Ultra Film et Sicilia Cinematografica, Corona Filmproduktion).
     pays: ['France', 'Italie', 'Allemagne'],
     technique: ['n&b']
+  },
+  {
+    slug: 'le-bonheur-est-dans-le-pre',
+    title: 'Le bonheur est dans le pré',
+    director: 'Étienne Chatiliez',
+    year: 1995,
+    summary: "Un patron acculé emprunte le nom d'un disparu et trouve au fond du Gers la recette d'une autre vie — une comédie qui se moque de la France en lui servant exactement le plat qu'elle attendait.",
+    url: 'films/le-bonheur-est-dans-le-pre.html',
+    poster: 'assets/posters/le-bonheur-est-dans-le-pre.jpg',
+    volet: 'critique',
+    datePublication: '2026-09-15 20:19',
+    // genreBase : 'comedie' — valeur du vocabulaire fermé ; le film est une
+    // comédie satirique, aucune escalade P-12 (BKL-CIN-094).
+    genreBase: 'comedie',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['France'],
+    technique: ['couleur']
   }
 ];
