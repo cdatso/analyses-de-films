@@ -522,6 +522,8 @@ const FILMS = [
     producteur: 'Claude Sonnet 5 (pipeline, routine nocturne)',
     // --- schema v2 (annexe B) -- retrofit BKL-065-5, 22/07/2026 ---
     volet: 'critique',
+    // À LA UNE — promotion éditoriale d'AH (SPEC-SITE-V2 P-06 bis), 15/09/2026, BKL-CIN-095.
+    promotion: true,
     datePublication: '2026-07-21 11:13',
     genreBase: 'polar',
     pays: ['France', 'Italie'],
@@ -638,11 +640,6 @@ const FILMS = [
     poster: 'assets/posters/dogville.jpg',
     // --- schema v2 (annexe B) ---
     volet: 'critique',
-    // DÉMONSTRATION — accueil-deux-cartes (BKL-CIN, 30/07/2026) : valeur
-    // posée pour la capture « avec promue » remise à AH, PAS un choix
-    // éditorial. À retirer, garder ou déplacer sur un autre film à la
-    // relecture — le merge est le gate d'AH (mandat §5).
-    promotion: true,
     datePublication: '2026-07-27 18:14',
     genreBase: 'drame',
     producteur: 'Claude Fable 5 (session supervisée)',
