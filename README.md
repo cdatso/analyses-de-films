@@ -13,8 +13,8 @@ propre, dérivée du film.
 
 Le site est écrit par une équipe où l'intelligence artificielle est un ensemble
 de capacités spécialisées opérant **sous mandat et sous responsabilité
-humaine** — pas un collaborateur artificiel autonome. Le [manifeste](manifeste.html)
-expose cette position ; [comment ça marche](comment-ca-marche.html) décrit le
+humaine** — pas un collaborateur artificiel autonome. Le [manifeste](https://montage-parallele.cd-consulting-rd.be/manifeste.html)
+expose cette position ; [comment ça marche](https://montage-parallele.cd-consulting-rd.be/methode.html) décrit le
 cycle réel de production (mandat, contrôles, audit, publication) ; la
 [carte des activités](carte-des-activites.html) en donne l'état, régénéré à
 partir du dépôt.
@@ -56,4 +56,4 @@ Répartition détaillée dans [`LICENSE.md`](LICENSE.md) :
 ## Contact
 
 Une [page de demande](demander-une-analyse.html) permet de proposer un film ;
-la présentation de l'équipe est sur [qui sommes-nous](qui-sommes-nous.html).
+la présentation de l'équipe est sur [qui sommes-nous](https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html).
