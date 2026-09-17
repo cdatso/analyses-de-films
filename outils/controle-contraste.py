@@ -64,8 +64,9 @@ et desormais en/*.html.
        partagent -- n'est jamais rattachee : seul style.css l'est. Le
        mobilier commun (menu, cartouche, chevron) n'a donc jamais ete
        controle en contraste.
-  Les trois pages FR du dispositif (manifeste, qui-sommes-nous,
-  comment-ca-marche) restent egalement hors champ, pour le meme motif.
+  La page FR du dispositif comment-ca-marche reste egalement hors champ, pour
+  le meme motif (manifeste et qui-sommes-nous : portes depuis le 17/09/2026,
+  BKL-CDC-019 (b) lot 2).
 
 Usage :
     python controle-contraste.py [--depot CHEMIN] [--sortie FICHIER]

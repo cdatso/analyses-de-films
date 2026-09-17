@@ -29,12 +29,13 @@ DOSSIER_RESULTATS = os.path.join(ICI, "resultats")
 
 BASE = os.environ.get("RECETTE_BASE", "http://127.0.0.1:8765")
 
-# Les 6 pages du menu v2 (SPEC-SITE-V2 P-02, nommage gate du 21/07 17h31).
+# Les 5 pages du menu v2 (SPEC-SITE-V2 P-02, nommage gate du 21/07 17h31).
+# qui-sommes-nous.html retiree le 17/09/2026 (BKL-CDC-019 (b) lot 3) : devenue
+# porte au lot 2, son entree de menu est le lien externe M2.
 PAGES_MENU = [
     "index.html",
     "critiques.html",
     "etudes.html",
-    "qui-sommes-nous.html",
     "comment-ca-marche.html",
     "demander-une-analyse.html",
 ]
@@ -58,7 +59,7 @@ def pages_films():
 
 
 def pages_toutes():
-    """Les 6 pages de menu + toutes les pages d'analyse."""
+    """Les 5 pages de menu + toutes les pages d'analyse."""
     return PAGES_MENU + pages_films()
 
 

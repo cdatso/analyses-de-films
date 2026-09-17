@@ -18,6 +18,11 @@ d'inclusion -- tous les *.html du depot, hors des repertoires .git,
 _scratch, outils, assets, docs. Implicite, elle ferait signaler une
 publication valide comme une derive.
 
+Amendement BKL-CDC-019 (b) lot 3, 17/09/2026 : sont aussi exclues les pages
+dont le contenu porte http-equiv="refresh". Ce sont les portes permanentes
+(P-32) posees au lot 2 vers montage-parallele.cd-consulting-rd.be : servies
+pour ne rien casser, elles ne sont plus des pages publiees du site.
+
 Ordre de sortie : reproduit celui du fichier existant -- racine, puis
 films/, puis en/ (PRIORITE_REPERTOIRES) -- alphabetique a l'interieur de
 chaque repertoire. Tout autre repertoire non exclu (structure future) est
@@ -41,6 +46,10 @@ BASE_URL = "https://www.cdatso.be/analyses-de-films/"
 # HTML non publie du depot -- verifie present le 10/08/2026, couvert par
 # cette exclusion.
 EXCLUS = set(["_scratch", ".git", "outils", "assets", "docs"])
+
+# Portes permanentes (BKL-CDC-019 (b) lot 3, 17/09/2026) : une page dont le
+# contenu porte ce marqueur redirige (P-32) ; elle sort du sitemap.
+PORTE = 'http-equiv="refresh"'
 
 # Ordre reproduit du sitemap existant (voir docstring). Un repertoire
 # nouveau, non exclu et absent d'ici, est inclus quand meme -- ajoute apres
@@ -78,7 +87,8 @@ def repertoires_html(depot):
             sousrepertoires[:] = []
             continue
         sousrepertoires[:] = sorted(d for d in sousrepertoires if d not in EXCLUS)
-        noms = sorted(f for f in fichiers if f.endswith(".html"))
+        noms = sorted(f for f in fichiers if f.endswith(".html")
+                      and PORTE not in lire(os.path.join(racine, f)))
         if noms:
             par_repertoire[rel] = noms
     return par_repertoire

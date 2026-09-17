@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: ascii -*-
+# OBSOLETE depuis le 17/09/2026 (BKL-CDC-019 (b) lot 3, reponse d'AH (a)) :
+# outil HISTORIQUE du retrofit v2 (BKL-065-3 / BKL-065-5), garde tel qu'il a
+# servi. Sa constante MENU decrit le menu pose en juillet 2026, pas le menu
+# courant (M2 : lien externe "Montage Parallele"). Ne pas le rejouer.
 """migre-page-v2.py -- migration d'une page d'analyse vers le gabarit v2.
 
 Ecrit pour le prototype BKL-065-3 (lot de 3 pages), ETENDU pour le retrofit de

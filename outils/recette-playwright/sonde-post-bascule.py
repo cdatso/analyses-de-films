@@ -8,7 +8,7 @@ le gate, pas ecrites dans l'urgence. Verdict attendu en ~2 minutes.
 Ce qu'elle verifie, et rien d'autre -- ce sont exactement les criteres de
 FALLBACK IMMEDIAT de la garantie 4 :
   1. les 34 URLs de l'annexe A repondent 200 ;
-  2. les 5 pages du menu v2, qui n'existaient pas avant la bascule, aussi ;
+  2. les 4 pages du menu v2, qui n'existaient pas avant la bascule, aussi ;
   3. la feuille de mobilier, la feuille de fontes et les fontes elles-memes
      sont SERVIES (une page nue ou une typographie de repli = fallback) ;
   4. trois pages temoins rendent leur structure : menu, cartouche, corps.
@@ -36,7 +36,7 @@ import harnais  # noqa: E402
 BASE_PUBLIQUE = "https://www.cdatso.be/analyses-de-films"
 ANNEXE_A = os.path.join(harnais.DOSSIER_DOCS, "recette-v2-annexe-A-regeneree.md")
 
-PAGES_MENU_V2 = ["critiques.html", "etudes.html", "qui-sommes-nous.html",
+PAGES_MENU_V2 = ["critiques.html", "etudes.html",
                  "comment-ca-marche.html", "demander-une-analyse.html"]
 
 TEMOINS = ["index.html", "films/pandora.html", "films/le-golem.html"]
@@ -70,7 +70,7 @@ def main():
     ap.add_argument("--public", action="store_true",
                     help="interroge le site EN LIGNE")
     ap.add_argument("--avant", action="store_true",
-                    help="AVANT la bascule : les 5 pages du menu v2 "
+                    help="AVANT la bascule : les 4 pages du menu v2 "
                          "n'existent pas encore et ne sont pas attendues")
     ap.add_argument("--base", default=None)
     args = ap.parse_args()
