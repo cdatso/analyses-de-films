@@ -50,6 +50,7 @@ const VOCABULAIRES = {
     'comedie',
     'documentaire',
     'drame',
+    'experimental',
     'fantastique',
     'fresque',
     'gothique',
@@ -77,6 +78,13 @@ const VOCABULAIRES = {
    * de la publication de la fiche, entrée rétrofittée (thriller → gothique)
    * sur l'entrée `rebecca`, seule concernée (aucune autre entrée du site
    * n'emploie encore ce terme). */
+
+  /* AJOUT DU 21/09/2026 (GATE AH « A, ajoute experimental », prononcé dans
+   * la fenêtre de la session CIN-100) — escalade P-12 ouverte par l'Étude
+   * Ballet mécanique (1924) : aucune des treize valeurs ne nommait un film
+   * experimental non narratif ; `experimental` inscrit dans ce commit,
+   * distinct de la publication de la fiche, orthographe ASCII non accentuee
+   * comme les autres valeurs. Aucune entree existante n'est retrofittee. */
 
   /* Attributs techniques — liste fermée arrêtée par la spec (§4.2). */
   technique: ['muet', 'n&b', 'couleur'],
