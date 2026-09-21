@@ -858,5 +858,23 @@ const FILMS = [
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['France'],
     technique: ['couleur']
+  },
+  {
+    slug: 'le-chateau-ambulant',
+    title: 'Le Château ambulant',
+    director: 'Hayao Miyazaki',
+    year: 2004,
+    summary: "Une maison qui n'a pas de forme, une héroïne dont le visage suit la confiance qu'elle se porte : Miyazaki fait du désordre son sujet, et refuse jusqu'au bout de le remettre en ordre.",
+    url: 'films/le-chateau-ambulant.html',
+    poster: 'assets/posters/le-chateau-ambulant.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-098 lot D, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date d'adoption au site (décision d'AH du 20/09/2026) ;
+    // produite par la chaîne pilote le 2026-09-19 00:19 (commit pilote 4d6ffbf).
+    datePublication: '2026-09-21 07:29',
+    genreBase: 'fantastique',
+    producteur: 'Claude Opus 5 (chaîne pilote automatique, adoptée)',
+    pays: ['Japon'],
+    technique: ['couleur']
   }
 ];

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le cadran de la porte — Le Château ambulant</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page. La colonne mesure 42rem MOINS ses deux marges de 1,4rem
+       (box-sizing: border-box), soit 39,2rem = 627,2 px ; la formule de
+       l'étape 3.1 donne (627,2 + 51,2) / 16 = 42,4rem — le mobilier ajoute
+       lui-même 2 x 1,6rem de marge intérieure, et retombe donc exactement
+       sur 39,2rem de texte. Vérifié à la source (mobilier.css l. 61-65)
+       avant publication. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — le cadran de la porte de Hauru : quatre crans de
+       couleur qui ouvrent sur quatre mondes, et la nuit étoilée de l'affiche.
+       Contrastes composés au-dessus de 4,5:1 pour tout texte courant. */
+    --nuit:#10203a;
+    --nuit-profond:#0a1524;
+    --nuit-voile:rgba(16,32,58,0.08);
+    --papier:#f2ece0;
+    --papier-creux:#e6ddcb;
+    --encre:#16202e;
+    --encre-douce:#333f4f;
+    --encre-pale:#555f6e;
+    --laiton:#c08a3e;
+    --laiton-sombre:#8a5f22;
+    --colline:#46602f;
+    --calcifer:#a83c1a;
+    --filet:rgba(22,32,46,0.20);
+    --filet-tenu:rgba(22,32,46,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 12% 0%, rgba(16,32,58,0.06), transparent 44%),
+      radial-gradient(ellipse at 92% 100%, rgba(192,138,62,0.09), transparent 46%),
+      var(--papier);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé
+     (mobilier.css l. 69-73), et une feuille bespoke ne la redéfinit pas —
+     c'est exactement le défaut corrigé au gate du 22/07/2026. L'ossature de
+     cette page porte ses propres conteneurs (`.cover-in`, `.toc-inner`,
+     `main`, `.sources-inner`), tous calés sur la même colonne de 42rem. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--laiton-sombre);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--calcifer); }
+
+  /* ---------- COUVERTURE — la nuit et la colline ---------- */
+  header.cover{
+    position:relative;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(192,138,62,0.18), transparent 38%),
+      linear-gradient(to bottom, var(--nuit-profond) 0%, var(--nuit) 62%, #15304a 100%);
+    color:var(--papier);
+    border-bottom:5px solid var(--laiton);
+    overflow:hidden;
+  }
+  header.cover::after{
+    /* Crête de colline — trait unique, pas d'image, pas de requête. */
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:2.6rem;
+    background:linear-gradient(to top, var(--colline), rgba(70,96,47,0));
+    opacity:0.55;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.6rem; }
+
+  .enseigne{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--laiton);
+    margin-bottom:1.6rem;
+  }
+  header.cover .back-link{ color:rgba(242,236,224,0.72); }
+  header.cover .back-link:hover{ color:var(--laiton); }
+
+  /* Le cadran : quatre crans de couleur, dessinés en CSS. */
+  .cadran{ display:flex; gap:0.42rem; align-items:center; margin:0 0 1.1rem; }
+  .cran{ width:1.35rem; height:1.35rem; border:1px solid rgba(242,236,224,0.5); border-radius:2px; }
+  .cran-n{ background:#1b1b1b; }
+  .cran-b{ background:#2f5f92; }
+  .cran-r{ background:#b0361a; }
+  .cran-v{ background:#4d7a36; }
+  .cran-legende{
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:rgba(242,236,224,0.62); margin-left:0.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:rgba(242,236,224,0.86);
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--laiton);
+    margin:0 0 1.2rem;
+  }
+
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(242,236,224,0.28);
+    box-shadow:0 10px 26px rgba(5,10,20,0.45);
+  }
+  dl.identite{ margin:0; flex:1 1 15rem; min-width:13rem; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px solid rgba(242,236,224,0.14);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--laiton); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:rgba(242,236,224,0.93); }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--laiton);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha — une paire en rgba()
+       s'y compte comme un écart certain. Ratio mesuré ici : 13,4:1. */
+    background:#16273f;
+    color:#f2ece0;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--papier-creux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--encre-douce); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--calcifer); border-bottom-color:var(--calcifer); }
+
+  /* ---------- CORPS ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .cran-head{ margin:0 0 0.9rem; padding-bottom:0.45rem; border-bottom:2px solid var(--filet); }
+  .cran-num{
+    display:block; font-family:var(--mono); font-size:0.63rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--laiton-sombre);
+    margin-bottom:0.22rem;
+  }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0; color:var(--encre);
+  }
+  .cran-sous{ font-weight:400; font-size:0.95rem; color:var(--encre-pale); }
+  section.block p{ margin:0 0 1.05rem; color:var(--encre-douce); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--calcifer); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .exergue{
+    margin:1.5rem 0; padding:0.95rem 1.15rem;
+    border-left:3px solid var(--colline);
+    background:rgba(70,96,47,0.07);
+    font-size:0.98rem; color:var(--encre-douce);
+  }
+  .exergue .qui{
+    display:block; margin-top:0.5rem;
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.07em;
+    text-transform:uppercase; color:var(--encre-pale);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--encre-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--nuit); color:var(--papier); margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:rgba(242,236,224,0.9); }
+  ol.source-list a{ color:var(--laiton); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--encre-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--encre-douce); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.2rem; }
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="enseigne">Une porte, quatre crans, quatre mondes</div>
+
+    <div class="cadran" aria-hidden="true">
+      <span class="cran cran-n"></span>
+      <span class="cran cran-b"></span>
+      <span class="cran cran-r"></span>
+      <span class="cran cran-v"></span>
+      <span class="cran-legende">Le cadran de la porte</span>
+    </div>
+
+    <h1 class="titre">Le Château ambulant</h1>
+    <p class="titre-original"><em>Hauru no ugoku shiro</em> &mdash; <em>Howl&rsquo;s Moving Castle</em></p>
+    <p class="sous-titre">Une maison qui marche sans avoir de forme, une héroïne dont le visage change avec la confiance qu'elle se porte&nbsp;: Miyazaki fait du désordre lui-même le sujet du film, et refuse jusqu'au bout de le remettre en ordre.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/le-chateau-ambulant.jpg"
+             alt="Affiche du film Le Château ambulant"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+      <dl class="identite">
+        <div><dt>Réalisation</dt><dd>Hayao Miyazaki</dd></div>
+        <div><dt>Scénario</dt><dd>Hayao Miyazaki, d'après Diana Wynne Jones</dd></div>
+        <div><dt>Année</dt><dd>2004</dd></div>
+        <div><dt>Durée</dt><dd>119 minutes</dd></div>
+        <div><dt>Production</dt><dd>Toshio Suzuki, Studio Ghibli</dd></div>
+        <div><dt>Musique</dt><dd>Joe Hisaishi</dd></div>
+        <div><dt>Pays</dt><dd>Japon</dd></div>
+        <div><dt>Distribution</dt><dd>Toho (Japon)</dd></div>
+      </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 19 septembre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 21 septembre 2026 par Christo Datso.
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Opus 5, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 21 septembre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 01 &mdash; noir</span>
+      <h2>Fiche technique <span class="cran-sous">— l'état civil de la maison</span></h2>
+    </div>
+    <p>
+      <em>Le Château ambulant</em> (<em>Hauru no ugoku shiro</em>) est un long métrage d'animation japonais écrit et réalisé par Hayao Miyazaki, produit par Toshio Suzuki pour le Studio Ghibli et distribué au Japon par Toho<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>. Le film adapte <em>Le Château de Hurle</em>, roman de la britannique Diana Wynne Jones paru en 1986<a class="renvoi" href="#src-1" id="ref-1b">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a>.
+    </p>
+    <p>
+      La musique est signée Joe Hisaishi, avec une contribution de Yumi Kimura&nbsp;; la durée est de 119 minutes<a class="renvoi" href="#src-1" id="ref-1c">[1]</a><a class="renvoi" href="#src-3" id="ref-3b">[3]</a>. Les voix japonaises principales sont celles de Chieko Baishō (Sophie), Takuya Kimura (Hauru) et Akihiro Miwa (la Sorcière des Landes)<a class="renvoi" href="#src-1" id="ref-1d">[1]</a><a class="renvoi" href="#src-2" id="ref-2b">[2]</a>. Le budget est estimé à 24 millions de dollars<a class="renvoi" href="#src-2" id="ref-2c">[2]</a>.
+    </p>
+    <p>
+      Le film est présenté en compétition à la Mostra de Venise le 5 septembre 2004, sort au Japon le 20 novembre 2004 et en France le 12 janvier 2005<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>. <em>Divergence de sources relevée et non tranchée</em>&nbsp;: la fiche Wikidata donne le 5 novembre 2004 comme date de sortie japonaise, quand la notice francophone retient le 20 novembre — l'écart tient vraisemblablement à la distinction entre avant-première et sortie nationale, et l'année 2004 est confirmée par les deux<a class="renvoi" href="#src-1" id="ref-1f">[1]</a><a class="renvoi" href="#src-3" id="ref-3c">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 02 &mdash; bleu</span>
+      <h2>Synopsis <span class="cran-sous">— ce qui arrive à Sophie</span></h2>
+    </div>
+    <p>
+      Sophie est modiste dans une ville d'un royaume où la magie et les machines du début du XX<sup>e</sup> siècle cohabitent sans se gêner. Timide, résignée à sa boutique, elle croise un jour le magicien Hauru, puis la Sorcière des Landes, qui entre dans l'atelier et la frappe d'un sortilège&nbsp;: la jeune fille se réveille vieille femme<a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>.
+    </p>
+    <p>
+      Incapable de dire son sort à quiconque, elle quitte la ville et trouve refuge dans le château ambulant de Hauru — un assemblage de tôles, de tuyaux et de pattes mécaniques qui traverse les landes. Elle s'y installe comme femme de ménage et prend en charge Calcifer, le démon du feu qui fait marcher la maison<a class="renvoi" href="#src-5" id="ref-5">[5]</a>. Pendant ce temps, deux royaumes entrent en guerre, et l'on réclame Hauru au combat.
+    </p>
+    <p class="discretion">La nature exacte du pacte qui lie Hauru à Calcifer, et la manière dont le sortilège de Sophie se dénoue, ne sont pas détaillées ici&nbsp;: le film en fait son ressort final.</p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 03 &mdash; rouge</span>
+      <h2>Contexte de production <span class="cran-sous">— un film repris en route</span></h2>
+    </div>
+    <p>
+      Le projet ne devait pas revenir à Miyazaki. La réalisation avait d'abord été confiée à Mamoru Hosoda, venu de la Toei&nbsp;; il quitte le film après que les cadres du Studio Ghibli eurent écarté une grande partie de ses propositions, et le projet reste en suspens jusqu'à ce que Miyazaki le reprenne<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. Le fait est loin d'être anecdotique&nbsp;: <em>Le Château ambulant</em> est, dès sa genèse, un film qui a changé de mains et de forme — ce que son sujet, littéralement, met en scène.
+    </p>
+    <p>
+      Miyazaki aborde le tournage dans une colère politique explicite. Opposé à l'invasion de l'Irak par les États-Unis en 2003, il déclare avoir éprouvé « une grande rage » à propos de cette guerre et s'attendre à ce que le film soit mal reçu aux États-Unis<a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. La guerre du film, qui n'a ni cause exposée ni camp défendable, procède de là.
+    </p>
+    <p>
+      Techniquement, le film est un point d'aboutissement pour le studio&nbsp;: dessin manuel numérisé et infographie s'y marient sans que la couture se voie, ce que la critique relève comme l'apogée technique de Ghibli au sortir du <em>Voyage de Chihiro</em><a class="renvoi" href="#src-2" id="ref-2f">[2]</a><a class="renvoi" href="#src-5" id="ref-5b">[5]</a>. Diana Wynne Jones, elle, n'a pas participé à la fabrication&nbsp;: elle a estimé que le film serait « très différent du livre », et que c'était bien ainsi<a class="renvoi" href="#src-2" id="ref-2g">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 04 &mdash; vert</span>
+      <h2>Structure narrative <span class="cran-sous">— deux films dans un</span></h2>
+    </div>
+    <p>
+      L'analyse de Matthieu Ruard propose une lecture que le film soutient bien&nbsp;: il y a « deux films dans <em>Le Château ambulant</em> ». Le premier est une guerre entre nations, avec ses machines volantes et ses bombardements&nbsp;; il est délibérément maintenu en retrait. Le second, le seul qui compte vraiment, suit la transformation intérieure de Sophie<a class="renvoi" href="#src-5" id="ref-5c">[5]</a>.
+    </p>
+    <p>
+      Cette hiérarchie explique ce qu'on a souvent reproché au film — son intrigue jugée décousue dans son dernier tiers. Le récit ne progresse pas par résolution de conflit&nbsp;: il progresse par déplacement. Le château avance, la porte tourne d'un cran, le décor change entièrement. La Cinémathèque française décrit justement le film comme « une sorte de jeu avec les styles qui surprend le spectateur&nbsp;: chaque fois qu'une porte s'ouvre, le décor change complètement »<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>.
+    </p>
+    <p>
+      Le cadran à quatre couleurs posé au seuil de la maison est donc le vrai schéma narratif du film&nbsp;: un dispositif qui met quatre mondes à égale distance, sans en désigner un comme le monde réel. On ne passe pas d'un acte au suivant&nbsp;; on tourne une molette.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 05 &mdash; la marche</span>
+      <h2>Mise en scène <span class="cran-sous">— une architecture sans forme propre</span></h2>
+    </div>
+    <p>
+      Le château est l'objet de mise en scène le plus remarquable du film, et sa description la plus juste reste celle de Ruard&nbsp;: « gigantesque architecture faite de bric et de broc, le château est un assemblage complexe revêtant différentes apparences sans en avoir une propre »<a class="renvoi" href="#src-5" id="ref-5d">[5]</a>. C'est une maison qui ne se laisse pas dessiner en plan. Elle se dandine, elle crache, elle boite&nbsp;; elle perd des morceaux et en gagne d'autres.
+    </p>
+    <p>
+      Miyazaki en tire une animation fluide et inventive, saluée pour sa palette et pour son passage constant entre paysages réalistes et paysages oniriques<a class="renvoi" href="#src-6" id="ref-6">[6]</a>. La presse française a insisté sur ce même point&nbsp;: Télérama décrit un film « fluide, débordant de trouvailles ébouriffantes, entre l'esthétique rétro-futuriste et la limpidité »<a class="renvoi" href="#src-7" id="ref-7">[7]</a>.
+    </p>
+    <div class="exergue">
+      « Cœur volé et mis à nu du merveilleux selon Miyazaki&nbsp;: pur affect qui fait battre le monde. »
+      <span class="qui">Vincent Malausa, Les Cahiers du cinéma<a class="renvoi" href="#src-7" id="ref-7b">[7]</a></span>
+    </div>
+    <p>
+      La formule vise juste&nbsp;: le film ne cherche pas à justifier son merveilleux, il le donne comme un battement. C'est aussi ce qui le rend déroutant pour qui attend une mécanique d'intrigue — et c'est le cœur du désaccord critique décrit plus bas.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 06 &mdash; les visages</span>
+      <h2>Personnages <span class="cran-sous">— un visage qui suit l'estime de soi</span></h2>
+    </div>
+    <p>
+      Sophie est l'invention de mise en scène la plus radicale du film, et elle tient à un détail que beaucoup de spectateurs ne remarquent pas au premier visionnage&nbsp;: son âge n'est pas stable. Le sortilège ne la fige pas à quatre-vingt-dix ans&nbsp;; son apparence fluctue au fil des plans, selon sa confiance et sa détermination — « elle se montre plus vivace et enthousiaste sous sa forme âgée que jeune », note Ruard<a class="renvoi" href="#src-5" id="ref-5e">[5]</a>. Le maléfice est moins une malédiction qu'un révélateur photographique de son état intérieur.
+    </p>
+    <p>
+      Miyazaki en a fait un pari assumé. Il a lui-même souligné que les vieilles femmes ne sont que rarement autorisées à occuper l'écran comme Sophie l'occupe ici, ce qui rendait le projet risqué<a class="renvoi" href="#src-2" id="ref-2h">[2]</a>. La critique universitaire a prolongé le constat&nbsp;: Elizabeth Parsons soutient que le film renverse le stéréotype du « manque d'attrait de la vieillesse », les actes de Sophie étant présentés comme puissants et héroïques<a class="renvoi" href="#src-2" id="ref-2i">[2]</a>.
+    </p>
+    <p>
+      Hauru, lui, est l'exact inverse&nbsp;: un personnage qui n'a que des apparences. Beau, lâche, capricieux, capable de se dissoudre en oiseau de guerre jusqu'à ne plus pouvoir redevenir humain, il est la version douloureuse du même thème — celui qui ne tient pas sa forme finit par la perdre. Autour d'eux, Calcifer, le démon du feu qui fait marcher la maison, et la Sorcière des Landes, déchue puis recueillie, ferment un dispositif où personne n'est puni.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 07 &mdash; la guerre absente</span>
+      <h2>Thèmes <span class="cran-sous">— pacifisme, âge, métamorphose</span></h2>
+    </div>
+    <p>
+      La guerre du film est remarquable par ce qu'elle ne montre pas. On ne sait pas pourquoi elle a lieu, on ne sait pas qui la gagne, on ne voit aucun chef la décider. Traitée au minimum, elle devient « un concept opaque et presque abstrait »<a class="renvoi" href="#src-5" id="ref-5f">[5]</a> — ce qui, loin de l'affaiblir, en fait un propos&nbsp;: une guerre dont on ne peut rien dire est une guerre absurde. Miyazaki, furieux de l'Irak, choisit exactement de ne pas la dramatiser<a class="renvoi" href="#src-2" id="ref-2j">[2]</a>.
+    </p>
+    <p>
+      Il faut noter, par honnêteté, que ce choix n'a pas convaincu tout le monde. Audrey Jeamart relève que le conflit reste « en filigrane » et que « la dénonciation n'est cependant pas très appuyée »<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>. Le reproche est recevable&nbsp;: à force de refuser la démonstration, le film laisse le pacifisme à l'état d'atmosphère.
+    </p>
+    <p>
+      Le second thème, la vieillesse, fonctionne à l'opposé&nbsp;: il est traité frontalement, et il est joyeux. Sophie vieille est plus libre que Sophie jeune. Elle parle, elle décide, elle prend des risques. Le film y trouve sa proposition la plus nette — ce n'est pas l'âge qui enferme, c'est le regard qu'on porte sur soi — et Jeamart résume bien le mouvement&nbsp;: « sa timidité est remplacée par de l'audace »<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>.
+    </p>
+    <p>
+      Reste le troisième, qui les relie&nbsp;: rien, dans ce film, n'a de forme fixe. Ni la maison, ni le visage de l'héroïne, ni le corps du magicien, ni le décor derrière la porte. Le seul élément stable est le feu qui fait marcher l'ensemble — et il est, lui aussi, un pacte à défaire.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 08 &mdash; l'accueil</span>
+      <h2>Réception <span class="cran-sous">— un triomphe et un désaccord</span></h2>
+    </div>
+    <p>
+      Commercialement, le film est un très grand succès&nbsp;: environ 190 millions de dollars au Japon et 236 millions dans le monde, pour un budget de 24 millions<a class="renvoi" href="#src-1" id="ref-1h">[1]</a><a class="renvoi" href="#src-2" id="ref-2k">[2]</a>. Il obtient à Venise 2004 l'Osella pour les réalisations techniques, quatre Tokyo Anime Awards en 2005, une nomination à l'Oscar du meilleur film d'animation en 2006 et un Nebula du meilleur scénario en 2007<a class="renvoi" href="#src-2" id="ref-2l">[2]</a>.
+    </p>
+    <p>
+      La critique française est largement acquise — moyenne de 4,3 sur 5 chez AlloCiné pour vingt-sept titres de presse<a class="renvoi" href="#src-7" id="ref-7c">[7]</a>. Positif salue « une inventivité que le réalisateur a décuplée en tirant parti des moindres détails » (Catherine Axelrad)&nbsp;; Le Monde parle d'un « état d'épuisement euphorique » à la sortie de la projection (Thomas Sotinel)&nbsp;; Les Inrockuptibles retiennent « sa merveilleuse instabilité » (Patrice Blouin)&nbsp;; Libération résume d'un mot, « grandiose »<a class="renvoi" href="#src-7" id="ref-7d">[7]</a>.
+    </p>
+    <p>
+      Mais le désaccord existe, et il est instructif parce qu'il porte toujours sur le même point&nbsp;: la tenue du récit. Première juge que le film laisse « au mieux perplexe, au pire déçu »&nbsp;; Chronic'art parle d'un « Miyazaki mineur »<a class="renvoi" href="#src-7" id="ref-7e">[7]</a>. Côté anglophone, Roger Ebert ne lui accorde que 2,5 étoiles sur 4 et le qualifie de déception, alors même que les agrégateurs enregistrent un accueil très favorable (88&nbsp;% sur Rotten Tomatoes, 82 sur 100 au Metacritic)<a class="renvoi" href="#src-2" id="ref-2m">[2]</a>.
+    </p>
+    <p>
+      Ce clivage n'est pas un hasard&nbsp;: il sépare ceux qui attendent du film qu'il tienne son intrigue de ceux qui acceptent qu'il tienne son affect. C'est exactement la ligne de partage que décrivait Malausa.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="cran-head">
+      <span class="cran-num">Cran nº 09 &mdash; la porte refermée</span>
+      <h2>Conclusion <span class="cran-sous">— ce que le désordre veut dire</span></h2>
+    </div>
+    <p>
+      <em>Le Château ambulant</em> est un film qu'on a beaucoup défendu pour ses images et beaucoup attaqué pour son scénario, comme s'il s'agissait de deux choses séparables. Elles ne le sont pas. Le film est incohérent de la même manière que sa maison est incohérente&nbsp;: par construction, et non par accident. Une œuvre sur l'identité instable qui aurait une intrigue parfaitement charpentée se contredirait elle-même.
+    </p>
+    <p>
+      Ce qui reste, vingt ans après, tient en trois gestes. Une guerre volontairement privée de sens, qui dit l'absurdité mieux qu'un réquisitoire. Une héroïne âgée dont le corps obéit à sa confiance, et non l'inverse. Et une porte à quatre crans, qui refuse de hiérarchiser les mondes qu'elle ouvre.
+    </p>
+    <p>
+      Le reproche le plus sérieux demeure celui de Jeamart&nbsp;: à trop refuser d'appuyer, le film laisse son pacifisme à l'état de climat<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>. On peut lui répondre que Miyazaki, cette fois, ne voulait pas convaincre&nbsp;: il voulait montrer une machine qui marche sans jamais choisir sa forme, et faire passer, dans ce mouvement, l'idée qu'on peut vivre ainsi. C'est moins qu'une démonstration. C'est peut-être davantage qu'une fable.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#c08a3e;">Sources consultées</span>
+    <h2>Registre des références</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Le Château ambulant » — <a href="https://fr.wikipedia.org/wiki/Le_Ch%C3%A2teau_ambulant" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Le Château ambulant</a></li>
+      <li id="src-2">Wikipedia (EN), « Howl's Moving Castle (film) » — <a href="https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)" target="_blank" rel="noopener">en.wikipedia.org &mdash; Howl's Moving Castle (film)</a></li>
+      <li id="src-3">Wikidata, élément Q29011 — <a href="https://www.wikidata.org/wiki/Q29011" target="_blank" rel="noopener">wikidata.org/wiki/Q29011</a></li>
+      <li id="src-4">La Cinémathèque française, fiche du film « Le Château ambulant » — <a href="https://www.cinematheque.fr/film/94860.html" target="_blank" rel="noopener">cinematheque.fr/film/94860.html</a></li>
+      <li id="src-5">Matthieu Ruard, « Analyse&nbsp;: Le château ambulant (Hayao Miyazaki) », Courte-Focale, 8 octobre 2011 — <a href="https://www.courte-focale.fr/cinema/analyses/le-chateau-ambulant/" target="_blank" rel="noopener">courte-focale.fr &mdash; Le château ambulant</a></li>
+      <li id="src-6">Audrey Jeamart, « Critique&nbsp;: Le Château ambulant », Critikat, 2005 — <a href="https://www.critikat.com/actualite-cine/critique/le-chateau-ambulant/" target="_blank" rel="noopener">critikat.com &mdash; Le Château ambulant</a></li>
+      <li id="src-7">AlloCiné, revue de la presse française pour « Le Château ambulant » (27 titres&nbsp;; Cahiers du cinéma, Positif, Le Monde, Télérama, Les Inrockuptibles, Libération, Première, Chronic'art) — <a href="https://www.allocine.fr/film/fichefilm-50409/critiques/presse/" target="_blank" rel="noopener">allocine.fr &mdash; critiques presse</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 19 septembre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
