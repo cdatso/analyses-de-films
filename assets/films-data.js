@@ -876,5 +876,23 @@ const FILMS = [
     producteur: 'Claude Opus 5 (chaîne pilote automatique, adoptée)',
     pays: ['Japon'],
     technique: ['couleur']
+  },
+  {
+    slug: 'ballet-mecanique',
+    title: 'Ballet mécanique',
+    director: 'Fernand Léger et Dudley Murphy',
+    year: 1924,
+    summary: "Des casseroles, l'œil de Kiki, une blanchisseuse qui regravit sans fin son escalier : le film sans récit de 1924, signé Léger, sort d'un atelier à plusieurs mains (Pound, Murphy, Man Ray) — étude à éclairage deleuzien (IM 64, les machines simples).",
+    url: 'films/ballet-mecanique.html',
+    poster: 'assets/posters/ballet-mecanique.jpg',
+    // Étude régime B (SPEC-PROCESS-SCHOLAR v1.2), BKL-CIN-100 ; director = arbitrage
+    // AH du 21/09/2026 (« B pour le réalisateur ») ; genreBase 'experimental' ajouté
+    // au vocabulaire dans un commit propre (escalade P-12).
+    volet: 'etude',
+    datePublication: '2026-09-21 17:36',
+    genreBase: 'experimental',
+    producteur: 'Claude Opus 5 (session supervisée)',
+    pays: ['France'],
+    technique: ['muet', 'n&b']
   }
 ];
