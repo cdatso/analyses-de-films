@@ -54,7 +54,10 @@ reste en ligne, c'est la pièce de mesure de la chaîne.
    `noindex`, signature R4 mot pour mot, servie = dépôt à l'octet ; catalogue, sitemap, affiche ;
    **et le pilote n'a pas bougé** (sa page 200, avec bandeau et `noindex`, identique à l'octet ;
    `git status` du dépôt pilote = l'« avant »). Puis rappeler à AH son geste : depuis sa page
-   privée, la demande passe de `publiee_pilote` à `traitee`.
+   privée, la demande passe de `publiee_pilote` à `traitee` **et pose l'adresse de production**
+   (`https://www.cdatso.be/analyses-de-films/films/<slug>.html`, obligatoire au passage vers
+   « Traitées », vérifiée avant l'envoi, bornée en base — BKL-CIN-099, 26/09/2026 ; geste ㉔ du
+   guide du service) : la carte « Traitées » de la file publique porte alors « Lire l'analyse ».
 
 ## 3. Les quatre substitutions — la table du calque pilote, parcourue à l'envers
 
@@ -94,7 +97,8 @@ l'analyse).
   épinglée, la modifier arrête la chaîne. L'adoption n'est PAS une étape de la skill.
 - Inventer ou amender la formule R4 ; ajouter un lien vers `pilote.cdatso.be` (P-62 ⑤).
 - Pousser sans le gate de la page, deux fois, ou avec `--no-verify`.
-- Écrire en base : le passage de la demande en `traitee` est un geste d'AH.
+- Écrire en base : le passage de la demande en `traitee`, et l'adresse de production qui va
+  avec, sont un geste d'AH (page privée).
 
 ## 7. Retour arrière
 
