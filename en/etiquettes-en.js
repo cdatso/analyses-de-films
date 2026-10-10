@@ -84,7 +84,9 @@ var ETIQUETTES_EN = {
      porte des films de 1964 et 1967, pas de la Russie d'aujourd'hui. */
   pays: {
     'Allemagne': 'Germany',
+    'Australie': 'Australia',
     'Belgique': 'Belgium',
+    'Chine': 'China',
     'Coree du Sud': 'South Korea',
     'Cuba': 'Cuba',
     'Danemark': 'Denmark',
@@ -92,8 +94,10 @@ var ETIQUETTES_EN = {
     'France': 'France',
     'Hong Kong': 'Hong Kong',
     'Hongrie': 'Hungary',
+    'Inde': 'India',
     'Italie': 'Italy',
     'Japon': 'Japan',
+    'Maroc': 'Morocco',
     'Norvege': 'Norway',
     'Royaume-Uni': 'United Kingdom',
     'Suede': 'Sweden',

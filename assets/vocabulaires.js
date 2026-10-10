@@ -92,10 +92,16 @@ const VOCABULAIRES = {
   /* Ouvert aux SEULES valeurs des 3 entrées migrées — à relire par AH.
      Une liste fermée ne se garnit pas de termes décoratifs « pour plus tard » :
      P-12 fait de chaque ajout un acte daté et commité. */
+  /* AJOUT DU 10/10/2026 (GATE AH « go pour tout » couvrant « go vocabulaires
+     Maroc Chine Inde — fenêtre superviseur », BKL-CIN-106, lot pilote de
+     douze films) : 'Chine', 'Inde', 'Maroc' — acte P-12, commit propre,
+     distinct de toute publication ; orthographe ASCII non accentuée ;
+     étiquettes anglaises ajoutées en miroir (en/etiquettes-en.js). */
   pays: [
     'Allemagne',
     'Australie',
     'Belgique',
+    'Chine',
     'Coree du Sud',
     'Cuba',
     'Danemark',
@@ -103,8 +109,10 @@ const VOCABULAIRES = {
     'France',
     'Hong Kong',
     'Hongrie',
+    'Inde',
     'Italie',
     'Japon',
+    'Maroc',
     'Norvege',
     'Royaume-Uni',
     'Suede',
