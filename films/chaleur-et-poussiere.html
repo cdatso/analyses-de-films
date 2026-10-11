@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les lettres d'Olivia — Chaleur et Poussière</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — une liasse de lettres des Indes britanniques, lue
+       soixante ans plus tard : papier jauni par la poussière, encre sépia,
+       indigo du palais du Nawab, or des marges. Contrastes composés
+       au-dessus de 4,5:1 pour tout texte courant. */
+    --poussiere:#f1e6d2;
+    --poussiere-creux:#e6d8bf;
+    --lin:#f8f2e6;
+    --sepia:#2a2118;
+    --sepia-doux:#4b3f33;
+    --sepia-pale:#625446;
+    --indigo:#2f4a7a;
+    --or:#c9973f;
+    --nuit:#1d1812;
+    --nuit-claire:#2a231b;
+    --filet:rgba(42,33,24,0.22);
+    --filet-tenu:rgba(42,33,24,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(201,151,63,0.14), transparent 40%),
+      radial-gradient(ellipse at 0% 100%, rgba(47,74,122,0.07), transparent 45%),
+      var(--poussiere);
+    color:var(--sepia);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--indigo);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--sepia-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--indigo); }
+
+  /* Le liseré — bordure d'une enveloppe de l'India Post, dessinée en CSS. */
+  .lisere{
+    height:0.5rem;
+    background:repeating-linear-gradient(135deg, var(--indigo) 0 0.9rem, var(--lin) 0.9rem 1.2rem, var(--or) 1.2rem 2.1rem, var(--lin) 2.1rem 2.4rem);
+  }
+
+  /* ---------- COUVERTURE — la véranda, le soir, les lettres ouvertes ---------- */
+  header.cover{
+    position:relative;
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 1.9rem, rgba(201,151,63,0.07) 1.9rem 2rem),
+      radial-gradient(ellipse at 85% 20%, rgba(201,151,63,0.22), transparent 48%),
+      linear-gradient(to bottom, #15110c 0%, var(--nuit) 55%, var(--nuit-claire) 100%);
+    color:#efe6d6;
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:#d6cab6; }
+  header.cover .back-link:hover{ color:var(--or); }
+
+  .etiquette{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--or);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+    color:#f8f2e6;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--or);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:#efe6d6;
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px dashed rgba(239,230,214,0.22);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--or); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:#efe6d6; }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. Sur cette page, aucun
+     fichier n'a été retenu (largeur du fonds < 272 px) : la figure se retire. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(201,151,63,0.45);
+    box-shadow:0 10px 26px rgba(0,0,0,0.6);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--or);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#2a231b;
+    color:#f1e6d2;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — l'inventaire de la liasse ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--poussiere-creux); color:var(--sepia-doux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--sepia-doux); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--indigo); border-bottom-color:var(--indigo); }
+
+  /* ---------- CORPS — chaque section est une lettre de la liasse ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .lettre-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--sepia);
+  }
+  .lettre{
+    flex:0 0 auto;
+    min-width:3.2rem;
+    padding:0.3rem 0.45rem 0.34rem;
+    background:var(--indigo);
+    color:var(--lin);
+    border-radius:0.15rem;
+    box-shadow:inset 0 -3px 0 var(--or);
+    font-family:var(--mono); font-size:0.58rem; line-height:1.3;
+    letter-spacing:0.08em; text-align:center; text-transform:uppercase;
+  }
+  .lettre strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--sepia);
+  }
+  .lettre-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--sepia-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--indigo);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--sepia-doux); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--indigo); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--indigo);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--sepia-doux);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--sepia-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--nuit); color:#efe6d6; margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem; color:#f8f2e6;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:#efe6d6; }
+  ol.source-list a{ color:var(--or); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--sepia-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--sepia-doux); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .lettre-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="lisere" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="etiquette">
+      <span>Satipur, 1923</span>
+      <span>Le palais de Khatm</span>
+      <span>Une liasse de lettres, 1982</span>
+    </div>
+
+    <h1 class="titre">Chaleur et Poussière</h1>
+    <p class="titre-original">Heat and Dust &mdash; James Ivory &mdash; 1983</p>
+    <p class="sous-titre">Deux Anglaises à soixante ans d'écart, le même pays, la même grossesse et un seul choix qui diffère&nbsp;: Ivory et Jhabvala font du Raj non un décor nostalgique mais un instrument de mesure de ce qu'une femme peut décider de son corps.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/chaleur-et-poussiere.jpg"
+             alt="Affiche du film Chaleur et Poussière"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>James Ivory</dd></div>
+      <div><dt>Scénario</dt><dd>Ruth Prawer Jhabvala, d'après son roman</dd></div>
+      <div><dt>Année</dt><dd>1983</dd></div>
+      <div><dt>Durée</dt><dd>130 minutes</dd></div>
+      <div><dt>Image</dt><dd>Walter Lassally &mdash; couleur</dd></div>
+      <div><dt>Musique</dt><dd>Richard Robbins, Zakir Hussain</dd></div>
+      <div><dt>Pays</dt><dd>Royaume-Uni</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 10 octobre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Les citations de sources en langue anglaise sont traduites en français par la rédaction, renvoi conservé.
+    </div>
+  </div>
+  <div class="lisere" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Fable 5.1, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 10 octobre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>1</strong></span>
+      <h2>Fiche technique <span class="lettre-sous">— l'enveloppe</span></h2>
+    </div>
+    <p>
+      <em>Chaleur et Poussière</em> (<em>Heat and Dust</em>) est réalisé par James Ivory sur un scénario de Ruth Prawer Jhabvala, qui adapte son propre roman, lauréat du Booker Prize en 1975&nbsp;; Ismail Merchant produit pour Merchant Ivory Productions<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-9">[9]</a>. L'image est de Walter Lassally, le montage d'Humphrey Dixon, la musique de Richard Robbins avec Zakir Hussain, les décors de Wilfred Shingleton, les costumes de Barbara Lane<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Greta Scacchi joue Olivia Rivers, Julie Christie sa petite-nièce Anne, Shashi Kapoor le Nawab de Khatm, Christopher Cazenove le mari Douglas, Nickolas Grace l'Anglais Harry, Zakir Hussain Inder Lal, Madhur Jaffrey la Bégum<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Le film est britannique, en couleur, d'une durée de 130 minutes, en anglais avec des passages en ourdou et en hindi<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Il sort au Royaume-Uni en janvier 1983, est présenté en compétition au festival de Cannes en mai, et sort en France le 24 août 1983<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Son budget est donné à 2,2 millions de livres, ou 1,1 selon les sources&nbsp;; il atteint la quatrième place du box-office londonien en mars 1983, réunit 362&nbsp;777 spectateurs en France et ne rapporte que 1,76 million de dollars aux États-Unis, où sa distribution est difficile<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Palmarès&nbsp;: huit nominations aux BAFTA 1984, dont le film et la réalisation, et le prix du meilleur scénario adapté pour Jhabvala&nbsp;; prix du scénariste de l'année du Cercle des critiques de Londres&nbsp;; sélection pour la Palme d'or<a class="renvoi" href="#src-2">[2]</a>. Jhabvala est, note Steve Schweighofer, «&nbsp;la seule personne à avoir remporté l'Oscar et le Booker Prize&nbsp;»<a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>2</strong></span>
+      <h2>Synopsis <span class="lettre-sous">— deux femmes, une liasse</span></h2>
+    </div>
+    <p>
+      1982. Anne, Londonienne, hérite des lettres et du journal de sa grand-tante Olivia, dont la famille ne parlait qu'à voix basse, et part en Inde sur ses traces&nbsp;; elle loge à Satipur chez Inder Lal, fonctionnaire marié, et devient sa maîtresse<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. 1923. Olivia, jeune épouse de Douglas Rivers, administrateur colonial, s'ennuie dans la société anglaise de la station et se laisse attirer par le Nawab de Khatm, prince voisin que les Anglais soupçonnent de protéger des bandits<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Olivia devient la maîtresse du Nawab, tombe enceinte, avorte en secret et s'enfuit avec lui au Cachemire, où elle finira ses jours<a class="renvoi" href="#src-2">[2]</a>. Anne, enceinte à son tour, envisage l'avortement, y renonce, et monte au Cachemire pour accoucher<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>3</strong></span>
+      <h2>Contexte de production <span class="lettre-sous">— un film tourné sans salaire</span></h2>
+    </div>
+    <p>
+      Le roman de 1975 alterne déjà deux récits, celui d'une narratrice anonyme venue en Inde comprendre la première femme de son grand-père, et celui d'Olivia dans les années 1920, reconstitué d'après ses lettres<a class="renvoi" href="#src-9">[9]</a>. La notice anglophone du film y lit l'influence d'<em>Un passage en Inde</em> d'E. M. Forster&nbsp;: le Nawab et Harry doivent quelque chose à Forster et à J. R. Ackerley, deux écrivains homosexuels qui vécurent en Inde<a class="renvoi" href="#src-2">[2]</a>. Jhabvala, née en Allemagne, réfugiée, installée en Inde par son mariage, écrit pour Ivory et Merchant depuis <em>The Householder</em> (1963)<a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+    <p>
+      Les studios américains refusent le scénario&nbsp;; le financement s'effondre en cours de tournage, et c'est Jacob Rothschild qui, après avoir vu les rushes, paie la fin du film, l'équipe et les acteurs ayant travaillé sans salaire pendant la période de manque<a class="renvoi" href="#src-2">[2]</a>. Greta Scacchi est engagée une semaine avant le tournage, pour son premier rôle en anglais&nbsp;; Julie Christie renonce à un rôle bien payé dans <em>Le Verdict</em>, qui ira à Charlotte Rampling<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a>. Le film est, selon David Clare, celui qui «&nbsp;a renversé la fortune de l'équipe Merchant-Ivory-Jhabvala&nbsp;», et Sean Axmaker le situe «&nbsp;avant qu'<em>Une chambre avec vue</em> ne donne à la marque Merchant-Ivory un succès grand public&nbsp;»<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-8">[8]</a>. Il s'inscrit dans la vague britannique du début des années 1980 autour du Raj — <em>Gandhi</em>, <em>Le Joyau de la couronne</em>, <em>La Route des Indes</em><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>4</strong></span>
+      <h2>Structure narrative <span class="lettre-sous">— le montage comme comparaison</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le film ouvre sur la disparition d'Olivia, puis remonte à son arrivée, et «&nbsp;se partage à égalité entre la quête moderne d'Anne et la vie reconstituée de l'Inde coloniale des années vingt&nbsp;», écrit Gavin Millar dans la critique que <em>Sight and Sound</em> a republiée en 2019<a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-8">[8]</a>. Pour Millar, les liaisons entre les deux époques sont «&nbsp;employées avec tact pour soutenir, et non interrompre, le rythme du film&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. Le <em>Los Angeles Times</em> de 1983, cité par la recherche, pensait le contraire&nbsp;: les allers-retours y sont jugés «&nbsp;souvent déstabilisants&nbsp;», et le film tenu pour un objet qui «&nbsp;tente trop&nbsp;» mais récompense le spectateur patient<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Cette page suit Millar, et pour une raison que les deux critiques ne nomment pas&nbsp;: le montage alterné n'est pas ici un procédé de suspense, c'est l'argument du film. Nicholas Bell le formule le mieux&nbsp;: les désirs des deux femmes «&nbsp;de se libérer de leurs cultures étouffantes finissent par se ressembler&nbsp;», et leurs chemins «&nbsp;ne divergent qu'au moment où Anne comprend qu'elle a autorité sur son corps&nbsp;» — ce qu'Olivia n'a jamais eu<a class="renvoi" href="#src-6">[6]</a>. Deux grossesses, deux décisions, et le film ne fait rien d'autre que les poser l'une à côté de l'autre. Le dénouement, qui laisse Anne monter au Cachemire comme Olivia soixante ans plus tôt, ne referme pas la boucle&nbsp;: il montre qu'on peut emprunter le même chemin sans y être poussée. Millar regrette que le film ne montre pas les montagnes invisibles qu'évoque la fin du roman<a class="renvoi" href="#src-4">[4]</a>&nbsp;; c'est, à notre lecture, le seul endroit où Ivory est plus prudent que Jhabvala.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>5</strong></span>
+      <h2>Mise en scène et procédés <span class="lettre-sous">— la retenue d'Ivory, la lumière de Lassally</span></h2>
+    </div>
+    <p>
+      Millar trouve Ivory «&nbsp;au plus détendu depuis longtemps, comme s'il revenait sur son propre terrain&nbsp;», et juge que la photographie de Lassally «&nbsp;rend une égale justice au décor, au paysage et aux intérieurs&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. La scène du pique-nique au tombeau, qu'il tient pour exemplaire — «&nbsp;si bien conçue (par Jhabvala) et exécutée (par Ivory)&nbsp;» —, est le modèle de la méthode&nbsp;: une société anglaise assise sur des tapis, un prince qui la domine en l'honorant, et une femme qui regarde ailleurs<a class="renvoi" href="#src-4">[4]</a>. Axmaker parle d'un film «&nbsp;élégant, délicat&nbsp;»<a class="renvoi" href="#src-8">[8]</a>&nbsp;; Clare d'«&nbsp;un récit subtil, court en drame comme leurs œuvres antérieures, mais magnifiquement fait&nbsp;»<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+    <p>
+      La retenue est ici une méthode d'observation plutôt qu'une pudeur. Bell relève que les films Merchant-Ivory partagent une façon de laisser «&nbsp;les représentations de l'homophobie, du racisme et de la misogynie dorer subtilement les préoccupations morales de leurs récits&nbsp;», et le médecin de la station, qui trouve ses patients indiens «&nbsp;si transparents, comme des enfants&nbsp;», en est l'exemple le plus criant<a class="renvoi" href="#src-6">[6]</a>. Ivory ne souligne rien&nbsp;: la caméra reste à hauteur de véranda, et c'est le spectateur de 1983, ou de 2026, qui entend ce que les personnages de 1923 disent sans y penser. Rapprochement d'analyse, non de source&nbsp;: les scènes de 1982, tournées dans les mêmes lieux rendus à leur usage indien — le palais devenu bureau, le bungalow devenu immeuble —, font de l'architecture le seul témoin resté sur place.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>6</strong></span>
+      <h2>Personnages principaux <span class="lettre-sous">— celle qui écrit, celle qui lit, celui qui séduit</span></h2>
+    </div>
+    <h3>Olivia Rivers (Greta Scacchi)</h3>
+    <p>
+      Millar la décrit comme «&nbsp;l'Olivia ennuyée, imaginative mais informe&nbsp;», attirée dans le monde du Nawab<a class="renvoi" href="#src-4">[4]</a>&nbsp;; Schweighofer la voit «&nbsp;suffoquer d'ennui et d'un dégoût croissant pour les attitudes et les attentes de la vie coloniale&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Engagée en une semaine, Scacchi donne au personnage une maladresse qui sert le film&nbsp;: Olivia ne sait pas ce qu'elle veut, et le Nawab est le premier à le lui demander.
+    </p>
+    <h3>Anne (Julie Christie)</h3>
+    <p>
+      Bell la tient pour «&nbsp;une âme sœur de sa parente disparue&nbsp;», qui prend acte des réalités économiques compromises du pays<a class="renvoi" href="#src-6">[6]</a>. Christie, qui a sacrifié un rôle mieux payé pour celui-ci<a class="renvoi" href="#src-1">[1]</a>, joue le contraire de Scacchi&nbsp;: une femme qui sait ce qu'elle fait et le fait quand même. Les spectateurs d'AlloCiné la trouvent, pour certains, moins convaincante que sa partenaire<a class="renvoi" href="#src-3">[3]</a>&nbsp;; c'est que son personnage n'a pas de drame à jouer — il en lit un.
+    </p>
+    <h3>Le Nawab de Khatm (Shashi Kapoor)</h3>
+    <p>
+      Millar le juge «&nbsp;brillant dans son anglicité comme dans son indianité&nbsp;», et le personnage «&nbsp;attendrissant de naïveté et d'impressionnabilité dans les domaines où il fait mal d'être vulnérable&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. Axmaker le voit comme «&nbsp;le souverain provincial d'un système au bord de l'effondrement&nbsp;»<a class="renvoi" href="#src-8">[8]</a>&nbsp;; Bell rappelle que le collecteur anglais «&nbsp;est convaincu que le Nawab de Khatm est lié aux bandits&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Kapoor, star de Bombay, est le seul acteur du film qui joue sur les deux tableaux, et c'est de lui que le film tient sa seule ambiguïté politique&nbsp;: un prince qui séduit l'Angleterre pour survivre à l'Angleterre.
+    </p>
+    <h3>Harry (Nickolas Grace) et Inder Lal (Zakir Hussain)</h3>
+    <p>
+      Harry, l'Anglais qui vit au palais et n'en part pas, porte la part la plus forsterienne du film<a class="renvoi" href="#src-2">[2]</a>&nbsp;; Inder Lal, l'amant d'Anne, est son contraire exact, un homme marié et sans mystère, interprété par le percussionniste qui cosigne la musique<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Entre le Nawab et Inder Lal, le film mesure aussi ce que l'Inde a cessé d'être pour les Anglaises qui y viennent&nbsp;: un royaume, puis un logement.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> Le budget est donné à 2,2 ou 1,1 million de livres selon les sources de la notice anglophone<a class="renvoi" href="#src-2">[2]</a>. La notice francophone date la sortie britannique de janvier 1983 sans jour, l'encadré anglophone écrit le 1er janvier<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. La critique de Filmotomy donne tour à tour cinquante et vingt ans d'écart entre les deux récits&nbsp;; le film en compte cinquante-neuf<a class="renvoi" href="#src-7">[7]</a>. Cette page retient les valeurs des notices.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>7</strong></span>
+      <h2>Thèmes <span class="lettre-sous">— quatre feuillets</span></h2>
+    </div>
+
+    <h3>Le corps, et qui en décide</h3>
+    <p>
+      C'est l'axe du film, et Bell l'a vu&nbsp;: la divergence entre les deux femmes tient au moment où Anne «&nbsp;comprend qu'elle a autorité sur son corps&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Olivia avorte en secret, par une sage-femme indienne, et paie l'acte de son exil&nbsp;; Anne renonce à l'avortement et choisit l'enfant. Le film ne dit pas que l'une a raison&nbsp;: il dit que l'une a choisi. Schweighofer juge que «&nbsp;la domination patriarcale des femmes par les hommes n'avait guère progressé&nbsp;» entre les deux époques<a class="renvoi" href="#src-7">[7]</a>&nbsp;; cette page tient le film pour plus précis que ce verdict&nbsp;: ce qui a changé n'est pas le monde, c'est la marge.
+    </p>
+
+    <h3>L'Inde comme désir, l'Inde comme pays</h3>
+    <p>
+      Millar lit le film comme l'histoire de «&nbsp;la présence coloniale britannique&nbsp;» et de l'enchevêtrement du colonisateur et du colonisé, plutôt que d'une culpabilité collective<a class="renvoi" href="#src-4">[4]</a>. Bell, plus dur, y voit «&nbsp;un mélodrame soigneusement construit&nbsp;», «&nbsp;féroce dans son traitement avilissant des femmes&nbsp;», qui soulève des questions postcoloniales troublantes<a class="renvoi" href="#src-6">[6]</a>. Les deux lectures se complètent&nbsp;: l'Inde d'Olivia est un objet de désir qu'elle ne comprend pas, celle d'Anne un pays pauvre où elle loue une chambre, et le film refuse de préférer l'une à l'autre.
+    </p>
+
+    <h3>Lire une autre femme</h3>
+    <p>
+      Anne lit Olivia, comme la narratrice du roman lisait ses lettres<a class="renvoi" href="#src-9">[9]</a>&nbsp;: le film est une enquête sur une femme dont il ne reste que du papier. Rapprochement d'analyse, non de source&nbsp;: c'est le dispositif de toute l'œuvre Merchant-Ivory à venir — <em>Retour à Howards End</em>, <em>Les Vestiges du jour</em> — où des vies anglaises se reconstituent à partir de ce qu'elles ont laissé écrit ou tu.
+    </p>
+
+    <h3>Le Raj sans nostalgie</h3>
+    <p>
+      Le film paraît l'année de <em>Gandhi</em> et précède <em>La Route des Indes</em> de Lean<a class="renvoi" href="#src-2">[2]</a>&nbsp;; il appartient à cette vogue et s'en distingue par ce qu'il refuse&nbsp;: aucune épopée, aucun grand homme, aucune révolte. Ce que la station anglaise de 1923 montre d'elle-même — le médecin, l'épouse du collecteur, les conversations de dîner — suffit à son procès, et le film n'ajoute rien<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>8</strong></span>
+      <h2>Réception critique et postérité <span class="lettre-sous">— le film qui a changé la maison</span></h2>
+    </div>
+    <p>
+      À sa sortie, Vincent Canby écrit dans le <em>New York Times</em>&nbsp;: «&nbsp;De toutes leurs collaborations, aucune n'a été plus gracieuse, drôle, lettrée ou divertissante que <em>Heat and Dust</em>&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Roger Ebert voit dans les deux liaisons «&nbsp;non des romances, mais des décisions de dissidence&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Millar, dans le <em>Monthly Film Bulletin</em>, le juge «&nbsp;aussi sage que dépourvu de prétention&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. Rotten Tomatoes relève 79&nbsp;% d'avis favorables sur quatorze critiques<a class="renvoi" href="#src-2">[2]</a>. En France, où le film sort le 24 août 1983, AlloCiné ne conserve aucune critique de presse, et sa fiche spectateurs donne 3,4 sur 5 pour cinquante-neuf notes<a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+    <p>
+      La postérité est d'abord celle d'une maison de production. Succès d'art et essai en Europe, échec aux États-Unis — «&nbsp;un four&nbsp;» dit Schweighofer —, le film redresse les finances de Merchant Ivory et ouvre la voie à <em>Une chambre avec vue</em>, <em>Retour à Howards End</em> et <em>Les Vestiges du jour</em><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-7">[7]</a><a class="renvoi" href="#src-8">[8]</a>. La restauration 4K de Cohen Media, en 2017-2018, et la reprise britannique de 2019 le remettent en circulation&nbsp;: Bell le tient pour moins pétillant que <em>Howards End</em> et moins audacieux que <em>Maurice</em><a class="renvoi" href="#src-6">[6]</a>&nbsp;; Axmaker le recommande avec trois étoiles sur cinq<a class="renvoi" href="#src-8">[8]</a>&nbsp;; Schweighofer y voit «&nbsp;un film doux, d'une perspicacité trompeuse à bien des niveaux au-delà des questions de genre et de politique&nbsp;»<a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> Les critiques de Vincent Canby et de Roger Ebert ne sont connues que par la notice anglophone (le <em>New York Times</em> est inaccessible, rogerebert.com rend HTTP 403)&nbsp;; celle du <em>Los Angeles Times</em> de 1983, par un extrait de recherche. La fiche TMDB du film n'a pas été atteinte (l'identifiant essayé renvoyait un autre film) et n'est pas citée. Aucune critique française de 1983 n'a pu être lue. Les scores agrégés n'ont pas été lus à leur source.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="lettre-head">
+      <span class="lettre">lettre<strong>9</strong></span>
+      <h2>Conclusion <span class="lettre-sous">— la dernière lettre</span></h2>
+    </div>
+    <p>
+      Le reproche de 1983 — un film qui alterne trop, qui tente trop — et celui de 2017 — un mélodrame soigné, moins audacieux que ses cadets — décrivent le même objet avec des attentes qui ne sont pas les siennes<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>. <em>Chaleur et Poussière</em> n'est ni un film sur le Raj ni une romance&nbsp;: c'est une comparaison, menée par le montage, entre deux femmes qui font la même chose et n'en paient pas le même prix. Millar avait le mot juste&nbsp;: sage et sans prétention<a class="renvoi" href="#src-4">[4]</a>. Bell a le complément nécessaire&nbsp;: féroce, à sa manière, avec ce que les Anglais de 1923 disent d'eux-mêmes<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Ce qui tient le film, c'est donc la liasse de lettres&nbsp;: une femme en a écrit, une autre les lit, et le spectateur, entre les deux, mesure ce qu'un demi-siècle a changé — très peu dans les hommes, assez dans la marge laissée aux femmes. Ebert y voyait des décisions de dissidence<a class="renvoi" href="#src-2">[2]</a>&nbsp;; c'est le bon mot, à condition d'ajouter que la seconde dissidence est la seule à être libre. Le film qui a sauvé Merchant Ivory est aussi celui qui a fixé sa méthode&nbsp;: regarder l'Angleterre à travers ce qu'elle laisse derrière elle, et ne rien ajouter.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#c9973f;">Sources consultées</span>
+    <h2>L'inventaire de la liasse</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Chaleur et Poussière » — <a href="https://fr.wikipedia.org/wiki/Chaleur_et_Poussi%C3%A8re" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Chaleur et Poussière</a></li>
+      <li id="src-2">Wikipédia (EN), « Heat and Dust (film) » — <a href="https://en.wikipedia.org/wiki/Heat_and_Dust_(film)" target="_blank" rel="noopener">en.wikipedia.org &mdash; Heat and Dust (film)</a></li>
+      <li id="src-3">AlloCiné, « Chaleur et poussière », fiche du film et critiques spectateurs — <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=149.html" target="_blank" rel="noopener">allocine.fr &mdash; Chaleur et poussière</a></li>
+      <li id="src-4">Gavin Millar, « Heat and Dust archive review: Merchant Ivory's Anglo-Indian romance strikes a perfect balance », <em>Monthly Film Bulletin</em> (1983), republié par <em>Sight and Sound</em>, BFI, 11 mars 2019 — <a href="https://www.bfi.org.uk/sight-and-sound/reviews/heat-dust-archive-review-merchant-ivorys-anglo-indian-romance-strikes-perfect-balance" target="_blank" rel="noopener">bfi.org.uk &mdash; Heat and Dust archive review</a></li>
+      <li id="src-5">David Clare, « Heat and Dust (1983) », <em>Cinefile</em> — <a href="https://www.cinefileonline.co.uk/ha-hz/p/heat-and-dust-1983" target="_blank" rel="noopener">cinefileonline.co.uk &mdash; Heat and Dust</a></li>
+      <li id="src-6">Nicholas Bell, « Heat and Dust (1983) | Review », <em>IONCINEMA</em>, 1er septembre 2017 — <a href="https://www.ioncinema.com/reviews/heat-and-dust-james-ivory-review" target="_blank" rel="noopener">ioncinema.com &mdash; Heat and Dust</a></li>
+      <li id="src-7">Steve Schweighofer, « Heat and Dust (1983) – Gender Imbalance Spans Time &amp; Space », <em>Filmotomy</em>, 8 juin 2018 — <a href="https://filmotomy.com/heat-and-dust-1983-review/" target="_blank" rel="noopener">filmotomy.com &mdash; Heat and Dust</a></li>
+      <li id="src-8">Sean Axmaker, « Heat and Dust », <em>Video Librarian</em>, 11 février 2018 — <a href="https://videolibrarian.com/reviews/classic-film/heat-and-dust/" target="_blank" rel="noopener">videolibrarian.com &mdash; Heat and Dust</a></li>
+      <li id="src-9">Wikipédia (EN), « Heat and Dust » (roman, 1975) — <a href="https://en.wikipedia.org/wiki/Heat_and_Dust" target="_blank" rel="noopener">en.wikipedia.org &mdash; Heat and Dust (novel)</a></li>
+      <li id="src-10">Wikidata, élément Q2549369 — <a href="https://www.wikidata.org/wiki/Q2549369" target="_blank" rel="noopener">wikidata.org/wiki/Q2549369</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 10 octobre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

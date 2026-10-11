@@ -1002,5 +1002,23 @@ const FILMS = [
     producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
     pays: ['Etats-Unis', 'Allemagne'],
     technique: ['couleur']
+  },
+  {
+    slug: 'chaleur-et-poussiere',
+    title: 'Chaleur et Poussière',
+    director: 'James Ivory',
+    year: 1983,
+    summary: "Deux Anglaises à soixante ans d'écart, le même pays, la même grossesse et un seul choix qui diffère : Ivory et Jhabvala font du Raj un instrument de mesure de ce qu'une femme peut décider de son corps.",
+    url: 'films/chaleur-et-poussiere.html',
+    poster: 'assets/posters/chaleur-et-poussiere.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-106, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date de production sur le pilote (décision d'AH du 11/10/2026) ;
+    // adoptée le 2026-10-11 (commit pilote b6c5414).
+    datePublication: '2026-10-10 12:32',
+    genreBase: 'drame',
+    producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
+    pays: ['Royaume-Uni'],
+    technique: ['couleur']
   }
 ];
