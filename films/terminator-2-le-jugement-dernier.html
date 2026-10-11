@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acier liquide — Terminator 2 : Le Jugement dernier</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — l'aciérie du dernier acte : tôle froide du papier,
+       graphite de l'encre, orange de la coulée, chrome du métal liquide.
+       Contrastes composés au-dessus de 4,5:1 pour tout texte courant. */
+    --tole:#eef0f3;
+    --tole-creux:#e2e6eb;
+    --chrome:#f7f8fa;
+    --graphite:#15181c;
+    --graphite-doux:#343b43;
+    --graphite-pale:#4d5660;
+    --coulee:#a63a0c;
+    --coulee-vive:#f08a3a;
+    --nuit:#15181c;
+    --nuit-claire:#22272d;
+    --filet:rgba(21,24,28,0.22);
+    --filet-tenu:rgba(21,24,28,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(to bottom, rgba(21,24,28,0.035) 0 1px, transparent 1px 100%) 0 0 / 100% 3.2rem,
+      var(--tole);
+    color:var(--graphite);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--coulee);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--graphite-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--coulee); }
+
+  /* La coulée — un filet de métal en fusion, dessiné en CSS seul. */
+  .coulee{
+    height:0.45rem;
+    background:linear-gradient(90deg, var(--coulee) 0%, var(--coulee-vive) 35%, #ffd27a 50%, var(--coulee-vive) 65%, var(--coulee) 100%);
+  }
+
+  /* ---------- COUVERTURE — la halle de l'aciérie, la nuit ---------- */
+  header.cover{
+    position:relative;
+    background:
+      repeating-linear-gradient(90deg, rgba(240,138,58,0.05) 0 1px, transparent 1px 4.5rem),
+      radial-gradient(ellipse at 50% 115%, rgba(240,138,58,0.28), transparent 55%),
+      linear-gradient(to bottom, #0e1013 0%, var(--nuit) 55%, var(--nuit-claire) 100%);
+    color:#e6e9ee;
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:#c9d0d8; }
+  header.cover .back-link:hover{ color:var(--coulee-vive); }
+
+  .etiquette{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--coulee-vive);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+    color:#f7f8fa;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--coulee-vive);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:#dfe3e8;
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px solid rgba(230,233,238,0.18);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--coulee-vive); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:#e6e9ee; }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(240,138,58,0.45);
+    box-shadow:0 10px 26px rgba(0,0,0,0.6);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--coulee-vive);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#22272d;
+    color:#eef0f3;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — le tableau de marche ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--tole-creux); color:var(--graphite-doux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--graphite-doux); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--coulee); border-bottom-color:var(--coulee); }
+
+  /* ---------- CORPS — chaque section est un relevé de température ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .releve-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--graphite);
+  }
+  .releve{
+    flex:0 0 auto;
+    min-width:3.2rem;
+    padding:0.3rem 0.45rem 0.34rem;
+    background:var(--graphite);
+    color:var(--tole);
+    border-radius:0.15rem;
+    box-shadow:inset 0 -3px 0 var(--coulee-vive);
+    font-family:var(--mono); font-size:0.58rem; line-height:1.3;
+    letter-spacing:0.08em; text-align:center; text-transform:uppercase;
+  }
+  .releve strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--graphite);
+  }
+  .releve-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--graphite-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--coulee);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--graphite-doux); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--coulee); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--coulee);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--graphite-doux);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--graphite-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--nuit); color:#dfe3e8; margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem; color:#f7f8fa;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:#dfe3e8; }
+  ol.source-list a{ color:#f0a060; word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--graphite-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--graphite-doux); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .releve-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="coulee" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="etiquette">
+      <span>Aciérie Kaiser, Fontana</span>
+      <span>Métal liquide, 1 000 °C</span>
+      <span>Los Angeles, 29 août 1997</span>
+    </div>
+
+    <h1 class="titre">Terminator 2 : Le Jugement dernier</h1>
+    <p class="titre-original">Terminator 2: Judgment Day &mdash; James Cameron &mdash; 1991</p>
+    <p class="sous-titre">Un tueur qu'on reprogramme en père, un autre qui coule comme du mercure, une mère qui a cessé d'en être une&nbsp;: Cameron tourne le film le plus cher de son temps contre les machines, avec les machines qu'il dénonce.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/terminator-2-le-jugement-dernier.jpg"
+             alt="Affiche du film Terminator 2 : Le Jugement dernier"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>James Cameron</dd></div>
+      <div><dt>Scénario</dt><dd>James Cameron, William Wisher</dd></div>
+      <div><dt>Année</dt><dd>1991</dd></div>
+      <div><dt>Durée</dt><dd>137 minutes (153 en <em>Special Edition</em>)</dd></div>
+      <div><dt>Image</dt><dd>Adam Greenberg &mdash; couleur</dd></div>
+      <div><dt>Musique</dt><dd>Brad Fiedel</dd></div>
+      <div><dt>Pays</dt><dd>États-Unis</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 10 octobre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Affiche&nbsp;: fonds d'affiches du propriétaire du site. Les citations de sources en langue anglaise sont traduites en français par la rédaction, renvoi conservé.
+    </div>
+  </div>
+  <div class="coulee" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Fable 5.1, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 10 octobre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>1</strong></span>
+      <h2>Fiche technique <span class="releve-sous">— la plaque du constructeur</span></h2>
+    </div>
+    <p>
+      <em>Terminator 2 : Le Jugement dernier</em> (<em>Terminator 2: Judgment Day</em>) est réalisé par James Cameron sur un scénario de Cameron et William Wisher&nbsp;; Carolco Pictures produit avec Lightstorm Entertainment, Pacific Western et Le Studio Canal+, TriStar distribue aux États-Unis<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. L'image est d'Adam Greenberg, le montage de Conrad Buff, Mark Goldblatt et Richard A. Harris, la musique de Brad Fiedel, déjà compositeur du premier film<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Arnold Schwarzenegger reprend le T-800, Linda Hamilton Sarah Connor&nbsp;; Edward Furlong, dont c'est le premier rôle, joue John Connor, Robert Patrick le T-1000 et Joe Morton l'ingénieur Miles Dyson<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>.
+    </p>
+    <p>
+      Le film est américain, en couleur, d'une durée de 137 minutes en salle (TMDB dit 2&nbsp;h&nbsp;17), de 153 minutes dans la <em>Special Edition</em> de 1993 et de 156 dans la version longue de 2009<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a>. Il est présenté pour la première fois le 1er juillet 1991 au Cineplex Odeon de Century City, à Los Angeles, sort aux États-Unis le 3 juillet et en France le 16 octobre 1991<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Son budget, de 94 à 102 millions de dollars selon les décomptes, est alors le plus élevé jamais engagé pour un film&nbsp;; il rapporte environ 520 millions de dollars dans le monde, premier succès de l'année 1991, et 6,1 millions d'entrées en France<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Palmarès&nbsp;: quatre Oscars en 1992 — maquillage (Stan Winston, Jeff Dawn), son, montage des effets sonores (Gary Rydstrom, Gloria S. Borders) et effets visuels (Dennis Muren, Stan Winston, Gene Warren Jr., Robert Skotak) —, plus deux nominations, pour la photographie et le montage&nbsp;; deux BAFTA (son, effets visuels)&nbsp;; cinq Saturn Awards, dont ceux du film, du réalisateur et de l'actrice<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. C'est le premier film oscarisé dont le prédécesseur n'avait reçu aucune nomination<a class="renvoi" href="#src-2">[2]</a>. En 2023, la Bibliothèque du Congrès l'inscrit au National Film Registry<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>2</strong></span>
+      <h2>Synopsis <span class="releve-sous">— deux machines pour un enfant</span></h2>
+    </div>
+    <p>
+      Los Angeles, 1995. Dix ans après les événements du premier film, Sarah Connor est internée dans un hôpital psychiatrique, où le docteur Silberman tient pour délire sa certitude qu'une guerre nucléaire éclatera le 29 août 1997<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-9">[9]</a>. Son fils John, dix ans, vit en famille d'accueil et vole des distributeurs de billets<a class="renvoi" href="#src-1">[1]</a>. Deux voyageurs arrivent du futur&nbsp;: un T-1000 de métal liquide, qui prend la forme d'un policier, envoyé par Skynet pour tuer l'enfant, et un T-800 identique à celui qui pourchassait Sarah en 1984, reprogrammé par la Résistance pour le protéger<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a>.
+    </p>
+    <p>
+      John fait libérer sa mère, qui refuse d'abord la machine, puis apprend que les travaux de Miles Dyson, chez Cyberdyne, mèneront à Skynet<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Le trio tente d'empêcher l'avenir d'advenir, et la poursuite se termine dans une aciérie<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>3</strong></span>
+      <h2>Contexte de production <span class="releve-sous">— racheter ses propres droits</span></h2>
+    </div>
+    <p>
+      La suite est d'abord une affaire de droits. Pour faire exister <em>Terminator</em> (1984), Cameron avait cédé la moitié des siens à Hemdale&nbsp;; la société, en difficulté, les bloque pendant des années, jusqu'à ce que Schwarzenegger convainque Mario Kassar, patron de Carolco, de les racheter — 5 millions de dollars à Gale Anne Hurd pour sa part, 17 millions au total<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Kassar offre 6 millions à Cameron pour écrire et réaliser&nbsp;; lui et Wisher disposent de six à sept semaines pour le scénario<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Cameron, qui estimait avoir tout dit dans le premier film, trouve le cœur du second dans la relation de John, de Sarah et du T-800&nbsp;: «&nbsp;Bien sûr, il y aura de grandes séquences d'action tonitruantes, mais le cœur du film, c'est cette relation&nbsp;»<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. L'idée d'un Terminator de métal liquide lui venait du premier film, où elle n'avait pu être réalisée<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <p>
+      Le tournage court d'octobre 1990 à mars 1991, avec trois semaines de retard&nbsp;: le canal de dérivation de Bull Creek pour la poursuite à moto, une aciérie désaffectée d'Oxnard pour 2029, l'autoroute de Terminal Island pour la poursuite finale et l'aciérie Kaiser de Fontana pour le dénouement<a class="renvoi" href="#src-2">[2]</a>. Les effets sont répartis entre quatre maisons&nbsp;: Industrial Light &amp; Magic, sous Dennis Muren, pour les images de synthèse du T-1000&nbsp;; le studio de Stan Winston pour les prothèses et les marionnettes&nbsp;; Fantasy II pour la guerre du futur en maquettes&nbsp;; 4-Ward pour l'explosion nucléaire<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a>. Les effets coûtent 15 à 17 millions de dollars, dont 5 pour le seul T-1000&nbsp;: le premier film entier avait coûté 6 millions<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Le pari est connu de ceux qui le tiennent. Sur <em>Abyss</em> (1989), la créature d'eau d'ILM «&nbsp;aurait pu être coupée entièrement&nbsp;» en cas d'échec&nbsp;; ici, selon la notice consacrée aux effets du film, «&nbsp;il n'y avait pas de plan de secours&nbsp;» si la synthèse échouait ou ne se raccordait pas aux effets de Winston<a class="renvoi" href="#src-6">[6]</a>. L'équipe d'images de synthèse d'ILM passe de six personnes sur <em>Abyss</em> à trente-cinq&nbsp;; Alex Seiden, dans l'histoire orale recueillie par Ian Failes, compte «&nbsp;une vingtaine de personnes au département avant <em>T2</em>, quarante pour ce film&nbsp;», et Eric Enderton résume le chantier&nbsp;: «&nbsp;<em>Terminator 2</em>, c'était cet énorme projet parce qu'il avait quelque chose comme cinquante plans&nbsp;» — qui prennent «&nbsp;à peu près six mois&nbsp;»<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Un gigaoctet de stockage coûte alors 9&nbsp;000 dollars, se souvient George Joblove<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>4</strong></span>
+      <h2>Structure narrative <span class="releve-sous">— le premier film, retourné comme un gant</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le scénario est une inversion terme à terme de son modèle, et la notice francophone en dresse la liste&nbsp;: le T-800 traverse une vitre comme en 1984, reprend à Kyle Reese la réplique «&nbsp;Viens avec moi si tu veux vivre&nbsp;», les poursuites se répondent en miroir, et le T-1000 finit dans l'azote liquide là où le premier Terminator finissait dans le feu<a class="renvoi" href="#src-1">[1]</a>. Le premier acte joue de cette symétrie pour tromper le spectateur&nbsp;: deux arrivées identiques, deux hommes qui cherchent le même enfant, et l'on ne sait lequel est le chasseur qu'au moment où ils se font face dans un couloir de galerie marchande. Ce n'est pas une astuce&nbsp;: c'est le programme du film, qui va retourner une à une toutes les valeurs du premier — la machine devient protectrice, la victime devient soldat, le futur fermé devient ouvert.
+    </p>
+    <p>
+      L'axe de ce retournement est une phrase. Sarah grave «&nbsp;No fate&nbsp;» (pas de destin) dans une table de pique-nique, et c'est en lisant ces deux mots que John et le T-800 comprennent qu'elle est partie tuer Dyson<a class="renvoi" href="#src-1">[1]</a>. La formule complète, «&nbsp;il n'y a pas de destin, que celui que nous faisons&nbsp;», a été transmise à Sarah par Reese dans le premier film, et la notice anglophone note que le second insiste sur le libre arbitre là où le premier était fataliste<a class="renvoi" href="#src-2">[2]</a>. Le récit se plie à cette thèse&nbsp;: au lieu d'attendre l'apocalypse, les personnages vont la chercher à sa source, et le troisième acte — Cyberdyne, puis l'aciérie — n'est plus une fuite mais une attaque.
+    </p>
+    <p>
+      Cette construction a un prix, et la critique de 1991 l'a payé comptant. Jonathan Rosenbaum, dans le <em>Chicago Reader</em>, juge que «&nbsp;le développement des personnages est pratiquement inexistant&nbsp;» et que Sarah et John «&nbsp;semblent émotionnellement confus et inefficaces une bonne partie du temps&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. L'<em>Encyclopedia of Science Fiction</em> relève l'invraisemblance de la fin&nbsp;: «&nbsp;les considérations commerciales exigent une fin optimiste&nbsp;», alors que «&nbsp;la machine à tuer la plus efficace jamais créée est montrée incapable de tuer&nbsp;»<a class="renvoi" href="#src-9">[9]</a>. Les deux objections sont justes sur le détail, et la suite de cette page soutient qu'elles manquent la logique du film&nbsp;: un récit qui veut prouver qu'aucun avenir n'est écrit doit, pour être cohérent, finir par ne pas tuer.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>5</strong></span>
+      <h2>Mise en scène et procédés <span class="releve-sous">— la main et le calcul</span></h2>
+    </div>
+    <p>
+      Ce que l'on retient du film, le métal liquide, tient en quelques minutes&nbsp;: la synthèse apparaît dans 42 ou 43 plans, pour 50 à 60 effets pratiques, et les 5,5 millions de dollars du T-1000 numérique achètent «&nbsp;quatre à cinq minutes de temps d'écran&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. La notice francophone compte autrement — six minutes de synthèse pour neuf de marionnettes et de prothèses<a class="renvoi" href="#src-1">[1]</a> — mais l'ordre de grandeur est le même, et il dit l'essentiel&nbsp;: le T-1000 est avant tout un effet de montage entre deux ateliers. Steve Williams, chez ILM, corrige d'ailleurs la légende&nbsp;: «&nbsp;La presse a appelé ça le <em>morph</em>. En fait, ça s'appelait l'interpolation de modèles&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Deux outils naissent du chantier, <em>Make Sticky</em>, qui fixe une texture sur une géométrie en mouvement, et <em>Body Sock</em>, «&nbsp;un outil de couture automatique&nbsp;» qui fond les pièces d'un squelette animé en une surface lisse<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Dans l'hôpital, la traversée des barreaux combine deux prises, une avec les barreaux, une sans, et le métal paraît y adhérer<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      En face, Stan Winston travaille à l'ancienne, et Cameron lui confie «&nbsp;autant d'effets du T-1000 que possible&nbsp;» pour économiser le calcul&nbsp;: impacts de balles en «&nbsp;fleurs&nbsp;» chromées sur une plaque de fibre de verre, marionnettes grandeur nature, lames qui s'allongent&nbsp;; la tête fendue par le fusil est une prothèse de Shane Mahan, surnommée <em>Splash Head</em> à l'atelier<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Muren lui-même trouvait «&nbsp;terrible&nbsp;» le premier dessin du T-1000, parce que Cameron voulait une surface parfaite et que le parfait ne paraît pas réel<a class="renvoi" href="#src-6">[6]</a>. Rapprochement d'analyse, non de source&nbsp;: le film tire sa force de cette alternance — la synthèse pour ce qui coule, la main pour ce qui se déchire — et le spectateur ne sait jamais à quel atelier il doit sa peur.
+    </p>
+    <p>
+      La séquence la plus commentée n'est pourtant pas numérique. Le rêve de Sarah — une aire de jeux, puis l'onde de choc — est l'œuvre de 4-Ward&nbsp;: acteurs filmés en VistaVision à deux heures du jour, trois marionnettes de Linda Hamilton jusqu'au squelette médical, et pour Robert Skotak des plans «&nbsp;destinés à vous faire ressentir réellement la puissance et la terreur de la guerre nucléaire&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Cameron parle d'une «&nbsp;dissection divine de l'événement&nbsp;» et ajoute&nbsp;: «&nbsp;je suis peut-être fou, mais il fallait le faire&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. L'<em>Encyclopedia of Science Fiction</em> y voit la seule chose du film qui ne soit pas un jeu, «&nbsp;l'imminence et l'immanence du désastre nucléaire, puissamment rendues dans une séquence de rêve&nbsp;»<a class="renvoi" href="#src-9">[9]</a>. Rosenbaum, qui tient 85&nbsp;% du plaisir du film pour une affaire de machines qui cassent, salue tout de même «&nbsp;les séquences d'action les mieux taillées que j'aie vues cette année&nbsp;», et note que «&nbsp;la mise en scène de Cameron surpasse celle du journal télévisé&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Le compliment est à double tranchant, et c'est le bon&nbsp;: un film de 1991 sur la fin du monde est aussi un film sur la télévision qui montre la guerre en direct.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>6</strong></span>
+      <h2>Personnages principaux <span class="releve-sous">— qui apprend, qui coule, qui durcit</span></h2>
+    </div>
+    <h3>Le T-800 (Arnold Schwarzenegger)</h3>
+    <p>
+      Rosenbaum le dit sans détour&nbsp;: «&nbsp;le rôle ultime de Schwarzenegger, à l'aune duquel tous ses autres rôles doivent être mesurés&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Le personnage est une machine qui apprend, et le film en fait un père de substitution, comme <em>Aliens</em> avait fait de Ripley une mère de substitution<a class="renvoi" href="#src-2">[2]</a>. Pour la notice anglophone, le sociologue Robert Bly fournit le contexte&nbsp;: en 1991, les hommes mûrs n'offrent plus aux jeunes gens de modèle convenable, et c'est un robot qui s'en charge<a class="renvoi" href="#src-2">[2]</a>. L'<em>Encyclopedia of Science Fiction</em> relève «&nbsp;l'ironie d'une machine devenant une figure paternelle&nbsp;» et «&nbsp;le garçon luttant, inarticulé, pour expliquer le caractère sacré de la vie à un robot tueur&nbsp;», mais juge le sentiment «&nbsp;mièvre&nbsp;»<a class="renvoi" href="#src-9">[9]</a>. Schwarzenegger touche 15 millions de dollars pour quelque 700 mots de dialogue, et la notice francophone s'amuse à calculer le prix de «&nbsp;Hasta la vista, baby&nbsp;» (au revoir, mon petit), la réplique que le garçon lui apprend<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <h3>Le T-1000 (Robert Patrick)</h3>
+    <p>
+      Cameron et Wisher en font un policier parce que, disent-ils, cela représente des humains devenus plus machiniques et plus détachés<a class="renvoi" href="#src-2">[2]</a>. L'<em>Encyclopedia</em> salue «&nbsp;la distribution intéressante de Patrick, acteur de frêle carrure au visage totalement dénué d'affect&nbsp;», capable de «&nbsp;passer d'une forme à l'autre comme du vif-argent&nbsp;»<a class="renvoi" href="#src-9">[9]</a>&nbsp;; Robert Patrick ne prend qu'un week-end pour se marier à Las Vegas et ne parle à aucun autre acteur du tournage<a class="renvoi" href="#src-1">[1]</a>. Williams raconte que les données de capture incluaient «&nbsp;à l'origine une claudication que Robert tenait d'une blessure au football&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Les professeurs Amanda Fernbach et Thomas B. Byers lisent en lui une figure fluide, postmoderne, opposée au patriarcat du T-800&nbsp;; Mark Duckenfield, une allégorie involontaire du déclin de l'industrie américaine devant la technologie japonaise<a class="renvoi" href="#src-2">[2]</a>. Ces lectures se contredisent, et c'est leur mérite&nbsp;: le T-1000 est un personnage sans intérieur, sur lequel chaque époque projette sa peur.
+    </p>
+    <h3>Sarah Connor (Linda Hamilton)</h3>
+    <p>
+      «&nbsp;Un personnage triste, un personnage tragique&nbsp;», dit Cameron<a class="renvoi" href="#src-2">[2]</a>. L'<em>Encyclopedia</em> décrit «&nbsp;une obsessionnelle violente, fumant cigarette sur cigarette dans un service psychiatrique&nbsp;»<a class="renvoi" href="#src-9">[9]</a>&nbsp;; Rosenbaum, «&nbsp;une guérillera fanatique et musclée&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Marianne Kac-Vergne, dans <em>Miranda</em>, part du gros plan sur ses biceps à sa première apparition, le compare au gros plan sur le torse du Terminator nu de 1984, et conclut que «&nbsp;Sarah est complètement masculinisée&nbsp;»<a class="renvoi" href="#src-12">[12]</a>. Rae Alexandra, pour KQED, y voit au contraire un portrait sans concession&nbsp;: la caméra parcourt le corps de Schwarzenegger et jamais celui de Hamilton, Sarah «&nbsp;refuse d'être définie par la maternité&nbsp;», et lance à Dyson&nbsp;: «&nbsp;Tout ce que vous savez créer, c'est la mort et la destruction&nbsp;»<a class="renvoi" href="#src-10">[10]</a>. Tracy King, dans le <em>New Statesman</em>, retourne l'argument&nbsp;: «&nbsp;Sarah est prisonnière du destin biologique&nbsp;», elle «&nbsp;n'existe que pour tomber enceinte et mettre au monde le héros du futur&nbsp;»<a class="renvoi" href="#src-11">[11]</a>. Victoria Warren, citée par la notice anglophone, tranche à l'intérieur même du film&nbsp;: le T-800 y est montré comme un meilleur parent que Sarah, et celle-ci est assez forte pour être admirée, pas assez pour éclipser le héros masculin<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <h3>John Connor (Edward Furlong)</h3>
+    <p>
+      L'enfant qui vole des distributeurs est le pivot moral du film&nbsp;: c'est lui qui interdit à la machine de tuer, et la scène où elle lui obéit en tirant dans les genoux des gardes est la plus franchement comique du film. Cameron tenait la relation entre John, Sarah et le T-800 pour le cœur de l'entreprise<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>&nbsp;; Rosenbaum n'y a vu que confusion<a class="renvoi" href="#src-8">[8]</a>. Les deux ont raison&nbsp;: le film fait tenir à un garçon de dix ans la charge de prouver que l'humanité vaut la peine, et c'est beaucoup pour un acteur débutant.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> Le budget varie de 94 à 102 millions de dollars selon les notices, et Cameron comme Schwarzenegger le ramènent à 70 millions hors promotion<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Le nombre de plans en images de synthèse varie de 42-43 (notice spécialisée) à «&nbsp;une cinquantaine&nbsp;» (souvenir d'un animateur d'ILM)<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Les scores agrégés diffèrent entre notices (Rotten Tomatoes&nbsp;: 93&nbsp;% sur 83 critiques côté francophone, 90&nbsp;% sur 175 côté anglophone)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Cette page cite les fourchettes.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>7</strong></span>
+      <h2>Thèmes <span class="releve-sous">— quatre températures</span></h2>
+    </div>
+
+    <h3>Pas de destin</h3>
+    <p>
+      Le film affirme que l'avenir se fabrique, et il le prouve en s'attaquant à sa propre prémisse&nbsp;: les trois protagonistes détruisent les restes du premier Terminator, les travaux de Dyson et finalement le T-800 lui-même<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. L'optimisme n'est pas gratuit — il est acheté par la mort de la machine qui a appris à vivre — et c'est ce prix qui le rend tenable. Cameron dira du film qu'il «&nbsp;boucle l'histoire et la termine&nbsp;», ce que quatre suites démentiront<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+
+    <h3>Le rêve atomique</h3>
+    <p>
+      Le rêve de Sarah tue six milliards de personnes à l'écran et la pousse à tenter d'assassiner Dyson&nbsp;; Cameron fait de son échec la question du film&nbsp;: l'humanité vaut-elle d'être sauvée si elle abandonne son humanité<a class="renvoi" href="#src-2">[2]</a>&nbsp;? Il se dit l'auteur du «&nbsp;film anti-guerre le plus violent du monde&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. L'<em>Encyclopedia</em> tient ce «&nbsp;message de colombe&nbsp;» pour malhonnête au vu de la violence du spectacle<a class="renvoi" href="#src-9">[9]</a>, et Owen Gleiberman, cité par la notice anglophone, parle d'une «&nbsp;indifférence téméraire&nbsp;» à la vie humaine intrinsèque au film<a class="renvoi" href="#src-2">[2]</a>. La contradiction existe&nbsp;; elle est le sujet. Rosenbaum la formule le mieux&nbsp;: Cameron «&nbsp;est assez habile pour avoir conscience de ce déséquilibre&nbsp;», mais «&nbsp;pas assez pour transcender le problème&nbsp;»<a class="renvoi" href="#src-8">[8]</a>.
+    </p>
+
+    <h3>La mère et la machine</h3>
+    <p>
+      Le film oppose deux façons d'élever un enfant&nbsp;: une mère qui s'est faite soldat et une machine qui se fait père. Alexandra compare la mue de Sarah au «&nbsp;dépouillez-moi de mon sexe&nbsp;» de Lady Macbeth<a class="renvoi" href="#src-10">[10]</a>&nbsp;; Kac-Vergne range le personnage parmi les héroïnes musclées des années 1980-1990, dont la masculinisation est, selon Yvonne Tasker, une forme de réponse au féminisme<a class="renvoi" href="#src-12">[12]</a>. Entre la lecture de KQED et celle du <em>New Statesman</em>, cette page suit Warren&nbsp;: le film ne tranche pas en faveur de Sarah, il montre que le T-800 est le parent le plus disponible, et c'est l'enfant qui le dit en pleurant devant la cuve<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+
+    <h3>Ce qui coule et ce qui tient</h3>
+    <p>
+      Le T-800 est un squelette d'acier sous une peau&nbsp;; le T-1000 est une peau sans squelette. L'un apprend, l'autre imite. Fernbach et Byers lisent dans le second la fluidité postmoderne contre la rigidité patriarcale<a class="renvoi" href="#src-2">[2]</a>, et le film choisit la rigidité&nbsp;: c'est le vieux modèle, massif, lent et fidèle, qui gagne, et il gagne en se faisant fondre dans la même cuve que son adversaire. Rapprochement d'analyse, non de source&nbsp;: un film qui a inventé le personnage numérique se termine par l'éloge d'une machine mécanique — et par l'ordre de la détruire.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>8</strong></span>
+      <h2>Réception critique et postérité <span class="releve-sous">— le feu d'artifice et ce qu'il éclaire</span></h2>
+    </div>
+    <p>
+      La presse française d'octobre 1991, telle qu'AlloCiné la relève, parle d'une seule voix du spectacle et se divise sur le reste. Isabelle Danel, dans <em>Télérama</em>&nbsp;: «&nbsp;Techniquement parfait, <em>Terminator 2</em> est un véritable feu d'artifice d'effets spéciaux&nbsp;»&nbsp;; Jean-Michel Frodon, dans <em>Le Monde</em>&nbsp;: «&nbsp;Sous prétexte de science-fiction bagarreuse, un tonitruant festival d'effets spéciaux&nbsp;»&nbsp;; Laurence Giavarini, aux <em>Cahiers du cinéma</em>, décrit «&nbsp;un crescendo jusqu'au-boutiste de cascades, d'effets spéciaux, de plus en plus de feu&nbsp;»&nbsp;; Alain Riou, dans <em>L'Obs</em>, conseille de «&nbsp;déguster sur-le-champ cet excellent produit de consommation courante&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Seul Alain Garsault, dans <em>Positif</em>, pose la question qui occupe cette page&nbsp;: «&nbsp;<em>Terminator 2</em> n'est pas seulement un film d'action avec des trucages surprenants&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. La notice francophone résume le reproche d'alors — la démesure de Cameron, des effets trop neufs, et un scénario écrit sur Macintosh qui, pour certains détracteurs, ôtait au film son âme<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <p>
+      Aux États-Unis, Rosenbaum donne deux étoiles, «&nbsp;à voir&nbsp;», pour un mélange de spectacle fort et de drame humain faible<a class="renvoi" href="#src-8">[8]</a>&nbsp;; la notice anglophone rapporte que Roger Ebert juge «&nbsp;intrigante&nbsp;» l'idée d'un garçon trouvant un père dans une machine qui apprend, que Peter Travers tient la mort du T-800 pour une scène «&nbsp;à l'eau de rose&nbsp;» tout en voyant dans le film «&nbsp;une parabole visionnaire&nbsp;», et que Janet Maslin rapproche Cameron, à son meilleur, de Stanley Kubrick<a class="renvoi" href="#src-2">[2]</a>. Les agrégateurs donnent 90 à 93&nbsp;% d'avis favorables et 75 sur 100 chez Metacritic&nbsp;; le public interrogé par CinemaScore attribue un «&nbsp;A+&nbsp;»<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      La postérité est d'abord technique. Cameron et Muren affirment que sans ces effets, <em>Jurassic Park</em> (1993) n'aurait pas été possible&nbsp;; la Visual Effects Society classe le film quatorzième des plus influents de l'histoire des effets, le Guinness enregistre le T-1000 comme premier grand personnage de film généré par ordinateur, et le <em>Guardian</em> y voit l'origine d'une «&nbsp;paresse de la synthèse&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. L'American Film Institute place «&nbsp;Hasta la vista, baby&nbsp;» au 76e rang des répliques du cinéma américain et le film au huitième de ses dix meilleurs films de science-fiction<a class="renvoi" href="#src-2">[2]</a>. Quatre suites suivent, de 2003 à 2019, dont seule la dernière ramène Cameron et Hamilton<a class="renvoi" href="#src-2">[2]</a>. Le film ressort en 3D en 2017 et entre au National Film Registry en 2023<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> Quatre pages ont refusé l'accès ou n'ont pas été servies&nbsp;: la critique de Roger Ebert sur son propre site (HTTP 403), celle de Janet Maslin dans le <em>New York Times</em> (domaine inaccessible), celle de <em>Variety</em> (redirigée vers un péage) et l'entretien de Dennis Muren pour <em>Den of Geek</em> (HTTP 404)&nbsp;; les mots d'Ebert, de Maslin et de Travers cités ici viennent de la notice anglophone. Les critiques françaises de 1991 ne sont connues que par les extraits d'AlloCiné. Les scores agrégés n'ont pas été lus à leur source.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="releve-head">
+      <span class="releve">relevé<strong>9</strong></span>
+      <h2>Conclusion <span class="releve-sous">— la cuve</span></h2>
+    </div>
+    <p>
+      Les réserves de 1991 étaient fondées, et elles le restent&nbsp;: le drame familial est mince, l'enfant est écrasé par sa fonction, le message pacifiste est porté par deux heures de destruction, et la fin trahit la logique de la machine qu'elle fait fondre<a class="renvoi" href="#src-8">[8]</a><a class="renvoi" href="#src-9">[9]</a>. Garsault avait pourtant raison contre ses confrères&nbsp;: le film n'est pas seulement un trucage<a class="renvoi" href="#src-7">[7]</a>. Il est le trucage lui-même devenu sujet. Cameron prend le film le plus cher de son temps pour dire que les machines ne doivent pas décider de l'avenir, et il le dit avec le premier personnage entièrement calculé de l'histoire du cinéma<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>. La contradiction que Rosenbaum lui reproche n'est pas un accident de parcours&nbsp;: c'est la condition d'un film qui veut que l'on ait peur de ce qu'il montre, et qui ne peut le montrer qu'en le fabriquant.
+    </p>
+    <p>
+      Ce qui tient le film, ce n'est donc ni son scénario ni son message, c'est son dernier plan de machine&nbsp;: un pouce levé qui disparaît dans l'acier, geste appris d'un enfant, rendu par un corps que l'on vient de voir réduit à son squelette. La synthèse d'ILM a produit l'ennemi&nbsp;; la marionnette de Winston produit l'adieu<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Trente-cinq ans après, c'est encore le partage qui vaut&nbsp;: le numérique pour ce qui menace, la main pour ce qui émeut. <em>Terminator 2</em> a ouvert la porte que le <em>Guardian</em> lui reproche, et il l'a ouverte en montrant exactement ce qu'il fallait laisser dehors.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#f0a060;">Sources consultées</span>
+    <h2>Le registre de la coulée</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Terminator 2 : Le Jugement dernier » — <a href="https://fr.wikipedia.org/wiki/Terminator_2_:_Le_Jugement_dernier" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Terminator 2 : Le Jugement dernier</a></li>
+      <li id="src-2">Wikipédia (EN), « Terminator 2: Judgment Day » — <a href="https://en.wikipedia.org/wiki/Terminator_2:_Judgment_Day" target="_blank" rel="noopener">en.wikipedia.org &mdash; Terminator 2: Judgment Day</a></li>
+      <li id="src-3">Wikidata, élément Q170564 — <a href="https://www.wikidata.org/wiki/Q170564" target="_blank" rel="noopener">wikidata.org/wiki/Q170564</a></li>
+      <li id="src-4">The Movie Database (TMDB), « Terminator 2: Judgment Day (1991) », fiche du film — <a href="https://www.themoviedb.org/movie/280-terminator-2-judgment-day" target="_blank" rel="noopener">themoviedb.org/movie/280</a></li>
+      <li id="src-5">Ian Failes, « The tech of “Terminator 2” — an oral history », <em>befores &amp; afters</em>, 21 octobre 2019 — <a href="https://beforesandafters.com/2019/10/21/the-tech-of-terminator-2-an-oral-history/" target="_blank" rel="noopener">beforesandafters.com &mdash; The tech of Terminator 2</a></li>
+      <li id="src-6">Wikipédia (EN), « Special effects of Terminator 2: Judgment Day » — <a href="https://en.wikipedia.org/wiki/Special_effects_of_Terminator_2:_Judgment_Day" target="_blank" rel="noopener">en.wikipedia.org &mdash; Special effects of Terminator 2</a></li>
+      <li id="src-7">AlloCiné, « Terminator 2 : le Jugement Dernier », revue de presse (Alain Garsault, <em>Positif</em>&nbsp;; Isabelle Danel, <em>Télérama</em>&nbsp;; Alain Riou, <em>L'Obs</em>&nbsp;; Laurence Giavarini, <em>Cahiers du cinéma</em>&nbsp;; Jean-Michel Frodon, <em>Le Monde</em>) — <a href="https://www.allocine.fr/film/fichefilm-7124/critiques/presse/" target="_blank" rel="noopener">allocine.fr &mdash; critiques presse</a></li>
+      <li id="src-8">Jonathan Rosenbaum, « Smart Weapons », <em>Chicago Reader</em>, 5 juillet 1991, repris sur jonathanrosenbaum.net (avril 2024) — <a href="https://jonathanrosenbaum.net/2024/04/smart-weapons/" target="_blank" rel="noopener">jonathanrosenbaum.net &mdash; Smart Weapons</a></li>
+      <li id="src-9">John Clute, David Langford (dir.), « Terminator 2: Judgment Day », <em>The Encyclopedia of Science Fiction</em>, entrée signée PN — <a href="https://sf-encyclopedia.com/entry/terminator_2_judgment_day" target="_blank" rel="noopener">sf-encyclopedia.com &mdash; Terminator 2: Judgment Day</a></li>
+      <li id="src-10">Rae Alexandra, « The Timeless Feminism of Sarah Connor in Terminator 2 », KQED, 18 juillet 2019 — <a href="https://www.kqed.org/pop/112098/the-timeless-feminism-of-sarah-connor-in-terminator-2" target="_blank" rel="noopener">kqed.org &mdash; The Timeless Feminism of Sarah Connor</a></li>
+      <li id="src-11">Tracy King, « No James Cameron, Sarah Connor in Terminator isn't feminist », <em>New Statesman</em>, 25 août 2017 — <a href="https://www.newstatesman.com/culture/2017/08/no-james-cameron-sarah-connor-terminator-isnt-feminist" target="_blank" rel="noopener">newstatesman.com &mdash; Sarah Connor isn't feminist</a></li>
+      <li id="src-12">Marianne Kac-Vergne, « Sidelining Women in Contemporary Science-Fiction Film », <em>Miranda</em>, n°&nbsp;12, 2016 — <a href="https://journals.openedition.org/miranda/8642" target="_blank" rel="noopener">journals.openedition.org/miranda/8642</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 10 octobre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
