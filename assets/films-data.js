@@ -894,5 +894,23 @@ const FILMS = [
     producteur: 'Claude Opus 5 (session supervisée)',
     pays: ['France'],
     technique: ['muet', 'n&b']
+  },
+  {
+    slug: 'les-maitres-du-temps',
+    title: 'Les Maîtres du temps',
+    director: 'René Laloux',
+    year: 1982,
+    summary: "Un enfant seul sur une planète hostile, une voix qui le guide depuis l'espace : Laloux et Mœbius font d'un roman populaire une boucle où l'on ne sauve personne sans finir par se retrouver soi-même.",
+    url: 'films/les-maitres-du-temps.html',
+    poster: 'assets/posters/les-maitres-du-temps.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-106, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date de production sur le pilote (décision d'AH du 11/10/2026) ;
+    // adoptée le 2026-10-11 (commit pilote a8393d0).
+    datePublication: '2026-09-28 21:04',
+    genreBase: 'science-fiction',
+    producteur: 'Claude Opus 5.5 (chaîne pilote automatique, adoptée)',
+    pays: ['France', 'Hongrie', 'Allemagne', 'Suisse', 'Royaume-Uni'],
+    technique: ['couleur']
   }
 ];

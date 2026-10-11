@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fréquence Perdide — Les Maîtres du temps</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — la liaison radio entre un vaisseau et un enfant seul :
+       le violet profond du vide, le sable de Perdide, l'ocre des frelons, le
+       vert d'un voyant d'émission. Contrastes composés au-dessus de 4,5:1
+       pour tout texte courant. */
+    --vide:#1c1733;
+    --vide-profond:#110d22;
+    --sable:#f4ecdc;
+    --sable-creux:#e8dcc4;
+    --encre:#1d1a2b;
+    --encre-douce:#37324a;
+    --encre-pale:#575269;
+    --ocre:#e0a458;
+    --ocre-sombre:#86470f;
+    --frelon:#9c3417;
+    --voyant:#6fd3bf;
+    --filet:rgba(29,26,43,0.20);
+    --filet-tenu:rgba(29,26,43,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 88% 0%, rgba(28,23,51,0.07), transparent 46%),
+      radial-gradient(ellipse at 6% 100%, rgba(224,164,88,0.10), transparent 44%),
+      var(--sable);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--ocre-sombre);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--frelon); }
+
+  /* ---------- COUVERTURE — le vide, puis l'horizon de sable ---------- */
+  header.cover{
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 16%, rgba(111,211,191,0.12), transparent 34%),
+      radial-gradient(circle at 84% 30%, rgba(224,164,88,0.16), transparent 30%),
+      linear-gradient(to bottom, var(--vide-profond) 0%, var(--vide) 70%, #2a2140 100%);
+    color:var(--sable);
+    border-bottom:5px solid var(--ocre);
+    overflow:hidden;
+  }
+  header.cover::after{
+    /* Horizon de Perdide — dégradé seul, aucune image, aucune requête. */
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:3rem;
+    background:linear-gradient(to top, rgba(224,164,88,0.42), rgba(224,164,88,0));
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem; }
+
+  .indicatif{
+    font-family:var(--mono);
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ocre);
+    margin-bottom:1.5rem;
+  }
+  header.cover .back-link{ color:rgba(244,236,220,0.74); }
+  header.cover .back-link:hover{ color:var(--ocre); }
+
+  /* Le signal : un voyant et six barres d'intensité, dessinés en CSS. */
+  .signal{ display:flex; gap:0.3rem; align-items:flex-end; height:1.5rem; margin:0 0 1.1rem; }
+  .voyant{ width:0.6rem; height:0.6rem; border-radius:50%; background:var(--voyant); margin-right:0.45rem; align-self:center; box-shadow:0 0 8px rgba(111,211,191,0.7); }
+  .barre{ width:0.34rem; background:rgba(244,236,220,0.78); border-radius:1px; }
+  .b1{ height:22%; } .b2{ height:38%; } .b3{ height:56%; } .b4{ height:74%; } .b5{ height:88%; opacity:0.45; } .b6{ height:100%; opacity:0.25; }
+  .signal-legende{
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:rgba(244,236,220,0.66); margin-left:0.6rem; align-self:center;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--ocre);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:rgba(244,236,220,0.88);
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px solid rgba(244,236,220,0.14);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ocre); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:rgba(244,236,220,0.93); }
+
+  /* Bloc affiche — ajouté le 29/09/2026 (correction manuelle sur instruction
+     d'AH ; la chaîne avait publié sans affiche, cas nominal en cloud). Règles
+     reprises du gabarit de la surface (le-chateau-ambulant.html), couleurs de
+     cette palette. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(244,236,220,0.28);
+    box-shadow:0 10px 26px rgba(17,13,34,0.55);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--voyant);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#241d3d;
+    color:#f4ecdc;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--sable-creux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--encre-douce); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--frelon); border-bottom-color:var(--frelon); }
+
+  /* ---------- CORPS — chaque section est un canal ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .canal-head{ margin:0 0 0.9rem; padding-bottom:0.45rem; border-bottom:2px dotted var(--filet); }
+  .canal-num{
+    display:block; font-family:var(--mono); font-size:0.63rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--ocre-sombre);
+    margin-bottom:0.22rem;
+  }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0; color:var(--encre);
+  }
+  .canal-sous{ font-weight:400; font-size:0.95rem; color:var(--encre-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--frelon);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--encre-douce); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--frelon); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--frelon);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--encre-douce);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--encre-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--vide); color:var(--sable); margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:rgba(244,236,220,0.9); }
+  ol.source-list a{ color:var(--ocre); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--encre-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--encre-douce); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="indicatif">Appel de détresse &mdash; planète Perdide</div>
+
+    <div class="signal" aria-hidden="true">
+      <span class="voyant"></span>
+      <span class="barre b1"></span>
+      <span class="barre b2"></span>
+      <span class="barre b3"></span>
+      <span class="barre b4"></span>
+      <span class="barre b5"></span>
+      <span class="barre b6"></span>
+      <span class="signal-legende">Liaison établie</span>
+    </div>
+
+    <h1 class="titre">Les Maîtres du temps</h1>
+    <p class="titre-original">René Laloux &mdash; 1982 &mdash; d&rsquo;après Stefan Wul, dessins de Mœbius</p>
+    <p class="sous-titre">Un enfant seul sur une planète hostile, une voix qui le guide depuis l'espace&nbsp;: Laloux et Mœbius font d'un roman populaire une boucle où l'on ne sauve personne sans finir par se retrouver soi-même.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/les-maitres-du-temps.jpg"
+             alt="Affiche du film Les Maîtres du temps"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>René Laloux</dd></div>
+      <div><dt>Scénario</dt><dd>Jean-Patrick Manchette, Mœbius, René Laloux, d'après <em>L'Orphelin de Perdide</em> de Stefan Wul</dd></div>
+      <div><dt>Année</dt><dd>1982</dd></div>
+      <div><dt>Durée</dt><dd>78 minutes</dd></div>
+      <div><dt>Animation</dt><dd>Pannonia Film Studio, Budapest</dd></div>
+      <div><dt>Musique</dt><dd>Jean-Pierre Bourtayre, Pierre Tardy, Christian Zanési</dd></div>
+      <div><dt>Pays</dt><dd>France, Hongrie, Allemagne, Suisse, Royaume-Uni</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 28 septembre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. <strong>Correction du 29 septembre 2026</strong>, sur instruction du propriétaire du site&nbsp;: affiche ajoutée depuis son fonds d'affiches (la chaîne avait publié sans affiche) ; le texte de l'analyse est inchangé.
+    </div>
+  </div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Opus 5.5, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 28 septembre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="canal-head">
+      <span class="canal-num">Canal 01 &mdash; identification</span>
+      <h2>Fiche technique <span class="canal-sous">— l'indicatif du film</span></h2>
+    </div>
+    <p>
+      <em>Les Maîtres du temps</em> est un long métrage d'animation de science-fiction réalisé par René Laloux, sur un scénario de Jean-Patrick Manchette, Mœbius (Jean Giraud) et Laloux lui-même, d'après <em>L'Orphelin de Perdide</em>, roman de Stefan Wul paru en 1958 dans la collection Anticipation du Fleuve noir<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Mœbius en signe l'univers graphique&nbsp;; l'animation est réalisée à Budapest par le studio Pannonia, sous la direction de Tibor Hernádi<a class="renvoi" href="#src-1" id="ref-1b">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      La musique est de Jean-Pierre Bourtayre, Pierre Tardy et Christian Zanési<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>&nbsp;; la base TMDB crédite en outre Jacques Lanzmann<a class="renvoi" href="#src-3" id="ref-3b">[3]</a>. La bande originale a paru en 45 tours chez Philips en 1982<a class="renvoi" href="#src-1" id="ref-1d">[1]</a>. La production est assurée par Télécip et TF1 Films Production, avec la Westdeutscher Rundfunk, le Südwestfunk et la Radio Télévision Suisse Romande&nbsp;; Étienne Laroche en est le directeur de production<a class="renvoi" href="#src-1" id="ref-1e">[1]</a>. Wikidata range le film parmi les coproductions de la France, de la Hongrie, de l'Allemagne, de la Suisse et du Royaume-Uni<a class="renvoi" href="#src-2" id="ref-2">[2]</a>, quand la notice francophone n'en nomme que trois — France, Hongrie, Suisse<a class="renvoi" href="#src-1" id="ref-1e2">[1]</a>.
+    </p>
+    <p>
+      Les voix principales sont celles de Jean Valmont (Jaffar), Michel Elias (Silbad), Frédéric Legros (Piel), Monique Thierry (Belle), Yves-Marie Maurin (le prince Matton), Sady Rebbot (Claude) et Alain Cuny (Xul)<a class="renvoi" href="#src-1" id="ref-1f">[1]</a><a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. <em>Divergences de sources relevées et non tranchées</em>&nbsp;: le prénom de l'interprète de Piel s'écrit «&nbsp;Frédérick&nbsp;» dans la notice francophone et «&nbsp;Frédéric&nbsp;» chez TMDB, et la voix de Jad est attribuée à Ludovic Baugin par la première, à Patrick Baujin par la seconde<a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+    <p>
+      La durée est de 78 minutes selon Wikipédia et Wikidata, de 80 minutes selon TMDB<a class="renvoi" href="#src-1" id="ref-1h">[1]</a><a class="renvoi" href="#src-2" id="ref-2b">[2]</a><a class="renvoi" href="#src-3" id="ref-3e">[3]</a>. Le film sort en France le 24 mars 1982 d'après la notice francophone, quand Wikidata retient le 21 mars 1982 comme date de publication — l'écart n'est pas expliqué par les sources consultées, et l'année 1982 est commune aux deux<a class="renvoi" href="#src-1" id="ref-1i">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. Aucune récompense n'est mentionnée par les sources consultées.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="canal-head">
+      <span class="canal-num">Canal 02 &mdash; message reçu</span>
+      <h2>Synopsis <span class="canal-sous">— un enfant au bout du fil</span></h2>
+    </div>
+    <p>
+      Sur la planète Perdide, Claude et son jeune fils Piel sont attaqués par des frelons géants. Mortellement blessé, Claude parvient à joindre son ami Jaffar, un aventurier de l'espace&nbsp;; Piel reste seul, avec pour tout lien un émetteur radio<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>.
+    </p>
+    <p>
+      Jaffar voyage avec deux passagers, le prince Matton et Belle. Il détourne sa route et recrute en chemin, sur Devil's Ball, un vieil homme, Silbad, pour aider l'enfant à survivre en le guidant par radio, à distance, pendant que le vaisseau s'efforce de le rejoindre<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>. Le voyage est une suite d'épreuves&nbsp;: Matton tente de s'emparer du vaisseau, l'équipage fait escale sur Gamma 10, monde de créatures sans visage, puis doit échapper à un croiseur réformiste<a class="renvoi" href="#src-1" id="ref-1l">[1]</a>. Sur Perdide, Piel avance seul, rencontre un étrange compagnon animal et finit par perdre sa radio<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="canal-head">
+      <span class="canal-num">Canal 03 &mdash; origine du signal</span>
+      <h2>Contexte de production <span class="canal-sous">— un film français fabriqué à Budapest</span></h2>
+    </div>
+    <p>
+      <em>Les Maîtres du temps</em> est le deuxième long métrage de René Laloux (1929-2004)<a class="renvoi" href="#src-5" id="ref-5">[5]</a>. Le premier, <em>La Planète sauvage</em> (1973), déjà tiré de Stefan Wul — <em>Oms en série</em>, 1957 —, avait été conçu avec Roland Topor, animé en papier découpé dans les studios Jiří Trnka de Prague et distingué d'un prix spécial du jury à Cannes<a class="renvoi" href="#src-6" id="ref-6">[6]</a>. Laloux a construit sa carrière sur ce modèle&nbsp;: des projets de science-fiction ambitieux, réalisés avec des studios d'Europe de l'Est — tchécoslovaque, hongrois, puis nord-coréen pour <em>Gandahar</em> (1987)<a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.
+    </p>
+    <p>
+      La notice francophone du film décrit une production contrainte par l'économie&nbsp;: faute de pouvoir fabriquer le film en France, la production prospecte au Japon, en Australie et en Europe de l'Est avant de retenir le studio Pannonia, déjà connu pour des œuvres audacieuses comme <em>Animalia</em> de Tibor Hernádi ou <em>La Mouche</em> de Ferenc Rófusz, oscarisé en 1981. Cent dix personnes y travaillent pendant un an<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>.
+    </p>
+    <p>
+      Le même texte détaille les frictions du tournage&nbsp;: la barrière de la langue oblige Laloux à communiquer par gestes&nbsp;; les animateurs, fonctionnaires rémunérés selon un système de primes et souvent chargés d'autres emplois, prennent du retard&nbsp;; les premières minutes d'animation sont refusées, et c'est une renégociation salariale qui rétablit le rythme. Le style réaliste de Mœbius déroute des équipes formées au cartoon hongrois — Zoltán Maros se distingue sur les séquences les plus complexes, et le personnage de Belle pose des difficultés particulières<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. Laloux abandonne le papier découpé de son premier film pour l'animation sur cellulo, plus coûteuse mais mieux intégrée aux décors, et les couleurs de Mœbius doivent être transposées à la gouache sur celluloïd<a class="renvoi" href="#src-1" id="ref-1p">[1]</a>.
+    </p>
+    <p>
+      Mœbius arrive au projet au sommet de son activité&nbsp;: figure de <em>Métal hurlant</em> (premier numéro en janvier 1975), où paraissent <em>Arzach</em> et <em>Le Garage hermétique</em>, il a travaillé sur le <em>Dune</em> avorté de Jodorowsky et sur <em>Alien</em> (1979), et collabore la même année 1982 à <em>Tron</em><a class="renvoi" href="#src-7" id="ref-7">[7]</a>. Enfin, bien que le studio se trouve derrière le rideau de fer, aucune censure majeure n'est rapportée&nbsp;: la séquence de Xul aurait été présentée comme une critique des «&nbsp;militaires fascistes&nbsp;», ce qui lui évita les objections locales<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="canal-head">
+      <span class="canal-num">Canal 04 &mdash; deux fréquences</span>
+      <h2>Structure narrative <span class="canal-sous">— le récit en duplex</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le récit tient sur deux fils que relie une seule chose, la radio&nbsp;: d'un côté l'enfant immobilisé dans le désert de Perdide, de l'autre le vaisseau qui traverse une succession de mondes<a class="renvoi" href="#src-1" id="ref-1r">[1]</a>. Le dispositif est hérité du roman, où le père, avant de mourir, lance un appel à un ami et laisse à son fils un appareil radio<a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. Le film en tire une construction en épisodes&nbsp;: chaque escale du vaisseau est une petite aventure autonome, pendant que la voix qui parle à Piel maintient la tension du fil principal.
+    </p>
+    <p>
+      La fin retourne ce fil sur lui-même. Le voyage mène l'équipage à une station des Maîtres du temps&nbsp;; Silbad, le vieil homme qui guidait l'enfant, se révèle être Piel devenu adulte&nbsp;; Perdide est renvoyée soixante ans dans le passé, et le jeune Piel, recueilli, perd le souvenir de son enfance<a class="renvoi" href="#src-1" id="ref-1s">[1]</a>. Wikidata classe d'ailleurs le film sous les sujets «&nbsp;voyage dans le temps&nbsp;» et «&nbsp;boucle temporelle&nbsp;»<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>.
+    </p>
+    <p>
+      Le roman fondait déjà sa chute sur le paradoxe des jumeaux&nbsp;: le vaisseau, voyageant à une vitesse proche de celle de la lumière, subissait un décalage d'environ un siècle&nbsp;; à l'arrivée, la planète était colonisée, et l'enfant sauvé autrefois n'était autre que Silbad<a class="renvoi" href="#src-4" id="ref-4c">[4]</a>. Selon la même source, Laloux conserve la charpente et la chute, mais renomme les personnages, ajoute des races extraterrestres absentes du livre et simplifie la révélation, qui passe par la télépathie plutôt que par une enquête historique<a class="renvoi" href="#src-4" id="ref-4d">[4]</a>. Le changement a une conséquence de construction&nbsp;: la découverte n'est plus un raisonnement mené par les personnages, elle leur est donnée — le film préfère la sidération à la démonstration.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="canal-head">
+      <span class="canal-num">Canal 05 &mdash; image et bruit</span>
+      <h2>Mise en scène et procédés techniques <span class="canal-sous">— Mœbius sur celluloïd</span></h2>
+    </div>
+    <p>
+      Le choix technique décisif est celui du cellulo contre le papier découpé&nbsp;: là où <em>La Planète sauvage</em> tirait son étrangeté de figures découpées posées sur les dessins de Topor<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>, <em>Les Maîtres du temps</em> cherche à faire vivre les personnages dans des décors peints, au prix d'une fabrication plus lourde<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>. Le dessin réaliste de Mœbius et ses couleurs subtiles arrivent à l'écran par la gouache sur celluloïd<a class="renvoi" href="#src-1" id="ref-1u">[1]</a>.
+    </p>
+    <p>
+      La tension rapportée par la notice de production — un dessin réaliste confié à des animateurs formés au cartoon<a class="renvoi" href="#src-1" id="ref-1v">[1]</a> — se lit comme une hypothèse de lecture du film fini&nbsp;: des décors d'une grande précision, où les figures en mouvement paraissent parfois moins sûres que le monde qui les entoure. Cette analyse n'a pas pu la confronter à des textes critiques (voir la section 8)&nbsp;; elle la propose comme une lecture, non comme un constat établi.
+    </p>
+    <p>
+      Le son porte une part du récit que l'image ne peut pas porter&nbsp;: pendant tout le film, la relation entre Jaffar, Silbad et Piel passe par une voix transmise, sans que les corps se rencontrent<a class="renvoi" href="#src-1" id="ref-1w">[1]</a>. La partition réunit trois compositeurs<a class="renvoi" href="#src-1" id="ref-1x">[1]</a>&nbsp;; les sources consultées n'en décrivent pas la facture, et cette analyse ne s'aventure pas à la qualifier.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="canal-head">
+      <span class="canal-num">Canal 06 &mdash; les voix</span>
+      <h2>Personnages principaux <span class="canal-sous">— qui parle, et à qui</span></h2>
+    </div>
+    <p>
+      <strong>Piel</strong> est l'enfant laissé seul sur Perdide après la mort de son père<a class="renvoi" href="#src-1" id="ref-1y">[1]</a>. Tout le film le montre dépendant d'une voix, puis privé d'elle quand il perd sa radio&nbsp;: sa trajectoire est celle d'un apprentissage de la solitude.
+    </p>
+    <p>
+      <strong>Jaffar</strong> est l'aventurier de l'espace que Claude appelle à l'aide, et qui fait de ce sauvetage le but de son voyage<a class="renvoi" href="#src-1" id="ref-1z">[1]</a>. Son équivalent dans le roman, Max, était un contrebandier idéaliste<a class="renvoi" href="#src-4" id="ref-4e">[4]</a>&nbsp;; le film garde la figure du héros un peu hors-la-loi qui se découvre une responsabilité.
+    </p>
+    <p>
+      <strong>Silbad</strong> est le personnage-clé&nbsp;: un vieil homme recruté pour guider l'enfant par radio, et dont la fin révèle qu'il est Piel lui-même, devenu vieux<a class="renvoi" href="#src-1" id="ref-1aa">[1]</a>. Dans le roman, il porte les cicatrices de sa propre rencontre avec les dangers de la planète<a class="renvoi" href="#src-4" id="ref-4f">[4]</a> — un détail qui, rétrospectivement, désigne déjà son identité.
+    </p>
+    <p>
+      <strong>Le prince Matton</strong> et <strong>Belle</strong> sont les passagers de Jaffar. Matton tente de s'emparer du vaisseau avant de se sacrifier sur Gamma 10, un geste qui libère les créatures sans visage de la planète<a class="renvoi" href="#src-1" id="ref-1ab">[1]</a>. Le roman prêtait des intentions sinistres envers l'enfant à un autre passager, Martin Bôz<a class="renvoi" href="#src-4" id="ref-4g">[4]</a>&nbsp;; le film fait de la menace intérieure un personnage qui se rachète.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="canal-head">
+      <span class="canal-num">Canal 07 &mdash; ce qui passe dans le bruit</span>
+      <h2>Thèmes <span class="canal-sous">— quatre signaux</span></h2>
+    </div>
+    <p>Forme retenue&nbsp;: le <em>breakdown titré</em>, les quatre thèmes étant séparables et se répondant sans se confondre.</p>
+
+    <h3>La voix sans le corps</h3>
+    <p>
+      L'essentiel de la relation entre l'enfant et ses sauveteurs passe par un émetteur&nbsp;: la radio est le seul fil qui tienne Piel en vie, et sa perte est l'un des moments où le film le laisse véritablement seul<a class="renvoi" href="#src-1" id="ref-1ac">[1]</a>. Le film fait de la distance une donnée physique&nbsp;: on peut parler à quelqu'un sans pouvoir le toucher, le conseiller sans pouvoir le sauver.
+    </p>
+
+    <h3>La boucle</h3>
+    <p>
+      La révélation finale — Silbad est Piel — fait du sauvetage une boucle fermée&nbsp;: l'homme qui guide l'enfant est l'enfant qu'il a été<a class="renvoi" href="#src-1" id="ref-1ad">[1]</a><a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. Le titre prend alors son sens&nbsp;: les Maîtres du temps ne sont pas des adversaires que l'on combat, mais une instance qui dispose des vies humaines à une échelle que les personnages ne peuvent qu'accepter. Le film ne console pas&nbsp;: Piel est sauvé, mais au prix de sa mémoire<a class="renvoi" href="#src-1" id="ref-1ae">[1]</a>.
+    </p>
+
+    <h3>Le pouvoir sans visage</h3>
+    <p>
+      Sur Gamma 10, l'équipage affronte des êtres sans visage liés à Xul, et c'est le sacrifice de Matton qui les libère<a class="renvoi" href="#src-1" id="ref-1af">[1]</a>. La notice de production rapporte que cette séquence fut présentée au studio comme une critique des «&nbsp;militaires fascistes&nbsp;»<a class="renvoi" href="#src-1" id="ref-1ag">[1]</a>&nbsp;: une allégorie de l'uniformité assez large pour que chacun, de part et d'autre du rideau de fer, puisse y lire l'oppression qu'il redoute.
+    </p>
+
+    <h3>Communiquer sans langue commune</h3>
+    <p>
+      Le film sur une voix qui franchit le vide a été fabriqué par une équipe qui ne partageait pas de langue&nbsp;: Laloux dirigeait ses animateurs hongrois par gestes<a class="renvoi" href="#src-1" id="ref-1ah">[1]</a>. Rapprochement d'analyse, non de source&nbsp;: <em>Les Maîtres du temps</em> raconte, au fond, ce que sa fabrication a éprouvé — la difficulté de guider quelqu'un à distance, et la part de confiance qu'exige tout message qui traverse une frontière.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="canal-head">
+      <span class="canal-num">Canal 08 &mdash; accusé de réception</span>
+      <h2>Réception critique et postérité <span class="canal-sous">— un signal faible mais persistant</span></h2>
+    </div>
+    <p>
+      Les sources consultées sont brèves sur l'accueil du film. Wikipédia rapporte que «&nbsp;l'univers futuriste du film, son graphisme et sa poésie lui permettent un succès relatif aux États-Unis&nbsp;»<a class="renvoi" href="#src-1" id="ref-1ai">[1]</a><a class="renvoi" href="#src-5" id="ref-5c">[5]</a>. Le film est diffusé pour la première fois à la télévision française par TF1 le 31 décembre 1984, et ressort en mai 2024, avec mention d'une restauration<a class="renvoi" href="#src-1" id="ref-1aj">[1]</a>. Wikidata le signale disponible en vidéo à la demande, en DVD et en Blu-ray<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>.
+    </p>
+    <p>
+      Dans l'œuvre de Laloux, il est le deuxième de trois longs métrages de science-fiction conçus chacun avec un grand graphiste&nbsp;: Topor pour <em>La Planète sauvage</em>, Mœbius pour <em>Les Maîtres du temps</em>, Philippe Caza pour <em>Gandahar</em><a class="renvoi" href="#src-5" id="ref-5d">[5]</a>. Pour Mœbius, il est contemporain de <em>Tron</em> (1982), trois ans après <em>Alien</em><a class="renvoi" href="#src-7" id="ref-7b">[7]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> La presse critique de 1982 et les critiques plus récentes n'ont pas pu être lues au texte dans l'environnement de production de cette page&nbsp;: plusieurs sites spécialisés étaient inaccessibles. Cette section ne rapporte donc aucun jugement critique d'époque, et n'en invente aucun.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="canal-head">
+      <span class="canal-num">Canal 09 &mdash; fin de transmission</span>
+      <h2>Conclusion <span class="canal-sous">— se sauver soi-même, à distance</span></h2>
+    </div>
+    <p>
+      <em>Les Maîtres du temps</em> est un film de liaison&nbsp;: entre un enfant et une voix, entre un roman populaire et un dessinateur de bande dessinée au sommet de son art, entre un réalisateur français et un studio hongrois qui ne parlaient pas la même langue<a class="renvoi" href="#src-1" id="ref-1ak">[1]</a><a class="renvoi" href="#src-4" id="ref-4h">[4]</a><a class="renvoi" href="#src-7" id="ref-7c">[7]</a>. Sa réussite tient à ce que ces liaisons restent visibles, avec leurs grésillements&nbsp;: une aventure faite d'épisodes, une animation qui court derrière les décors de Mœbius, une révélation qui tombe plus qu'elle ne se démontre.
+    </p>
+    <p>
+      Ce que le film garde de plus fort vient de Wul, et Laloux a eu l'intelligence de ne pas le diluer&nbsp;: l'idée qu'un sauvetage peut être une boucle, et que le vieil homme qui parle à l'enfant perdu est cet enfant même. En la simplifiant, le film en fait moins un paradoxe de physicien qu'une image&nbsp;: on ne se sauve qu'en devenant celui qui, plus tard, saura quoi dire.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#e0a458;">Sources consultées</span>
+    <h2>Journal des transmissions</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Les Maîtres du temps » — <a href="https://fr.wikipedia.org/wiki/Les_Ma%C3%AEtres_du_temps" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Les Maîtres du temps</a></li>
+      <li id="src-2">Wikidata, élément Q785363 — <a href="https://www.wikidata.org/wiki/Q785363" target="_blank" rel="noopener">wikidata.org/wiki/Q785363</a></li>
+      <li id="src-3">The Movie Database (TMDB), « Time Masters (1982) », fiche du film et distribution — <a href="https://www.themoviedb.org/movie/22501-les-maitres-du-temps" target="_blank" rel="noopener">themoviedb.org/movie/22501</a></li>
+      <li id="src-4">Wikipédia (FR), « L'Orphelin de Perdide » — <a href="https://fr.wikipedia.org/wiki/L%27Orphelin_de_Perdide" target="_blank" rel="noopener">fr.wikipedia.org &mdash; L'Orphelin de Perdide</a></li>
+      <li id="src-5">Wikipédia (FR), « René Laloux » — <a href="https://fr.wikipedia.org/wiki/Ren%C3%A9_Laloux" target="_blank" rel="noopener">fr.wikipedia.org &mdash; René Laloux</a></li>
+      <li id="src-6">Wikipédia (FR), « La Planète sauvage » — <a href="https://fr.wikipedia.org/wiki/La_Plan%C3%A8te_sauvage" target="_blank" rel="noopener">fr.wikipedia.org &mdash; La Planète sauvage</a></li>
+      <li id="src-7">Wikipédia (FR), « Jean Giraud » — <a href="https://fr.wikipedia.org/wiki/Jean_Giraud" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Jean Giraud</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 28 septembre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
