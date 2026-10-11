@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture à voix haute — The Reader</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — un livre de poche allemand des années 1950, lu à
+       voix haute dans une chambre de tramway : papier jauni, encre brune,
+       rouge du ruban marque-page, cuir sombre de la couverture.
+       Contrastes composés au-dessus de 4,5:1 pour tout texte courant. */
+    --papier:#f3eee4;
+    --papier-creux:#e9e1d2;
+    --blanc:#faf7f1;
+    --encre:#241f1a;
+    --encre-douce:#423931;
+    --encre-pale:#5c5147;
+    --ruban:#8b3a2f;
+    --dorure:#d9a66a;
+    --cuir:#1f1b17;
+    --cuir-clair:#2c2620;
+    --filet:rgba(36,31,26,0.22);
+    --filet-tenu:rgba(36,31,26,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 1.73rem, rgba(36,31,26,0.045) 1.73rem 1.74rem),
+      var(--papier);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--ruban);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--ruban); }
+
+  /* Le ruban marque-page — dessiné en CSS seul. */
+  .marque-page{
+    height:0.5rem;
+    background:linear-gradient(90deg, var(--ruban) 0 72%, var(--dorure) 72% 74%, var(--cuir) 74% 100%);
+  }
+
+  /* ---------- COUVERTURE — le cuir du livre, usé aux coins ---------- */
+  header.cover{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(217,166,106,0.16), transparent 45%),
+      radial-gradient(ellipse at 100% 100%, rgba(217,166,106,0.10), transparent 45%),
+      linear-gradient(to bottom, #17140f 0%, var(--cuir) 55%, var(--cuir-clair) 100%);
+    color:#efe8db;
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:#d8cfc0; }
+  header.cover .back-link:hover{ color:var(--dorure); }
+
+  .etiquette{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--dorure);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+    color:#faf7f1;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--dorure);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:#efe8db;
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px dotted rgba(239,232,219,0.22);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--dorure); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:#efe8db; }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(217,166,106,0.45);
+    box-shadow:0 10px 26px rgba(0,0,0,0.6);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--dorure);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#2c2620;
+    color:#f3eee4;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — la table des matières ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--papier-creux); color:var(--encre-douce); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--encre-douce); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--ruban); border-bottom-color:var(--ruban); }
+
+  /* ---------- CORPS — chaque section est une lecture du soir ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .lecture-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--encre);
+  }
+  .lecture{
+    flex:0 0 auto;
+    min-width:3.2rem;
+    padding:0.3rem 0.45rem 0.34rem;
+    background:var(--encre);
+    color:var(--papier);
+    border-radius:0.15rem;
+    box-shadow:inset 0 -3px 0 var(--ruban);
+    font-family:var(--mono); font-size:0.58rem; line-height:1.3;
+    letter-spacing:0.08em; text-align:center; text-transform:uppercase;
+  }
+  .lecture strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--encre);
+  }
+  .lecture-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--encre-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ruban);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--encre-douce); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--ruban); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--ruban);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--encre-douce);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--encre-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--cuir); color:#efe8db; margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem; color:#faf7f1;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:#efe8db; }
+  ol.source-list a{ color:var(--dorure); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--encre-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--encre-douce); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .lecture-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="marque-page" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="etiquette">
+      <span>Neustadt, 1958</span>
+      <span>Receveuse de tramway</span>
+      <span>Un procès, 1966</span>
+    </div>
+
+    <h1 class="titre">The Reader</h1>
+    <p class="titre-original">Le Liseur &mdash; Stephen Daldry &mdash; 2008</p>
+    <p class="sous-titre">Une ancienne gardienne de camp qui ne sait pas lire, un adolescent qui lui fait la lecture, un juriste qui se tait&nbsp;: Daldry filme la honte allemande d'après-guerre comme une histoire d'amour, et c'est ce choix, plus que son sujet, qui divise.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/the-reader.jpg"
+             alt="Affiche du film The Reader"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>Stephen Daldry</dd></div>
+      <div><dt>Scénario</dt><dd>David Hare, d'après Bernhard Schlink</dd></div>
+      <div><dt>Année</dt><dd>2008</dd></div>
+      <div><dt>Durée</dt><dd>124 minutes</dd></div>
+      <div><dt>Image</dt><dd>Chris Menges, Roger Deakins &mdash; couleur</dd></div>
+      <div><dt>Musique</dt><dd>Nico Muhly</dd></div>
+      <div><dt>Pays</dt><dd>États-Unis, Allemagne</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 10 octobre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Affiche&nbsp;: fonds d'affiches du propriétaire du site. Les citations de sources en langue anglaise sont traduites en français par la rédaction, renvoi conservé.
+    </div>
+  </div>
+  <div class="marque-page" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Fable 5.1, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 10 octobre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>1</strong></span>
+      <h2>Fiche technique <span class="lecture-sous">— la page de garde</span></h2>
+    </div>
+    <p>
+      <em>The Reader</em> (titre québécois <em>Le Liseur</em>, comme le roman en français) est réalisé par Stephen Daldry sur un scénario de David Hare, adapté de <em>Der Vorleser</em> (1995) de Bernhard Schlink<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Anthony Minghella, Sydney Pollack, Donna Gigliotti et Redmond Morris produisent pour The Weinstein Company, Mirage Enterprises et Neunte Babelsberg Film&nbsp;; les deux premiers meurent avant la sortie<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. L'image est de Roger Deakins puis de Chris Menges, qui le remplace en cours de tournage, le montage de Claire Simpson, la musique de Nico Muhly<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Kate Winslet joue Hanna Schmitz, David Kross le jeune Michael Berg et Ralph Fiennes le même homme adulte&nbsp;; Bruno Ganz tient le rôle du professeur Rohl, Lena Olin celui de la survivante Ilana Mather, Alexandra Maria Lara la même femme jeune, Burghart Klaußner le juge<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Le film est américano-allemand, en couleur, d'une durée de 124 minutes, tourné en anglais avec des passages en allemand, en grec et en latin<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a>. Il sort en exclusivité aux États-Unis le 10 décembre 2008, dans huit salles, puis largement le 30 janvier 2009&nbsp;; en Allemagne le 6 février et en France le 15 juillet 2009<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Son budget est de 32 millions de dollars, pour 108,9 millions de recettes mondiales<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Palmarès&nbsp;: Oscar, BAFTA, Golden Globe (second rôle) et prix du syndicat des acteurs pour Kate Winslet&nbsp;; nominations aux Oscars du meilleur film, de la réalisation, du scénario adapté et de la photographie&nbsp;; nominations aux Golden Globes et aux BAFTA du film, de la réalisation et du scénario<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>2</strong></span>
+      <h2>Synopsis <span class="lecture-sous">— trois temps d'une même vie</span></h2>
+    </div>
+    <p>
+      Allemagne de l'Ouest, 1958. Michael Berg, quinze ans, tombe malade dans la rue&nbsp;; Hanna Schmitz, receveuse de tramway deux fois plus âgée que lui, le ramène chez lui. L'été suivant, ils deviennent amants, et elle lui demande de lui lire des livres avant l'amour — Homère, Tchekhov, Lessing<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Puis elle disparaît sans un mot<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      1966. Étudiant en droit, Michael suit avec son séminaire le procès de six anciennes gardiennes SS, accusées d'avoir laissé brûler trois cents prisonnières enfermées dans une église&nbsp;; Hanna est l'une d'elles<a class="renvoi" href="#src-2">[2]</a>. Quand ses coaccusées lui attribuent la rédaction du rapport, elle accepte la responsabilité plutôt que d'avouer ce que Michael seul comprend&nbsp;: elle ne sait ni lire ni écrire<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Il se tait&nbsp;; elle est condamnée à perpétuité. Des années plus tard, il lui enregistre des livres sur cassette, et elle apprend à lire en prison<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>3</strong></span>
+      <h2>Contexte de production <span class="lecture-sous">— un roman allemand, une maison américaine</span></h2>
+    </div>
+    <p>
+      Miramax acquiert les droits du roman dès avril 1998&nbsp;; le tournage ne commence qu'en septembre 2007, sous la direction de Daldry, dont c'est le troisième film après <em>Billy Elliot</em> et <em>The Hours</em>, ce dernier déjà écrit par Hare<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-5">[5]</a>. Kate Winslet est d'abord engagée, se retire pour <em>Les Noces rebelles</em>, est remplacée par Nicole Kidman, qui quitte le projet en janvier 2008 en annonçant sa grossesse&nbsp;; Winslet revient<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Les scènes d'amour avec David Kross sont repoussées jusqu'à sa majorité<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Le tournage a lieu à Berlin, à Görlitz, sur la ligne de tramway de la vallée de la Kirnitzsch près de Bad Schandau, et s'achève le 14 juillet aux studios MMC de Cologne&nbsp;; la petite église de l'escapade à bicyclette est à Sněžná, en Bohême<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Le producteur Scott Rudin quitte le film en désaccord avec un montage précipité pour tenir une sortie en 2008, et fait retirer son nom du générique<a class="renvoi" href="#src-2">[2]</a>. Hare abandonne la narration en voix hors champ du roman et en change la fin<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-5">[5]</a>. Jean-Baptiste Thoret relève, d'après les suppléments du disque, que «&nbsp;le jeune David Kross ne parlait que très peu anglais avant le tournage&nbsp;»<a class="renvoi" href="#src-8">[8]</a> — détail qui compte, pour un film allemand tourné en anglais.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>4</strong></span>
+      <h2>Structure narrative <span class="lecture-sous">— des retours en arrière dans des retours en arrière</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le roman de Schlink est en trois parties, racontées à la première personne par Michael. Hare supprime les deux dispositifs&nbsp;: la voix et le découpage. Rick Groen, dans le <em>Globe and Mail</em>, tient ces deux choix pour les fautes du scénario&nbsp;: le premier «&nbsp;interrompt simplement le flux du récit&nbsp;», le second laisse «&nbsp;un vide de silence&nbsp;» là où le roman discutait<a class="renvoi" href="#src-5">[5]</a>. Brian Eggert, plus favorable au film, juge lui aussi la chronologie «&nbsp;plus distrayante qu'efficace dramatiquement&nbsp;», avec ses «&nbsp;retours en arrière dans des retours en arrière&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Manohla Dargis, dans le <em>New York Times</em>, critique la même structure<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <p>
+      Le film part en effet de 1995 — Michael adulte, seul dans son appartement de Berlin — et remonte vers 1958 par paliers, avant de rejoindre le procès de 1966 puis la prison. Cette page tient la critique pour juste et le reproche pour mal adressé&nbsp;: ce qui manque n'est pas la fluidité, c'est ce que la voix de Michael portait chez Schlink, l'aveu d'un homme qui ne s'est jamais pardonné son silence. Sans elle, le silence du film n'est plus celui d'un personnage, c'est celui d'un scénario qui s'abstient. Bill Gibron, pour PopMatters, le dit du procès&nbsp;: «&nbsp;tout le drame judiciaire est expédié en toute hâte&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Thoret, à l'inverse, tient la première partie, «&nbsp;de loin la meilleure&nbsp;», pour une «&nbsp;éducation sentimentale&nbsp;» réussie<a class="renvoi" href="#src-8">[8]</a>. Les deux ont raison&nbsp;: le film sait raconter un été, et il ne sait pas raconter un procès.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>5</strong></span>
+      <h2>Mise en scène et procédés <span class="lecture-sous">— la lumière de Menges, la pudeur de Daldry</span></h2>
+    </div>
+    <p>
+      Deux directeurs de la photographie se succèdent, et la lumière garde une unité — intérieurs ocre de la chambre d'Hanna, gris-vert du tribunal, blanc froid de la prison — qui vaut au film sa nomination à l'Oscar de la photographie<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Le tramway est le motif visuel qui lie les époques&nbsp;: la receveuse en uniforme, la ligne de montagne où le couple s'échappe, la voiture que Michael adulte regarde passer. Les scènes d'amour partagent les critiques&nbsp;: Groen trouve que la caméra de Daldry «&nbsp;s'y délecte&nbsp;»<a class="renvoi" href="#src-5">[5]</a>&nbsp;; Eggert y voit «&nbsp;des scènes de chambre honnêtes&nbsp;», qui évitent l'exploitation<a class="renvoi" href="#src-7">[7]</a>&nbsp;; Gibron estime que la nudité de Winslet ne paraît plus «&nbsp;courageuse&nbsp;»<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      La vraie question de mise en scène est ailleurs&nbsp;: dans ce que le film refuse de montrer. Aucune image de camp, aucune reconstitution de l'église en feu&nbsp;; la Shoah n'entre que par les mots du tribunal, le témoignage d'Ilana Mather et la visite de Michael au camp vide. Thoret y voit de la timidité&nbsp;: Daldry et ses producteurs «&nbsp;avancent avec précaution, timidité même&nbsp;», au point d'éviter la complexité de leur sujet<a class="renvoi" href="#src-8">[8]</a>. Dargis, citée par la notice anglophone, y voit pire, un film qui s'occupe de «&nbsp;faire que le public se sente bien à propos d'une catastrophe historique&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Rapprochement d'analyse, non de source&nbsp;: la pudeur est ici une méthode, et elle est cohérente avec le sujet — Michael, comme sa génération, apprend l'horreur par procès-verbaux et non par images — mais elle fait reposer tout le poids du film sur une actrice, et c'est beaucoup.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>6</strong></span>
+      <h2>Personnages principaux <span class="lecture-sous">— celle qui ne lit pas, celui qui ne parle pas</span></h2>
+    </div>
+    <h3>Hanna Schmitz (Kate Winslet)</h3>
+    <p>
+      La critique est unanime sur l'actrice, divisée sur le personnage. Eggert tient sa présence pour «&nbsp;tout simplement hantée&nbsp;» et sa performance pour «&nbsp;l'un des plus beaux jeux de l'année&nbsp;»<a class="renvoi" href="#src-7">[7]</a>&nbsp;; Groen lit dans son accent, son ton sec et son front plissé les signes d'un secret enfoui<a class="renvoi" href="#src-5">[5]</a>&nbsp;; Thoret écrit que «&nbsp;Winslet irradie tellement le film&nbsp;» qu'on ne l'imagine pas sans elle<a class="renvoi" href="#src-8">[8]</a>&nbsp;; Kirk Honeycutt, dans le <em>Hollywood Reporter</em>, salue des «&nbsp;interprétations courageuses, intenses&nbsp;» de Winslet et de Kross<a class="renvoi" href="#src-2">[2]</a>. Le personnage, lui, pose le problème du film&nbsp;: une gardienne de camp dont le secret le plus honteux n'est pas ce qu'elle a fait mais ce qu'elle ne sait pas faire. Ron Rosenbaum, dans <em>Slate</em>, s'en indigne&nbsp;: «&nbsp;Ne pas savoir lire est <em>plus</em> honteux que d'écouter en silence, comme du bétail&nbsp;» les cris des victimes<a class="renvoi" href="#src-2">[2]</a>. C'est le cœur de la controverse, et il est traité plus bas.
+    </p>
+    <h3>Michael Berg (David Kross, Ralph Fiennes)</h3>
+    <p>
+      Deux acteurs pour un homme, et la coupure est le sujet&nbsp;: l'adolescent de Kross découvre le corps et les livres en même temps, l'adulte de Fiennes, «&nbsp;émotionnellement distant&nbsp;» selon Eggert<a class="renvoi" href="#src-7">[7]</a>, avec «&nbsp;un air de chien battu&nbsp;» selon Thoret<a class="renvoi" href="#src-8">[8]</a>, n'a jamais rouvert ce qu'il a refermé en 1966. Thelma Adams, dans le <em>Huffington Post</em>, lit la relation comme un abus — «&nbsp;Michael est une victime d'abus&nbsp;» — ce que Hare rejette comme «&nbsp;la chose la plus ridicule&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Rapprochement d'analyse, non de source&nbsp;: le film ne tranche pas, et c'est là qu'il est le plus juste. Michael a quinze ans, Hanna trente-six, et le scénario laisse au spectateur le soin de décider si ce qui le rend muet au procès est la loyauté, la honte ou la peur d'être reconnu comme l'amant d'une criminelle.
+    </p>
+    <h3>Ilana Mather (Lena Olin, Alexandra Maria Lara)</h3>
+    <p>
+      La survivante témoigne au procès et reçoit, trente ans plus tard, la visite de Michael et la boîte à thé d'Hanna. C'est la seule scène où le film laisse une victime répondre, et elle refuse&nbsp;: elle garde la boîte, pas l'argent, et ne pardonne rien. Eggert note que le film «&nbsp;n'offre aucune solution aux questions douloureuses de culpabilité et d'intention&nbsp;»<a class="renvoi" href="#src-7">[7]</a>&nbsp;; cette scène est l'endroit où ce refus de conclure devient une position morale plutôt qu'une esquive.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> La date de sortie américaine est donnée au 10 décembre 2008 par la notice francophone, TMDB et le corps de la notice anglophone, au 12 décembre par l'encadré de cette dernière<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Rotten Tomatoes est cité à 62&nbsp;% (notice francophone) et 63&nbsp;% sur 202 critiques (anglophone)<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Cette page retient le 10 décembre et cite les deux scores.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>7</strong></span>
+      <h2>Thèmes <span class="lecture-sous">— un thème dominant, trois lectures satellites</span></h2>
+    </div>
+    <p>
+      La forme hybride s'impose ici&nbsp;: tout, dans ce film, tourne autour d'une seule métaphore, et les autres thèmes en dépendent.
+    </p>
+    <h3>L'analphabétisme comme métaphore — et comme excuse</h3>
+    <p>
+      Chez Schlink, l'incapacité d'Hanna à lire réfléchit l'ignorance de l'Allemagne d'après-guerre devant ses propres crimes&nbsp;; Gibron tient cette figure pour «&nbsp;une puissante métaphore littéraire&nbsp;» et reproche au film de l'avoir «&nbsp;mise de côté pour se concentrer sur une romance maniérée entre une femme mûre et un garçon&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Groen va plus loin&nbsp;: le symbole est «&nbsp;confus et source de confusion&nbsp;», parce qu'une incapacité innée à lire est un faux parallèle avec l'ignorance volontaire et sélective de l'Allemagne — il «&nbsp;trouble des eaux déjà boueuses&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Rosenbaum y voit une absolution&nbsp;: la métaphore servirait à laver les Allemands de l'époque de leur complicité consciente<a class="renvoi" href="#src-2">[2]</a>. Eggert défend le film&nbsp;: il «&nbsp;offre l'ignorance comme une pièce de plus du puzzle&nbsp;», non comme une excuse<a class="renvoi" href="#src-7">[7]</a>. Cette page tranche avec Groen contre Rosenbaum et contre Eggert&nbsp;: le film n'excuse rien, mais il choisit une figure qui ne tient pas, et il la choisit parce qu'elle est filmable — une femme qui suit du doigt les lignes d'un livre en prison est une image, l'aveuglement d'un peuple n'en est pas une.
+    </p>
+    <h3>La honte, en deux générations</h3>
+    <p>
+      Thoret résume l'ambition&nbsp;: montrer «&nbsp;le poids de l'Holocauste sur trois générations d'Allemands&nbsp;», et la question qui ne trouve pas de réponse, «&nbsp;comment faire le deuil de la Shoah&nbsp;?&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Le séminaire du professeur Rohl est l'endroit où le film pose la question en termes de droit — juger selon la loi de l'époque ou selon la morale d'aujourd'hui — et un étudiant y crie ce que le film ne dit pas ailleurs&nbsp;: que tout le monde savait.
+    </p>
+    <h3>Lire, faire lire, se taire</h3>
+    <p>
+      Le titre dit la chose&nbsp;: Michael est celui qui lit, Hanna celle qui écoute, et le film est un enchaînement de lectures — à voix haute dans la chambre, en silence au tribunal, sur cassette en prison. Dans <em>Télérama</em>, Juliette Bénabent défend un film «&nbsp;jamais manichéen&nbsp;», qui pose des questions sans y répondre&nbsp;; Pierre Murat, en face, tranche&nbsp;: «&nbsp;C'est un film hollywoodien. Tourné en anglais, alors que l'allemand eût été essentiel&nbsp;»<a class="renvoi" href="#src-1">[1]</a>. La seconde objection touche au cœur du thème&nbsp;: un film sur la lecture et la langue, dans lequel les personnages ne parlent pas leur langue, perd l'une de ses raisons d'être.
+    </p>
+    <h3>Le désir et le crime</h3>
+    <p>
+      Le film demande qu'on tienne ensemble deux choses&nbsp;: un premier amour filmé avec tendresse et le fait que l'objet de cet amour a laissé brûler trois cents femmes. Dargis refuse ce que ce rapprochement produit, un confort<a class="renvoi" href="#src-2">[2]</a>&nbsp;; la notice anglophone rapporte que des historiens ont parlé de révisionnisme pour avoir fait d'Hanna un objet de sympathie<a class="renvoi" href="#src-2">[2]</a>. Le film ne répond pas, et la scène finale — Michael racontant l'histoire à sa fille sur la tombe d'Hanna — remplace la réponse par une transmission.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>8</strong></span>
+      <h2>Réception critique et postérité <span class="lecture-sous">— une actrice, un Oscar, une querelle</span></h2>
+    </div>
+    <p>
+      L'accueil est mitigé partout. Rotten Tomatoes relève 63&nbsp;% d'avis favorables sur 202 critiques, Metacritic 58 sur 100, et le consensus du premier parle, «&nbsp;malgré l'interprétation superbe de Kate Winslet&nbsp;», d'un «&nbsp;drame historique émotionnellement distant, taillé pour les Oscars&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Patrick Goldstein, dans le <em>Los Angeles Times</em>, juge que «&nbsp;le plus gros problème du film est qu'il ne capte tout simplement pas l'intensité glaçante de sa source&nbsp;»<a class="renvoi" href="#src-2">[2]</a>&nbsp;; Honeycutt, à l'inverse, y voit «&nbsp;un récit d'apprentissage bien raconté&nbsp;»<a class="renvoi" href="#src-2">[2]</a>. Groen donne deux étoiles sur quatre, Gibron 5 sur 10, Eggert trois étoiles et demie et prédit un «&nbsp;effet hanté&nbsp;» qui «&nbsp;vous laissera songeur pendant des jours&nbsp;»<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-7">[7]</a>. Roger Ebert le place parmi ses vingt films de l'année<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      En France, où le film ne sort qu'en juillet 2009, AlloCiné relève une moyenne de 3 sur 5 pour vingt-deux titres, et <em>Télérama</em> publie les deux avis opposés déjà cités<a class="renvoi" href="#src-1">[1]</a>. Thoret, à la sortie du disque, donne 5 sur 10 à un film qui réussit sa première partie et «&nbsp;se dérobe&nbsp;» devant son sujet<a class="renvoi" href="#src-8">[8]</a>.
+    </p>
+    <p>
+      La postérité du film est double. D'un côté, l'Oscar de Kate Winslet, le 22 février 2009, après cinq nominations sans victoire&nbsp;; de l'autre, la campagne menée contre le film dans les semaines précédentes, dont la colonne de Rosenbaum — «&nbsp;Ne donnez pas d'Oscar à <em>The Reader</em>&nbsp;» — est restée l'emblème, reprise par des historiens et par le centre Simon-Wiesenthal<a class="renvoi" href="#src-2">[2]</a>. Le film demeure ainsi un cas d'école de ce qu'un «&nbsp;film sur la Shoah&nbsp;» peut ou ne peut pas se permettre, plus qu'une œuvre que l'on revoit pour elle-même.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> Quatre pages n'ont pas été servies&nbsp;: la critique de Manohla Dargis dans le <em>New York Times</em> (domaine inaccessible), la colonne de Ron Rosenbaum sur <em>Slate</em> (HTTP 404 à son adresse connue), celle de Peter Bradshaw dans le <em>Guardian</em> (domaine inaccessible) et la critique de NPR (HTTP 503)&nbsp;; les mots de Dargis, Rosenbaum, Goldstein, Honeycutt et Adams cités ici viennent de la notice anglophone, ceux de Bénabent et Murat de la notice francophone. La page AlloCiné de la revue de presse n'a pas été trouvée. Les scores agrégés n'ont pas été lus à leur source.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="lecture-head">
+      <span class="lecture">lecture<strong>9</strong></span>
+      <h2>Conclusion <span class="lecture-sous">— le livre refermé</span></h2>
+    </div>
+    <p>
+      <em>The Reader</em> est un film que l'on juge sur ce qu'il n'a pas fait. Il n'a pas gardé la voix du roman, et son silence devient le vide que Groen décrit<a class="renvoi" href="#src-5">[5]</a>&nbsp;; il n'a pas tourné en allemand, et Murat a raison de dire que c'était essentiel<a class="renvoi" href="#src-1">[1]</a>&nbsp;; il n'a pas filmé le crime, et Thoret a raison d'y voir de la timidité<a class="renvoi" href="#src-8">[8]</a>. Mais l'accusation la plus grave, celle de Rosenbaum, cette page ne la retient pas&nbsp;: le film ne fait pas de l'analphabétisme une excuse, il en fait une erreur de métaphore — ce qui est une faute d'écriture, pas une faute morale<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-7">[7]</a>. La scène de la boîte à thé, où une survivante garde l'objet et rend l'argent, prouve que Daldry sait où se tient la ligne.
+    </p>
+    <p>
+      Ce qui reste, c'est une actrice qui porte seule la contradiction du film — une femme tendre et une gardienne de camp, dans le même corps, sans que la mise en scène lui vienne en aide — et c'est pour cela, et non pour le film, que l'Oscar lui est allé<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-7">[7]</a><a class="renvoi" href="#src-8">[8]</a>. Un film sur la lecture qui ne sait pas raconter un procès&nbsp;; une adaptation qui comprend son roman et le simplifie quand même&nbsp;; un objet qui vaut par son interprète. Eggert promettait qu'il hanterait des jours<a class="renvoi" href="#src-7">[7]</a>. Ce qui hante, dix-sept ans après, c'est moins le film que la question qu'il a eu le mérite de mal poser.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#d9a66a;">Sources consultées</span>
+    <h2>La bibliographie du liseur</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « The Reader (film) » — <a href="https://fr.wikipedia.org/wiki/The_Reader_(film)" target="_blank" rel="noopener">fr.wikipedia.org &mdash; The Reader (film)</a></li>
+      <li id="src-2">Wikipédia (EN), « The Reader (2008 film) » — <a href="https://en.wikipedia.org/wiki/The_Reader_(2008_film)" target="_blank" rel="noopener">en.wikipedia.org &mdash; The Reader (2008 film)</a></li>
+      <li id="src-3">Wikidata, élément Q159063 — <a href="https://www.wikidata.org/wiki/Q159063" target="_blank" rel="noopener">wikidata.org/wiki/Q159063</a></li>
+      <li id="src-4">The Movie Database (TMDB), « The Reader (2008) », fiche du film — <a href="https://www.themoviedb.org/movie/8055-the-reader" target="_blank" rel="noopener">themoviedb.org/movie/8055</a></li>
+      <li id="src-5">Rick Groen, « Unable to read between the lines », <em>The Globe and Mail</em>, 12 décembre 2008 — <a href="https://www.theglobeandmail.com/arts/unable-to-read-between-the-lines/article1323876" target="_blank" rel="noopener">theglobeandmail.com &mdash; Unable to read between the lines</a></li>
+      <li id="src-6">Bill Gibron, « Unclear Motives Make this “Reader” Unrewarding », <em>PopMatters</em>, 11 décembre 2008 — <a href="https://www.popmatters.com/?p=581775" target="_blank" rel="noopener">popmatters.com &mdash; The Reader</a></li>
+      <li id="src-7">Brian Eggert, « The Reader », <em>Deep Focus Review</em>, 18 décembre 2008 — <a href="https://www.deepfocusreview.com/reviews/the-reader/" target="_blank" rel="noopener">deepfocusreview.com &mdash; The Reader</a></li>
+      <li id="src-8">Jean-Baptiste Thoret, « The Reader », critique, <em>AVCesar</em>, 25 novembre 2009 — <a href="https://www.avcesar.com/critique/the-reader-445" target="_blank" rel="noopener">avcesar.com &mdash; The Reader</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 10 octobre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

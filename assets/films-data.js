@@ -984,5 +984,23 @@ const FILMS = [
     producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
     pays: ['Etats-Unis'],
     technique: ['couleur']
+  },
+  {
+    slug: 'the-reader',
+    title: 'The Reader',
+    director: 'Stephen Daldry',
+    year: 2008,
+    summary: "Une gardienne de camp qui ne sait pas lire, un adolescent qui lui fait la lecture, un juriste qui se tait : Daldry filme la honte allemande d'après-guerre comme une histoire d'amour, et c'est ce choix, plus que son sujet, qui divise.",
+    url: 'films/the-reader.html',
+    poster: 'assets/posters/the-reader.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-106, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date de production sur le pilote (décision d'AH du 11/10/2026) ;
+    // adoptée le 2026-10-11 (commit pilote b5e5f80).
+    datePublication: '2026-10-10 12:26',
+    genreBase: 'drame',
+    producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
+    pays: ['Etats-Unis', 'Allemagne'],
+    technique: ['couleur']
   }
 ];
