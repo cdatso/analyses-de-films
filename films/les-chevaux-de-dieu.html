@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le terrain vague — Les Chevaux de Dieu</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — le terrain de football du bidonville, vu d'en haut :
+       sable de la terre battue, suie de la tôle, vert de la pelouse rêvée,
+       cuivre du soleil de Casablanca. Contrastes composés au-dessus de
+       4,5:1 pour tout texte courant. */
+    --sable:#efe7d8;
+    --sable-creux:#e4dac6;
+    --craie:#f8f3ea;
+    --suie:#221d17;
+    --suie-douce:#433a30;
+    --suie-pale:#5a4f43;
+    --pelouse:#2f6b4f;
+    --cuivre:#d08a2e;
+    --nuit:#171511;
+    --nuit-claire:#241f19;
+    --filet:rgba(34,29,23,0.22);
+    --filet-tenu:rgba(34,29,23,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 7.9rem, rgba(34,29,23,0.05) 7.9rem 8rem),
+      var(--sable);
+    color:var(--suie);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--pelouse);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--suie-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--pelouse); }
+
+  /* La ligne de touche — tracée à la chaux sur la terre, en CSS seul. */
+  .touche{
+    height:0.45rem;
+    background:repeating-linear-gradient(90deg, var(--craie) 0 2.2rem, var(--pelouse) 2.2rem 2.6rem);
+  }
+
+  /* ---------- COUVERTURE — le bidonville la nuit, vu du toit ---------- */
+  header.cover{
+    position:relative;
+    background:
+      repeating-linear-gradient(0deg, rgba(208,138,46,0.06) 0 1px, transparent 1px 2.3rem),
+      repeating-linear-gradient(90deg, rgba(208,138,46,0.05) 0 1px, transparent 1px 3.1rem),
+      radial-gradient(ellipse at 70% 0%, rgba(208,138,46,0.26), transparent 50%),
+      linear-gradient(to bottom, #100e0b 0%, var(--nuit) 55%, var(--nuit-claire) 100%);
+    color:#ede6da;
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:#d4cbbd; }
+  header.cover .back-link:hover{ color:var(--cuivre); }
+
+  .etiquette{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--cuivre);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+    color:#f8f3ea;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--cuivre);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:#ede6da;
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px solid rgba(237,230,218,0.18);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--cuivre); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:#ede6da; }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(208,138,46,0.45);
+    box-shadow:0 10px 26px rgba(0,0,0,0.6);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--cuivre);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#241f19;
+    color:#efe7d8;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — la feuille de match ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--sable-creux); color:var(--suie-douce); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--suie-douce); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--pelouse); border-bottom-color:var(--pelouse); }
+
+  /* ---------- CORPS — chaque section est une mi-temps ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .mitemps-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--suie);
+  }
+  .mitemps{
+    flex:0 0 auto;
+    min-width:3.2rem;
+    padding:0.3rem 0.45rem 0.34rem;
+    background:var(--pelouse);
+    color:var(--craie);
+    border-radius:0.15rem;
+    box-shadow:inset 0 -3px 0 var(--cuivre);
+    font-family:var(--mono); font-size:0.58rem; line-height:1.3;
+    letter-spacing:0.08em; text-align:center; text-transform:uppercase;
+  }
+  .mitemps strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--suie);
+  }
+  .mitemps-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--suie-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--pelouse);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--suie-douce); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--pelouse); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--pelouse);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--suie-douce);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--suie-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--nuit); color:#ede6da; margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem; color:#f8f3ea;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:#ede6da; }
+  ol.source-list a{ color:var(--cuivre); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--suie-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--suie-douce); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .mitemps-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="touche" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="etiquette">
+      <span>Sidi Moumen, 1994</span>
+      <span>Un terrain de football</span>
+      <span>Casablanca, 16 mai 2003</span>
+    </div>
+
+    <h1 class="titre">Les Chevaux de Dieu</h1>
+    <p class="titre-original">يا خيل الله &mdash; Nabil Ayouch &mdash; 2012</p>
+    <p class="sous-titre">Deux frères d'un bidonville de Casablanca, dix ans de terrain vague et un soir de mai 2003&nbsp;: Ayouch remonte le chemin qui mène du ballon à la ceinture d'explosifs, et refuse jusqu'au bout d'en désigner la cause unique.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/les-chevaux-de-dieu.jpg"
+             alt="Affiche du film Les Chevaux de Dieu"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>Nabil Ayouch</dd></div>
+      <div><dt>Scénario</dt><dd>Jamal Belmahi, d'après Mahi Binebine</dd></div>
+      <div><dt>Année</dt><dd>2012</dd></div>
+      <div><dt>Durée</dt><dd>115 minutes</dd></div>
+      <div><dt>Image</dt><dd>Hichame Alaouié &mdash; couleur</dd></div>
+      <div><dt>Montage</dt><dd>Damien Keyeux</dd></div>
+      <div><dt>Pays</dt><dd>Maroc, France, Belgique</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 10 octobre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Affiche&nbsp;: fonds d'affiches du propriétaire du site. Les citations de sources en langue anglaise sont traduites en français par la rédaction, renvoi conservé.
+    </div>
+  </div>
+  <div class="touche" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Fable 5.1, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 10 octobre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>1</strong></span>
+      <h2>Fiche technique <span class="mitemps-sous">— la feuille de match</span></h2>
+    </div>
+    <p class="alerte">Le film traite d'attentats-suicides réels et de la radicalisation d'adolescents&nbsp;; la fin de cette page en décrit le dénouement.</p>
+    <p>
+      <em>Les Chevaux de Dieu</em> (titre original arabe <em>Ya khayl Allah</em>, titre international <em>Horses of God</em>) est réalisé par Nabil Ayouch sur un scénario de Jamal Belmahi, adapté du roman <em>Les Étoiles de Sidi Moumen</em> de Mahi Binebine<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. L'image est d'Hichame Alaouié, le montage de Damien Keyeux<a class="renvoi" href="#src-2">[2]</a>. Abdelhakim Rachid joue Yachine, Abdelilah Rachid son frère Hamid, Hamza Souidek Nabil, Ahmed El Idrissi Amrani Fouad&nbsp;; les deux premiers sont frères dans la vie et tous sont des acteurs non professionnels, issus du quartier<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+    <p>
+      Le film est une coproduction du Maroc, de la France et de la Belgique, en couleur, en arabe marocain, d'une durée de 115 minutes<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Il est présenté pour la première fois le 19 mai 2012 au festival de Cannes, dans la section Un certain regard, sort en Belgique le 13 février 2013 et en France le 20 février 2013<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>. Le Fonds marocain du cinéma en est le premier financeur<a class="renvoi" href="#src-5">[5]</a>. Les recettes connues en salle sont de 96&nbsp;277 dollars selon la notice anglophone, qui ne précise pas le territoire<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Palmarès&nbsp;: prix François-Chalais à Cannes 2012, Épi d'or à Valladolid 2012, prix Lumières 2014 du meilleur film francophone, prix dans les festivals de Rotterdam, Namur, Bruxelles, Doha, Besançon et Montpellier, Magritte de la meilleure image pour Hichame Alaouié&nbsp;; le film représente le Maroc aux Oscars sans être retenu dans la sélection finale<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>2</strong></span>
+      <h2>Synopsis <span class="mitemps-sous">— de 1994 à 2003</span></h2>
+    </div>
+    <p>
+      Sidi Moumen, bidonville à l'est de Casablanca, 1994. Yachine, dix ans, garde les buts sur le terrain vague&nbsp;; Hamid, treize ans, son frère aîné, le protège et le brutalise, et devient petit trafiquant<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-6">[6]</a>. Hamid est arrêté et, en prison, se convertit à l'islam radical&nbsp;; à sa sortie, il entraîne Yachine, Nabil et Fouad dans la cellule d'un émir du quartier<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      En 2003, les quatre garçons sont choisis pour une mission&nbsp;; le film s'achève sur les attentats du 16 mai 2003 à Casablanca, qui ont fait quarante-cinq morts, kamikazes compris<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>3</strong></span>
+      <h2>Contexte de production <span class="mitemps-sous">— le point de vue qui manquait</span></h2>
+    </div>
+    <p>
+      Après les attentats de 2003, Ayouch tourne d'abord un documentaire auprès des familles des victimes&nbsp;; il raconte à Alain Lorfèvre qu'il a compris alors que les victimes étaient «&nbsp;des deux côtés&nbsp;» et qu'il manquait «&nbsp;ce point de vue de là&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Il connaît Sidi Moumen, où il a tourné des séquences d'<em>Ali Zaoua</em> en 1999, et lit le roman de Binebine, qui retrace le parcours de ces jeunes&nbsp;; le film reste une fiction, tous les personnages sont inventés, mais certains faits réels y passent — l'absence de figure paternelle chez les kamikazes, par exemple<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Le cinéaste refuse les acteurs professionnels&nbsp;: «&nbsp;Je ne voulais pas d'acteurs professionnels pour faire ce film&nbsp;», dit-il à Cannes, et il explique à <em>La Libre</em> que les non-professionnels du quartier apportaient «&nbsp;un naturalisme, une réalité&nbsp;» qu'un comédien n'aurait pas donnés<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Le quartier ayant changé depuis 2003, le tournage a lieu dans un autre bidonville, ressemblant à Sidi Moumen d'avant les attentats&nbsp;; il est interrompu plusieurs fois, par la météo et par une minorité d'opposants — «&nbsp;Il y avait des gens qui étaient pas très contents qu'on fasse ce film&nbsp;»<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>. Les habitants, qui craignaient d'abord une stigmatisation, finissent par soutenir le projet&nbsp;; les deux frères Rachid, qui n'avaient jamais pris l'avion, découvrent Cannes avec le film<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>4</strong></span>
+      <h2>Structure narrative <span class="mitemps-sous">— dix ans en ligne droite</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le récit est chronologique et sans ellipse cachée&nbsp;: une enfance, une adolescence, une conversion, une mission. Orville Scott note que «&nbsp;le film peut être critiqué pour sa lenteur, mais il <em>devait</em> être lent&nbsp;», parce que cette lenteur laisse voir l'individualité des personnages s'éroder<a class="renvoi" href="#src-7">[7]</a>. La critique de <em>La Libre</em> dit la même chose en termes de forme&nbsp;: le film «&nbsp;suit une logique d'une simple évidence, jusqu'à un final d'une grande puissance émotionnelle&nbsp;», sans «&nbsp;pamphlet politique&nbsp;» ni «&nbsp;pesante reconstitution&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. John Bleasdale, à Londres, le compare à <em>Paradise Now</em> d'Hany Abu-Assad, qui suit un chemin voisin, et trouve au film d'Ayouch «&nbsp;une portée bien plus large&nbsp;»<a class="renvoi" href="#src-8">[8]</a>.
+    </p>
+    <p>
+      L'évidence est le mot juste, et c'est aussi la limite du film&nbsp;: en montrant chaque marche, il rend le chemin si lisible qu'on finit par le croire nécessaire — ce que le cinéaste refuse en paroles. Ayouch l'affirme à Cannes&nbsp;: «&nbsp;Il n'y a pas qu'une raison&nbsp;», et l'idée que «&nbsp;tous les pauvres deviennent kamikazes est faux&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. Le film tient cette ligne par ses personnages secondaires — Nabil, Fouad, les autres enfants du terrain qui ne suivent pas — plus que par sa construction. Le dénouement, lui, retrouve l'ambiguïté&nbsp;: Hamid, qui a converti son frère, «&nbsp;essaie une dernière fois de convaincre Tarek d'arrêter, pour être violemment repoussé au sol&nbsp;», et ne peut plus qu'«&nbsp;assister à la mort de son frère&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Le convertisseur se rétracte, le converti va jusqu'au bout&nbsp;: la ligne droite se brise à la dernière minute, et c'est là que le film cesse d'expliquer.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>5</strong></span>
+      <h2>Mise en scène et procédés <span class="mitemps-sous">— le bidonville vu d'en haut</span></h2>
+    </div>
+    <p>
+      Le film est encadré par des plans aériens&nbsp;: Bleasdale retient «&nbsp;une série de plans amples qui donnent le sens de l'échelle du bidonville&nbsp;» et de sa proximité avec une usine chimique neuve<a class="renvoi" href="#src-8">[8]</a>. La caméra d'Alaouié, saluée par <em>La Libre</em> pour «&nbsp;la qualité formelle du film&nbsp;» et récompensée d'un Magritte, alterne ces vues de haut avec une caméra portée au ras des ruelles<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a>. Rapprochement d'analyse, non de source&nbsp;: les vues aériennes sont celles d'un dieu ou d'un drone, et le titre — les chevaux de Dieu, nom que l'émir donne à ses recrues — dit que les garçons ne verront jamais leur quartier de là&nbsp;; le spectateur, lui, le voit, et il voit la ville riche à l'horizon.
+    </p>
+    <p>
+      Le reste tient au réalisme. «&nbsp;La texture de la vie du bidonville est rendue au jour le jour&nbsp;», écrit Bleasdale<a class="renvoi" href="#src-8">[8]</a>&nbsp;; Céline Biourge, à Cannes, juge le film «&nbsp;plus que réaliste&nbsp;»<a class="renvoi" href="#src-6">[6]</a>&nbsp;; <em>La Libre</em> y voit «&nbsp;un vrai film de cinéma, centré sur ses personnages&nbsp;», loin de «&nbsp;la docu-fiction statique&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. Le choix d'acteurs non professionnels appartient à cette méthode, qui est celle d'<em>Ali Zaoua</em> et, plus loin, du néoréalisme&nbsp;: Ayouch filme des corps qui ont grandi là. La scène de recrutement, où l'émir est «&nbsp;charismatique et doux&nbsp;» selon Bleasdale, est le moment le plus juste du film, parce qu'elle montre la radicalisation comme une hospitalité<a class="renvoi" href="#src-8">[8]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>6</strong></span>
+      <h2>Personnages principaux <span class="mitemps-sous">— deux frères, un gardien de but</span></h2>
+    </div>
+    <h3>Yachine, dit Tarek (Abdelhakim Rachid)</h3>
+    <p>
+      Le cadet, gardien de but qui prend le nom d'un gardien de but célèbre, est le personnage que le film suit le plus près. Bleasdale le voit joué «&nbsp;avec une intensité sombre&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Scott décrit sa conversion comme une perte&nbsp;: après son entrée dans la cellule, «&nbsp;son amour du football a disparu&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. C'est l'arc le plus simple du film et le plus efficace&nbsp;: un enfant qui aimait quelque chose cesse de l'aimer, et ce vide se remplit.
+    </p>
+    <h3>Hamid (Abdelilah Rachid)</h3>
+    <p>
+      L'aîné est «&nbsp;comme un père pour Yachine, mais il le néglige quand même&nbsp;», écrit Scott<a class="renvoi" href="#src-7">[7]</a>&nbsp;; Bleasdale le trouve «&nbsp;formidable&nbsp;»<a class="renvoi" href="#src-8">[8]</a>, et <em>La Libre</em> tient les deux frères, «&nbsp;authentiques frères dans la vraie vie&nbsp;», pour une part de la réussite<a class="renvoi" href="#src-4">[4]</a>. Hamid est le personnage qui change deux fois — voyou, puis converti, puis homme qui voudrait retenir son frère — et le seul dont le film laisse le sort ouvert.
+    </p>
+    <h3>Nabil (Hamza Souidek), Fouad (Ahmed El Idrissi Amrani) et l'émir</h3>
+    <p>
+      Les deux amis portent ce que le film dit de la sexualité et de l'humiliation dans le quartier — un fil que la critique anglophone juge traité avec gêne, et que cette page tient pour l'un des endroits où le film ose le plus, parce qu'il montre que la cellule recrute d'abord parmi les humiliés. L'émir, recruteur doux, incarne ce que Scott appelle «&nbsp;l'idée de rejoindre une fraternité qui promet un nouveau sens de la famille et du but&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Ayouch, en entretien, le dit sans détour&nbsp;: «&nbsp;l'on a toujours le choix&nbsp;»<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> La notice anglophone dit le film maroco-belge, la francophone le dit coproduit par le Maroc, la France et la Belgique&nbsp;; cette page suit la francophone<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a>. Le bilan des attentats est donné à quarante-cinq morts par la notice francophone, à trente-trois par une source de recherche non retenue ici&nbsp;; la valeur de quarante-cinq inclut les douze kamikazes<a class="renvoi" href="#src-1">[1]</a>. La soumission aux Oscars est datée de la 85e cérémonie par une source et de la 86e par une autre<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>7</strong></span>
+      <h2>Thèmes <span class="mitemps-sous">— quatre mi-temps</span></h2>
+    </div>
+
+    <h3>Comprendre sans excuser</h3>
+    <p>
+      C'est le programme déclaré. «&nbsp;Mon point de vue n'est pas de donner des leçons de morale mais de donner à comprendre en montrant&nbsp;», dit Ayouch selon la notice anglophone<a class="renvoi" href="#src-2">[2]</a>&nbsp;; à Lorfèvre, il parle de l'«&nbsp;indicible&nbsp;» du basculement et reconnaît que cette démarche va à l'opposé de ses convictions<a class="renvoi" href="#src-5">[5]</a>. <em>La Libre</em> salue un film qui suscite l'empathie pour des «&nbsp;agneaux sacrificiels et manipulés d'une “guerre” dont les enjeux les dépassent&nbsp;»<a class="renvoi" href="#src-4">[4]</a>. Le risque est connu — un film qui fait comprendre des terroristes est controversé par construction — et le film l'assume&nbsp;; cette page juge qu'il le tient, parce qu'il ne montre jamais les victimes autrement que comme des gens attablés, et qu'il ne donne jamais la parole à la doctrine.
+    </p>
+
+    <h3>La pauvreté n'explique pas tout</h3>
+    <p>
+      La notice anglophone résume&nbsp;: le film s'intéresse à la pauvreté, au machisme et au désespoir plus qu'à la religion elle-même<a class="renvoi" href="#src-2">[2]</a>. Scott rappelle que les auteurs des attentats «&nbsp;avaient tous une chose en commun&nbsp;: ils avaient tous grandi à Sidi Moumen&nbsp;»<a class="renvoi" href="#src-7">[7]</a>&nbsp;; Ayouch refuse pourtant la causalité mécanique<a class="renvoi" href="#src-6">[6]</a>. Le film tient les deux bouts en montrant ce que la cellule offre et que le quartier n'offre pas&nbsp;: un toit propre, un repas, un nom, un frère qui ne frappe plus.
+    </p>
+
+    <h3>Le père absent, le frère de trop</h3>
+    <p>
+      Ayouch cite l'absence de figure paternelle comme un fait réel passé dans la fiction<a class="renvoi" href="#src-5">[5]</a>. La mère de Yachine et Hamid est présente et impuissante&nbsp;; le père est un fantôme dans un coin de la baraque&nbsp;; le frère tient lieu des deux, mal. L'émir prend la place laissée vide. Le film est, sous son sujet politique, un récit de famille recomposée par la violence.
+    </p>
+
+    <h3>Le ballon</h3>
+    <p>
+      Le terrain vague ouvre et traverse le film&nbsp;: Yachine se bat «&nbsp;sur le terrain de football du quartier&nbsp;», écrit Scott, et c'est par la perte du jeu que sa conversion se mesure<a class="renvoi" href="#src-7">[7]</a>. Rapprochement d'analyse, non de source&nbsp;: le football est la seule institution du bidonville qui ne demande rien aux garçons que d'être là, et le film montre une autre institution venir la remplacer, avec les mêmes mots — l'équipe, la fraternité, la victoire.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>8</strong></span>
+      <h2>Réception critique et postérité <span class="mitemps-sous">— Cannes, Bruxelles, Casablanca</span></h2>
+    </div>
+    <p>
+      À Cannes, le film est «&nbsp;chaleureusement applaudi&nbsp;» à ses deux projections, rapporte la RTBF, et repart avec le prix François-Chalais<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a>. À Londres, Bleasdale lui donne quatre étoiles sur cinq et y voit «&nbsp;une belle contribution cinématographique à la compréhension d'une région&nbsp;», au lendemain des printemps arabes<a class="renvoi" href="#src-8">[8]</a>. En Belgique, <em>La Libre</em> conclut à la réussite<a class="renvoi" href="#src-4">[4]</a>. La recherche rapporte, sans que les pages aient pu être lues, un accueil français largement favorable, dont une critique du <em>Nouvel Observateur</em> tenant l'œuvre pour «&nbsp;audacieuse, maîtrisée et unique&nbsp;»<a class="renvoi" href="#src-1">[1]</a>.
+    </p>
+    <p>
+      La postérité est celle d'un film de festival devenu film de référence sur son sujet&nbsp;: candidat du Maroc aux Oscars, prix Lumières 2014, programmé par les festivals de cinéma engagé, étudié par les revues étudiantes anglophones encore en 2020<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-7">[7]</a>. Ayouch poursuivra dans la même direction avec <em>Much Loved</em> (2015), interdit au Maroc, et <em>Razzia</em> (2017)&nbsp;: <em>Les Chevaux de Dieu</em> est le premier de ses films à faire du pays lui-même, et non de ses marges, le sujet du débat.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> Quatre pages n'ont pas été servies&nbsp;: l'article de <em>TelQuel</em> sur l'accueil français (HTTP 403), la fiche Cineuropa (HTTP 403), la critique d'<em>IONCINEMA</em> (HTTP 504) et la revue de presse AlloCiné, introuvable&nbsp;; la citation du <em>Nouvel Observateur</em> et le jugement de la critique anglophone sur la sexualité périphérique viennent d'extraits de recherche, non des pages. Aucune fiche TMDB n'a été trouvée pour le film. Les critiques du <em>Monde</em>, de <em>Télérama</em> et des <em>Cahiers du cinéma</em> n'ont pas été lues.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="mitemps-head">
+      <span class="mitemps">temps<strong>9</strong></span>
+      <h2>Conclusion <span class="mitemps-sous">— coup de sifflet final</span></h2>
+    </div>
+    <p>
+      Le reproche que l'on peut faire au film est celui de sa qualité&nbsp;: une ligne si claire, de la terre battue à l'explosif, qu'elle paraît démontrer ce qu'Ayouch dit ne pas vouloir démontrer<a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-7">[7]</a>. Mais la dernière séquence répare ce que la construction risquait&nbsp;: le frère qui a tout déclenché veut tout arrêter, et ne le peut pas<a class="renvoi" href="#src-7">[7]</a>. Là, le film cesse d'être une explication et devient ce que <em>La Libre</em> appelle une évidence, au sens fort — quelque chose qu'on voit et qu'on ne peut plus ne pas avoir vu<a class="renvoi" href="#src-4">[4]</a>.
+    </p>
+    <p>
+      Ce qui tient le film, c'est donc le terrain vague&nbsp;: un lieu que la caméra regarde d'en haut au début et à la fin, où des enfants jouent, et d'où quatre d'entre eux partent un soir vers la ville. Ayouch a choisi des garçons du quartier pour le jouer, et ils ont pris l'avion pour Cannes<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-6">[6]</a>&nbsp;: c'est la seule issue que le film n'avait pas écrite, et c'est la sienne. Bleasdale a raison de parler de compréhension plutôt que de jugement<a class="renvoi" href="#src-8">[8]</a>&nbsp;; on ajoutera que le film comprend d'autant mieux qu'il refuse, jusqu'au dernier plan, de pardonner.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#d08a2e;">Sources consultées</span>
+    <h2>La feuille de match</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Les Chevaux de Dieu » — <a href="https://fr.wikipedia.org/wiki/Les_Chevaux_de_Dieu" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Les Chevaux de Dieu</a></li>
+      <li id="src-2">Wikipédia (EN), « Horses of God » — <a href="https://en.wikipedia.org/wiki/Horses_of_God" target="_blank" rel="noopener">en.wikipedia.org &mdash; Horses of God</a></li>
+      <li id="src-3">Wikidata, élément Q5274248 — <a href="https://www.wikidata.org/wiki/Q5274248" target="_blank" rel="noopener">wikidata.org/wiki/Q5274248</a></li>
+      <li id="src-4">A. Lo., « Cavaliers du jihad », <em>La Libre Belgique</em>, 13 février 2013 — <a href="https://www.lalibre.be/culture/cinema/2013/02/13/cavaliers-du-jihad-HV6B4J6T2RELFA7LNWSAW3AGWQ/" target="_blank" rel="noopener">lalibre.be &mdash; Cavaliers du jihad</a></li>
+      <li id="src-5">Alain Lorfèvre, « Nabil Ayouch a voulu comprendre l'indicible », entretien, <em>La Libre Belgique</em>, 13 février 2013 — <a href="https://www.lalibre.be/culture/cinema/2013/02/13/nabil-ayouch-a-voulu-comprendre-lindicible-A6BR4SBKTVABLOY3NBLRKD4TK4/" target="_blank" rel="noopener">lalibre.be &mdash; entretien avec Nabil Ayouch</a></li>
+      <li id="src-6">Céline Biourge, « “Les chevaux de Dieu” ou des jeunes kamikazes embrigadés dans un islamisme radical », RTBF, 19 mai 2012 — <a href="https://www.rtbf.be/article/les-chevaux-de-dieu-ou-des-jeunes-kamikazes-embrigades-dans-un-islamisme-radical-7772156" target="_blank" rel="noopener">rtbf.be &mdash; Les chevaux de Dieu à Cannes</a></li>
+      <li id="src-7">Orville Scott, « Film Analysis of Horses of God (2012) », <em>Film Matters Magazine</em>, 9 mai 2020 — <a href="https://www.filmmattersmagazine.com/?p=2837" target="_blank" rel="noopener">filmmattersmagazine.com &mdash; Horses of God</a></li>
+      <li id="src-8">John Bleasdale, « BFI London Film Festival 2012: “Horses of God” review », <em>CineVue</em>, 20 octobre 2012 — <a href="https://cine-vue.com/2012/10/bfi-london-film-festival-2012-horses-of-god-review.html" target="_blank" rel="noopener">cine-vue.com &mdash; Horses of God</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 10 octobre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
