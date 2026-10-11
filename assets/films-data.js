@@ -948,5 +948,23 @@ const FILMS = [
     producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
     pays: ['Australie'],
     technique: ['couleur']
+  },
+  {
+    slug: 'merci-pour-le-chocolat',
+    title: 'Merci pour le chocolat',
+    director: 'Claude Chabrol',
+    year: 2000,
+    summary: "Une héritière du chocolat, un pianiste qui ne veut rien voir et une tasse chaque soir : Chabrol retire au crime son mobile, et c'est cette absence d'explication qu'il donne à voir.",
+    url: 'films/merci-pour-le-chocolat.html',
+    poster: 'assets/posters/merci-pour-le-chocolat.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-106, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date de production sur le pilote (décision d'AH du 11/10/2026) ;
+    // adoptée le 2026-10-11 (commit pilote fdc750c).
+    datePublication: '2026-10-01 06:36',
+    genreBase: 'thriller',
+    producteur: 'Claude Fable 5.1 (chaîne pilote automatique, adoptée)',
+    pays: ['France', 'Suisse'],
+    technique: ['couleur']
   }
 ];

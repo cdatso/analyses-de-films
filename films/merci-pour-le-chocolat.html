@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La boîte de pralinés — Merci pour le chocolat</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — une boîte de pralinés de maison : crème du papier
+       de soie, cacao de l'encre, cuivre de la dorure, nuit du plaid brun
+       tricoté en toile d'araignée. Contrastes composés au-dessus de 4,5:1
+       pour tout texte courant. */
+    --creme:#f4ecdf;
+    --creme-creux:#eadfcc;
+    --lait:#fbf7f0;
+    --cacao:#2b1a12;
+    --cacao-doux:#4a3328;
+    --cacao-pale:#6b5244;
+    --cuivre:#8a3b12;
+    --or:#e3b56a;
+    --nuit:#1d120d;
+    --nuit-claire:#2f1d14;
+    --filet:rgba(43,26,18,0.22);
+    --filet-tenu:rgba(43,26,18,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 10% 0%, rgba(227,181,106,0.16), transparent 42%),
+      radial-gradient(ellipse at 92% 100%, rgba(43,26,18,0.07), transparent 44%),
+      var(--creme);
+    color:var(--cacao);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--cuivre);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--cacao-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--cuivre); }
+
+  /* Ruban de la boîte — dessiné en CSS seul : une dorure fine, rayée. */
+  .ruban{
+    height:0.55rem;
+    background:
+      repeating-linear-gradient(135deg, var(--or) 0 0.45rem, var(--nuit) 0.45rem 0.9rem);
+  }
+
+  /* ---------- COUVERTURE — le plaid brun, tricoté en toile ---------- */
+  header.cover{
+    position:relative;
+    background:
+      repeating-radial-gradient(circle at 86% 32%, transparent 0 1.9rem, rgba(227,181,106,0.13) 1.9rem 2rem),
+      repeating-conic-gradient(from 0deg at 86% 32%, rgba(227,181,106,0.11) 0deg 0.6deg, transparent 0.6deg 22.5deg),
+      linear-gradient(to bottom, #130b08 0%, var(--nuit) 55%, var(--nuit-claire) 100%);
+    color:var(--creme);
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:#e8dcc6; }
+  header.cover .back-link:hover{ color:var(--or); }
+
+  .etiquette{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--or);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--or);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:#efe6d6;
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px dashed rgba(244,236,223,0.2);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--or); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:#f1e9db; }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(227,181,106,0.45);
+    box-shadow:0 10px 26px rgba(0,0,0,0.6);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--or);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#2f1d14;
+    color:#f4ecdf;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — le plan de la boîte ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--creme-creux); color:var(--cacao-doux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--cacao-doux); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--cuivre); border-bottom-color:var(--cuivre); }
+
+  /* ---------- CORPS — chaque section est une alvéole de la boîte ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .alveole-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--cacao);
+  }
+  .praline{
+    flex:0 0 auto;
+    min-width:3.2rem;
+    padding:0.3rem 0.45rem 0.34rem;
+    background:var(--cacao);
+    color:var(--creme);
+    border-radius:0.2rem 0.2rem 0.55rem 0.55rem;
+    box-shadow:inset 0 -3px 0 var(--or);
+    font-family:var(--mono); font-size:0.58rem; line-height:1.3;
+    letter-spacing:0.08em; text-align:center; text-transform:uppercase;
+  }
+  .praline strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--cacao);
+  }
+  .alveole-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--cacao-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--cuivre);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--cacao-doux); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--cuivre); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--cuivre);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--cacao-doux);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--cacao-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--nuit); color:var(--creme); margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:#efe6d6; }
+  ol.source-list a{ color:var(--or); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--cacao-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--cacao-doux); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .alveole-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="ruban" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="etiquette">
+      <span>Chocolaterie Muller, Lausanne</span>
+      <span>Une tasse chaque soir</span>
+      <span>Plaid brun, tricot en toile</span>
+    </div>
+
+    <h1 class="titre">Merci pour le chocolat</h1>
+    <p class="titre-original">Nightcap &mdash; Claude Chabrol &mdash; 2000</p>
+    <p class="sous-titre">Une héritière du chocolat, un pianiste qui ne veut rien voir et une tasse chaque soir&nbsp;: Chabrol retire au crime son mobile, et c'est cette absence d'explication qu'il donne à voir.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/merci-pour-le-chocolat.jpg"
+             alt="Affiche du film Merci pour le chocolat"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>Claude Chabrol</dd></div>
+      <div><dt>Scénario</dt><dd>Caroline Eliacheff, Claude Chabrol, d'après Charlotte Armstrong</dd></div>
+      <div><dt>Année</dt><dd>2000</dd></div>
+      <div><dt>Durée</dt><dd>99 minutes (99 à 101 selon les notices)</dd></div>
+      <div><dt>Image</dt><dd>Renato Berta &mdash; couleur</dd></div>
+      <div><dt>Musique</dt><dd>Matthieu Chabrol</dd></div>
+      <div><dt>Pays</dt><dd>France, Suisse</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 1er octobre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Affiche&nbsp;: fonds d'affiches du propriétaire du site. Les citations de sources en langue anglaise sont traduites en français par la rédaction, renvoi conservé.
+    </div>
+  </div>
+  <div class="ruban" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Fable 5.1, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 1er octobre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>1</strong></span>
+      <h2>Fiche technique <span class="alveole-sous">— l'étiquette de la boîte</span></h2>
+    </div>
+    <p>
+      <em>Merci pour le chocolat</em> (titre anglais <em>Nightcap</em>) est réalisé par Claude Chabrol sur un scénario de Caroline Eliacheff et de Chabrol lui-même, adapté du roman <em>The Chocolate Cobweb</em> de Charlotte Armstrong, publié en 1948<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-12">[12]</a>. Marin Karmitz produit pour MK2, avec CAB Productions&nbsp;; l'image est de Renato Berta, le montage de Monique Fardoulis, la musique de Matthieu Chabrol, fils du cinéaste et son compositeur depuis 1982<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-3">[3]</a><a class="renvoi" href="#src-6">[6]</a>. Isabelle Huppert tient le rôle de Marie-Claire Muller, dite Mika, Jacques Dutronc celui du pianiste André Polonski, Anna Mouglalis celui de Jeanne Pollet, Rodolphe Pauly celui de Guillaume Polonski&nbsp;; Brigitte Catillon, Michel Robin et Mathieu Simonet complètent la distribution<a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Le film est franco-suisse, en couleur, d'une durée de 99 minutes selon les deux notices Wikipédia, de 101 selon Wikidata et la fiche TMDB, de 99 selon AlloCiné<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-3">[3]</a><a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>. Il est présenté pour la première fois au festival de Montréal le 2 août 2000, passe par Toronto et Venise la même année, sort en France le 25 octobre 2000 et aux États-Unis le 31 juillet 2002&nbsp;; il ressort en salle en France le 29 septembre 2021<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a><a class="renvoi" href="#src-6">[6]</a>. Le budget est de 5,9 millions de dollars, pour 13,4 millions de recettes selon la notice anglophone<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      Palmarès&nbsp;: prix Louis-Delluc 2000, prix d'interprétation féminine pour Isabelle Huppert au festival de Montréal 2000 et prix Lumières de la meilleure actrice 2001<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-11">[11]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>2</strong></span>
+      <h2>Synopsis <span class="alveole-sous">— deux enfants nés le même jour</span></h2>
+    </div>
+    <p>
+      Mika Muller dirige la chocolaterie familiale de Lausanne. Elle a été mariée une première fois au pianiste André Polonski, l'a quitté, et le réépouse après la mort de sa deuxième femme, Lisbeth, tuée dans un accident de voiture le jour des dix ans de leur fils Guillaume<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a>. L'équilibre de la maison se dérègle à l'arrivée de Jeanne Pollet, jeune pianiste qui prépare un concours&nbsp;: elle est née le même jour que Guillaume, dans la même clinique, et vient d'apprendre qu'on a failli l'échanger avec lui à la naissance<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-4">[4]</a>.
+    </p>
+    <p>
+      André prend Jeanne en leçon chaque jour. Guillaume, lui, ne joue de rien, et boit chaque soir le chocolat que Mika lui prépare<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-5">[5]</a>. À mesure que Jeanne s'installe dans la maison, la vraie nature de Mika affleure, et la question du film n'est plus de savoir ce qu'elle fait, mais pourquoi<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-8">[8]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>3</strong></span>
+      <h2>Contexte de production <span class="alveole-sous">— un roman américain, une maison vaudoise</span></h2>
+    </div>
+    <p>
+      Claude Chabrol, né à Paris le 24 juin 1930, ancien critique, signe avec <em>Le Beau Serge</em> et <em>Les Cousins</em> (1959) ce que la notice francophone appelle le manifeste inaugural de la Nouvelle Vague&nbsp;; son œuvre observe, sous les façades respectables, l'hypocrisie bourgeoise et le crime<a class="renvoi" href="#src-11">[11]</a>. <em>Merci pour le chocolat</em> vient après <em>La Cérémonie</em> (1995), <em>Rien ne va plus</em> (1997) et <em>Au cœur du mensonge</em> (1999), et précède <em>La Fleur du mal</em> (2002)<a class="renvoi" href="#src-11">[11]</a>. C'est la sixième collaboration du cinéaste avec Isabelle Huppert, commencée avec <em>Violette Nozière</em> (1978)<a class="renvoi" href="#src-7">[7]</a><a class="renvoi" href="#src-11">[11]</a>, et la première avec Jacques Dutronc<a class="renvoi" href="#src-10">[10]</a>.
+    </p>
+    <p>
+      La matière vient d'un roman policier américain. Dans <em>The Chocolate Cobweb</em> (1948), une jeune femme, Amanda Garth, apprend qu'un échange de nourrissons a failli la faire grandir chez un peintre célèbre de Californie, et découvre que la femme de celui-ci a empoisonné la précédente épouse et s'apprête à tuer le fils en versant une dose mortelle dans son chocolat chaud<a class="renvoi" href="#src-12">[12]</a>. Chabrol et Eliacheff transposent l'intrigue dans la haute bourgeoisie de Suisse romande, remplacent le peintre par un pianiste et le titre, note Frédéric de Vençay, par un titre «&nbsp;plus poli et, bien évidemment, plus ambivalent&nbsp;»<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+    <p>
+      Le tournage a lieu sur les hauteurs de Lausanne, dans une maison de maître ayant appartenu à David Bowie, selon le reportage de la Télévision suisse romande diffusé deux jours avant la sortie française<a class="renvoi" href="#src-10">[10]</a>. Ce reportage décrit le personnage de Dutronc comme «&nbsp;un pianiste réservé et secret, époux d'une bourgeoise névrosée et manipulatrice&nbsp;», et la rencontre des deux hommes comme heureuse, fondée entre autres sur «&nbsp;l'amour de la bonne chère&nbsp;»<a class="renvoi" href="#src-10">[10]</a>. Huppert, interrogée vingt ans plus tard, résume l'enjeu qu'elle voyait dans le rôle&nbsp;: «&nbsp;Mon personnage, Mika, n'a pas accès à l'art comme son mari pianiste, joué par Jacques Dutronc&nbsp;»<a class="renvoi" href="#src-9">[9]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>4</strong></span>
+      <h2>Structure narrative <span class="alveole-sous">— une intrigue simple, une causalité impossible</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Jacob Leigh formule le renversement qui gouverne l'adaptation&nbsp;: «&nbsp;Le roman a une intrigue compliquée et une explication simple de la causalité&nbsp;; le film inverse les deux&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Chez Armstrong, le poison est mortel et la coupable a un plan&nbsp;; chez Chabrol, le petit ami de Jeanne identifie la substance versée dans le chocolat comme du Rohypnol, un somnifère, mais n'en a pas vérifié la concentration — de sorte que le film laisse ouverte l'hypothèse que Mika endort Guillaume plutôt qu'elle ne le tue<a class="renvoi" href="#src-5">[5]</a>. Le suspense policier se vide de ce qui le fait tenir d'ordinaire, et le film multiplie les motifs possibles de Mika au lieu d'en fournir un<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+    <p>
+      C'est exactement ce que lui reproche la critique partagée de <em>L'Œil sur l'écran</em>, dont l'une des deux voix écrit&nbsp;: «&nbsp;On voit dès le départ les machinations du personnage [...] seules nous manquent ses motivations. Eh bien, on ne les connaît pas plus à la fin ce qui [...] enlève tout intérêt au scénario&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. L'autre voix du même site y voit au contraire «&nbsp;un film plus psychologique que policier&nbsp;», qui montre «&nbsp;combien le passé de ses personnages est douloureux et mystérieux&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. Les deux lectures décrivent le même objet&nbsp;: un récit qui donne très tôt le crime et refuse jusqu'au bout d'en livrer la cause. La question est de savoir si c'est une faiblesse de scénario ou son sujet, et la suite de cette page tient pour la seconde réponse.
+    </p>
+    <p>
+      Le dénouement est construit comme une citation. Après l'aveu de Mika, André retourne au piano et joue <em>Funérailles</em> de Liszt pendant qu'on attend la police&nbsp;; Leigh y reconnaît la disposition de la dernière scène de <em>La Corde</em> de Hitchcock — une pièce centrale, un appel téléphonique, le piano, l'attente<a class="renvoi" href="#src-5">[5]</a>. Le film se ferme sur un long plan de Mika, qui s'adosse au plaid brun, la tête en son centre, avant de se recroqueviller en position fœtale<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>5</strong></span>
+      <h2>Mise en scène et procédés <span class="alveole-sous">— le plaid, le piano, le pas en arrière</span></h2>
+    </div>
+    <p>
+      L'objet central du film n'est pas la tasse, c'est un plaid. Le titre du roman nommait une toile d'araignée en chocolat, métaphore de la trame tissée par la meurtrière&nbsp;; Chabrol en fait un plaid brun tricoté en toile, posé sur le canapé du salon, et Leigh compte six apparitions de ce plaid pendant la seule première visite de Jeanne<a class="renvoi" href="#src-5">[5]</a>. Le cinéaste, écrit-il, rend ainsi littérale la perception que l'héroïne a du schéma de conduite de la meurtrière&nbsp;; et cette mise en avant d'un accessoire est, selon lui, l'exemple même du «&nbsp;léger pas en arrière&nbsp;» chabrolien, qui produit «&nbsp;une expérience de spectateur inconfortable&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. Philippe Piazzo, dans <em>Aden</em>, ne dit pas autre chose avec les mots du compliment&nbsp;: «&nbsp;l'une des plus belles toiles d'araignée tissées par Chabrol&nbsp;», à force de «&nbsp;retenue de mise en scène, plongeant avec délices dans d'imperceptibles et infinies mises en abyme&nbsp;»<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+    <p>
+      Le film s'inscrit dans un réseau de références qu'il ne cache pas. Il «&nbsp;fait plus que réemployer un procédé hitchcockien&nbsp;: il expose un réseau d'héritages&nbsp;», écrit Leigh, qui cite les boissons empoisonnées de <em>Soupçons</em> (1941) et des <em>Enchaînés</em> (1946), et parle d'un déploiement très conscient des techniques du cinéma<a class="renvoi" href="#src-5">[5]</a>. La musique travaille dans le même sens&nbsp;: la pièce de Liszt, que Vençay appelle la <em>Marche funèbre</em>, «&nbsp;donne la cadence&nbsp;» et «&nbsp;marque le film de son sceau dramatique&nbsp;», jusqu'à un plan final qu'il juge «&nbsp;superbe&nbsp;»<a class="renvoi" href="#src-7">[7]</a>.
+    </p>
+    <p>
+      Le reste est affaire de surface. Vençay décrit un film qui «&nbsp;semble se satisfaire d'un calme plat&nbsp;» mais «&nbsp;cache en profondeur quelque substance autrement plus vénéneuse&nbsp;», une narration «&nbsp;insidieusement captivante&nbsp;», des «&nbsp;dialogues effilés comme des rasoirs&nbsp;» et une ironie «&nbsp;discrète mais cinglante&nbsp;»<a class="renvoi" href="#src-7">[7]</a>. Jérôme Larcher, dans les <em>Cahiers du cinéma</em>, note le passage d'une esthétique de téléfilm policier à l'élégance des films des années 1970 du cinéaste<a class="renvoi" href="#src-6">[6]</a>. Rapprochement d'analyse, non de source&nbsp;: ce lissage n'est pas une faiblesse de moyens, c'est le milieu lui-même, filmé à sa propre température — et c'est bien ce que Jean-Pierre Lacomme, dans <em>Le Journal du Dimanche</em>, retourne en reproche quand il écrit que «&nbsp;la réalisation et le jeu décalé des comédiens rendent tout lisse et désincarné&nbsp;»<a class="renvoi" href="#src-6">[6]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>6</strong></span>
+      <h2>Personnages principaux <span class="alveole-sous">— ce que chacun refuse de voir</span></h2>
+    </div>
+    <h3>Mika Muller (Isabelle Huppert)</h3>
+    <p>
+      Leigh range Mika dans «&nbsp;une lignée de psychopathes nihilistes et charmants, dont leurs créateurs se servent pour interroger l'ordre établi&nbsp;», aux côtés des personnages de Patricia Highsmith et de Ruth Rendell, et lit en elle la frustration d'une femme tenue à l'écart de la création artistique<a class="renvoi" href="#src-5">[5]</a>. C'est aussi la lecture de son interprète&nbsp;: «&nbsp;On raconte là l'histoire de quelqu'un qui n'arrive pas à savoir qui elle est par l'art, et qui en devient un personnage pervers&nbsp;»<a class="renvoi" href="#src-9">[9]</a>. Dans l'aveu final, tel que Leigh le rapporte, Mika explique qu'au lieu d'aimer elle dit qu'elle aime, que les gens la croient, et que c'est là son vrai pouvoir<a class="renvoi" href="#src-5">[5]</a>. Huppert joue cela par le contrôle de l'expression — et par ce qui lui échappe&nbsp;: Leigh relève le geste involontaire par lequel elle se gratte le dos, «&nbsp;un symptôme incontrôlable&nbsp;», et des gestes qui «&nbsp;suggèrent une tension non spécifiée&nbsp;»<a class="renvoi" href="#src-5">[5]</a>. La critique française s'accorde sur l'interprète&nbsp;: elle «&nbsp;incarne à merveille la froideur de cette belle-mère manipulatrice&nbsp;» pour <em>L'Œil sur l'écran</em>, elle «&nbsp;porte cette ambiguïté avec son talent habituel, écrin parfait de cette distance toute théâtrale&nbsp;» pour Vençay<a class="renvoi" href="#src-7">[7]</a><a class="renvoi" href="#src-8">[8]</a>&nbsp;; Roger Ebert, cité par la notice anglophone, la trouvait «&nbsp;exaspérante, perverse et séduisante&nbsp;»<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <h3>André Polonski (Jacques Dutronc)</h3>
+    <p>
+      Le pianiste est l'homme qui ne regarde pas. Le reportage suisse le dit «&nbsp;réservé et secret&nbsp;»<a class="renvoi" href="#src-10">[10]</a>&nbsp;; <em>L'Œil sur l'écran</em> juge son casting «&nbsp;étonnant car son jeu ne colle que difficilement à son personnage&nbsp;»<a class="renvoi" href="#src-8">[8]</a>. L'objection se retourne&nbsp;: un acteur qui ne colle pas à son rôle est précisément ce qu'il faut pour un homme qui ne colle pas à sa vie, qui a perdu une femme, en a repris une autre, et ne s'est jamais demandé pourquoi son fils dort si bien. Le film le laisse à son clavier jusqu'au bout, et c'est au clavier qu'il reçoit la vérité, en jouant.
+    </p>
+    <h3>Jeanne Pollet (Anna Mouglalis) et Guillaume Polonski (Rodolphe Pauly)</h3>
+    <p>
+      Jeanne est l'héritière du personnage d'Amanda Garth, l'enquêtrice du roman<a class="renvoi" href="#src-12">[12]</a>&nbsp;: elle entre dans la maison par la musique, et c'est elle qui fait analyser le chocolat<a class="renvoi" href="#src-5">[5]</a>. Guillaume, le fils qu'on endort, est le seul personnage sans talent et sans soupçon&nbsp;; Leigh voit dans la façon dont «&nbsp;la fonction et la conduite des parents peuvent causer certains comportements chez les enfants&nbsp;» l'un des fils que le film tire sans le nouer<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> Les durées diffèrent selon les notices (99 ou 101 minutes)&nbsp;; la notice anglophone ne retient que la France comme pays de production, là où la francophone et Wikidata ajoutent la Suisse. Cette page suit les deux dernières<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-2">[2]</a><a class="renvoi" href="#src-3">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>7</strong></span>
+      <h2>Thèmes <span class="alveole-sous">— quatre pralinés</span></h2>
+    </div>
+
+    <h3>La cause introuvable</h3>
+    <p>
+      Le film demande comment expliquer les actes de Mika, et répond en multipliant les motifs plutôt qu'en en choisissant un<a class="renvoi" href="#src-5">[5]</a>. C'est là que Leigh et <em>L'Œil sur l'écran</em> se séparent, et que cette page tranche&nbsp;: l'absence de mobile n'est pas un trou du scénario, c'est ce que le scénario a remplacé. Huppert le dit à sa manière de tout le cinéma de Chabrol, qui «&nbsp;converge vers ces mystères que la psychanalyse et la psychiatrie tentent aussi d'élucider&nbsp;»<a class="renvoi" href="#src-9">[9]</a>.
+    </p>
+
+    <h3>L'art, et ceux qui n'y ont pas accès</h3>
+    <p>
+      Deux pianistes, une pianiste en devenir et une femme qui fait du chocolat&nbsp;: la maison est partagée entre ceux qui créent et celle qui nourrit. La frustration de Mika devant la création artistique est, pour Leigh comme pour Huppert, la clé la plus solide du personnage<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-9">[9]</a>. Le chocolat est le seul art qui lui soit laissé, et elle en fait un instrument.
+    </p>
+
+    <h3>La bourgeoisie, à sa température</h3>
+    <p>
+      Le cadre lausannois révèle, écrit Leigh, la haute bourgeoisie conservatrice de Suisse, où les manières comptent et où les apparences masquent la violence<a class="renvoi" href="#src-5">[5]</a>. Didier Péron, dans <em>Libération</em>, parle d'«&nbsp;un must, une épure suisse&nbsp;»<a class="renvoi" href="#src-6">[6]</a>. L'épure est le mot juste&nbsp;: Chabrol ne charge pas le trait, il retire, et ce qui reste quand on a tout retiré est un salon où personne n'élève la voix et où un enfant est drogué chaque soir.
+    </p>
+
+    <h3>La toile, et ce qu'elle retient</h3>
+    <p>
+      Le plaid tricoté en toile est à la fois le décor, la métaphore héritée du roman et le lieu du dernier plan<a class="renvoi" href="#src-5">[5]</a>. Le film se termine sur l'araignée prise dans sa propre toile, la tête au centre du motif, et Chabrol ne la punit pas davantage que cela&nbsp;: il la laisse se replier<a class="renvoi" href="#src-5">[5]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>8</strong></span>
+      <h2>Réception critique et postérité <span class="alveole-sous">— la presse, puis le public</span></h2>
+    </div>
+    <p>
+      À sa sortie française, la presse est largement favorable&nbsp;: AlloCiné relève une moyenne de 4,1 sur 5 pour vingt-sept titres, contre 2,8 sur 5 chez les spectateurs du site<a class="renvoi" href="#src-6">[6]</a>. Jean-François Rauger, dans <em>Le Monde</em>, parle d'un film «&nbsp;qu'il faut voir plusieurs fois&nbsp;»&nbsp;; Samir Ardjoum, sur Fluctuat, d'«&nbsp;une grande leçon de cinéma comme on n'a pas l'habitude d'en voir&nbsp;»&nbsp;; Lacomme, au <em>Journal du Dimanche</em>, fait entendre la réserve déjà citée<a class="renvoi" href="#src-6">[6]</a>. Le prix Louis-Delluc couronne le film en 2000, et Huppert reçoit le prix d'interprétation à Montréal puis le prix Lumières<a class="renvoi" href="#src-1">[1]</a><a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-11">[11]</a>.
+    </p>
+    <p>
+      La presse anglophone, à la sortie américaine de 2002, se range du même côté, selon les extraits que reprend la notice anglophone&nbsp;: <em>Variety</em> y voit «&nbsp;un régal, un délicieux mélange de perversité&nbsp;», le <em>Guardian</em> «&nbsp;un petit film intrigant, qui joue avec la conscience de ses propres artifices&nbsp;», le <em>Los Angeles Times</em> un film qui «&nbsp;pétille d'esprit et d'élégance, d'humour et de pathétique&nbsp;», <em>Time Out</em> «&nbsp;un film sombre et velouté, qui masque le rugueux sous le lisse&nbsp;»<a class="renvoi" href="#src-2">[2]</a>.
+    </p>
+    <p>
+      La postérité est celle d'un film de la dernière période&nbsp;: Vençay, à la reprise de 2021, le tient pour «&nbsp;l'un des derniers (très) bons films de maître Chabrol&nbsp;», d'une «&nbsp;force tranquille&nbsp;»<a class="renvoi" href="#src-7">[7]</a>&nbsp;; l'article universitaire de Leigh, en 2013, en fait un cas d'école de l'adaptation qui change la nature même de ce qu'un récit policier explique<a class="renvoi" href="#src-5">[5]</a>. Chabrol et Huppert tourneront encore ensemble&nbsp;: la notice du cinéaste compte sept films en tout<a class="renvoi" href="#src-11">[11]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> Quatre pages ont refusé l'accès (HTTP 403 ou domaine inaccessible)&nbsp;: la critique de DVDClassik, celle de <em>Slant Magazine</em>, celle de Roger Ebert sur son propre site et celle du <em>Guardian</em>&nbsp;; elles ne sont pas citées directement, et les extraits d'Ebert et du <em>Guardian</em> qui figurent ici viennent de la notice anglophone. Les scores agrégés (Rotten Tomatoes, Metacritic) n'ont pas été lus à leur source et ne sont pas repris. Les durées et les pays de production divergent entre notices, comme dit plus haut.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="alveole-head">
+      <span class="praline">alvéole<strong>9</strong></span>
+      <h2>Conclusion <span class="alveole-sous">— la boîte refermée</span></h2>
+    </div>
+    <p>
+      Jugé comme un thriller, <em>Merci pour le chocolat</em> est un film qui triche&nbsp;: il donne la coupable dès le titre, dilue le poison jusqu'à ce qu'on ne sache plus s'il tue, et refuse le mobile. Les réserves de <em>L'Œil sur l'écran</em> et du <em>Journal du Dimanche</em> sont exactes sur les faits<a class="renvoi" href="#src-6">[6]</a><a class="renvoi" href="#src-8">[8]</a>. Elles se trompent sur l'objet. Leigh a raison contre elles&nbsp;: le film inverse le roman, et ce qu'il complique n'est pas l'intrigue mais la question de savoir pourquoi une femme fait cela<a class="renvoi" href="#src-5">[5]</a>. Chabrol filme une causalité qui ne se laisse pas remonter, et la filme dans le seul milieu où cette opacité est une bonne manière.
+    </p>
+    <p>
+      Ce qui tient le film, ce n'est donc pas son suspense, c'est son plaid&nbsp;: un accessoire que la mise en scène montre six fois avant qu'on comprenne qu'il est le sujet<a class="renvoi" href="#src-5">[5]</a>. Huppert y pose sa tête au dernier plan, et le geste dit ce qu'aucun aveu ne pouvait dire — que Mika n'a jamais eu d'autre place que le centre d'une toile qu'elle ne sait pas défaire<a class="renvoi" href="#src-5">[5]</a><a class="renvoi" href="#src-9">[9]</a>. C'est un film mineur par ses moyens et majeur par ce qu'il refuse&nbsp;; Vençay a le mot juste quand il parle de force tranquille<a class="renvoi" href="#src-7">[7]</a>. On en sort sans explication, et c'est la seule chose que le chocolat, ici, n'était pas censé fournir.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#e3b56a;">Sources consultées</span>
+    <h2>La carte de la boîte</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Merci pour le chocolat » — <a href="https://fr.wikipedia.org/wiki/Merci_pour_le_chocolat" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Merci pour le chocolat</a></li>
+      <li id="src-2">Wikipédia (EN), « Merci pour le Chocolat » — <a href="https://en.wikipedia.org/wiki/Merci_pour_le_chocolat" target="_blank" rel="noopener">en.wikipedia.org &mdash; Merci pour le Chocolat</a></li>
+      <li id="src-3">Wikidata, élément Q72321 — <a href="https://www.wikidata.org/wiki/Q72321" target="_blank" rel="noopener">wikidata.org/wiki/Q72321</a></li>
+      <li id="src-4">The Movie Database (TMDB), « Nightcap (2000) », fiche du film — <a href="https://www.themoviedb.org/movie/10305-merci-pour-le-chocolat" target="_blank" rel="noopener">themoviedb.org/movie/10305</a></li>
+      <li id="src-5">Jacob Leigh, « Cause and Effect in Merci pour le chocolat », <em>Screening the Past</em>, n°&nbsp;38, 16 décembre 2013 — <a href="https://www.screeningthepast.com/issue-38-first-release/cause-and-effect-in-merci-pour-le-chocolat/" target="_blank" rel="noopener">screeningthepast.com &mdash; Cause and Effect in Merci pour le chocolat</a></li>
+      <li id="src-6">AlloCiné, « Merci pour le chocolat », fiche du film et revue de presse (Philippe Piazzo, <em>Aden</em>&nbsp;; Jean-François Rauger, <em>Le Monde</em>&nbsp;; Didier Péron, <em>Libération</em>&nbsp;; Jérôme Larcher, <em>Cahiers du cinéma</em>&nbsp;; Samir Ardjoum, Fluctuat&nbsp;; Jean-Pierre Lacomme, <em>Le Journal du Dimanche</em>) — <a href="https://www.allocine.fr/film/fichefilm-26119/critiques/presse/" target="_blank" rel="noopener">allocine.fr &mdash; critiques presse</a></li>
+      <li id="src-7">Frédéric de Vençay, « Merci pour le chocolat — Claude Chabrol — critique », <em>aVoir-aLire</em>, 30 juillet 2021 — <a href="https://www.avoir-alire.com/merci-pour-le-chocolat-claude-chabrol-critique" target="_blank" rel="noopener">avoir-alire.com &mdash; Merci pour le chocolat</a></li>
+      <li id="src-8">« Merci pour le chocolat (2000) de Claude Chabrol », <em>L'Œil sur l'écran</em>, 12 février 2007 — <a href="https://films.oeil-ecran.com/2007/02/12/merci-chocolat/" target="_blank" rel="noopener">films.oeil-ecran.com &mdash; Merci pour le chocolat</a></li>
+      <li id="src-9">Quentin Grosset, « Isabelle Huppert : “Il y avait en Chabrol quelque chose de trouble, sur lequel on butait parfois” », <em>TroisCouleurs</em>, 25 février 2021 — <a href="https://www.troiscouleurs.fr/cinema/isabelle-huppert-il-y-avait-en-chabrol-quelque-chose-de-trouble-sur-lequel-on-butait-parfois/" target="_blank" rel="noopener">troiscouleurs.fr &mdash; entretien avec Isabelle Huppert</a></li>
+      <li id="src-10">RTS Archives, « Dutronc, Chabrol = Merci pour le chocolat », <em>Faxculture</em>, 23 octobre 2000 — <a href="https://www.rts.ch/archives/tv/culture/faxculture/4842033-dutronc-chabrol-merci-pour-le-chocolat.html" target="_blank" rel="noopener">rts.ch &mdash; archives Faxculture</a></li>
+      <li id="src-11">Wikipédia (FR), « Claude Chabrol » — <a href="https://fr.wikipedia.org/wiki/Claude_Chabrol" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Claude Chabrol</a></li>
+      <li id="src-12">Wikipédia (EN), « The Chocolate Cobweb » — <a href="https://en.wikipedia.org/wiki/The_Chocolate_Cobweb" target="_blank" rel="noopener">en.wikipedia.org &mdash; The Chocolate Cobweb</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 1er octobre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
