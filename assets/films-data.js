@@ -912,5 +912,23 @@ const FILMS = [
     producteur: 'Claude Opus 5.5 (chaîne pilote automatique, adoptée)',
     pays: ['France', 'Hongrie', 'Allemagne', 'Suisse', 'Royaume-Uni'],
     technique: ['couleur']
+  },
+  {
+    slug: 'le-salaire-de-la-peur',
+    title: 'Le Salaire de la peur',
+    director: 'Henri-Georges Clouzot',
+    year: 1953,
+    summary: "Quatre hommes, deux camions, cinq cents kilomètres de piste : Clouzot fait de la nitroglycérine l'instrument de mesure exact de ce que vaut une vie, le jour où une compagnie pétrolière en fixe le prix.",
+    url: 'films/le-salaire-de-la-peur.html',
+    poster: 'assets/posters/le-salaire-de-la-peur.jpg',
+    volet: 'critique',
+    // Page ADOPTÉE du pilote (BKL-CIN-106, SPEC-SITE-V2 P-62, régime R4) :
+    // datePublication = date de production sur le pilote (décision d'AH du 11/10/2026) ;
+    // adoptée le 2026-10-11 (commit pilote a59dc17).
+    datePublication: '2026-09-29 23:16',
+    genreBase: 'thriller',
+    producteur: 'Claude Opus 5.5 (chaîne pilote automatique, adoptée)',
+    pays: ['France', 'Italie'],
+    technique: ['n&b']
   }
 ];

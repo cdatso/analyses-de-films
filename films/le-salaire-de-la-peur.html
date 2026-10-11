@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feuille de route SOC — Le Salaire de la peur</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/mobilier.css">
+<style>
+  :root{
+    /* Largeur du mobilier partagé, calée sur la colonne éditoriale de cette
+       page : 42rem moins deux marges de 1,4rem (box-sizing: border-box),
+       soit 39,2rem = 627,2 px ; formule de l'étape 3.1 :
+       (627,2 + 51,2) / 16 = 42,4rem. */
+    --mobilier-largeur:42.4rem;
+
+    /* Palette bespoke — le bordereau d'un chargement dangereux : papier kraft
+       d'une feuille de route, suie du pétrole et de la pellicule noir et blanc,
+       ambre des bandes de danger, rouille des fûts. Contrastes composés
+       au-dessus de 4,5:1 pour tout texte courant. */
+    --kraft:#f2ead8;
+    --kraft-creux:#e6dcc3;
+    --suie:#1a1916;
+    --suie-claire:#2b2822;
+    --encre:#1c1a15;
+    --encre-douce:#38342b;
+    --encre-pale:#5b5547;
+    --rouille:#8e2c12;
+    --ambre:#e5a912;
+    --filet:rgba(28,26,21,0.22);
+    --filet-tenu:rgba(28,26,21,0.11);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 92% 0%, rgba(26,25,22,0.06), transparent 44%),
+      radial-gradient(ellipse at 4% 100%, rgba(229,169,18,0.09), transparent 42%),
+      var(--kraft);
+    color:var(--encre);
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.74;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* Aucune règle `.wrap` ici : cette classe appartient au mobilier partagé.
+     L'ossature de cette page porte ses propres conteneurs (`.cover-in`,
+     `.toc-inner`, `main`, `.sources-inner`), calés sur la même colonne. */
+
+  .meta-label{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.13em;
+    font-weight:500;
+    font-size:0.68rem;
+    color:var(--rouille);
+  }
+
+  .back-link{
+    display:inline-block;
+    color:var(--encre-pale);
+    font-family:var(--mono);
+    font-size:0.66rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    margin-bottom:1rem;
+  }
+  .back-link:hover{ color:var(--rouille); }
+
+  /* Bande de danger — motif structurel du chargement, dessinée en CSS seul. */
+  .danger{
+    height:0.62rem;
+    background:repeating-linear-gradient(135deg, var(--ambre) 0 0.9rem, var(--suie) 0.9rem 1.8rem);
+  }
+
+  /* ---------- COUVERTURE — la cabine, de nuit, sur la piste ---------- */
+  header.cover{
+    position:relative;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(229,169,18,0.13), transparent 34%),
+      linear-gradient(to bottom, #11100e 0%, var(--suie) 64%, var(--suie-claire) 100%);
+    color:var(--kraft);
+    overflow:hidden;
+  }
+  .cover-in{ position:relative; z-index:2; max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 2.8rem; }
+
+  header.cover .back-link{ color:rgba(242,234,216,0.74); }
+  header.cover .back-link:hover{ color:var(--ambre); }
+
+  .bordereau{
+    display:flex; flex-wrap:wrap; gap:0.3rem 1.2rem;
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ambre);
+    margin-bottom:1.5rem;
+  }
+
+  h1.titre{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.1rem, 7vw, 3.15rem);
+    line-height:1.06;
+    letter-spacing:-0.022em;
+    margin:0 0 0.55rem;
+  }
+  .titre-original{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--ambre);
+    margin:0 0 1.2rem;
+  }
+  .sous-titre{
+    font-size:1.03rem;
+    line-height:1.62;
+    color:rgba(242,234,216,0.88);
+    margin:0 0 1.7rem;
+    max-width:34rem;
+  }
+
+  dl.identite{ margin:0; font-size:0.86rem; }
+  dl.identite > div{
+    display:flex; gap:0.7rem; padding:0.3rem 0;
+    border-bottom:1px dashed rgba(242,234,216,0.18);
+  }
+  dl.identite dt{
+    flex:0 0 7.2rem;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ambre); padding-top:0.18rem;
+  }
+  dl.identite dd{ margin:0; color:rgba(242,234,216,0.93); }
+
+  /* Bloc affiche — écrit toujours (production v2.8, étape 4) ; le repli
+     onerror retire la figure si le fichier manque. */
+  .cover-media{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start; }
+  figure.poster{ margin:0; flex:0 0 12.4rem; max-width:100%; }
+  figure.poster img{
+    display:block; width:100%; height:auto;
+    border:1px solid rgba(242,234,216,0.3);
+    box-shadow:0 10px 26px rgba(0,0,0,0.55);
+  }
+  .cover-media dl.identite{ flex:1 1 15rem; min-width:13rem; }
+  @media (max-width:560px){
+    figure.poster{ flex:1 1 100%; max-width:15rem; }
+  }
+
+  .provenance{
+    margin-top:1.6rem; padding:0.75rem 0.95rem;
+    border-left:3px solid var(--ambre);
+    /* Couple écrit en OPAQUE dans la même règle : le contrôle de contraste
+       lit les couples déclarés et ne résout pas l'alpha. */
+    background:#2b2822;
+    color:#f2ead8;
+    font-family:var(--mono); font-size:0.68rem; line-height:1.62;
+  }
+
+  /* ---------- SOMMAIRE — les étapes du parcours ---------- */
+  nav.toc{ border-bottom:1px solid var(--filet); background:var(--kraft-creux); }
+  .toc-inner{
+    max-width:42rem; margin:0 auto; padding:0.85rem 1.4rem;
+    display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--encre-douce); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  nav.toc a:hover{ color:var(--rouille); border-bottom-color:var(--rouille); }
+
+  /* ---------- CORPS — chaque section est une borne kilométrique ---------- */
+  main{ max-width:42rem; margin:0 auto; padding:2.4rem 1.4rem 1rem; }
+  section.block{ margin:0 0 2.7rem; }
+  .borne-head{
+    display:flex; gap:0.9rem; align-items:flex-start;
+    margin:0 0 0.9rem; padding-bottom:0.5rem;
+    border-bottom:2px solid var(--encre);
+  }
+  .borne{
+    flex:0 0 auto;
+    min-width:3.3rem;
+    padding:0.2rem 0.4rem 0.25rem;
+    border:2px solid var(--encre);
+    border-radius:0.9rem 0.9rem 0.15rem 0.15rem;
+    font-family:var(--mono); font-size:0.6rem; line-height:1.3;
+    letter-spacing:0.06em; text-align:center; text-transform:uppercase;
+    color:var(--encre);
+  }
+  .borne strong{ display:block; font-size:0.95rem; letter-spacing:0; }
+  section.block h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.42rem; line-height:1.22; letter-spacing:-0.012em;
+    margin:0.1rem 0 0; color:var(--encre);
+  }
+  .borne-sous{ display:block; font-weight:400; font-size:0.93rem; color:var(--encre-pale); }
+  section.block h3{
+    font-family:var(--mono); font-weight:500; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--rouille);
+    margin:1.6rem 0 0.5rem;
+  }
+  section.block p{ margin:0 0 1.05rem; color:var(--encre-douce); }
+  section.block p:last-child{ margin-bottom:0; }
+  em{ font-style:italic; }
+
+  a.renvoi{
+    font-family:var(--mono); font-size:0.66em; vertical-align:super;
+    text-decoration:none; color:var(--rouille); padding:0 0.06em;
+  }
+  a.renvoi:hover{ text-decoration:underline; }
+
+  .alerte{
+    margin:0 0 1.2rem; padding:0.6rem 0.9rem;
+    border:1px dashed var(--rouille);
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--encre-douce);
+  }
+  .discretion{
+    font-size:0.92rem; color:var(--encre-pale);
+    border-top:1px dashed var(--filet-tenu); padding-top:0.7rem;
+  }
+
+  /* ---------- SOURCES ---------- */
+  section.sources{ background:var(--suie); color:var(--kraft); margin-top:2rem; }
+  .sources-inner{ max-width:42rem; margin:0 auto; padding:2.2rem 1.4rem 2.4rem; }
+  section.sources h2{
+    font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0.55rem 0 1.1rem;
+  }
+  ol.source-list{ margin:0; padding-left:1.3rem; font-size:0.88rem; line-height:1.7; }
+  ol.source-list li{ margin-bottom:0.55rem; color:rgba(242,234,216,0.9); }
+  ol.source-list a{ color:var(--ambre); word-break:break-word; }
+
+  footer.endnote{
+    max-width:42rem; margin:0 auto; padding:1.5rem 1.4rem 3rem;
+    font-family:var(--mono); font-size:0.66rem; line-height:1.8;
+    color:var(--encre-pale); text-align:center;
+  }
+  footer.endnote a{ color:var(--encre-douce); }
+
+  @media (max-width:560px){
+    .cover-in{ padding:1.2rem 1.2rem 2.4rem; }
+    dl.identite dt{ flex:0 0 6rem; }
+    .borne-head{ gap:0.7rem; }
+  }
+</style>
+</head>
+<body data-volet="critique">
+
+<header class="chrome">
+  <div class="chrome-in">
+    <a class="marque" href="../index.html">Analyses de films</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="../critiques.html" aria-current="page">Critiques</a>
+      <a href="../etudes.html">&Eacute;tudes</a>
+      <a href="https://montage-parallele.cd-consulting-rd.be/qui-sommes-nous.html" rel="noopener">Montage Parall&egrave;le &#8599;</a>
+      <a href="../comment-ca-marche.html">Comment ce site fonctionne</a>
+      <a href="../demander-une-analyse.html">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<header class="cover">
+  <div class="danger" aria-hidden="true"></div>
+  <div class="cover-in">
+    <a class="back-link lien-retour" href="../index.html">Retour aux analyses</a>
+    <div class="bordereau">
+      <span>Chargement&nbsp;: nitroglycérine</span>
+      <span>Départ&nbsp;: Las Piedras</span>
+      <span>Distance&nbsp;: 500 km</span>
+    </div>
+
+    <h1 class="titre">Le Salaire de la peur</h1>
+    <p class="titre-original">Henri-Georges Clouzot &mdash; 1953 &mdash; d&rsquo;après le roman de Georges Arnaud</p>
+    <p class="sous-titre">Quatre hommes, deux camions, cinq cents kilomètres de piste&nbsp;: Clouzot fait de la nitroglycérine l'instrument de mesure exact de ce que vaut une vie, le jour où une compagnie pétrolière en fixe le prix.</p>
+
+    <div class="cover-media">
+      <figure class="poster">
+        <img src="../assets/posters/le-salaire-de-la-peur.jpg"
+             alt="Affiche du film Le Salaire de la peur"
+             onerror="this.closest('.poster').remove()">
+      </figure>
+    <dl class="identite">
+      <div><dt>Réalisation</dt><dd>Henri-Georges Clouzot</dd></div>
+      <div><dt>Scénario</dt><dd>Henri-Georges Clouzot, Jérôme Géronimi, d'après <em>Le Salaire de la peur</em> de Georges Arnaud</dd></div>
+      <div><dt>Année</dt><dd>1953</dd></div>
+      <div><dt>Durée</dt><dd>153 minutes (148 selon Wikidata)</dd></div>
+      <div><dt>Image</dt><dd>Armand Thirard &mdash; noir et blanc</dd></div>
+      <div><dt>Musique</dt><dd>Georges Auric</dd></div>
+      <div><dt>Pays</dt><dd>France, Italie</dd></div>
+    </dl>
+    </div>
+
+    <div class="provenance">
+      <strong>Provenance.</strong> Analyse produite le 29 septembre 2026 par la chaîne pilote automatique, sans relecture humaine ; lue, validée et adoptée au site le 11 octobre 2026 par Christo Datso. Affiche&nbsp;: fonds d'affiches du propriétaire du site. <strong>Correction du 30 septembre 2026</strong>, sur instruction du propriétaire du site&nbsp;: les citations de sources en langue anglaise ont été traduites en français (traductions de Claude Fable 5.1, non relues)&nbsp;; la parole du film reste en version originale, glosée&nbsp;; le reste du texte est inchangé.
+    </div>
+  </div>
+  <div class="danger" aria-hidden="true"></div>
+</header>
+
+<div class="mobilier-wrap" style="padding-top:1.6rem;">
+<div class="cartouche">
+  <span class="regime">R4 &mdash; Page adopt&eacute;e du pilote</span>
+  <span class="signature">Analyse produite par IAGen Claude d'Anthropic (modèle Claude Opus 5.5, chaîne automatique), relue et adoptée par Christo Datso.</span>
+  <span class="date-pub">Publi&eacute;e le 29 septembre 2026</span>
+</div>
+</div>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="toc-inner">
+    <a href="#fiche">Fiche technique</a>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#production">Production</a>
+    <a href="#structure">Structure</a>
+    <a href="#miseenscene">Mise en scène</a>
+    <a href="#personnages">Personnages</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reception">Réception</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="block" id="fiche">
+    <div class="borne-head">
+      <span class="borne">km<strong>0</strong></span>
+      <h2>Fiche technique <span class="borne-sous">— le bordereau du chargement</span></h2>
+    </div>
+    <p>
+      <em>Le Salaire de la peur</em> est réalisé par Henri-Georges Clouzot, qui en signe le scénario avec Jérôme Géronimi — pseudonyme de Jean Clouzot selon la notice francophone —, d'après le roman de Georges Arnaud<a class="renvoi" href="#src-1" id="ref-1">[1]</a><a class="renvoi" href="#src-4" id="ref-4">[4]</a>. Le roman paraît chez Julliard en 1949 selon sa propre notice, en 1950 selon celle de son auteur&nbsp;; les sources consultées ne tranchent pas<a class="renvoi" href="#src-6" id="ref-6">[6]</a><a class="renvoi" href="#src-7" id="ref-7">[7]</a>. Georges Arnaud est le nom de plume d'Henri Girard (1917-1987)<a class="renvoi" href="#src-7" id="ref-7b">[7]</a>.
+    </p>
+    <p>
+      L'image est d'Armand Thirard, la musique de Georges Auric, le montage de Madeleine Gug, E. Muse et Henri Rust<a class="renvoi" href="#src-1" id="ref-1b">[1]</a>. Les rôles principaux sont tenus par Yves Montand (Mario), Charles Vanel (Jo), Folco Lulli (Luigi), Peter van Eyck (Bimba) et Véra Clouzot (Linda)<a class="renvoi" href="#src-1" id="ref-1c">[1]</a>. Le film est une coproduction franco-italienne, tournée en noir et blanc<a class="renvoi" href="#src-1" id="ref-1d">[1]</a><a class="renvoi" href="#src-3" id="ref-3">[3]</a>.
+    </p>
+    <p>
+      Il est présenté au Festival de Cannes le 15 avril 1953 et sort en France le 22 avril&nbsp;; il n'atteint les États-Unis que le 16 février 1955<a class="renvoi" href="#src-1" id="ref-1e0">[1]</a><a class="renvoi" href="#src-3" id="ref-3b">[3]</a><a class="renvoi" href="#src-4" id="ref-4b">[4]</a>. La durée est de 153 minutes selon les deux notices Wikipédia, de 148 selon Wikidata<a class="renvoi" href="#src-1" id="ref-1e">[1]</a><a class="renvoi" href="#src-2" id="ref-2">[2]</a><a class="renvoi" href="#src-3" id="ref-3c">[3]</a>. Palmarès&nbsp;: Grand Prix du Festival de Cannes 1953 — l'équivalent de la Palme d'or — et prix d'interprétation masculine pour Charles Vanel, Ours d'or à Berlin la même année, BAFTA du meilleur film en 1955<a class="renvoi" href="#src-1" id="ref-1f">[1]</a><a class="renvoi" href="#src-3" id="ref-3d">[3]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="synopsis">
+    <div class="borne-head">
+      <span class="borne">km<strong>50</strong></span>
+      <h2>Synopsis <span class="borne-sous">— une ville dont on ne sort pas</span></h2>
+    </div>
+    <p>
+      Las Piedras, bourgade écrasée de chaleur quelque part en Amérique latine. Des étrangers sans le sou y attendent un départ qu'ils ne peuvent pas payer&nbsp;; la seule richesse du pays appartient à une compagnie pétrolière américaine, la Southern Oil Company<a class="renvoi" href="#src-1" id="ref-1g">[1]</a><a class="renvoi" href="#src-2" id="ref-2b">[2]</a>.
+    </p>
+    <p>
+      Un puits prend feu à cinq cents kilomètres. Pour souffler l'incendie, il faut de la nitroglycérine, et pour l'acheminer, des chauffeurs qui acceptent de la conduire en camion sur une route défoncée. La compagnie recrute quatre hommes contre une prime qui, pour chacun, vaut un billet de sortie&nbsp;: Mario, Jo, Luigi et Bimba<a class="renvoi" href="#src-1" id="ref-1h">[1]</a><a class="renvoi" href="#src-2" id="ref-2c">[2]</a>. Deux camions, deux équipages&nbsp;: la route commence.
+    </p>
+  </section>
+
+  <section class="block" id="production">
+    <div class="borne-head">
+      <span class="borne">km<strong>100</strong></span>
+      <h2>Contexte de production <span class="borne-sous">— l'Amérique latine tournée dans le Gard</span></h2>
+    </div>
+    <p>
+      Clouzot sort alors de <em>L'Assassin habite au 21</em> (1942), du <em>Corbeau</em> (1943) — qui lui a valu, à la Libération, une interdiction professionnelle finalement levée —, de <em>Quai des Orfèvres</em> (1947) et de <em>Manon</em> (1949)<a class="renvoi" href="#src-5" id="ref-5">[5]</a>. C'est le patron de presse Pierre Lazareff qui lui met entre les mains le roman d'Arnaud&nbsp;; Clouzot s'y attache en se souvenant d'un séjour au Brésil, où il avait, rapporte la notice du film, «&nbsp;constaté que les grands groupes pétroliers volaient sans retenue les ressources naturelles de l'Amérique du Sud&nbsp;»<a class="renvoi" href="#src-1" id="ref-1i">[1]</a>.
+    </p>
+    <p>
+      Le roman lui-même vient d'une expérience vécue. Henri Girard, acquitté en 1943 dans l'affaire du triple meurtre d'Escoire après dix-huit mois de détention, part pour le Venezuela en 1947 et passe dix-huit mois en Amérique du Sud, surtout en Colombie, où il est chauffeur de taxi, camionneur, chercheur d'or. À son retour, sans ressources, il décide d'écrire «&nbsp;un roman qui se vendrait bien&nbsp;»<a class="renvoi" href="#src-7" id="ref-7c">[7]</a>&nbsp;; le livre dépassera les deux millions d'exemplaires<a class="renvoi" href="#src-6" id="ref-6b">[6]</a>.
+    </p>
+    <p>
+      Le tournage devait avoir lieu en Amérique centrale. Les sources n'en donnent pas la même raison d'abandon&nbsp;: la notice francophone l'attribue au refus d'Yves Montand, qui jugeait «&nbsp;indécent&nbsp;» d'aller filmer la misère sur place, puis qui écarta l'Espagne de Franco<a class="renvoi" href="#src-1" id="ref-1j">[1]</a>&nbsp;; la notice anglophone évoque d'abord des contraintes de budget<a class="renvoi" href="#src-2" id="ref-2d">[2]</a>. Le film se tourne finalement dans le sud de la France&nbsp;: le village de Las Piedras est construit au camp de Saliers, près d'Arles, la végétation tropicale vient de la bambouseraie de Prafrance à Anduze, les puits et derricks sont édifiés en Camargue, et la chute finale du camion est tournée route de la Baume, à Poulx<a class="renvoi" href="#src-1" id="ref-1k">[1]</a>.
+    </p>
+    <p>
+      La production est une suite d'accidents&nbsp;: une quarantaine de jours de pluie qui noient décors et véhicules, la maladie de Véra Clouzot, une cheville cassée pour le réalisateur, une grève des figurants<a class="renvoi" href="#src-1" id="ref-1l">[1]</a><a class="renvoi" href="#src-2" id="ref-2e">[2]</a>. Selon la notice anglophone, le financement s'effondre après une trentaine de minutes tournées et le travail s'interrompt sept mois<a class="renvoi" href="#src-2" id="ref-2f">[2]</a>. Le budget, prévu à 102 millions de francs, atteint 197 millions&nbsp;; des apports de Filmsonor et de la Fono Roma, en juin 1952, permettent d'achever le film<a class="renvoi" href="#src-1" id="ref-1m">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="borne-head">
+      <span class="borne">km<strong>150</strong></span>
+      <h2>Structure narrative <span class="borne-sous">— une heure d'attente, puis la route</span></h2>
+    </div>
+    <p class="alerte">Cette section et les suivantes révèlent le dénouement du film.</p>
+    <p>
+      Le film se coupe en deux blocs très inégaux. Environ la première heure reste à Las Piedras, sans que la mission soit même annoncée&nbsp;: la notice anglophone décrit cette partie comme l'installation des rapports entre les personnages, avant la tension croissante du voyage<a class="renvoi" href="#src-2" id="ref-2g">[2]</a>. Jonathan Dawson y voit le passage de «&nbsp;scènes de village étouffantes&nbsp;» à une tension «&nbsp;resserrée cran après cran&nbsp;» — de la moiteur à l'étau<a class="renvoi" href="#src-9" id="ref-9">[9]</a>. C'est ce long prologue qui a le plus souffert de la distribution américaine&nbsp;: la version de 1955 est amputée d'environ trente-cinq minutes, et les scènes où la compagnie paraît sous un mauvais jour disparaissent sous l'accusation d'anti-américanisme<a class="renvoi" href="#src-1" id="ref-1n">[1]</a>.
+    </p>
+    <p>
+      La seconde partie procède par épreuves successives, chacune un problème physique à résoudre&nbsp;: une piste en «&nbsp;tôle ondulée&nbsp;» creusée par le vent, un passage fragile au-dessus d'un ravin, un rocher qui barre la route et que Bimba fait sauter avec une partie du chargement, puis une mare de pétrole échappée d'un pipeline sectionné<a class="renvoi" href="#src-1" id="ref-1o">[1]</a>. Entre deux épreuves, le premier camion explose — on ne voit presque rien, les survivants comprennent<a class="renvoi" href="#src-1" id="ref-1p">[1]</a><a class="renvoi" href="#src-2" id="ref-2h">[2]</a>.
+    </p>
+    <p>
+      Le récit se referme sur une ironie de construction&nbsp;: Mario arrive, touche sa prime et celle de Jo, puis meurt sur le chemin du retour, camion vide, distrait par <em>Le Beau Danube bleu</em> que diffuse la radio<a class="renvoi" href="#src-1" id="ref-1q">[1]</a>. Aucun des quatre chauffeurs ne revient<a class="renvoi" href="#src-1" id="ref-1r">[1]</a>. La route qui ne pardonnait rien à l'aller tue au retour, quand il n'y a plus rien à transporter.
+    </p>
+  </section>
+
+  <section class="block" id="miseenscene">
+    <div class="borne-head">
+      <span class="borne">km<strong>250</strong></span>
+      <h2>Mise en scène et procédés <span class="borne-sous">— le suspense par la mécanique</span></h2>
+    </div>
+    <p>
+      La réputation du film tient à ses séquences de suspense. Roger Ebert, cité par la notice anglophone, écrivait en 1992 que ses «&nbsp;longues séquences de suspense méritent une place parmi les grandes plages du cinéma&nbsp;»<a class="renvoi" href="#src-2" id="ref-2i">[2]</a>. Dennis Lehane en décrit le principe&nbsp;: «&nbsp;la tension existe en l'absence de choc, dans la suggestion d'une possibilité funeste&nbsp;» — le choc est toujours possible, presque jamais montré<a class="renvoi" href="#src-8" id="ref-8">[8]</a>. L'explosion du premier camion en est la démonstration&nbsp;: la mise en scène retient l'événement et le laisse comprendre par ses effets<a class="renvoi" href="#src-1" id="ref-1s">[1]</a>.
+    </p>
+    <p>
+      Chaque obstacle est construit comme un problème de physique élémentaire — une surface, un vide, une masse, un liquide —, et c'est l'attention du spectateur au chargement qui fait le suspense. Bosley Crowther le formulait dans le <em>New York Times</em>&nbsp;: «&nbsp;on reste assis là, à attendre que la salle explose&nbsp;»<a class="renvoi" href="#src-2" id="ref-2j">[2]</a>. Christopher Nolan a cité le film parmi les influences de <em>Dunkerque</em> (2017), précisément pour ce traitement de la mécanique physique<a class="renvoi" href="#src-2" id="ref-2k">[2]</a>.
+    </p>
+    <p>
+      Pour Dawson, Clouzot égale Hitchcock dans l'art de l'atmosphère et de la tension, et y ajoute «&nbsp;une crânerie et une virilité brute&nbsp;» que peu de films ont égalées&nbsp;; les camions eux-mêmes «&nbsp;deviennent des personnages&nbsp;», et une scène de cigarette compte selon lui parmi les grands moments de métaphore du cinéma<a class="renvoi" href="#src-9" id="ref-9b">[9]</a>. Le noir et blanc d'Armand Thirard donne à la Camargue et au Gard la matière d'un pays écrasé de soleil&nbsp;: la chaleur, la poussière, puis le pétrole noir de la dernière épreuve<a class="renvoi" href="#src-1" id="ref-1t">[1]</a>. Le film a été restauré en 4K en 2017 à partir du négatif nitrate original, sous la supervision du chef opérateur Guillaume Schiffman<a class="renvoi" href="#src-1" id="ref-1u">[1]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="personnages">
+    <div class="borne-head">
+      <span class="borne">km<strong>350</strong></span>
+      <h2>Personnages principaux <span class="borne-sous">— ce que la route révèle</span></h2>
+    </div>
+    <h3>Mario (Yves Montand)</h3>
+    <p>
+      Séducteur désœuvré, il traite mal Linda, qui l'aime&nbsp;: Lehane relève qu'il la traite «&nbsp;comme si elle était un chien, en lui tapotant littéralement la tête&nbsp;»<a class="renvoi" href="#src-8" id="ref-8b">[8]</a>. Il admire d'abord Jo, puis prend sa place à mesure que l'autre se défait. C'est lui qui arrive au bout — et lui que le retour tue<a class="renvoi" href="#src-1" id="ref-1v">[1]</a>.
+    </p>
+    <h3>Jo (Charles Vanel)</h3>
+    <p>
+      Ancien truand, il s'impose d'abord à Las Piedras comme le chef. Lehane le décrit comme «&nbsp;un petit tyran qui plastronne&nbsp;», qui se révélera «&nbsp;le plus faible de tous&nbsp;»<a class="renvoi" href="#src-8" id="ref-8c">[8]</a>. Le rôle, qui valut à Vanel le prix d'interprétation à Cannes, avait été refusé par Jean Gabin, qui craignait qu'un personnage de lâche n'entache sa carrière<a class="renvoi" href="#src-1" id="ref-1w">[1]</a><a class="renvoi" href="#src-2" id="ref-2l">[2]</a>. Jo meurt de sa jambe écrasée dans la mare de pétrole, sous les roues du camion que Mario ne pouvait pas immobiliser sans s'enliser<a class="renvoi" href="#src-1" id="ref-1x">[1]</a>.
+    </p>
+    <h3>Luigi et Bimba</h3>
+    <p>
+      Luigi (Folco Lulli), cimentier italien malade, et Bimba (Peter van Eyck) forment l'équipage du premier camion&nbsp;; c'est Bimba qui fait sauter le rocher<a class="renvoi" href="#src-1" id="ref-1y">[1]</a><a class="renvoi" href="#src-2" id="ref-2m">[2]</a>. Leur mort survient hors champ, en un éclair. Dawson résume la dynamique d'ensemble&nbsp;: un film de «&nbsp;choses entre hommes&nbsp;», où le vieux dur perd sa domination tandis que Mario gagne en assurance<a class="renvoi" href="#src-9" id="ref-9c">[9]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Divergence relevée.</strong> Les origines prêtées aux personnages varient d'une source à l'autre (la nationalité de Bimba notamment n'est pas la même dans les notices francophone et anglophone)&nbsp;; cette page ne les précise donc pas<a class="renvoi" href="#src-1" id="ref-1z">[1]</a><a class="renvoi" href="#src-2" id="ref-2n">[2]</a>.
+    </p>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="borne-head">
+      <span class="borne">km<strong>450</strong></span>
+      <h2>Thèmes <span class="borne-sous">— quatre lignes du bordereau</span></h2>
+    </div>
+
+    <h3>Le prix d'un homme</h3>
+    <p>
+      Le titre dit l'essentiel&nbsp;: la peur a un salaire, et la compagnie le calcule. Lehane retient la réplique qui justifie le recrutement&nbsp;: «&nbsp;those bums don't have any union or any families&nbsp;» («&nbsp;ces vagabonds n'ont ni syndicat ni famille&nbsp;») — ces hommes-là ne manqueront à personne<a class="renvoi" href="#src-8" id="ref-8d">[8]</a>. Le film ne montre pas un patron cruel, mais une comptabilité&nbsp;: des chauffeurs moins chers que l'équipement qui aurait rendu le voyage sûr. La notice anglophone range parmi ses thèmes la marchandisation du désespoir humain<a class="renvoi" href="#src-2" id="ref-2o">[2]</a>.
+    </p>
+
+    <h3>Le pétrole et l'étranger</h3>
+    <p>
+      La Southern Oil Company tient Las Piedras&nbsp;: elle y est le seul employeur et la seule issue<a class="renvoi" href="#src-1" id="ref-1aa">[1]</a>. Le souvenir brésilien de Clouzot donne au film son point de départ politique<a class="renvoi" href="#src-1" id="ref-1ab">[1]</a>, et l'amputation de la version américaine montre qu'il fut reçu comme tel<a class="renvoi" href="#src-1" id="ref-1ac">[1]</a>. Dawson nuance&nbsp;: le film est antiaméricain, mais aussi «&nbsp;indistinctement et impartialement anti-tout&nbsp;»<a class="renvoi" href="#src-9" id="ref-9d">[9]</a>. Les chauffeurs eux-mêmes sont des étrangers échoués, et le pétrole qui fait leur malheur finit, littéralement, par engloutir Jo.
+    </p>
+
+    <h3>Le courage retourné</h3>
+    <p>
+      Le film déplace le courage d'un personnage à l'autre. Jo, qui en imposait à tous, se défait dès les premières épreuves&nbsp;; Mario, qui l'admirait, devient celui qui tient le volant et le méprise<a class="renvoi" href="#src-8" id="ref-8e">[8]</a><a class="renvoi" href="#src-9" id="ref-9e">[9]</a>. Rapprochement d'analyse, non de source&nbsp;: ce que la route mesure n'est pas une vertu que l'on posséderait, mais un état qui s'use, et la bravoure de la fin a quelque chose de la cruauté.
+    </p>
+
+    <h3>Le néant et le hasard</h3>
+    <p>
+      Lehane rappelle qu'un personnage y meurt en disant «&nbsp;There's nothing!&nbsp;»<a class="renvoi" href="#src-8" id="ref-8f">[8]</a>, et Pauline Kael parlait d'un «&nbsp;existential thriller&nbsp;»<a class="renvoi" href="#src-2" id="ref-2p">[2]</a>. La fin en donne la forme la plus nette&nbsp;: Mario survit à tout ce qui devait le tuer et meurt de ce qui ne le menaçait plus, au son d'une valse<a class="renvoi" href="#src-1" id="ref-1ad">[1]</a>. La notice anglophone parle de l'arbitraire du destin<a class="renvoi" href="#src-2" id="ref-2q">[2]</a>&nbsp;; le film ne punit pas, il n'accorde rien.
+    </p>
+  </section>
+
+  <section class="block" id="reception">
+    <div class="borne-head">
+      <span class="borne">km<strong>500</strong></span>
+      <h2>Réception critique et postérité <span class="borne-sous">— le chargement est arrivé</span></h2>
+    </div>
+    <p>
+      La consécration est immédiate&nbsp;: Grand Prix à Cannes, Ours d'or à Berlin, prix d'interprétation pour Vanel<a class="renvoi" href="#src-1" id="ref-1ae">[1]</a><a class="renvoi" href="#src-3" id="ref-3e">[3]</a>. Edward G. Robinson, membre du jury cannois, aurait déclaré avoir reçu «&nbsp;un génial coup de pied au bas-ventre&nbsp;»<a class="renvoi" href="#src-1" id="ref-1af">[1]</a>. En France, le film réunit 6&nbsp;944&nbsp;306 spectateurs et se classe quatrième du box-office de 1953<a class="renvoi" href="#src-1" id="ref-1ag">[1]</a><a class="renvoi" href="#src-2" id="ref-2r">[2]</a>. Il lance aussi la carrière internationale de Clouzot, qui enchaîne avec <em>Les Diaboliques</em> (1955)<a class="renvoi" href="#src-2" id="ref-2s">[2]</a><a class="renvoi" href="#src-5" id="ref-5b">[5]</a>.
+    </p>
+    <p>
+      La réévaluation ultérieure est unanime&nbsp;: Pauline Kael y voit en 1982 «&nbsp;le mélodrame français le plus original et le plus choquant des années 1950&nbsp;»<a class="renvoi" href="#src-2" id="ref-2t">[2]</a>. La notice anglophone relève 100&nbsp;% d'avis favorables sur Rotten Tomatoes et un score de 85 sur Metacritic&nbsp;; <em>Empire</em> le place au neuvième rang de ses meilleurs films du cinéma mondial — en 2010 selon la notice francophone, en 2019 selon l'anglophone<a class="renvoi" href="#src-1" id="ref-1ah">[1]</a><a class="renvoi" href="#src-2" id="ref-2u">[2]</a>.
+    </p>
+    <p>
+      La descendance est abondante&nbsp;: <em>Violent Road</em> de Howard W. Koch (1958 selon la notice anglophone, 1960 selon la francophone, sous le titre <em>Le Salaire du courage</em>), <em>Sorcerer</em> de William Friedkin (1977), présenté comme une adaptation du roman et dédié à Clouzot, et une nouvelle version de Julien Leclercq en 2024<a class="renvoi" href="#src-1" id="ref-1ai">[1]</a><a class="renvoi" href="#src-2" id="ref-2v">[2]</a>. Le roman, lui, a été adapté quatre fois à l'écran entre 1953 et 2024<a class="renvoi" href="#src-6" id="ref-6c">[6]</a>&nbsp;; <em>Le Monde</em>, cité par sa notice, juge par la voix de Macha Séry que le film a moins bien vieilli que le livre<a class="renvoi" href="#src-6" id="ref-6d">[6]</a>.
+    </p>
+    <p class="discretion">
+      <strong>Ce qui n'a pas pu être vérifié.</strong> La critique de Roger Ebert n'a pas pu être lue au texte (accès refusé par le site)&nbsp;; elle est citée ici par la notice anglophone. Les jugements de Crowther et de Kael sont également rapportés de seconde main. Les notices divergent sur l'année d'<em>Empire</em> et sur le nombre de critiques recensés par Rotten Tomatoes.
+    </p>
+  </section>
+
+  <section class="block" id="conclusion">
+    <div class="borne-head">
+      <span class="borne">retour<strong>0</strong></span>
+      <h2>Conclusion <span class="borne-sous">— le retour à vide</span></h2>
+    </div>
+    <p>
+      <em>Le Salaire de la peur</em> tient sur une idée simple et impitoyable&nbsp;: mettre un prix sur la peur, puis montrer ce que ce prix achète. Les longues scènes de Las Piedras, que la distribution américaine a en partie amputées<a class="renvoi" href="#src-1" id="ref-1aj">[1]</a>, ne sont pas un prologue&nbsp;: elles établissent qu'il n'y a pas d'autre sortie que le camion. Sans elles, le voyage serait une aventure&nbsp;; avec elles, c'est un marché.
+    </p>
+    <p>
+      La route fait le reste, épreuve après épreuve, avec une rigueur de démonstration. Mais la dernière image ôte à cette démonstration toute morale&nbsp;: le survivant ne gagne rien, il meurt au retour, à vide, sur une valse. Clouzot, qui a porté ce film à travers la pluie, la faillite et la maladie<a class="renvoi" href="#src-1" id="ref-1ak">[1]</a><a class="renvoi" href="#src-2" id="ref-2w">[2]</a>, refuse au spectateur jusqu'au soulagement de l'arrivée. C'est là, plus que dans ses explosions, que se tient la cruauté exacte du film.
+    </p>
+  </section>
+
+</main>
+
+<section class="sources" id="sources">
+  <div class="sources-inner">
+    <span class="meta-label" style="color:#e5a912;">Sources consultées</span>
+    <h2>Carnet de bord</h2>
+    <ol class="source-list">
+      <li id="src-1">Wikipédia (FR), « Le Salaire de la peur » — <a href="https://fr.wikipedia.org/wiki/Le_Salaire_de_la_peur" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Le Salaire de la peur</a></li>
+      <li id="src-2">Wikipédia (EN), « The Wages of Fear » — <a href="https://en.wikipedia.org/wiki/The_Wages_of_Fear" target="_blank" rel="noopener">en.wikipedia.org &mdash; The Wages of Fear</a></li>
+      <li id="src-3">Wikidata, élément Q465773 — <a href="https://www.wikidata.org/wiki/Q465773" target="_blank" rel="noopener">wikidata.org/wiki/Q465773</a></li>
+      <li id="src-4">The Movie Database (TMDB), « Le Salaire de la peur (1953) », fiche du film — <a href="https://www.themoviedb.org/movie/204-le-salaire-de-la-peur" target="_blank" rel="noopener">themoviedb.org/movie/204</a></li>
+      <li id="src-5">Wikipédia (FR), « Henri-Georges Clouzot » — <a href="https://fr.wikipedia.org/wiki/Henri-Georges_Clouzot" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Henri-Georges Clouzot</a></li>
+      <li id="src-6">Wikipédia (FR), « Le Salaire de la peur (roman) » — <a href="https://fr.wikipedia.org/wiki/Le_Salaire_de_la_peur_(roman)" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Le Salaire de la peur (roman)</a></li>
+      <li id="src-7">Wikipédia (FR), « Georges Arnaud » — <a href="https://fr.wikipedia.org/wiki/Georges_Arnaud" target="_blank" rel="noopener">fr.wikipedia.org &mdash; Georges Arnaud</a></li>
+      <li id="src-8">Dennis Lehane, « The Wages of Fear: No Exit », <em>The Criterion Collection</em>, 21 avril 2009 — <a href="https://www.criterion.com/current/posts/392-the-wages-of-fear-no-exit" target="_blank" rel="noopener">criterion.com &mdash; The Wages of Fear: No Exit</a></li>
+      <li id="src-9">Jonathan Dawson, « The Wages of Fear », <em>Senses of Cinema</em>, novembre 2011 — <a href="https://www.sensesofcinema.com/2011/cteq/the-wages-of-fear/" target="_blank" rel="noopener">sensesofcinema.com &mdash; The Wages of Fear</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="endnote">
+  Analyse compilée à partir de sources publiques consultées le 29 septembre 2026 — usage éditorial non commercial
+  <br><a href="../index.html">Retour aux analyses</a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
